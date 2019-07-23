@@ -4,8 +4,6 @@ Here are iOS 9+ Objective-C headers as derived from runtime introspection.
 
 For headers before iOS 9, please check out [nst/iOS-Runtime-Headers](https://github.com/nst/iOS-Runtime-Headers).
 
-The headers were generated using [RuntimeBrowser for iPhone](https://github.com/nst/RuntimeBrowser).
-
 ## Search
 
 You can search the headers with GitHub search:
@@ -30,4 +28,14 @@ Class FTDeviceSupport = NSClassFromString(@"FTDeviceSupport");
 id si = [FTDeviceSupport valueForKey:@"sharedInstance"];
 
 NSLog(@"-- %@", [si valueForKey:@"deviceColor"]);
+```
+
+## Generating
+
+The headers were generated using [RuntimeBrowser for iPhone](https://github.com/nst/RuntimeBrowser).
+
+First build and run iOS OCRuntime > Frameworks tab > Load All, then run:
+
+```sh
+wget -r -np -t 15 -R "index.html*" -nH -P iOS-Runtime-Headers http://192.168.2.123:10000/tree/
 ```
