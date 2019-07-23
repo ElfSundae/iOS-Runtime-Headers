@@ -8,7 +8,7 @@ For headers before iOS 9, please check out [nst/iOS-Runtime-Headers](https://git
 
 You can search the headers with GitHub search:
 
-[https://github.com/search?type=Code&q=repo:ElfSundae/iOS-Runtime-Headers+hack](https://github.com/search?type=Code&q=repo:ElfSundae/iOS-Runtime-Headers+hack)
+[https://github.com/ElfSundae/iOS-Runtime-Headers/search?q=UIView](https://github.com/ElfSundae/iOS-Runtime-Headers/search?q=UIView)
 
 ## Diffs
 
