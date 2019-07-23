@@ -1,2 +1,33 @@
-# iOS-Runtime-Headers
-iOS Objective-C headers as derived from runtime introspection
+# iOS Runtime Headers
+
+Here are iOS 9+ Objective-C headers as derived from runtime introspection.
+
+For headers before iOS 9, please check out [nst/iOS-Runtime-Headers](https://github.com/nst/iOS-Runtime-Headers).
+
+The headers were generated using [RuntimeBrowser for iPhone](https://github.com/nst/RuntimeBrowser).
+
+## Search
+
+You can search the headers with GitHub search:
+
+[https://github.com/search?type=Code&q=repo:ElfSundae/iOS-Runtime-Headers+hack](https://github.com/search?type=Code&q=repo:ElfSundae/iOS-Runtime-Headers+hack)
+
+## Diffs
+
+You can compare versions based on their tags, see the [tags page](https://github.com/ElfSundae/iOS-Runtime-Headers/tags):
+
+    $ git difftool 10.0 10.1 .
+
+## Sample Usage
+
+You can use the headers this way:
+
+```objc
+NSBundle *b = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/FTServices.framework"];
+BOOL success = [b load];
+
+Class FTDeviceSupport = NSClassFromString(@"FTDeviceSupport");
+id si = [FTDeviceSupport valueForKey:@"sharedInstance"];
+
+NSLog(@"-- %@", [si valueForKey:@"deviceColor"]);
+```
