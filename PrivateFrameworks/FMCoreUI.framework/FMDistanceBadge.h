@@ -3,13 +3,13 @@
  */
 
 @interface FMDistanceBadge : FMDynamicTypeLabel {
-    UIColor *_badgeColor;
+    UIColor * _badgeColor;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _insets;
+    }  _insets;
 }
 
 @property (nonatomic, retain) UIColor *badgeColor;

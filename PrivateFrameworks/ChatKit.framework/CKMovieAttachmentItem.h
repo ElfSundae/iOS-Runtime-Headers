@@ -6,6 +6,7 @@
 
 + (id)UTITypes;
 
+- (struct CGSize { float x1; float x2; })_defaultSize;
 - (id)_generateThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)generatePreviewWithCompletion:(id /* block */)arg1;
 - (BOOL)isIrisAsset;

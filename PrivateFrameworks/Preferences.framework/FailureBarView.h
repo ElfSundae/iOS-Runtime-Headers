@@ -3,7 +3,7 @@
  */
 
 @interface FailureBarView : UIImageView {
-    UILabel *_titleLabel;
+    UILabel * _titleLabel;
 }
 
 - (void).cxx_destruct;

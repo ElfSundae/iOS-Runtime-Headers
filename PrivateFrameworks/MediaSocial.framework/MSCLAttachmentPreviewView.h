@@ -3,9 +3,9 @@
  */
 
 @interface MSCLAttachmentPreviewView : UIView {
-    MSCLAttachment *_attachment;
-    UIView *_childView;
-    UIButton *_removeButton;
+    MSCLAttachment * _attachment;
+    UIView * _childView;
+    UIButton * _removeButton;
 }
 
 @property (nonatomic, readonly) MSCLAttachment *attachment;

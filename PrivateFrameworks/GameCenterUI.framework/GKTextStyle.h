@@ -3,21 +3,21 @@
  */
 
 @interface GKTextStyle : NSObject {
-    float _UIKitFontLeading;
-    NSString *_UIKitFontTextStyleName;
-    UIColor *_color;
-    NSString *_fontName;
-    SEL _fontNameRebaseSelector;
-    float _fontSize;
-    SEL _fontSizeRebaseSelector;
-    int _lineBreakMode;
-    float _m34;
-    float _minimumLineHeight;
-    BOOL _needsParagraphStyle;
-    BOOL _overrideUIKitFontSize;
-    GKColorPalette *_palette;
-    int _textAlignment;
-    float _zPosition;
+    float  _UIKitFontLeading;
+    NSString * _UIKitFontTextStyleName;
+    UIColor * _color;
+    NSString * _fontName;
+    SEL  _fontNameRebaseSelector;
+    float  _fontSize;
+    SEL  _fontSizeRebaseSelector;
+    int  _lineBreakMode;
+    float  _m34;
+    float  _minimumLineHeight;
+    BOOL  _needsParagraphStyle;
+    BOOL  _overrideUIKitFontSize;
+    GKColorPalette * _palette;
+    int  _textAlignment;
+    float  _zPosition;
 }
 
 @property (nonatomic, retain) NSString *UIKitFontTextStyleName;

@@ -3,26 +3,26 @@
  */
 
 @interface _UIFocusEngineScrollViewOffsets : NSObject {
-    id /* block */ _completion;
-    float _convergenceRate;
+    id /* block */  _completion;
+    float  _convergenceRate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastContentOffset;
+    }  _lastContentOffset;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastVelocity;
+    }  _lastVelocity;
     struct CGPoint { 
         float x; 
         float y; 
-    } _peekAdjustment;
-    <UIScrollViewDelegate> *_scrollDelegate;
-    UIScrollView *_scrollView;
+    }  _peekAdjustment;
+    <UIScrollViewDelegate> * _scrollDelegate;
+    UIScrollView * _scrollView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _targetContentOffset;
+    }  _targetContentOffset;
 }
 
 @property (nonatomic, copy) id /* block */ completion;

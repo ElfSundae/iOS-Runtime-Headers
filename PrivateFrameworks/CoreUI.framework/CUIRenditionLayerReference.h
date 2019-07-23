@@ -3,8 +3,8 @@
  */
 
 @interface CUIRenditionLayerReference : NSObject {
-    int _blendMode;
-    BOOL _fixedFrame;
+    int  _blendMode;
+    BOOL  _fixedFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,11 +14,11 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSString *_layerName;
-    BOOL _makeOpaqueIfPossible;
-    float _opacity;
-    CUIRenditionKey *_referenceKey;
+    }  _frame;
+    NSString * _layerName;
+    BOOL  _makeOpaqueIfPossible;
+    float  _opacity;
+    CUIRenditionKey * _referenceKey;
 }
 
 @property (nonatomic) int blendMode;

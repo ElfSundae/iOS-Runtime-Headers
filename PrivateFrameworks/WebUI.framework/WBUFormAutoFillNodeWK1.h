@@ -3,7 +3,7 @@
  */
 
 @interface WBUFormAutoFillNodeWK1 : NSObject <WBSFormAutoFillNode> {
-    DOMNode *_domNode;
+    DOMNode * _domNode;
 }
 
 @property (readonly, copy) NSString *debugDescription;

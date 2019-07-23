@@ -3,9 +3,9 @@
  */
 
 @interface MusicProfileAlbumsViewController : MusicProductTracklistTableViewController {
-    BOOL _collapseSections;
-    MusicLibraryAlbumsViewConfiguration *_libraryAlbumsViewConfiguration;
-    MPAVController *_player;
+    BOOL  _collapseSections;
+    MusicLibraryAlbumsViewConfiguration * _libraryAlbumsViewConfiguration;
+    MPAVController * _player;
 }
 
 @property (nonatomic, readonly) MusicLibraryAlbumsViewConfiguration *libraryAlbumsViewConfiguration;

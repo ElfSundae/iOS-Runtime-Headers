@@ -3,43 +3,46 @@
  */
 
 @interface GEORouteMatch : NSObject {
-    NSArray *_candidateSteps;
-    unsigned int _consecutiveProgressionsOffRoute;
-    double _distanceFromRoute;
-    double _distanceTraveledOffRoute;
-    BOOL _isGoodMatch;
+    NSArray * _candidateSteps;
+    unsigned int  _consecutiveProgressionsOffRoute;
+    GEONavigationMatchInfo * _detailedMatchInfo;
+    double  _distanceFromRoute;
+    double  _distanceTraveledOffRoute;
+    BOOL  _isGoodMatch;
+    BOOL  _isTunnelProjection;
     struct { 
         double latitude; 
         double longitude; 
-    } _locationCoordinate;
-    double _matchedCourse;
-    double _modifiedCourseAccuracy;
-    double _modifiedHorizontalAccuracy;
-    GEORouteMatch *_projectedFrom;
-    struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; struct _NSRange { unsigned int x_13_1_1; unsigned int x_13_1_2; } x13; BOOL x14; } *_road;
-    double _roadWidth;
-    GEOComposedRoute *_route;
+    }  _locationCoordinate;
+    double  _matchedCourse;
+    double  _modifiedCourseAccuracy;
+    double  _modifiedHorizontalAccuracy;
+    GEORouteMatch * _projectedFrom;
+    struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; BOOL x13; unsigned char x14; BOOL x15; BOOL x16; unsigned char x17; BOOL x18; unsigned char x19; struct _NSRange { unsigned int x_20_1_1; unsigned int x_20_1_2; } x20; BOOL x21; } * _road;
+    double  _roadWidth;
+    GEOComposedRoute * _route;
     struct PolylineCoordinate { 
         unsigned int index; 
         float offset; 
-    } _routeCoordinate;
-    unsigned int _stepIndex;
-    NSDate *_timestamp;
-    unsigned long long _transitID;
+    }  _routeCoordinate;
+    unsigned int  _stepIndex;
+    NSDate * _timestamp;
+    unsigned long long  _transitID;
 }
 
 @property (nonatomic, retain) NSArray *candidateSteps;
 @property (nonatomic) unsigned int consecutiveProgressionsOffRoute;
+@property (nonatomic, retain) GEONavigationMatchInfo *detailedMatchInfo;
 @property (nonatomic) double distanceFromRoute;
 @property (nonatomic) double distanceTraveledOffRoute;
 @property (nonatomic) BOOL isGoodMatch;
+@property (nonatomic) BOOL isTunnelProjection;
 @property (nonatomic) struct { double x1; double x2; } locationCoordinate;
 @property (nonatomic, readonly) double matchedCourse;
 @property (nonatomic) double modifiedCourseAccuracy;
 @property (nonatomic) double modifiedHorizontalAccuracy;
 @property (nonatomic, retain) GEORouteMatch *projectedFrom;
-@property (nonatomic, readonly) BOOL projectedPastEndOfLeg;
-@property (nonatomic) struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; struct _NSRange { unsigned int x_13_1_1; unsigned int x_13_1_2; } x13; BOOL x14; }*road;
+@property (nonatomic) struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; BOOL x13; unsigned char x14; BOOL x15; BOOL x16; unsigned char x17; BOOL x18; unsigned char x19; struct _NSRange { unsigned int x_20_1_1; unsigned int x_20_1_2; } x20; BOOL x21; }*road;
 @property (nonatomic, readonly) double roadWidth;
 @property (nonatomic, readonly) GEOComposedRoute *route;
 @property (nonatomic, readonly) struct PolylineCoordinate { unsigned int x1; float x2; } routeCoordinate;
@@ -56,6 +59,7 @@
 - (unsigned int)consecutiveProgressionsOffRoute;
 - (void)dealloc;
 - (id)description;
+- (id)detailedMatchInfo;
 - (double)distanceFromRoute;
 - (double)distanceTraveledOffRoute;
 - (double)fractionOfCurrentStepTraveled;
@@ -65,13 +69,13 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringScore:(id)arg1;
 - (BOOL)isGoodMatch;
+- (BOOL)isTunnelProjection;
 - (struct { double x1; double x2; })locationCoordinate;
 - (double)matchedCourse;
 - (double)modifiedCourseAccuracy;
 - (double)modifiedHorizontalAccuracy;
 - (id)projectedFrom;
-- (BOOL)projectedPastEndOfLeg;
-- (struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; struct _NSRange { unsigned int x_13_1_1; unsigned int x_13_1_2; } x13; BOOL x14; }*)road;
+- (struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; BOOL x13; unsigned char x14; BOOL x15; BOOL x16; unsigned char x17; BOOL x18; unsigned char x19; struct _NSRange { unsigned int x_20_1_1; unsigned int x_20_1_2; } x20; BOOL x21; }*)road;
 - (double)roadWidth;
 - (id)route;
 - (struct PolylineCoordinate { unsigned int x1; float x2; })routeCoordinate;
@@ -79,14 +83,16 @@
 - (BOOL)routeMatchedToEnd;
 - (void)setCandidateSteps:(id)arg1;
 - (void)setConsecutiveProgressionsOffRoute:(unsigned int)arg1;
+- (void)setDetailedMatchInfo:(id)arg1;
 - (void)setDistanceFromRoute:(double)arg1;
 - (void)setDistanceTraveledOffRoute:(double)arg1;
 - (void)setIsGoodMatch:(BOOL)arg1;
+- (void)setIsTunnelProjection:(BOOL)arg1;
 - (void)setLocationCoordinate:(struct { double x1; double x2; })arg1;
 - (void)setModifiedCourseAccuracy:(double)arg1;
 - (void)setModifiedHorizontalAccuracy:(double)arg1;
 - (void)setProjectedFrom:(id)arg1;
-- (void)setRoad:(struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; struct _NSRange { unsigned int x_13_1_1; unsigned int x_13_1_2; } x13; BOOL x14; }*)arg1;
+- (void)setRoad:(struct { struct { id x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned long long x_1_1_7; BOOL x_1_1_8; unsigned long long x_1_1_9; float x_1_1_10; unsigned long long x_1_1_11; id x_1_1_12; } x1; unsigned int x2; unsigned int x3; int x4; int x5; int x6; unsigned int x7; unsigned int x8; union { struct { struct { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_9_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_9_1_2; } x9; struct { /* ? */ } *x10; struct { unsigned short x_11_1_1[2]; unsigned short x_11_1_2[2]; } x11; unsigned char x12; BOOL x13; unsigned char x14; BOOL x15; BOOL x16; unsigned char x17; BOOL x18; unsigned char x19; struct _NSRange { unsigned int x_20_1_1; unsigned int x_20_1_2; } x20; BOOL x21; }*)arg1;
 - (void)setStepIndex:(unsigned int)arg1;
 - (void)setTransitID:(unsigned long long)arg1;
 - (id)step;

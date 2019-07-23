@@ -3,8 +3,8 @@
  */
 
 @interface SSVPlaybackLeaseResponse : SSVPlaybackResponse <NSCopying> {
-    NSData *_certificateData;
-    unsigned long long _kdMovieIdentifier;
+    NSData * _certificateData;
+    unsigned long long  _kdMovieIdentifier;
 }
 
 @property (nonatomic) unsigned long long KDMovieIdentifier;

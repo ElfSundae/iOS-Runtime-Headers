@@ -3,23 +3,29 @@
  */
 
 @interface GEOComposedTransitRouteStep : GEOComposedRouteStep {
-    unsigned int _duration;
-    int _maneuver;
-    <GEOTransitRoutingIncidentMessage> *_routeDetailsIncidentMessage;
-    NSArray *_routeDetailsPrimaryArtwork;
-    <GEOTransitArtworkDataSource> *_routeDetailsSecondaryArtwork;
-    unsigned int _startTime;
-    NSArray *_steppingArtwork;
-    <GEOTransitRoutingIncidentMessage> *_steppingIncidentMessage;
-    GEOTransitStep *_transitStep;
+    GEOPBTransitHall * _destinationHall;
+    GEOPBTransitStop * _destinationStop;
+    unsigned int  _duration;
+    int  _maneuver;
+    GEOPBTransitHall * _originHall;
+    GEOPBTransitStop * _originStop;
+    <GEOTransitRoutingIncidentMessage> * _routeDetailsIncidentMessage;
+    NSArray * _routeDetailsPrimaryArtwork;
+    <GEOTransitArtworkDataSource> * _routeDetailsSecondaryArtwork;
+    unsigned int  _startTime;
+    NSArray * _steppingArtwork;
+    <GEOTransitRoutingIncidentMessage> * _steppingIncidentMessage;
+    GEOTransitStep * _transitStep;
 }
 
+@property (nonatomic, readonly) GEOPBTransitHall *destinationHall;
 @property (nonatomic, readonly) GEOPBTransitStop *destinationStop;
 @property (nonatomic, readonly) NSString *destinationStopIntermediateListName;
 @property (nonatomic, readonly) unsigned long long destinationTransitEntityMuid;
 @property (nonatomic, readonly) GEOInstructionSet *instructions;
 @property (nonatomic, readonly) int maneuver;
 @property (nonatomic, readonly) GEOComposedTransitRouteStep *nextTransitStep;
+@property (nonatomic, readonly) GEOPBTransitHall *originHall;
 @property (nonatomic, readonly) GEOPBTransitStop *originStop;
 @property (nonatomic, readonly) NSString *originStopIntermediateListName;
 @property (nonatomic, readonly) unsigned long long originTransitEntityMuid;
@@ -35,6 +41,7 @@
 - (void)_populateIncidentsWithDecoderData:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)destinationHall;
 - (id)destinationStop;
 - (id)destinationStopIntermediateListName;
 - (unsigned long long)destinationTransitEntityMuid;
@@ -45,11 +52,13 @@
 - (BOOL)hasDuration;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(int)arg2 step:(id)arg3 stepIndex:(unsigned int)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg6;
 - (id)instructions;
+- (BOOL)isArrivalStep;
 - (int)maneuver;
 - (id)nextAlightingStep;
 - (id)nextBoardingStep;
 - (id)nextStop;
 - (id)nextTransitStep;
+- (id)originHall;
 - (id)originStop;
 - (id)originStopIntermediateListName;
 - (unsigned long long)originTransitEntityMuid;

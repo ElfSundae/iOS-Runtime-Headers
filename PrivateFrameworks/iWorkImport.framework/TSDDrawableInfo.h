@@ -2,19 +2,19 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSDDrawableInfo : TSPObject <TSDChangeableInfo, TSKDocumentObject, TSKSearchable, TSKTransformableObject> {
-    NSString *mAccessibilityDescription;
-    BOOL mAspectRatioLocked;
-    TSSPropertySetChangeDetails *mChanges;
-    TSDDrawableComment *mComment;
-    TSDDefaultPartitioner *mDefaultPartitioner;
-    TSDExteriorTextWrap *mExteriorTextWrap;
-    TSDInfoGeometry *mGeometry;
-    NSURL *mHyperlinkURL;
-    BOOL mLocked;
-    TSPObject<TSDOwningAttachment> *mOwningAttachment;
-    NSObject<TSDContainerInfo> *mParentInfo;
-    TSPLazyReference *mParentInfoReference;
+@interface TSDDrawableInfo : TSPObject <TSDChangeableInfo, TSDScrollingAwareChangeSource, TSKDocumentObject, TSKSearchable, TSKTransformableObject> {
+    NSString * mAccessibilityDescription;
+    BOOL  mAspectRatioLocked;
+    TSSPropertySetChangeDetails * mChanges;
+    TSDDrawableComment * mComment;
+    TSDDefaultPartitioner * mDefaultPartitioner;
+    TSDExteriorTextWrap * mExteriorTextWrap;
+    TSDInfoGeometry * mGeometry;
+    NSURL * mHyperlinkURL;
+    BOOL  mLocked;
+    TSPObject<TSDOwningAttachment> * mOwningAttachment;
+    NSObject<TSDContainerInfo> * mParentInfo;
+    TSPLazyReference * mParentInfoReference;
 }
 
 @property (nonatomic, readonly) KNAbstractSlide *abstractSlide;
@@ -65,12 +65,12 @@
 - (id)accessibilityDescription;
 - (id)actionBuilds;
 - (id)activeBuildChunks;
-- (id)activeBuildChunksForAnimationType:(int)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)animationFilters;
 - (BOOL)aspectRatioLocked;
 - (void)beginCollectingChanges;
 - (id)buildChunks;
+- (id)buildChunksForAnimationType:(int)arg1;
 - (unsigned int)buildCount;
 - (id)buildIn;
 - (id)buildOut;
@@ -94,6 +94,7 @@
 - (int)elementKind;
 - (id)endCollectingChanges;
 - (id)exteriorTextWrap;
+- (id)exteriorTextWrapForMovingToFloating;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })fullTransformInRoot;
 - (id)geometry;
 - (id)ghostInfos;
@@ -109,6 +110,7 @@
 - (BOOL)isLockable;
 - (BOOL)isLocked;
 - (BOOL)isRightToLeft;
+- (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (BOOL)isUserModifiable;
 - (Class)layoutClass;
@@ -139,8 +141,9 @@
 - (void)setMatchesObjectPlaceholderGeometry:(BOOL)arg1;
 - (void)setOwningAttachment:(id)arg1;
 - (void)setParentInfo:(id)arg1;
-- (void)setParentInfoDuringUnarchiving:(id)arg1 fromCopy:(BOOL)arg2;
+- (void)setParentInfoDuringUnarchiving:(id)arg1 inDocument:(BOOL)arg2;
 - (void)setPrimitiveGeometry:(id)arg1;
+- (BOOL)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
 - (id)slide;
 - (BOOL)supportsAttachedComments;
 - (BOOL)supportsHyperlinks;
@@ -151,7 +154,7 @@
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })transformInRoot;
 - (struct CGPoint { float x1; float x2; })transformableObjectAnchorPoint;
 - (id)transformedGeometryWithTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1 inBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
-- (id)uuidPathPrefixComponentsProvider;
+- (id)validBuildsInBuilds:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

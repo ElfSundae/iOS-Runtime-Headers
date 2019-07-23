@@ -3,11 +3,11 @@
  */
 
 @interface PBDataReader : NSObject {
-    const char *_bytes;
-    NSData *_data;
-    BOOL _error;
-    unsigned int _length;
-    unsigned int _pos;
+    const char * _bytes;
+    NSData * _data;
+    BOOL  _error;
+    unsigned int  _length;
+    unsigned int  _pos;
 }
 
 @property unsigned int length;
@@ -44,6 +44,7 @@
 - (long long)readSint64;
 - (id)readString;
 - (void)readTag:(unsigned short*)arg1 andType:(char *)arg2;
+- (void)readTag:(unsigned int*)arg1 type:(char *)arg2;
 - (unsigned int)readUint32;
 - (unsigned long long)readUint64;
 - (long long)readVarInt;
@@ -52,6 +53,7 @@
 - (void)setLength:(unsigned int)arg1;
 - (void)setPosition:(unsigned int)arg1;
 - (BOOL)skipValueWithTag:(unsigned short)arg1 andType:(unsigned char)arg2;
+- (BOOL)skipValueWithTag:(unsigned int)arg1 type:(unsigned char)arg2;
 - (void)updateData:(id)arg1;
 
 @end

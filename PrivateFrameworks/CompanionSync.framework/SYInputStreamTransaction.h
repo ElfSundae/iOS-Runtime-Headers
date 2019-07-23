@@ -3,10 +3,10 @@
  */
 
 @interface SYInputStreamTransaction : NSObject <SYStreamTransaction> {
-    NSURL *_fileURL;
-    NSDictionary *_metadata;
-    NSProgress *_progress;
-    struct NSInputStream { Class x1; } *_stream;
+    NSURL * _fileURL;
+    NSDictionary * _metadata;
+    NSProgress * _progress;
+    struct NSInputStream { Class x1; } * _stream;
 }
 
 @property (readonly, copy) NSString *debugDescription;

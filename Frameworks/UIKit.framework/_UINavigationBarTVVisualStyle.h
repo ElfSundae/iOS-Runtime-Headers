@@ -12,6 +12,7 @@
 - (float)interItemSpace;
 - (float)leftTitleMargin;
 - (float)navigationItemBaselineOffset;
+- (id)timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2 isInteractive:(BOOL)arg3;
 - (float)topMargin;
 
 @end

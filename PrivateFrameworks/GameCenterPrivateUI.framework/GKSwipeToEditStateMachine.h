@@ -3,14 +3,14 @@
  */
 
 @interface GKSwipeToEditStateMachine : _GKStateMachine <GKSegmentedSectionDataSourceEventHandler, UIGestureRecognizerDelegate> {
-    UICollectionView *_collectionView;
-    int _debounce;
-    GKCancelSwipeToEditGestureRecognizer *_editModeCancelRecognizer;
-    GKCollectionViewCell *_editingCell;
-    GKCollectionViewDataSource *_gkDataSource;
-    _UIDynamicAnimation *_openAnimation;
-    UIPanGestureRecognizer *_panGestureRecognizer;
-    float _startTrackingX;
+    UICollectionView * _collectionView;
+    int  _debounce;
+    GKCancelSwipeToEditGestureRecognizer * _editModeCancelRecognizer;
+    GKCollectionViewCell * _editingCell;
+    GKCollectionViewDataSource * _gkDataSource;
+    _UIDynamicAnimation * _openAnimation;
+    UIPanGestureRecognizer * _panGestureRecognizer;
+    float  _startTrackingX;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;

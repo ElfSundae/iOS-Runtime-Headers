@@ -3,14 +3,14 @@
  */
 
 @interface NACVolumeControllerLocal : NSObject <MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, NACVolumeController> {
-    NSString *_audioCategory;
-    <NACVolumeControllerDelegate> *_delegate;
-    NACEventThrottler *_hapticThrottler;
-    MPAVRoutingController *_routingController;
-    BOOL _systemMuted;
-    MPVolumeController *_volumeController;
-    NSCountedSet *_volumeSetHistory;
-    NACEventThrottler *_volumeThrottler;
+    NSString * _audioCategory;
+    <NACVolumeControllerDelegate> * _delegate;
+    NACEventThrottler * _hapticThrottler;
+    MPAVRoutingController * _routingController;
+    BOOL  _systemMuted;
+    MPVolumeController * _volumeController;
+    NSCountedSet * _volumeSetHistory;
+    NACEventThrottler * _volumeThrottler;
 }
 
 @property (nonatomic, readonly) float EUVolumeLimit;
@@ -20,6 +20,7 @@
 @property (nonatomic) float hapticIntensity;
 @property (readonly) unsigned int hash;
 @property (getter=isMuted, nonatomic, readonly) BOOL muted;
+@property (getter=isProminentHapticEnabled, nonatomic) BOOL prominentHapticEnabled;
 @property (readonly) Class superclass;
 @property (getter=isSystemMuted, nonatomic) BOOL systemMuted;
 @property (getter=isVolumeControlAvailable, nonatomic, readonly) BOOL volumeControlAvailable;
@@ -31,23 +32,29 @@
 - (void)_hapticIntensityDidChange:(id)arg1;
 - (void)_setHapticIntensity:(id)arg1;
 - (void)_setVolumeValue:(id)arg1;
+- (void)_updateProminentHapticState;
 - (void)beginObservingHapticIntensity;
+- (void)beginObservingProminentHapticState;
 - (void)beginObservingVolume;
 - (id)delegate;
 - (void)endObservingHapticIntensity;
+- (void)endObservingProminentHapticState;
 - (void)endObservingVolume;
 - (float)hapticIntensity;
 - (id)init;
 - (id)initWithAudioCategory:(id)arg1;
 - (BOOL)isMuted;
+- (BOOL)isProminentHapticEnabled;
 - (BOOL)isSystemMuted;
 - (BOOL)isVolumeControlAvailable;
 - (BOOL)isVolumeWarningEnabled;
 - (void)playPreview;
+- (void)playProminentHapticPreview;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHapticIntensity:(float)arg1;
 - (void)setMuted:(BOOL)arg1;
+- (void)setProminentHapticEnabled:(BOOL)arg1;
 - (void)setSystemMuted:(BOOL)arg1;
 - (void)setVolumeValue:(float)arg1;
 - (void)setVolumeValue:(float)arg1 muted:(BOOL)arg2 overrideEULimit:(BOOL)arg3;

@@ -3,7 +3,7 @@
  */
 
 @interface AVForceButton : AVButton {
-    float _force;
+    float  _force;
 }
 
 @property (nonatomic) float force;

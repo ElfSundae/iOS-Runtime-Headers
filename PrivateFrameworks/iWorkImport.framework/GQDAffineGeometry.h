@@ -3,25 +3,25 @@
  */
 
 @interface GQDAffineGeometry : NSObject <GQDNameMappable> {
-    float mAngle;
-    BOOL mAspectRatioLocked;
-    BOOL mHorizontalFlip;
+    float  mAngle;
+    BOOL  mAspectRatioLocked;
+    BOOL  mHorizontalFlip;
     struct CGSize { 
         float width; 
         float height; 
-    } mNaturalSize;
+    }  mNaturalSize;
     struct CGPoint { 
         float x; 
         float y; 
-    } mPosition;
-    float mShearXAngle;
-    float mShearYAngle;
+    }  mPosition;
+    float  mShearXAngle;
+    float  mShearYAngle;
     struct CGSize { 
         float width; 
         float height; 
-    } mSize;
-    BOOL mSizesLocked;
-    BOOL mVerticalFlip;
+    }  mSize;
+    BOOL  mSizesLocked;
+    BOOL  mVerticalFlip;
 }
 
 @property (readonly, copy) NSString *debugDescription;

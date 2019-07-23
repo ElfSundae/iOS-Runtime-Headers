@@ -3,14 +3,14 @@
  */
 
 @interface GKDispatchGroup : NSObject {
-    NSError *_error;
-    NSObject<OS_dispatch_group> *_group;
-    BOOL _loggingEnabled;
-    NSString *_name;
-    id _result;
-    int _sequence;
-    GKThreadsafeDictionary *_values;
-    id result;
+    NSError * _error;
+    NSObject<OS_dispatch_group> * _group;
+    BOOL  _loggingEnabled;
+    NSString * _name;
+    id  _result;
+    int  _sequence;
+    GKThreadsafeDictionary * _values;
+    id  result;
 }
 
 @property (retain) NSError *error;

@@ -2,36 +2,36 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITextInputController : NSObject <UITextInput, UITextInputAdditions, UITextInput_Internal> {
-    BOOL _allowsEditingTextAttributes;
-    BOOL _continuousSpellCheckingEnabled;
-    _UITextServiceSession *_definitionSession;
-    <UITextInputControllerDelegate> *_delegate;
-    _UIDictationAttachment *_dictationPlaceholder;
-    NSDictionary *_emptyStringAttributes;
-    NSArray *_extraItemsBeforeTextStyleOptions;
-    UIView<UITextInput> *_firstTextView;
-    <UITextInputDelegate> *_inputDelegate;
-    NSLayoutManager *_layoutManager;
-    _UITextServiceSession *_learnSession;
-    _UITextServiceSession *_lookupSession;
+@interface UITextInputController : NSObject <UIResponderStandardEditActions, UITextInput, UITextInputAdditions, UITextInput_Internal> {
+    BOOL  _allowsEditingTextAttributes;
+    BOOL  _continuousSpellCheckingEnabled;
+    _UITextServiceSession * _definitionSession;
+    <UITextInputControllerDelegate> * _delegate;
+    _UIDictationAttachment * _dictationPlaceholder;
+    NSDictionary * _emptyStringAttributes;
+    NSArray * _extraItemsBeforeTextStyleOptions;
+    UIView<UITextInput> * _firstTextView;
+    <UITextInputDelegate> * _inputDelegate;
+    NSLayoutManager * _layoutManager;
+    _UITextServiceSession * _learnSession;
+    _UITextServiceSession * _lookupSession;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _markedTextRange;
+    }  _markedTextRange;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _markedTextSelection;
-    NSHashTable *_observedScrollViews;
+    }  _markedTextSelection;
+    NSHashTable * _observedScrollViews;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _previousSelectedRange;
-    _UITextKitTextRange *_selectedTextRange;
-    _UITextServiceSession *_shareSession;
-    UITextChecker *_textChecker;
-    UITextInputTraits *_textInputTraits;
+    }  _previousSelectedRange;
+    _UITextKitTextRange * _selectedTextRange;
+    _UITextServiceSession * _shareSession;
+    UITextChecker * _textChecker;
+    UITextInputTraits * _textInputTraits;
     struct { 
         unsigned int delegateRespondsToTextInputShouldBeginEditing : 1; 
         unsigned int delegateRespondsToTextInputShouldChangeCharactersInRangeReplacementText : 1; 
@@ -47,12 +47,12 @@
         unsigned int nextSelectionChangeMustUpdate : 1; 
         unsigned int hasTextAlternatives : 1; 
         unsigned int suppressDelegateChangeNotifications : 1; 
-    } _tiFlags;
-    _UITextInputControllerTokenizer *_tokenizer;
-    NSDictionary *_typingAttributes;
-    _UITextUndoManager *_undoManager;
-    _UITextUndoOperationTyping *_undoOperationForCoalescing;
-    NSSet *_whitelistedTypingAttributes;
+    }  _tiFlags;
+    _UITextInputControllerTokenizer * _tokenizer;
+    NSDictionary * _typingAttributes;
+    _UITextUndoManager * _undoManager;
+    _UITextUndoOperationTyping * _undoOperationForCoalescing;
+    NSSet * _whitelistedTypingAttributes;
 }
 
 @property (getter=_proxyTextInput, nonatomic, readonly) UIResponder<UITextInput> *__content;
@@ -72,8 +72,10 @@
 @property (getter=_emptyStringAttributes, setter=_setEmptyStringAttributes:, nonatomic, copy) NSDictionary *emptyStringAttributes;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
+@property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic) int keyboardAppearance;
 @property (nonatomic) int keyboardType;
 @property (nonatomic) NSLayoutManager *layoutManager;
@@ -87,9 +89,12 @@
 @property (nonatomic) int selectionAffinity;
 @property (nonatomic) int spellCheckingType;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *textContentType;
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 @property (nonatomic, copy) NSDictionary *typingAttributes;
+
++ (BOOL)_pasteboardHasStrings;
 
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
@@ -102,6 +107,7 @@
 - (unsigned long)_characterAfterCaretSelection;
 - (unsigned long)_characterBeforeCaretSelection;
 - (unsigned long)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned long)_characterInRelationToPosition:(id)arg1 amount:(int)arg2;
 - (unsigned long)_characterInRelationToRangedSelection:(int)arg1;
 - (id)_characterPositionForPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
@@ -150,7 +156,6 @@
 - (BOOL)_isSecureTextEntry;
 - (id)_keyInput;
 - (id)_layoutManager;
-- (void)_lookup:(struct CGPoint { float x1; float x2; })arg1;
 - (BOOL)_mightHaveSelection;
 - (void)_moveCurrentSelection:(int)arg1;
 - (id)_moveDown:(BOOL)arg1 withHistory:(id)arg2;
@@ -199,6 +204,7 @@
 - (id)_selectedAttributedText;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedNSRange;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedRange;
+- (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedRangeWithinMarkedText;
 - (id)_selectedText;
 - (int)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
@@ -209,6 +215,7 @@
 - (void)_selectionGeometryChanged;
 - (void)_sendDelegateChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
 - (void)_sendDelegateWillChangeNotificationsForText:(BOOL)arg1 selection:(BOOL)arg2;
+- (id)_senderForDelegateNotifications;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setEmptyStringAttributes:(id)arg1;
 - (void)_setGestureRecognizers;
@@ -216,6 +223,7 @@
 - (void)_setInternalGestureRecognizers;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;
 - (void)_setSelectedRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
+- (void)_setSelectedRangeToEndIfNecessary;
 - (void)_setSelectedTextRange:(id)arg1;
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_setSelectionRangeWithHistory:(id)arg1;
@@ -336,6 +344,7 @@
 - (void)stopCoalescing;
 - (id)textChecker;
 - (id)textInRange:(id)arg1;
+- (id)textInputSuggestionDelegate;
 - (id)textRangeForNSRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;
 - (id)textStylingAtPosition:(id)arg1 inDirection:(int)arg2;

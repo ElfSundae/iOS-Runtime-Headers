@@ -3,12 +3,12 @@
  */
 
 @interface PKPaperList : NSObject {
-    NSArray *_duplexPapers;
-    BOOL _hasMediaReady;
-    NSArray *_papers;
-    NSArray *_photoPapers;
-    NSArray *_rolls;
-    NSArray *_simplexPapers;
+    NSArray * _duplexPapers;
+    BOOL  _hasMediaReady;
+    NSArray * _papers;
+    NSArray * _photoPapers;
+    NSArray * _rolls;
+    NSArray * _simplexPapers;
 }
 
 @property (retain) NSArray *duplexPapers;

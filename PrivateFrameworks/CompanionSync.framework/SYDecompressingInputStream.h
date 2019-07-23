@@ -3,16 +3,16 @@
  */
 
 @interface SYDecompressingInputStream : NSInputStream <NSStreamDelegate, SYCompressionBufferOptimization, SYStreamEventHandlerBlocks, SYStreamProgress, SYStreamThroughputCounter, _SYStreamRunLoopSourceHandler> {
-    unsigned long long _byteCount;
-    _SYZlibStreamInternal *_internal;
-    id /* block */ _onBytesAvailable;
-    id /* block */ _onClose;
-    id /* block */ _onEndOfFile;
-    id /* block */ _onError;
-    id /* block */ _onOpenComplete;
-    id /* block */ _onSpaceAvailable;
-    NSProgress *_progress;
-    NSInputStream *_stream;
+    unsigned long long  _byteCount;
+    _SYZlibStreamInternal * _internal;
+    id /* block */  _onBytesAvailable;
+    id /* block */  _onClose;
+    id /* block */  _onEndOfFile;
+    id /* block */  _onError;
+    id /* block */  _onOpenComplete;
+    id /* block */  _onSpaceAvailable;
+    NSProgress * _progress;
+    NSInputStream * _stream;
 }
 
 @property (nonatomic, readonly) unsigned long long bytesThroughput;

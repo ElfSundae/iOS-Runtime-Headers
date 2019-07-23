@@ -3,8 +3,8 @@
  */
 
 @interface AKFormFeatureBox : AKFormFeature {
-    unsigned int _alignment;
-    AKFormFeatureLine *_baseline;
+    unsigned int  _alignment;
+    AKFormFeatureLine * _baseline;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,10 +14,10 @@
             float width; 
             float height; 
         } size; 
-    } _enclosingRegionRect;
-    unsigned int _flags;
-    BOOL _multiline;
-    BOOL _widthExpands;
+    }  _enclosingRegionRect;
+    unsigned int  _flags;
+    BOOL  _multiline;
+    BOOL  _widthExpands;
 }
 
 @property (nonatomic) unsigned int alignment;

@@ -3,13 +3,13 @@
  */
 
 @interface MFPPathGradientBrush : MFPGradientBrush {
-    OITSUColor *mCenterColor;
+    OITSUColor * mCenterColor;
     struct CGPoint { 
         float x; 
         float y; 
-    } mCenterPoint;
-    TSUBezierPath *mPath;
-    NSArray *mSurroundColors;
+    }  mCenterPoint;
+    OITSUBezierPath * mPath;
+    NSArray * mSurroundColors;
 }
 
 - (void)createShading;

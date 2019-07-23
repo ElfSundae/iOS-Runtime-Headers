@@ -3,12 +3,12 @@
  */
 
 @interface MusicMediaProductTracklistTableViewDescriptor : MusicEntityViewDescriptor {
-    MusicEntityValueContext *_entityValueContext;
-    NSString *_groupingProperty;
-    long long _prominentTrackStoreID;
-    MusicEntityViewTracklistItemContentDescriptor *_prominentTracklistItemContentDescriptor;
-    NSSet *_propertiesToQueryForContentDescriptorResolution;
-    NSString *_wantsGroupingProperty;
+    MusicEntityValueContext * _entityValueContext;
+    NSString * _groupingProperty;
+    long long  _prominentTrackStoreID;
+    MusicEntityViewTracklistItemContentDescriptor * _prominentTracklistItemContentDescriptor;
+    NSSet * _propertiesToQueryForContentDescriptorResolution;
+    NSString * _wantsGroupingProperty;
 }
 
 @property (nonatomic, retain) MusicEntityViewTracklistItemContentDescriptor *defaultContentDescriptor;

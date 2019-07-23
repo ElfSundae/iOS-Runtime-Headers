@@ -3,9 +3,9 @@
  */
 
 @interface KNSoundtrack : TSPObject <NSCopying> {
-    NSArray *mMedia;
-    int mMode;
-    float mVolume;
+    NSArray * _media;
+    int  _mode;
+    float  _volume;
 }
 
 @property (nonatomic, copy) NSArray *media;

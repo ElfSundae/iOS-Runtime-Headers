@@ -3,28 +3,28 @@
  */
 
 @interface _MKResultView : UIView <MKLocationManagerObserver> {
-    BOOL _alwaysUsesBusinessLayout;
-    <_MKResultViewDelegate> *_delegate;
-    double _fallbackDistance;
-    int _iconFormat;
-    UIImageView *_imageView;
-    int _layoutType;
-    MKLocationManager *_locManager;
-    NSArray *_mapItems;
-    UILabel *_nameLabel;
-    NSString *_primaryLabelText;
-    UIColor *_primaryTextColor;
-    NSTimer *_refLocationTimer;
-    CLLocation *_referenceLocation;
-    NSMutableArray *_resultConstraints;
-    UILabel *_secondaryLabel;
-    NSString *_secondaryLabelText;
-    UIColor *_secondaryTextColor;
-    BOOL _selected;
-    BOOL _showsDistance;
-    UILabel *_tertiaryLabel;
-    BOOL _useSpotlightVibrancy;
-    <_MKResultViewDelegate> *delegate;
+    BOOL  _alwaysUsesBusinessLayout;
+    <_MKResultViewDelegate> * _delegate;
+    double  _fallbackDistance;
+    int  _iconFormat;
+    UIImageView * _imageView;
+    int  _layoutType;
+    MKLocationManager * _locManager;
+    NSArray * _mapItems;
+    _MKUILabel * _nameLabel;
+    NSString * _primaryLabelText;
+    UIColor * _primaryTextColor;
+    NSTimer * _refLocationTimer;
+    CLLocation * _referenceLocation;
+    NSMutableArray * _resultConstraints;
+    _MKUILabel * _secondaryLabel;
+    NSString * _secondaryLabelText;
+    UIColor * _secondaryTextColor;
+    BOOL  _selected;
+    BOOL  _showsDistance;
+    _MKUILabel * _tertiaryLabel;
+    BOOL  _useSpotlightVibrancy;
+    <_MKResultViewDelegate> * delegate;
 }
 
 @property (nonatomic) BOOL alwaysUsesBusinessLayout;
@@ -37,18 +37,18 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) MKMapItem *mapItem;
 @property (nonatomic, retain) NSArray *mapItems;
-@property (nonatomic, retain) UILabel *nameLabel;
+@property (nonatomic, retain) _MKUILabel *nameLabel;
 @property (nonatomic, readonly) float preferredHeight;
 @property (nonatomic, retain) NSString *primaryLabelText;
 @property (nonatomic, retain) UIColor *primaryTextColor;
 @property (nonatomic, retain) CLLocation *referenceLocation;
-@property (nonatomic, retain) UILabel *secondaryLabel;
+@property (nonatomic, retain) _MKUILabel *secondaryLabel;
 @property (nonatomic, retain) NSString *secondaryLabelText;
 @property (nonatomic, retain) UIColor *secondaryTextColor;
 @property (nonatomic) BOOL selected;
 @property (nonatomic) BOOL showsDistance;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) UILabel *tertiaryLabel;
+@property (nonatomic, retain) _MKUILabel *tertiaryLabel;
 @property (nonatomic) BOOL useSpotlightVibrancy;
 
 + (BOOL)requiresConstraintBasedLayout;

@@ -3,12 +3,12 @@
  */
 
 @interface UIWebOverflowScrollView : UIScrollView {
-    BOOL _beingRemoved;
-    DOMNode *_node;
-    UIWebOverflowContentView *_overflowContentView;
-    UIWebOverflowScrollListener *_scrollListener;
-    UIWebBrowserView *_webBrowserView;
-    CALayer *_webLayer;
+    BOOL  _beingRemoved;
+    DOMNode * _node;
+    UIWebOverflowContentView * _overflowContentView;
+    UIWebOverflowScrollListener * _scrollListener;
+    UIWebBrowserView * _webBrowserView;
+    CALayer * _webLayer;
 }
 
 @property (getter=isBeingRemoved, nonatomic) BOOL beingRemoved;

@@ -6,27 +6,26 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _attachmentPointA;
+    }  _attachmentPointA;
     struct CGPoint { 
         float x; 
         float y; 
-    } _attachmentPointB;
-    float _damping;
-    id _delegate;
-    BOOL _enabled;
-    CAValueFunction *_function;
-    CALayer *_layerA;
-    CALayer *_layerB;
-    NSString *_name;
-    void *_priv;
-    float _restLength;
-    float _stiffness;
+    }  _attachmentPointB;
+    float  _damping;
+    id  _delegate;
+    BOOL  _enabled;
+    CAValueFunction * _function;
+    CALayer * _layerA;
+    CALayer * _layerB;
+    NSString * _name;
+    float  _restLength;
+    float  _stiffness;
 }
 
 @property struct CGPoint { float x1; float x2; } attachmentPointA;
 @property struct CGPoint { float x1; float x2; } attachmentPointB;
 @property float damping;
-@property id delegate;
+@property <CASpringDelegate> *delegate;
 @property (getter=isEnabled) BOOL enabled;
 @property (retain) CAValueFunction *function;
 @property (retain) CALayer *layerA;

@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
  */
 
-@interface GKRemoteUIHeaderView : UIView <RemoteUITableHeader> {
-    float _bottomMargin;
-    float _height;
-    BOOL _isFirstSection;
-    GKLabel *_textLabel;
+@interface GKRemoteUIHeaderView : UIView <RUIHeader> {
+    float  _bottomMargin;
+    float  _height;
+    BOOL  _isFirstSection;
+    GKLabel * _textLabel;
 }
 
 @property (nonatomic) float bottomMargin;

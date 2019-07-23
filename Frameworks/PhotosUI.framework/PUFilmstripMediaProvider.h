@@ -3,16 +3,16 @@
  */
 
 @interface PUFilmstripMediaProvider : PUMediaProvider {
-    NSMutableDictionary *__completionHandlersByRequestNumber;
-    NSCache *__imageCache;
-    AVAssetImageGenerator *__imageGenerator;
-    NSMutableArray *__pendingResults;
-    int __requestNumber;
-    NSMutableDictionary *__resultsByRequestNumber;
-    AVAsset *_asset;
-    BOOL _deliversImagesInOrder;
-    UIImage *_placeholderImage;
-    double _timeTolerance;
+    NSMutableDictionary * __completionHandlersByRequestNumber;
+    NSCache * __imageCache;
+    AVAssetImageGenerator * __imageGenerator;
+    NSMutableArray * __pendingResults;
+    int  __requestNumber;
+    NSMutableDictionary * __resultsByRequestNumber;
+    AVAsset * _asset;
+    BOOL  _deliversImagesInOrder;
+    UIImage * _placeholderImage;
+    double  _timeTolerance;
 }
 
 @property (setter=_setCompletionHandlersByRequestNumber:, nonatomic, retain) NSMutableDictionary *_completionHandlersByRequestNumber;

@@ -3,11 +3,11 @@
  */
 
 @interface TSUImage : NSObject {
-    long mCachedImageLock;
-    struct CGImage { } *mCachedSliceableImage;
-    id mCachedSystemImage;
-    long mImageSliceCacheLock;
-    struct __CFDictionary { } *mImageSlices;
+    long  mCachedImageLock;
+    struct CGImage { } * mCachedSliceableImage;
+    id  mCachedSystemImage;
+    long  mImageSliceCacheLock;
+    struct __CFDictionary { } * mImageSlices;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*CGImage;
@@ -38,7 +38,6 @@
 - (void)dealloc;
 - (void)drawInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 context:(struct CGContext { }*)arg2 stretchingCenterWidthBy:(float)arg3;
 - (int)imageOrientation;
-- (id)imagePartsWithLeftCapWidth:(float)arg1 rightCapWidth:(float)arg2 topCapHeight:(float)arg3 bottomCapHeight:(float)arg4;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage { }*)arg1;
 - (id)initWithCGImage:(struct CGImage { }*)arg1 scale:(float)arg2 orientation:(int)arg3;

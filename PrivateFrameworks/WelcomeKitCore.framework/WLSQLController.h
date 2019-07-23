@@ -3,8 +3,8 @@
  */
 
 @interface WLSQLController : NSObject {
-    struct sqlite3 { } *_database;
-    NSObject<OS_dispatch_queue> *_databaseQueue;
+    struct sqlite3 { } * _database;
+    NSObject<OS_dispatch_queue> * _databaseQueue;
 }
 
 + (id)downloadsPath;

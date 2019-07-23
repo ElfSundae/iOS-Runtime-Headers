@@ -3,35 +3,35 @@
  */
 
 @interface PHLivePhotoRequest : PHImageManagerRequest {
-    PHAsset *__asset;
-    AVAsset *__avAsset;
-    BOOL __avAssetRequestCompleted;
-    BOOL __avAssetRequestFailed;
-    int __contentMode;
-    BOOL __didFinishStart;
-    NSError *__error;
-    UIImage *__image;
-    PHImageManager *__imageManager;
-    BOOL __imageRequestCompleted;
-    BOOL __imageRequestFailed;
-    BOOL __isCancelled;
-    BOOL __isImageDegraded;
-    BOOL __isInCloud;
-    BOOL __isInProgress;
-    NSRecursiveLock *__isolationLock;
-    BOOL __needsUpdateResult;
-    PHLivePhotoRequestOptions *__options;
-    id /* block */ __resultHandler;
+    PHAsset * __asset;
+    AVAsset * __avAsset;
+    BOOL  __avAssetRequestCompleted;
+    BOOL  __avAssetRequestFailed;
+    int  __contentMode;
+    BOOL  __didFinishStart;
+    NSError * __error;
+    UIImage * __image;
+    PHImageManager * __imageManager;
+    BOOL  __imageRequestCompleted;
+    BOOL  __imageRequestFailed;
+    BOOL  __isCancelled;
+    BOOL  __isImageDegraded;
+    BOOL  __isInCloud;
+    BOOL  __isInProgress;
+    NSRecursiveLock * __isolationLock;
+    BOOL  __needsUpdateResult;
+    PHLivePhotoRequestOptions * __options;
+    id /* block */  __resultHandler;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } __stillDisplayTime;
+    }  __stillDisplayTime;
     struct CGSize { 
         float width; 
         float height; 
-    } __targetSize;
+    }  __targetSize;
 }
 
 @property (nonatomic, readonly) PHAsset *_asset;

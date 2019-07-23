@@ -6,24 +6,24 @@
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _characterRange;
-    long _elasticCharIndex;
-    float _elasticRangeWidth;
+    }  _characterRange;
+    long  _elasticCharIndex;
+    float  _elasticRangeWidth;
     struct { 
         unsigned int _directionState : 2; 
         unsigned int _drawsOutside : 1; 
         unsigned int _reserved : 29; 
-    } _flags;
+    }  _flags;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _glyphRange;
-    unsigned int _hyphenGlyph;
-    float _hyphenGlyphWidth;
-    void *_line;
-    float _maxPosition;
-    float _minPosition;
-    NSATSTypesetter *_typesetter;
+    }  _glyphRange;
+    unsigned int  _hyphenGlyph;
+    float  _hyphenGlyphWidth;
+    void * _line;
+    float  _maxPosition;
+    float  _minPosition;
+    NSATSTypesetter * _typesetter;
 }
 
 - (long)_charIndexToBreakLineByWordWrappingAtIndex:(long)arg1 lineFragmentWidth:(float)arg2 hyphenate:(BOOL*)arg3;

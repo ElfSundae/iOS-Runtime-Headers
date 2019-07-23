@@ -3,21 +3,21 @@
  */
 
 @interface AKArrowAnnotation : AKShapeAnnotation <AKTextAnnotationProtocol> {
-    NSTextStorage *_annotationText;
-    unsigned int _arrowHeadStyle;
+    NSTextStorage * _annotationText;
+    unsigned int  _arrowHeadStyle;
     struct CGPoint { 
         float x; 
         float y; 
-    } _endPoint;
+    }  _endPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _midPoint;
+    }  _midPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startPoint;
-    NSDictionary *_typingAttributes;
+    }  _startPoint;
+    NSDictionary * _typingAttributes;
 }
 
 @property (retain) NSTextStorage *annotationText;

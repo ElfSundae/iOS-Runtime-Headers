@@ -3,13 +3,13 @@
  */
 
 @interface CLSensorRecorderAccelMeta : NSObject <NSSecureCoding> {
-    unsigned long long _dataIdentifier;
-    unsigned int _dataSize;
-    unsigned long long _identifier;
-    BOOL _movement;
-    unsigned int _offset;
-    double _startTime;
-    unsigned long long _timestamp;
+    unsigned long long  _dataIdentifier;
+    unsigned int  _dataSize;
+    unsigned long long  _identifier;
+    BOOL  _movement;
+    unsigned int  _offset;
+    double  _startTime;
+    unsigned long long  _timestamp;
 }
 
 @property unsigned long long dataIdentifier;

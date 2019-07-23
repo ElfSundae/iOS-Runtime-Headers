@@ -6,53 +6,53 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } __contentCenter;
-    float __contentZoomScale;
-    float __desiredZoomScale;
-    CADisplayLink *__displayLink;
-    float __doubleTapZoomScale;
-    BOOL __isAnimatingZoomEnd;
-    BOOL __isContentAnimating;
-    BOOL __isUpdatingState;
-    BOOL __isUserDeceleratingPan;
-    BOOL __isUserEndingZoom;
-    BOOL __isUserPanning;
-    BOOL __isUserPanningOrDecelerating;
-    BOOL __isUserZooming;
-    BOOL __isUserZoomingOrBouncing;
-    BOOL __needsUpdateAnimatingZoomEnd;
-    BOOL __needsUpdateContentState;
-    BOOL __needsUpdateShouldTrackContentAnimation;
-    BOOL __needsUpdateUserAffineTransform;
-    BOOL __needsUpdateUserInteracting;
-    BOOL __needsUpdateUserPanningOrDecelerating;
-    BOOL __needsUpdateUserZoomingOrBouncing;
-    BOOL __needsUpdateZoomAndScroll;
-    int __numberOfNestedStateChanges;
-    int __numberOfNestedZoomAndScrollChanges;
-    float __preferredMaximumZoomScale;
-    float __preferredMinimumZoomScale;
-    UIView *__scrollContentView;
-    UIScrollView *__scrollView;
-    BOOL __shouldTrackContentAnimation;
-    BOOL __updatingScrollView;
-    BOOL __wasUserInteractingBeforeStateUpdate;
+    }  __contentCenter;
+    float  __contentZoomScale;
+    float  __desiredZoomScale;
+    CADisplayLink * __displayLink;
+    float  __doubleTapZoomScale;
+    BOOL  __isAnimatingZoomEnd;
+    BOOL  __isContentAnimating;
+    BOOL  __isUpdatingState;
+    BOOL  __isUserDeceleratingPan;
+    BOOL  __isUserEndingZoom;
+    BOOL  __isUserPanning;
+    BOOL  __isUserPanningOrDecelerating;
+    BOOL  __isUserZooming;
+    BOOL  __isUserZoomingOrBouncing;
+    BOOL  __needsUpdateAnimatingZoomEnd;
+    BOOL  __needsUpdateContentState;
+    BOOL  __needsUpdateShouldTrackContentAnimation;
+    BOOL  __needsUpdateUserAffineTransform;
+    BOOL  __needsUpdateUserInteracting;
+    BOOL  __needsUpdateUserPanningOrDecelerating;
+    BOOL  __needsUpdateUserZoomingOrBouncing;
+    BOOL  __needsUpdateZoomAndScroll;
+    int  __numberOfNestedStateChanges;
+    int  __numberOfNestedZoomAndScrollChanges;
+    float  __preferredMaximumZoomScale;
+    float  __preferredMinimumZoomScale;
+    UIView * __scrollContentView;
+    UIScrollView * __scrollView;
+    BOOL  __shouldTrackContentAnimation;
+    BOOL  __updatingScrollView;
+    BOOL  __wasUserInteractingBeforeStateUpdate;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentPixelSize;
-    UIImage *_debugScrollViewContentImage;
-    <PUUserTransformViewDelegate> *_delegate;
+    }  _contentPixelSize;
+    UIImage * _debugScrollViewContentImage;
+    <PUUserTransformViewDelegate> * _delegate;
     struct { 
         BOOL respondsToShouldReceiveTouchAtPoint; 
         BOOL respondsToDidChangeIsUserInteracting; 
-    } _delegateFlags;
-    unsigned int _enabledInteractions;
-    BOOL _isUserInteracting;
+    }  _delegateFlags;
+    unsigned int  _enabledInteractions;
+    BOOL  _isUserInteracting;
     struct CGSize { 
         float width; 
         float height; 
-    } _scrollPadding;
+    }  _scrollPadding;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -62,7 +62,7 @@
             float width; 
             float height; 
         } size; 
-    } _untransformedContentFrame;
+    }  _untransformedContentFrame;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -70,7 +70,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _userAffineTransform;
+    }  _userAffineTransform;
 }
 
 @property (setter=_setContentCenter:, nonatomic) struct CGPoint { float x1; float x2; } _contentCenter;
@@ -111,7 +111,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int enabledInteractions;
 @property (readonly) unsigned int hash;
-@property (nonatomic) BOOL isUserInteracting;
+@property (setter=_setUserInteracting:, nonatomic) BOOL isUserInteracting;
 @property (nonatomic) struct CGSize { float x1; float x2; } scrollPadding;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } untransformedContentFrame;

@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/CoreHAP.framework/CoreHAP
  */
 
-@interface HAPSystemKeychainStore : NSObject <HAPKeyStore> {
-    NSString *_activeControllerIdentifier;
-    NSObject<OS_dispatch_queue> *_queue;
+@interface HAPSystemKeychainStore : NSObject <HAPKeyStore, HMFDumpState> {
+    NSString * _activeControllerIdentifier;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, retain) NSString *activeControllerIdentifier;
@@ -47,12 +47,14 @@
 - (BOOL)deleteAllPeripheralIdentifiers:(id*)arg1;
 - (BOOL)deletePeripheralIdentifierForAccessoryIdentifier:(id)arg1 error:(id*)arg2;
 - (BOOL)deserializeKeyPair:(id)arg1 publicKey:(id*)arg2 secretKey:(id*)arg3 error:(id*)arg4;
+- (id)dumpState;
 - (void)ensureV0ControllerKeyExists;
 - (BOOL)getAllAvailableControllerPublicKeys:(id*)arg1 secretKeys:(id*)arg2 userNames:(id*)arg3 error:(id*)arg4;
 - (BOOL)getControllerKeyPair:(id*)arg1 username:(id*)arg2 error:(id*)arg3;
 - (BOOL)getControllerPublicKey:(id*)arg1 secretKey:(id*)arg2 keyPair:(id*)arg3 username:(id*)arg4 allowCreation:(BOOL)arg5 error:(id*)arg6;
 - (BOOL)getControllerPublicKey:(id*)arg1 secretKey:(id*)arg2 username:(id*)arg3 allowCreation:(BOOL)arg4 error:(id*)arg5;
 - (BOOL)getCurrentiCloudIdentifier:(id*)arg1 controllerPairingIdentifier:(id*)arg2 error:(id*)arg3;
+- (id)getLocalPairingIdentity:(id*)arg1;
 - (BOOL)getMetadataSecretKey:(id*)arg1 error:(id*)arg2;
 - (id)getPeripherialIdentifiersAndAccessoryNames;
 - (id)queue;

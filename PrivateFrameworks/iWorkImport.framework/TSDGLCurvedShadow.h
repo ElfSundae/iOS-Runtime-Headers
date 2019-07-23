@@ -3,19 +3,16 @@
  */
 
 @interface TSDGLCurvedShadow : TSDGLShadow {
-    TSDGLDataBuffer *mAlphaDataBuffer;
-    TSDGLFrameBuffer *mAlphaFrameBuffer;
-    TSDGLShader *mAlphaShader;
-    char *mBuffer;
-    CIContext *mCIContext;
-    TSDGLDataBuffer *mCurveInterpolationDataBuffer;
-    TSDGLFrameBuffer *mCurveInterpolationFrameBuffer;
-    TSDGLShader *mCurveInterpolationShader;
-    TSDGLShader *mCurvedShader;
+    TSDGLDataBuffer * mAlphaDataBuffer;
+    TSDGLFrameBuffer * mAlphaFrameBuffer;
+    TSDGLShader * mAlphaShader;
+    char * mBuffer;
+    CIContext * mCIContext;
+    TSDGLDataBuffer * mCurveInterpolationDataBuffer;
+    TSDGLFrameBuffer * mCurveInterpolationFrameBuffer;
+    TSDGLShader * mCurveInterpolationShader;
+    TSDGLShader * mCurvedShader;
 }
-
-+ (void)applicationDidBecomeActive;
-+ (void)applicationWillResignActive;
 
 - (float)baseBlurRadiusForCurve:(float)arg1 framebufferSize:(struct CGSize { float x1; float x2; })arg2;
 - (void)dealloc;
@@ -27,7 +24,7 @@
 - (void)p_debugLogImage:(id)arg1 name:(id)arg2;
 - (id)p_gradientImageWithExtent:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 middleWhiteValue:(float)arg2 edgeWhiteValue:(float)arg3 includeAlpha:(BOOL)arg4 padding:(float)arg5;
 - (id)p_imageByMultiplyingImage:(id)arg1 withImage:(id)arg2;
-- (void)p_setupCIContextForFramebufferSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)p_setupCIContext;
 - (BOOL)p_shrinkImageIfNecessary:(struct CGImage { }*)arg1 originalSize:(struct CGSize { float x1; float x2; })arg2 newImage:(struct CGImage {}**)arg3 newSize:(struct CGSize { float x1; float x2; }*)arg4;
 - (id)p_tintedCIImageFromImage:(id)arg1 withColor:(struct { float x1; float x2; float x3; float x4; })arg2;
 

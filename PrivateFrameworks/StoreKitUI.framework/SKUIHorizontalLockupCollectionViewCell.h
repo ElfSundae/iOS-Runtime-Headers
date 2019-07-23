@@ -3,20 +3,20 @@
  */
 
 @interface SKUIHorizontalLockupCollectionViewCell : SKUICollectionViewCell <SKUIPerspectiveView, SKUIViewElementView, UIScrollViewAccessibilityDelegate> {
-    UIButton *_actionButton;
-    SKUIButtonViewElement *_actionButtonViewElement;
-    SKUICellScrollView *_actionsScrollView;
+    UIButton * _actionButton;
+    SKUIButtonViewElement * _actionButtonViewElement;
+    SKUICellScrollView * _actionsScrollView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInset;
-    SKUICheckboxInputViewElement *_editModeCheckboxElement;
-    UIImageView *_editModeControl;
-    UIView *_highlightBackgroundView;
-    SKUIHorizontalLockupView *_lockupView;
-    UIColor *_lockupViewBackgroundColor;
+    }  _contentInset;
+    SKUICheckboxInputViewElement * _editModeCheckboxElement;
+    UIImageView * _editModeControl;
+    UIView * _highlightBackgroundView;
+    SKUIHorizontalLockupView * _lockupView;
+    UIColor * _lockupViewBackgroundColor;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } contentInset;
@@ -62,6 +62,7 @@
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (void)setPerspectiveTargetView:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)setSemanticContentAttribute:(int)arg1;
 - (void)setVanishingPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;
 - (BOOL)updateWithItemState:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;

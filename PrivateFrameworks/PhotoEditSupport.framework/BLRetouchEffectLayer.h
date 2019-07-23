@@ -3,7 +3,7 @@
  */
 
 @interface BLRetouchEffectLayer : BLRetouchLayer {
-    float _amount;
+    float  _amount;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,19 +13,19 @@
             float width; 
             float height; 
         } size; 
-    } _area;
-    NSMutableArray *_brushStrokes;
-    struct CGContext { } *_edgeDetectContextRef;
-    float _edgeDetectSize;
-    struct CGContext { } *_layerMask;
+    }  _area;
+    NSMutableArray * _brushStrokes;
+    struct CGContext { } * _edgeDetectContextRef;
+    float  _edgeDetectSize;
+    struct CGContext { } * _layerMask;
     struct { 
         unsigned char blue; 
         unsigned char green; 
         unsigned char red; 
         unsigned char alpha; 
-    } _samplePixel;
-    BOOL _startFilled;
-    BOOL _strokeInProgress;
+    }  _samplePixel;
+    BOOL  _startFilled;
+    BOOL  _strokeInProgress;
 }
 
 @property (nonatomic) float amount;

@@ -3,18 +3,18 @@
  */
 
 @interface UIBezierPath : NSObject <NSCoding, NSCopying> {
-    float _flatness;
-    struct CGPath { } *_immutablePath;
-    BOOL _immutablePathIsValid;
-    int _lineCapStyle;
-    float *_lineDashPattern;
-    unsigned int _lineDashPatternCount;
-    float _lineDashPhase;
-    int _lineJoinStyle;
-    float _lineWidth;
-    float _miterLimit;
-    struct CGPath { } *_path;
-    BOOL _usesEvenOddFillRule;
+    float  _flatness;
+    struct CGPath { } * _immutablePath;
+    BOOL  _immutablePathIsValid;
+    int  _lineCapStyle;
+    float * _lineDashPattern;
+    unsigned int  _lineDashPatternCount;
+    float  _lineDashPhase;
+    int  _lineJoinStyle;
+    float  _lineWidth;
+    float  _miterLimit;
+    struct CGPath { } * _path;
+    BOOL  _usesEvenOddFillRule;
 }
 
 @property (nonatomic) const struct CGPath { }*CGPath;
@@ -107,6 +107,7 @@
 
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
+- (void)akAppendPath:(id)arg1;
 - (struct CGPath { }*)newCGPathForPlatformBezierPath;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI

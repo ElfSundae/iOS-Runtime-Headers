@@ -3,20 +3,20 @@
  */
 
 @interface MusicProductTracklistTableViewConfiguration : MusicLibraryBrowseTableViewConfiguration {
-    NSString *_completeOfferLocalizedTitle;
-    MusicCompositeEntityViewDescriptor *_compositeEntityViewDescriptor;
-    MusicEntityViewDescriptor *_copyrightEntityViewDescriptor;
-    <MusicEntityProviding> *_copyrightSourceEntityProvider;
-    <MusicEntityProviding> *_entityProvider;
-    MusicMediaDetailTintInformation *_mediaDetailTintInformation;
-    long long _prominentTrackStoreID;
-    MusicEntityViewDescriptor *_showCompleteOfferEntityViewDescriptor;
-    MusicEntityViewDescriptor *_shuffleEntityViewDescriptor;
-    MusicMediaProductTracklistTableViewDescriptor *_tracklistTableViewDescriptor;
-    BOOL _wantsArtistName;
-    BOOL _wantsArtwork;
-    BOOL _wantsCompleteOffer;
-    BOOL _wantsCopyrightText;
+    NSString * _completeOfferLocalizedTitle;
+    MusicCompositeEntityViewDescriptor * _compositeEntityViewDescriptor;
+    MusicEntityViewDescriptor * _copyrightEntityViewDescriptor;
+    <MusicEntityProviding> * _copyrightSourceEntityProvider;
+    <MusicEntityProviding> * _entityProvider;
+    MusicMediaDetailTintInformation * _mediaDetailTintInformation;
+    long long  _prominentTrackStoreID;
+    MusicEntityViewDescriptor * _showCompleteOfferEntityViewDescriptor;
+    MusicEntityViewDescriptor * _shuffleEntityViewDescriptor;
+    MusicMediaProductTracklistTableViewDescriptor * _tracklistTableViewDescriptor;
+    BOOL  _wantsArtistName;
+    BOOL  _wantsArtwork;
+    BOOL  _wantsCompleteOffer;
+    BOOL  _wantsCopyrightText;
 }
 
 @property (nonatomic, readonly) MusicCompositeEntityViewDescriptor *_compositeEntityViewDescriptor;
@@ -55,7 +55,6 @@
 - (id)copyrightSourceEntityProvider;
 - (id)entityProvider;
 - (int)handleSelectionOfEntityValueContext:(id)arg1 fromViewController:(id)arg2;
-- (int)handleSelectionOfUnplayableEntityValueContext:(id)arg1 withPlayabilityResult:(unsigned int)arg2 fromViewController:(id)arg3;
 - (id)init;
 - (id)initWithEntityProvider:(id)arg1;
 - (id)loadEntityViewDescriptor;

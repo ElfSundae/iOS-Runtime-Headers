@@ -3,12 +3,12 @@
  */
 
 @interface AKAdornmentLayer : CALayer {
-    AKAnnotation *_annotation;
-    float _currentScaleFactor;
-    CALayer *_handleContainerLayer;
-    BOOL _isObservingAnnotation;
-    BOOL _isObservingEventHandling;
-    AKPageController *_pageController;
+    AKAnnotation * _annotation;
+    float  _currentScaleFactor;
+    CALayer * _handleContainerLayer;
+    BOOL  _isObservingAnnotation;
+    BOOL  _isObservingEventHandling;
+    AKPageController * _pageController;
 }
 
 @property (retain) AKAnnotation *annotation;

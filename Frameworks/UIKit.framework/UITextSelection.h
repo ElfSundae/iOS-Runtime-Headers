@@ -3,12 +3,12 @@
  */
 
 @interface UITextSelection : NSObject {
-    UITextRange *_base;
-    UIResponder<UITextInputPrivate> *_document;
-    int _granularity;
-    UITextRange *_initialExtent;
-    BOOL _isCommitting;
-    UITextRange *_selectedRange;
+    UITextRange * _base;
+    UIResponder<UITextInputPrivate> * _document;
+    int  _granularity;
+    UITextRange * _initialExtent;
+    BOOL  _isCommitting;
+    UITextRange * _selectedRange;
 }
 
 @property (nonatomic, retain) UITextRange *base;

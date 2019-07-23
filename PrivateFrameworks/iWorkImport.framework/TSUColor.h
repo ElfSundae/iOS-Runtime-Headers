@@ -3,14 +3,20 @@
  */
 
 @interface TSUColor : NSObject <NSCopying, TSSPreset, TSSPresetSource, TSSPropertyCommandSerializing> {
-    struct CGColor { } *mCGColor;
+    struct CGColor { } * mCGColor;
+    unsigned int  mColorRGBSpace;
 }
 
 @property (readonly) struct CGColor { }*CGColor;
+@property (nonatomic, readonly) float alphaComponent;
+@property (nonatomic, readonly) float blueComponent;
+@property (nonatomic, readonly) unsigned int colorRGBSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) float greenComponent;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) NSString *presetKind;
+@property (nonatomic, readonly) float redComponent;
 @property (readonly) Class superclass;
 
 + (id)blackColor;
@@ -21,6 +27,7 @@
 + (id)colorWithCGColor:(struct CGColor { }*)arg1;
 + (id)colorWithHexString:(id)arg1;
 + (id)colorWithHue:(float)arg1 saturation:(float)arg2 brightness:(float)arg3 alpha:(float)arg4;
++ (id)colorWithHue:(float)arg1 saturation:(float)arg2 brightness:(float)arg3 alpha:(float)arg4 targetRGBSpace:(unsigned int)arg5;
 + (id)colorWithPatternImage:(id)arg1;
 + (id)colorWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 + (id)colorWithUIColor:(id)arg1;
@@ -45,6 +52,7 @@
 - (id)blendedColorWithFraction:(float)arg1 ofColor:(id)arg2;
 - (float)blueComponent;
 - (float)brightnessComponent;
+- (unsigned int)colorRGBSpace;
 - (id)colorWithAlphaComponent:(float)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -55,13 +63,16 @@
 - (id)hexString;
 - (float)hueComponent;
 - (id)initFromPropertyCommandMessage:(const struct Message { int (**x1)(); }*)arg1 unarchiver:(id)arg2;
-- (id)initWithArchive:(const struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; }*)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; int x9; float x10; float x11; float x12; float x13; float x14; float x15; }*)arg1 unarchiver:(id)arg2;
 - (id)initWithCGColor:(struct CGColor { }*)arg1;
+- (id)initWithCGColor:(struct CGColor { }*)arg1 colorSpace:(unsigned int)arg2;
 - (id)initWithHexString:(id)arg1;
 - (id)initWithHue:(float)arg1 saturation:(float)arg2 brightness:(float)arg3 alpha:(float)arg4;
-- (id)initWithMessage:(const struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; }*)arg1;
+- (id)initWithHue:(float)arg1 saturation:(float)arg2 brightness:(float)arg3 alpha:(float)arg4 targetRGBSpace:(unsigned int)arg5;
+- (id)initWithMessage:(const struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; int x9; float x10; float x11; float x12; float x13; float x14; float x15; }*)arg1;
 - (id)initWithPatternImage:(id)arg1;
 - (id)initWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
+- (id)initWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4 colorSpace:(unsigned int)arg5;
 - (id)initWithUIColor:(id)arg1;
 - (id)initWithWhite:(float)arg1 alpha:(float)arg2;
 - (id)invertedColor;
@@ -81,8 +92,9 @@
 - (id)presetKind;
 - (float)redComponent;
 - (float)saturationComponent;
-- (void)saveToArchive:(struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; }*)arg1 archiver:(id)arg2;
-- (void)saveToMessage:(struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; }*)arg1;
+- (void)saveToArchive:(struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; int x9; float x10; float x11; float x12; float x13; float x14; float x15; }*)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(struct Color { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; float x8; int x9; float x10; float x11; float x12; float x13; float x14; float x15; }*)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message { int (**x1)(); }*)arg1 archiver:(id)arg2;
+- (BOOL)wantsHighContrastBackgroundForDarkMode:(id)arg1;
 
 @end

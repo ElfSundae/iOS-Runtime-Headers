@@ -3,7 +3,7 @@
  */
 
 @interface AKBorderMaskAnnotation : AKAnnotation <AKFilledAnnotationProtocol, AKRectangularAnnotationProtocol> {
-    UIColor *_fillColor;
+    UIColor * _fillColor;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,7 +13,7 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
+    }  _rectangle;
 }
 
 @property (readonly, copy) NSString *debugDescription;

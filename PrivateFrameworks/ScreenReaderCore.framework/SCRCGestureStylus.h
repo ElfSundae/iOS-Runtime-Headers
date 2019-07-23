@@ -3,8 +3,8 @@
  */
 
 @interface SCRCGestureStylus : SCRCGestureFinger {
-    float _altitude;
-    float _azimuth;
+    float  _altitude;
+    float  _azimuth;
 }
 
 - (float)altitude;

@@ -3,17 +3,22 @@
  */
 
 @interface AXSwitchRecipeMapping : NSObject {
-    NSString *_action;
-    AXReplayableGesture *_gesture;
-    NSString *_longPressAction;
-    AXReplayableGesture *_longPressGesture;
-    BOOL _optional;
-    int _switchOriginalAction;
-    NSUUID *_switchUUID;
+    NSString * _action;
+    AXReplayableGesture * _gesture;
+    struct CGPoint { 
+        float x; 
+        float y; 
+    }  _holdPoint;
+    NSString * _longPressAction;
+    AXReplayableGesture * _longPressGesture;
+    BOOL  _optional;
+    int  _switchOriginalAction;
+    NSUUID * _switchUUID;
 }
 
 @property (nonatomic, copy) NSString *action;
 @property (nonatomic, retain) AXReplayableGesture *gesture;
+@property (nonatomic) struct CGPoint { float x1; float x2; } holdPoint;
 @property (nonatomic, copy) NSString *longPressAction;
 @property (nonatomic, retain) AXReplayableGesture *longPressGesture;
 @property (getter=isOptional, nonatomic) BOOL optional;
@@ -27,11 +32,14 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)gesture;
+- (struct CGPoint { float x1; float x2; })holdPoint;
+- (id)init;
 - (BOOL)isOptional;
 - (id)longPressAction;
 - (id)longPressGesture;
 - (void)setAction:(id)arg1;
 - (void)setGesture:(id)arg1;
+- (void)setHoldPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setLongPressAction:(id)arg1;
 - (void)setLongPressGesture:(id)arg1;
 - (void)setOptional:(BOOL)arg1;

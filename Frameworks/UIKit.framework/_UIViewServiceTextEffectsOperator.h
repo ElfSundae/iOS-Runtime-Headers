@@ -3,25 +3,25 @@
  */
 
 @interface _UIViewServiceTextEffectsOperator : NSObject <_UIViewServiceDeputy, _UIViewServiceDeputyRotationDelegate, _UIViewServiceTextEffectsOperator_RemoteViewControllerInterface> {
-    BOOL __automatic_invalidation_invalidated;
-    int __automatic_invalidation_retainCount;
-    NSArray *_allowedNotifications;
-    BOOL _canRestoreInputViews;
-    BOOL _didResignForDisappear;
-    UIWindow *_hostedWindow;
-    _UIAsyncInvocation *_invalidationInvocation;
-    BOOL _isRestoringInputViews;
-    BOOL _localVCDisablesAutomaticBehaviors;
-    _UIAsyncInvocation *_prepareForDisconnectionInvocation;
-    id _remoteViewControllerProxy;
+    BOOL  __automatic_invalidation_invalidated;
+    int  __automatic_invalidation_retainCount;
+    NSArray * _allowedNotifications;
+    BOOL  _canRestoreInputViews;
+    BOOL  _didResignForDisappear;
+    UIWindow * _hostedWindow;
+    _UIAsyncInvocation * _invalidationInvocation;
+    BOOL  _isRestoringInputViews;
+    BOOL  _localVCDisablesAutomaticBehaviors;
+    _UIAsyncInvocation * _prepareForDisconnectionInvocation;
+    id  _remoteViewControllerProxy;
     struct CGSize { 
         float width; 
         float height; 
-    } _sceneSize;
+    }  _sceneSize;
     struct CGPoint { 
         float x; 
         float y; 
-    } _windowOffset;
+    }  _windowOffset;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -50,7 +50,6 @@
 - (id)_queue;
 - (void)_resetSceneSize;
 - (void)_restoreInputViews;
-- (void)_sendNotification:(id)arg1;
 - (BOOL)_tryRetain;
 - (void)_viewServiceHostWillEnterForeground:(id)arg1;
 - (id)autorelease;

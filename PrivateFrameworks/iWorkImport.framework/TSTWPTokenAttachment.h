@@ -3,12 +3,12 @@
  */
 
 @interface TSTWPTokenAttachment : TSWPUIGraphicalAttachment {
-    BOOL mActive;
-    struct CGImage { } *mCachedImage;
-    float mCachedImageScreenScale;
-    TSTExpressionNode *mExpressionNode;
-    BOOL mHighlighted;
-    BOOL mInInvalidate;
+    BOOL  mActive;
+    struct CGImage { } * mCachedImage;
+    float  mCachedImageScreenScale;
+    TSTExpressionNode * mExpressionNode;
+    BOOL  mHighlighted;
+    BOOL  mInInvalidate;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,13 +18,13 @@
             float width; 
             float height; 
         } size; 
-    } mMenuRect;
-    BOOL mNeverShowsMenu;
-    BOOL mSelected;
+    }  mMenuRect;
+    BOOL  mNeverShowsMenu;
+    BOOL  mSelected;
     struct CGSize { 
         float width; 
         float height; 
-    } mTextSize;
+    }  mTextSize;
 }
 
 @property (getter=isActive, nonatomic) BOOL active;

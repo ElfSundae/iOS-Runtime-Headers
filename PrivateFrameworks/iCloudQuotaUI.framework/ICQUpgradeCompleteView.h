@@ -3,19 +3,19 @@
  */
 
 @interface ICQUpgradeCompleteView : ICQPageView {
-    UILayoutGuide *_aboveCheckLayoutGuide;
-    NSArray *_activeConstraints;
-    UILayoutGuide *_belowDoneLayoutGuide;
-    UILayoutGuide *_betweenCheckDoneLayoutGuide;
-    UIButton *_checkmarkButton;
-    <ICQPageDelegate> *_delegate;
-    UIButton *_doneButton;
-    ICQLink *_doneLink;
-    BOOL _layoutGuideProblem;
-    UILabel *_messageLabel;
-    UILayoutGuide *_navigationBarLayoutGuide;
-    UILabel *_titleLabel;
-    _ICQUpgradeCompletePageSpecification *_upgradeCompletePageSpecification;
+    UILayoutGuide * _aboveCheckLayoutGuide;
+    NSArray * _activeConstraints;
+    UILayoutGuide * _belowDoneLayoutGuide;
+    UILayoutGuide * _betweenCheckDoneLayoutGuide;
+    UIButton * _checkmarkButton;
+    <ICQPageDelegate> * _delegate;
+    UIButton * _doneButton;
+    ICQLink * _doneLink;
+    BOOL  _layoutGuideProblem;
+    UILabel * _messageLabel;
+    UILayoutGuide * _navigationBarLayoutGuide;
+    UILabel * _titleLabel;
+    _ICQUpgradeCompletePageSpecification * _upgradeCompletePageSpecification;
 }
 
 @property (nonatomic, readonly) UILayoutGuide *aboveCheckLayoutGuide;

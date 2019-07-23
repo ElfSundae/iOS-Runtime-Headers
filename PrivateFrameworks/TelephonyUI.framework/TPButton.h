@@ -3,11 +3,11 @@
  */
 
 @interface TPButton : UIButton {
-    _UIBackdropView *_backdropView;
-    BOOL _blursBackground;
-    int _color;
-    BOOL _roundsCorners;
-    BOOL _usesOverlayBlendingForContents;
+    _UIBackdropView * _backdropView;
+    BOOL  _blursBackground;
+    int  _color;
+    BOOL  _roundsCorners;
+    BOOL  _usesOverlayBlendingForContents;
 }
 
 @property (nonatomic) BOOL blursBackground;

@@ -3,8 +3,8 @@
  */
 
 @interface FMBorderedButton : FMDynamicTypeButton {
-    UIColor *_borderColor;
-    BOOL _hairlineBorder;
+    UIColor * _borderColor;
+    BOOL  _hairlineBorder;
 }
 
 @property (nonatomic, retain) UIColor *borderColor;

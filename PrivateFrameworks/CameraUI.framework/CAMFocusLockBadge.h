@@ -3,8 +3,8 @@
  */
 
 @interface CAMFocusLockBadge : CAMBadgeTextView {
-    BOOL _exposureLocked;
-    BOOL _focusLocked;
+    BOOL  _exposureLocked;
+    BOOL  _focusLocked;
 }
 
 @property (getter=isExposureLocked, nonatomic) BOOL exposureLocked;

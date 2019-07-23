@@ -3,20 +3,22 @@
  */
 
 @interface SKUIPlayButton : SKUIPlayButtonControl {
-    long long _itemIdentifier;
-    NSString *_mediaURLString;
-    NSString *_playItemIdentifier;
-    BOOL _radio;
-    BOOL _showOnDemand;
-    BOOL _showStop;
-    BOOL _useLargeButton;
+    SKUIPlayButtonImageCache * _imageCache;
+    long long  _itemIdentifier;
+    NSString * _mediaURLString;
+    NSString * _playItemIdentifier;
+    BOOL  _showOnDemand;
+    BOOL  _showStop;
+    int  _style;
 }
 
+@property (nonatomic, readonly) SKUIPlayButtonImageCache *imageCache;
 @property (nonatomic) long long itemIdentifier;
 @property (nonatomic, copy) NSString *mediaURLString;
 @property (nonatomic, copy) NSString *playItemIdentifier;
 @property (getter=isRadio, nonatomic) BOOL radio;
 @property (nonatomic) BOOL showOnDemand;
+@property (nonatomic) int style;
 @property (nonatomic) BOOL useLargeButton;
 
 + (struct CGSize { float x1; float x2; })sizeThatFitsWidth:(float)arg1 viewElement:(id)arg2 context:(id)arg3;
@@ -27,6 +29,8 @@
 - (struct CGSize { float x1; float x2; })buttonSize;
 - (id)cancelImage;
 - (id)defaultBackgroundColor;
+- (id)imageCache;
+- (id)images;
 - (BOOL)isRadio;
 - (long long)itemIdentifier;
 - (void)layoutSubviews;
@@ -44,9 +48,11 @@
 - (void)setPlayItemIdentifier:(id)arg1;
 - (void)setRadio:(BOOL)arg1;
 - (void)setShowOnDemand:(BOOL)arg1;
+- (void)setStyle:(int)arg1;
 - (void)setUseLargeButton:(BOOL)arg1;
 - (BOOL)showOnDemand;
 - (BOOL)showOuterBorder;
+- (int)style;
 - (void)tintColorDidChange;
 - (BOOL)useLargeButton;
 

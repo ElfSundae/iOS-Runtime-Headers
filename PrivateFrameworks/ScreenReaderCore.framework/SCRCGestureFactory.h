@@ -3,19 +3,19 @@
  */
 
 @interface SCRCGestureFactory : NSObject {
-    unsigned int _absoluteFingerCount;
+    unsigned int  _absoluteFingerCount;
     struct { 
         float horizontal; 
         float vertical; 
-    } _axisFlipper;
+    }  _axisFlipper;
     /* Warning: unhandled struct encoding: '{?="track"@"tap"@"gutterUp"@"splitTap"@"canSplitTap"@}' */ struct { 
         id track; 
-    } _delegate;
-    int _direction;
-    float _directionalSlope;
-    int _directions;
-    float _distance;
-    double _echoWaitTime;
+    }  _delegate;
+    int  _direction;
+    float  _directionalSlope;
+    int  _directions;
+    float  _distance;
+    double  _echoWaitTime;
     struct SCRCFingerState { 
         unsigned int identifier; 
         int xDirection; 
@@ -70,9 +70,9 @@
         float orbValue; 
         float altitude; 
         float azimuth; 
-    } _finger;
-    unsigned short _fingerCount;
-    float _flickVelocityThreshold;
+    }  _finger;
+    unsigned short  _fingerCount;
+    float  _flickVelocityThreshold;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -82,14 +82,14 @@
             float width; 
             float height; 
         } size; 
-    } _gutterFrame;
-    SCRCTargetSelectorTimer *_gutterUpTimer;
-    BOOL _inTapSpeedRegionForDownEvent;
-    float _lastDegrees;
-    double _lastDownTime;
-    unsigned short _lastFingerCount;
-    double _lastGutterDownTime;
-    double _lastTime;
+    }  _gutterFrame;
+    SCRCTargetSelectorTimer * _gutterUpTimer;
+    BOOL  _inTapSpeedRegionForDownEvent;
+    float  _lastDegrees;
+    double  _lastDownTime;
+    unsigned short  _lastFingerCount;
+    double  _lastGutterDownTime;
+    double  _lastTime;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -99,14 +99,14 @@
             float width; 
             float height; 
         } size; 
-    } _mainFrame;
-    float _maxDimension;
-    int _orientation;
-    int _previousState;
-    double _requireDelayBeforeTracking;
-    BOOL _requireUp;
-    float _scaledTrackingDistance;
-    BOOL _setTrackingTimer;
+    }  _mainFrame;
+    float  _maxDimension;
+    int  _orientation;
+    int  _previousState;
+    double  _requireDelayBeforeTracking;
+    BOOL  _requireUp;
+    float  _scaledTrackingDistance;
+    BOOL  _setTrackingTimer;
     struct { 
         SCRCGestureFactory *factory; 
         BOOL isSplitting; 
@@ -131,12 +131,12 @@
         } primaryFingerLocation; 
         float tapDistance; 
         int state; 
-    } _split;
-    float _stallDistance;
-    float _startDegrees;
-    float _startDistance;
-    BOOL _startedInGutter;
-    int _state;
+    }  _split;
+    float  _stallDistance;
+    float  _startDegrees;
+    float  _startDistance;
+    BOOL  _startedInGutter;
+    int  _state;
     struct { 
         BOOL down; 
         BOOL dead; 
@@ -165,8 +165,8 @@
         unsigned int digitsPerTap; 
         double thisTime; 
         double lastTime; 
-    } _tap;
-    unsigned int _tapCount;
+    }  _tap;
+    unsigned int  _tapCount;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -176,7 +176,7 @@
             float width; 
             float height; 
         } size; 
-    } _tapFrame;
+    }  _tapFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -186,8 +186,8 @@
             float width; 
             float height; 
         } size; 
-    } _tapMultiFrame;
-    int _tapSpeedFingerCount;
+    }  _tapMultiFrame;
+    int  _tapSpeedFingerCount;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -197,14 +197,14 @@
             float width; 
             float height; 
         } size; 
-    } _tapSpeedRegion;
-    SCRCTargetSelectorTimer *_tapTimer;
-    double _tapVelocityThreshold;
-    double _tapVelocityThresholdForRegion;
-    float _thumbRegion;
-    float _thumbRejectionDistance;
-    BOOL _thumbRejectionEnabled;
-    SCRCTargetSelectorTimer *_trackingTimer;
+    }  _tapSpeedRegion;
+    SCRCTargetSelectorTimer * _tapTimer;
+    double  _tapVelocityThreshold;
+    double  _tapVelocityThresholdForRegion;
+    float  _thumbRegion;
+    float  _thumbRejectionDistance;
+    BOOL  _thumbRejectionEnabled;
+    SCRCTargetSelectorTimer * _trackingTimer;
 }
 
 @property (nonatomic) BOOL thumbRejectionEnabled;

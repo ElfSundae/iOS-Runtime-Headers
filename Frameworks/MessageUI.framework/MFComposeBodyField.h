@@ -3,33 +3,33 @@
  */
 
 @interface MFComposeBodyField : UIWebDocumentView <WebResourceLoadDelegate> {
-    NSArray *_attachmentURLsToReplaceWithFilenames;
-    DOMHTMLElement *_blockquote;
-    DOMHTMLElement *_body;
-    NSString *_compositionContextID;
-    DOMHTMLDocument *_document;
-    unsigned int _forwardingNotification;
-    unsigned int _imageCount;
-    UIBarButtonItemGroup *_inputAssistantItemGroup;
-    unsigned int _isDirty;
-    unsigned int _isLoading;
+    NSArray * _attachmentURLsToReplaceWithFilenames;
+    DOMHTMLElement * _blockquote;
+    DOMHTMLElement * _body;
+    NSString * _compositionContextID;
+    DOMHTMLDocument * _document;
+    unsigned int  _forwardingNotification;
+    unsigned int  _imageCount;
+    UIBarButtonItemGroup * _inputAssistantItemGroup;
+    unsigned int  _isDirty;
+    unsigned int  _isLoading;
     struct CGSize { 
         float width; 
         float height; 
-    } _layoutSize;
-    <MFMailComposeViewDelegate> *_mailComposeViewDelegate;
-    unsigned int _needsReplaceImages;
+    }  _layoutSize;
+    <MFMailComposeViewDelegate> * _mailComposeViewDelegate;
+    unsigned int  _needsReplaceImages;
     struct CGSize { 
         float width; 
         float height; 
-    } _originalSize;
-    BOOL _prefersFirstLineSelection;
-    int _preventLayout;
+    }  _originalSize;
+    BOOL  _prefersFirstLineSelection;
+    int  _preventLayout;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _rangeToSelect;
-    BOOL _shouldShowStandardButtons;
+    }  _rangeToSelect;
+    BOOL  _shouldShowStandardButtons;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -61,6 +61,7 @@
 - (void)_removeInlineAttachment:(id)arg1;
 - (void)_replaceImages;
 - (id)_securityScopeForFileURL:(id)arg1;
+- (id)_selectedAttachmentURLForMarkup;
 - (BOOL)_shouldCreatePlaceholderAttachmentForAttachmentWithSize:(unsigned int)arg1;
 - (void)_showQuoteLevelOptionsPopover:(id)arg1;
 - (void)_webthread_webView:(id)arg1 tileDidDraw:(id)arg2;

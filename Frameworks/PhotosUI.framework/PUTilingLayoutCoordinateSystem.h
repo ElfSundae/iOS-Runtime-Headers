@@ -6,8 +6,8 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _coordinateSystemOrigin;
-    <PUTilingCoordinateSystem> *_parentCoordinateSystem;
+    }  _coordinateSystemOrigin;
+    <PUTilingCoordinateSystem> * _parentCoordinateSystem;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } coordinateSystemOrigin;

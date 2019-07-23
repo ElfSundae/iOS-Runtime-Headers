@@ -3,19 +3,19 @@
  */
 
 @interface MKStarRatingView : UIView {
-    UIImage *_emptyStarHighlightedImage;
-    UIImage *_emptyStarImage;
-    UIImage *_fullStarHighlightedImage;
-    UIImage *_fullStarImage;
-    UIImage *_halfStarHighlightedImage;
-    UIImage *_halfStarImage;
-    BOOL _highlighted;
-    int _numLevels;
-    int _numReviews;
-    float _padding;
-    float _rating;
-    NSMutableArray *_ratingViews;
-    int _starStyle;
+    UIImage * _emptyStarHighlightedImage;
+    UIImage * _emptyStarImage;
+    UIImage * _fullStarHighlightedImage;
+    UIImage * _fullStarImage;
+    UIImage * _halfStarHighlightedImage;
+    UIImage * _halfStarImage;
+    BOOL  _highlighted;
+    int  _numLevels;
+    int  _numReviews;
+    float  _padding;
+    float  _rating;
+    NSMutableArray * _ratingViews;
+    int  _starStyle;
 }
 
 @property (nonatomic, retain) UIImage *emptyStarHighlightedImage;
@@ -28,6 +28,9 @@
 @property (nonatomic) int numberOfRatingLevels;
 @property (nonatomic) float rating;
 @property (nonatomic) int starStyle;
+
++ (id)ratingAsAttributedString:(float)arg1 baseFont:(id)arg2 style:(int)arg3;
++ (id)ratingAsAttributedString:(float)arg1 baseFont:(id)arg2 style:(int)arg3 theme:(id)arg4;
 
 - (void).cxx_destruct;
 - (void)_layoutStarViewsCreatingIfNeeded:(BOOL)arg1;

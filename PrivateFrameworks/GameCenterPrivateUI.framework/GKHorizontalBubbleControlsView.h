@@ -3,9 +3,9 @@
  */
 
 @interface GKHorizontalBubbleControlsView : UIView {
-    NSArray *_bubbleTokens;
-    NSArray *_bubbles;
-    float _overlap;
+    NSArray * _bubbleTokens;
+    NSArray * _bubbles;
+    float  _overlap;
 }
 
 @property (nonatomic, retain) NSArray *bubbleTokens;

@@ -3,9 +3,9 @@
  */
 
 @interface AVFormatReaderInspector : AVAssetInspector {
-    struct OpaqueFigFormatReader { } *_formatReader;
-    BOOL didCheckForSaveRestriction;
-    BOOL hasSaveRestriction;
+    struct OpaqueFigFormatReader { } * _formatReader;
+    BOOL  didCheckForSaveRestriction;
+    BOOL  hasSaveRestriction;
 }
 
 @property (getter=_formatReader, setter=_setFormatReader:, nonatomic, retain) struct OpaqueFigFormatReader { }*formatReader;

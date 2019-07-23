@@ -3,10 +3,10 @@
  */
 
 @interface _UIPreviewActionSheetItemView : UIView {
-    UIPreviewAction *_action;
-    UIImageView *_imageView;
-    UILabel *_label;
-    BOOL _selected;
+    UIPreviewAction * _action;
+    UIImageView * _imageView;
+    UILabel * _label;
+    BOOL  _selected;
 }
 
 @property (nonatomic, copy) UIPreviewAction *action;

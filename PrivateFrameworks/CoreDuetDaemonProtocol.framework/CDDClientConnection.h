@@ -3,9 +3,9 @@
  */
 
 @interface CDDClientConnection : NSObject {
-    unsigned long long _clientId;
-    CDDXPCConnection *_connection;
-    CDDebug *_debug;
+    unsigned long long  _clientId;
+    CDDXPCConnection * _connection;
+    CDDebug * _debug;
 }
 
 @property (readonly) unsigned long long clientId;
@@ -67,7 +67,6 @@
 - (id)init;
 - (id)initWithClientId:(unsigned long long)arg1 error:(id*)arg2;
 - (BOOL)message:(id)arg1 withReplyHandler:(id /* block */)arg2;
-- (id)messageWithError:(id*)arg1;
 - (BOOL)poolNamesWithError:(id*)arg1 replyHandler:(id /* block */)arg2;
 - (BOOL)readLiveAppsWithError:(id*)arg1 replyHandler:(id /* block */)arg2;
 - (BOOL)readPool:(unsigned long long)arg1 type:(unsigned long long)arg2 error:(id*)arg3 replyHandler:(id /* block */)arg4;

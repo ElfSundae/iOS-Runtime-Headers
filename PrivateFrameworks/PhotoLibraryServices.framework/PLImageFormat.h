@@ -3,19 +3,19 @@
  */
 
 @interface PLImageFormat : NSObject {
-    const struct { int x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_4_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_4_1_2; } x4; unsigned int x5; int x6; int x7; float x8[4]; float x9[4]; unsigned int x10; } *_bakedFormatInfo;
-    float _dimension;
-    int _formatID;
-    int _formatMode;
-    BOOL _isAlwaysFullScreen;
-    BOOL _isCropped;
-    NSString *_name;
+    const struct { int x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_4_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_4_1_2; } x4; unsigned int x5; int x6; int x7; float x8[4]; float x9[4]; unsigned int x10; } * _bakedFormatInfo;
+    float  _dimension;
+    int  _formatID;
+    int  _formatMode;
+    BOOL  _isAlwaysFullScreen;
+    BOOL  _isCropped;
+    NSString * _name;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    int _thumbnailKind;
-    int _version;
+    }  _size;
+    int  _thumbnailKind;
+    int  _version;
 }
 
 @property (nonatomic, readonly) const struct { int x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_4_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_4_1_2; } x4; unsigned int x5; int x6; int x7; float x8[4]; float x9[4]; unsigned int x10; }*bakedFormatInfo;
@@ -45,6 +45,7 @@
 
 - (BOOL)_canDegradeToFormat:(id)arg1;
 - (BOOL)_isAcceptableForViewSize:(struct CGSize { float x1; float x2; })arg1 contentMode:(int)arg2 sourceAspectRatio:(float)arg3 desiredImageSize:(struct CGSize { float x1; float x2; })arg4 demoteFactor:(double)arg5;
+- (struct CGSize { float x1; float x2; })_shortSideFormatScaledSizeForSourceSize:(struct CGSize { float x1; float x2; })arg1 capLength:(BOOL)arg2;
 - (const struct { int x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_4_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_4_1_2; } x4; unsigned int x5; int x6; int x7; float x8[4]; float x9[4]; unsigned int x10; }*)bakedFormatInfo;
 - (BOOL)bakedFormatIsDynamicallySized;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })centeredRectForSourceSize:(struct CGSize { float x1; float x2; })arg1;

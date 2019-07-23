@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
  */
 
-@interface VKLabelMarkerShield : VKFeatureMarker <GEOTransitShieldDataSource> {
-    VKImageSourceKey *_imageKey;
+@interface VKLabelMarkerShield : NSObject <GEOTransitShieldDataSource> {
+    VKImageSourceKey * _imageKey;
 }
 
 @property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{?={Matrix<float' */ struct  color; /* unknown property attribute:  1>=[4f]}} */
@@ -20,7 +20,6 @@
 
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
-- (unsigned int)_unusedMethod;
 - (struct { struct Matrix<float, 4, 1> { float x_1_1_1[4]; } x1; })color;
 - (void)dealloc;
 - (id)initWithImageKey:(id)arg1;

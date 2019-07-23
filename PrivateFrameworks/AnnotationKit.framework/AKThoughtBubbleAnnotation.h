@@ -6,7 +6,7 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _pointyBitPoint;
+    }  _pointyBitPoint;
 }
 
 @property struct CGPoint { float x1; float x2; } pointyBitPoint;

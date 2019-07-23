@@ -3,7 +3,7 @@
  */
 
 @interface _UIPolynomialForceLevelClassifier : _UIForceLevelClassifier {
-    float _currentForce;
+    float  _currentForce;
     struct _UIForceLevelInfo { 
         int identifier; 
         float center; 
@@ -12,7 +12,7 @@
         float attractionStrength; 
         int attractionSharpness; 
         float attractionSlope; 
-    } _standardLevel;
+    }  _standardLevel;
     struct _UIForceLevelInfo { 
         int identifier; 
         float center; 
@@ -21,7 +21,7 @@
         float attractionStrength; 
         int attractionSharpness; 
         float attractionSlope; 
-    } _strongLevel;
+    }  _strongLevel;
 }
 
 @property (nonatomic) struct _UIForceLevelInfo { int x1; float x2; float x3; float x4; float x5; int x6; float x7; } standardLevel;

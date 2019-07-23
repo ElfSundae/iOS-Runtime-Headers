@@ -3,25 +3,25 @@
  */
 
 @interface PTSSlider : UIView <PTSHUDControl, _UISettingsKeyPathObserver> {
-    int _alignment;
-    NSTimer *_buttonRepeatTimer;
-    UIButton *_downIncrementButton;
-    BOOL _enabled;
-    float _increment;
-    _UISettings *_settings;
-    BOOL _showsValueLabel;
-    UISlider *_sliderControl;
-    NSArray *_subviewConstraints;
-    UILabel *_titleLabel;
-    UIButton *_upIncrementButton;
+    int  _alignment;
+    NSTimer * _buttonRepeatTimer;
+    UIButton * _downIncrementButton;
+    BOOL  _enabled;
+    float  _increment;
+    _UISettings * _settings;
+    BOOL  _showsValueLabel;
+    UISlider * _sliderControl;
+    NSArray * _subviewConstraints;
+    UILabel * _titleLabel;
+    UIButton * _upIncrementButton;
     struct { 
         double mark; 
         double limit; 
-    } _valueChangePublishTTL;
-    NSString *_valueKeyPath;
-    UILabel *_valueLabel;
-    NSNumberFormatter *_valueLabelFormatter;
-    NSArray *_valueLabelStrings;
+    }  _valueChangePublishTTL;
+    NSString * _valueKeyPath;
+    UILabel * _valueLabel;
+    NSNumberFormatter * _valueLabelFormatter;
+    NSArray * _valueLabelStrings;
 }
 
 @property (nonatomic) int alignment;

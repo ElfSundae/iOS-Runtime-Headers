@@ -4,9 +4,6 @@
 
 @interface UITableViewCellLayoutManager : NSObject
 
-+ (id)_alternateExternalDetailTextColor;
-+ (id)_alternateExternalTextColor;
-+ (id)_alternateUISwitchableSelectorPairs;
 + (id)_externalDetailTextColor;
 + (id)_externalTextColor;
 + (id)layoutManagerForTableViewCellStyle:(int)arg1;

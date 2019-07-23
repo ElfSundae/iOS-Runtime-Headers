@@ -3,16 +3,16 @@
  */
 
 @interface PHCoreImageManager : NSObject {
-    NSObject<OS_dispatch_queue> *_CPLDownloadFireAndForgetRequestQueue;
-    NSObject<OS_dispatch_queue> *_CPLDownloadUpdateIsolationQueue;
-    NSMutableSet *_cloudDomainsWithPurgeScheduled;
-    NSMutableSet *_domainsWithPurgeScheduled;
-    PHConcurrentMapTable *_perDomainCloudPreheatItemMapTables;
-    PHConcurrentMapTable *_perDomainHighPriorityRequestWaitGroups;
-    PHConcurrentMapTable *_perDomainMissedPreheatItemMapTables;
-    PHConcurrentMapTable *_perDomainPreheatItemMapTables;
-    NSMapTable *_requestLookupTable;
-    NSObject<OS_dispatch_queue> *_requestLookupTableIsolationQueue;
+    NSObject<OS_dispatch_queue> * _CPLDownloadFireAndForgetRequestQueue;
+    NSObject<OS_dispatch_queue> * _CPLDownloadUpdateIsolationQueue;
+    NSMutableSet * _cloudDomainsWithPurgeScheduled;
+    NSMutableSet * _domainsWithPurgeScheduled;
+    PHConcurrentMapTable * _perDomainCloudPreheatItemMapTables;
+    PHConcurrentMapTable * _perDomainHighPriorityRequestWaitGroups;
+    PHConcurrentMapTable * _perDomainMissedPreheatItemMapTables;
+    PHConcurrentMapTable * _perDomainPreheatItemMapTables;
+    NSMapTable * _requestLookupTable;
+    NSObject<OS_dispatch_queue> * _requestLookupTableIsolationQueue;
 }
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *CPLDownloadFireAndForgetRequestQueue;

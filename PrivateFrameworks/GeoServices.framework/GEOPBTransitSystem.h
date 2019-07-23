@@ -3,26 +3,22 @@
  */
 
 @interface GEOPBTransitSystem : PBCodable <GEOTransitNamedItem, NSCopying> {
-    GEOPBTransitArtwork *_artwork;
-    unsigned int _brandIndex;
+    GEOPBTransitArtwork * _artwork;
     struct { 
         unsigned int muid : 1; 
-        unsigned int brandIndex : 1; 
         unsigned int systemIndex : 1; 
-    } _has;
-    unsigned long long _muid;
-    NSString *_nameDisplayString;
-    GEOStyleAttributes *_styleAttributes;
-    unsigned int _systemIndex;
-    NSString *_website;
+    }  _has;
+    unsigned long long  _muid;
+    NSString * _nameDisplayString;
+    GEOStyleAttributes * _styleAttributes;
+    unsigned int  _systemIndex;
+    NSString * _website;
 }
 
 @property (nonatomic, retain) GEOPBTransitArtwork *artwork;
-@property (nonatomic) unsigned int brandIndex;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) BOOL hasArtwork;
-@property (nonatomic) BOOL hasBrandIndex;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic, readonly) BOOL hasNameDisplayString;
 @property (nonatomic, readonly) BOOL hasStyleAttributes;
@@ -38,7 +34,6 @@
 
 - (id)artwork;
 - (id)bestName;
-- (unsigned int)brandIndex;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -46,7 +41,6 @@
 - (id)dictionaryRepresentation;
 - (id)geoTransitSystem;
 - (BOOL)hasArtwork;
-- (BOOL)hasBrandIndex;
 - (BOOL)hasMuid;
 - (BOOL)hasNameDisplayString;
 - (BOOL)hasStyleAttributes;
@@ -59,8 +53,6 @@
 - (id)nameDisplayString;
 - (BOOL)readFrom:(id)arg1;
 - (void)setArtwork:(id)arg1;
-- (void)setBrandIndex:(unsigned int)arg1;
-- (void)setHasBrandIndex:(BOOL)arg1;
 - (void)setHasMuid:(BOOL)arg1;
 - (void)setHasSystemIndex:(BOOL)arg1;
 - (void)setMuid:(unsigned long long)arg1;

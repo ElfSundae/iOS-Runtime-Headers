@@ -3,12 +3,12 @@
  */
 
 @interface HDCodableError : PBCodable <NSCopying> {
-    long long _code;
-    NSString *_domain;
+    long long  _code;
+    NSString * _domain;
     struct { 
         unsigned int code : 1; 
-    } _has;
-    NSString *_localizedDescription;
+    }  _has;
+    NSString * _localizedDescription;
 }
 
 @property (nonatomic) long long code;

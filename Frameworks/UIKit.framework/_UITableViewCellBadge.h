@@ -3,12 +3,12 @@
  */
 
 @interface _UITableViewCellBadge : UIView {
-    BOOL _isSelected;
-    NSString *_text;
+    BOOL  _isSelected;
+    NSString * _text;
     struct CGSize { 
         float width; 
         float height; 
-    } _textSize;
+    }  _textSize;
 }
 
 @property (getter=isSelected, nonatomic) BOOL selected;

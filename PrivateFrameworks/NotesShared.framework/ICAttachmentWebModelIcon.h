@@ -3,14 +3,14 @@
  */
 
 @interface ICAttachmentWebModelIcon : NSObject {
-    struct UIImage { Class x1; } *_image;
-    float _scale;
-    BOOL _scaleImageToIconSize;
+    struct UIImage { Class x1; } * _image;
+    float  _scale;
+    BOOL  _scaleImageToIconSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    NSURL *_url;
+    }  _size;
+    NSURL * _url;
 }
 
 @property (nonatomic, retain) UIImage *image;

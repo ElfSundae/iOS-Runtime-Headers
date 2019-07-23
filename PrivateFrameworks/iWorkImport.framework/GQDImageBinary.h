@@ -3,13 +3,13 @@
  */
 
 @interface GQDImageBinary : NSObject {
-    struct __CFURL { } *mAbsoluteUrl;
-    struct __CFString { } *mPath;
-    int mResourceType;
+    struct __CFURL { } * mAbsoluteUrl;
+    struct __CFString { } * mPath;
+    int  mResourceType;
     struct CGSize { 
         float width; 
         float height; 
-    } mSize;
+    }  mSize;
 }
 
 - (struct __CFURL { }*)createAbsoluteUrlForState:(id)arg1;

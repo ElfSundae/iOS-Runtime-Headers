@@ -3,9 +3,9 @@
  */
 
 @interface NSAbstractLayoutGuide : NSObject <NSCoding, NSISVariableDelegate, NSLayoutItem> {
-    <NSLayoutItem> *_concreteLayoutGuide;
-    NSISVariable *_heightVariable;
-    NSString *_identifier;
+    <NSLayoutItem> * _concreteLayoutGuide;
+    NSISVariable * _heightVariable;
+    NSString * _identifier;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,11 +15,11 @@
             float width; 
             float height; 
         } size; 
-    } _layoutFrame;
-    NSISVariable *_minXVariable;
-    NSISVariable *_minYVariable;
-    <NSLayoutItem> *_owningView;
-    NSISVariable *_widthVariable;
+    }  _layoutFrame;
+    NSISVariable * _minXVariable;
+    NSISVariable * _minYVariable;
+    <NSLayoutItem> * _owningView;
+    NSISVariable * _widthVariable;
 }
 
 @property (readonly, copy) NSString *debugDescription;

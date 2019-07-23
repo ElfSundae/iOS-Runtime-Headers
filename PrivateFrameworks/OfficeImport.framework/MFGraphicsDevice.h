@@ -3,15 +3,15 @@
  */
 
 @interface MFGraphicsDevice : NSObject {
-    NSMutableArray *m_DCStack;
-    NSDictionary *m_colorMap;
-    MFDeviceContext *m_currentDC;
-    NSObject<MFDeviceDriver> *m_deviceDriver;
-    NSDictionary *m_fillMap;
-    MFDeviceContext *m_firstClipDC;
-    int m_gStateStackHeight;
-    MFObjectTable *m_objectTable;
-    MFObjectTable *m_stockObjects;
+    NSMutableArray * m_DCStack;
+    NSDictionary * m_colorMap;
+    MFDeviceContext * m_currentDC;
+    NSObject<MFDeviceDriver> * m_deviceDriver;
+    NSDictionary * m_fillMap;
+    MFDeviceContext * m_firstClipDC;
+    int  m_gStateStackHeight;
+    MFObjectTable * m_objectTable;
+    MFObjectTable * m_stockObjects;
 }
 
 - (int)abortPath;

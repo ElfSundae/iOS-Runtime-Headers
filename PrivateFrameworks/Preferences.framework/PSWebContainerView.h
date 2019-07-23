@@ -3,8 +3,8 @@
  */
 
 @interface PSWebContainerView : UIView <UIWebViewDelegate> {
-    NSData *_content;
-    UIWebView *_webView;
+    NSData * _content;
+    UIWebView * _webView;
 }
 
 @property (nonatomic, retain) NSData *content;

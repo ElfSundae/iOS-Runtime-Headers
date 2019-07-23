@@ -3,25 +3,27 @@
  */
 
 @interface MPVolumeSlider : UISlider <MPAVRoutingControllerDelegate, MPVolumeControllerDelegate> {
-    NSTimer *_commitTimer;
-    BOOL _forcingOffscreenVisibility;
+    NSTimer * _commitTimer;
+    BOOL  _configuredLayoutGuide;
+    BOOL  _forcingOffscreenVisibility;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _hitRectInsets;
-    BOOL _isOffScreen;
-    UILabel *_routeNameLabel;
-    MPAVRoutingController *_routingController;
-    int _style;
-    UIImageView *_thumbImageView;
-    BOOL _thumbIsDefault;
-    UIImageView *_thumbMaskImageView;
-    MPVolumeController *_volumeController;
-    BOOL _volumeWarningBlinking;
-    UIImage *_volumeWarningTrackImage;
-    UIView *_volumeWarningView;
+    }  _hitRectInsets;
+    BOOL  _isOffScreen;
+    UILabel * _routeNameLabel;
+    MPAVRoutingController * _routingController;
+    int  _style;
+    UIImageView * _thumbImageView;
+    BOOL  _thumbIsDefault;
+    UIImageView * _thumbMaskImageView;
+    UILayoutGuide * _trackLayoutGuide;
+    MPVolumeController * _volumeController;
+    BOOL  _volumeWarningBlinking;
+    UIImage * _volumeWarningTrackImage;
+    UIView * _volumeWarningView;
 }
 
 @property (setter=_setIsOffScreen:, nonatomic) BOOL _isOffScreen;
@@ -33,6 +35,7 @@
 @property (nonatomic, readonly) MPAVRoutingController *routingController;
 @property (nonatomic, readonly) int style;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) UILayoutGuide *trackLayoutGuide;
 @property (nonatomic, copy) NSString *volumeAudioCategory;
 @property (nonatomic, retain) UIImage *volumeWarningTrackImage;
 @property (nonatomic, readonly) UIView *volumeWarningView;
@@ -86,6 +89,8 @@
 - (void)setVolumeWarningTrackImage:(id)arg1;
 - (int)style;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })thumbRectForBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 trackRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 value:(float)arg3;
+- (id)trackLayoutGuide;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })trackRectForBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)volumeAudioCategory;
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 EUVolumeLimitEnforcedDidChange:(BOOL)arg2;

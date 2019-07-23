@@ -3,13 +3,13 @@
  */
 
 @interface PHLivePhotoCreationOperation : NSOperation {
-    int _contentMode;
-    NSArray *_resourceURLs;
-    id /* block */ _resultHandler;
+    int  _contentMode;
+    NSArray * _resourceURLs;
+    id /* block */  _resultHandler;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
+    }  _targetSize;
 }
 
 @property (nonatomic, readonly) int contentMode;

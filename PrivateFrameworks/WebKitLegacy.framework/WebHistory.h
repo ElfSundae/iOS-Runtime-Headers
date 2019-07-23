@@ -3,7 +3,7 @@
  */
 
 @interface WebHistory : NSObject {
-    WebHistoryPrivate *_historyPrivate;
+    WebHistoryPrivate * _historyPrivate;
 }
 
 @property (nonatomic) int historyAgeInDaysLimit;
@@ -24,7 +24,6 @@
 - (id)allItems;
 - (BOOL)containsURL:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (int)historyAgeInDaysLimit;
 - (int)historyItemLimit;
 - (id)init;

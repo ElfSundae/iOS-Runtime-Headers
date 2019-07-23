@@ -3,21 +3,21 @@
  */
 
 @interface PUViewControllerSpec : NSObject {
-    int __changeCount;
-    NSHashTable *__changeObservers;
-    BOOL __needsUpdateLayoutStyle;
-    PUViewControllerSpecChange *_currentChange;
-    int _currentLayoutStyle;
+    int  __changeCount;
+    NSHashTable * __changeObservers;
+    BOOL  __needsUpdateLayoutStyle;
+    PUViewControllerSpecChange * _currentChange;
+    int  _currentLayoutStyle;
     struct CGSize { 
         float width; 
         float height; 
-    } _layoutReferenceSize;
-    BOOL _presentedForSecondScreen;
+    }  _layoutReferenceSize;
+    BOOL  _presentedForSecondScreen;
     struct CGSize { 
         float width; 
         float height; 
-    } _secondScreenSize;
-    UITraitCollection *_traitCollection;
+    }  _secondScreenSize;
+    UITraitCollection * _traitCollection;
 }
 
 @property (setter=_setChangeCount:, nonatomic) int _changeCount;
@@ -29,6 +29,7 @@
 @property (getter=isPresentedForSecondScreen, nonatomic) BOOL presentedForSecondScreen;
 @property (nonatomic) struct CGSize { float x1; float x2; } secondScreenSize;
 @property (nonatomic, retain) UITraitCollection *traitCollection;
+@property (getter=isValid, nonatomic, readonly) BOOL valid;
 
 - (void).cxx_destruct;
 - (int)_changeCount;
@@ -48,6 +49,7 @@
 - (int)currentLayoutStyle;
 - (id)init;
 - (BOOL)isPresentedForSecondScreen;
+- (BOOL)isValid;
 - (struct CGSize { float x1; float x2; })layoutReferenceSize;
 - (id)newSpecChange;
 - (void)performChanges:(id /* block */)arg1;
@@ -60,6 +62,5 @@
 - (id)traitCollection;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)updateIfNeeded;
-- (BOOL)updateWithTraitCollection:(id)arg1 layoutReferenceSize:(struct CGSize { float x1; float x2; })arg2;
 
 @end

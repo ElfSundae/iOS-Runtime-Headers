@@ -3,14 +3,14 @@
  */
 
 @interface MKPlaceHeaderBackgroundView_Snapshot : MKPlaceHeaderBackgroundView <MKMapViewDelegate> {
-    MKMapView *_mapView;
-    MKMapCamera *_orbitCamera;
-    BOOL _orbiting;
-    UIColor *_pinTintColor;
-    BOOL _renderingMap;
-    BOOL _settingUpOrbitAnimation;
-    BOOL _showsPin;
-    float _zoomLevel;
+    MKMapView * _mapView;
+    MKMapCamera * _orbitCamera;
+    BOOL  _orbiting;
+    UIColor * _pinTintColor;
+    BOOL  _renderingMap;
+    BOOL  _settingUpOrbitAnimation;
+    BOOL  _showsPin;
+    float  _zoomLevel;
 }
 
 @property (readonly, copy) NSString *debugDescription;

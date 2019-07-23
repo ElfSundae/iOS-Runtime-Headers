@@ -3,7 +3,7 @@
  */
 
 @interface SGBloomFilterChunkInMemorySparse : NSObject <SGBloomFilterChunk> {
-    NSMutableSet *_hashes;
+    NSMutableSet * _hashes;
 }
 
 @property (nonatomic, readonly) unsigned int count;

@@ -3,12 +3,12 @@
  */
 
 @interface PLProcessPortMap : NSObject {
-    struct proc_fdinfo { int x1; unsigned int x2; } *_Fds;
-    int _NbFds;
-    int _NbPids;
-    int *_Pids;
-    NSMutableDictionary *_localPortToPidAndProcessName;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    struct proc_fdinfo { int x1; unsigned int x2; } * _Fds;
+    int  _NbFds;
+    int  _NbPids;
+    int * _Pids;
+    NSMutableDictionary * _localPortToPidAndProcessName;
+    NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 @property struct proc_fdinfo { int x1; unsigned int x2; }*Fds;

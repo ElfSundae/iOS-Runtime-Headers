@@ -3,11 +3,11 @@
  */
 
 @interface _UIFocusDisplayLinkScrollAnimator : NSObject <_UIFocusScrollAnimator> {
-    float _defaultConvergenceRate;
-    CADisplayLink *_displayLink;
-    UIScreen *_screen;
-    NSMapTable *_scrollViews;
-    _UIFocusEngineScrollViewOffsets *_singleScrollViewEntry;
+    float  _defaultConvergenceRate;
+    CADisplayLink * _displayLink;
+    UIScreen * _screen;
+    NSMapTable * _scrollViews;
+    _UIFocusEngineScrollViewOffsets * _singleScrollViewEntry;
 }
 
 @property (readonly, copy) NSString *debugDescription;

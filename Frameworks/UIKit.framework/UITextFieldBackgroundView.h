@@ -3,10 +3,10 @@
  */
 
 @interface UITextFieldBackgroundView : UIView {
-    BOOL _active;
-    BOOL _enabled;
-    UIColor *_fillColor;
-    float _progress;
+    BOOL  _active;
+    BOOL  _enabled;
+    UIColor * _fillColor;
+    float  _progress;
 }
 
 @property (nonatomic, retain) UIColor *fillColor;

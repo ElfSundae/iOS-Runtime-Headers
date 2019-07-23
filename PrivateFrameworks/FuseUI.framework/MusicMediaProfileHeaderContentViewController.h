@@ -3,23 +3,23 @@
  */
 
 @interface MusicMediaProfileHeaderContentViewController : UIViewController <MusicClientContextConsuming, MusicMediaDetailHeaderContentViewController, MusicProfileDetailViewDelegate> {
-    BOOL _adminEnabled;
-    MusicClientContext *_clientContext;
-    <MusicEntityProviding> *_containerEntityProvider;
-    MusicEntityValueContext *_containerEntityValueContext;
-    <MusicMediaProfileHeaderContentViewControllerDelegate> *_delegate;
-    BOOL _followHidden;
-    NSString *_followersCountText;
-    NSString *_followersText;
-    BOOL _hasProfileImage;
-    MusicMediaDetailTintInformation *_mediaDetailTintInformation;
-    MusicProfileDetailView *_profileDetailView;
-    UIImage *_profileImage;
-    NSOperationQueue *_profileImageEffectQueue;
-    UIImageView *_profileImageView;
-    NSString *_profileTitle;
-    BOOL _shouldDelayTransitionProgress;
-    float _transitionProgress;
+    BOOL  _adminEnabled;
+    MusicClientContext * _clientContext;
+    <MusicEntityProviding> * _containerEntityProvider;
+    MusicEntityValueContext * _containerEntityValueContext;
+    <MusicMediaProfileHeaderContentViewControllerDelegate> * _delegate;
+    BOOL  _followHidden;
+    NSString * _followersCountText;
+    NSString * _followersText;
+    BOOL  _hasProfileImage;
+    MusicMediaDetailTintInformation * _mediaDetailTintInformation;
+    MusicProfileDetailView * _profileDetailView;
+    UIImage * _profileImage;
+    NSOperationQueue * _profileImageEffectQueue;
+    UIImageView * _profileImageView;
+    NSString * _profileTitle;
+    BOOL  _shouldDelayTransitionProgress;
+    float  _transitionProgress;
 }
 
 @property (getter=isAdminEnabled, nonatomic) BOOL adminEnabled;

@@ -3,13 +3,13 @@
  */
 
 @interface HKBloodPressureSeriesPresentationStyle : NSObject {
-    UIColor *_arrowColor;
+    UIColor * _arrowColor;
     struct CGSize { 
         float width; 
         float height; 
-    } _arrowSize;
-    float _arrowStrokeWidth;
-    UIColor *_fillColor;
+    }  _arrowSize;
+    float  _arrowStrokeWidth;
+    UIColor * _fillColor;
 }
 
 @property (nonatomic, retain) UIColor *arrowColor;

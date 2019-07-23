@@ -10,7 +10,6 @@
 - (unsigned int)currentIndex;
 - (BOOL)hasCandidates;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (TIKeyboardBehaviors *)keyboardBehaviors;
 - (unsigned int)selectedSortIndex;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 inlineText:(NSString *)arg2 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 maxX:(float)arg4 layout:(BOOL)arg5;
@@ -36,6 +35,7 @@
 - (NSString *)inlineText;
 - (void)jumpToCompositions;
 - (void)revealHiddenCandidates;
+- (TIKeyboardSecureCandidateRenderTraits *)secureCandidateRenderTraits;
 - (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 maxX:(float)arg5 layout:(BOOL)arg6;
 - (void)setCompletionContext:(NSString *)arg1;
 - (void)setInlineText:(NSString *)arg1;

@@ -3,19 +3,19 @@
  */
 
 @interface TSDStyledRep : TSDRep {
-    TSDMutableReflection *mDynamicReflection;
-    TSDShadow *mDynamicShadow;
+    TSDMutableReflection * mDynamicReflection;
+    TSDShadow * mDynamicShadow;
     struct { 
         unsigned int shadowInvalid : 1; 
-    } mFlags;
-    BOOL mIsUpdatingReflectionOpacity;
-    BOOL mIsUpdatingShadow;
+    }  mFlags;
+    BOOL  mIsUpdatingReflectionOpacity;
+    BOOL  mIsUpdatingShadow;
     struct CGPoint { 
         float x; 
         float y; 
-    } mOriginalReflectionLayerPositionInScaledCanvas;
-    CALayer *mReflectionLayer;
-    CALayer *mShadowLayer;
+    }  mOriginalReflectionLayerPositionInScaledCanvas;
+    CALayer * mReflectionLayer;
+    CALayer * mShadowLayer;
 }
 
 @property (nonatomic, readonly) float opacity;
@@ -34,7 +34,7 @@
 - (void)drawGradientWithAlphaOverReflection:(struct CGContext { }*)arg1 applyingOpacity:(BOOL)arg2 reflectionSize:(struct CGSize { float x1; float x2; })arg3;
 - (void)drawInContext:(struct CGContext { }*)arg1;
 - (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1;
-- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
+- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned int)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (void)drawInContextWithoutEffectsForAlphaOnly:(struct CGContext { }*)arg1;
 - (void)drawInContextWithoutEffectsOrChildren:(struct CGContext { }*)arg1;
 - (void)drawInContextWithoutEffectsOrChildrenForAlphaOnly:(struct CGContext { }*)arg1;
@@ -56,11 +56,12 @@
 - (id)reflection;
 - (id)reflectionLayer;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })reflectionLayerFrameInRoot;
-- (void)setTextureAttributes:(id)arg1;
+- (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (id)shadow;
 - (id)shadowLayer;
 - (BOOL)shouldShowReflection;
 - (BOOL)shouldShowShadow;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })strokeBoundsWithOptions:(unsigned int)arg1 fallbackBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (id)styledInfo;
 - (id)styledLayout;
 - (id)textureForContext:(id)arg1;

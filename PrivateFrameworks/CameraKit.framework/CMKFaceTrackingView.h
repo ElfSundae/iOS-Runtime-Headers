@@ -3,7 +3,7 @@
  */
 
 @interface CMKFaceTrackingView : CMKFocusView {
-    BOOL _isInFrame;
+    BOOL  _isInFrame;
 }
 
 @property (nonatomic) BOOL isInFrame;

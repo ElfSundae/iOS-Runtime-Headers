@@ -3,16 +3,16 @@
  */
 
 @interface ADEmbeddedAdServer : NSObject <HTSHTTPServerDelegate> {
-    NSArray *_adManifests;
-    NSString *_adPath;
-    BOOL _alwaysRegenerateWebArchives;
-    NSMutableDictionary *_authTokens;
-    NSDictionary *_defaultAdData;
-    BOOL _defaultsToNoQualifiedAds;
-    <ADEmbeddedAdServerDelegate> *_delegate;
-    NSString *_publicURLRoot;
-    HTSHTTPServer *_server;
-    struct __FSEventStream { } *_stream;
+    NSArray * _adManifests;
+    NSString * _adPath;
+    BOOL  _alwaysRegenerateWebArchives;
+    NSMutableDictionary * _authTokens;
+    NSDictionary * _defaultAdData;
+    BOOL  _defaultsToNoQualifiedAds;
+    <ADEmbeddedAdServerDelegate> * _delegate;
+    NSString * _publicURLRoot;
+    HTSHTTPServer * _server;
+    struct __FSEventStream { } * _stream;
 }
 
 @property (nonatomic, retain) NSArray *adManifests;
@@ -42,6 +42,7 @@
 + (int)creativeTypeForPlistType:(id)arg1;
 + (BOOL)creativeTypeMatches:(id)arg1 type:(int)arg2 creativeType:(id)arg3;
 + (id)creativesForAdBundleAtURL:(id)arg1 matchingRequest:(id)arg2;
++ (id)iAdDeviceModelForDeviceModel:(id)arg1;
 + (id)manifestForAdAtURL:(id)arg1;
 + (id)supportedDevicesForAdProperties:(id)arg1;
 

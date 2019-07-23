@@ -3,9 +3,9 @@
  */
 
 @interface GKBasicCollectionViewController : GKCollectionViewController {
-    GKCollectionViewDataSource *_initialDataSource;
-    NSArray *_metricsForSections;
-    id _target;
+    GKCollectionViewDataSource * _initialDataSource;
+    NSArray * _metricsForSections;
+    id  _target;
 }
 
 @property (nonatomic, retain) GKCollectionViewDataSource *initialDataSource;

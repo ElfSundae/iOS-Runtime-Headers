@@ -26,7 +26,6 @@
 + (id)visualStyleForTraitCollection:(id)arg1;
 
 - (float)columnDividerHeightForHUDHeight:(float)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (float)maxHUDHeightForHeight:(float)arg1;
 - (float)maxHUDWidthForWidth:(float)arg1;
 

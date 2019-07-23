@@ -3,10 +3,10 @@
  */
 
 @interface SKUICommentDocumentViewController : SKUIViewController <SKUIArtworkRequestDelegate, SKUICommentDelegate, SKUIDocumentViewController, SKUILayoutCacheDelegate> {
-    SKUIMediaSocialAuthor *_authorForActiveAccount;
-    SKUIStackDocumentViewController *_childViewController;
-    NSArray *_commenters;
-    BOOL _didShowKeyboard;
+    SKUIMediaSocialAuthor * _authorForActiveAccount;
+    SKUIStackDocumentViewController * _childViewController;
+    NSArray * _commenters;
+    BOOL  _didShowKeyboard;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,16 +16,16 @@
             float width; 
             float height; 
         } size; 
-    } _keyboardRect;
-    BOOL _keyboardVisible;
-    SKUIViewElementLayoutContext *_layoutContext;
-    NSMutableSet *_observedArtworkRequestIDs;
-    SKUICommentPostBarView *_postView;
-    BOOL _scrollNewCommentToView;
-    int _selectedCommenter;
-    SKUIStackTemplateElement *_stackTemplateElement;
-    SKUICommentTemplateViewElement *_templateElement;
-    SKUILayoutCache *_textLayoutCache;
+    }  _keyboardRect;
+    BOOL  _keyboardVisible;
+    SKUIViewElementLayoutContext * _layoutContext;
+    NSMutableSet * _observedArtworkRequestIDs;
+    SKUICommentPostBarView * _postView;
+    BOOL  _scrollNewCommentToView;
+    int  _selectedCommenter;
+    SKUIStackTemplateElement * _stackTemplateElement;
+    SKUICommentTemplateViewElement * _templateElement;
+    SKUILayoutCache * _textLayoutCache;
 }
 
 @property (readonly, copy) NSString *debugDescription;

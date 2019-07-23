@@ -3,15 +3,16 @@
  */
 
 @interface UIKeyCommandDiscoverabilityHUDDescriptionView : UIView <NSLayoutManagerDelegate> {
-    UIFont *_font;
-    unsigned int _glyphSize;
-    NSMutableDictionary *_glyphViews;
+    UIFont * _font;
+    unsigned int  _glyphSize;
+    NSMutableDictionary * _glyphViews;
     struct CGSize { 
         float width; 
         float height; 
-    } _intrinsicContentSize;
-    float _spaceWidth;
-    UITextView *_textView;
+    }  _intrinsicContentSize;
+    float  _spaceWidth;
+    NSDictionary * _textAttributes;
+    UITextView * _textView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

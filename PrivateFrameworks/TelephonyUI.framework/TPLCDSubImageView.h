@@ -3,7 +3,7 @@
  */
 
 @interface TPLCDSubImageView : UIView {
-    UIImage *_image;
+    UIImage * _image;
 }
 
 @property (nonatomic, retain) UIImage *image;

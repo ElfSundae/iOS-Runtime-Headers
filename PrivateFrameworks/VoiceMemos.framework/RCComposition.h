@@ -3,15 +3,15 @@
  */
 
 @interface RCComposition : NSObject <NSCopying, NSMutableCopying, RCDictionaryPListRepresentationCoding> {
-    double _cachedComposedAVURLDuration;
-    BOOL _cachedComposedAVURLDurationIsValid;
-    NSURL *_composedAVURL;
-    NSArray *_composedFragments;
-    NSURL *_composedWaveformURL;
-    NSDate *_creationDate;
-    NSArray *_decomposedFragments;
-    BOOL _readonly;
-    NSURL *_savedRecordingURI;
+    double  _cachedComposedAVURLDuration;
+    BOOL  _cachedComposedAVURLDurationIsValid;
+    NSURL * _composedAVURL;
+    NSArray * _composedFragments;
+    NSURL * _composedWaveformURL;
+    NSDate * _creationDate;
+    NSArray * _decomposedFragments;
+    BOOL  _readonly;
+    NSURL * _savedRecordingURI;
 }
 
 @property (nonatomic) double cachedComposedAVURLDuration;

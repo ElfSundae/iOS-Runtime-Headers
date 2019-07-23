@@ -3,19 +3,19 @@
  */
 
 @interface SiriUIAttributionImage : NSObject {
-    NSString *_localPressedResourceName;
-    SAUIAppPunchOut *_localPunchOut;
-    NSBundle *_localResourceBundle;
-    NSString *_localResourceName;
+    NSString * _localPressedResourceName;
+    SAUIAppPunchOut * _localPunchOut;
+    NSBundle * _localResourceBundle;
+    NSString * _localResourceName;
     struct CGSize { 
         float width; 
         float height; 
-    } _logoSize;
-    float _remotePressedScale;
-    NSURL *_remotePressedURL;
-    SAUIAppPunchOut *_remotePunchOut;
-    float _remoteScale;
-    NSURL *_remoteURL;
+    }  _logoSize;
+    float  _remotePressedScale;
+    NSURL * _remotePressedURL;
+    SAUIAppPunchOut * _remotePunchOut;
+    float  _remoteScale;
+    NSURL * _remoteURL;
 }
 
 @property (nonatomic, copy) NSString *localPressedResourceName;
@@ -30,6 +30,7 @@
 @property (nonatomic, copy) NSURL *remoteURL;
 
 + (id)attributionImageFromAppPunchOut:(id)arg1;
++ (id)attributionImageFromImageResource:(id)arg1;
 + (id)attributionImageFromKey:(id)arg1 pressedKey:(id)arg2 punchOut:(id)arg3;
 + (id)attributionImageWithLocalResourceName:(id)arg1 pressedResourceName:(id)arg2 localPunchOut:(id)arg3 bundle:(id)arg4;
 

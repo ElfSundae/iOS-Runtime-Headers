@@ -3,7 +3,7 @@
  */
 
 @interface AVComposition : AVAsset <NSMutableCopying, NSSecureCoding> {
-    AVCompositionInternal *_priv;
+    AVCompositionInternal * _priv;
 }
 
 @property (nonatomic, readonly, copy) NSDictionary *URLAssetInitializationOptions;
@@ -19,6 +19,7 @@
 - (Class)_classForTrackInspectors;
 - (BOOL)_clientProvidesNaturalSize;
 - (long)_createEmptyMutableCompositionIfNeeded;
+- (struct OpaqueFigAsset { }*)_figAsset;
 - (struct OpaqueFigFormatReader { }*)_formatReader;
 - (id)_initWithComposition:(id)arg1;
 - (void)_loadAssetInspectorAndLoaderOnce;

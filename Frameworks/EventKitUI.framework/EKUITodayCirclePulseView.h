@@ -3,21 +3,21 @@
  */
 
 @interface EKUITodayCirclePulseView : UIView <_UIBasicAnimationFactory> {
-    NSDictionary *_attributes;
-    TodayCirclePulseBackground *_background;
-    UIView *_backgroundContainer;
-    float _circleDiameter;
-    BOOL _circleShouldFillFrame;
-    BOOL _dontApplyCenteringOffset;
-    UILabel *_label;
-    NSDictionary *_overlayAttributes;
-    UILabel *_overlayLabel;
-    float _textFrameWidthAdjustment;
+    NSDictionary * _attributes;
+    TodayCirclePulseBackground * _background;
+    UIView * _backgroundContainer;
+    float  _circleDiameter;
+    BOOL  _circleShouldFillFrame;
+    BOOL  _dontApplyCenteringOffset;
+    UILabel * _label;
+    NSDictionary * _overlayAttributes;
+    UILabel * _overlayLabel;
+    float  _textFrameWidthAdjustment;
     struct CGPoint { 
         float x; 
         float y; 
-    } _textOffsetFromCircle;
-    float _textYOffset;
+    }  _textOffsetFromCircle;
+    float  _textYOffset;
 }
 
 @property (nonatomic, retain) NSDictionary *attributes;

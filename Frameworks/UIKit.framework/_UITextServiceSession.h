@@ -3,12 +3,12 @@
  */
 
 @interface _UITextServiceSession : NSObject <UIPopoverControllerDelegate> {
-    BOOL _dismissed;
-    id /* block */ _dismissedHandler;
-    BOOL _isTextEffectsWindow;
-    UIViewController *_modalViewController;
-    UIPopoverController *_popoverController;
-    int _type;
+    BOOL  _dismissed;
+    id /* block */  _dismissedHandler;
+    BOOL  _isTextEffectsWindow;
+    UIViewController * _modalViewController;
+    UIPopoverController * _popoverController;
+    int  _type;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,6 +18,8 @@
 @property (readonly) Class superclass;
 
 + (BOOL)canShowTextServices;
++ (BOOL)shouldPresentAsPopoverForServiceOfType:(int)arg1 inView:(id)arg2;
++ (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 type:(int)arg3 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(int)arg2 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 inView:(id)arg4;
 + (id)textServiceSessionForType:(int)arg1;
 

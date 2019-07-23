@@ -3,9 +3,9 @@
  */
 
 @interface CSCoder : NSObject <CSCoderData> {
-    struct _MDPlistContainer { } *_container;
-    NSData *_data;
-    BOOL _finalized;
+    struct _MDPlistContainer { } * _container;
+    NSData * _data;
+    BOOL  _finalized;
 }
 
 @property (nonatomic, readonly) struct _MDPlistContainer { }*container;

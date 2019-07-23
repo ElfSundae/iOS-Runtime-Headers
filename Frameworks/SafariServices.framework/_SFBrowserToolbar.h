@@ -3,12 +3,12 @@
  */
 
 @interface _SFBrowserToolbar : _SFToolbar {
-    UIBarButtonItem *_actionItem;
-    UIBarButtonItem *_backItem;
-    <_SFBrowserToolbarDelegate> *_browserDelegate;
-    <_SFBrowserToolbarDataSource> *_dataSource;
-    UIBarButtonItem *_forwardItem;
-    UIBarButtonItem *_openInSafariItem;
+    UIBarButtonItem * _actionItem;
+    UIBarButtonItem * _backItem;
+    <_SFBrowserToolbarDelegate> * _browserDelegate;
+    <_SFBrowserToolbarDataSource> * _dataSource;
+    UIBarButtonItem * _forwardItem;
+    UIBarButtonItem * _openInSafariItem;
 }
 
 @property (nonatomic, readonly) UIBarButtonItem *actionItem;
@@ -20,7 +20,6 @@
 - (id)_toolbarItems;
 - (void)actionButtonPressed;
 - (id)actionItem;
-- (void)addBookmarkButtonPressed;
 - (void)backButtonPressed;
 - (id)browserDelegate;
 - (id)dataSource;

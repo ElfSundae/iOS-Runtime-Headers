@@ -3,18 +3,18 @@
  */
 
 @interface CAMVideoPreviewView : UIView {
-    BOOL _disableLayoutForEffectsFullsizeView;
-    BOOL _disableLayoutForEffectsGridViews;
-    BOOL _disableLayoutForPreviewView;
-    CAMEffectsFullsizeView *_effectsFullsizeView;
-    CAMEffectsGridLabelsView *_effectsGridLabelsView;
-    CAMEffectsGridView *_effectsGridView;
-    UIView *_fadeOutView;
-    int _orientation;
-    UIView *_previewLayerView;
-    int _previewViewAspectMode;
-    BOOL _square;
-    AVCaptureVideoPreviewLayer *_videoPreviewLayer;
+    BOOL  _disableLayoutForEffectsFullsizeView;
+    BOOL  _disableLayoutForEffectsGridViews;
+    BOOL  _disableLayoutForPreviewView;
+    CAMEffectsFullsizeView * _effectsFullsizeView;
+    CAMEffectsGridLabelsView * _effectsGridLabelsView;
+    CAMEffectsGridView * _effectsGridView;
+    UIView * _fadeOutView;
+    int  _orientation;
+    UIView * _previewLayerView;
+    int  _previewViewAspectMode;
+    BOOL  _square;
+    AVCaptureVideoPreviewLayer * _videoPreviewLayer;
 }
 
 @property (getter=isDisabledLayoutForEffectsFullsizeView, nonatomic) BOOL disableLayoutForEffectsFullsizeView;

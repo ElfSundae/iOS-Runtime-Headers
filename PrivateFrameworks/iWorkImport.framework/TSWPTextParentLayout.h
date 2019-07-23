@@ -6,7 +6,7 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _maximumFrameSizeForChildren;
+    }  _maximumFrameSizeForChildren;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } maximumFrameSizeForChildren;

@@ -3,9 +3,9 @@
  */
 
 @interface _UIScreenRoutePickerRemoteViewController : _UIRemoteViewController <_UIScreenRoutePickerRemoteViewControllerHost> {
-    NSExtension *_extension;
-    <NSCopying><NSObject> *_extensionRequestIdentifier;
-    _UIScreenRoutePickerViewController *_publicController;
+    NSExtension * _extension;
+    <NSCopying><NSObject> * _extensionRequestIdentifier;
+    _UIScreenRoutePickerViewController * _publicController;
 }
 
 @property (readonly, copy) NSString *debugDescription;

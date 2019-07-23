@@ -3,33 +3,33 @@
  */
 
 @interface PUVideoScrubberController : NSObject {
-    PUScrubberSeekRequest *__activeSeekRequest;
+    PUScrubberSeekRequest * __activeSeekRequest;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } __avPlayerCurrentTime;
+    }  __avPlayerCurrentTime;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } __avPlayerDuration;
-    PUScrubberSeekRequest *__pendingSeekRequest;
-    double __playheadTime;
-    AVPlayer *_avPlayer;
-    BOOL _avPlayerCurrentTimeNeedsUpdate;
-    BOOL _avPlayerDurationNeedsUpdate;
-    <PUVideoScrubberControllerDelegate> *_delegate;
-    double _estimatedDuration;
-    BOOL _needsUpdate;
-    id _playerObserver;
+    }  __avPlayerDuration;
+    PUScrubberSeekRequest * __pendingSeekRequest;
+    double  __playheadTime;
+    AVPlayer * _avPlayer;
+    BOOL  _avPlayerCurrentTimeNeedsUpdate;
+    BOOL  _avPlayerDurationNeedsUpdate;
+    <PUVideoScrubberControllerDelegate> * _delegate;
+    double  _estimatedDuration;
+    BOOL  _needsUpdate;
+    id  _playerObserver;
     struct { 
         BOOL respondsToDidUpdate; 
         BOOL respondsToLengthForDuration; 
         BOOL respondsToDesiredSeekTime; 
-    } _videoScrubberDelegateFlags;
+    }  _videoScrubberDelegateFlags;
 }
 
 @property (setter=_setActiveSeekRequest:, nonatomic, retain) PUScrubberSeekRequest *_activeSeekRequest;

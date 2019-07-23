@@ -3,9 +3,9 @@
  */
 
 @interface SKUIScrollingSegmentedControllerNavigationBarTitleView : UIView {
-    int _layoutStyle;
-    SKUIInteractiveSegmentedControl *_segmentedControl;
-    float _segmentedControlMinimumHeight;
+    int  _layoutStyle;
+    SKUIInteractiveSegmentedControl * _segmentedControl;
+    float  _segmentedControlMinimumHeight;
 }
 
 @property (nonatomic) int layoutStyle;

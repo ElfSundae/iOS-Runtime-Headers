@@ -6,20 +6,20 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _evaluatedContentSize;
-    float _evaluatedHorizontalItemOffset;
+    }  _evaluatedContentSize;
+    float  _evaluatedHorizontalItemOffset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _evaluatedInset;
+    }  _evaluatedInset;
     struct CGSize { 
         float width; 
         float height; 
-    } _evaluatedItemSize;
-    NSArray *_preparedLayoutAttributes;
-    NSArray *_preparedUpdateItems;
+    }  _evaluatedItemSize;
+    NSArray * _preparedLayoutAttributes;
+    NSArray * _preparedUpdateItems;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } evaluatedContentSize;
@@ -45,6 +45,7 @@
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (void)finalizeCollectionViewUpdates;
 - (struct CGPoint { float x1; float x2; })firstItemCenterForContainerWidth:(float)arg1;
+- (id)init;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (void)invalidateGroupViewLayoutAnimated:(BOOL)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

@@ -2,58 +2,63 @@
    Image: /System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities
  */
 
-@interface AXEventRepresentation : NSObject <NSCopying, NSSecureCoding> {
-    NSData *_HIDAttributeData;
-    unsigned long long _HIDTime;
-    AXEventAccelerometerInfoRepresentation *_accelerometerInfo;
-    unsigned long long _additionalFlags;
-    NSString *_clientId;
-    unsigned int _contextId;
-    struct __IOHIDEvent { } *_creatorHIDEvent;
-    NSData *_data;
-    unsigned int _didUpdateMask;
-    int _flags;
-    AXEventGameControllerInfoRepresentation *_gameControllerInfo;
-    long _generationCount;
-    AXEventHandInfoRepresentation *_handInfo;
-    BOOL _isBuiltIn;
-    BOOL _isDisplayIntegrated;
-    BOOL _isGeneratedEvent;
-    AXEventKeyInfoRepresentation *_keyInfo;
+@interface AXEventRepresentation : NSObject <AXEventRepresentationDescription, NSCopying, NSSecureCoding> {
+    NSData * _HIDAttributeData;
+    unsigned long long  _HIDTime;
+    AXEventAccelerometerInfoRepresentation * _accelerometerInfo;
+    AXEventData * _accessibilityData;
+    unsigned long long  _additionalFlags;
+    NSString * _clientId;
+    unsigned int  _contextId;
+    struct __IOHIDEvent { } * _creatorHIDEvent;
+    NSData * _data;
+    unsigned int  _didUpdateMask;
+    int  _flags;
+    AXEventGameControllerInfoRepresentation * _gameControllerInfo;
+    long  _generationCount;
+    AXEventHandInfoRepresentation * _handInfo;
+    BOOL  _isBuiltIn;
+    BOOL  _isDisplayIntegrated;
+    BOOL  _isGeneratedEvent;
+    AXEventKeyInfoRepresentation * _keyInfo;
     struct CGPoint { 
         float x; 
         float y; 
-    } _location;
-    int _pid;
-    long long _scrollAmount;
-    unsigned long long _senderID;
-    int _subtype;
-    unsigned int _taskPort;
-    unsigned long long _time;
-    unsigned int _type;
-    BOOL _useOriginalHIDTime;
-    unsigned int _willUpdateMask;
-    void *_window;
+    }  _location;
+    int  _pid;
+    long long  _scrollAmount;
+    unsigned long long  _senderID;
+    int  _subtype;
+    unsigned int  _taskPort;
+    unsigned long long  _time;
+    unsigned int  _type;
+    BOOL  _useOriginalHIDTime;
+    unsigned int  _willUpdateMask;
+    void * _window;
     struct CGPoint { 
         float x; 
         float y; 
-    } _windowLocation;
+    }  _windowLocation;
 }
 
 @property (nonatomic, retain) NSData *HIDAttributeData;
 @property (nonatomic) unsigned long long HIDTime;
 @property (nonatomic, retain) AXEventAccelerometerInfoRepresentation *accelerometerInfo;
+@property (nonatomic, retain) AXEventData *accessibilityData;
 @property (nonatomic) unsigned long long additionalFlags;
 @property (nonatomic, retain) NSString *clientId;
 @property (nonatomic) unsigned int contextId;
 @property (nonatomic, retain) struct __IOHIDEvent { }*creatorHIDEvent;
 @property (nonatomic, retain) NSData *data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int didUpdateMask;
 @property (nonatomic, readonly) unsigned int fingerCount;
 @property (nonatomic) int flags;
 @property (nonatomic, retain) AXEventGameControllerInfoRepresentation *gameControllerInfo;
 @property (nonatomic) long generationCount;
 @property (nonatomic, retain) AXEventHandInfoRepresentation *handInfo;
+@property (readonly) unsigned int hash;
 @property (nonatomic) BOOL isBuiltIn;
 @property (nonatomic, readonly) BOOL isCancel;
 @property (nonatomic, readonly) BOOL isChordChange;
@@ -71,6 +76,7 @@
 @property (nonatomic) long long scrollAmount;
 @property (nonatomic) unsigned long long senderID;
 @property (nonatomic) int subtype;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned int taskPort;
 @property (nonatomic) unsigned long long time;
 @property (nonatomic) unsigned int type;
@@ -97,16 +103,21 @@
 
 - (id)HIDAttributeData;
 - (unsigned long long)HIDTime;
+- (BOOL)_HIDEventIsAccessibilityEvent:(struct __IOHIDEvent { }*)arg1;
+- (id)_accessibilityDataFromRealEvent:(struct __IOHIDEvent { }*)arg1;
+- (struct __IOHIDEvent { }*)_accessibilityEventFromRealEvent:(struct __IOHIDEvent { }*)arg1;
+- (void)_applyAccessibilityDataToRealEvent:(struct __IOHIDEvent { }*)arg1;
 - (unsigned int)_contextIDFromHIDEvent:(struct __IOHIDEvent { }*)arg1;
-- (BOOL)_isDownEvent;
 - (struct __IOHIDEvent { }*)_newAccelerometerHIDEventRef;
 - (struct __IOHIDEvent { }*)_newButtonHIDEventRef;
 - (struct __IOHIDEvent { }*)_newHandHIDEventRef;
 - (struct __IOHIDEvent { }*)_newKeyboardHIDEventRef;
 - (id)_senderNameForID;
-- (id)_tabularDescription;
 - (id)accelerometerInfo;
+- (id)accessibilityData;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (unsigned long long)additionalFlags;
+- (void)applyAccessibilityDataToCreatorHIDEvent;
 - (id)clientId;
 - (unsigned int)contextId;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -130,6 +141,7 @@
 - (BOOL)isCancel;
 - (BOOL)isChordChange;
 - (BOOL)isDisplayIntegrated;
+- (BOOL)isDownEvent;
 - (BOOL)isGeneratedEvent;
 - (BOOL)isInRange;
 - (BOOL)isInRangeLift;
@@ -150,6 +162,7 @@
 - (long long)scrollAmount;
 - (unsigned long long)senderID;
 - (void)setAccelerometerInfo:(id)arg1;
+- (void)setAccessibilityData:(id)arg1;
 - (void)setAdditionalFlags:(unsigned long long)arg1;
 - (void)setClientId:(id)arg1;
 - (void)setContextId:(unsigned int)arg1;

@@ -3,17 +3,17 @@
  */
 
 @interface PUGridMagnifiedImageViewController : UIViewController {
-    BOOL _canShowFullScreen;
-    id _delegate;
+    BOOL  _canShowFullScreen;
+    id  _delegate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _gestureWindLocation;
+    }  _gestureWindLocation;
     struct CGSize { 
         float width; 
         float height; 
-    } _imageSize;
-    NSIndexPath *_itemIndexPath;
+    }  _imageSize;
+    NSIndexPath * _itemIndexPath;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -23,29 +23,29 @@
             float width; 
             float height; 
         } size; 
-    } _itemWindFrame;
+    }  _itemWindFrame;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastLocation;
+    }  _lastLocation;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _magnifiedDragEdgeInsets;
+    }  _magnifiedDragEdgeInsets;
     struct CGSize { 
         float width; 
         float height; 
-    } _magnifiedSize;
-    PUGridMagnifiedView *_magnifiedView;
-    float _magnifiedYOffset;
+    }  _magnifiedSize;
+    PUGridMagnifiedView * _magnifiedView;
+    float  _magnifiedYOffset;
     struct CGSize { 
         float width; 
         float height; 
-    } _shadowOffset;
-    float _shadowOpacity;
-    float _shadowRadius;
+    }  _shadowOffset;
+    float  _shadowOpacity;
+    float  _shadowRadius;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -55,7 +55,7 @@
             float width; 
             float height; 
         } size; 
-    } _trackingWindFrame;
+    }  _trackingWindFrame;
 }
 
 @property (nonatomic, readonly) BOOL canShowFullScreen;

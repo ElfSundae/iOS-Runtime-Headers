@@ -3,17 +3,18 @@
  */
 
 @interface GEOMapEdgeBuilder : GEOMapRequest {
-    BOOL _buildAhead;
-    BOOL _buildBehind;
-    GEOMapTileFinder *_currentTileFinder;
-    id /* block */ _edgeHandler;
+    BOOL  _buildAhead;
+    BOOL  _buildBehind;
+    unsigned int  _buildDirection;
+    GEOMapTileFinder * _currentTileFinder;
+    id /* block */  _edgeHandler;
     struct Matrix<float, 2, 1> { 
         float _e[2]; 
-    } _firstTilePoint;
+    }  _firstTilePoint;
     struct Matrix<float, 2, 1> { 
         float _e[2]; 
-    } _lastTilePoint;
-    BOOL _searchDirection;
+    }  _lastTilePoint;
+    BOOL  _searchDirection;
     struct unordered_set<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey> > { 
         struct __hash_table<_GEOTileKey, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<_GEOTileKey> > { 
             struct unique_ptr<std::__1::__hash_node<_GEOTileKey, void *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<_GEOTileKey, void *> *> > > { 
@@ -38,16 +39,17 @@
                 float __first_; 
             } __p3_; 
         } __table_; 
-    } _tileKeysSeen;
+    }  _tileKeysSeen;
 }
 
+@property (nonatomic) unsigned int buildDirection;
 @property (nonatomic, copy) id /* block */ edgeHandler;
 @property (nonatomic, readonly) GEOMapAccess *map;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_buildCompleteEdge;
-- (BOOL)_edgeStart:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 end:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg2 connectsTo:(const struct { double x1; double x2; }*)arg3 rect:(const struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
+- (BOOL)_edgeStart:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 end:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg2 connectsTo:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg3;
 - (BOOL)_findEdgeAhead;
 - (BOOL)_findEdgeAheadInTile:(id)arg1;
 - (BOOL)_findEdgeBehind;
@@ -63,12 +65,14 @@
 - (BOOL)_shouldFindEdgeAhead;
 - (BOOL)_shouldFindEdgeBehind;
 - (id)_tileFinderForMap:(id)arg1 center:(struct { double x1; double x2; })arg2 radius:(double)arg3;
+- (unsigned int)buildDirection;
 - (void)buildEdge:(id /* block */)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (id /* block */)edgeHandler;
 - (id)initWithMap:(id)arg1;
 - (id)map;
+- (void)setBuildDirection:(unsigned int)arg1;
 - (void)setEdgeHandler:(id /* block */)arg1;
 
 @end

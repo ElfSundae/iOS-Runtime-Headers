@@ -3,7 +3,7 @@
  */
 
 @interface UITextFieldLabel : UILabel {
-    BOOL _shouldRenderWithoutTextField;
+    BOOL  _shouldRenderWithoutTextField;
 }
 
 @property (nonatomic) BOOL shouldRenderWithoutTextField;

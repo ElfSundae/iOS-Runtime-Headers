@@ -3,13 +3,13 @@
  */
 
 @interface CNContactCell : UITableViewCell {
-    CNCardGroupItem *_cardGroupItem;
-    NSArray *_constantConstraints;
-    BOOL _hasBeenDisplayed;
-    float _leftContentMargin;
-    float _rightContentMargin;
-    BOOL _shouldUseExpandedContentStyle;
-    NSArray *_variableConstraints;
+    CNCardGroupItem * _cardGroupItem;
+    NSArray * _constantConstraints;
+    BOOL  _hasBeenDisplayed;
+    float  _leftContentMargin;
+    float  _rightContentMargin;
+    BOOL  _shouldUseExpandedContentStyle;
+    NSArray * _variableConstraints;
 }
 
 @property (nonatomic, retain) CNCardGroupItem *cardGroupItem;

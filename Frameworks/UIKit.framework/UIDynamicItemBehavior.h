@@ -3,16 +3,16 @@
  */
 
 @interface UIDynamicItemBehavior : UIDynamicBehavior {
-    BOOL _allowsRotation;
-    BOOL _anchored;
-    float _angularResistance;
-    NSMapTable *_cachedAngularVelocities;
-    NSMapTable *_cachedLinearVelocities;
-    float _charge;
-    float _density;
-    float _elasticity;
-    float _friction;
-    float _resistance;
+    BOOL  _allowsRotation;
+    BOOL  _anchored;
+    float  _angularResistance;
+    NSMapTable * _cachedAngularVelocities;
+    NSMapTable * _cachedLinearVelocities;
+    float  _charge;
+    float  _density;
+    float  _elasticity;
+    float  _friction;
+    float  _resistance;
     struct { 
         unsigned int elasticityChanged : 1; 
         unsigned int frictionChanged : 1; 
@@ -23,8 +23,8 @@
         unsigned int useDefaultViewPropertiesApplierChanged : 1; 
         unsigned int chargeChanged : 1; 
         unsigned int dynamicChanged : 1; 
-    } _stateFlags;
-    BOOL _useDefaultViewPropertiesApplier;
+    }  _stateFlags;
+    BOOL  _useDefaultViewPropertiesApplier;
 }
 
 @property (nonatomic) BOOL allowsRotation;

@@ -3,14 +3,14 @@
  */
 
 @interface ABUnknownPersonViewController : UIViewController <UIActionSheetDelegate> {
-    ABPersonTableViewActionsDelegate *_actionsDelegate;
-    BOOL _allowsContactBlocking;
-    ABContactViewController *_contactViewController;
-    ABPersonTableViewDataSource *_dataSource;
-    id _helper;
-    id _reserved;
-    ABPersonTableViewSharingDelegate *_sharingDelegate;
-    <ABUnknownPersonViewControllerDelegate> *_unknownPersonViewDelegate;
+    ABPersonTableViewActionsDelegate * _actionsDelegate;
+    BOOL  _allowsContactBlocking;
+    ABContactViewController * _contactViewController;
+    ABPersonTableViewDataSource * _dataSource;
+    id  _helper;
+    id  _reserved;
+    ABPersonTableViewSharingDelegate * _sharingDelegate;
+    <ABUnknownPersonViewControllerDelegate> * _unknownPersonViewDelegate;
 }
 
 @property (nonatomic, readonly) ABPersonTableViewActionsDelegate *actionsDelegate;

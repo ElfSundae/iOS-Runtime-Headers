@@ -3,7 +3,7 @@
  */
 
 @interface GEOPlaceCardRequester : NSObject <GEOPlaceDataProxy> {
-    <GEOPlaceDataProxy> *_proxy;
+    <GEOPlaceDataProxy> * _proxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;

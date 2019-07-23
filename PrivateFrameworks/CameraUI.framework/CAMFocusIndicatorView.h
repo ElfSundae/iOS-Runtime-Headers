@@ -3,15 +3,15 @@
  */
 
 @interface CAMFocusIndicatorView : UIView {
-    int __exposureBiasSide;
-    CAMExposureBiasSlider *__exposureBiasSlider;
-    CAMFocusIndicatorRectView *__rectView;
-    <CAMFocusIndicatorViewDelegate> *_delegate;
-    float _exposureBiasMaximum;
-    float _exposureBiasMinimum;
-    float _exposureBiasValue;
-    BOOL _showExposureBias;
-    int _size;
+    int  __exposureBiasSide;
+    CAMExposureBiasSlider * __exposureBiasSlider;
+    CAMFocusIndicatorRectView * __rectView;
+    <CAMFocusIndicatorViewDelegate> * _delegate;
+    float  _exposureBiasMaximum;
+    float  _exposureBiasMinimum;
+    float  _exposureBiasValue;
+    BOOL  _showExposureBias;
+    int  _size;
 }
 
 @property (nonatomic) int _exposureBiasSide;

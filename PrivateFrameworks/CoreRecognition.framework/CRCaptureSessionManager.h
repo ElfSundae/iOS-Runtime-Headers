@@ -3,37 +3,37 @@
  */
 
 @interface CRCaptureSessionManager : NSObject {
-    NSString *_cameraMode;
-    int _cameraPosition;
+    NSString * _cameraMode;
+    int  _cameraPosition;
     struct CGSize { 
         float width; 
         float height; 
-    } _cameraResolution;
-    AVCaptureSession *_captureSession;
-    <AVCaptureVideoDataOutputSampleBufferDelegate> *_captureSessionDelegate;
-    AVCaptureVideoDataOutput *_captureVideoDataOutput;
-    struct __CVBuffer { } *_correctedCreditCardBuffer;
-    NSString *_currentDeviceID;
-    AVCaptureDeviceInput *_deviceInput;
-    BOOL _exposureAdjustmentInProgress;
-    int _exposureAdjustmentInProgressTimeoutCount;
-    int _exposureMode;
-    struct { struct { /* ? */ } *x1; int x2; double x3; double x4; } *_exposure_table;
-    int _focusMode;
+    }  _cameraResolution;
+    AVCaptureSession * _captureSession;
+    <AVCaptureVideoDataOutputSampleBufferDelegate> * _captureSessionDelegate;
+    AVCaptureVideoDataOutput * _captureVideoDataOutput;
+    struct __CVBuffer { } * _correctedCreditCardBuffer;
+    NSString * _currentDeviceID;
+    AVCaptureDeviceInput * _deviceInput;
+    BOOL  _exposureAdjustmentInProgress;
+    int  _exposureAdjustmentInProgressTimeoutCount;
+    int  _exposureMode;
+    struct { struct { /* ? */ } *x1; int x2; double x3; double x4; } * _exposure_table;
+    int  _focusMode;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _highISOThresholdDuration;
-    id _inputPortFormatObserver;
-    AVCaptureInputPort *_inputPortFormatSender;
-    float _maxISO;
-    float _minISO;
-    AVCaptureVideoPreviewLayer *_previewLayer;
-    BOOL _runningManualExposure;
-    int _torchMode;
-    int _whiteBalanceMode;
+    }  _highISOThresholdDuration;
+    id  _inputPortFormatObserver;
+    AVCaptureInputPort * _inputPortFormatSender;
+    float  _maxISO;
+    float  _minISO;
+    AVCaptureVideoPreviewLayer * _previewLayer;
+    BOOL  _runningManualExposure;
+    int  _torchMode;
+    int  _whiteBalanceMode;
 }
 
 @property (nonatomic, copy) NSString *cameraMode;

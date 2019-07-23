@@ -3,20 +3,20 @@
  */
 
 @interface UIKeyboardKeyplaneTransition : NSObject {
-    id /* block */ _completionBlock;
-    float _currentProgress;
-    CADisplayLink *_displayLink;
-    UIKBTree *_end;
-    UIView *_endView;
-    double _finalTransitionStartTime;
-    float _finishDuration;
-    float _finishProgress;
-    BOOL _initiallyAtEnd;
-    float _liftOffProgress;
-    UIKBTree *_start;
-    UIView *_startView;
-    <UIKeyboardKeyplaneTransitionDelegate> *_transitionDelegate;
-    NSMutableArray *_transitionViews;
+    id /* block */  _completionBlock;
+    float  _currentProgress;
+    CADisplayLink * _displayLink;
+    UIKBTree * _end;
+    UIView * _endView;
+    double  _finalTransitionStartTime;
+    float  _finishDuration;
+    float  _finishProgress;
+    BOOL  _initiallyAtEnd;
+    float  _liftOffProgress;
+    UIKBTree * _start;
+    UIView * _startView;
+    <UIKeyboardKeyplaneTransitionDelegate> * _transitionDelegate;
+    NSMutableArray * _transitionViews;
 }
 
 @property (copy) id /* block */ completionBlock;

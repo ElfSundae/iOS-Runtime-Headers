@@ -3,29 +3,32 @@
  */
 
 @interface SUDescriptor : NSObject <NSCopying, NSSecureCoding> {
-    BOOL _autoDownloadAllowableForCellular;
-    BOOL _disableAppDemotion;
-    BOOL _disableCDLevel4;
-    BOOL _disableIntallTonight;
-    BOOL _disableSiriVoiceDeletion;
-    SUDocumentation *_documentation;
-    BOOL _downloadAllowableForCellular;
-    unsigned long long _downloadSize;
-    BOOL _downloadable;
-    BOOL _downloadableOverCellular;
-    NSString *_humanReadableUpdateName;
-    unsigned long long _installationSize;
-    unsigned long long _minimumSystemPartitionSize;
-    unsigned long long _msuPrepareSize;
-    NSString *_productBuildVersion;
-    NSString *_productSystemName;
-    NSString *_productVersion;
-    NSString *_publisher;
-    NSString *_releaseType;
-    BOOL _streamingZipCapable;
-    NSDictionary *_systemPartitionPadding;
-    unsigned long long _unarchiveSize;
-    int _updateType;
+    BOOL  _autoDownloadAllowableForCellular;
+    BOOL  _disableAppDemotion;
+    BOOL  _disableCDLevel4;
+    BOOL  _disableIntallTonight;
+    BOOL  _disableSiriVoiceDeletion;
+    SUDocumentation * _documentation;
+    BOOL  _downloadAllowableForCellular;
+    unsigned long long  _downloadSize;
+    BOOL  _downloadable;
+    BOOL  _downloadableOverCellular;
+    NSString * _humanReadableUpdateName;
+    unsigned long long  _installationSize;
+    unsigned long long  _minimumSystemPartitionSize;
+    unsigned long long  _msuPrepareSize;
+    NSString * _productBuildVersion;
+    NSString * _productSystemName;
+    NSString * _productVersion;
+    NSString * _publisher;
+    BOOL  _rampEnabled;
+    NSString * _releaseType;
+    NSData * _rsepDigest;
+    NSData * _sepDigest;
+    BOOL  _streamingZipCapable;
+    NSDictionary * _systemPartitionPadding;
+    unsigned long long  _unarchiveSize;
+    int  _updateType;
 }
 
 @property (nonatomic) BOOL autoDownloadAllowableForCellular;
@@ -44,7 +47,10 @@
 @property (nonatomic, retain) NSString *productSystemName;
 @property (nonatomic, retain) NSString *productVersion;
 @property (nonatomic, retain) NSString *publisher;
+@property (nonatomic) BOOL rampEnabled;
 @property (nonatomic, retain) NSString *releaseType;
+@property (setter=setRSEPDigest:, nonatomic, retain) NSData *rsepDigest;
+@property (setter=setSEPDigest:, nonatomic, retain) NSData *sepDigest;
 @property (getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:, nonatomic) BOOL streamingZipCapable;
 @property (nonatomic, retain) NSDictionary *systemPartitionPadding;
 @property (getter=_unarchiveSize, setter=_setUnarchiveSize:, nonatomic) unsigned long long unarchiveSize;
@@ -89,7 +95,10 @@
 - (id)productSystemName;
 - (id)productVersion;
 - (id)publisher;
+- (BOOL)rampEnabled;
 - (id)releaseType;
+- (id)rsepDigest;
+- (id)sepDigest;
 - (void)setAutoDownloadAllowableForCellular:(BOOL)arg1;
 - (void)setDocumentation:(id)arg1;
 - (void)setDownloadSize:(unsigned long long)arg1;
@@ -101,7 +110,10 @@
 - (void)setProductSystemName:(id)arg1;
 - (void)setProductVersion:(id)arg1;
 - (void)setPublisher:(id)arg1;
+- (void)setRSEPDigest:(id)arg1;
+- (void)setRampEnabled:(BOOL)arg1;
 - (void)setReleaseType:(id)arg1;
+- (void)setSEPDigest:(id)arg1;
 - (void)setSystemPartitionPadding:(id)arg1;
 - (void)setUpdateType:(int)arg1;
 - (BOOL)siriVoiceDeletionDisabled;

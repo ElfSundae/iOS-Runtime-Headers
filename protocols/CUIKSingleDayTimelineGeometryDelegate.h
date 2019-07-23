@@ -13,4 +13,8 @@
 - (float)timeWidth;
 - (float)topPadding;
 
+@optional
+
+- (BOOL)shouldReverseLayoutDirection;
+
 @end

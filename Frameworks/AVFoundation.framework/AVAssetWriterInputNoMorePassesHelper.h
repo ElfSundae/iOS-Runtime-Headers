@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetWriterInputNoMorePassesHelper : AVAssetWriterInputHelper {
-    AVAssetWriterInputWritingHelper *_writingHelper;
+    AVAssetWriterInputWritingHelper * _writingHelper;
 }
 
 - (BOOL)appendPixelBuffer:(struct __CVBuffer { }*)arg1 withPresentationTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;

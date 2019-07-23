@@ -3,21 +3,21 @@
  */
 
 @interface SYCompressedFileOutputStream : NSOutputStream <NSStreamDelegate, SYOutputCompressor, SYStreamEventHandlerBlocks, SYStreamProgress, SYStreamThroughputCounter, _SYStreamRunLoopSourceHandler> {
-    BOOL _append;
-    unsigned long long _byteCount;
-    int _class;
-    int _fd;
-    void *_file;
-    _SYStreamGuts *_internal;
-    int _level;
-    id /* block */ _onBytesAvailable;
-    id /* block */ _onClose;
-    id /* block */ _onEndOfFile;
-    id /* block */ _onError;
-    id /* block */ _onOpenComplete;
-    id /* block */ _onSpaceAvailable;
-    NSProgress *_progress;
-    NSURL *_url;
+    BOOL  _append;
+    unsigned long long  _byteCount;
+    int  _class;
+    int  _fd;
+    struct gzFile_s { unsigned int x1; char *x2; long long x3; } * _file;
+    _SYStreamGuts * _internal;
+    int  _level;
+    id /* block */  _onBytesAvailable;
+    id /* block */  _onClose;
+    id /* block */  _onEndOfFile;
+    id /* block */  _onError;
+    id /* block */  _onOpenComplete;
+    id /* block */  _onSpaceAvailable;
+    NSProgress * _progress;
+    NSURL * _url;
 }
 
 @property (nonatomic, readonly) unsigned long long bytesThroughput;

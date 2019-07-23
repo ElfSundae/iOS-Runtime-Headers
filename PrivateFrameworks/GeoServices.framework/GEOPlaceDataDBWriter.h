@@ -3,11 +3,11 @@
  */
 
 @interface GEOPlaceDataDBWriter : GEODBWriter {
-    struct sqlite3_stmt { } *_sqlDeleteAllPhoneNumbers;
-    struct sqlite3_stmt { } *_sqlDeleteKeyStringForMUID;
-    struct sqlite3_stmt { } *_sqlDeletePlaceDataForMUID;
-    struct sqlite3_stmt { } *_sqlInsertKeyString;
-    struct sqlite3_stmt { } *_sqlInsertPhoneNumber;
+    struct sqlite3_stmt { } * _sqlDeleteAllPhoneNumbers;
+    struct sqlite3_stmt { } * _sqlDeleteKeyStringForMUID;
+    struct sqlite3_stmt { } * _sqlDeletePlaceDataForMUID;
+    struct sqlite3_stmt { } * _sqlInsertKeyString;
+    struct sqlite3_stmt { } * _sqlInsertPhoneNumber;
 }
 
 - (void)_createKeyStringTable;

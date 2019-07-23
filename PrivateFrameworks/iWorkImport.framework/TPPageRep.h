@@ -3,8 +3,8 @@
  */
 
 @interface TPPageRep : TSWPPageRep <TSDMasterDrawableDelegate> {
-    TPMarginAdjustRep *_marginAdjustRep;
-    CALayer *_separatorLayer;
+    TPMarginAdjustRep * _marginAdjustRep;
+    CALayer * _separatorLayer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,6 +17,7 @@
 - (BOOL)canSelectChildRep:(id)arg1;
 - (BOOL)childRepIsMasterDrawable:(id)arg1;
 - (BOOL)childRepIsOnDocSetupCanvas:(id)arg1;
+- (id)colorBehindBodyTextLayer:(id)arg1;
 - (void)dealloc;
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext { }*)arg1;

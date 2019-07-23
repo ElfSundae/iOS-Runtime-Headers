@@ -3,17 +3,17 @@
  */
 
 @interface SLSheetContentView : UIView {
-    UIView *_accessoryView;
-    BOOL _autoCompletionMode;
-    UIView *_autoCompletionModeSeparator;
-    float _autoCompletionTextViewHeight;
-    UIView *_bottomSeparator;
-    NSMutableArray *_constraints;
-    NSMutableDictionary *_intrinsicSizes;
-    float _previewTopMargin;
-    UIView *_previewView;
-    SLSheetTextComposeView *_textComposeView;
-    float _textViewTopMargin;
+    UIView * _accessoryView;
+    BOOL  _autoCompletionMode;
+    UIView * _autoCompletionModeSeparator;
+    float  _autoCompletionTextViewHeight;
+    UIView * _bottomSeparator;
+    NSMutableArray * _constraints;
+    NSMutableDictionary * _intrinsicSizes;
+    float  _previewTopMargin;
+    UIView * _previewView;
+    SLSheetTextComposeView * _textComposeView;
+    float  _textViewTopMargin;
 }
 
 @property (nonatomic, retain) UIView *accessoryView;

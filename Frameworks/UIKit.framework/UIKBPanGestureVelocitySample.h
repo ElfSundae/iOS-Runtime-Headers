@@ -3,17 +3,17 @@
  */
 
 @interface UIKBPanGestureVelocitySample : NSObject {
-    double dt;
+    double  dt;
     struct CGPoint { 
         float x; 
         float y; 
-    } end;
-    float force;
-    float majorRadius;
+    }  end;
+    float  force;
+    float  majorRadius;
     struct CGPoint { 
         float x; 
         float y; 
-    } start;
+    }  start;
 }
 
 @property double dt;

@@ -4,40 +4,48 @@
 
 @interface PUAlbumListViewControllerPadSpec : PUAlbumListViewControllerSpec
 
+- (void)_getStackSize:(struct CGSize { float x1; float x2; }*)arg1 edgeInset:(float*)arg2 forLayoutReferenceSize:(struct CGSize { float x1; float x2; })arg3;
 - (id)_nameOfAddSharedAlbumPlaceholderImage;
 - (id)_nameOfEmptyAlbumPlaceholderImage;
 - (id)_nameOfEmptySharedAlbumPlaceholderImage;
 - (id)_nameOfHiddenAlbumPlaceholderImage;
 - (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (int)albumDeletionConfirmationStyle;
-- (BOOL)allowsAlbumCountSubtitle;
+- (id)albumViewControllerSpec;
 - (BOOL)canDisplaySearchActionInNavigationBar;
+- (BOOL)canShowVirtualCollections;
 - (int)cellContentViewLayout;
-- (struct CGSize { float x1; float x2; })cellSizeForBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (struct CGSize { float x1; float x2; })cellSizeForStackSize:(struct CGSize { float x1; float x2; })arg1;
 - (int)collageImageContentMode;
 - (struct CGSize { float x1; float x2; })collageImageSize;
 - (float)collageSpacing;
+- (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize { float x1; float x2; })arg2;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (BOOL)displaysSearchInPopover;
+- (id)emptyAlbumPlaceholderImage;
 - (id)emptyStackPhotoDecoration;
 - (id)feedViewControllerSpec;
+- (unsigned int)folderStackViewStyle;
 - (id)gridViewControllerSpec;
-- (int)imageContentMode;
 - (struct CGSize { float x1; float x2; })imageSize;
+- (struct CGSize { float x1; float x2; })imageSizeForLayoutReferenceSize:(struct CGSize { float x1; float x2; })arg1;
 - (float)maxSearchBarWidth;
 - (id)panoramaViewControllerSpec;
 - (id)photosPickerViewControllerSpec;
+- (float)posterSquareCornerRadius;
+- (float)posterSubitemCornerRadius;
 - (float)sectionFooterHeight;
 - (float)sectionHeaderHeight;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })sectionInsetsForLayoutReferenceSize:(struct CGSize { float x1; float x2; })arg1;
+- (BOOL)shouldShowSectionHeaders;
 - (BOOL)shouldUseCollageForCloudFeedPlaceholder;
-- (BOOL)showsAlbumBadgeOnCellContentView;
-- (BOOL)showsAlbumBadgeOnStackView;
 - (BOOL)showsDeleteButtonOnCellContentView;
 - (struct UIOffset { float x1; float x2; })stackOffset;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })stackPerspectiveInsets;
 - (struct UIOffset { float x1; float x2; })stackPerspectiveOffset;
 - (id)stackPhotoDecoration;
 - (struct CGSize { float x1; float x2; })stackSize;
+- (struct CGSize { float x1; float x2; })stackSizeForLayoutReferenceSize:(struct CGSize { float x1; float x2; })arg1;
 - (unsigned int)stackViewStyle;
 - (BOOL)usesStackTransitionToGrid;
 

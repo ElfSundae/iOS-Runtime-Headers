@@ -3,18 +3,18 @@
  */
 
 @interface CMKVideoPreviewView : UIView {
-    BOOL _disableLayoutForEffectsFullsizeView;
-    BOOL _disableLayoutForEffectsGridViews;
-    BOOL _disableLayoutForPreviewView;
-    CMKEffectsFullsizeView *_effectsFullsizeView;
-    CMKEffectsGridLabelsView *_effectsGridLabelsView;
-    CMKEffectsGridView *_effectsGridView;
-    UIView *_fadeOutView;
-    int _orientation;
-    AVCaptureVideoPreviewLayer *_previewLayer;
-    UIView *_previewLayerView;
-    BOOL _square;
-    NSString *_videoGravity;
+    BOOL  _disableLayoutForEffectsFullsizeView;
+    BOOL  _disableLayoutForEffectsGridViews;
+    BOOL  _disableLayoutForPreviewView;
+    CMKEffectsFullsizeView * _effectsFullsizeView;
+    CMKEffectsGridLabelsView * _effectsGridLabelsView;
+    CMKEffectsGridView * _effectsGridView;
+    UIView * _fadeOutView;
+    int  _orientation;
+    AVCaptureVideoPreviewLayer * _previewLayer;
+    UIView * _previewLayerView;
+    BOOL  _square;
+    NSString * _videoGravity;
 }
 
 @property (getter=isDisabledLayoutForEffectsFullsizeView, nonatomic) BOOL disableLayoutForEffectsFullsizeView;

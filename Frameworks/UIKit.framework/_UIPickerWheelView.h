@@ -3,7 +3,7 @@
  */
 
 @interface _UIPickerWheelView : UIView {
-    UIPickerView *_pickerView;
+    UIPickerView * _pickerView;
 }
 
 @property (nonatomic) UIPickerView *pickerView;

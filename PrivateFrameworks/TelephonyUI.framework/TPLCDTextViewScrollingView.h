@@ -3,7 +3,7 @@
  */
 
 @interface TPLCDTextViewScrollingView : UIView {
-    TPLCDTextView *_owner;
+    TPLCDTextView * _owner;
 }
 
 - (void).cxx_destruct;

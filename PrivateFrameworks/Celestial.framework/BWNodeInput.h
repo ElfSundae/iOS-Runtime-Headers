@@ -3,23 +3,24 @@
  */
 
 @interface BWNodeInput : NSObject {
-    long long _configurationID;
-    BWNodeConnection *_connection;
-    int _delayedBufferCount;
-    BOOL _enabled;
-    BWFormat *_format;
-    BWFormatRequirements *_formatRequirements;
-    int _indefinitelyHeldBufferCount;
-    unsigned int _index;
-    long long _liveConfigurationID;
-    BWVideoFormat *_liveFormat;
-    unsigned long _mediaType;
-    BOOL _mediaTypeIsVideo;
-    BWNode *_node;
-    unsigned int _numberOfBuffersDropped;
-    unsigned int _numberOfBuffersReceived;
-    int _passthroughMode;
-    int _retainedBufferCount;
+    long long  _configurationID;
+    BWNodeConnection * _connection;
+    int  _delayedBufferCount;
+    BOOL  _enabled;
+    BWFormat * _format;
+    BWFormatRequirements * _formatRequirements;
+    int  _indefinitelyHeldBufferCount;
+    unsigned int  _index;
+    long long  _liveConfigurationID;
+    BWVideoFormat * _liveFormat;
+    unsigned long  _mediaType;
+    BOOL  _mediaTypeIsVideo;
+    NSString * _name;
+    BWNode * _node;
+    unsigned int  _numberOfBuffersDropped;
+    unsigned int  _numberOfBuffersReceived;
+    int  _passthroughMode;
+    int  _retainedBufferCount;
 }
 
 @property (nonatomic) long long configurationID;
@@ -33,6 +34,7 @@
 @property (nonatomic, readonly) long long liveConfigurationID;
 @property (nonatomic, retain) BWFormat *liveFormat;
 @property (nonatomic, readonly) unsigned long mediaType;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) BWNode *node;
 @property (nonatomic, readonly) unsigned int numberOfBuffersDropped;
 @property (nonatomic, readonly) unsigned int numberOfBuffersReceived;
@@ -61,6 +63,7 @@
 - (long long)liveConfigurationID;
 - (id)liveFormat;
 - (unsigned long)mediaType;
+- (id)name;
 - (id)node;
 - (unsigned int)numberOfBuffersDropped;
 - (unsigned int)numberOfBuffersReceived;
@@ -75,6 +78,7 @@
 - (void)setFormatRequirements:(id)arg1;
 - (void)setIndefinitelyHeldBufferCount:(int)arg1;
 - (void)setLiveFormat:(id)arg1;
+- (void)setName:(id)arg1;
 - (void)setPassesBuffersDownstream:(BOOL)arg1;
 - (void)setPassthroughMode:(int)arg1;
 - (void)setRetainedBufferCount:(int)arg1;

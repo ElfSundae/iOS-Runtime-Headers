@@ -3,15 +3,15 @@
  */
 
 @interface AKAlignmentGuideController : NSObject {
-    BOOL _exifHasFlippedAxes;
+    BOOL  _exifHasFlippedAxes;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialDraggedAnnotationsCombinedCenter;
-    struct CGPoint { float x1; float x2; } *_otherAnnotationCenters;
-    unsigned int _otherAnnotationCentersCount;
-    AKPageController *_pageController;
-    float _screenToModelScaleFactor;
+    }  _initialDraggedAnnotationsCombinedCenter;
+    struct CGPoint { float x1; float x2; } * _otherAnnotationCenters;
+    unsigned int  _otherAnnotationCentersCount;
+    AKPageController * _pageController;
+    float  _screenToModelScaleFactor;
 }
 
 @property BOOL exifHasFlippedAxes;

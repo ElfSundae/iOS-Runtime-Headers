@@ -3,7 +3,7 @@
  */
 
 @interface AKRectAnnotation : AKRectangularShapeAnnotation {
-    float _cornerRadius;
+    float  _cornerRadius;
 }
 
 @property float cornerRadius;

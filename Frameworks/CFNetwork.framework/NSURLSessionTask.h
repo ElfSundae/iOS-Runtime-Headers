@@ -2,13 +2,12 @@
    Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
  */
 
-@interface NSURLSessionTask : NSObject <NSCopying> {
-    double __loadingPriority;
-    NSURL *_currentRequest_URL;
-    NSURL *_currentRequest_mainDocumentURL;
-    float _priority;
+@interface NSURLSessionTask : NSObject <FCOperationPrioritizing, NSCopying> {
+    double  __loadingPriority;
+    float  _priority;
 }
 
+@property (copy) NSDictionary *_DuetActivityProperties;
 @property unsigned long _allowedProtocolTypes;
 @property BOOL _allowsCellular;
 @property (nonatomic, copy) NSDictionary *_backgroundTaskTimingData;
@@ -25,6 +24,7 @@
 @property int _cookieAcceptPolicy;
 @property (retain) struct _CFURLRequest { }*_currentCFURLRequest;
 @property unsigned int _darkWakePowerAssertion;
+@property (nonatomic, retain) NSDictionary *_dependencyInfo;
 @property BOOL _disallowCellular;
 @property long long _expectedWorkload;
 @property (copy) NSURL *_ledBellyFallbackURL;
@@ -33,6 +33,7 @@
 @property double _loadingPriority;
 @property double _loadingPriorityValue;
 @property int _networkServiceType;
+@property (copy) NSString *_pathToDownloadTaskFile;
 @property (nonatomic, retain) struct __PerformanceTiming { }*_performanceTiming;
 @property unsigned int _powerAssertion;
 @property BOOL _preventsIdleSystemSleep;
@@ -49,11 +50,13 @@
 @property BOOL _shouldSkipPreferredClientCertificateLookup;
 @property BOOL _shouldUsePipelineHeuristics;
 @property (copy) NSDictionary *_sslSettings;
+@property (copy) NSString *_storagePartitionIdentifier;
 @property BOOL _strictContentLength;
 @property long long _suspensionThreshhold;
 @property double _timeWindowDelay;
 @property double _timeWindowDuration;
 @property double _timeoutInterval;
+@property (nonatomic, retain) NSDictionary *_trailers;
 @property (copy) NSString *_uniqueIdentifier;
 @property (copy) NSURLSessionTaskHTTPAuthenticator *authenticator;
 @property long long countOfBytesExpectedToReceive;
@@ -63,16 +66,25 @@
 @property (copy) NSURLRequest *currentRequest;
 @property (readonly, retain) NSURL *currentRequest_URL;
 @property (readonly, retain) NSURL *currentRequest_mainDocumentURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) NSURLSessionTaskDependencyTree *dependencyTree;
+@property (readonly, copy) NSString *description;
 @property (copy) NSError *error;
+@property (readonly) unsigned int hash;
 @property (copy) NSURLRequest *originalRequest;
 @property float priority;
+@property (nonatomic) int relativePriority;
 @property (copy) NSURLResponse *response;
 @property (retain) NSURLSession *session;
 @property double startTime;
 @property int state;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) NSURLSessionTaskDependency *taskDependency;
 @property (copy) NSString *taskDescription;
 @property unsigned int taskIdentifier;
 @property (readonly, retain) NSObject<OS_dispatch_queue> *workQueue;
+
+// Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
 
 + (id)taskForWrappedRequest:(id)arg1;
 
@@ -89,15 +101,15 @@
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
 - (void)_onqueue_releasePowerAsssertion;
+- (void)_prepareNewTimingDataContainer;
 - (void)_setBytesPerSecondLimit:(long long)arg1;
 - (void)_setExplicitCookieStorage:(struct OpaqueCFHTTPCookieStorage { }*)arg1;
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession { }*)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary { }*)arg1 connectionProperties:(struct __CFDictionary { }*)arg2;
+- (id)_transactionMetrics;
 - (void)cancel;
 - (long long)computeAdjustedPoolPriority;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)currentRequest_URL;
-- (id)currentRequest_mainDocumentURL;
 - (id)initWithOriginalRequest:(id)arg1 updatedRequest:(id)arg2 ident:(unsigned int)arg3 session:(id)arg4;
 - (id)initWithTask:(id)arg1;
 - (void)initializeHTTPAuthenticatorWithSessionConfiguration:(id)arg1;
@@ -108,5 +120,10 @@
 - (bool)shouldHandleCookiesAndSchemeIsAppropriate;
 - (void)suspend;
 - (void)updateCurrentRequest:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (int)relativePriority;
+- (void)setRelativePriority:(int)arg1;
 
 @end

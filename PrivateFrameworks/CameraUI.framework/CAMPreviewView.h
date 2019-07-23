@@ -3,14 +3,14 @@
  */
 
 @interface CAMPreviewView : UIView {
-    int __exposureBiasSide;
-    NSMutableDictionary *__faceIndicators;
-    UILabel *__simulatorLabel;
-    CAMFocusIndicatorView *_continuousIndicator;
-    CAMGridView *_gridView;
-    UIView *_indicatorContainerView;
-    CAMFocusIndicatorView *_pointIndicator;
-    CAMVideoPreviewView *_videoPreviewView;
+    int  __exposureBiasSide;
+    NSMutableDictionary * __faceIndicators;
+    UILabel * __simulatorLabel;
+    CAMFocusIndicatorView * _continuousIndicator;
+    CAMGridView * _gridView;
+    UIView * _indicatorContainerView;
+    CAMFocusIndicatorView * _pointIndicator;
+    CAMVideoPreviewView * _videoPreviewView;
 }
 
 @property (nonatomic) int _exposureBiasSide;
@@ -30,13 +30,14 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_aspectFaceRectFromSquareFaceRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 angle:(float)arg2;
 - (int)_exposureBiasSide;
 - (id)_faceIndicators;
+- (int)_faceOrientationForRollAngle:(float)arg1;
 - (id)_simulatorLabel;
 - (void)addFaceIndicator:(id)arg1 forIdentifier:(int)arg2;
 - (struct CGPoint { float x1; float x2; })captureDevicePointOfInterestForPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)continuousIndicator;
 - (void)dealloc;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })faceIndicatorFrameForFaceResult:(id)arg1;
 - (id)faceIndicatorsByIdentifier;
-- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frameForFaceResult:(id)arg1;
 - (id)gridView;
 - (void)indicatePointOfInterest:(struct CGPoint { float x1; float x2; })arg1;
 - (id)indicatorContainerView;

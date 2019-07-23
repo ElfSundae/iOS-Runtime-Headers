@@ -3,11 +3,11 @@
  */
 
 @interface FBUIApplicationSceneDeactivationAssertion : NSObject <BSDescriptionProviding> {
-    BOOL _acquired;
-    FBSDisplay *_display;
-    id /* block */ _predicate;
-    int _reason;
-    float _sceneLevel;
+    BOOL  _acquired;
+    FBSDisplay * _display;
+    id /* block */  _predicate;
+    int  _reason;
+    float  _sceneLevel;
 }
 
 @property (getter=isAcquired, nonatomic, readonly) BOOL acquired;

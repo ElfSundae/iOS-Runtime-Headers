@@ -3,20 +3,20 @@
  */
 
 @interface CAMTimelapseStabilizationMovieWriter : NSObject <AVOfflineVideoStabilizerDataProvider, CAMTimelapseMovieWriterProtocol> {
-    NSMutableSet *__badFrameSet;
-    int __badMetadataErrorThreshold;
-    NSMutableSet *__badMetadataSet;
-    id /* block */ __completion;
-    NSObject<OS_dispatch_queue> *__decodeQueue;
-    int __firstFrameIndex;
-    int __frameCountWrittenToMovie;
-    NSArray *__frameFilePaths;
-    struct __CFArray { } *__frameList;
-    unsigned int __frameLoadMode;
-    NSDate *__movieCreationDate;
-    CLLocation *__movieCreationLocation;
-    int __movieFramesPerSecond;
-    NSString *__movieOutputPath;
+    NSMutableSet * __badFrameSet;
+    int  __badMetadataErrorThreshold;
+    NSMutableSet * __badMetadataSet;
+    id /* block */  __completion;
+    NSObject<OS_dispatch_queue> * __decodeQueue;
+    int  __firstFrameIndex;
+    int  __frameCountWrittenToMovie;
+    NSArray * __frameFilePaths;
+    struct __CFArray { } * __frameList;
+    unsigned int  __frameLoadMode;
+    NSDate * __movieCreationDate;
+    CLLocation * __movieCreationLocation;
+    int  __movieFramesPerSecond;
+    NSString * __movieOutputPath;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -24,24 +24,24 @@
         float d; 
         float tx; 
         float ty; 
-    } __movieTransform;
-    NSObject<OS_dispatch_queue> *__movieWritingQueue;
-    int __nextMetadataFrameIndex;
-    int __nextSourceFrameIndex;
-    AVAssetWriterInputPixelBufferAdaptor *__pixelBufferAdaptor;
-    NSObject<OS_dispatch_queue> *__pixelTransferQueue;
-    struct OpaqueVTPixelTransferSession { } *__pixelTransferSession;
-    void *__powerAssertion;
-    NSObject<OS_dispatch_queue> *__readingQueue;
-    NSObject<OS_dispatch_semaphore> *__semFileReader;
-    NSObject<OS_dispatch_semaphore> *__semFrameGetter;
-    AVOfflineVideoStabilizer *__stabilizer;
-    struct __CVBuffer { } *__stashedSourceFrame;
-    NSObject<OS_dispatch_queue> *__syncQueue;
-    AVAssetWriterInput *__videoInput;
-    NSArray *__visMetadataFilePaths;
-    AVAssetWriter *__writer;
-    BOOL _suspended;
+    }  __movieTransform;
+    NSObject<OS_dispatch_queue> * __movieWritingQueue;
+    int  __nextMetadataFrameIndex;
+    int  __nextSourceFrameIndex;
+    AVAssetWriterInputPixelBufferAdaptor * __pixelBufferAdaptor;
+    NSObject<OS_dispatch_queue> * __pixelTransferQueue;
+    struct OpaqueVTPixelTransferSession { } * __pixelTransferSession;
+    void * __powerAssertion;
+    NSObject<OS_dispatch_queue> * __readingQueue;
+    NSObject<OS_dispatch_semaphore> * __semFileReader;
+    NSObject<OS_dispatch_semaphore> * __semFrameGetter;
+    AVOfflineVideoStabilizer * __stabilizer;
+    struct __CVBuffer { } * __stashedSourceFrame;
+    NSObject<OS_dispatch_queue> * __syncQueue;
+    AVAssetWriterInput * __videoInput;
+    NSArray * __visMetadataFilePaths;
+    AVAssetWriter * __writer;
+    BOOL  _suspended;
 }
 
 @property (nonatomic, readonly) NSMutableSet *_badFrameSet;

@@ -3,29 +3,29 @@
  */
 
 @interface MPUTextDrawingContext : NSObject {
-    NSAttributedString *_attributedText;
+    NSAttributedString * _attributedText;
     struct CGSize { 
         float width; 
         float height; 
-    } _boundingSize;
-    float _firstBaselineOffsetFromTop;
-    UIImage *_image;
-    float _lastBaselineOffsetFromBottom;
-    NSStringDrawingContext *_stringDrawingContext;
-    int _stringDrawingOptions;
-    NSString *_text;
-    NSDictionary *_uniformTextAttributes;
+    }  _boundingSize;
+    float  _firstBaselineOffsetFromTop;
+    UIImage * _image;
+    float  _lastBaselineOffsetFromBottom;
+    NSStringDrawingContext * _stringDrawingContext;
+    int  _stringDrawingOptions;
+    NSString * _text;
+    NSDictionary * _uniformTextAttributes;
 }
 
-@property (nonatomic, copy) NSAttributedString *attributedText;
-@property (nonatomic) struct CGSize { float x1; float x2; } boundingSize;
-@property (nonatomic) float firstBaselineOffsetFromTop;
+@property (setter=_setAttributedText:, nonatomic, copy) NSAttributedString *attributedText;
+@property (setter=_setBoundingSize:, nonatomic) struct CGSize { float x1; float x2; } boundingSize;
+@property (setter=_setFirstBaselineOffsetFromTop:, nonatomic) float firstBaselineOffsetFromTop;
 @property (getter=_image, setter=_setImage:, nonatomic, retain) UIImage *image;
-@property (nonatomic) float lastBaselineOffsetFromBottom;
-@property (nonatomic, retain) NSStringDrawingContext *stringDrawingContext;
-@property (nonatomic) int stringDrawingOptions;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSDictionary *uniformTextAttributes;
+@property (setter=_setLastBaselineOffsetFromBottom:, nonatomic) float lastBaselineOffsetFromBottom;
+@property (setter=_setStringDrawingContext:, nonatomic, retain) NSStringDrawingContext *stringDrawingContext;
+@property (setter=_setStringDrawingOptions:, nonatomic) int stringDrawingOptions;
+@property (setter=_setText:, nonatomic, copy) NSString *text;
+@property (setter=_setUniformTextAttributes:, nonatomic, copy) NSDictionary *uniformTextAttributes;
 
 - (void).cxx_destruct;
 - (id)_image;

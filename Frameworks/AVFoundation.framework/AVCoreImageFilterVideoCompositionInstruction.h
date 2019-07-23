@@ -3,8 +3,8 @@
  */
 
 @interface AVCoreImageFilterVideoCompositionInstruction : NSObject <AVVideoCompositionInstruction> {
-    id /* block */ _handler;
-    NSArray *_requiredSourceTrackIDs;
+    id /* block */  _handler;
+    NSArray * _requiredSourceTrackIDs;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -12,7 +12,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _sourceTrackPreferredTransform;
+    }  _sourceTrackPreferredTransform;
     struct { 
         struct { 
             long long value; 
@@ -26,7 +26,7 @@
             unsigned int flags; 
             long long epoch; 
         } duration; 
-    } _timeRange;
+    }  _timeRange;
 }
 
 @property (nonatomic, readonly) BOOL containsTweening;

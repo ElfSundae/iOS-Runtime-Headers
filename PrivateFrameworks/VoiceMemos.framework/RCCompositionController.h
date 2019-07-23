@@ -3,13 +3,13 @@
  */
 
 @interface RCCompositionController : NSObject {
-    NSMutableDictionary *_accessTokensByName;
-    RCCaptureSession *_activeCaptureSession;
-    RCComposition *_composition;
-    BOOL _hasLoggedUsageStatisticRecordingEvent;
-    BOOL _hasStartedRecording;
-    NSMutableArray *_undoableCompositionItemStack;
-    unsigned int _usageHistoryMask;
+    NSMutableDictionary * _accessTokensByName;
+    RCCaptureSession * _activeCaptureSession;
+    RCComposition * _composition;
+    BOOL  _hasLoggedUsageStatisticRecordingEvent;
+    BOOL  _hasStartedRecording;
+    NSMutableArray * _undoableCompositionItemStack;
+    unsigned int  _usageHistoryMask;
 }
 
 @property (nonatomic, readonly) RCCaptureSession *activeCaptureSession;

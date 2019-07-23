@@ -3,11 +3,11 @@
  */
 
 @interface AVExternalPlaybackIndicatorView : UIView {
-    UIImage *_externalPlaybackIndicatorImageLarge;
-    UIImage *_externalPlaybackIndicatorImageSmall;
-    UIImageView *_imageView;
-    UILabel *_subtitleLabel;
-    UILabel *_titleLabel;
+    UIImage * _externalPlaybackIndicatorImageLarge;
+    UIImage * _externalPlaybackIndicatorImageSmall;
+    UIImageView * _imageView;
+    UILabel * _subtitleLabel;
+    UILabel * _titleLabel;
 }
 
 - (void).cxx_destruct;

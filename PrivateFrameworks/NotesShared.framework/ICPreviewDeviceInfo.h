@@ -3,13 +3,14 @@
  */
 
 @interface ICPreviewDeviceInfo : NSObject {
-    float _imageSize;
-    float _scale;
+    float  _imageSize;
+    float  _scale;
 }
 
 @property (nonatomic) float imageSize;
 @property (nonatomic) float scale;
 
+- (id)description;
 - (float)imageSize;
 - (id)init;
 - (id)initWithImageSize:(float)arg1 scale:(float)arg2;

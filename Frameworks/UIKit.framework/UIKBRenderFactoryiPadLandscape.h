@@ -28,6 +28,8 @@
 - (id)handwritingMoreKeyImageName;
 - (float)internationalKeyFontSize;
 - (float)keyCornerRadius;
+- (float)messagesTypeKeyplanSwitchKeyFontSize;
+- (id)messagesWriteboardKeyImageName;
 - (float)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;

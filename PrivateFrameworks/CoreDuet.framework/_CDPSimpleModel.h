@@ -3,25 +3,25 @@
  */
 
 @interface _CDPSimpleModel : NSObject <_CDPModel> {
-    unsigned long _NEmail;
-    unsigned long _NPeople;
-    unsigned int **_email;
-    float *_email2LogScore;
-    unsigned int *_emailLength;
-    <_CDPDataHarvester> *_harvester;
-    float _lambda;
-    BOOL _loaded;
-    NSArray *_people;
-    unsigned int **_people2Email;
-    unsigned int *_people2EmailLength;
-    BOOL _requireOutgoingInteraction;
-    BOOL _scoresAreDirty;
-    unsigned long _size;
-    NSIndexSet *_testingIndices;
-    double *_timestamp;
-    bool *_userIsSender;
-    bool *_userIsThreadInitiator;
-    float _w0;
+    unsigned long  _NEmail;
+    unsigned long  _NPeople;
+    unsigned int ** _email;
+    float * _email2LogScore;
+    unsigned int * _emailLength;
+    <_CDPDataHarvester> * _harvester;
+    float  _lambda;
+    BOOL  _loaded;
+    NSArray * _people;
+    unsigned int ** _people2Email;
+    unsigned int * _people2EmailLength;
+    BOOL  _requireOutgoingInteraction;
+    BOOL  _scoresAreDirty;
+    unsigned long  _size;
+    NSIndexSet * _testingIndices;
+    double * _timestamp;
+    bool * _userIsSender;
+    bool * _userIsThreadInitiator;
+    float  _w0;
 }
 
 @property (readonly, copy) NSString *debugDescription;

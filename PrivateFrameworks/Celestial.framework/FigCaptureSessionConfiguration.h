@@ -3,11 +3,11 @@
  */
 
 @interface FigCaptureSessionConfiguration : NSObject <FigXPCCoding, NSCopying> {
-    BOOL _allowedToRunInWindowedLayout;
-    long long _configurationID;
-    BOOL _configuresAppAudioSession;
-    NSMutableArray *_connections;
-    BOOL _usesAppAudioSession;
+    BOOL  _allowedToRunInWindowedLayout;
+    long long  _configurationID;
+    BOOL  _configuresAppAudioSession;
+    NSMutableArray * _connections;
+    BOOL  _usesAppAudioSession;
 }
 
 @property (nonatomic) BOOL allowedToRunInWindowedLayout;

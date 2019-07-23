@@ -3,15 +3,15 @@
  */
 
 @interface CMKTimerIndicatorView : UIView {
-    CMKAnimationDelegate *__animationDelegate;
-    UILabel *__countdownLabel;
-    int __deferredLabelOrientation;
-    UIView *__dimmingView;
-    int __labelOrientation;
-    BOOL __performingStyleAnimation;
-    int __remainingTicks;
-    int __startingTicks;
-    int _style;
+    CMKAnimationDelegate * __animationDelegate;
+    UILabel * __countdownLabel;
+    int  __deferredLabelOrientation;
+    UIView * __dimmingView;
+    int  __labelOrientation;
+    BOOL  __performingStyleAnimation;
+    int  __remainingTicks;
+    int  __startingTicks;
+    int  _style;
 }
 
 @property (nonatomic, readonly) CMKAnimationDelegate *_animationDelegate;

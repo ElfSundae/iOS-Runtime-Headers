@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetDownloadSession : NSObject {
-    AVAssetDownloadSessionInternal *_internal;
+    AVAssetDownloadSessionInternal * _internal;
 }
 
 @property (nonatomic, readonly) NSURL *URL;
@@ -25,6 +25,8 @@
 - (void)_addFigAssetDownloaderListeners;
 - (void)_addFigAssetListeners;
 - (void)_addFigPlaybackItemListeners;
+- (id)_common_init;
+- (struct OpaqueFigAsset { }*)_createDuplicateFigAssetFromAVAsset:(id)arg1;
 - (id)_errorForFigNotificationPayload:(struct __CFDictionary { }*)arg1 key:(struct __CFString { }*)arg2;
 - (struct OpaqueFigAsset { }*)_figAsset;
 - (id)_figAssetDownloaderNotificationNames;
@@ -40,7 +42,7 @@
 - (void)_removeFigAssetListeners;
 - (void)_removeFigPlaybackItemListeners;
 - (void)_selectMediaOptionsFromMediaSelection:(id)arg1;
-- (BOOL)_setFileFigAsset:(struct OpaqueFigAsset { }*)arg1;
+- (long)_setFileFigAsset:(struct OpaqueFigAsset { }*)arg1;
 - (void)_transitionToTerminalStatus:(int)arg1 error:(id)arg2;
 - (id)_verifyDownloadConfigurationForAssetType;
 - (id)_weakReference;
@@ -60,6 +62,7 @@
 - (int)priority;
 - (id)resolvedMediaSelection;
 - (void)start;
+- (void)startLoadingMetadata;
 - (int)status;
 - (void)stop;
 

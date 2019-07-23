@@ -3,7 +3,7 @@
  */
 
 @interface _MKStackingViewControllerHeaderView : UIView {
-    UILabel *_titleLabel;
+    _MKUILabel * _titleLabel;
 }
 
 @property (nonatomic, copy) NSString *title;

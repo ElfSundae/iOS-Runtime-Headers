@@ -3,12 +3,14 @@
  */
 
 @interface NRPairingCompatibilityVersionInfo : NSObject <NSCopying, NSSecureCoding> {
-    int _maxPairingCompatibilityVersion;
-    int _minPairingCompatibilityVersion;
-    int _minQuickSwitchCompatibilityVersion;
-    int _pairingCompatibilityVersion;
+    BOOL  _isOverrideActive;
+    int  _maxPairingCompatibilityVersion;
+    int  _minPairingCompatibilityVersion;
+    int  _minQuickSwitchCompatibilityVersion;
+    int  _pairingCompatibilityVersion;
 }
 
+@property (nonatomic) BOOL isOverrideActive;
 @property (nonatomic) int maxPairingCompatibilityVersion;
 @property (nonatomic) int minPairingCompatibilityVersion;
 @property (nonatomic) int minQuickSwitchCompatibilityVersion;
@@ -23,10 +25,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned int)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isOverrideActive;
 - (int)maxPairingCompatibilityVersion;
 - (int)minPairingCompatibilityVersion;
 - (int)minQuickSwitchCompatibilityVersion;
 - (int)pairingCompatibilityVersion;
+- (void)setIsOverrideActive:(BOOL)arg1;
 - (void)setMaxPairingCompatibilityVersion:(int)arg1;
 - (void)setMinPairingCompatibilityVersion:(int)arg1;
 - (void)setMinQuickSwitchCompatibilityVersion:(int)arg1;

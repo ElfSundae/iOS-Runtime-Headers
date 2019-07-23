@@ -3,7 +3,7 @@
  */
 
 @interface _UIFieldEditorContentView : UIView {
-    UIFieldEditor *_fieldEditor;
+    UIFieldEditor * _fieldEditor;
 }
 
 @property (nonatomic) UIFieldEditor *fieldEditor;

@@ -3,11 +3,11 @@
  */
 
 @interface _UIActivityGroupListViewController : UICollectionViewController {
-    NSArray *_activityGroupViewControllers;
-    BOOL _darkStyleOnLegacyApp;
-    BOOL _embedded;
-    UILabel *_placeholderLabel;
-    NSArray *_visibleActivityGroupViewControllers;
+    NSArray * _activityGroupViewControllers;
+    BOOL  _darkStyleOnLegacyApp;
+    BOOL  _embedded;
+    UILabel * _placeholderLabel;
+    NSArray * _visibleActivityGroupViewControllers;
 }
 
 @property (nonatomic, copy) NSArray *activityGroupViewControllers;

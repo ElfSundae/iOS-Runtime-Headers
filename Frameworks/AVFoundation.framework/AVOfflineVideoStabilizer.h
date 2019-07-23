@@ -3,26 +3,26 @@
  */
 
 @interface AVOfflineVideoStabilizer : NSObject {
-    struct opaqueCMFormatDescription { } *_cachedVideoFormatDescription;
-    BOOL _clientMarkedEndOfMetadata;
-    BOOL _clientMarkedEndOfVideoData;
-    AVWeakReference *_dataProviderWeakReference;
-    NSMutableArray *_futureFrameMetadataDicts;
-    struct OpaqueFigSampleBufferProcessor { } *_gvsProcessor;
-    int _metadataOutputFrameNumber;
-    int _metadataPrimingCount;
-    NSSet *_optionalMetadataKeys;
-    NSMutableArray *_outputSampleBuffers;
-    struct __CVPixelBufferPool { } *_pixelBufferPool;
-    NSSet *_requiredMetadataKeys;
-    BOOL _stabilizationEnabled;
+    struct opaqueCMFormatDescription { } * _cachedVideoFormatDescription;
+    BOOL  _clientMarkedEndOfMetadata;
+    BOOL  _clientMarkedEndOfVideoData;
+    AVWeakReference * _dataProviderWeakReference;
+    NSMutableArray * _futureFrameMetadataDicts;
+    struct OpaqueFigSampleBufferProcessor { } * _gvsProcessor;
+    int  _metadataOutputFrameNumber;
+    int  _metadataPrimingCount;
+    NSSet * _optionalMetadataKeys;
+    NSMutableArray * _outputSampleBuffers;
+    struct __CVPixelBufferPool { } * _pixelBufferPool;
+    NSSet * _requiredMetadataKeys;
+    BOOL  _stabilizationEnabled;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _targetFrameDuration;
-    int _videoOutputFrameNumber;
+    }  _targetFrameDuration;
+    int  _videoOutputFrameNumber;
 }
 
 @property (nonatomic, readonly) NSMutableArray *outputSampleBuffers;

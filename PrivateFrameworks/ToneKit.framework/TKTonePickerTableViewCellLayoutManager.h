@@ -3,7 +3,7 @@
  */
 
 @interface TKTonePickerTableViewCellLayoutManager : UITableViewCellLayoutManagerValue1 {
-    float _minimumTextIndentation;
+    float  _minimumTextIndentation;
 }
 
 @property (nonatomic) float minimumTextIndentation;

@@ -3,7 +3,7 @@
  */
 
 @interface UIMotionEffectGroup : UIMotionEffect {
-    NSArray *_motionEffects;
+    NSArray * _motionEffects;
 }
 
 @property (nonatomic, copy) NSArray *motionEffects;

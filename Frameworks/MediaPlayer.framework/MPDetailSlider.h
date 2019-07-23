@@ -3,31 +3,32 @@
  */
 
 @interface MPDetailSlider : UISlider <MPDetailScrubControllerDelegate, MPDetailedScrubbing> {
-    BOOL _allowsScrubbing;
-    BOOL _autoscrubActive;
-    NSTimer *_autoscrubTimer;
-    double _availableDuration;
-    BOOL _canCommit;
-    double _currentTime;
-    UILabel *_currentTimeInverseLabel;
-    UILabel *_currentTimeLabel;
-    <MPDetailSliderDelegate> *_delegate;
-    float _detailScrubbingVerticalRange;
-    UIView *_downloadingTrackOverlay;
-    double _duration;
-    UIImageView *_glowDetailScrubImageView;
-    BOOL _isTracking;
-    float _maxTrackWidth;
-    float _minTimeLabelWidth;
+    BOOL  _allowsScrubbing;
+    BOOL  _autoscrubActive;
+    NSTimer * _autoscrubTimer;
+    double  _availableDuration;
+    BOOL  _canCommit;
+    double  _currentTime;
+    UILabel * _currentTimeInverseLabel;
+    UILabel * _currentTimeLabel;
+    <MPDetailSliderDelegate> * _delegate;
+    float  _detailScrubbingVerticalRange;
+    UIView * _downloadingTrackOverlay;
+    double  _duration;
+    AVTimeFormatter * _formatter;
+    UIImageView * _glowDetailScrubImageView;
+    BOOL  _isTracking;
+    float  _maxTrackWidth;
+    float  _minTimeLabelWidth;
     struct CGPoint { 
         float x; 
         float y; 
-    } _previousLocationInView;
-    MPDetailScrubController *_scrubController;
-    int _style;
-    UIImageView *_thumbImageView;
-    int _timeLabelStyle;
-    float _trackInset;
+    }  _previousLocationInView;
+    MPDetailScrubController * _scrubController;
+    int  _style;
+    UIImageView * _thumbImageView;
+    int  _timeLabelStyle;
+    float  _trackInset;
 }
 
 @property (nonatomic) BOOL allowsDetailScrubbing;
@@ -57,7 +58,7 @@
 - (void)_setupControlsForStyle;
 - (id)_stringForCurrentTime:(double)arg1;
 - (id)_stringForInverseCurrentTime:(double)arg1;
-- (id)_stringForTime:(double)arg1;
+- (id)_stringForTime:(double)arg1 elapsed:(BOOL)arg2;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_thumbHitEdgeInsets;
 - (void)_updateForAvailableDuraton;
 - (void)_updateTimeDisplayForTime:(double)arg1;

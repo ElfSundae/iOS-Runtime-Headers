@@ -3,11 +3,11 @@
  */
 
 @interface UIStatusBarBackgroundView : UIView {
-    BOOL _glowEnabled;
-    UIImageView *_glowView;
-    UIStatusBarStyleAttributes *_style;
-    BOOL _suppressGlow;
-    UIStatusBarCorners *_topCorners;
+    BOOL  _glowEnabled;
+    UIImageView * _glowView;
+    UIStatusBarStyleAttributes * _style;
+    BOOL  _suppressGlow;
+    UIStatusBarCorners * _topCorners;
 }
 
 - (void).cxx_destruct;

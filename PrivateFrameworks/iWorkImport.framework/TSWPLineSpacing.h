@@ -3,9 +3,9 @@
  */
 
 @interface TSWPLineSpacing : NSObject <NSCopying> {
-    float _amount;
-    float _baselineRule;
-    int _mode;
+    float  _amount;
+    float  _baselineRule;
+    int  _mode;
 }
 
 + (id)lineSpacing;
@@ -14,6 +14,7 @@
 - (float)baselineRule;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (unsigned int)hash;
 - (id)init;
 - (id)initWithArchive:(const struct LineSpacingArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; int x5; float x6; float x7; }*)arg1 unarchiver:(id)arg2;
 - (id)initWithMode:(int)arg1 amount:(float)arg2;

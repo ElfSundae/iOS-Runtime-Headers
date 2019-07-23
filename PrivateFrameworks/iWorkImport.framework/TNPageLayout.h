@@ -3,16 +3,16 @@
  */
 
 @interface TNPageLayout : TSWPPageLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver> {
-    TNPageContentLayout *mContentLayout;
-    BOOL mIsChildLayoutsValid;
-    BOOL mIsPlaceholder;
-    TNPageController *mPageController;
-    struct { 
+    TNPageContentLayout * mContentLayout;
+    BOOL  mIsChildLayoutsValid;
+    BOOL  mIsPlaceholder;
+    TNPageController * mPageController;
+    struct TSUCellCoord { 
         unsigned short row; 
         unsigned char column; 
         unsigned char reserved; 
-    } mPageCoordinate;
-    TNSheet *mSheet;
+    }  mPageCoordinate;
+    TNSheet * mSheet;
 }
 
 @property (nonatomic, readonly) BOOL alwaysStartsNewTarget;
@@ -20,16 +20,20 @@
 @property (nonatomic, readonly) BOOL columnsAreLeftToRight;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } contentFrame;
 @property (retain) TNPageContentLayout *contentLayout;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) TSWPPadding *layoutMargins;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } pageBounds;
 @property TNPageController *pageController;
-@property struct { unsigned short x1; unsigned char x2; unsigned char x3; } pageCoordinate;
+@property struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; } pageCoordinate;
 @property (getter=isPlaceholder) BOOL placeholder;
 @property (retain) TNSheet *sheet;
 @property (nonatomic, readonly) BOOL shrinkTextToFit;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) float textScaleFactor;
 
-+ (id)pageLayoutWithPageController:(id)arg1 pageCoordinate:(struct { unsigned short x1; unsigned char x2; unsigned char x3; })arg2;
++ (id)pageLayoutWithPageController:(id)arg1 pageCoordinate:(struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; })arg2;
 
 - (void)addChild:(id)arg1;
 - (struct CGSize { float x1; float x2; })adjustedInsetsForTarget:(id)arg1;
@@ -49,7 +53,7 @@
 - (id)description;
 - (float)gapForColumnIndex:(unsigned int)arg1 bodyWidth:(float)arg2;
 - (id)headerFooterProvider;
-- (id)initWithPageController:(id)arg1 pageCoordinate:(struct { unsigned short x1; unsigned char x2; unsigned char x3; })arg2;
+- (id)initWithPageController:(id)arg1 pageCoordinate:(struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; })arg2;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (void)invalidateSize;
 - (BOOL)isPlaceholder;
@@ -58,7 +62,7 @@
 - (id)p_pageInfo;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })pageBounds;
 - (id)pageController;
-- (struct { unsigned short x1; unsigned char x2; unsigned char x3; })pageCoordinate;
+- (struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; })pageCoordinate;
 - (unsigned int)pageCount;
 - (unsigned int)pageNumber;
 - (void)parentDidChange;
@@ -69,7 +73,7 @@
 - (void)setChildren:(id)arg1;
 - (void)setContentLayout:(id)arg1;
 - (void)setPageController:(id)arg1;
-- (void)setPageCoordinate:(struct { unsigned short x1; unsigned char x2; unsigned char x3; })arg1;
+- (void)setPageCoordinate:(struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; })arg1;
 - (void)setPlaceholder:(BOOL)arg1;
 - (void)setSheet:(id)arg1;
 - (id)sheet;

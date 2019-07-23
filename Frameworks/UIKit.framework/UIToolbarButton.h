@@ -8,18 +8,18 @@
         float left; 
         float bottom; 
         float right; 
-    } __additionalSelectionInsets;
-    Class _appearanceGuideClass;
-    id _appearanceStorage;
-    BOOL _barHeight;
-    int _barStyle;
-    BOOL _bezel;
+    }  __additionalSelectionInsets;
+    Class  _appearanceGuideClass;
+    id  _appearanceStorage;
+    BOOL  _barHeight;
+    int  _barStyle;
+    BOOL  _bezel;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _glowAdjust;
+    }  _glowAdjust;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,22 +29,22 @@
             float width; 
             float height; 
         } size; 
-    } _hitRect;
-    UIView *_info;
+    }  _hitRect;
+    UIView * _info;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _infoInsets;
-    BOOL _isInTopBar;
-    UILabel *_label;
-    float _labelHeight;
-    float _maximumWidth;
-    float _minimumWidth;
-    BOOL _onState;
-    int _style;
-    UIColor *_toolbarTintColor;
+    }  _infoInsets;
+    BOOL  _isInTopBar;
+    UILabel * _label;
+    float  _labelHeight;
+    float  _maximumWidth;
+    float  _minimumWidth;
+    BOOL  _onState;
+    int  _style;
+    UIColor * _toolbarTintColor;
 }
 
 @property (setter=_setAdditionalSelectionInsets:, nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } _additionalSelectionInsets;

@@ -3,17 +3,17 @@
  */
 
 @interface PLBBBulletinsManager : NSObject <PLBBPendingBulletinsBatchDelegate> {
-    void *_addressBook;
-    int _alertFiltrationEnabled;
-    BOOL _badgeCountIsInvalid;
-    NSMutableDictionary *_dirtyPlist;
-    BOOL _enableTemporaryDebugMode;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    NSMutableArray *_pendingBatches;
-    NSMutableArray *_pendingBulletins;
-    NSObject<OS_dispatch_source> *_pendingChangesTimerSource;
-    NSMutableIndexSet *_pendingDeleteRecordIDs;
-    NSObject<OS_dispatch_source> *_saveTimerSource;
+    void * _addressBook;
+    int  _alertFiltrationEnabled;
+    BOOL  _badgeCountIsInvalid;
+    NSMutableDictionary * _dirtyPlist;
+    BOOL  _enableTemporaryDebugMode;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
+    NSMutableArray * _pendingBatches;
+    NSMutableArray * _pendingBulletins;
+    NSObject<OS_dispatch_source> * _pendingChangesTimerSource;
+    NSMutableIndexSet * _pendingDeleteRecordIDs;
+    NSObject<OS_dispatch_source> * _saveTimerSource;
 }
 
 @property (readonly) NSArray *currentBulletinDictionaries;
@@ -25,6 +25,7 @@
 + (id)sharedManager;
 
 - (void)_addPendingBulletins:(id)arg1;
+- (id)_albumCloudGUIDForRecordID:(unsigned long long)arg1;
 - (BOOL)_alertFiltrationEnabled;
 - (BOOL)_bulletinType:(long long)arg1 matchesCommentsOrLikeBulletins:(BOOL)arg2 andPhotosAddedToAlbumBulletins:(BOOL)arg3;
 - (id)_currentPendingBatch;
@@ -73,6 +74,8 @@
 - (void)noteUserDidNavigateIntoSharedAlbum:(id)arg1;
 - (void)noteUserDidReadCommentOnSharedAsset:(id)arg1;
 - (void)noteUserDidViewCloudFeedContent:(int)arg1;
+- (void)sendResponse:(BOOL)arg1 toPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg2;
 - (void)setEnableTemporaryDebugMode:(BOOL)arg1;
+- (void)userViewedBulletinWithRecordID:(unsigned long long)arg1;
 
 @end

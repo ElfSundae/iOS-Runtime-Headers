@@ -3,14 +3,14 @@
  */
 
 @interface PLCloudPendingResourceTask : NSObject {
-    BOOL _completed;
-    BOOL _highPriority;
-    float _lastReportedProgress;
-    NSDate *_lastUpdated;
-    NSMutableDictionary *_pendingTasks;
-    BOOL _transferStarted;
-    CPLResourceTransferTask *_transferTask;
-    BOOL _transferTaskRemoved;
+    BOOL  _completed;
+    BOOL  _highPriority;
+    float  _lastReportedProgress;
+    NSDate * _lastUpdated;
+    NSMutableDictionary * _pendingTasks;
+    BOOL  _transferStarted;
+    CPLResourceTransferTask * _transferTask;
+    BOOL  _transferTaskRemoved;
 }
 
 @property (getter=isHighPriority, nonatomic, readonly) BOOL highPriority;

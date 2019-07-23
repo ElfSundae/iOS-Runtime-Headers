@@ -3,9 +3,9 @@
  */
 
 @interface IRFrame : NSObject {
-    unsigned int _count;
-    unsigned long long _timestamp;
-    unsigned int *_timings;
+    unsigned int  _count;
+    unsigned long long  _timestamp;
+    unsigned int * _timings;
 }
 
 @property (nonatomic, readonly) unsigned int count;

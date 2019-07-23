@@ -3,7 +3,7 @@
  */
 
 @interface UnderlineButton : UIButton {
-    float _linePadding;
+    float  _linePadding;
 }
 
 @property (nonatomic) float linePadding;

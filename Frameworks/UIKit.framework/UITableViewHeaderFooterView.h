@@ -3,11 +3,11 @@
  */
 
 @interface UITableViewHeaderFooterView : UIView <UITableViewSubviewReusing> {
-    UIImage *_backgroundImage;
-    UIView *_backgroundView;
-    <UITableViewConstants> *_constants;
-    UIView *_contentView;
-    _UITableViewHeaderFooterViewLabel *_detailLabel;
+    UIImage * _backgroundImage;
+    UIView * _backgroundView;
+    <UITableConstants> * _constants;
+    UIView * _contentView;
+    _UITableViewHeaderFooterViewLabel * _detailLabel;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,7 +17,7 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
+    }  _frame;
     struct { 
         unsigned int isHeader : 1; 
         unsigned int labelBackgroundColorNeedsUpdate : 1; 
@@ -27,25 +27,26 @@
         unsigned int isTopHeader : 1; 
         unsigned int didSetSectionHeader : 1; 
         unsigned int didSetupDefaults : 1; 
-    } _headerFooterFlags;
-    _UITableViewHeaderFooterViewLabel *_label;
-    float _maxTitleWidth;
-    NSString *_reuseIdentifier;
+    }  _headerFooterFlags;
+    _UITableViewHeaderFooterViewLabel * _label;
+    float  _maxTitleWidth;
+    NSString * _reuseIdentifier;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _separatorInset;
-    UITableView *_tableView;
-    int _tableViewStyle;
-    int _textAlignment;
-    UIColor *_tintColor;
+    }  _separatorInset;
+    <UITable> * _table;
+    <UITable> * _tableView;
+    int  _tableViewStyle;
+    int  _textAlignment;
+    UIColor * _tintColor;
 }
 
 @property (nonatomic, retain) UIImage *backgroundImage;
 @property (nonatomic, retain) UIView *backgroundView;
-@property (getter=_constants, setter=_setConstants:, nonatomic, retain) <UITableViewConstants> *constants;
+@property (getter=_constants, setter=_setConstants:, nonatomic, retain) <UITableConstants> *constants;
 @property (nonatomic, readonly) UIView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -59,6 +60,7 @@
 @property (nonatomic) BOOL sectionHeader;
 @property (getter=_stripPadding, setter=_setStripPadding:, nonatomic) BOOL stripPadding;
 @property (readonly) Class superclass;
+@property (nonatomic) <UITable> *table;
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) int tableViewStyle;
 @property (nonatomic, copy) NSString *text;
@@ -71,13 +73,17 @@
 
 + (id)_defaultFontForHeaderFooterView:(id)arg1;
 + (id)_defaultFontForTableViewStyle:(int)arg1 isSectionHeader:(BOOL)arg2;
++ (id)_defaultPlainHeaderFooterFont;
 + (id)_defaultTextColorForTableViewStyle:(int)arg1 isSectionHeader:(BOOL)arg2;
++ (float)defaultFooterHeightForStyle:(int)arg1;
++ (float)defaultHeaderHeightForStyle:(int)arg1;
 
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_backgroundRect;
 - (id)_constants;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_detailLabelFrame;
 - (struct CGSize { float x1; float x2; })_detailTextSizeForWidth:(float)arg1;
+- (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (void)_invalidateDetailLabelBackgroundColor;
 - (void)_invalidateLabelBackgroundColor;
 - (BOOL)_isTopHeader;
@@ -86,7 +92,6 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_labelFrame;
 - (float)_marginWidth;
 - (float)_rightMarginWidth;
-- (id)_scriptingInfo;
 - (void)_setBackgroundViewColor:(id)arg1;
 - (void)_setConstants:(id)arg1;
 - (void)_setMarginWidth:(float)arg1;
@@ -112,6 +117,7 @@
 - (id)backgroundView;
 - (id)contentView;
 - (id)detailTextLabel;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)floating;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frame;
 - (id)initWithCoder:(id)arg1;
@@ -126,6 +132,7 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundImage:(id)arg1;
 - (void)setBackgroundView:(id)arg1;
+- (void)setContentView:(id)arg1;
 - (void)setFloating:(BOOL)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setMaxTitleWidth:(float)arg1;
@@ -133,6 +140,7 @@
 - (void)setOpaque:(BOOL)arg1;
 - (void)setReuseIdentifier:(id)arg1;
 - (void)setSectionHeader:(BOOL)arg1;
+- (void)setTable:(id)arg1;
 - (void)setTableView:(id)arg1;
 - (void)setTableViewStyle:(int)arg1;
 - (void)setText:(id)arg1;
@@ -140,6 +148,7 @@
 - (void)setTintColor:(id)arg1;
 - (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 - (struct CGSize { float x1; float x2; })systemLayoutSizeFittingSize:(struct CGSize { float x1; float x2; })arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (id)table;
 - (id)tableView;
 - (int)tableViewStyle;
 - (id)text;

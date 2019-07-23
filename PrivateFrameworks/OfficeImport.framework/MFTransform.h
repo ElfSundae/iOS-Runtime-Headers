@@ -10,25 +10,25 @@
         float d; 
         float tx; 
         float ty; 
-    } m_combinedTransform;
-    NSObject<MFDeviceDriver> *m_deviceDriver;
-    int m_mapMode;
+    }  m_combinedTransform;
+    NSObject<MFDeviceDriver> * m_deviceDriver;
+    int  m_mapMode;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_viewportExt;
+    }  m_viewportExt;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_viewportOrg;
+    }  m_viewportOrg;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_windowExt;
+    }  m_windowExt;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_windowOrg;
+    }  m_windowOrg;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -36,7 +36,7 @@
         float d; 
         float tx; 
         float ty; 
-    } m_world;
+    }  m_world;
 }
 
 - (struct CGPoint { float x1; float x2; })DPtoLP:(struct CGPoint { float x1; float x2; })arg1;

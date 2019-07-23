@@ -3,7 +3,7 @@
  */
 
 @interface KNNoteInfo : TSPObject <TSDContainerInfo, TSKDocumentObject, TSKTransformableObject, TSWPStorageParent> {
-    TSWPStorage *mContainedStorage;
+    TSWPStorage * mContainedStorage;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,9 +13,9 @@
             float width; 
             float height; 
         } size; 
-    } mFrameForPrinting;
-    NSObject<TSDContainerInfo> *mParentInfo;
-    BOOL mShrinkTextForPrinting;
+    }  mFrameForPrinting;
+    NSObject<TSDContainerInfo> * mParentInfo;
+    BOOL  mShrinkTextForPrinting;
 }
 
 @property (getter=isAnchoredToText, nonatomic, readonly) BOOL anchoredToText;
@@ -59,6 +59,7 @@
 - (BOOL)isAttachedToBodyText;
 - (BOOL)isFloatingAboveText;
 - (BOOL)isInlineWithText;
+- (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct NoteArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; struct Reference {} *x5; }*)arg1 unarchiver:(id)arg2;

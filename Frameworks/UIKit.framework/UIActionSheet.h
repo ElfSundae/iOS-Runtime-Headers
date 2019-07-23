@@ -3,21 +3,21 @@
  */
 
 @interface UIActionSheet : UIView <UIPopoverControllerDelegate> {
-    int _actionSheetStyle;
-    NSMutableArray *_actions;
-    UIAlertController *_alertController;
-    BOOL _alertControllerShouldDismiss;
-    int _cancelIndex;
-    id _context;
-    <UIActionSheetDelegate> *_delegate;
-    int _destructiveButtonIndex;
-    BOOL _dismissingAlertController;
-    int _firstOtherButtonIndex;
-    BOOL _handlingAlertActionShouldDismiss;
-    BOOL _hasPreparedAlertActions;
-    BOOL _isPresented;
-    _UIAlertControllerShimPresenter *_presenter;
-    UIActionSheet *_retainedSelf;
+    int  _actionSheetStyle;
+    NSMutableArray * _actions;
+    UIAlertController * _alertController;
+    BOOL  _alertControllerShouldDismiss;
+    int  _cancelIndex;
+    id  _context;
+    <UIActionSheetDelegate> * _delegate;
+    int  _destructiveButtonIndex;
+    BOOL  _dismissingAlertController;
+    int  _firstOtherButtonIndex;
+    BOOL  _handlingAlertActionShouldDismiss;
+    BOOL  _hasPreparedAlertActions;
+    BOOL  _isPresented;
+    _UIAlertControllerShimPresenter * _presenter;
+    UIActionSheet * _retainedSelf;
 }
 
 @property (nonatomic) int actionSheetStyle;
@@ -32,6 +32,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 @property (getter=isVisible, nonatomic, readonly) BOOL visible;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (BOOL)_isAlertControllerShimClass;
 + (Class)_popoverControllerClass;
@@ -112,5 +114,9 @@
 - (id)subtitle;
 - (id)title;
 - (BOOL)useThreeColumnsButtonsLayout;
+
+// Image: /System/Library/PrivateFrameworks/Swift/libswiftUIKit.dylib
+
+- (id)initWithTitle:(id)arg1 delegate:(id)arg2 cancelButtonTitle:(id)arg3 destructiveButtonTitle:(id)arg4;
 
 @end

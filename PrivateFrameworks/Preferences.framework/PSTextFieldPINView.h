@@ -3,10 +3,10 @@
  */
 
 @interface PSTextFieldPINView : PINView <UITableViewDataSource> {
-    AlphanumericPINTableViewCell *_cell;
-    UITextField *_passcodeField;
-    UITableView *_table;
-    BOOL _usesNumericKeyboard;
+    AlphanumericPINTableViewCell * _cell;
+    UITextField * _passcodeField;
+    UITableView * _table;
+    BOOL  _usesNumericKeyboard;
 }
 
 @property (readonly, copy) NSString *debugDescription;

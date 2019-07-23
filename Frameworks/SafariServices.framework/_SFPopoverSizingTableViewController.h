@@ -3,8 +3,8 @@
  */
 
 @interface _SFPopoverSizingTableViewController : UITableViewController {
-    BOOL _didHaveTranslucentAppearance;
-    BOOL _didUpdateTranslucentAppearanceAtLeastOnce;
+    BOOL  _didHaveTranslucentAppearance;
+    BOOL  _didUpdateTranslucentAppearanceAtLeastOnce;
 }
 
 @property (nonatomic, readonly) BOOL hasTranslucentAppearance;

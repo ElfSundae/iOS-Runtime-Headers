@@ -3,18 +3,18 @@
  */
 
 @interface CMKImageWell : UIButton {
-    UIView *__containerView;
-    NSMutableArray *__dimmingViewQueue;
-    UIImageView *__maskImageView;
-    UIImageView *__thumbnailImageView;
-    NSString *__uuid;
-    int _cameraOrientation;
+    UIView * __containerView;
+    NSMutableArray * __dimmingViewQueue;
+    UIImageView * __maskImageView;
+    UIImageView * __thumbnailImageView;
+    NSString * __uuid;
+    int  _cameraOrientation;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _tappableEdgeInsets;
+    }  _tappableEdgeInsets;
 }
 
 @property (nonatomic, readonly) UIView *_containerView;

@@ -13,11 +13,11 @@
 - (NSDate *)currentDate;
 - (HKQuantity *)energyBurnedGoalToday;
 - (HKQuantity *)energyBurnedGoalYesterday;
-- (unsigned int)numberOfSessionsCompletedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 minimumSessionDuration:(double)arg3;
-- (NSArray *)sessionsEndingAfterAnchor:(long long)arg1 newAnchor:(long long*)arg2;
+- (long long)mostRecentWorkoutAnchor;
 - (unsigned int)standingHoursToday;
 - (unsigned int)standingHoursYesterday;
 - (unsigned int)stepsTakenToday;
 - (unsigned int)stepsTakenYesterday;
+- (NSArray *)workoutsEndingAfterAnchor:(long long)arg1 newAnchor:(long long*)arg2;
 
 @end

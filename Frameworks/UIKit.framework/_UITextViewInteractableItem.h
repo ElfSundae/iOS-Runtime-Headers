@@ -3,28 +3,33 @@
  */
 
 @interface _UITextViewInteractableItem : NSObject <_UIRotatingAlertControllerDelegate> {
-    NSArray *_actions;
-    NSDictionary *_defaultAction;
-    BOOL _interactionIsFinished;
-    _UIRotatingAlertController *_linkInteractionAlertController;
+    NSArray * _actions;
+    NSDictionary * _defaultAction;
+    BOOL  _interactionIsFinished;
+    _UIRotatingAlertController * _linkInteractionAlertController;
+    NSString * _localizedTitle;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _range;
+    }  _range;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _subRange;
-    UITextView *_textView;
-    UIWindow *_windowForActionSheetPresentation;
+    }  _subRange;
+    UITextView * _textView;
+    UIWindow * _windowForActionSheetPresentation;
 }
 
 @property (nonatomic, readonly) NSArray *actions;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) NSDictionary *defaultAction;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic) BOOL interactionIsFinished;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic) struct _NSRange { unsigned int x1; unsigned int x2; } range;
 @property (nonatomic) struct _NSRange { unsigned int x1; unsigned int x2; } subRange;
+@property (readonly) Class superclass;
 @property (nonatomic) UITextView *textView;
 @property (nonatomic, retain) UIWindow *windowForActionSheetPresentation;
 
@@ -36,7 +41,7 @@
 - (void)_showActionSheet;
 - (id)actions;
 - (BOOL)allowHighlight;
-- (BOOL)allowInteraction;
+- (BOOL)allowInteraction:(int)arg1;
 - (id)defaultAction;
 - (void)handleLongPress;
 - (void)handleTap;
@@ -52,6 +57,7 @@
 - (void)setSubRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (void)setTextView:(id)arg1;
 - (void)setWindowForActionSheetPresentation:(id)arg1;
+- (void)sheet:(id)arg1 presentingViewControllerWillChange:(id)arg2;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })subRange;
 - (id)textView;
 - (id)windowForActionSheetPresentation;

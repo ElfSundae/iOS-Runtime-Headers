@@ -9,6 +9,9 @@
 @property float mass;
 @property (readonly) double settlingDuration;
 @property float stiffness;
+@property float velocity;
+
+// Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
 
 + (id)defaultValueForKey:(id)arg1;
 
@@ -29,5 +32,9 @@
 - (double)settlingDuration;
 - (float)stiffness;
 - (float)velocity;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
++ (id)_lp_springWithMass:(float)arg1 stiffness:(float)arg2 damping:(float)arg3;
 
 @end

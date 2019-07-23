@@ -3,7 +3,7 @@
  */
 
 @interface TSSPropertyMap : NSObject <NSCopying, TSSPropertySource> {
-    struct TSSPropertyStore { } *mStore;
+    struct TSSPropertyStore { } * mStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -43,6 +43,7 @@
 - (id)initWithPropertyMap:(id)arg1;
 - (int)intValueForProperty:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPropertyMap:(id)arg1;
 - (void)minusPropertyMap:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)objectForProperty:(int)arg1;
@@ -66,6 +67,7 @@
 - (void)removeValuesFromPropertyMap:(id)arg1;
 - (void)setBoolValue:(BOOL)arg1 forProperty:(int)arg2;
 - (void)setBoxedObject:(id)arg1 forProperty:(int)arg2;
+- (void)setBoxedObjects:(id*)arg1 forProperties:(int*)arg2 withCount:(unsigned int)arg3;
 - (void)setCGFloatValue:(float)arg1 forProperty:(int)arg2;
 - (void)setDoubleValue:(double)arg1 forProperty:(int)arg2;
 - (void)setFloatValue:(float)arg1 forProperty:(int)arg2;

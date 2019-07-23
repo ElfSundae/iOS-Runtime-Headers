@@ -5,6 +5,7 @@
 @interface FIUISharingBadgeAssetGenerator : NSObject
 
 + (unsigned int)_badgeShapeForAchievement:(id)arg1;
++ (unsigned int)_badgeShapeFromName:(id)arg1;
 + (struct CGSize { float x1; float x2; })_badgeSizeForSharedImageSize:(struct CGSize { float x1; float x2; })arg1 withdefaultBadgeSize:(struct CGSize { float x1; float x2; })arg2 defaultSharedImageSize:(struct CGSize { float x1; float x2; })arg3;
 + (void)_drawDate:(id)arg1 inSharedImageOfSize:(struct CGSize { float x1; float x2; })arg2;
 + (struct CGPoint { float x1; float x2; })_originForBadgeImageOfSize:(struct CGSize { float x1; float x2; })arg1 withinSharedImageOfSize:(struct CGSize { float x1; float x2; })arg2 forAchievement:(id)arg3;

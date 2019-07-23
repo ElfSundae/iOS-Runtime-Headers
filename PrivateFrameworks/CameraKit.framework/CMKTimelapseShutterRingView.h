@@ -3,13 +3,13 @@
  */
 
 @interface CMKTimelapseShutterRingView : UIView {
-    CALayer *__largeTickLayer;
-    CAReplicatorLayer *__largeTickReplicatorLayer;
-    CALayer *__smallTickLayer;
-    CAReplicatorLayer *__smallTickReplicatorLayer;
-    CALayer *__timerHandLayer;
-    CALayer *__timerHandParentLayer;
-    BOOL _animating;
+    CALayer * __largeTickLayer;
+    CAReplicatorLayer * __largeTickReplicatorLayer;
+    CALayer * __smallTickLayer;
+    CAReplicatorLayer * __smallTickReplicatorLayer;
+    CALayer * __timerHandLayer;
+    CALayer * __timerHandParentLayer;
+    BOOL  _animating;
 }
 
 @property (nonatomic, readonly) CALayer *_largeTickLayer;

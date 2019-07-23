@@ -5,17 +5,19 @@
 @interface BRFieldPkgItem : PBCodable <NSCopying> {
     struct { 
         unsigned int mtime : 1; 
+        unsigned int xattrIndex : 1; 
         unsigned int isExecutable : 1; 
         unsigned int isWritable : 1; 
-    } _has;
-    BOOL _isExecutable;
-    BOOL _isWritable;
-    long long _mtime;
-    NSString *_path;
-    NSData *_quarantineInfo;
-    NSData *_signature;
-    NSString *_symlinkContent;
-    int _type;
+    }  _has;
+    BOOL  _isExecutable;
+    BOOL  _isWritable;
+    long long  _mtime;
+    NSString * _path;
+    NSData * _quarantineInfo;
+    NSData * _signature;
+    NSString * _symlinkContent;
+    int  _type;
+    long long  _xattrIndex;
 }
 
 @property (nonatomic) BOOL hasIsExecutable;
@@ -25,6 +27,7 @@
 @property (nonatomic, readonly) BOOL hasQuarantineInfo;
 @property (nonatomic, readonly) BOOL hasSignature;
 @property (nonatomic, readonly) BOOL hasSymlinkContent;
+@property (nonatomic) BOOL hasXattrIndex;
 @property (nonatomic) BOOL isExecutable;
 @property (nonatomic) BOOL isWritable;
 @property (nonatomic) long long mtime;
@@ -33,8 +36,10 @@
 @property (nonatomic, retain) NSData *signature;
 @property (nonatomic, retain) NSString *symlinkContent;
 @property (nonatomic) int type;
+@property (nonatomic) long long xattrIndex;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)clear;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -47,6 +52,7 @@
 - (BOOL)hasQuarantineInfo;
 - (BOOL)hasSignature;
 - (BOOL)hasSymlinkContent;
+- (BOOL)hasXattrIndex;
 - (unsigned int)hash;
 - (id)initWithPkgItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
@@ -60,6 +66,7 @@
 - (void)setHasIsExecutable:(BOOL)arg1;
 - (void)setHasIsWritable:(BOOL)arg1;
 - (void)setHasMtime:(BOOL)arg1;
+- (void)setHasXattrIndex:(BOOL)arg1;
 - (void)setIsExecutable:(BOOL)arg1;
 - (void)setIsWritable:(BOOL)arg1;
 - (void)setMtime:(long long)arg1;
@@ -68,10 +75,13 @@
 - (void)setSignature:(id)arg1;
 - (void)setSymlinkContent:(id)arg1;
 - (void)setType:(int)arg1;
+- (void)setXattrIndex:(long long)arg1;
 - (id)signature;
 - (id)symlinkContent;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (void)updateWithPkgItem:(id)arg1;
 - (void)writeTo:(id)arg1;
+- (long long)xattrIndex;
 
 @end

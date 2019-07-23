@@ -3,13 +3,13 @@
  */
 
 @interface BWCameraInfoMetadataNode : BWNode {
-    struct opaqueCMFormatDescription { } *_boxedMetadataFormatDescription;
-    BWNodeOutput *_boxedMetadataOutput;
-    struct OpaqueCMBlockBuffer { } *_emptyMetadataSampleData;
-    BOOL _generateDebugMetadata;
-    unsigned long _localIDForDebugData_BE;
-    BWNodeOutput *_passthruOutput;
-    BOOL _previousGeneratedMetadataBufferWasEmpty;
+    struct opaqueCMFormatDescription { } * _boxedMetadataFormatDescription;
+    BWNodeOutput * _boxedMetadataOutput;
+    struct OpaqueCMBlockBuffer { } * _emptyMetadataSampleData;
+    BOOL  _generateDebugMetadata;
+    unsigned long  _localIDForDebugData_BE;
+    BWNodeOutput * _passthruOutput;
+    BOOL  _previousGeneratedMetadataBufferWasEmpty;
 }
 
 @property (nonatomic, readonly) BWNodeOutput *boxedMetadataOutput;

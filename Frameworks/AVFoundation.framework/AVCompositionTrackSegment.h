@@ -3,7 +3,7 @@
  */
 
 @interface AVCompositionTrackSegment : AVAssetTrackSegment <NSSecureCoding> {
-    AVCompositionTrackSegmentInternal *_priv;
+    AVCompositionTrackSegmentInternal * _priv;
 }
 
 @property (getter=isEmpty, nonatomic, readonly) BOOL empty;

@@ -3,8 +3,8 @@
  */
 
 @interface CUINamedLayerImage : CUINamedImage {
-    int _blendMode;
-    BOOL _fixedFrame;
+    int  _blendMode;
+    BOOL  _fixedFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,8 +14,8 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    float _opacity;
+    }  _frame;
+    float  _opacity;
 }
 
 @property (nonatomic) int blendMode;

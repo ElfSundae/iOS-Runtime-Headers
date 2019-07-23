@@ -3,7 +3,8 @@
  */
 
 @interface CAWindowServerDisplay : NSObject {
-    struct CAWindowServerDisplayImpl { struct Mutex { struct _opaque_pthread_mutex_t { long x_1_2_1; BOOL x_1_2_2[40]; } x_1_1_1; } x1; struct Server {} *x2; } *_impl;
+    struct CAWindowServerDisplayImpl { struct Mutex { struct _opaque_pthread_mutex_t { long x_1_2_1; BOOL x_1_2_2[40]; } x_1_1_1; } x1; struct Server {} *x2; } * _impl;
+    BOOL  _mirroringEnabled;
 }
 
 @property (copy) NSString *TVMode;
@@ -34,13 +35,14 @@
 @property (readonly) unsigned int rendererFlags;
 @property float scale;
 @property (getter=isSecure) BOOL secure;
+@property (readonly) BOOL supportsExtendedColors;
 @property int tag;
 @property (readonly) NSString *uniqueId;
 @property BOOL usesPreferredModeRefreshRate;
 
 - (id)TVMode;
 - (id)TVSignalType;
-- (id)_initWithCADisplayServer:(struct Server { int (**x1)(); struct SpinLock { struct { int x_1_2_1; } x_2_1_1; } x2; struct Mutex { struct _opaque_pthread_mutex_t { long x_1_2_1; BOOL x_1_2_2[40]; } x_3_1_1; } x3; id x4; struct Display {} x5; struct __CFString {} *x6; struct ContextItem {} *x7; unsigned int x8; unsigned int x9; struct ContextItem {} *x10; unsigned int x11; struct SpinLock { struct { int x_1_2_1; } x_12_1_1; } x12; struct PendingOperation {} *x13; struct Context {} *x14; struct Shape {} *x15; unsigned int x16; struct Context {} *x17; struct Renderer {} *x18; double x19; double x20; unsigned int x21 : 1; unsigned int x22 : 1; unsigned int x23 : 1; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; }*)arg1;
+- (id)_initWithCADisplayServer:(struct Server { int (**x1)(); struct SpinLock { struct { int x_1_2_1; } x_2_1_1; } x2; struct Mutex { struct _opaque_pthread_mutex_t { long x_1_2_1; BOOL x_1_2_2[40]; } x_3_1_1; } x3; id x4; struct Display {} x5; struct __CFString {} *x6; struct ContextItem {} *x7; unsigned int x8; unsigned int x9; struct ContextItem {} *x10; unsigned int x11; struct SpinLock { struct { int x_1_2_1; } x_12_1_1; } x12; struct PendingOperation {} *x13; struct Context {} *x14; struct Shape {} *x15; unsigned int x16; struct Context {} *x17; struct Renderer {} *x18; double x19; double x20; double x21; struct __CFDictionary {} *x22; struct HangEvent { int (**x_23_1_1)(); struct hangEvent {} *x_23_1_2; } x23; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; unsigned int x29 : 1; }*)arg1;
 - (void)addClone:(id)arg1;
 - (void)addClone:(id)arg1 options:(id)arg2;
 - (BOOL)allowsDisplayCompositing;
@@ -80,6 +82,7 @@
 - (void)removeClone:(id)arg1;
 - (unsigned int)rendererFlags;
 - (float)scale;
+- (void)setAccessibilityColorMatrix:(float*)arg1 scale:(float)arg2;
 - (void)setAllowsDisplayCompositing:(BOOL)arg1;
 - (void)setAllowsVirtualModes:(BOOL)arg1;
 - (void)setBlanked:(BOOL)arg1;
@@ -104,6 +107,7 @@
 - (void)setTVSignalType:(id)arg1;
 - (void)setTag:(int)arg1;
 - (void)setUsesPreferredModeRefreshRate:(BOOL)arg1;
+- (BOOL)supportsExtendedColors;
 - (int)tag;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (id)uniqueId;

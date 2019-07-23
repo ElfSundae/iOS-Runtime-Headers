@@ -3,11 +3,11 @@
  */
 
 @interface IKImageElement : IKViewElement {
-    NSURL *_defaultURL;
-    unsigned int _imageType;
-    float _srcHeight;
-    float _srcWidth;
-    NSDictionary *_srcset;
+    NSURL * _defaultURL;
+    unsigned int  _imageType;
+    float  _srcHeight;
+    float  _srcWidth;
+    NSDictionary * _srcset;
 }
 
 @property (nonatomic, readonly) UIColor *borderColor;
@@ -42,7 +42,7 @@
 - (id)url;
 - (float)width;
 
-// Image: /System/Library/PrivateFrameworks/MediaPlayerUI.framework/MediaPlayerUI
+// Image: /System/Library/PrivateFrameworks/VideosExtras.framework/VideosExtras
 
 - (int)accessoryType;
 - (id)artworkCatalog;

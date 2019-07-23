@@ -3,20 +3,20 @@
  */
 
 @interface AKCandidatePickerView_iOS : UIView {
-    SEL _action;
-    NSArray *_annotations;
-    int _blurStyle;
-    UIView *_buttonContainer;
-    NSArray *_buttons;
-    NSArray *_itemTags;
-    id _target;
-    UIVisualEffectView *_visualEffectView;
+    SEL  _action;
+    NSArray * _annotations;
+    int  _blurStyle;
+    UIStackView * _buttonContainer;
+    NSArray * _buttons;
+    NSArray * _itemTags;
+    id  _target;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic) SEL action;
 @property (nonatomic, retain) NSArray *annotations;
 @property (nonatomic) int blurStyle;
-@property (nonatomic, retain) UIView *buttonContainer;
+@property (nonatomic, retain) UIStackView *buttonContainer;
 @property (nonatomic, retain) NSArray *buttons;
 @property (nonatomic, retain) NSArray *itemTags;
 @property (nonatomic) id target;

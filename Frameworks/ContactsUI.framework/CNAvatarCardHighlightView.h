@@ -3,7 +3,7 @@
  */
 
 @interface CNAvatarCardHighlightView : UIView {
-    CALayer *_highlightLayer;
+    CALayer * _highlightLayer;
 }
 
 @property (nonatomic, retain) UIColor *highlightColor;

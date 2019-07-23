@@ -3,25 +3,25 @@
  */
 
 @interface CMKPreviewView : UIView {
-    int __exposureBiasSide;
-    CMKCaptureController *__sharedCameraController;
-    BOOL __showExposureBiasSlider;
-    unsigned int _canShowFocus;
-    CMKFocusView *_continuousAutoFocusView;
-    unsigned int _controlsAreVisible;
-    float _dimmingStrength;
-    UIView *_dimmingView;
-    CMKFocusAttachmentView *_dismissFocusAttachment;
-    float _exposureBiasMax;
-    float _exposureBiasMin;
-    CMKExposureBiasSlider *_exposureBiasSlider;
-    float _exposureBiasValue;
-    CMKFocusPointView *_exposureView;
-    NSMutableDictionary *_faceIDsToViews;
-    UIView *_facesContainerView;
-    UIView *_focusContainerView;
-    CMKFocusPointView *_focusView;
-    BOOL _hideExposureBiasSlider;
+    int  __exposureBiasSide;
+    CMKCaptureController * __sharedCameraController;
+    BOOL  __showExposureBiasSlider;
+    unsigned int  _canShowFocus;
+    CMKFocusView * _continuousAutoFocusView;
+    unsigned int  _controlsAreVisible;
+    float  _dimmingStrength;
+    UIView * _dimmingView;
+    CMKFocusAttachmentView * _dismissFocusAttachment;
+    float  _exposureBiasMax;
+    float  _exposureBiasMin;
+    CMKExposureBiasSlider * _exposureBiasSlider;
+    float  _exposureBiasValue;
+    CMKFocusPointView * _exposureView;
+    NSMutableDictionary * _faceIDsToViews;
+    UIView * _facesContainerView;
+    UIView * _focusContainerView;
+    CMKFocusPointView * _focusView;
+    BOOL  _hideExposureBiasSlider;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -31,7 +31,7 @@
             float width; 
             float height; 
         } size; 
-    } _lastExposureFrame;
+    }  _lastExposureFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -41,18 +41,18 @@
             float width; 
             float height; 
         } size; 
-    } _lastFocusFrame;
-    CMKFocusLockAttachmentView *_lockFocusAttachment;
-    CMKFocusLockView *_lockFocusView;
-    UIView *_maskingContainerView;
-    UIView *_previewContainer;
-    BOOL _showExposureBiasSliderOnChange;
-    BOOL _showLockFocusAttachment;
-    BOOL _showSplitFocusAndExposureAttachment;
-    BOOL _splitFocusAndExposure;
-    CMKFocusSplitAttachmentView *_splitFocusAndExposureAttachment;
-    BOOL _square;
-    CMKVideoPreviewView *_videoPreviewView;
+    }  _lastFocusFrame;
+    CMKFocusLockAttachmentView * _lockFocusAttachment;
+    CMKFocusLockView * _lockFocusView;
+    UIView * _maskingContainerView;
+    UIView * _previewContainer;
+    BOOL  _showExposureBiasSliderOnChange;
+    BOOL  _showLockFocusAttachment;
+    BOOL  _showSplitFocusAndExposureAttachment;
+    BOOL  _splitFocusAndExposure;
+    CMKFocusSplitAttachmentView * _splitFocusAndExposureAttachment;
+    BOOL  _square;
+    CMKVideoPreviewView * _videoPreviewView;
 }
 
 @property (nonatomic, readonly) int _exposureBiasSide;

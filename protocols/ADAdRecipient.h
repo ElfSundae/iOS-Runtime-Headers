@@ -7,10 +7,12 @@
 
 - (UIView *)adSpaceView;
 - (void)bannerTappedAtPoint:(struct CGPoint { float x1; float x2; })arg1;
+- (void)changeBannerViewState:(int)arg1;
 - (int)internalAdType;
 - (int)options;
 - (void)pauseBannerMedia;
 - (UIViewController *)presentingViewController;
+- (void)privacyButtonWasTapped;
 - (void)resumeBannerMedia;
 - (void)serverBannerViewDidFailToReceiveAdWithError:(NSError *)arg1;
 - (void)serverBannerViewDidLoad;

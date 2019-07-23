@@ -2,25 +2,27 @@
    Image: /System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities
  */
 
-@interface AXEventGameControllerInfoRepresentation : NSObject <NSCopying, NSSecureCoding> {
-    float _directionPadDown;
-    float _directionPadLeft;
-    float _directionPadRight;
-    float _directionPadUp;
-    float _faceButtonA;
-    float _faceButtonB;
-    float _faceButtonX;
-    float _faceButtonY;
-    float _leftJoystickX;
-    float _leftJoystickY;
-    float _rightJoystickX;
-    float _rightJoystickY;
-    float _shoulderButtonL1;
-    float _shoulderButtonL2;
-    float _shoulderButtonR1;
-    float _shoulderButtonR2;
+@interface AXEventGameControllerInfoRepresentation : NSObject <AXEventRepresentationDescription, NSCopying, NSSecureCoding> {
+    float  _directionPadDown;
+    float  _directionPadLeft;
+    float  _directionPadRight;
+    float  _directionPadUp;
+    float  _faceButtonA;
+    float  _faceButtonB;
+    float  _faceButtonX;
+    float  _faceButtonY;
+    float  _leftJoystickX;
+    float  _leftJoystickY;
+    float  _rightJoystickX;
+    float  _rightJoystickY;
+    float  _shoulderButtonL1;
+    float  _shoulderButtonL2;
+    float  _shoulderButtonR1;
+    float  _shoulderButtonR2;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) float directionPadDown;
 @property (nonatomic) float directionPadLeft;
 @property (nonatomic) float directionPadRight;
@@ -29,6 +31,7 @@
 @property (nonatomic) float faceButtonB;
 @property (nonatomic) float faceButtonX;
 @property (nonatomic) float faceButtonY;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL leftJoystickActive;
 @property (nonatomic) float leftJoystickX;
 @property (nonatomic) float leftJoystickY;
@@ -39,10 +42,11 @@
 @property (nonatomic) float shoulderButtonL2;
 @property (nonatomic) float shoulderButtonR1;
 @property (nonatomic) float shoulderButtonR2;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 
-- (id)_tabularDescription;
+- (id)accessibilityEventRepresentationTabularDescription;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (float)directionPadDown;
 - (float)directionPadLeft;

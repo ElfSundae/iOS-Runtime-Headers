@@ -3,15 +3,15 @@
  */
 
 @interface SUTableCellContentView : UIView <SUCellConfigurationView> {
-    int _clipCorners;
-    UIBezierPath *_clipPath;
-    SUCellConfiguration *_configuration;
-    unsigned int _drawAsDisabled;
-    unsigned int _highlighted;
-    unsigned int _highlightsOnlyContentView;
-    UIView *_overlayView;
-    NSMutableArray *_subviews;
-    unsigned int _useSubviewLayout;
+    int  _clipCorners;
+    UIBezierPath * _clipPath;
+    SUCellConfiguration * _configuration;
+    unsigned int  _drawAsDisabled;
+    unsigned int  _highlighted;
+    unsigned int  _highlightsOnlyContentView;
+    UIView * _overlayView;
+    NSMutableArray * _subviews;
+    unsigned int  _useSubviewLayout;
 }
 
 @property (nonatomic) int clipCorners;
@@ -31,7 +31,6 @@
 - (void)_reloadSubviewAlphasAnimated:(BOOL)arg1;
 - (void)_reloadSubviewsForConfiguration;
 - (void)_removeSubviewsForConfiguration;
-- (id)_scriptingInfo;
 - (void)_startUsingSubviewLayout;
 - (void)_stopUsingSubviewLayout;
 - (void)_updateDisabledStyleForSubviews;

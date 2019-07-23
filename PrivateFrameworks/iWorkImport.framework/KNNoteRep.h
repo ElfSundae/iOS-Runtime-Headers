@@ -3,7 +3,7 @@
  */
 
 @interface KNNoteRep : TSDRep <TSDContainerRep, TSWPStorageObserver> {
-    TSWPRep *mContainedRep;
+    TSWPRep * mContainedRep;
 }
 
 @property (nonatomic, readonly) TSWPRep *containedRep;
@@ -29,6 +29,7 @@
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
 - (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
+- (BOOL)shouldShowCollaboratorCursorHighlight;
 - (void)storage:(id)arg1 didChangeRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 delta:(int)arg3 broadcastKind:(int)arg4;
 - (void)updateChildrenFromLayout;
 - (void)willBeginEditingContainedRep;

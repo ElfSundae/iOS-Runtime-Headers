@@ -6,13 +6,13 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _centroid;
-    BOOL _isReset;
-    float _maximumPossibleForce;
-    _UITouchForceObservationMessageReader *_observeReader;
-    BOOL _shouldFilterDueToSystemGestures;
-    double _timestamp;
-    float _unclampedTouchForce;
+    }  _centroid;
+    BOOL  _isReset;
+    float  _maximumPossibleForce;
+    _UITouchForceObservationMessageReader * _observeReader;
+    BOOL  _shouldFilterDueToSystemGestures;
+    double  _timestamp;
+    float  _unclampedTouchForce;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } centroid;

@@ -3,10 +3,10 @@
  */
 
 @interface _UIAnimationCoordinator : NSObject <UIViewControllerAnimatedTransitioning> {
-    id /* block */ _animator;
-    id /* block */ _completion;
-    UIView *_containerView;
-    double _duration;
+    id /* block */  _animator;
+    id /* block */  _completion;
+    UIView * _containerView;
+    double  _duration;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,9 +16,9 @@
             float width; 
             float height; 
         } size; 
-    } _endFrame;
-    UIPercentDrivenInteractiveTransition *_interactiveTransition;
-    id /* block */ _preperation;
+    }  _endFrame;
+    UIPercentDrivenInteractiveTransition * _interactiveTransition;
+    id /* block */  _preperation;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,10 +28,10 @@
             float width; 
             float height; 
         } size; 
-    } _startFrame;
-    NSMutableDictionary *_stash;
-    _UIViewControllerOneToOneTransitionContext *_transitionContext;
-    UIViewController *_viewController;
+    }  _startFrame;
+    NSMutableDictionary * _stash;
+    _UIViewControllerOneToOneTransitionContext * _transitionContext;
+    UIViewController * _viewController;
 }
 
 @property (nonatomic, copy) id /* block */ animator;

@@ -3,7 +3,7 @@
  */
 
 @interface AVOutputSettingsAssistant : NSObject {
-    AVOutputSettingsAssistantInternal *_internal;
+    AVOutputSettingsAssistantInternal * _internal;
 }
 
 @property (nonatomic, readonly) NSDictionary *audioSettings;

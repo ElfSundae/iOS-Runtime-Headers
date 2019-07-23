@@ -3,9 +3,9 @@
  */
 
 @interface _UIGlintyShapeView : UIView {
-    UIColor *_fillColor;
-    UIBezierPath *_path;
-    UIColor *_strokeColor;
+    UIColor * _fillColor;
+    UIBezierPath * _path;
+    UIColor * _strokeColor;
 }
 
 @property (nonatomic, readonly) UIColor *fillColor;

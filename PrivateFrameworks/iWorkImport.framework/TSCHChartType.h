@@ -3,8 +3,10 @@
  */
 
 @interface TSCHChartType : NSObject <TSDMixing> {
-    TSCHChartFeature *mFeature;
+    TSCHChartFeature * mFeature;
 }
+
+@property (nonatomic, readonly) BOOL is3D;
 
 + (id)allChartTypes;
 + (id)areaChart;
@@ -16,6 +18,7 @@
 + (id)columnChart;
 + (id)columnChart3D;
 + (id)constantDepthInfoChartScaleForInfoChartScale:(id)arg1 chartType:(id)arg2 barShape:(int)arg3;
++ (struct CGSize { float x1; float x2; })fallbackMinimumChartBodySize;
 + (id)lineChart;
 + (id)lineChart3D;
 + (id)mixedChart;
@@ -70,6 +73,7 @@
 - (id)imageWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize { float x1; float x2; })arg3 imageScale:(float)arg4 swatchFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg5 documentRoot:(id)arg6 shouldCache:(BOOL*)arg7;
 - (id)init;
 - (id)initWithFeatureClass:(Class)arg1;
+- (BOOL)is3D;
 - (BOOL)isHorizontal;
 - (BOOL)isMultiData;
 - (BOOL)isPie;
@@ -77,6 +81,7 @@
 - (BOOL)layoutFrameShouldEncloseInfoGeometry;
 - (unsigned int)maxCellsToCheckForGridValueType;
 - (struct CGSize { float x1; float x2; })minimumChartBodySize;
+- (struct CGSize { float x1; float x2; })minimumChartBodySizeForTransformingGeometry;
 - (id)mixedObjectWithFraction:(float)arg1 ofObject:(id)arg2;
 - (int)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (struct CGSize { float x1; float x2; })mungeBodySize:(struct CGSize { float x1; float x2; })arg1;

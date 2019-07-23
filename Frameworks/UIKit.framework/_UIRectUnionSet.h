@@ -12,9 +12,9 @@
             float width; 
             float height; 
         } size; 
-    } _cachedUnionRect;
-    NSMutableData *_data;
-    unsigned int _rectCount;
+    }  _cachedUnionRect;
+    NSMutableData * _data;
+    unsigned int  _rectCount;
 }
 
 @property (readonly) unsigned int count;

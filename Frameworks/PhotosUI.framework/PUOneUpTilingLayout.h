@@ -6,66 +6,74 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _bufferingIndicatorSize;
+    }  _assetExplorerReviewScreenProgressIndicatorSize;
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  _bufferingIndicatorSize;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentGuideInsets;
-    <PUOneUpTilingLayoutDelegate> *_delegate;
+    }  _contentGuideInsets;
+    <PUOneUpTilingLayoutDelegate> * _delegate;
     struct { 
         BOOL respondsToAspectRatioForItemAtIndexPath; 
         BOOL respondsToBadgeSizeForItemAtIndexPath; 
+        BOOL respondsToAssetExplorerReviewScreenBadgeSizeForItemAtIndexPath; 
         BOOL respondsToShouldShowPlayButtonForItemAtIndexPath; 
         BOOL respondsToShouldShowProgressIndicatorForItemAtIndexPath; 
         BOOL respondsToShouldShowBufferingIndicatorForItemAtIndexPath; 
         BOOL respondsToShouldShowLoadingIndicatorForItemAtIndexPath; 
         BOOL respondsToModelTileTransformForItemAtIndexPath; 
-        BOOL respondsToScrollOffsetForItemAtIndexPath; 
-        BOOL respondsToCanShowCommentsForItemAtIndexPath; 
-        BOOL respondsToShouldShowCommentsForItemAtIndexPath; 
+        BOOL respondsToContentOffsetForItemAtIndexPath; 
+        BOOL respondsToShouldShowAccessoryForItemAtIndexPath; 
+        BOOL respondsToMinimumVisibleContentHeightForItemAtIndexPath; 
+        BOOL respondsToMinimumVisibleAccessoryHeightForItemAtIndexPath; 
         BOOL respondsToShouldShowVideoPlaceholderForItemAtIndexPath; 
         BOOL respondsToDisableInitialZoomToFillForItemAtIndexPath; 
-    } _delegateFlags;
+    }  _delegateFlags;
     struct CGSize { 
         float width; 
         float height; 
-    } _displaySizeForInsetMatching;
-    NSIndexPath *_inFocusIndexPath;
+    }  _displaySizeForInsetMatching;
+    NSIndexPath * _inFocusIndexPath;
     struct CGSize { 
         float width; 
         float height; 
-    } _interpageSpacing;
+    }  _interpageSpacing;
     struct CGSize { 
         float width; 
         float height; 
-    } _itemSize;
-    NSMutableDictionary *_layoutInfosByIndexPathByTileKind;
+    }  _itemSize;
+    NSMutableDictionary * _layoutInfosByIndexPathByTileKind;
     struct CGSize { 
         float width; 
         float height; 
-    } _loadingIndicatorSize;
-    NSIndexPath *_neighborIndexPath;
-    PUParallaxComputer *_parallaxComputer;
+    }  _loadingIndicatorSize;
+    NSIndexPath * _neighborIndexPath;
+    PUParallaxComputer * _parallaxComputer;
     struct CGSize { 
         float width; 
         float height; 
-    } _playButtonSize;
+    }  _playButtonSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _progressIndicatorSize;
-    BOOL _shouldPinContentToTop;
-    int _tileInitialContentMode;
-    UITraitCollection *_traitCollection;
-    float _transitionProgress;
-    BOOL _useBackgroundTile;
-    BOOL _useBadgeTiles;
-    BOOL _useCommentsTiles;
-    BOOL _useUserTransformTiles;
+    }  _progressIndicatorSize;
+    BOOL  _shouldPinContentToTop;
+    int  _tileInitialContentMode;
+    UITraitCollection * _traitCollection;
+    float  _transitionProgress;
+    BOOL  _useAssetExplorerReviewScreenBadgeTiles;
+    BOOL  _useAssetExplorerReviewScreenSelectionIndicatorTiles;
+    BOOL  _useBackgroundTile;
+    BOOL  _useBadgeTiles;
+    BOOL  _useUserTransformTiles;
 }
 
+@property (nonatomic) struct CGSize { float x1; float x2; } assetExplorerReviewScreenProgressIndicatorSize;
 @property (nonatomic) struct CGSize { float x1; float x2; } bufferingIndicatorSize;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } contentGuideInsets;
 @property (nonatomic) <PUOneUpTilingLayoutDelegate> *delegate;
@@ -80,22 +88,24 @@
 @property (nonatomic) int tileInitialContentMode;
 @property (nonatomic, retain) UITraitCollection *traitCollection;
 @property (nonatomic, readonly) float transitionProgress;
+@property (nonatomic) BOOL useAssetExplorerReviewScreenBadgeTiles;
+@property (nonatomic) BOOL useAssetExplorerReviewScreenSelectionIndicatorTiles;
 @property (nonatomic) BOOL useBackgroundTile;
 @property (nonatomic) BOOL useBadgeTiles;
-@property (nonatomic) BOOL useCommentsTiles;
 @property (nonatomic) BOOL useUserTransformTiles;
 
 + (id)centerTileKinds;
 + (void)initialize;
 
 - (void).cxx_destruct;
-- (BOOL)_areCommentsVisibleForItemAtIndexPath:(id)arg1;
+- (BOOL)_accessoryViewVisibilityForItemAtIndexPath:(id)arg1;
 - (struct CGPoint { float x1; float x2; })_contentOffsetForItemAtIndexPath:(id)arg1;
 - (id)_createLayoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
-- (id)_displayTileTransformForItemAtIndexPath:(id)arg1;
-- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize { float x1; float x2; })arg2 secondaryDisplayTransform:(id)arg3;
-- (void)_getLayoutRect:(out struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1 transform:(out struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; }*)arg2 parallaxOffset:(out struct CGPoint { float x1; float x2; }*)arg3 shouldIncludeBottomOffset:(BOOL)arg4 forContentOfItemAtIndexPath:(id)arg5;
+- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 options:(unsigned int)arg2;
+- (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize { float x1; float x2; })arg2 secondaryDisplayTransform:(id)arg3 options:(unsigned int)arg4;
+- (void)_getLayoutRect:(out struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1 transform:(out struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; }*)arg2 parallaxOffset:(out struct CGPoint { float x1; float x2; }*)arg3 forContentOfItemAtIndexPath:(id)arg4 options:(unsigned int)arg5;
 - (id)_indexPathOfItemClosestToAbscissa:(float)arg1;
+- (void)_invalidateContentRelatedTilesWithIndexPath:(id)arg1 inContext:(id)arg2;
 - (BOOL)_isVideoPlacholderVisibleForItemAtIndexPath:(id)arg1;
 - (struct CGSize { float x1; float x2; })_itemSize;
 - (float)_minimumBottomContentInsetsForItemAtIndexPath:(id)arg1;
@@ -104,6 +114,7 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_untransformedRectForItemAtIndexPath:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_untransformedRectForItemAtIndexPath:(id)arg1 pageRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)addLayoutInfosForTilesInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 section:(int)arg2 toSet:(id)arg3;
+- (struct CGSize { float x1; float x2; })assetExplorerReviewScreenProgressIndicatorSize;
 - (struct CGSize { float x1; float x2; })bufferingIndicatorSize;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })contentGuideInsets;
 - (id)delegate;
@@ -112,8 +123,9 @@
 - (id)indexPathOfCurrentItem;
 - (id)init;
 - (struct CGSize { float x1; float x2; })interpageSpacing;
+- (void)invalidateAccessoryForItemAtIndexPath:(id)arg1 withOptions:(unsigned int)arg2;
 - (void)invalidateBadgeSizeForItemAtIndexPath:(id)arg1;
-- (void)invalidateCommentsForItemAtIndexPath:(id)arg1;
+- (void)invalidateContentOffsetForItemAtIndexPath:(id)arg1 withOptions:(unsigned int)arg2;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (void)invalidateModelTileTransformForItemAtIndexPath:(id)arg1;
 - (void)invalidateVideoPlaceholderForItemAtIndexPath:(id)arg1;
@@ -124,6 +136,7 @@
 - (id)preferredScrollInfo;
 - (void)prepareLayout;
 - (struct CGSize { float x1; float x2; })progressIndicatorSize;
+- (void)setAssetExplorerReviewScreenProgressIndicatorSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setBufferingIndicatorSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setContentGuideInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setDelegate:(id)arg1;
@@ -136,9 +149,10 @@
 - (void)setShouldPinContentToTop:(BOOL)arg1;
 - (void)setTileInitialContentMode:(int)arg1;
 - (void)setTraitCollection:(id)arg1;
+- (void)setUseAssetExplorerReviewScreenBadgeTiles:(BOOL)arg1;
+- (void)setUseAssetExplorerReviewScreenSelectionIndicatorTiles:(BOOL)arg1;
 - (void)setUseBackgroundTile:(BOOL)arg1;
 - (void)setUseBadgeTiles:(BOOL)arg1;
-- (void)setUseCommentsTiles:(BOOL)arg1;
 - (void)setUseUserTransformTiles:(BOOL)arg1;
 - (void)setVisibleRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)shouldPinContentToTop;
@@ -146,9 +160,10 @@
 - (int)tileInitialContentMode;
 - (id)traitCollection;
 - (float)transitionProgress;
+- (BOOL)useAssetExplorerReviewScreenBadgeTiles;
+- (BOOL)useAssetExplorerReviewScreenSelectionIndicatorTiles;
 - (BOOL)useBackgroundTile;
 - (BOOL)useBadgeTiles;
-- (BOOL)useCommentsTiles;
 - (BOOL)useUserTransformTiles;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })visibleRectForItemAtIndexPath:(id)arg1 transitionProgress:(float)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })visibleRectForScrollingToItemAtIndexPath:(id)arg1 scrollPosition:(int)arg2;

@@ -3,11 +3,11 @@
  */
 
 @interface _UITextFieldPasscodeCutoutBackground : UITextFieldBackgroundView {
-    float _cornerRadius;
-    BOOL _customFillColor;
-    BOOL _customStrokeColor;
-    CAShapeLayer *_lighteningOutline;
-    float _outlineAlpha;
+    float  _cornerRadius;
+    BOOL  _customFillColor;
+    BOOL  _customStrokeColor;
+    CAShapeLayer * _lighteningOutline;
+    float  _outlineAlpha;
 }
 
 @property (nonatomic) float cornerRadius;
@@ -22,7 +22,6 @@
 - (id)_fillColor:(BOOL)arg1;
 - (id)_layer;
 - (float)_pathInset;
-- (float)_pixelAlignment;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_strokeColor:(BOOL)arg1;
 - (void)_updateLightingOutlinePath;

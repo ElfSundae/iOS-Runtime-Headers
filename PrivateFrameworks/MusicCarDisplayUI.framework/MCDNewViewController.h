@@ -2,16 +2,16 @@
    Image: /System/Library/PrivateFrameworks/MusicCarDisplayUI.framework/MusicCarDisplayUI
  */
 
-@interface MCDNewViewController : MCD_OLD_TableViewController <MCDTimeoutViewDelegate, UITableViewDelegate> {
-    UIView *_MCD_tableView;
-    UIActivityIndicatorView *_activityIndicator;
-    BOOL _contentLoaded;
-    MusicStoreBrowseResponse *_contentResponse;
-    NSTimer *_loadingTimer;
-    long long _modelRevisionID;
-    UIView *_placeholderView;
-    NSIndexPath *_selectedIndexPath;
-    MCDContentItemTableViewController *_viewController;
+@interface MCDNewViewController : MCD_OLD_TableViewController <MCDErrorViewDelegate, UITableViewDelegate> {
+    UIView * _MCD_tableView;
+    UIActivityIndicatorView * _activityIndicator;
+    BOOL  _contentLoaded;
+    MusicStoreBrowseResponse * _contentResponse;
+    MPWeakTimer * _loadingTimer;
+    long long  _modelRevisionID;
+    UIView * _placeholderView;
+    NSIndexPath * _selectedIndexPath;
+    MCDContentItemTableViewController * _viewController;
 }
 
 @property (nonatomic, retain) UIView *MCD_tableView;
@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
-@property (nonatomic, retain) NSTimer *loadingTimer;
+@property (nonatomic, retain) MPWeakTimer *loadingTimer;
 @property (nonatomic) long long modelRevisionID;
 @property (nonatomic, retain) UIView *placeholderView;
 @property (nonatomic, retain) NSIndexPath *selectedIndexPath;
@@ -30,7 +30,6 @@
 
 - (void).cxx_destruct;
 - (id)MCD_tableView;
-- (BOOL)_isNetworkTypeAllowed:(int)arg1;
 - (void)_limitedUIDidChange;
 - (void)_loadContent;
 - (void)_networkTypeDidChangeNotification:(id)arg1;
@@ -40,6 +39,7 @@
 - (id)activityIndicator;
 - (BOOL)contentLoaded;
 - (id)contentResponse;
+- (void)errorViewDidTapButton:(id)arg1;
 - (id)initWithPlayer:(id)arg1 serviceProvider:(id)arg2;
 - (id)loadingTimer;
 - (long long)modelRevisionID;
@@ -57,9 +57,9 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
-- (void)timeoutViewDidPressRetryButton:(id)arg1;
 - (id)viewController;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end

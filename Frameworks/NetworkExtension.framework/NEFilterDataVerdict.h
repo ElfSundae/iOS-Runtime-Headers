@@ -3,9 +3,9 @@
  */
 
 @interface NEFilterDataVerdict : NEFilterVerdict <NSCopying, NSSecureCoding> {
-    unsigned long long _passBytes;
-    unsigned long long _peekBytes;
-    NSURL *_url;
+    unsigned long long  _passBytes;
+    unsigned long long  _peekBytes;
+    NSURL * _url;
 }
 
 @property unsigned long long passBytes;

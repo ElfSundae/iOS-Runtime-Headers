@@ -3,16 +3,16 @@
  */
 
 @interface CMDiagramNodeInfo : NSObject {
-    BOOL mConnectToVerticalSide;
-    int mExtraRowsBetweenParentAndSelf;
-    int mRow;
-    int mTreeDepth;
-    float mXOffsetRelativeToParent;
+    BOOL  mConnectToVerticalSide;
+    int  mExtraRowsBetweenParentAndSelf;
+    int  mRow;
+    int  mTreeDepth;
+    float  mXOffsetRelativeToParent;
     struct ODIHRange { 
         float mMid; 
         float mLength; 
-    } mXRange;
-    struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; } *mXRanges;
+    }  mXRange;
+    struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; } * mXRanges;
 }
 
 - (void)addToXOffsetRelativeToParent:(float)arg1;

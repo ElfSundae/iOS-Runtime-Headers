@@ -3,11 +3,11 @@
  */
 
 @interface CIVector : NSObject <NSCopying, NSSecureCoding> {
-    unsigned long _count;
+    unsigned long  _count;
     union { 
         float vec[4]; 
         float *ptr; 
-    } _u;
+    }  _u;
 }
 
 @property (readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } CGAffineTransformValue;

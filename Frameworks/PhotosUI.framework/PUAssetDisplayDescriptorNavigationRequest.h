@@ -3,28 +3,28 @@
  */
 
 @interface PUAssetDisplayDescriptorNavigationRequest : NSObject <PUBrowsingViewModelChangeObserver> {
-    BOOL __arrived;
-    PUAssetReference *__foundTargetAssetReference;
-    BOOL __isPerformingChanges;
-    BOOL __isUpdating;
-    BOOL __needsUpdateArrived;
-    BOOL __needsUpdateDone;
-    BOOL __needsUpdateFoundTargetAssetReference;
-    BOOL __seeked;
-    BOOL __timedOut;
-    id /* block */ _completionHandler;
-    BOOL _hasSeenContentChange;
-    PUAssetReference *_targetAssetReference;
-    NSDate *_targetModificationDate;
+    BOOL  __arrived;
+    PUAssetReference * __foundTargetAssetReference;
+    BOOL  __isPerformingChanges;
+    BOOL  __isUpdating;
+    BOOL  __needsUpdateArrived;
+    BOOL  __needsUpdateDone;
+    BOOL  __needsUpdateFoundTargetAssetReference;
+    BOOL  __seeked;
+    BOOL  __timedOut;
+    id /* block */  _completionHandler;
+    BOOL  _hasSeenContentChange;
+    PUAssetReference * _targetAssetReference;
+    NSDate * _targetModificationDate;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _targetSeekTime;
-    double _timeOut;
-    NSTimer *_timeOutTimer;
-    PUBrowsingViewModel *_viewModel;
+    }  _targetSeekTime;
+    double  _timeOut;
+    NSTimer * _timeOutTimer;
+    PUBrowsingViewModel * _viewModel;
 }
 
 @property (setter=_setArrived:, nonatomic) BOOL _arrived;

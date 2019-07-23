@@ -3,8 +3,8 @@
  */
 
 @interface CNPropertyEditingCell : CNPropertyCell <CNPickerControllerDelegate> {
-    UIButton *_labelButton;
-    CNRepeatingGradientSeparatorView *_vseparator;
+    UIButton * _labelButton;
+    CNRepeatingGradientSeparatorView * _vseparator;
 }
 
 @property (readonly, copy) NSString *debugDescription;

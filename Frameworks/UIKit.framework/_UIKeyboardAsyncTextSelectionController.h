@@ -3,7 +3,7 @@
  */
 
 @interface _UIKeyboardAsyncTextSelectionController : _UIKeyboardTextSelectionController {
-    BOOL _shouldDelayShowSelectionCommands;
+    BOOL  _shouldDelayShowSelectionCommands;
 }
 
 - (void)beginFloatingCursorAtPoint:(struct CGPoint { float x1; float x2; })arg1;
@@ -14,6 +14,7 @@
 - (void)endFloatingCursor;
 - (void)selectPositionAtBoundary:(int)arg1 inDirection:(int)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
 - (void)selectPositionAtPoint:(struct CGPoint { float x1; float x2; })arg1 executionContext:(id)arg2;
+- (void)selectTextWithGranularity:(int)arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2 completionHandler:(id /* block */)arg3;
 - (void)selectTextWithGranularity:(int)arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2 executionContext:(id)arg3;
 - (void)showSelectionCommands;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { float x1; float x2; })arg1;

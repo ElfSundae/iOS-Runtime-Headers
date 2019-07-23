@@ -3,8 +3,8 @@
  */
 
 @interface CKTranscriptCollectionView : CKEditableCollectionView {
-    BOOL _dynamicsDisabled;
-    BOOL _ignoresContentOffsetChanges;
+    BOOL  _dynamicsDisabled;
+    BOOL  _ignoresContentOffsetChanges;
 }
 
 @property (nonatomic) BOOL dynamicsDisabled;

@@ -3,27 +3,27 @@
  */
 
 @interface CAMEffectsRenderer : NSObject {
-    id /* block */ __atomicPreviewStartedBlock;
-    BOOL __atomicPreviewStartedNotificationNeeded;
-    UITapGestureRecognizer *__gridTapGestureRecognizer;
-    BOOL __gridTransitionInFlight;
-    BOOL __inBackground;
-    BOOL __previewLayerEnabled;
-    CAMEffectsFullsizeView *__renderEffectsFullsizeView;
-    CAMEffectsGridView *__renderGridView;
-    NSObject<OS_dispatch_queue> *__renderQueue;
-    int _atomicCaptureMode;
-    int _atomicFilterType;
-    BOOL _atomicMirrorFilterRendering;
-    CAMVideoPreviewView *_atomicVideoPreviewView;
-    CIContext *_ciContext;
-    <CAMEffectsRendererDelegate> *_delegate;
-    unsigned int _droppedFramesSinceLastReportedFrameDrop;
-    EAGLContext *_eaglContext;
-    BOOL _gridTransitionIsAnimated;
-    BOOL _isShowingGrid;
-    double _lastReportedFrameDropTime;
-    unsigned int _totalFramesSinceLastReportedFrameDrop;
+    id /* block */  __atomicPreviewStartedBlock;
+    BOOL  __atomicPreviewStartedNotificationNeeded;
+    UITapGestureRecognizer * __gridTapGestureRecognizer;
+    BOOL  __gridTransitionInFlight;
+    BOOL  __inBackground;
+    BOOL  __previewLayerEnabled;
+    CAMEffectsFullsizeView * __renderEffectsFullsizeView;
+    CAMEffectsGridView * __renderGridView;
+    NSObject<OS_dispatch_queue> * __renderQueue;
+    int  _atomicCaptureMode;
+    int  _atomicFilterType;
+    BOOL  _atomicMirrorFilterRendering;
+    CAMVideoPreviewView * _atomicVideoPreviewView;
+    CIContext * _ciContext;
+    <CAMEffectsRendererDelegate> * _delegate;
+    unsigned int  _droppedFramesSinceLastReportedFrameDrop;
+    EAGLContext * _eaglContext;
+    BOOL  _gridTransitionIsAnimated;
+    BOOL  _isShowingGrid;
+    double  _lastReportedFrameDropTime;
+    unsigned int  _totalFramesSinceLastReportedFrameDrop;
 }
 
 @property (nonatomic, readonly) UITapGestureRecognizer *_gridTapGestureRecognizer;
@@ -112,7 +112,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)setFilterType:(int)arg1;
 - (void)setFilterType:(int)arg1 forceStateChange:(BOOL)arg2;
-- (void)setFilterTypeAndWaitForRenderIfChanging:(int)arg1;
 - (void)setMirrorFilterRendering:(BOOL)arg1;
 - (void)setShowGrid:(BOOL)arg1;
 - (void)setShowGrid:(BOOL)arg1 animated:(BOOL)arg2;

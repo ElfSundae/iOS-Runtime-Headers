@@ -3,7 +3,7 @@
  */
 
 @interface AKSignatureBaselineView : UIView {
-    float _baselinePercent;
+    float  _baselinePercent;
 }
 
 @property (nonatomic) float baselinePercent;

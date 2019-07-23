@@ -3,19 +3,19 @@
  */
 
 @interface BWNoiseReducerNode : BWNode {
-    NSDictionary *_cameraTuningOptions;
-    struct NoiseReductionCtx_s { } *_context;
-    int _contextSynchronization;
-    int _gpuPriority;
-    NSDictionary *_noiseReductionOptions;
-    struct opaqueCMFormatDescription { } *_outputFormatDescription;
-    BOOL _processLuma;
-    BOOL _quadraHighResStillImageCaptureEnabled;
-    struct opaqueCMFormatDescription { } *_quadraResampledIntermediaBufferFormatDescription;
-    struct __CVBuffer { } *_quadraResampledIntermediateBuffer;
-    struct OpaqueVTPixelTransferSession { } *_quadraResampledTransferSession;
-    BOOL _threaded;
-    BOOL _useInPlaceAlgorithm;
+    NSDictionary * _cameraTuningOptions;
+    struct NoiseReductionCtx_s { } * _context;
+    int  _contextSynchronization;
+    int  _gpuPriority;
+    NSDictionary * _noiseReductionOptions;
+    struct opaqueCMFormatDescription { } * _outputFormatDescription;
+    BOOL  _processLuma;
+    BOOL  _quadraHighResStillImageCaptureEnabled;
+    struct opaqueCMFormatDescription { } * _quadraResampledIntermediaBufferFormatDescription;
+    struct __CVBuffer { } * _quadraResampledIntermediateBuffer;
+    struct OpaqueVTPixelTransferSession { } * _quadraResampledTransferSession;
+    BOOL  _threaded;
+    BOOL  _useInPlaceAlgorithm;
 }
 
 + (void)initialize;

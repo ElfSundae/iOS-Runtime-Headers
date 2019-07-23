@@ -3,10 +3,10 @@
  */
 
 @interface TNSheetUIState : NSObject <NSCopying> {
-    int mDeviceIdiom;
-    BOOL mHasPreviousVisibleRect;
-    BOOL mHasVisibleRect;
-    float mPreviousViewScale;
+    int  mDeviceIdiom;
+    BOOL  mHasPreviousVisibleRect;
+    BOOL  mHasVisibleRect;
+    float  mPreviousViewScale;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,9 +16,9 @@
             float width; 
             float height; 
         } size; 
-    } mPreviousVisibleRect;
-    TSKSelectionPath *mSelectionPath;
-    float mViewScale;
+    }  mPreviousVisibleRect;
+    TSKSelectionPath * mSelectionPath;
+    float  mViewScale;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,7 +28,7 @@
             float width; 
             float height; 
         } size; 
-    } mVisibleRect;
+    }  mVisibleRect;
 }
 
 @property (nonatomic) int archivedDeviceIdiom;

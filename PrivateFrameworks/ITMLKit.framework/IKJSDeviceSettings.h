@@ -3,8 +3,8 @@
  */
 
 @interface IKJSDeviceSettings : IKJSObject <IKJSDeviceSettings, JSExport> {
-    <IKAppDeviceConfig> *_deviceConfig;
-    id _restrictionDidChangeToken;
+    <IKAppDeviceConfig> * _deviceConfig;
+    id  _restrictionDidChangeToken;
 }
 
 @property (nonatomic, readonly) IKJSRestrictions *Restrictions;

@@ -3,8 +3,8 @@
  */
 
 @interface _UIFocusContainerGuideMapEntry : _UIFocusRegionMapEntry {
-    float _axisAlignedDistanceFromFocusedRect;
-    UIFocusContainerGuide *_focusContainerGuide;
+    float  _axisAlignedDistanceFromFocusedRect;
+    UIFocusContainerGuide * _focusContainerGuide;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } _focusContainmentFrame;
+    }  _focusContainmentFrame;
 }
 
 @property (nonatomic) float axisAlignedDistanceFromFocusedRect;

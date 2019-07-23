@@ -3,8 +3,8 @@
  */
 
 @interface PKExtendedPhysicsBody : PKPhysicsBody {
-    float _areaFactor;
-    int _associations;
+    float  _areaFactor;
+    int  _associations;
 }
 
 @property (nonatomic) float normalizedDensity;

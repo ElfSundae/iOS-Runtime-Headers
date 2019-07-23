@@ -12,21 +12,21 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    unsigned int _flags;
+    }  _bounds;
+    unsigned int  _flags;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _last;
-    unsigned int _position;
+    }  _last;
+    unsigned int  _position;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _start;
+    }  _start;
 }
 
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;

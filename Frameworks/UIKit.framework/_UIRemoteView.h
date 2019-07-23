@@ -3,10 +3,10 @@
  */
 
 @interface _UIRemoteView : _UILayerHostView <UIStatusBarTinting> {
-    BOOL _actsAsTintView;
-    _UIHostedWindowHostingHandle *_hostedWindowHostingHandle;
-    UIColor *_statusBarTintColor;
-    id /* block */ _tintColorDidChangeHandler;
+    BOOL  _actsAsTintView;
+    _UIHostedWindowHostingHandle * _hostedWindowHostingHandle;
+    UIColor * _statusBarTintColor;
+    id /* block */  _tintColorDidChangeHandler;
 }
 
 @property (setter=_setActsAsTintView:, nonatomic) BOOL _actsAsTintView;

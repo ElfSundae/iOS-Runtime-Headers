@@ -8,44 +8,44 @@
         float left; 
         float bottom; 
         float right; 
-    } _captionPadding;
+    }  _captionPadding;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
+    }  _contentSize;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _floatPadding;
-    float _floatingBottomDecorationHeight;
-    int _flowDirection;
+    }  _floatPadding;
+    float  _floatingBottomDecorationHeight;
+    int  _flowDirection;
     struct CGSize { 
         float width; 
         float height; 
-    } _interTileSpacing;
+    }  _interTileSpacing;
     struct CGSize { 
         float width; 
         float height; 
-    } _noCaptionSpacing;
-    PUParallaxComputer *_parallaxComputer;
-    float _parallaxFactor;
-    int _parallaxModel;
-    float _sectionHeaderBackgroundHeight;
-    NSMutableArray *_sectionLayoutInfos;
+    }  _noCaptionSpacing;
+    PUParallaxComputer * _parallaxComputer;
+    float  _parallaxFactor;
+    int  _parallaxModel;
+    float  _sectionHeaderBackgroundHeight;
+    NSMutableArray * _sectionLayoutInfos;
     struct CGSize { 
         float width; 
         float height; 
-    } _sectionReferenceSize;
-    BOOL _shouldApplyParallaxEffect;
-    BOOL _shouldDisplayCaptionsBelowBatches;
-    BOOL _shouldDisplaySectionHeadersBelowSections;
-    BOOL _shouldFloatOverShortDistances;
-    BOOL _shouldFloatSectionHeaders;
-    BOOL _shouldFloatThumbnails;
-    BOOL _shouldFloatWithEase;
-    float _thumbnailSpacing;
+    }  _sectionReferenceSize;
+    BOOL  _shouldApplyParallaxEffect;
+    BOOL  _shouldDisplayCaptionsBelowBatches;
+    BOOL  _shouldDisplaySectionHeadersBelowSections;
+    BOOL  _shouldFloatOverShortDistances;
+    BOOL  _shouldFloatSectionHeaders;
+    BOOL  _shouldFloatThumbnails;
+    BOOL  _shouldFloatWithEase;
+    float  _thumbnailSpacing;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } captionPadding;

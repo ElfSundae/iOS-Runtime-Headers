@@ -3,9 +3,9 @@
  */
 
 @interface HKTickStyle : HKStrokeStyle {
-    BOOL _shouldRenderMajorTickMarks;
-    int _tickDirection;
-    float _tickLength;
+    BOOL  _shouldRenderMajorTickMarks;
+    int  _tickDirection;
+    float  _tickLength;
 }
 
 @property (nonatomic) BOOL shouldRenderMajorTickMarks;

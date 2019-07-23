@@ -3,13 +3,13 @@
  */
 
 @interface TSPDatabase : TSUDatabase {
-    BOOL _incrementalVacuum;
-    struct sqlite3_stmt { } *_insertDataStateStatement;
-    struct sqlite3_stmt { } *_insertObjectStatement;
-    struct sqlite3_stmt { } *_insertRelationshipStatement;
-    NSURL *_packageURL;
-    struct sqlite3_stmt { } *_relationshipTargetsStatement;
-    struct sqlite3_stmt { } *_updateDataStateStatement;
+    BOOL  _incrementalVacuum;
+    struct sqlite3_stmt { } * _insertDataStateStatement;
+    struct sqlite3_stmt { } * _insertObjectStatement;
+    struct sqlite3_stmt { } * _insertRelationshipStatement;
+    NSURL * _packageURL;
+    struct sqlite3_stmt { } * _relationshipTargetsStatement;
+    struct sqlite3_stmt { } * _updateDataStateStatement;
 }
 
 - (void).cxx_destruct;
@@ -21,7 +21,7 @@
 - (id)initReadonlyWithPath:(id)arg1 error:(id*)arg2;
 - (id)initWithPath:(id)arg1 error:(id*)arg2;
 - (BOOL)insertDataStateWithSize:(int)arg1 identifier:(long long*)arg2 error:(id*)arg3;
-- (BOOL)insertObjectWithIdentifier:(long long)arg1 stateIdentifier:(const struct ObjectStateIdentifier { BOOL x1; long long x2; BOOL x3; id x4; /* Warning: Unrecognized filer type: '' using 'void*' */ void*x5; void*x6; void*x7; void*x8; void*x9; void*x10; void*x11; void*x12; void*x13; void*x14; void x15; void*x16; void*x17; void*x18; void*x19; void*x20; void*x21; void*x22; unsigned short x23; void*x24; void*x25; unsigned int x26; unsigned long long x27; void*x28; int x29; BOOL x30; void*x31; long x32; int x33; in void*x34; short x35; oneway int x36; void*x37; void*x38; unsigned char x39; out in void*x40; const out long x41; long x42; void*x43; const void*x44; void*x45; void*x46; void*x47; void*x48; void*x49; void*x50; void*x51; void*x52; void*x53; void*x54; void*x55; void*x56; void*x57; void*x58; void*x59; void*x60; void*x61; void*x62; void*x63; void*x64; void*x65; void*x66; void*x67; void*x68; void*x69; void*x70; void*x71; void*x72; void*x73; void*x74; void*x75; void*x76; void*x77; void*x78; void*x79; void*x80; void*x81; void*x82; void*x83; void*x84; void*x85; void*x86; void*x87; void*x88; id x89; void*x90; void*x91; id x92; void*x93; void*x94; void*x95; void*x96; void*x97; void*x98; void*x99; void*x100; void*x101; void*x102; void*x103; void*x104; void*x105; void*x106; void*x107; void*x108; void*x109; void*x110; void*x111; void*x112; void*x113; void*x114; void*x115; void*x116; void*x117; void*x118; id x119; void*x120; void*x121; id x122; void*x123; void*x124; void*x125; void*x126; void*x127; void*x128; void*x129; void*x130; void*x131; void*x132; void*x133; void*x134; void*x135; void*x136; void*x137; void*x138; void*x139; void*x140; void*x141; void*x142; void*x143; void*x144; void*x145; void*x146; void*x147; void*x148; id x149; void*x150; void*x151; void*x152; void*x153; void*x154; void*x155; void*x156; void*x157; void*x158; void*x159; void*x160; void*x161; void*x162; void*x163; void*x164; void*x165; void*x166; void*x167; void*x168; void*x169; void*x170; void*x171; void*x172; void*x173; void*x174; void*x175; void*x176; void*x177; void*x178; void*x179; id x180; void*x181; }*)arg2 classType:(int)arg3 error:(id*)arg4;
+- (BOOL)insertObjectWithIdentifier:(long long)arg1 stateIdentifier:(const /* Warning: unhandled struct encoding: '{ObjectStateIdentifier=cqc@}' */ struct ObjectStateIdentifier { BOOL x1; long long x2; BOOL x3; id x4; }*)arg2 classType:(int)arg3 error:(id*)arg4;
 - (BOOL)insertRelationshipWithSourceIdentifier:(long long)arg1 targetIdentifier:(long long)arg2 error:(id*)arg3;
 - (BOOL)lastObjectIdentifier:(long long*)arg1 error:(id*)arg2;
 - (BOOL)needsUpgradeFromSchemaVersion:(int)arg1;

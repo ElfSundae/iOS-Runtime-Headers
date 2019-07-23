@@ -3,10 +3,10 @@
  */
 
 @interface SYMetricLogger : NSObject {
-    AWDServerConnection *_connection;
-    AWDCompanionSyncReceiveEvent *_lastReceiveMetric;
-    id /* block */ _lastReceiveMetricTimeoutBlock;
-    NSObject<OS_dispatch_queue> *_queue;
+    AWDServerConnection * _connection;
+    AWDCompanionSyncReceiveEvent * _lastReceiveMetric;
+    id /* block */  _lastReceiveMetricTimeoutBlock;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 + (id)sharedInstance;

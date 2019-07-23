@@ -3,13 +3,15 @@
  */
 
 @interface CKAttachmentBalloonView : CKColoredBalloonView {
-    UIView<CKAttachmentView> *_attachmentView;
+    UIView<CKAttachmentView> * _attachmentView;
 }
 
 @property (nonatomic, retain) UIView<CKAttachmentView> *attachmentView;
 
+- (void).cxx_destruct;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })alignmentRectInsets;
 - (id)attachmentView;
+- (void)configureForComposition:(id)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(float)arg2 orientation:(BOOL)arg3;
 - (void)configureForMessagePart:(id)arg1;
 - (void)dealloc;

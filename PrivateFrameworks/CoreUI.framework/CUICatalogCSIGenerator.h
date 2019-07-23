@@ -3,8 +3,8 @@
  */
 
 @interface CUICatalogCSIGenerator : CSIGenerator {
-    CUIRenditionKey *_baseKey;
-    CSIBitmapWrapper *_flattenedBitmap;
+    CUIRenditionKey * _baseKey;
+    CSIBitmapWrapper * _flattenedBitmap;
 }
 
 @property (nonatomic, retain) CUIRenditionKey *baseKey;

@@ -3,8 +3,8 @@
  */
 
 @interface FBSqliteResultRow : NSObject <NSCopying> {
-    NSArray *_columnNames;
-    struct sqlite3_stmt { } *_statement;
+    NSArray * _columnNames;
+    struct sqlite3_stmt { } * _statement;
 }
 
 @property (nonatomic, readonly) unsigned int count;

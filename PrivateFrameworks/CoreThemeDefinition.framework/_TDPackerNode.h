@@ -3,19 +3,19 @@
  */
 
 @interface _TDPackerNode : NSObject {
-    _TDPackerNode *_down;
-    BOOL _fit;
-    void *_node;
+    _TDPackerNode * _down;
+    BOOL  _fit;
+    void * _node;
     struct CGPoint { 
         float x; 
         float y; 
-    } _origin;
-    _TDPackerNode *_right;
+    }  _origin;
+    _TDPackerNode * _right;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    BOOL _used;
+    }  _size;
+    BOOL  _used;
 }
 
 @property (retain) _TDPackerNode *down;

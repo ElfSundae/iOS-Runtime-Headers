@@ -3,26 +3,26 @@
  */
 
 @interface FMMapGestureRecognizer : UIGestureRecognizer {
-    NSTimer *_doubleTapTimer;
+    NSTimer * _doubleTapTimer;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialTouchLocation;
-    BOOL _isRTLOrientation;
-    BOOL _isSwipeEnabled;
-    BOOL _isSwipingFromTheEdge;
-    BOOL _isSwipingGestureEnded;
-    BOOL _isTrackingTouches;
+    }  _initialTouchLocation;
+    BOOL  _isRTLOrientation;
+    BOOL  _isSwipeEnabled;
+    BOOL  _isSwipingFromTheEdge;
+    BOOL  _isSwipingGestureEnded;
+    BOOL  _isTrackingTouches;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastTouchPoint;
-    NSMutableArray *_otherGestures;
-    UITouch *_previousTouch;
-    float _swipeThreshold;
-    <FMMapGestureRecognizerDelegate> *_touchDelegate;
-    int _touchRadius;
-    float _velocity;
+    }  _lastTouchPoint;
+    NSMutableArray * _otherGestures;
+    UITouch * _previousTouch;
+    float  _swipeThreshold;
+    <FMMapGestureRecognizerDelegate> * _touchDelegate;
+    int  _touchRadius;
+    float  _velocity;
 }
 
 @property (nonatomic, retain) NSTimer *doubleTapTimer;

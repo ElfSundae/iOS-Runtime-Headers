@@ -3,8 +3,8 @@
  */
 
 @interface CMKHardwareLockIndicatorView : CMKBadgeTextView {
-    BOOL _exposureLocked;
-    BOOL _focusLocked;
+    BOOL  _exposureLocked;
+    BOOL  _focusLocked;
 }
 
 @property (getter=isExposureLocked, nonatomic) BOOL exposureLocked;

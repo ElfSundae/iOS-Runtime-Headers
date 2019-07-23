@@ -3,11 +3,11 @@
  */
 
 @interface SYChange : PBCodable <NSCopying, SYChange> {
-    NSData *_changeData;
-    NSString *_objectId;
-    NSString *_sequencer;
-    int _type;
-    unsigned long long _version;
+    NSData * _changeData;
+    NSString * _objectId;
+    NSString * _sequencer;
+    int  _type;
+    unsigned long long  _version;
 }
 
 @property (nonatomic, retain) NSData *changeData;
@@ -30,6 +30,7 @@
 + (id)changeWithObject:(id)arg1 updateType:(int)arg2 store:(id)arg3;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)changeData;
 - (id)changeObjectWithSerializer:(id)arg1;
 - (id)changeObjectWithSerializer:(id)arg1 encodedByVersion:(int)arg2;
@@ -54,6 +55,7 @@
 - (void)setType:(int)arg1;
 - (void)setVersion:(unsigned long long)arg1;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (unsigned long long)version;
 - (void)writeTo:(id)arg1;
 

@@ -3,9 +3,9 @@
  */
 
 @interface MSCLVideoAttachmentPreviewView : UIView {
-    UIImageView *_imageView;
-    UILabel *_label;
-    CAGradientLayer *_overlayLayer;
+    UIImageView * _imageView;
+    UILabel * _label;
+    CAGradientLayer * _overlayLayer;
 }
 
 - (void).cxx_destruct;

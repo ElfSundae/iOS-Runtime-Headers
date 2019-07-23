@@ -3,10 +3,11 @@
  */
 
 @interface GEOTileServerProxy : NSObject {
-    <GEOTileServerProxyDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_delegateQ;
-    NSLocale *_locale;
-    GEOResourceManifestConfiguration *_manifestConfiguration;
+    <GEOTileServerProxyDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _delegateQ;
+    NSLocale * _locale;
+    GEOResourceManifestConfiguration * _manifestConfiguration;
+    int  _resourceNotificationToken;
 }
 
 @property (nonatomic) <GEOTileServerProxyDelegate> *delegate;

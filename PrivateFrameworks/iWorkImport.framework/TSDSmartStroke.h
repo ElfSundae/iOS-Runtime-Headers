@@ -3,10 +3,10 @@
  */
 
 @interface TSDSmartStroke : TSDStroke {
-    NSString *mStrokeName;
+    NSString * mStrokeName;
 }
 
-@property (nonatomic, copy) NSString *strokeName;
+@property (nonatomic, readonly, copy) NSString *strokeName;
 
 + (Class)classForName:(id)arg1;
 + (id)strokeWithName:(id)arg1 color:(id)arg2 width:(float)arg3;
@@ -24,7 +24,6 @@
 - (int)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)saveToArchive:(struct StrokeArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; struct Color {} *x5; float x6; int x7; int x8; float x9; struct StrokePatternArchive {} *x10; struct SmartStrokeArchive {} *x11; struct FrameArchive {} *x12; struct PatternedStrokeArchive {} *x13; }*)arg1 archiver:(id)arg2;
-- (void)setStrokeName:(id)arg1;
 - (BOOL)shouldAntialiasDefeat;
 - (id)strokeName;
 

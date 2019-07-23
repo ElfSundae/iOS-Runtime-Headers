@@ -3,25 +3,25 @@
  */
 
 @interface AXIPCClient : NSObject {
-    unsigned int _assignedServerMachPort;
-    NSString *_clientIdentifier;
-    struct __CFRunLoopSource { } *_clientSource;
-    BOOL _connected;
-    unsigned int _connectionAttempts;
-    AXAccessQueue *_connectionQueue;
-    NSMutableArray *_outstandingAsyncRequests;
-    int _pid;
-    AXAccessQueue *_portDeathAccessQueue;
-    id /* block */ _portDeathHandler;
-    NSMutableArray *_postConnectionTasks;
-    struct __CFMachPort { } *_serverPort;
-    NSLock *_serverPortLock;
-    NSString *_serviceName;
-    float _timeout;
-    BOOL _usesPerPidLookup;
-    unsigned int clientCallbackPort;
-    struct __CFRunLoopSource { } *clientCallbackSource;
-    BOOL shouldRegisterCallbackSourceOnMainRunloop;
+    unsigned int  _assignedServerMachPort;
+    NSString * _clientIdentifier;
+    struct __CFRunLoopSource { } * _clientSource;
+    BOOL  _connected;
+    unsigned int  _connectionAttempts;
+    AXAccessQueue * _connectionQueue;
+    NSMutableArray * _outstandingAsyncRequests;
+    int  _pid;
+    AXAccessQueue * _portDeathAccessQueue;
+    id /* block */  _portDeathHandler;
+    NSMutableArray * _postConnectionTasks;
+    struct __CFMachPort { } * _serverPort;
+    NSLock * _serverPortLock;
+    NSString * _serviceName;
+    float  _timeout;
+    BOOL  _usesPerPidLookup;
+    unsigned int  clientCallbackPort;
+    struct __CFRunLoopSource { } * clientCallbackSource;
+    BOOL  shouldRegisterCallbackSourceOnMainRunloop;
 }
 
 @property (nonatomic, readonly) unsigned int clientCallbackPort;
@@ -51,6 +51,7 @@
 - (BOOL)_handleErrorWithMessage:(id)arg1 outError:(id*)arg2;
 - (BOOL)_prepareToSendMessage:(id)arg1 withError:(id*)arg2 prepSuccessHandler:(id /* block */)arg3;
 - (void)_registerWithServer;
+- (void)_sendRegistrationMessageWithRetries:(int)arg1;
 - (void)_serverDied;
 - (BOOL)_verifyConnectionWithError:(id*)arg1;
 - (unsigned int)clientCallbackPort;

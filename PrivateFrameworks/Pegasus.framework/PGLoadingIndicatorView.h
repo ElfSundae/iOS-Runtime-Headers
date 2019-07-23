@@ -3,7 +3,7 @@
  */
 
 @interface PGLoadingIndicatorView : UIView {
-    UIActivityIndicatorView *_activityIndicatorView;
+    UIActivityIndicatorView * _activityIndicatorView;
 }
 
 - (void).cxx_destruct;

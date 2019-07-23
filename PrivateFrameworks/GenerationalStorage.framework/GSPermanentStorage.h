@@ -3,15 +3,15 @@
  */
 
 @interface GSPermanentStorage : NSObject <GSAdditionStoring, GSAdditionStoringPrivate> {
-    GSDocumentIdentifier *_documentID;
-    NSURL *_documentURL;
-    NSData *_privExtension;
-    long long _privHandle;
-    NSData *_pubExtension;
-    long long _pubHandle;
-    unsigned long long _remoteID;
-    GSStagingPrefix *_stagingPrefix;
-    unsigned long long _storageID;
+    GSDocumentIdentifier * _documentID;
+    NSURL * _documentURL;
+    NSData * _privExtension;
+    long long  _privHandle;
+    NSData * _pubExtension;
+    long long  _pubHandle;
+    unsigned long long  _remoteID;
+    GSStagingPrefix * _stagingPrefix;
+    unsigned long long  _storageID;
 }
 
 @property (nonatomic, readonly) GSDocumentIdentifier *documentID;

@@ -3,31 +3,31 @@
  */
 
 @interface PUScrubberSettings : PUSettings {
-    float _baseVideoWidth;
-    int _chromeShownPlaybackIndicator;
-    float _decelerationTargetExpansionDistance;
-    int _defaultPlaybackIndicator;
-    BOOL _dynamicSeekTolerance;
-    float _filmstripAspectRatio;
-    int _initialPlaybackIndicator;
-    float _interItemSpacing;
-    float _interSectionSpacing;
-    unsigned int _interactiveLoupeBehavior;
-    float _maxAspectRatio;
-    float _minVideoDuration;
-    int _playingPlaybackIndicator;
-    unsigned int _previewInteractiveLoupeBehavior;
-    int _scrubbingPlaybackIndicator;
-    double _settleAnimationDuration;
-    float _settleRequiredDecelerationDistance;
-    float _slitAspectRatio;
-    double _smoothingAnimationDuration;
-    double _tapAnimationDuration;
-    float _topOutset;
-    BOOL _usePreviewScrubberMargins;
-    BOOL _useSmoothingAnimation;
-    BOOL _useTrianglePositionIndicator;
-    float _verticalMargin;
+    float  _baseVideoWidth;
+    int  _chromeShownPlaybackIndicator;
+    float  _decelerationTargetExpansionDistance;
+    int  _defaultPlaybackIndicator;
+    BOOL  _dynamicSeekTolerance;
+    float  _filmstripAspectRatio;
+    int  _initialPlaybackIndicator;
+    float  _interItemSpacing;
+    float  _interSectionSpacing;
+    unsigned int  _interactiveLoupeBehavior;
+    float  _maxAspectRatio;
+    float  _minVideoDuration;
+    int  _playingPlaybackIndicator;
+    unsigned int  _previewInteractiveLoupeBehavior;
+    int  _scrubbingPlaybackIndicator;
+    double  _settleAnimationDuration;
+    float  _settleRequiredDecelerationDistance;
+    float  _slitAspectRatio;
+    double  _smoothingAnimationDuration;
+    double  _tapAnimationDuration;
+    float  _topOutset;
+    BOOL  _usePreviewScrubberMargins;
+    BOOL  _useSmoothingAnimation;
+    BOOL  _useTrianglePositionIndicator;
+    float  _verticalMargin;
 }
 
 @property (nonatomic) float baseVideoWidth;

@@ -3,13 +3,13 @@
  */
 
 @interface SBFWallpaperSettings : _UISettings {
-    int _blurReplacementMode;
-    unsigned int _colorBoxSize;
-    float _mediumBlurRadius;
-    float _mediumGrayscaleTintAlpha;
-    float _mediumGrayscaleTintLevel;
-    float _mediumSaturationDeltaFactor;
-    BOOL _replaceBlurs;
+    int  _blurReplacementMode;
+    unsigned int  _colorBoxSize;
+    float  _mediumBlurRadius;
+    float  _mediumGrayscaleTintAlpha;
+    float  _mediumGrayscaleTintLevel;
+    float  _mediumSaturationDeltaFactor;
+    BOOL  _replaceBlurs;
 }
 
 @property (nonatomic) int blurReplacementMode;

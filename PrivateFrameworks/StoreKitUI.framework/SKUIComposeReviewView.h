@@ -3,9 +3,9 @@
  */
 
 @interface SKUIComposeReviewView : UIView <SKUIComposeReviewHeaderDelegate, UITextContentViewDelegate> {
-    int _currentBodyLength;
-    <SKUIComposeReviewViewDelegate> *_delegate;
-    SKUIComposeReviewHeaderView *_headerView;
+    int  _currentBodyLength;
+    <SKUIComposeReviewViewDelegate> * _delegate;
+    SKUIComposeReviewHeaderView * _headerView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,13 +15,23 @@
             float width; 
             float height; 
         } size; 
-    } _keyboardFrame;
-    unsigned int _loading;
-    SULoadingView *_loadingView;
-    SKUIReviewMetadata *_review;
-    UIScrollView *_scrollView;
-    int _style;
-    SUTextContentView *_textContentView;
+    }  _keyboardFrame;
+    unsigned int  _loading;
+    SULoadingView * _loadingView;
+    struct CGRect { 
+        struct CGPoint { 
+            float x; 
+            float y; 
+        } origin; 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+    }  _remoteKeyboardFrame;
+    SKUIReviewMetadata * _review;
+    UIScrollView * _scrollView;
+    int  _style;
+    SUTextContentView * _textContentView;
 }
 
 @property (nonatomic, readonly) int composeReviewStyle;
@@ -41,6 +51,7 @@
 - (void)_keyboardVisibilityDidChangeNotification:(id)arg1;
 - (void)_layoutComposeView;
 - (void)_layoutLoadingView;
+- (void)_remoteKeyboardVisibilityDidChangeNotification:(id)arg1;
 - (id)_reviewPlaceholder;
 - (void)_showComposeView;
 - (void)_showLoadingView;

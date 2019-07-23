@@ -3,21 +3,18 @@
  */
 
 @interface AutoCropper : NSObject {
-    NSNumber *bufferZone;
     struct CGSize { 
         float width; 
         float height; 
-    } originalImageSize;
-    BOOL shouldFavorBottom;
-    BOOL shouldFavorTop;
+    }  originalImageSize;
+    BOOL  shouldFavorBottom;
+    BOOL  shouldFavorTop;
 }
 
-@property (nonatomic, retain) NSNumber *bufferZone;
 @property (nonatomic) struct CGSize { float x1; float x2; } originalImageSize;
 @property (nonatomic) BOOL shouldFavorBottom;
 @property (nonatomic) BOOL shouldFavorTop;
 
-- (id)bufferZone;
 - (id)clusterRects:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })computeClippingWithinSize:(struct CGSize { float x1; float x2; })arg1 andImportantRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })computeClippingWithinSize:(struct CGSize { float x1; float x2; })arg1 andImportantRects:(id)arg2;
@@ -32,7 +29,6 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectWithSize:(struct CGSize { float x1; float x2; })arg1 andPoint:(struct CGPoint { float x1; float x2; })arg2 inPosition:(int)arg3 fromOriginalSize:(struct CGSize { float x1; float x2; })arg4;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })scaleRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 byScale:(float)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })scaleRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 toFitSize:(struct CGSize { float x1; float x2; })arg2 withAnchorPoint:(struct CGPoint { float x1; float x2; })arg3;
-- (void)setBufferZone:(id)arg1;
 - (void)setOriginalImageSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setShouldFavorBottom:(BOOL)arg1;
 - (void)setShouldFavorTop:(BOOL)arg1;

@@ -3,19 +3,19 @@
  */
 
 @interface CKDPPulseData : PBCodable <NSCopying> {
-    long long _customState;
+    long long  _customState;
     struct { 
         unsigned int customState : 1; 
         unsigned int stateTTLMillis : 1; 
         unsigned int state : 1; 
-    } _has;
-    CKDPDate *_lastCustom;
-    CKDPDate *_lastEdited;
-    CKDPDate *_lastInvisible;
-    CKDPDate *_lastViewed;
-    int _state;
-    long long _stateTTLMillis;
-    CKDPIdentifier *_user;
+    }  _has;
+    CKDPDate * _lastCustom;
+    CKDPDate * _lastEdited;
+    CKDPDate * _lastInvisible;
+    CKDPDate * _lastViewed;
+    int  _state;
+    long long  _stateTTLMillis;
+    CKDPIdentifier * _user;
 }
 
 @property (nonatomic) long long customState;
@@ -36,6 +36,7 @@
 @property (nonatomic, retain) CKDPIdentifier *user;
 
 - (void).cxx_destruct;
+- (int)StringAsState:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)customState;
@@ -69,6 +70,7 @@
 - (void)setStateTTLMillis:(long long)arg1;
 - (void)setUser:(id)arg1;
 - (int)state;
+- (id)stateAsString:(int)arg1;
 - (long long)stateTTLMillis;
 - (id)user;
 - (void)writeTo:(id)arg1;

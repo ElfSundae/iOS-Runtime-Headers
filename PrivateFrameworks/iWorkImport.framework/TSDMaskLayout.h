@@ -3,8 +3,8 @@
  */
 
 @interface TSDMaskLayout : TSDLayout {
-    struct CGPath { } *mCachedPath;
-    struct CGPath { } *mCachedPathNoScale;
+    struct CGPath { } * mCachedPath;
+    struct CGPath { } * mCachedPathNoScale;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } mCachedTightPathBounds;
+    }  mCachedTightPathBounds;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,21 +24,21 @@
             float width; 
             float height; 
         } size; 
-    } mCachedTightPathBoundsNoScale;
-    TSDInfoGeometry *mDynamicInfoGeometry;
-    TSDPathSource *mDynamicPathSource;
+    }  mCachedTightPathBoundsNoScale;
+    TSDInfoGeometry * mDynamicInfoGeometry;
+    TSDPathSource * mDynamicPathSource;
     struct { 
         unsigned int path : 1; 
         unsigned int tightPathBounds : 1; 
-    } mMaskInvalidFlags;
-    float mPathScale;
-    BOOL mScalingInMaskMode;
+    }  mMaskInvalidFlags;
+    float  mPathScale;
+    BOOL  mScalingInMaskMode;
 }
 
 @property (nonatomic, readonly) TSDImageLayout *imageLayout;
 @property (nonatomic) float pathScale;
 
-- (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })affineTransformForTightPathBounds;
+- (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
 - (id)dependentLayouts;

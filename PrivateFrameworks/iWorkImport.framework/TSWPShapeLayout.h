@@ -3,10 +3,10 @@
  */
 
 @interface TSWPShapeLayout : TSDShapeLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver> {
-    TSDWrapSegments *_cachedInteriorWrapSegments;
-    TSWPLayout *_containedLayout;
-    <TSWPShapeLayoutDelegate> *_delegate;
-    BOOL _observingStorage;
+    TSDWrapSegments * _cachedInteriorWrapSegments;
+    TSWPLayout * _containedLayout;
+    <TSWPShapeLayoutDelegate> * _delegate;
+    BOOL  _observingStorage;
 }
 
 @property (nonatomic, readonly) BOOL alwaysStartsNewTarget;
@@ -14,9 +14,13 @@
 @property (nonatomic, readonly) unsigned int columnCount;
 @property (nonatomic, readonly) BOOL columnsAreLeftToRight;
 @property (nonatomic, readonly) TSWPLayout *containedLayout;
+@property (readonly, copy) NSString *debugDescription;
 @property <TSWPShapeLayoutDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) TSWPPadding *layoutMargins;
 @property (nonatomic, readonly) BOOL shrinkTextToFit;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) float textScaleFactor;
 
 - (void)addChild:(id)arg1;
@@ -54,7 +58,6 @@
 - (void)invalidateSize;
 - (BOOL)isInvisibleAutosizingShape;
 - (id)layoutMargins;
-- (float)maxAutoGrowWidthForTextLayout:(id)arg1;
 - (float)maxAutoGrowWidthForTextLayout:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })nonAutosizedFrameForTextLayout:(id)arg1;
 - (BOOL)parentAutosizes;

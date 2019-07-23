@@ -3,11 +3,11 @@
  */
 
 @interface TPNumberPadButton : UIControl <TPNumberPadButtonProtocol> {
-    UIColor *_color;
-    CALayer *_glyphLayer;
-    CALayer *_highlightedGlyphLayer;
-    TPRevealingRingView *_revealingRingView;
-    unsigned int character;
+    UIColor * _color;
+    CALayer * _glyphLayer;
+    CALayer * _highlightedGlyphLayer;
+    TPRevealingRingView * _revealingRingView;
+    unsigned int  character;
 }
 
 @property (nonatomic) float alphaOutsideAndInsideRing;
@@ -30,8 +30,13 @@
 + (id)imageForCharacter:(unsigned int)arg1;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
++ (void)loadNumberPadKeyPrototypeView;
++ (id)localizedLettersForCharacter:(unsigned int)arg1;
 + (float)outerCircleDiameter;
 + (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })paddingOutsideRing;
++ (void)resetLocale;
++ (void)resetLocaleIfNeeded;
++ (id)scriptKey;
 + (float)unhighlightCrossfadeHighlightBeginTime;
 + (float)unhighlightCrossfadeHighlightFadeDuration;
 + (float)unhighlightCrossfadeNormalBeginTime;
@@ -49,6 +54,7 @@
 - (id)highlightedGlyphLayer;
 - (id)hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (id)initForCharacter:(unsigned int)arg1;
+- (void)loadImagesForCurrentCharacter;
 - (id)revealingRingView;
 - (void)setAlphaOutsideAndInsideRing:(float)arg1;
 - (void)setCharacter:(unsigned int)arg1;

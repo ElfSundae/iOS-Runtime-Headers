@@ -3,20 +3,20 @@
  */
 
 @interface ICAttachmentThumbnailOperation : NSBlockOperation {
-    ICAttachmentPreviewImageLoader *_attachmentPreviewImageLoader;
-    NSCache *_cache;
-    NSString *_cacheKey;
-    NSMutableArray *_completionBlocks;
-    id /* block */ _fallbackBlock;
-    unsigned int _imageScaling;
-    BOOL _isMovie;
-    NSURL *_mediaURL;
+    ICAttachmentPreviewImageLoader * _attachmentPreviewImageLoader;
+    NSCache * _cache;
+    NSString * _cacheKey;
+    NSMutableArray * _completionBlocks;
+    id /* block */  _fallbackBlock;
+    unsigned int  _imageScaling;
+    BOOL  _isMovie;
+    NSURL * _mediaURL;
     struct CGSize { 
         float width; 
         float height; 
-    } _minSize;
-    id /* block */ _processingBlock;
-    BOOL _showAsFileIcon;
+    }  _minSize;
+    id /* block */  _processingBlock;
+    BOOL  _showAsFileIcon;
 }
 
 @property (nonatomic, retain) ICAttachmentPreviewImageLoader *attachmentPreviewImageLoader;

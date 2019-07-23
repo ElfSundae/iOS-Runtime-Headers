@@ -3,16 +3,18 @@
  */
 
 @interface CKSQLiteStatement : NSObject {
-    NSString *_SQL;
-    CKSQLite *_SQLite;
-    struct sqlite3_stmt { } *_handle;
-    BOOL _reset;
+    NSString * _SQL;
+    CKSQLite * _SQLite;
+    struct sqlite3_stmt { } * _handle;
+    BOOL  _reset;
+    NSMutableArray * _temporaryBoundObjects;
 }
 
 @property (nonatomic, readonly) NSString *SQL;
 @property (nonatomic, readonly) CKSQLite *SQLite;
 @property (nonatomic, readonly) struct sqlite3_stmt { }*handle;
 @property (getter=isReset, nonatomic) BOOL reset;
+@property (nonatomic, retain) NSMutableArray *temporaryBoundObjects;
 
 - (void).cxx_destruct;
 - (id)SQL;
@@ -40,8 +42,12 @@
 - (BOOL)isReset;
 - (id)objectAtIndex:(unsigned int)arg1;
 - (void)reset;
+- (void)resetAfterStepError;
+- (id)retainedTemporaryBoundObject:(id)arg1;
 - (void)setReset:(BOOL)arg1;
+- (void)setTemporaryBoundObjects:(id)arg1;
 - (BOOL)step;
+- (id)temporaryBoundObjects;
 - (id)textAtIndex:(unsigned int)arg1;
 
 @end

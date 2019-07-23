@@ -5,10 +5,12 @@
 @interface CKTypingChatItem : CKChatItem
 
 @property (getter=isFromMe, nonatomic, readonly) BOOL fromMe;
+@property (nonatomic, readonly) CALayer<CKTypingIndicatorLayerProtocol> *indicatorLayer;
 
 - (Class)cellClass;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })contentInsets;
 - (BOOL)displayDuringSend;
+- (id)indicatorLayer;
 - (BOOL)isFromMe;
 - (struct CGSize { float x1; float x2; })loadSizeThatFits:(struct CGSize { float x1; float x2; })arg1 textAlignmentInsets:(out struct UIEdgeInsets { float x1; float x2; float x3; float x4; }*)arg2;
 - (BOOL)transcriptOrientation;

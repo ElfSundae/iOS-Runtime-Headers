@@ -3,15 +3,16 @@
  */
 
 @interface TSARenderingExporter : NSObject <TSKRenderingExporter> {
-    TSDBitmapRenderingQualityInfo *mBitmapRenderingQualityInfo;
-    TSADocumentRoot *mDocumentRoot;
-    BOOL mDoesDrawAllPages;
-    TSDImager *mImager;
-    BOOL mIsCancelled;
-    BOOL mIsQuit;
-    BOOL mPaginate;
-    TSUProgressContext *mProgressContext;
-    NSObject<TSARenderingExporterDelegate> *mRenderingExporterDelegate;
+    TSDBitmapRenderingQualityInfo * mBitmapRenderingQualityInfo;
+    TSADocumentRoot * mDocumentRoot;
+    BOOL  mDoesDrawAllPages;
+    TSDImager * mImager;
+    NSObject<OS_dispatch_queue> * mImagerAccessLock;
+    BOOL  mIsCancelled;
+    BOOL  mIsQuit;
+    BOOL  mPaginate;
+    TSUProgressContext * mProgressContext;
+    NSObject<TSARenderingExporterDelegate> * mRenderingExporterDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,8 +32,6 @@
 - (void)drawCurrentPageWithContext:(struct CGContext { }*)arg1 returnSuccess:(BOOL*)arg2;
 - (BOOL)exportToURL:(id)arg1 delegate:(id)arg2 error:(id*)arg3;
 - (BOOL)exportToURL:(id)arg1 pageNumber:(unsigned int)arg2 delegate:(id)arg3 error:(id*)arg4;
-- (BOOL)hasMoreThanOnePageToPrint;
-- (id)imager;
 - (BOOL)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1 imager:(id)arg2;
@@ -43,6 +42,7 @@
 - (id)p_renderingExporterDelegate;
 - (unsigned int)pageCount;
 - (BOOL)paginate;
+- (void)performBlockWithImager:(id /* block */)arg1;
 - (BOOL)preparePage:(unsigned int)arg1;
 - (id)progressContext;
 - (double)progressForCurrentPage;

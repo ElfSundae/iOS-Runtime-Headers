@@ -3,12 +3,12 @@
  */
 
 @interface KNMasterSlide : KNAbstractSlide <TSKTransformableObject> {
-    NSArray *mBodyListStyles;
-    NSArray *mBodyParagraphStyles;
-    BOOL mCalculatedHasBug16580905;
-    KNClassicStylesheetRecord *mClassicStylesheetRecord;
-    BOOL mHasBug16580905;
-    NSString *mName;
+    NSArray * mBodyListStyles;
+    NSArray * mBodyParagraphStyles;
+    BOOL  mCalculatedHasBug16580905;
+    KNClassicStylesheetRecord * mClassicStylesheetRecord;
+    BOOL  mHasBug16580905;
+    NSString * mName;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,10 +18,10 @@
             float width; 
             float height; 
         } size; 
-    } mObjectRect;
-    BOOL mSlideObjectsLayerWithMaster;
-    NSString *mThumbnailTextForBodyPlaceholder;
-    NSString *mThumbnailTextForTitlePlaceholder;
+    }  mObjectRect;
+    BOOL  mSlideObjectsLayerWithMaster;
+    NSString * mThumbnailTextForBodyPlaceholder;
+    NSString * mThumbnailTextForTitlePlaceholder;
 }
 
 @property (nonatomic, copy) NSArray *bodyListStyles;
@@ -37,8 +37,10 @@
 @property (nonatomic, retain) NSString *thumbnailTextForBodyPlaceholder;
 @property (nonatomic, retain) NSString *thumbnailTextForTitlePlaceholder;
 
++ (BOOL)hasLocalizedThumbnailText;
 + (void)initialize;
 + (id)masterGuideColor;
++ (void)mastersNotEquivalentWithFile:(id)arg1 lineNumber:(int)arg2 reason:(id)arg3;
 + (id)p_defaultMasterGuideColor;
 + (void)setMasterGuideColor:(id)arg1;
 
@@ -56,6 +58,7 @@
 - (id)copyWithContext:(id)arg1 andSlideNode:(id)arg2;
 - (void)dealloc;
 - (id)description;
+- (void)flushClassicStylesheetRecord;
 - (void)generateObjectPlaceholderIfNecessary;
 - (BOOL)hasBug16580905;
 - (id)imagePlaceholders;
@@ -73,8 +76,10 @@
 - (id)p_defaultTagForDrawable:(id)arg1;
 - (id)p_defaultThumbnailTextForPlaceholder:(id)arg1;
 - (id)packageLocator;
+- (id)referencedStyles;
 - (void)removeBuild:(id)arg1;
 - (void)removeBuildChunk:(id)arg1 rollbackGeneratedIdentifier:(BOOL)arg2;
+- (void)replaceReferencedStylesUsingBlock:(id /* block */)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)setBodyListStyles:(id)arg1;
 - (void)setBodyParagraphStyles:(id)arg1;
@@ -84,7 +89,6 @@
 - (void)setThumbnailTextForBodyPlaceholder:(id)arg1;
 - (void)setThumbnailTextForTitlePlaceholder:(id)arg1;
 - (BOOL)slideObjectsLayerWithMaster;
-- (id)tagforNewPlaceholderInfo:(id)arg1;
 - (id)tagsforNewPlaceholderInfos:(id)arg1;
 - (id)thumbnailTextForBodyPlaceholder;
 - (id)thumbnailTextForPlaceholder:(id)arg1;

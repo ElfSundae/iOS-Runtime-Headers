@@ -3,33 +3,33 @@
  */
 
 @interface CAMTransientAsset : NSObject <PUTransientDisplayAsset> {
-    BOOL _HDR;
-    NSString *_burstIdentifier;
-    BOOL _canPlayPhotoIris;
-    NSDate *_creationDate;
-    double _duration;
-    BOOL _isPhotoIrisPlaceholder;
-    unsigned int _mediaType;
-    NSDate *_modificationDate;
-    unsigned int _numberOfRepresentedAssets;
-    NSURL *_persistenceURL;
+    BOOL  _HDR;
+    NSString * _burstIdentifier;
+    BOOL  _canPlayPhotoIris;
+    NSDate * _creationDate;
+    double  _duration;
+    BOOL  _isPhotoIrisPlaceholder;
+    unsigned int  _mediaType;
+    NSDate * _modificationDate;
+    unsigned int  _numberOfRepresentedAssets;
+    NSURL * _persistenceURL;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _photoIrisStillDisplayTime;
+    }  _photoIrisStillDisplayTime;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _photoIrisVideoDuration;
-    unsigned int _pixelHeight;
-    unsigned int _pixelWidth;
-    UIImage *_placeholderImage;
-    BOOL _representsBurst;
-    NSString *_uuid;
+    }  _photoIrisVideoDuration;
+    unsigned int  _pixelHeight;
+    unsigned int  _pixelWidth;
+    UIImage * _placeholderImage;
+    BOOL  _representsBurst;
+    NSString * _uuid;
 }
 
 @property (getter=isHDR, nonatomic, readonly) BOOL HDR;
@@ -47,6 +47,7 @@
 @property (nonatomic, readonly) BOOL isPhotoIrisPlaceholder;
 @property (nonatomic, readonly) BOOL isTemporaryPlaceholder;
 @property (nonatomic, readonly) NSString *localizedGeoDescription;
+@property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) unsigned int mediaType;
 @property (nonatomic, readonly) NSDate *modificationDate;
 @property (nonatomic, readonly) unsigned int numberOfRepresentedAssets;
@@ -82,6 +83,7 @@
 - (BOOL)isPhotoIrisPlaceholder;
 - (BOOL)isTemporaryPlaceholder;
 - (id)localizedGeoDescription;
+- (id)location;
 - (unsigned int)mediaType;
 - (id)modificationDate;
 - (unsigned int)numberOfRepresentedAssets;

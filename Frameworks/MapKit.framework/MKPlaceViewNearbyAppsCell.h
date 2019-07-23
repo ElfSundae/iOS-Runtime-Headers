@@ -2,19 +2,19 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceViewNearbyAppsCell : ABContactCell <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
-    NSLayoutConstraint *_collectionHeightConstraint;
-    UICollectionView *_collectionView;
-    <MKPlaceViewNearbyAppsCellDelegate> *_delegate;
-    _MKNearbyAppsFlowLayout *_flowLayout;
-    NSLayoutConstraint *_headerBaselineConstraint;
-    UILabel *_headerLabel;
+@interface MKPlaceViewNearbyAppsCell : MKTableViewCell <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
+    NSLayoutConstraint * _collectionHeightConstraint;
+    UICollectionView * _collectionView;
+    <MKPlaceViewNearbyAppsCellDelegate> * _delegate;
+    _MKNearbyAppsFlowLayout * _flowLayout;
+    NSLayoutConstraint * _headerBaselineConstraint;
+    UILabel * _headerLabel;
     struct CGSize { 
         float width; 
         float height; 
-    } _iconSize;
-    NSArray *_marginConstraints;
-    NSArray *_storeItems;
+    }  _iconSize;
+    NSArray * _marginConstraints;
+    NSArray * _storeItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,14 +3,14 @@
  */
 
 @interface UIKBKeyplaneChangeContext : NSObject {
-    BOOL _selfSizingChanged;
+    BOOL  _selfSizingChanged;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    BOOL _sizeDidChange;
-    BOOL _splitWidthsChanged;
-    BOOL _updateAssistantView;
+    }  _size;
+    BOOL  _sizeDidChange;
+    BOOL  _splitWidthsChanged;
+    BOOL  _updateAssistantView;
 }
 
 @property (nonatomic) BOOL selfSizingChanged;

@@ -3,7 +3,7 @@
  */
 
 @interface CMKDisabledModeOverlayView : UIView {
-    UILabel *__messageLabel;
+    UILabel * __messageLabel;
 }
 
 @property (nonatomic, readonly) UILabel *_messageLabel;

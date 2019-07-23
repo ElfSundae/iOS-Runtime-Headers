@@ -3,7 +3,7 @@
  */
 
 @interface UIRemoteKeyboardWindow : UITextEffectsWindow {
-    BOOL _arePlaceholdersInitialised;
+    BOOL  _arePlaceholdersInitialised;
 }
 
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(BOOL)arg2;
@@ -22,6 +22,7 @@
 - (BOOL)_usesWindowServerHitTesting;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })_viewTransformForInterfaceOrientation:(int)arg1;
 - (BOOL)_wantsSceneAssociation;
+- (void)dealloc;
 - (void)invalidate;
 - (void)setWindowLevel:(float)arg1;
 

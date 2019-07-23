@@ -3,11 +3,11 @@
  */
 
 @interface _UIAccessDeniedView : UIView {
-    UIImageView *_lockView;
-    NSString *_message;
-    UILabel *_messageLabel;
-    NSString *_title;
-    UILabel *_titleLabel;
+    UIImageView * _lockView;
+    NSString * _message;
+    UILabel * _messageLabel;
+    NSString * _title;
+    UILabel * _titleLabel;
 }
 
 @property (nonatomic, copy) NSString *message;

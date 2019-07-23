@@ -3,21 +3,21 @@
  */
 
 @interface UIDragRecognizer : UIGestureRecognizer {
-    double _angle;
-    BOOL _canBeginDrag;
-    SEL _checkCanBeginDrag;
-    double _maximumDeviation;
-    double _minimumDistance;
-    double _quietPeriod;
-    BOOL _restrictsToAngle;
-    double _startAngle;
+    double  _angle;
+    BOOL  _canBeginDrag;
+    SEL  _checkCanBeginDrag;
+    double  _maximumDeviation;
+    double  _minimumDistance;
+    double  _quietPeriod;
+    BOOL  _restrictsToAngle;
+    double  _startAngle;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startPosition;
-    UIDelayedAction *_tooSlow;
-    UITouch *_touch;
-    UIDelayedAction *ignoreTouch;
+    }  _startPosition;
+    UIDelayedAction * _tooSlow;
+    UITouch * _touch;
+    UIDelayedAction * ignoreTouch;
 }
 
 @property (nonatomic) double angle;

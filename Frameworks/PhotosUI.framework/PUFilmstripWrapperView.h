@@ -3,14 +3,14 @@
  */
 
 @interface PUFilmstripWrapperView : UIView {
-    NSNumber *_anchoredLeft;
+    NSNumber * _anchoredLeft;
     struct CGSize { 
         float width; 
         float height; 
-    } _expandedSize;
-    PUFilmstripView *_filmstripView;
-    BOOL _isAnimating;
-    BOOL _isExpanded;
+    }  _expandedSize;
+    PUFilmstripView * _filmstripView;
+    BOOL  _isAnimating;
+    BOOL  _isExpanded;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -20,7 +20,7 @@
             float width; 
             float height; 
         } size; 
-    } _visibleRect;
+    }  _visibleRect;
 }
 
 @property (nonatomic, copy) NSNumber *anchoredLeft;

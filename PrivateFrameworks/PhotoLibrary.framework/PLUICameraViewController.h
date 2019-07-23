@@ -3,7 +3,7 @@
  */
 
 @interface PLUICameraViewController : CMKCameraViewController <UIImagePickerCameraViewController> {
-    int _newStatusBarStyle;
+    int  _newStatusBarStyle;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -11,8 +11,8 @@
         float d; 
         float tx; 
         float ty; 
-    } _previewViewTransform;
-    int _previousStatusBarStyle;
+    }  _previewViewTransform;
+    int  _previousStatusBarStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -55,6 +55,7 @@
 - (void)cameraViewWillRetakePhoto:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithInitialImagePickerProperties:(id)arg1;
 - (void)loadView;
 - (int)preferredStatusBarStyle;
 - (int)preferredStatusBarUpdateAnimation;

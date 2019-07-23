@@ -3,24 +3,24 @@
  */
 
 @interface _UIPreviewPresentationContainerView : UIView {
-    UIView *_contentTransformView;
-    UIView *_contentView;
-    float _cornerRadius;
-    _UIPreviewPresentationEffectView *_platterEffectView;
-    UIView *_platterShadowView;
-    _UIPreviewPresentationEffectView *_platterView;
+    UIView * _contentTransformView;
+    UIView * _contentView;
+    float  _cornerRadius;
+    _UIPreviewPresentationEffectView * _platterClippingView;
+    UIView * _platterShadowView;
+    _UIPreviewPresentationEffectView * _platterView;
     struct CGSize { 
         float width; 
         float height; 
-    } _preferredContentSize;
-    BOOL _shouldLayoutForCommitPhase;
+    }  _preferredContentSize;
+    BOOL  _shouldLayoutForCommitPhase;
 }
 
 @property (nonatomic) float blurRadius;
 @property (nonatomic, retain) UIView *contentTransformView;
 @property (nonatomic, retain) UIView *contentView;
 @property (nonatomic) float cornerRadius;
-@property (nonatomic, retain) _UIPreviewPresentationEffectView *platterEffectView;
+@property (nonatomic, retain) _UIPreviewPresentationEffectView *platterClippingView;
 @property (nonatomic, retain) UIView *platterShadowView;
 @property (nonatomic, retain) _UIPreviewPresentationEffectView *platterView;
 @property (nonatomic) struct CGSize { float x1; float x2; } preferredContentSize;
@@ -37,7 +37,7 @@
 - (void)initPlatterViewsIfNeeded;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
-- (id)platterEffectView;
+- (id)platterClippingView;
 - (id)platterShadowView;
 - (id)platterView;
 - (struct CGSize { float x1; float x2; })preferredContentSize;
@@ -45,7 +45,7 @@
 - (void)setContentTransformView:(id)arg1;
 - (void)setContentView:(id)arg1;
 - (void)setCornerRadius:(float)arg1;
-- (void)setPlatterEffectView:(id)arg1;
+- (void)setPlatterClippingView:(id)arg1;
 - (void)setPlatterShadowView:(id)arg1;
 - (void)setPlatterView:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize { float x1; float x2; })arg1;

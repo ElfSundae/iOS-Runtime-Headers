@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSDImageLayout : TSDMediaLayout <TSDShapeControlLayout> {
-    TSDLayoutGeometry *mBaseImageLayoutGeometry;
-    TSDInfoGeometry *mBaseInfoGeometry;
-    TSDImageAdjustments *mDynamicImageAdjustments;
-    TSDInfoGeometry *mDynamicInfoGeometry;
-    int mHasAlpha;
-    TSDLayoutGeometry *mImageGeometry;
-    BOOL mInInstantAlphaMode;
-    BOOL mIsUpdatingImageAdjustments;
+@interface TSDImageLayout : TSDMediaLayout {
+    TSDLayoutGeometry * mBaseImageLayoutGeometry;
+    TSDInfoGeometry * mBaseInfoGeometry;
+    TSDImageAdjustments * mDynamicImageAdjustments;
+    TSDInfoGeometry * mDynamicInfoGeometry;
+    int  mHasAlpha;
+    TSDLayoutGeometry * mImageGeometry;
+    BOOL  mInInstantAlphaMode;
+    BOOL  mIsUpdatingImageAdjustments;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -18,7 +18,7 @@
         float d; 
         float tx; 
         float ty; 
-    } mLayoutToImageTransform;
+    }  mLayoutToImageTransform;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -26,16 +26,14 @@
         float d; 
         float tx; 
         float ty; 
-    } mLayoutToMaskTransform;
-    int mMaskEditMode;
-    BOOL mMaskIntersectsImage;
-    TSDMaskLayout *mMaskLayout;
-    struct CGPath { } *mPathToStroke;
-    BOOL mScalingInMaskMode;
-    TSUBezierPath *mTracedPath;
+    }  mLayoutToMaskTransform;
+    int  mMaskEditMode;
+    BOOL  mMaskIntersectsImage;
+    TSDMaskLayout * mMaskLayout;
+    struct CGPath { } * mPathToStroke;
+    BOOL  mScalingInMaskMode;
+    TSUBezierPath * mTracedPath;
 }
-
-@property (nonatomic, readonly) TSDPathSource<TSDSmartPathSource> *smartPathSource;
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })boundsInfluencingExteriorWrap;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })computeAlignmentFrameInRoot:(BOOL)arg1;

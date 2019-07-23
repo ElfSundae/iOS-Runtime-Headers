@@ -3,12 +3,12 @@
  */
 
 @interface UIPeripheralHostView : UIView {
-    UIKeyboardCornerView *_cornerViewLeft;
-    UIKeyboardCornerView *_cornerViewRight;
-    int _explicitLayoutCount;
-    UIKBInputBackdropView *_inputAccessoryBackdropView;
-    UIKBInputBackdropView *_inputBackdropView;
-    UIKBRenderConfig *_renderConfig;
+    UIKeyboardCornerView * _cornerViewLeft;
+    UIKeyboardCornerView * _cornerViewRight;
+    int  _explicitLayoutCount;
+    UIKBInputBackdropView * _inputAccessoryBackdropView;
+    UIKBInputBackdropView * _inputBackdropView;
+    UIKBRenderConfig * _renderConfig;
 }
 
 @property (nonatomic, readonly) UIKeyboardCornerView *cornerViewLeft;

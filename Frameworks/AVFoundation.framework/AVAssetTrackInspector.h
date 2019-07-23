@@ -3,14 +3,15 @@
  */
 
 @interface AVAssetTrackInspector : AVFigObjectInspector <AVAsynchronousKeyValueLoading> {
-    NSArray *_cachedMediaCharacteristics;
-    long _synthesizeMediaCharacteristicsOnce;
-    AVWeakReference *_weakReference;
+    NSArray * _cachedMediaCharacteristics;
+    long  _synthesizeMediaCharacteristicsOnce;
+    AVWeakReference * _weakReference;
 }
 
 @property (nonatomic, readonly) int alternateGroupID;
 @property (nonatomic, readonly) NSArray *availableMetadataFormats;
 @property (nonatomic, readonly) NSArray *commonMetadata;
+@property (nonatomic, readonly) int defaultAlternateGroupID;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } dimensions;
 @property (getter=isEnabled, nonatomic, readonly) BOOL enabled;
 @property (nonatomic, readonly) float estimatedDataRate;
@@ -37,6 +38,7 @@
 @property (getter=isPlayable, nonatomic, readonly) BOOL playable;
 @property (nonatomic, readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } preferredTransform;
 @property (nonatomic, readonly) float preferredVolume;
+@property (nonatomic, readonly) int provisionalAlternateGroupID;
 @property (nonatomic, readonly) BOOL requiresFrameReordering;
 @property (nonatomic, readonly, copy) NSArray *segments;
 @property (getter=isSelfContained, nonatomic, readonly) BOOL selfContained;
@@ -60,6 +62,7 @@
 - (id)commonMetadata;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (int)defaultAlternateGroupID;
 - (struct CGSize { float x1; float x2; })dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
@@ -87,6 +90,7 @@
 - (long)playabilityValidationResult;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })preferredTransform;
 - (float)preferredVolume;
+- (int)provisionalAlternateGroupID;
 - (BOOL)requiresFrameReordering;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })samplePresentationTimeForTrackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)segmentForTrackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

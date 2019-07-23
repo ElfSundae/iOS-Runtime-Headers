@@ -3,7 +3,7 @@
  */
 
 @interface PUCropAndStraightenView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate> {
-    UIView *__contentView;
+    UIView * __contentView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,17 +13,17 @@
             float width; 
             float height; 
         } size; 
-    } __fittingRegion;
-    PLImageGeometry *__imageGeometry;
-    UIImageView *__imageView;
-    PHLivePhotoView *__livePhotoView;
-    float __preferredZoomScale;
-    UIScrollView *__scrollView;
-    UIView *__scrollViewReference;
-    BOOL __scrollViewTracking;
-    BOOL __updatingForCrop;
-    BOOL __updatingForFit;
-    BOOL __updatingForStraighten;
+    }  __fittingRegion;
+    PLImageGeometry * __imageGeometry;
+    UIImageView * __imageView;
+    PHLivePhotoView * __livePhotoView;
+    float  __preferredZoomScale;
+    UIScrollView * __scrollView;
+    UIView * __scrollViewReference;
+    BOOL  __scrollViewTracking;
+    BOOL  __updatingForCrop;
+    BOOL  __updatingForFit;
+    BOOL  __updatingForStraighten;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,7 +33,7 @@
             float width; 
             float height; 
         } size; 
-    } _canvasFrame;
+    }  _canvasFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -43,13 +43,13 @@
             float width; 
             float height; 
         } size; 
-    } _cropRect;
-    <PUCropAndStraightenViewDelegate> *_delegate;
-    UIImage *_image;
-    PHLivePhoto *_livePhoto;
-    int _orientation;
-    float _straightenAngle;
-    BOOL _tracking;
+    }  _cropRect;
+    <PUCropAndStraightenViewDelegate> * _delegate;
+    UIImage * _image;
+    PHLivePhoto * _livePhoto;
+    int  _orientation;
+    float  _straightenAngle;
+    BOOL  _tracking;
 }
 
 @property (setter=_setContentView:, nonatomic, retain) UIView *_contentView;
@@ -79,7 +79,7 @@
 @property (nonatomic) int orientation;
 @property (nonatomic) float straightenAngle;
 @property (readonly) Class superclass;
-@property (getter=isTracking, nonatomic) BOOL tracking;
+@property (getter=isTracking, setter=_setTracking:, nonatomic) BOOL tracking;
 
 - (void).cxx_destruct;
 - (struct CGSize { float x1; float x2; })_boundingSizeOfStraightenedRectWithSize:(struct CGSize { float x1; float x2; })arg1;
@@ -115,6 +115,7 @@
 - (void)_setUpdatingForFit:(BOOL)arg1;
 - (void)_setUpdatingForStraighten:(BOOL)arg1;
 - (struct CGSize { float x1; float x2; })_sizeRotatedIfNeeded:(struct CGSize { float x1; float x2; })arg1;
+- (void)_updateLivePhotoScaleOffset;
 - (void)_updateScrollInsets;
 - (void)_updateScrollOffset;
 - (void)_updateScrollView;

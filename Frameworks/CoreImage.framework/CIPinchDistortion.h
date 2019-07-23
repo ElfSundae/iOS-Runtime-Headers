@@ -3,10 +3,10 @@
  */
 
 @interface CIPinchDistortion : CIFilter {
-    CIVector *inputCenter;
-    CIImage *inputImage;
-    NSNumber *inputRadius;
-    NSNumber *inputScale;
+    CIVector * inputCenter;
+    CIImage * inputImage;
+    NSNumber * inputRadius;
+    NSNumber * inputScale;
 }
 
 @property (nonatomic, retain) CIVector *inputCenter;

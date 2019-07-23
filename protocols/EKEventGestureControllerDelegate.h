@@ -7,6 +7,7 @@
 
 - (EKEvent *)createEventForEventGestureController:(EKEventGestureController *)arg1;
 - (EKDayOccurrenceView *)createOccurrenceViewForEventGestureController:(EKEventGestureController *)arg1;
+- (UIViewController *)currentPresentationController;
 - (BOOL)didScrollWhenEventGestureController:(EKEventGestureController *)arg1 scrollTimerFiredToMoveLeft:(BOOL)arg2 right:(BOOL)arg3 vertically:(BOOL)arg4 towardPoint:(struct CGPoint { float x1; float x2; })arg5;
 - (void)eventGestureController:(EKEventGestureController *)arg1 addViewToScroller:(UIView *)arg2 isAllDay:(BOOL)arg3;
 - (void)eventGestureController:(EKEventGestureController *)arg1 adjustDraggingViewForAllDay:(BOOL)arg2;
@@ -34,9 +35,10 @@
 - (float)eventGestureController:(EKEventGestureController *)arg1 convertXForMargin:(float)arg2;
 - (BOOL)eventGestureController:(EKEventGestureController *)arg1 shouldFadeOccurrenceAfterFling:(EKEvent *)arg2;
 - (BOOL)eventGestureControllerShouldAllowLongPress:(EKEventGestureController *)arg1;
+- (BOOL)hasCorrectParentForDraggingView:(UIView *)arg1 isAllDay:(BOOL)arg2;
 - (float)horizontalOffsetForPagingForEventGestureController:(EKEventGestureController *)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })marginFrameForEventGestureController:(EKEventGestureController *)arg1;
 - (BOOL)moreThanOneDayVisibleForEventGestureController:(EKEventGestureController *)arg1;
-- (float)pageChangeMarginForEventGestureController:(EKEventGestureController *)arg1;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })pageChangeMarginsForEventGestureController:(EKEventGestureController *)arg1;
 
 @end

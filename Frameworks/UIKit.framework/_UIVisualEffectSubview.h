@@ -3,7 +3,7 @@
  */
 
 @interface _UIVisualEffectSubview : UIView {
-    _UIVisualEffectLayerConfig *_layerConfig;
+    _UIVisualEffectLayerConfig * _layerConfig;
 }
 
 @property (setter=_setGroupName:, nonatomic, copy) NSString *_groupName;

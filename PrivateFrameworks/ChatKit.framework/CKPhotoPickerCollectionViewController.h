@@ -3,20 +3,20 @@
  */
 
 @interface CKPhotoPickerCollectionViewController : CKViewController <CKPhotoPickerCellDelegate, CKPhotoPickerCollectionViewLayoutDelegate, CKPhotoPickerItemForSendingDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
-    PHFetchResult *_assets;
-    UICollectionView *_collectionView;
-    CKPhotoPickerCollectionViewLayout *_collectionViewLayout;
-    BOOL _defaultStateSelected;
-    <CKPhotoPickerCollectionViewDelegate> *_delegate;
-    PHCachingImageManager *_imageManager;
-    NSMutableSet *_irisAssetsToSend;
-    int _maxAssetsToDisplay;
-    NSMutableDictionary *_selectedFullAssets;
-    BOOL _zoomed;
+    PHFetchResult * _assets;
+    UICollectionView * _collectionView;
+    CKPhotoPickerCollectionViewLayout * _collectionViewLayout;
+    BOOL  _defaultStateSelected;
+    <CKPhotoPickerCollectionViewDelegate> * _delegate;
+    PHCachingImageManager * _imageManager;
+    NSMutableSet * _irisAssetsToSend;
+    int  _maxAssetsToDisplay;
+    NSMutableDictionary * _selectedFullAssets;
+    BOOL  _zoomed;
 }
 
 @property (nonatomic, retain) PHFetchResult *assets;
-@property (nonatomic, readonly, retain) NSArray *assetsToSend;
+@property (nonatomic, readonly) NSArray *assetsToSend;
 @property (nonatomic, retain) UICollectionView *collectionView;
 @property (nonatomic, retain) CKPhotoPickerCollectionViewLayout *collectionViewLayout;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 @property (getter=isZoomed, nonatomic) BOOL zoomed;
 
+- (void).cxx_destruct;
 - (id)_appendedVideoURL:(id)arg1;
 - (id)_assetForIndexPath:(id)arg1 collectionView:(id)arg2;
 - (id)_imageRequestOptions;

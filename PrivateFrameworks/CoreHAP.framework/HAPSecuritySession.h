@@ -3,16 +3,16 @@
  */
 
 @interface HAPSecuritySession : NSObject {
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    <HAPSecuritySessionDelegate> *_delegate;
-    NSData *_inputKey;
-    NSMutableData *_inputNonce;
-    NSData *_outputKey;
-    NSMutableData *_outputNonce;
-    struct PairingSessionPrivate { } *_pairingSession;
-    unsigned long long _resumeSessionID;
-    unsigned int _role;
-    unsigned int _state;
+    NSObject<OS_dispatch_queue> * _clientQueue;
+    <HAPSecuritySessionDelegate> * _delegate;
+    NSData * _inputKey;
+    NSMutableData * _inputNonce;
+    NSData * _outputKey;
+    NSMutableData * _outputNonce;
+    struct PairingSessionPrivate { } * _pairingSession;
+    unsigned long long  _resumeSessionID;
+    unsigned int  _role;
+    unsigned int  _state;
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;

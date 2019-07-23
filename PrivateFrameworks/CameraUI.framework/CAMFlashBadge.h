@@ -3,7 +3,7 @@
  */
 
 @interface CAMFlashBadge : CAMBadgeView {
-    UIImage *__contentImage;
+    UIImage * __contentImage;
 }
 
 @property (nonatomic, retain) UIImage *_contentImage;
@@ -15,7 +15,7 @@
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_imageInsets;
 - (struct CGSize { float x1; float x2; })_imageSize;
 - (id)_maskImage;
+- (struct CGSize { float x1; float x2; })intrinsicContentSize;
 - (void)set_contentImage:(id)arg1;
-- (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 
 @end

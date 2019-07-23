@@ -3,7 +3,7 @@
  */
 
 @interface ICCameraFile : ICCameraItem {
-    void *_fileProperties;
+    void * _fileProperties;
 }
 
 @property (readonly) BOOL burstFavorite;
@@ -33,7 +33,7 @@
 - (void)finalize;
 - (void)flushMetadataCache;
 - (void)flushThumbnailCache;
-- (void)handleCommandCompletionNotification:(id)arg1;
+- (id)handleCommandCompletionNotification:(id)arg1;
 - (BOOL)hasMetadata;
 - (BOOL)hasOverriddenOrientation;
 - (BOOL)hasThumbnail;

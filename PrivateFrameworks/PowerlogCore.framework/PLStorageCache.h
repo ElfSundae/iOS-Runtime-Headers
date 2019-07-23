@@ -3,14 +3,14 @@
  */
 
 @interface PLStorageCache : NSObject {
-    NSMutableDictionary *_countSafetyDrop;
-    NSMutableDictionary *_countWarnings;
-    NSDate *_lastCacheFlushDate;
-    NSMutableDictionary *_lastEntryCache;
-    long _lastEntryCacheSize;
-    NSMutableDictionary *_stagingAggregateEntryCache;
-    NSMutableDictionary *_stagingEntryCache;
-    long _stagingEntryCacheSize;
+    NSMutableDictionary * _countSafetyDrop;
+    NSMutableDictionary * _countWarnings;
+    NSDate * _lastCacheFlushDate;
+    NSMutableDictionary * _lastEntryCache;
+    long  _lastEntryCacheSize;
+    NSMutableDictionary * _stagingAggregateEntryCache;
+    NSMutableDictionary * _stagingEntryCache;
+    long  _stagingEntryCacheSize;
 }
 
 @property (retain) NSMutableDictionary *countSafetyDrop;

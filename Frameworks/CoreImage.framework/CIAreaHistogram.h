@@ -3,11 +3,11 @@
  */
 
 @interface CIAreaHistogram : CIFilter {
-    CIContext *_context;
-    NSNumber *inputCount;
-    CIVector *inputExtent;
-    CIImage *inputImage;
-    NSNumber *inputScale;
+    CIContext * _context;
+    NSNumber * inputCount;
+    CIVector * inputExtent;
+    CIImage * inputImage;
+    NSNumber * inputScale;
 }
 
 @property (nonatomic, retain) NSNumber *inputCount;

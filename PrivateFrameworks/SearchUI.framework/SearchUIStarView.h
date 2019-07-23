@@ -2,19 +2,21 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIStarView : UIView {
-    float _rating;
+@interface SearchUIStarView : NUIContainerStackView {
+    float  _currentStarRating;
 }
 
-@property float rating;
+@property float currentStarRating;
 
 + (id)emptyStar;
 + (id)fullStar;
 + (id)halfStar;
 + (id)starImageWithName:(id)arg1;
 
-- (id)initWithStarRating:(float)arg1 style:(unsigned int)arg2;
-- (float)rating;
-- (void)setRating:(float)arg1;
+- (struct CGSize { float x1; float x2; })_intrinsicSizeWithinSize:(struct CGSize { float x1; float x2; })arg1;
+- (float)currentStarRating;
+- (id)init;
+- (void)setCurrentStarRating:(float)arg1;
+- (void)updateStarRating:(float)arg1;
 
 @end

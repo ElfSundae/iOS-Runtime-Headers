@@ -3,11 +3,11 @@
  */
 
 @interface UIViewControllerAction : NSObject {
-    id /* block */ _completion;
-    float _curlUpRevealedHeight;
-    NSString *_name;
-    int _transition;
-    UIViewController *_viewController;
+    id /* block */  _completion;
+    float  _curlUpRevealedHeight;
+    NSString * _name;
+    int  _transition;
+    UIViewController * _viewController;
 }
 
 @property (setter=_setCurlUpRevealedHeight:, nonatomic) float _curlUpRevealedHeight;

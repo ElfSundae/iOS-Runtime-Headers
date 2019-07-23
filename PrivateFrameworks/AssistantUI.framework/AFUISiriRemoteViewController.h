@@ -3,9 +3,9 @@
  */
 
 @interface AFUISiriRemoteViewController : _UIRemoteViewController <SVSSiriViewControllerHosting> {
-    <AFUISiriRemoteViewControllerDataSource> *_dataSource;
-    <AFUISiriRemoteViewControllerDelegate> *_delegate;
-    AFApplicationInfo *_viewServiceApplicationInfo;
+    <AFUISiriRemoteViewControllerDataSource> * _dataSource;
+    <AFUISiriRemoteViewControllerDelegate> * _delegate;
+    AFApplicationInfo * _viewServiceApplicationInfo;
 }
 
 @property (nonatomic) <AFUISiriRemoteViewControllerDataSource> *dataSource;
@@ -33,6 +33,7 @@
 - (void)notifyOnNextUserInteraction;
 - (void)pulseHelpButton;
 - (void)serviceBulletinWithIdentifier:(id)arg1 replyHandler:(id /* block */)arg2;
+- (void)serviceCanLoadPreviousConversation:(id /* block */)arg1;
 - (void)serviceDidDetectMicButtonLongPressBegan;
 - (void)serviceDidDetectMicButtonLongPressEnded;
 - (void)serviceDidDetectMicButtonTap;
@@ -40,6 +41,7 @@
 - (void)serviceDidPresentBugReporter;
 - (void)serviceDidPresentUserInterface;
 - (void)serviceDidReadBulletinWithIdentifier:(id)arg1;
+- (void)serviceLastAppUpdateTimeWithReplyHandler:(id /* block */)arg1;
 - (void)serviceLaunchApplicationWithBundleIdentifier:(id)arg1 withURL:(id)arg2 launchOverSiri:(BOOL)arg3 replyHandler:(id /* block */)arg4;
 - (void)serviceOpenURL:(id)arg1 appBundleID:(id)arg2 allowSiriDismissal:(BOOL)arg3;
 - (void)serviceOpenURL:(id)arg1 delaySessionEndForTTS:(BOOL)arg2 replyHandler:(id /* block */)arg3;

@@ -3,10 +3,11 @@
  */
 
 @interface _UIPopoverLayoutInfo : NSObject <NSCopying> {
-    unsigned int _arrowDirection;
-    float _arrowHeight;
-    BOOL _canOverlapSourceViewRect;
-    NSMutableArray *_candidates;
+    unsigned int  _arrowDirection;
+    float  _arrowHeight;
+    float  _arrowOffset;
+    BOOL  _canOverlapSourceViewRect;
+    NSMutableArray * _candidates;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,19 +17,19 @@
             float width; 
             float height; 
         } size; 
-    } _containingFrame;
+    }  _containingFrame;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _containingFrameInsets;
+    }  _containingFrameInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInset;
+    }  _contentInset;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -38,14 +39,14 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    float _offset;
-    BOOL _preferLandscapeOrientations;
-    unsigned int _preferredArrowDirections;
+    }  _frame;
+    float  _offset;
+    BOOL  _preferLandscapeOrientations;
+    unsigned int  _preferredArrowDirections;
     struct CGSize { 
         float width; 
         float height; 
-    } _preferredContentSize;
+    }  _preferredContentSize;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -55,12 +56,13 @@
             float width; 
             float height; 
         } size; 
-    } _sourceViewRect;
-    BOOL _updatesEnabled;
+    }  _sourceViewRect;
+    BOOL  _updatesEnabled;
 }
 
 @property (nonatomic, readonly) unsigned int arrowDirection;
 @property (nonatomic) float arrowHeight;
+@property (nonatomic) float arrowOffset;
 @property (nonatomic) BOOL canOverlapSourceViewRect;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } containingFrame;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } containingFrameInsets;
@@ -82,6 +84,7 @@
 - (BOOL)_updatesEnabled;
 - (unsigned int)arrowDirection;
 - (float)arrowHeight;
+- (float)arrowOffset;
 - (BOOL)canOverlapSourceViewRect;
 - (id)candidates;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })containingFrame;
@@ -98,6 +101,7 @@
 - (unsigned int)preferredArrowDirections;
 - (struct CGSize { float x1; float x2; })preferredContentSize;
 - (void)setArrowHeight:(float)arg1;
+- (void)setArrowOffset:(float)arg1;
 - (void)setCanOverlapSourceViewRect:(BOOL)arg1;
 - (void)setContainingFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setContainingFrameInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;

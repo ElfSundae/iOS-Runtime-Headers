@@ -3,21 +3,21 @@
  */
 
 @interface UISnapBehavior : UIDynamicBehavior {
-    PKPhysicsBody *_anchorBody;
+    PKPhysicsBody * _anchorBody;
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorPoint;
-    float _damping;
-    float _distance;
-    float _frequency;
-    NSMutableArray *_joints;
+    }  _anchorPoint;
+    float  _damping;
+    float  _distance;
+    float  _frequency;
+    NSMutableArray * _joints;
     struct { 
         unsigned int attachedToView : 1; 
         unsigned int dampingSet : 1; 
         unsigned int frequencySet : 1; 
         unsigned int lengthSet : 1; 
-    } _stateFlags;
+    }  _stateFlags;
 }
 
 @property (nonatomic) float damping;

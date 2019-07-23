@@ -13,6 +13,7 @@
 - (void)__failWithExternalError:(id)arg1;
 - (void)__setError:(id)arg1;
 - (id)__tryDecodeObjectForKey:(id)arg1 error:(id*)arg2 decodeBlock:(id /* block */)arg3;
+- (BOOL)_allowsValueCoding;
 - (BOOL)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
@@ -104,6 +105,12 @@
 - (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+
+- (id)ls_decodeArrayWithValuesOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClasses:(id)arg2 forKey:(id)arg3;
+
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
 - (id)_ph_sandboxExtensionTokenKeyForURLKey:(id)arg1;
@@ -134,6 +141,13 @@
 - (void)encodeCGVector:(struct CGVector { float x1; float x2; })arg1 forKey:(id)arg2;
 - (void)encodeUIEdgeInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1 forKey:(id)arg2;
 - (void)encodeUIOffset:(struct UIOffset { float x1; float x2; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/Frameworks/UserNotifications.framework/UserNotifications
+
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })un_decodeCGRectForKey:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })un_decodeCMTimeForKey:(id)arg1;
+- (void)un_encodeCGRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)un_encodeCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
@@ -169,7 +183,14 @@
 - (BOOL)isRemoteGatewayCoder;
 - (BOOL)isRemoteTransport;
 - (BOOL)isRemoteTransportOnSameAccount;
+- (BOOL)isRemoteUserAdministrator;
 - (BOOL)isXPCTransport;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_strictlyDecodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeDictionaryOfObjectsWithKeysOfClass:(Class)arg1 andObjectsOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)_lp_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/Parsec.framework/Parsec
 
@@ -181,7 +202,6 @@
 - (id)prs_dictionaryForKey:(id)arg1;
 - (double)prs_doubleForKey:(id)arg1;
 - (float)prs_floatForKey:(id)arg1;
-- (id)prs_imageForKey:(id)arg1;
 - (int)prs_intForKey:(id)arg1;
 - (int)prs_integerForKey:(id)arg1;
 - (id)prs_numberForKey:(id)arg1;

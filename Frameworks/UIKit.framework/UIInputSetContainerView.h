@@ -3,13 +3,13 @@
  */
 
 @interface UIInputSetContainerView : UIInputSetHostView <_UIViewHost> {
-    BOOL _disableGeometryObserverNotifications;
-    NSMutableDictionary *_hostedViews;
+    BOOL  _disableGeometryObserverNotifications;
+    NSMutableDictionary * _hostedViews;
     struct CGPoint { 
         float x; 
         float y; 
-    } _offsetOrigin;
-    UIKBRenderConfig *_renderConfig;
+    }  _offsetOrigin;
+    UIKBRenderConfig * _renderConfig;
 }
 
 @property (readonly, copy) NSString *debugDescription;

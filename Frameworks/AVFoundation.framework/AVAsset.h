@@ -3,7 +3,7 @@
  */
 
 @interface AVAsset : NSObject <AVAsynchronousKeyValueLoading, NSCopying> {
-    AVAssetInternal *_asset;
+    AVAssetInternal * _asset;
 }
 
 @property (getter=MP_canAffectNetworkPlayability, setter=MP_setCanAffectNetworkPlayability:, nonatomic) BOOL MP_canAffectNetworkPlayability;
@@ -22,10 +22,13 @@
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
 + (id)assetProxyWithPropertyList:(id)arg1;
++ (id)assetWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem { }*)arg2 trackIDs:(id)arg3 dynamicBehavior:(BOOL)arg4;
 
 - (id)_ID3Metadata;
+- (id)_URLSessionDataDelegate;
+- (id)_URLSessionOperationQueue;
 - (id)_absoluteURL;
 - (unsigned int)_addChapterMetadataItem:(id)arg1 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2 toChapters:(id)arg3 fromIndex:(unsigned int)arg4;
 - (id)_assetInspector;
@@ -42,7 +45,7 @@
 - (BOOL)_containsAtLeastOnePlayableVideoTrack;
 - (id)_exportURL;
 - (struct OpaqueFigAsset { }*)_figAsset;
-- (id)_firstTrackGroupWithMediaType:(id)arg1;
+- (id)_firstTrackGroupWithMediaTypes:(id)arg1;
 - (struct OpaqueFigFormatReader { }*)_formatReader;
 - (double)_fragmentMindingInterval;
 - (void)_handleURLRequest:(id)arg1;
@@ -55,10 +58,12 @@
 - (struct OpaqueFigMutableComposition { }*)_mutableComposition;
 - (BOOL)_needsLegacyChangeNotifications;
 - (struct OpaqueFigPlaybackItem { }*)_playbackItem;
+- (id)_resourceLoaderURLSession;
 - (void)_serverHasDied;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
 - (void)_tracksDidChange;
+- (id)_tracksWithClass:(Class)arg1;
 - (id)_weakReference;
 - (id)alternateTrackGroups;
 - (id)audioAlternatesTrackGroup;
@@ -80,6 +85,7 @@
 - (BOOL)hasProtectedContent;
 - (unsigned int)hash;
 - (id)init;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (BOOL)isCompatibleWithAirPlayVideo;
 - (BOOL)isCompatibleWithSavedPhotosAlbum;
@@ -136,12 +142,20 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
+- (struct CGImageSource { }*)newPreviewImageSource;
 - (struct UIImage { Class x1; }*)previewImage;
 
 // Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
 
 - (float)is_cropFactor;
 - (id)is_valueForMetadataIdentifier:(id)arg1;
+- (struct CGSize { float x1; float x2; })is_videoSize;
+
+// Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
+
+- (id)vcp_enabledTracksWithMediaType:(id)arg1;
+- (id)vcp_firstEnabledTrackWithMediaType:(id)arg1;
+- (BOOL)vcp_isMontage;
 
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 

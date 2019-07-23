@@ -3,20 +3,20 @@
  */
 
 @interface _UIDynamicSlider : UISlider <UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate> {
-    _UIDynamicSliderAnimator *_animator;
-    CADisplayLink *_displayLink;
-    UIGravityBehavior *_gravityBehavior;
+    _UIDynamicSliderAnimator * _animator;
+    CADisplayLink * _displayLink;
+    UIGravityBehavior * _gravityBehavior;
     struct CGPoint { 
         float x; 
         float y; 
-    } _mostRecentThumbLocation;
-    UIView *_thumbDynamicsView;
+    }  _mostRecentThumbLocation;
+    UIView * _thumbDynamicsView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _thumbPreviousPoint;
-    double _thumbPreviousTime;
-    float _thumbVelocity;
+    }  _thumbPreviousPoint;
+    double  _thumbPreviousTime;
+    float  _thumbVelocity;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,24 +3,24 @@
  */
 
 @interface CMKTimelapseMovieWriter : NSObject <CMKTimelapseMovieWriterProtocol> {
-    NSMutableDictionary *__availableImageData;
-    NSMutableDictionary *__availablePixelBuffers;
-    id /* block */ __completion;
-    int __currentOutputFrameIndex;
-    NSArray *__frameFilePaths;
-    int __framesPerSecond;
-    NSOperationQueue *__imageDecodeQueue;
-    NSOperationQueue *__imageReadQueue;
-    NSMutableSet *__inFlightReadFrameIndexes;
-    NSObject<OS_dispatch_queue> *__movieWritingQueue;
-    int __nextReadFileIndex;
-    int __nextWriteFileIndex;
-    AVAssetWriterInputPixelBufferAdaptor *__pixelBufferAdaptor;
-    int __residentImageDataCount;
-    int __residentPixelBufferCount;
-    NSObject<OS_dispatch_queue> *__synchronizationQueue;
-    AVAssetWriterInput *__videoInput;
-    AVAssetWriter *__writer;
+    NSMutableDictionary * __availableImageData;
+    NSMutableDictionary * __availablePixelBuffers;
+    id /* block */  __completion;
+    int  __currentOutputFrameIndex;
+    NSArray * __frameFilePaths;
+    int  __framesPerSecond;
+    NSOperationQueue * __imageDecodeQueue;
+    NSOperationQueue * __imageReadQueue;
+    NSMutableSet * __inFlightReadFrameIndexes;
+    NSObject<OS_dispatch_queue> * __movieWritingQueue;
+    int  __nextReadFileIndex;
+    int  __nextWriteFileIndex;
+    AVAssetWriterInputPixelBufferAdaptor * __pixelBufferAdaptor;
+    int  __residentImageDataCount;
+    int  __residentPixelBufferCount;
+    NSObject<OS_dispatch_queue> * __synchronizationQueue;
+    AVAssetWriterInput * __videoInput;
+    AVAssetWriter * __writer;
 }
 
 @property (nonatomic, readonly) NSMutableDictionary *_availableImageData;

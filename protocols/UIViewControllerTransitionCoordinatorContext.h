@@ -12,6 +12,7 @@
 - (BOOL)isAnimated;
 - (BOOL)isCancelled;
 - (BOOL)isInteractive;
+- (BOOL)isInterruptible;
 - (float)percentComplete;
 - (int)presentationStyle;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })targetTransform;

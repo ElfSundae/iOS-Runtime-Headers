@@ -5,13 +5,13 @@
 
 @required
 
+- (struct CGPoint { float x1; float x2; })gestureController:(MKMapGestureController *)arg1 focusPointForPoint:(struct CGPoint { float x1; float x2; })arg2 gestureKind:(int)arg3;
 - (BOOL)gestureController:(MKMapGestureController *)arg1 shouldReceiveTouch:(UITouch *)arg2;
-- (struct CGPoint { float x1; float x2; })gestureController:(MKMapGestureController *)arg1 smartAimingPointForPoint:(struct CGPoint { float x1; float x2; })arg2;
 - (void)gestureControllerDidStopPanning:(MKMapGestureController *)arg1 willDecelerate:(BOOL)arg2;
 - (void)gestureControllerDidStopPanningDecelerating:(MKMapGestureController *)arg1;
 - (void)gestureControllerDidStopRotating:(MKMapGestureController *)arg1 willDecelerate:(BOOL)arg2;
 - (void)gestureControllerDidStopRotatingDecelerating:(MKMapGestureController *)arg1;
-- (void)gestureControllerDidStopTilting:(MKMapGestureController *)arg1 willDecelerate:(BOOL)arg2;
+- (void)gestureControllerDidStopTilting:(MKMapGestureController *)arg1 willDecelerate:(BOOL)arg2 tiltDirection:(int)arg3;
 - (void)gestureControllerDidStopTiltingDecelerating:(MKMapGestureController *)arg1;
 - (void)gestureControllerDidStopTwoFingerLongPress:(MKMapGestureController *)arg1;
 - (void)gestureControllerDidStopUserInteraction:(MKMapGestureController *)arg1;

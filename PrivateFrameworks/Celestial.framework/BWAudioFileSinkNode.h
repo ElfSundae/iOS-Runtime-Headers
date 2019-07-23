@@ -3,23 +3,23 @@
  */
 
 @interface BWAudioFileSinkNode : BWFileSinkNode {
-    unsigned long long _adjustedMinFreeDiskSpace;
-    struct OpaqueCMByteStream { } *_byteStream;
+    unsigned long long  _adjustedMinFreeDiskSpace;
+    struct OpaqueCMByteStream { } * _byteStream;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _curFileDuration;
-    unsigned long long _curFileSize;
-    BOOL _didBeginFileWriterSession;
-    struct OpaqueFigFormatWriter { } *_formatWriter;
-    char *_parentPath;
-    NSObject<OS_dispatch_queue> *_propertySyncQueue;
-    BOOL _recordingIsSubjectToDiskSpaceQuota;
-    FigCaptureAudioFileRecordingSettings *_settings;
-    FigStateMachine *_stateMachine;
-    int _trackID;
+    }  _curFileDuration;
+    unsigned long long  _curFileSize;
+    BOOL  _didBeginFileWriterSession;
+    struct OpaqueFigFormatWriter { } * _formatWriter;
+    char * _parentPath;
+    NSObject<OS_dispatch_queue> * _propertySyncQueue;
+    BOOL  _recordingIsSubjectToDiskSpaceQuota;
+    FigCaptureAudioFileRecordingSettings * _settings;
+    FigStateMachine * _stateMachine;
+    int  _trackID;
 }
 
 + (void)initialize;

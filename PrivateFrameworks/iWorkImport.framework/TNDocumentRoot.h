@@ -6,17 +6,17 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _pageSize;
-    NSString *_paperID;
-    NSString *_printerID;
-    BOOL _printingAllSheets;
-    BOOL mDocumentWasPreparedFromTemplate;
-    unsigned int mSheetNameCounter;
-    NSMutableArray *mSheets;
-    TSKTreeNode *mSidebarOrder;
-    TSSStylesheet *mStylesheet;
-    TNTheme *mTheme;
-    TNUIState *mUIState;
+    }  _pageSize;
+    NSString * _paperID;
+    NSString * _printerID;
+    BOOL  _printingAllSheets;
+    BOOL  mDocumentWasPreparedFromTemplate;
+    unsigned int  mSheetNameCounter;
+    NSMutableArray * mSheets;
+    TSKTreeNode * mSidebarOrder;
+    TSSStylesheet * mStylesheet;
+    TNTheme * mTheme;
+    TNUIState * mUIState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -54,22 +54,24 @@
 - (void)initializeHardCodedBlankDocument;
 - (void)insertSheet:(id)arg1 sheetIndex:(unsigned int)arg2 context:(id)arg3;
 - (BOOL)isMultiPageForQuickLook;
+- (BOOL)isPendingTableNameUniquification;
 - (BOOL)isPrintingAllSheets;
 - (BOOL)isTableLinkedToAForm:(struct __CFUUID { }*)arg1;
 - (void)moveSheetFromIndex:(unsigned int)arg1 toIndex:(unsigned int)arg2;
 - (id)nameForResolverContainer:(id)arg1;
 - (int)naturalAlignmentAtCharIndex:(unsigned int)arg1 inTextStorage:(id)arg2;
+- (id)nearestDisplayableSheetToSheet:(id)arg1;
 - (void)p_addSidebarNodeForSheet:(id)arg1;
 - (struct CGSize { float x1; float x2; })p_adjustCapturedContentSize:(struct CGSize { float x1; float x2; })arg1 toAspectRatio:(struct CGSize { float x1; float x2; })arg2;
 - (void)p_buildSidebarOrder;
 - (id)p_chartsWantingDeferredUpgrade;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_contentFrameToCaptureForSheet:(id)arg1;
+- (id)p_fixedUpSelectionPathForNearestDisplayableSheet:(id)arg1;
 - (float)p_imageBorderForSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)p_previewImageWithImageSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)p_removeSidebarNodeForSheet:(id)arg1;
 - (id)p_resolverContainerForResolver:(id)arg1;
 - (unsigned int)p_tableCountForSheet:(id)arg1;
-- (id)p_untitledSheetName;
 - (struct CGSize { float x1; float x2; })pageSize;
 - (id)paperID;
 - (void)performDeferredUpgradeImportOperationsOnNewThreadForCharts:(id)arg1;
@@ -115,6 +117,7 @@
 - (void)tableID:(struct __CFUUID { }*)arg1 changedToTableID:(struct __CFUUID { }*)arg2;
 - (id)theme;
 - (id)uiState;
+- (id)untitledSheetName;
 - (BOOL)validName:(id)arg1 forRenamingSheet:(id)arg2;
 - (BOOL)validNameForNewSheet:(id)arg1;
 - (int)verticalAlignmentForTextStorage:(id)arg1;

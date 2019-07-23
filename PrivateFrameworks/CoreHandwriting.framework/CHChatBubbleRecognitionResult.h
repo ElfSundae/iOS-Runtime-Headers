@@ -6,8 +6,8 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _stemLocation;
-    float _stemWidth;
+    }  _stemLocation;
+    float  _stemWidth;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } stemLocation;

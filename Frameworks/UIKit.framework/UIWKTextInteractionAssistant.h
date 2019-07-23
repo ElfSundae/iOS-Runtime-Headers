@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIWKTextInteractionAssistant : UITextInteractionAssistant {
+@interface UIWKTextInteractionAssistant : UITextInteractionAssistant <UIResponderStandardEditActions> {
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -12,21 +12,25 @@
             float width; 
             float height; 
         } size; 
-    } _caretBeforeTap;
-    _UITextServiceSession *_definitionSession;
-    _UITextServiceSession *_learnSession;
-    _UITextServiceSession *_lookupSession;
-    UILongPressGestureRecognizer *_loupeGesture;
-    unsigned int _options;
-    int _selectionOperation;
-    _UITextServiceSession *_shareSession;
-    UITapGestureRecognizer *_singleTapGesture;
-    UITextChecker *_textChecker;
-    NSString *_wordBeforeTap;
+    }  _caretBeforeTap;
+    _UITextServiceSession * _definitionSession;
+    _UITextServiceSession * _learnSession;
+    _UITextServiceSession * _lookupSession;
+    UILongPressGestureRecognizer * _loupeGesture;
+    unsigned int  _options;
+    int  _selectionOperation;
+    _UITextServiceSession * _shareSession;
+    UITapGestureRecognizer * _singleTapGesture;
+    UITextChecker * _textChecker;
+    NSString * _wordBeforeTap;
 }
 
-@property (nonatomic, retain) UILongPressGestureRecognizer *loupeGesture;
-@property (nonatomic, readonly, retain) UITapGestureRecognizer *singleTapGesture;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
+@property (nonatomic, readonly) UILongPressGestureRecognizer *loupeGesture;
+@property (nonatomic, readonly) UITapGestureRecognizer *singleTapGesture;
+@property (readonly) Class superclass;
 
 - (id)_asText;
 - (BOOL)containerAllowsSelection;
@@ -41,6 +45,7 @@
 - (id)initWithView:(id)arg1;
 - (void)legacyTwoFingerSingleTap:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
+- (void)lookup:(id)arg1 withRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3;
 - (id)loupeGesture;
 - (void)loupeGestureWithState:(int)arg1 atGesturePoint:(id /* block */)arg2 shouldCancel:(BOOL*)arg3;
 - (void)oneFingerDoubleTap:(id)arg1;
@@ -65,7 +70,6 @@
 - (void)selectionChangedWithGestureAt:(struct CGPoint { float x1; float x2; })arg1 withGesture:(int)arg2 withState:(int)arg3 withFlags:(int)arg4;
 - (void)selectionChangedWithTouchAt:(struct CGPoint { float x1; float x2; })arg1 withSelectionTouch:(int)arg2;
 - (void)selectionChangedWithTouchAt:(struct CGPoint { float x1; float x2; })arg1 withSelectionTouch:(int)arg2 withFlags:(int)arg3;
-- (void)setLoupeGesture:(id)arg1;
 - (BOOL)shouldTryReplacementsForText:(id)arg1 withOptions:(unsigned int)arg2;
 - (void)showDictionaryFor:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)showReplacementsForText:(id)arg1 withOptions:(unsigned int)arg2;

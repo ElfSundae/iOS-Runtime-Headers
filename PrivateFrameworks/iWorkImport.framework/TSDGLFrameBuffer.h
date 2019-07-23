@@ -3,29 +3,30 @@
  */
 
 @interface TSDGLFrameBuffer : NSObject {
-    int _currentBindingOption;
-    int _currentDrawBufferCount;
-    unsigned int _currentDrawBuffers;
-    unsigned int _currentReadBuffer;
-    NSMutableArray *_currentTextureLookupInfoByAttachment;
-    NSMutableArray *_desiredTextureLookupInfoByAttachment;
-    unsigned int _framebuffer;
-    BOOL _isBound;
-    BOOL _isUsingNonDefaultAttachments;
-    NSString *_name;
-    NSDictionary *_namesToTextureDict;
-    BOOL _shouldDeleteTexturesOnTeardown;
+    int  _currentBindingOption;
+    int  _currentDrawBufferCount;
+    unsigned int  _currentDrawBuffers;
+    unsigned int  _currentReadBuffer;
+    NSMutableArray * _currentTextureLookupInfoByAttachment;
+    NSMutableArray * _desiredTextureLookupInfoByAttachment;
+    unsigned int  _framebuffer;
+    BOOL  _isBound;
+    BOOL  _isUsingNonDefaultAttachments;
+    NSString * _name;
+    NSDictionary * _namesToTextureDict;
+    BOOL  _shouldDeleteTexturesOnTeardown;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    NSArray *_textureConfigs;
-    NSArray *_textureConfigsByAttachment;
-    NSArray *_textureLookupInfosByAttachment;
+    }  _size;
+    NSArray * _textureConfigs;
+    NSArray * _textureConfigsByAttachment;
+    NSArray * _textureLookupInfosByAttachment;
 }
 
 @property (nonatomic, readonly) unsigned int currentGLTexture;
 @property (nonatomic, readonly) NSString *currentGLTextureName;
+@property (nonatomic, readonly) unsigned int framebuffer;
 @property (nonatomic, readonly) BOOL isBound;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) BOOL shouldDeleteTexturesOnTeardown;
@@ -47,6 +48,7 @@
 - (int)currentTextureIndexAtAttachment:(unsigned int)arg1;
 - (void)dealloc;
 - (id)description;
+- (unsigned int)framebuffer;
 - (id)initWithSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)initWithSize:(struct CGSize { float x1; float x2; })arg1 textureConfigs:(id)arg2;
 - (id)initWithSize:(struct CGSize { float x1; float x2; })arg1 textureCount:(unsigned int)arg2;

@@ -8,6 +8,7 @@
 @property (nonatomic, readonly) float capHeight;
 @property (nonatomic, readonly) float descender;
 @property (nonatomic, readonly) NSString *familyName;
+@property (nonatomic, readonly) UIFontDescriptor *fontDescriptor;
 @property (nonatomic, readonly) NSString *fontName;
 @property (nonatomic, readonly) float leading;
 @property (nonatomic, readonly) float lineHeight;
@@ -20,12 +21,14 @@
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 
 + (void)_evictAllItemsFromFontAndFontDescriptorCaches;
++ (BOOL)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_lightSystemFontOfSize:(float)arg1;
 + (id)_opticalBoldSystemFontOfSize:(float)arg1;
 + (id)_opticalSystemFontOfSize:(float)arg1;
 + (float)_readableWidth;
 + (id)_sharedFontCache;
 + (id)_sharedZeroPointFont;
++ (id)_supportedDynamicFontStyles;
 + (id)_systemFontsOfSize:(float)arg1 traits:(int)arg2;
 + (id)_thinSystemFontOfSize:(float)arg1;
 + (id)_ultraLightSystemFontOfSize:(float)arg1;
@@ -46,6 +49,7 @@
 + (float)labelFontSize;
 + (id)monospacedDigitSystemFontOfSize:(float)arg1 weight:(float)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
++ (id)preferredFontForTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontForUsage:(id)arg1;
 + (id)preferredFontForUsage:(id)arg1 contentSizeCategoryName:(id)arg2;
 + (float)smallSystemFontSize;
@@ -66,8 +70,11 @@
 - (unsigned int)_defaultGlyphForChar:(unsigned short)arg1;
 - (float)_defaultLineHeightForUILayout;
 - (id)_familyName;
+- (id)_fontAdjustedForContentSizeCategoryCompatibleWithTraitCollection:(id)arg1;
+- (id)_fontAdjustedForCurrentContentSizeCategory;
 - (id)_fontScaledByScaleFactor:(float)arg1;
 - (bool)_getLatin1GlyphMapping:(const unsigned short**)arg1 andAdvanceMapping:(const struct CGSize {}**)arg2;
+- (BOOL)_hasColorGlyphs;
 - (BOOL)_isDefaultFace;
 - (BOOL)_isHiraginoFont;
 - (id)_kernOverride;
@@ -152,6 +159,7 @@
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplay;
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplayUseMonospace:(BOOL)arg1;
 - (float)_mapkit_lineHeight;
+- (float)_mapkit_scaledValueForValue:(float)arg1;
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
@@ -204,14 +212,16 @@
 + (id)cui_cameraModeDialFontForContentSize:(id)arg1;
 + (id)cui_cameraMonospacedFontOfSize:(float)arg1;
 + (id)cui_cameraPadModeDialFontForContentSize:(id)arg1;
-+ (id)cui_cameraTimerFontForContentSize:(id)arg1;
++ (id)cui_cameraTimerFontForContentSize:(id)arg1 layoutStyle:(int)arg2;
 + (float)cui_interpolatedAdditionalFontSizeForMainScreen;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
 + (id)__ck_emphasizedPreferredFontForTextStyle:(id)arg1;
++ (id)__ck_monospacedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_shortDefaultFontForTextStyle:(id)arg1;
 + (id)__ck_shortEmphasizedPreferredFontForTextStyle:(id)arg1;
++ (id)__ck_shortMonospacedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_shortPreferredFontForTextStyle:(id)arg1;
 + (float)_interpolatedAdditionalFontSizeForMainScreen;
 + (id)ck_cui_cameraFontForContentSize:(id)arg1;
@@ -221,6 +231,17 @@
 + (id)ck_cui_cameraModeDialFontForContentSize:(id)arg1;
 + (id)ck_cui_cameraPadModeDialFontForContentSize:(id)arg1;
 + (id)ck_cui_cameraTimerFontForContentSize:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ClockKit.framework/ClockKit
+
++ (id)CLKMonospaceNumbersFeatureSettings;
+
+- (id)CLKFontByApplyingFeatureSettings:(id)arg1;
+- (id)CLKFontWithAlternativePunctuation;
+- (id)CLKFontWithLocalizedLowerCaseSmallCaps;
+- (id)CLKFontWithLocalizedSmallCaps;
+- (id)CLKFontWithMonospacedNumbers;
+- (id)CLKFontWithStraightSix;
 
 // Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
 
@@ -243,6 +264,28 @@
 - (id)fu_fontWithSize:(float)arg1;
 - (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(float)arg2;
 - (id)fu_fontWithSizeFittingString:(id)arg1 withinWidth:(float)arg2 accountForGlyphOffset:(BOOL)arg3;
+- (id)fu_monospacedFont;
+- (id)fu_shortSlashFont;
+- (id)fu_smallCapsFont;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (id)hk_defaultFontWithUIFontTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 attributes:(id)arg3;
++ (float)hk_fittingScaleFactorForUILabels:(id)arg1 constrainingWidth:(float)arg2;
++ (id)hk_preferredFontIgnoringAccessibilitySizeForTextStyle:(id)arg1;
++ (id)hk_preferredFontIgnoringAccessibilitySizeForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
++ (id)hk_staticPreferredFontForTextStyle:(id)arg1;
++ (id)hk_staticPreferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
++ (id)hk_titleLabelFontScaledBy:(float)arg1;
++ (id)hk_unitLabelFontScaledBy:(float)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)hu_staticPreferredFontForTextStyle:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_CSSFontWeight;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
@@ -262,14 +305,17 @@
 + (float)fontSizeForSubheaderImport;
 + (float)lineHeightForAttachmentTitleText:(int)arg1;
 + (struct UIFont { Class x1; }*)listViewTitleFont;
++ (float)pointSizeForBodyTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForAttachmentText:(int)arg1;
 + (id)preferredFontForBodyText;
 + (struct UIFont { Class x1; }*)preferredFontForBodyTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForDateText;
 + (id)preferredFontForFixedWidthText;
++ (id)preferredFontForFixedWidthTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForHeadingText;
 + (struct UIFont { Class x1; }*)preferredFontForHeadingTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForSubheadingText;
++ (struct UIFont { Class x1; }*)preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1;
 + (id)preferredFontForTitleText;
 + (struct UIFont { Class x1; }*)preferredFontForTitleTextWithContentSizeCategory:(id)arg1;
 + (float)preferredFontSizeWithBaseSize:(float)arg1 withContentSizeCategory:(id)arg2 minSize:(float)arg3 maxSize:(float)arg4;
@@ -299,9 +345,16 @@
 + (id)siriui_thinWeightFontWithSize:(float)arg1;
 + (id)siriui_userUtteranceFont;
 
-// Image: /System/Library/PrivateFrameworks/SpotlightUI.framework/SpotlightUI
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
 
-+ (id)spui_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 options:(unsigned int)arg3;
++ (id)telephonyUIBodyShortFont;
++ (id)telephonyUISubheadlineShortFont;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
+
++ (id)nc_defaultFont:(BOOL)arg1 forTextStyle:(id)arg2 hiFontStyle:(int)arg3;
++ (id)nc_defaultFontForTextStyle:(id)arg1 hiFontStyle:(int)arg2;
++ (id)nc_preferredFontForTextStyle:(id)arg1 hiFontStyle:(int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 

@@ -2,29 +2,29 @@
    Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
  */
 
-@interface CMKApplicationViewController : CMKCameraViewController <CMKCameraRollObserver, PLPhotoBrowserControllerDelegate, UINavigationControllerDelegate> {
-    UIView *__autorotationCorrectionView;
-    <NSObject> *__cameraRollNotificationToken;
-    UIViewController *__cameraRollViewController;
-    BOOL __didApplyConfigurationToCameraView;
-    BOOL __dismissingCameraRoll;
-    BOOL __dismissingCameraRollForSuspension;
-    BOOL __hasLockedSinceLastConfigurationChange;
-    int __lockToResetToken;
-    UIView *__rootContainerView;
-    BOOL __shouldRetryDismissal;
-    BOOL __shouldShowCameraRoll;
-    NSDictionary *_configuration;
-    <PLApplicationCameraViewControllerDelegate> *_delegate;
-    id /* block */ _doneButtonAction;
-    BOOL _isReadyToTest;
-    CMKKeepDaemonAliveAssertion *_keepDaemonAliveAssertion;
-    id /* block */ _previewButtonAction;
-    double _sessionStartTime;
-    int _testPictureCounter;
-    double _testPictureRepeatDelay;
-    int _testPicturesReceivedCounter;
-    BOOL _usesSessionAlbum;
+@interface CMKApplicationViewController : CMKCameraViewController <CMKCameraRollObserver, UINavigationControllerDelegate> {
+    UIView * __autorotationCorrectionView;
+    <NSObject> * __cameraRollNotificationToken;
+    UIViewController * __cameraRollViewController;
+    BOOL  __didApplyConfigurationToCameraView;
+    BOOL  __dismissingCameraRoll;
+    BOOL  __dismissingCameraRollForSuspension;
+    BOOL  __hasLockedSinceLastConfigurationChange;
+    int  __lockToResetToken;
+    UIView * __rootContainerView;
+    BOOL  __shouldRetryDismissal;
+    BOOL  __shouldShowCameraRoll;
+    NSDictionary * _configuration;
+    <PLApplicationCameraViewControllerDelegate> * _delegate;
+    id /* block */  _doneButtonAction;
+    BOOL  _isReadyToTest;
+    CMKKeepDaemonAliveAssertion * _keepDaemonAliveAssertion;
+    id /* block */  _previewButtonAction;
+    double  _sessionStartTime;
+    int  _testPictureCounter;
+    double  _testPictureRepeatDelay;
+    int  _testPicturesReceivedCounter;
+    BOOL  _usesSessionAlbum;
 }
 
 @property (nonatomic, readonly) UIView *_autorotationCorrectionView;
@@ -59,7 +59,6 @@
 - (void)_cameraRollReload:(id)arg1;
 - (id)_cameraRollViewController;
 - (void)_createPhysicalCaptureRecognizerIfNecessary;
-- (id)_currentPhotoBrowser;
 - (void)_defaultCameraDevice:(id*)arg1 cameraMode:(id*)arg2;
 - (id)_dictionaryFromPackedArray:(id)arg1;
 - (BOOL)_didApplyConfigurationToCameraView;
@@ -112,8 +111,6 @@
 - (void)loadView;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)newAlbumNavigationControllerForCameraRoll:(id)arg1;
-- (void)photoBrowserControllerDidEndPaging:(id)arg1;
-- (void)photoBrowserControllerWillBeginPaging:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)preferencesDidChange;
 - (BOOL)prefersStatusBarHidden;

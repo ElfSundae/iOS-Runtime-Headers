@@ -3,10 +3,10 @@
  */
 
 @interface HDTimeIntervalCollectionCalculator : HDCollectionCalculator {
-    double _endInterval;
-    NSArray *_orderedSourceIds;
-    double _startInterval;
-    NSMutableArray *_timePeriods;
+    double  _endInterval;
+    NSArray * _orderedSourceIds;
+    double  _startInterval;
+    NSMutableArray * _timePeriods;
 }
 
 @property (nonatomic, retain) NSArray *orderedSourceIds;

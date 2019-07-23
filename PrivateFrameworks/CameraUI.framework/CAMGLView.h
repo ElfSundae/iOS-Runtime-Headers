@@ -3,22 +3,22 @@
  */
 
 @interface CAMGLView : UIView {
-    EAGLContext *__atomicContext;
+    EAGLContext * __atomicContext;
     struct CGSize { 
         float width; 
         float height; 
-    } __atomicFixedSize;
-    BOOL __atomicRetainedBacking;
-    BOOL __disableLayoutForGLLayerInternal;
-    BOOL __shouldDeleteFramebuffer;
-    BOOL _disableLayoutForGLLayer;
-    int _drawableHeight;
-    int _drawableWidth;
-    unsigned int _framebuffer;
-    CAEAGLLayer *_glLayer;
-    CAMGLLayerDelegate *_glLayerDelegate;
-    id /* block */ _renderNotifyBlock;
-    unsigned int _renderbuffer;
+    }  __atomicFixedSize;
+    BOOL  __atomicRetainedBacking;
+    BOOL  __disableLayoutForGLLayerInternal;
+    BOOL  __shouldDeleteFramebuffer;
+    BOOL  _disableLayoutForGLLayer;
+    int  _drawableHeight;
+    int  _drawableWidth;
+    unsigned int  _framebuffer;
+    CAEAGLLayer * _glLayer;
+    CAMGLLayerDelegate * _glLayerDelegate;
+    id /* block */  _renderNotifyBlock;
+    unsigned int  _renderbuffer;
 }
 
 @property (setter=_setAtomicContext:, retain) EAGLContext *_atomicContext;

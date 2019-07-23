@@ -3,10 +3,10 @@
  */
 
 @interface DigitalClockLabel : MTDateLabel {
-    NSDate *_baseDate;
-    NSCalendar *_calendar;
-    int _hour;
-    int _minute;
+    NSDate * _baseDate;
+    NSCalendar * _calendar;
+    int  _hour;
+    int  _minute;
 }
 
 - (void).cxx_destruct;

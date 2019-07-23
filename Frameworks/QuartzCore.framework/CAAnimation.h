@@ -3,25 +3,24 @@
  */
 
 @interface CAAnimation : NSObject <CAAction, CAMediaTiming, CAPropertyInfo, NSCoding, NSCopying, NSMutableCopying> {
-    void *_attr;
-    unsigned int _flags;
+    void * _attr;
+    unsigned int  _flags;
 }
 
 @property CAStateControllerTransition *CAStateControllerTransition;
 @property int _mapkit_ID;
 @property (nonatomic, copy) NSArray *animationEvents;
-@property (nonatomic) int animationID;
 @property BOOL autoreverses;
 @property double beginTime;
 @property (copy) NSString *beginTimeMode;
-@property (nonatomic, copy) id /* block */ completionBlock;
-@property (retain) id delegate;
+@property (retain) <CAAnimationDelegate> *delegate;
 @property double duration;
 @property (getter=isEnabled) BOOL enabled;
 @property float fadeInDuration;
 @property float fadeOutDuration;
 @property (copy) NSString *fillMode;
 @property double frameInterval;
+@property int preferredFramesPerSecond;
 @property (getter=isRemovedOnCompletion) BOOL removedOnCompletion;
 @property float repeatCount;
 @property double repeatDuration;
@@ -65,6 +64,7 @@
 - (BOOL)isEnabled;
 - (BOOL)isRemovedOnCompletion;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (int)preferredFramesPerSecond;
 - (BOOL)removedOnCompletion;
 - (float)repeatCount;
 - (double)repeatDuration;
@@ -78,6 +78,7 @@
 - (void)setEnabled:(BOOL)arg1;
 - (void)setFillMode:(id)arg1;
 - (void)setFrameInterval:(double)arg1;
+- (void)setPreferredFramesPerSecond:(int)arg1;
 - (void)setRemovedOnCompletion:(BOOL)arg1;
 - (void)setRepeatCount:(float)arg1;
 - (void)setRepeatDuration:(double)arg1;
@@ -100,15 +101,6 @@
 - (int)_mapkit_ID;
 - (void)set_mapkit_ID:(int)arg1;
 
-// Image: /System/Library/Frameworks/PassKit.framework/PassKit
-
-+ (id)pkui_shakeAnimation;
-
-- (id /* block */)pkui_completionHandler;
-- (id /* block */)pkui_didStartHandler;
-- (void)pkui_setCompletionHandler:(id /* block */)arg1;
-- (void)pkui_setDidStartHandler:(id /* block */)arg1;
-
 // Image: /System/Library/Frameworks/SceneKit.framework/SceneKit
 
 + (id)scnAnimationNamed:(id)arg1;
@@ -124,13 +116,18 @@
 - (void)setUsesSceneTimeBase:(BOOL)arg1;
 - (BOOL)usesSceneTimeBase;
 
-// Image: /System/Library/PrivateFrameworks/PhotoLibrary.framework/PhotoLibrary
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
 
-- (int)animationID;
-- (id /* block */)completionBlock;
-- (void)performCompletionBlock:(BOOL)arg1;
-- (void)setAnimationID:(int)arg1;
-- (void)setCompletionBlock:(id /* block */)arg1;
+- (id)_lp_copyWithBeginTime:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
++ (id)pkui_shakeAnimation;
+
+- (id /* block */)pkui_completionHandler;
+- (id /* block */)pkui_didStartHandler;
+- (void)pkui_setCompletionHandler:(id /* block */)arg1;
+- (void)pkui_setDidStartHandler:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

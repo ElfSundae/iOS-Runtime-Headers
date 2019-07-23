@@ -11,5 +11,6 @@
 @optional
 
 - (void)candidateBarLayoutDidFinishPreparingLayout;
+- (float)leftMarginForCollectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2;
 
 @end

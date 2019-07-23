@@ -7,7 +7,7 @@
         unsigned long long *list; 
         unsigned int count; 
         unsigned int size; 
-    } _nextStopMuids;
+    }  _nextStopMuids;
 }
 
 @property (nonatomic, readonly) unsigned long long*nextStopMuids;

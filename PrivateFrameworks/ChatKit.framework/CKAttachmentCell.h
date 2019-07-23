@@ -3,16 +3,16 @@
  */
 
 @interface CKAttachmentCell : UICollectionViewCell <CKAnimationTimerObserver, UIGestureRecognizerDelegate> {
-    CKAnimatedImage *_animatedImage;
-    UIImageView *_checkmarkView;
-    NSObject<CKAttachmentCellDelegate> *_delegate;
-    BOOL _editing;
-    NSArray *_frames;
-    UIImage *_image;
-    UIImageView *_irisBadgeView;
-    BOOL _isIrisAsset;
-    CKAttachmentItem *_representedObject;
-    UITapGestureRecognizer *_tapRecognizer;
+    CKAnimatedImage * _animatedImage;
+    UIImageView * _checkmarkView;
+    NSObject<CKAttachmentCellDelegate> * _delegate;
+    BOOL  _editing;
+    NSArray * _frames;
+    UIImage * _image;
+    UIImageView * _irisBadgeView;
+    BOOL  _isIrisAsset;
+    CKAttachmentItem * _representedObject;
+    UITapGestureRecognizer * _tapRecognizer;
 }
 
 @property (nonatomic, retain) CKAnimatedImage *animatedImage;
@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapRecognizer;
 
+- (void).cxx_destruct;
 - (struct CGImage { }*)_cgImageForUIImage:(id)arg1;
 - (id)animatedImage;
 - (void)animationTimerFired:(unsigned int)arg1;

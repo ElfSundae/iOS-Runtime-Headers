@@ -3,7 +3,7 @@
  */
 
 @interface UIKBRecentInputCell : UICollectionViewCell {
-    UILabel *_label;
+    UILabel * _label;
 }
 
 @property (nonatomic, retain) UILabel *label;

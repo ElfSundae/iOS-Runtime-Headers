@@ -3,7 +3,7 @@
  */
 
 @interface _UISegmentedControlBackgroundView : UIImageView {
-    UIImageView *_shadowView;
+    UIImageView * _shadowView;
 }
 
 @property (nonatomic, retain) UIImageView *shadowView;

@@ -3,10 +3,10 @@
  */
 
 @interface UIKBRecentInputsView : UIKBKeyView <UICollectionViewDataSource, UICollectionViewDelegate> {
-    UICollectionView *_collectionView;
-    UICollectionViewFlowLayout *_flowLayout;
-    NSArray *_recentInputStrings;
-    BOOL _verticalLayout;
+    UICollectionView * _collectionView;
+    UICollectionViewFlowLayout * _flowLayout;
+    NSArray * _recentInputStrings;
+    BOOL  _verticalLayout;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;

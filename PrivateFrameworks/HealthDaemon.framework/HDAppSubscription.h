@@ -3,12 +3,12 @@
  */
 
 @interface HDAppSubscription : NSObject {
-    NSString *_bundleIdentifier;
-    int _dataCode;
-    long long _lastAckTime;
-    unsigned long long _lastAnchor;
-    long long _launchTimeHysteresis;
-    unsigned long long _updateFrequency;
+    NSString * _bundleIdentifier;
+    int  _dataCode;
+    long long  _lastAckTime;
+    unsigned long long  _lastAnchor;
+    long long  _launchTimeHysteresis;
+    unsigned long long  _updateFrequency;
 }
 
 @property (nonatomic, readonly) NSString *bundleIdentifier;

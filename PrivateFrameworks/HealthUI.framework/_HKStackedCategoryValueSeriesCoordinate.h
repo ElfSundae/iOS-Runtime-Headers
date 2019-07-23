@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _end;
+    }  _end;
     struct CGPoint { 
         float x; 
         float y; 
-    } _start;
-    id _userInfo;
+    }  _start;
+    id  _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;

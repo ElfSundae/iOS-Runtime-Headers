@@ -3,8 +3,8 @@
  */
 
 @interface PLClientServerTransaction : NSObject {
-    NSSet *_changeScopes;
-    NSString *_transactionToken;
+    NSSet * _changeScopes;
+    NSString * _transactionToken;
 }
 
 @property (nonatomic, readonly, retain) NSSet *changeScopes;

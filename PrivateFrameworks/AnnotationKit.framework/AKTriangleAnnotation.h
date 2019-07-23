@@ -3,9 +3,9 @@
  */
 
 @interface AKTriangleAnnotation : AKRectangularShapeAnnotation <AKFlippableAnnotationProtocol> {
-    BOOL _horizontallyFlipped;
-    UIBezierPath *_path;
-    BOOL _verticallyFlipped;
+    BOOL  _horizontallyFlipped;
+    UIBezierPath * _path;
+    BOOL  _verticallyFlipped;
 }
 
 @property (readonly, copy) NSString *debugDescription;

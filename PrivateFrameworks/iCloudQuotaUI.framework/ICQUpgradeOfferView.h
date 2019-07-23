@@ -3,27 +3,27 @@
  */
 
 @interface ICQUpgradeOfferView : ICQPageView <UITextViewDelegate> {
-    UILayoutGuide *_abovePurchaseLayoutGuide;
-    NSArray *_activeConstraints;
-    UILayoutGuide *_belowPurchaseLayoutGuide;
-    <ICQPageDelegate> *_delegate;
-    _ICQTextView *_finePrintView;
-    BOOL _isResizingFonts;
-    BOOL _layoutGuideProblem;
-    UIButton *_learnMoreButton;
-    ICQLink *_learnMoreLink;
-    UILabel *_messageLabel;
-    UILayoutGuide *_navigationBarLayoutGuide;
-    UIButton *_purchaseButton;
-    ICQLink *_purchaseLink;
-    NSArray *_serviceViews;
-    UIActivityIndicatorView *_spinner;
-    BOOL _suppressResizingFonts;
-    UILabel *_titleLabel;
-    float _titleTopMargin;
-    NSLayoutConstraint *_titleTopMarginConstraint;
-    int _upgradeMode;
-    _ICQUpgradeOfferPageSpecification *_upgradeOfferPageSpecification;
+    UILayoutGuide * _abovePurchaseLayoutGuide;
+    NSArray * _activeConstraints;
+    UILayoutGuide * _belowPurchaseLayoutGuide;
+    <ICQPageDelegate> * _delegate;
+    _ICQTextView * _finePrintView;
+    BOOL  _isResizingFonts;
+    BOOL  _layoutGuideProblem;
+    UIButton * _learnMoreButton;
+    ICQLink * _learnMoreLink;
+    UILabel * _messageLabel;
+    UILayoutGuide * _navigationBarLayoutGuide;
+    UIButton * _purchaseButton;
+    ICQLink * _purchaseLink;
+    NSArray * _serviceViews;
+    UIActivityIndicatorView * _spinner;
+    BOOL  _suppressResizingFonts;
+    UILabel * _titleLabel;
+    float  _titleTopMargin;
+    NSLayoutConstraint * _titleTopMarginConstraint;
+    int  _upgradeMode;
+    _ICQUpgradeOfferPageSpecification * _upgradeOfferPageSpecification;
 }
 
 @property (nonatomic, readonly) UILayoutGuide *abovePurchaseLayoutGuide;

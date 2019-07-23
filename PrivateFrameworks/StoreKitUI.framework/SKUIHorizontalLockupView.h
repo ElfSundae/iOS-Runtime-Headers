@@ -3,34 +3,36 @@
  */
 
 @interface SKUIHorizontalLockupView : SKUIViewReuseView <SKUIItemOfferButtonDelegate, SKUIMediaPlayerObserver, SKUIOfferViewDelegate, SKUIPerspectiveView, SKUIPreviewContainerView, SKUIToggleButtonDelegate, SKUIViewElementView, UIGestureRecognizerDelegate> {
-    NSHashTable *_artworkRelatedChildViewElementViews;
-    SKUIBadgeViewElement *_badge;
-    NSMapTable *_buyButtonDescriptorToButton;
+    NSHashTable * _artworkRelatedChildViewElementViews;
+    SKUIBadgeViewElement * _badge;
+    NSMapTable * _buyButtonDescriptorToButton;
+    NSMapTable * _cacheKeyToImageView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInset;
-    NSMapTable *_imageViewToImageResourceCacheKey;
-    SUPlayerStatus *_lastPlayerStatus;
-    SKUIHorizontalLockupLayout *_layout;
-    SKUILockupViewElement *_lockupElement;
-    UIView *_metadataBackgroundView;
-    SKUIGradientView *_offerConfirmationGradientView;
-    NSHashTable *_offerViews;
-    SKUIPlayButton *_playButton;
-    SKUIPreviewProgressIndicator *_previewProgressIndicator;
-    int _previewState;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    NSMutableArray *_tappableViews;
-    BOOL _updateLayoutOnButtonConfirmation;
-    BOOL _useClearBackground;
-    NSMapTable *_viewElementViews;
+    }  _contentInset;
+    UIColor * _gradientColor;
+    SUPlayerStatus * _lastPlayerStatus;
+    SKUIHorizontalLockupLayout * _layout;
+    SKUILockupViewElement * _lockupElement;
+    UIView * _metadataBackgroundView;
+    SKUIGradientView * _offerConfirmationGradientView;
+    NSHashTable * _offerViews;
+    SKUIPlayButton * _playButton;
+    SKUIPreviewProgressIndicator * _previewProgressIndicator;
+    int  _previewState;
+    UITapGestureRecognizer * _tapGestureRecognizer;
+    NSMutableArray * _tappableViews;
+    BOOL  _updateLayoutOnButtonConfirmation;
+    BOOL  _useClearBackground;
+    NSMapTable * _viewElementViews;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) UIColor *gradientColor;
 @property (readonly) unsigned int hash;
 @property (nonatomic, retain) UIView *metadataBackgroundView;
 @property (readonly) Class superclass;
@@ -73,6 +75,7 @@
 - (id)_viewElementForView:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (id)gradientColor;
 - (void)hidePreviewProgressAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)itemOfferButtonDidAnimateTransition:(id)arg1;
@@ -88,9 +91,11 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setContainerBackgroundImageForPlayButton:(id)arg1;
 - (void)setContentInset:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
+- (void)setGradientColor:(id)arg1;
 - (BOOL)setImage:(id)arg1 forArtworkRequest:(id)arg2 context:(id)arg3;
 - (void)setMetadataBackgroundView:(id)arg1;
 - (void)setPerspectiveTargetView:(id)arg1;
+- (void)setSemanticContentAttribute:(int)arg1;
 - (void)setUpdateLayoutOnButtonConfirmation:(BOOL)arg1;
 - (void)setVanishingPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)showPreviewProgressWithStatus:(id)arg1 animated:(BOOL)arg2;

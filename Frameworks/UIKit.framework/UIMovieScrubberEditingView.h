@@ -3,15 +3,15 @@
  */
 
 @interface UIMovieScrubberEditingView : UIView {
-    NSArray *_activeImages;
-    NSArray *_activeNoEditImages;
-    float _edgeInset;
-    BOOL _editing;
-    BOOL _enabled;
-    NSArray *_inactiveImages;
-    UIImageView *_leftImageView;
-    UIImageView *_middleImageView;
-    UIImageView *_rightImageView;
+    NSArray * _activeImages;
+    NSArray * _activeNoEditImages;
+    float  _edgeInset;
+    BOOL  _editing;
+    BOOL  _enabled;
+    NSArray * _inactiveImages;
+    UIImageView * _leftImageView;
+    UIImageView * _middleImageView;
+    UIImageView * _rightImageView;
 }
 
 @property (nonatomic) float edgeInset;

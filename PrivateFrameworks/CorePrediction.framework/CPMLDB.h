@@ -3,32 +3,32 @@
  */
 
 @interface CPMLDB : NSObject {
-    NSDictionary *_cInfo;
-    NSString *_dbFileName;
-    NSObject<OS_dispatch_queue> *_dispatch_queue;
-    int _openCPMLDBOptions;
-    <CPMLAlgorithmProtocol> *_thedelegate;
-    NSString *_trainingFile;
-    NSString *_trainingModelFileAndPath;
-    double *cardinality;
-    unsigned long commitCountMax;
-    CPMLSchema *cpSchema;
-    unsigned long currentCommitCount;
-    double currentTimeInterval;
-    struct sqlite3 { } *db;
-    NSMutableString *dbTableName;
-    NSMutableArray *indexer;
-    double *max;
-    unsigned int maxFieldCount;
-    double *mean;
-    double *min;
-    double minTimeToLogIndex;
-    unsigned long long *repFields;
-    unsigned long rowCount;
-    double *sigma;
-    double *sumOfX;
-    double *sumOfXX;
-    NSMutableDictionary *vectorListCardinality;
+    NSDictionary * _cInfo;
+    NSString * _dbFileName;
+    NSObject<OS_dispatch_queue> * _dispatch_queue;
+    int  _openCPMLDBOptions;
+    <CPMLAlgorithmProtocol> * _thedelegate;
+    NSString * _trainingFile;
+    NSString * _trainingModelFileAndPath;
+    double * cardinality;
+    unsigned long  commitCountMax;
+    CPMLSchema * cpSchema;
+    unsigned long  currentCommitCount;
+    double  currentTimeInterval;
+    struct sqlite3 { } * db;
+    NSMutableString * dbTableName;
+    NSMutableArray * indexer;
+    double * max;
+    unsigned int  maxFieldCount;
+    double * mean;
+    double * min;
+    double  minTimeToLogIndex;
+    unsigned long long * repFields;
+    unsigned long  rowCount;
+    double * sigma;
+    double * sumOfX;
+    double * sumOfXX;
+    NSMutableDictionary * vectorListCardinality;
 }
 
 @property (readonly) CPMLSchema *cpSchema;

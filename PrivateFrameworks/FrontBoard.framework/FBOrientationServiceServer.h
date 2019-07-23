@@ -3,7 +3,7 @@
  */
 
 @interface FBOrientationServiceServer : FBSystemServiceFacility {
-    NSMutableSet *_interestedClients;
+    NSMutableSet * _interestedClients;
 }
 
 - (void)_handleRegisterOrientationInterest:(id)arg1 fromClient:(id)arg2;

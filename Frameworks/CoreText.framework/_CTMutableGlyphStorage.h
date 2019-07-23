@@ -3,13 +3,17 @@
  */
 
 @interface _CTMutableGlyphStorage : _CTGlyphStorage <_CTGlyphStorageAdvanceLookup> {
-    CTGlyphStorageInterface *_interface;
+    bool  _implementsOrigins;
+    CTGlyphStorageInterface * _interface;
 }
+
+@property (nonatomic, readonly) bool implementsOrigins;
 
 - (long)attachmentCountAtIndex:(long)arg1;
 - (id)copyWithRange:(struct { int x1; int x2; })arg1;
 - (struct CGSize { float x1; float x2; })customAdvanceForIndex:(long)arg1;
 - (void)disposeGlyphStack;
+- (bool)implementsOrigins;
 - (void)initGlyphStackWithCapacity:(long)arg1;
 - (id)initWithInterface:(id)arg1;
 - (void)insertGlyphsAtRange:(struct { int x1; int x2; })arg1;

@@ -3,13 +3,13 @@
  */
 
 @interface UITextMagnifierCommonRenderer : UITextMagnifierRenderer {
-    UIImage *m_hiImageHorizontal;
-    UIImage *m_hiImageVertical;
-    UIImage *m_loImageHorizontal;
-    UIImage *m_loImageVertical;
-    BOOL m_loaded;
-    UIImage *m_maskImageHorizontal;
-    UIImage *m_maskImageVertical;
+    UIImage * m_hiImageHorizontal;
+    UIImage * m_hiImageVertical;
+    UIImage * m_loImageHorizontal;
+    UIImage * m_loImageVertical;
+    BOOL  m_loaded;
+    UIImage * m_maskImageHorizontal;
+    UIImage * m_maskImageVertical;
 }
 
 - (void).cxx_destruct;

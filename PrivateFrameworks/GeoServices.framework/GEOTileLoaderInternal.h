@@ -3,35 +3,30 @@
  */
 
 @interface GEOTileLoaderInternal : GEOTileLoader <GEOExperimentConfigurationObserver, GEOResourceManifestTileGroupObserver, GEOTileServerProxyDelegate> {
-    GEOTilePool *_cache;
-    GEOTileLoaderConfiguration *_config;
-    int _diskHits;
-    GEOTilePool *_expiringCache;
-    struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)> > >="__end_"{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *>="__prev_"^{__list_node<_CacheRequester<void (^)(unsigned long long)>, void *> {} _freeableSizeRequesters;
-    <GEOTileLoaderInternalDelegate> *_internalDelegate;
-    NSObject<OS_dispatch_queue> *_internalDelegateQ;
-    BOOL _isUsageTimerScheduled;
+    GEOTilePool * _cache;
+    GEOTileLoaderConfiguration * _config;
+    int  _diskHits;
+    GEOTilePool * _expiringCache;
+    struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)> > >="__end_"{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *>="__prev_"^{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {}  _freeableSizeRequesters;
+    <GEOTileLoaderInternalDelegate> * _internalDelegate;
+    NSObject<OS_dispatch_queue> * _internalDelegateQ;
+    BOOL  _isUsageTimerScheduled;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
     struct list<LoadItem, std::__1::allocator<LoadItem> > { 
         struct __list_node_base<LoadItem, void *> { 
-            struct __list_node<LoadItem, void *> {} *__prev_; 
-            struct __list_node<LoadItem, void *> {} *__next_; 
+            struct __list_node_base<LoadItem, void *> {} *__prev_; 
+            struct __list_node_base<LoadItem, void *> {} *__next_; 
         } __end_; 
         struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<LoadItem, void *> > > { 
             unsigned long __first_; 
         } __size_alloc_; 
-    } _loadItems;
-    NSObject<OS_dispatch_queue> *_loadQ;
-    struct mutex { 
-        struct _opaque_pthread_mutex_t { 
-            long __sig; 
-            BOOL __opaque[40]; 
-        } __m_; 
-    } _lock;
-    int _memoryHits;
-    BOOL _networkActive;
-    int _networkHits;
-    NSMutableSet *_openers;
-    GEOTileServerProxy *_proxy;
+    }  _loadItems;
+    NSObject<OS_dispatch_queue> * _loadQ;
+    int  _memoryHits;
+    BOOL  _networkActive;
+    int  _networkHits;
+    NSMutableSet * _openers;
+    GEOTileServerProxy * _proxy;
     struct deque<ErrorInfo, std::__1::allocator<ErrorInfo> > { 
         struct __split_buffer<ErrorInfo *, std::__1::allocator<ErrorInfo *> > { 
             struct ErrorInfo {} **__first_; 
@@ -45,19 +40,19 @@
         struct __compressed_pair<unsigned long, std::__1::allocator<ErrorInfo> > { 
             unsigned long __first_; 
         } __size_; 
-    } _recentErrors;
-    int _rollingBatchId;
-    struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)> > >="__end_"{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *>="__prev_"^{__list_node<_CacheRequester<void (^)(unsigned long long)>, void *> {} _shrinkCacheRequesters;
+    }  _recentErrors;
+    int  _rollingBatchId;
+    struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)> > >="__end_"{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *>="__prev_"^{__list_node_base<_CacheRequester<void (^)(unsigned long long)>, void *> {}  _shrinkCacheRequesters;
     struct { 
         double x; 
         double y; 
-    } _sortPoint;
-    NSMutableArray *_tileDecoders;
+    }  _sortPoint;
+    NSMutableArray * _tileDecoders;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer> > { 
         struct __compressed_pair<geo::DispatchTimer *, std::__1::default_delete<geo::DispatchTimer> > { 
             struct DispatchTimer {} *__first_; 
         } __ptr_; 
-    } _timer;
+    }  _timer;
     struct unordered_map<_GEOTileKey, UsageData, std::__1::hash<GEOTileKey>, std::__1::equal_to<GEOTileKey>, std::__1::allocator<std::__1::pair<const _GEOTileKey, UsageData> > > { 
         struct __hash_table<std::__1::__hash_value_type<_GEOTileKey, UsageData>, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, UsageData>, std::__1::hash<GEOTileKey>, true>, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, UsageData>, std::__1::equal_to<GEOTileKey>, true>, std::__1::allocator<std::__1::__hash_value_type<_GEOTileKey, UsageData> > > { 
             struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, UsageData>, void *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, UsageData>, void *> *> > > { 
@@ -82,18 +77,13 @@
                 float __first_; 
             } __p3_; 
         } __table_; 
-    } _usageData;
-    struct mutex { 
-        struct _opaque_pthread_mutex_t { 
-            long __sig; 
-            BOOL __opaque[40]; 
-        } __m_; 
-    } _usageLock;
+    }  _usageData;
+    NSObject<OS_dispatch_queue> * _usageIsolation;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer> > { 
         struct __compressed_pair<geo::DispatchTimer *, std::__1::default_delete<geo::DispatchTimer> > { 
             struct DispatchTimer {} *__first_; 
         } __ptr_; 
-    } _usageTimer;
+    }  _usageTimer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -104,11 +94,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_activeTileGroupChanged:(id)arg1;
-- (void)_cancel:(struct __list_iterator<LoadItem, void *> { struct __list_node<LoadItem, void *> {} *x1; }*)arg1 err:(id)arg2;
-- (BOOL)_cancelIfNeeded:(struct __list_iterator<LoadItem, void *> { struct __list_node<LoadItem, void *> {} *x1; }*)arg1;
+- (void)_cancel:(struct __list_iterator<LoadItem, void *> { struct __list_node_base<LoadItem, void *> {} *x1; }*)arg1 err:(id)arg2;
+- (BOOL)_cancelIfNeeded:(struct __list_iterator<LoadItem, void *> { struct __list_node_base<LoadItem, void *> {} *x1; }*)arg1;
 - (id)_findInCache:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg2 fromOfflinePack:(id)arg3;
 - (void)_loadedTile:(id)arg1 forKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg2 info:(id)arg3;
+- (void)_loadedTileForLocalKey:(struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; })arg1 preliminary:(BOOL)arg2 quickly:(BOOL)arg3 tileDecoder:(id)arg4 data:(id)arg5 disburseTile:(id /* block */)arg6;
 - (void)_localeChanged:(id)arg1;
 - (void)_requestOnlineTiles;
 - (void)_tileEditionChanged:(id)arg1;
@@ -124,6 +115,7 @@
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)descriptionDictionaryRepresentation;
 - (int)diskHits;
 - (void)endPreloadSessionForClient:(id)arg1;
 - (void)experimentConfigurationDidChange:(id)arg1;
@@ -144,6 +136,7 @@
 - (void)proxy:(id)arg1 failedToLoadTiles:(id)arg2 error:(id)arg3;
 - (void)proxy:(id)arg1 loadedTile:(id)arg2 forKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg3 info:(id)arg4;
 - (void)proxy:(id)arg1 willGoToNetworkForTiles:(id)arg2;
+- (void)proxyDidDownloadRegionalResources:(id)arg1;
 - (void)registerTileDecoder:(id)arg1;
 - (void)registerTileLoader:(Class)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;

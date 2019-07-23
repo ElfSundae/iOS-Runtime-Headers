@@ -3,25 +3,31 @@
  */
 
 @interface AKTextEditorController : NSObject <NSTextStorageDelegate, UITextViewDelegate> {
-    AKAnnotation<AKTextAnnotationProtocol> *_annotation;
-    AKController *_controller;
-    AKPageController *_pageController;
-    float _renderingTextStorageScaleFactor;
+    AKAnnotation<AKTextAnnotationProtocol> * _annotation;
+    AKController * _controller;
+    float  _handleCompensatingScaleFactor;
+    BOOL  _isInAdjustAnnotationFrameToFitText;
+    BOOL  _isInEndEditing;
+    AKPageController * _pageController;
+    float  _renderingTextStorageScaleFactor;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startingContentInset;
-    NSTextStorage *_textStorage;
-    UITextView *_textView;
-    NSUndoManager *_textViewUndoManager;
+    }  _startingContentInset;
+    NSTextStorage * _textStorage;
+    UITextView * _textView;
+    NSUndoManager * _textViewUndoManager;
 }
 
 @property AKAnnotation<AKTextAnnotationProtocol> *annotation;
 @property AKController *controller;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property float handleCompensatingScaleFactor;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL isEditing;
+@property BOOL isInAdjustAnnotationFrameToFitText;
+@property BOOL isInEndEditing;
 @property AKPageController *pageController;
 @property float renderingTextStorageScaleFactor;
 @property struct CGPoint { float x1; float x2; } startingContentInset;
@@ -40,6 +46,7 @@
 - (void)_endEditing;
 - (void)_keyboardDidShow:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
+- (id)_newScaledPaths:(id)arg1 withScaleFactor:(float)arg2 aboutCenter:(struct CGPoint { float x1; float x2; })arg3;
 - (void)_performBlockOnMainThread:(id /* block */)arg1;
 - (void)_registerForKeyboardNotifications;
 - (void)_returnScrollViewAfterShownKeyboard;
@@ -51,12 +58,18 @@
 - (id)controller;
 - (void)dealloc;
 - (void)endEditing;
+- (float)handleCompensatingScaleFactor;
 - (id)initWithController:(id)arg1;
 - (BOOL)isEditing;
+- (BOOL)isInAdjustAnnotationFrameToFitText;
+- (BOOL)isInEndEditing;
 - (id)pageController;
 - (float)renderingTextStorageScaleFactor;
 - (void)setAnnotation:(id)arg1;
 - (void)setController:(id)arg1;
+- (void)setHandleCompensatingScaleFactor:(float)arg1;
+- (void)setIsInAdjustAnnotationFrameToFitText:(BOOL)arg1;
+- (void)setIsInEndEditing:(BOOL)arg1;
 - (void)setPageController:(id)arg1;
 - (void)setRenderingTextStorageScaleFactor:(float)arg1;
 - (void)setStartingContentInset:(struct CGPoint { float x1; float x2; })arg1;

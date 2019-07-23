@@ -3,12 +3,12 @@
  */
 
 @interface DateRangePane : PSEditingPane <UITableViewDataSource, UITableViewDelegate> {
-    UIDatePicker *_datePicker;
-    PSTableCell *_fromCell;
-    int _selectedIndex;
-    UITableView *_table;
-    struct __CFDateFormatter { } *_timeFormatter;
-    PSTableCell *_toCell;
+    UIDatePicker * _datePicker;
+    PSTableCell * _fromCell;
+    int  _selectedIndex;
+    UITableView * _table;
+    struct __CFDateFormatter { } * _timeFormatter;
+    PSTableCell * _toCell;
 }
 
 @property (nonatomic, retain) UIDatePicker *datePicker;

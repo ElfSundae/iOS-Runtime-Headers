@@ -7,7 +7,7 @@
         float x; 
         float y; 
         float z; 
-    } fAcceleration;
+    }  fAcceleration;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

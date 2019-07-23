@@ -4,6 +4,7 @@
 
 @interface CATiledLayer : CALayer
 
+@property <CATiledLayerDelegate><CALayerDelegate> *delegate;
 @property (getter=isDrawingEnabled) BOOL drawingEnabled;
 @property struct CGColor { }*fillColor;
 @property unsigned long levelsOfDetail;

@@ -3,16 +3,17 @@
  */
 
 @interface _CTGlyphStorage : NSObject {
-    const struct CGSize { float x1; float x2; } *_advances;
-    long _count;
-    const unsigned short *_glyphs;
-    const unsigned int *_props;
-    const int *_stringIndices;
+    const struct CGSize { float x1; float x2; } * _advances;
+    long  _count;
+    const unsigned short * _glyphs;
+    const unsigned int * _props;
+    const int * _stringIndices;
 }
 
 - (long)attachmentCountAtIndex:(long)arg1;
 - (id)copyWithRange:(struct { int x1; int x2; })arg1;
 - (void)disposeGlyphStack;
+- (bool)implementsOrigins;
 - (void)initGlyphStackWithCapacity:(long)arg1;
 - (id)initWithCount:(long)arg1;
 - (void)insertGlyphsAtRange:(struct { int x1; int x2; })arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface FMBorderedView : UIView {
-    BOOL _hairlineBorder;
+    BOOL  _hairlineBorder;
 }
 
 @property (nonatomic, retain) UIColor *borderColor;

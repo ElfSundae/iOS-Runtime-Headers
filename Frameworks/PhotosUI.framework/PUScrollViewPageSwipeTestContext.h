@@ -3,21 +3,21 @@
  */
 
 @interface PUScrollViewPageSwipeTestContext : NSObject {
-    int _currentDirection;
-    int _currentIteration;
-    int _currentPage;
-    double _currentPageSwipeProgress;
-    int _currentState;
-    CADisplayLink *_displayLink;
-    double _lastIncrementTime;
-    int _numberOfIterations;
-    int _numberOfPages;
+    int  _currentDirection;
+    int  _currentIteration;
+    int  _currentPage;
+    double  _currentPageSwipeProgress;
+    int  _currentState;
+    CADisplayLink * _displayLink;
+    double  _lastIncrementTime;
+    int  _numberOfIterations;
+    int  _numberOfPages;
     struct CGPoint { 
         float x; 
         float y; 
-    } _originContentOffset;
-    int _scrollAxis;
-    NSString *_testName;
+    }  _originContentOffset;
+    int  _scrollAxis;
+    NSString * _testName;
 }
 
 @property (nonatomic) int currentDirection;

@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/SpringBoardUIServices
  */
 
-@interface SBUISizeObservingView : UIView {
-    <SBUISizeObservingViewDelegate> *_delegate;
-    BOOL _delegateInterestedInSizeChanges;
+@interface SBUISizeObservingView : SBFView {
+    <SBUISizeObservingViewDelegate> * _delegate;
+    BOOL  _delegateInterestedInSizeChanges;
 }
 
 @property (nonatomic) <SBUISizeObservingViewDelegate> *delegate;

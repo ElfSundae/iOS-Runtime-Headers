@@ -3,16 +3,16 @@
  */
 
 @interface SKUIStorePageSection : NSObject <SKUIProductPageOverlayDelegate> {
-    IKColor *_backgroundColorForSection;
-    BOOL _bottomSection;
-    SKUIPageComponent *_component;
-    SKUIStorePageSectionContext *_context;
-    BOOL _hasValidRelevantEntityProviders;
-    NSArray *_indexPathsForBackgroundItems;
-    SKUIProductPageOverlayController *_overlayController;
-    NSSet *_relevantEntityProviders;
-    int _sectionIndex;
-    BOOL _topSection;
+    IKColor * _backgroundColorForSection;
+    BOOL  _bottomSection;
+    SKUIPageComponent * _component;
+    SKUIStorePageSectionContext * _context;
+    BOOL  _hasValidRelevantEntityProviders;
+    NSArray * _indexPathsForBackgroundItems;
+    SKUIProductPageOverlayController * _overlayController;
+    NSSet * _relevantEntityProviders;
+    int  _sectionIndex;
+    BOOL  _topSection;
 }
 
 @property (nonatomic, readonly) IKColor *backgroundColorForSection;
@@ -50,7 +50,7 @@
 - (id)clickEventWithItem:(id)arg1 elementName:(id)arg2 index:(int)arg3;
 - (id)clickEventWithLink:(id)arg1 elementName:(id)arg2 index:(int)arg3;
 - (id)clickEventWithMedia:(id)arg1 elementName:(id)arg2 index:(int)arg3;
-- (void)collectionViewDidConfirmButtonElement:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)collectionViewDidConfirmButtonElement:(id)arg1 withClickInfo:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionViewDidConfirmItemOfferAtIndexPath:(id)arg1;
 - (void)collectionViewDidEndDisplayingCellForItemAtIndexPath:(id)arg1;
 - (void)collectionViewDidLongPressItemAtIndexPath:(id)arg1;

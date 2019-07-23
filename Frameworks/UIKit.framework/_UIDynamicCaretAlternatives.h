@@ -3,9 +3,9 @@
  */
 
 @interface _UIDynamicCaretAlternatives : UIView {
-    NSArray *_alternativesButtons;
-    UIView *_horizontalDivider;
-    UIView *_verticalDivider;
+    NSArray * _alternativesButtons;
+    UIView * _horizontalDivider;
+    UIView * _verticalDivider;
 }
 
 @property (nonatomic, retain) NSArray *alternativesButtons;

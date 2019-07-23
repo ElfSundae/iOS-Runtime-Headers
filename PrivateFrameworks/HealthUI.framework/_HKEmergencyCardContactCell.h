@@ -3,10 +3,10 @@
  */
 
 @interface _HKEmergencyCardContactCell : UITableViewCell {
-    _HKEmergencyContact *_contact;
-    UILabel *_nameLabel;
-    UILabel *_phoneNumberLabel;
-    UILabel *_relationshipLabel;
+    _HKEmergencyContact * _contact;
+    UILabel * _nameLabel;
+    UILabel * _phoneNumberLabel;
+    UILabel * _relationshipLabel;
 }
 
 @property (nonatomic, retain) _HKEmergencyContact *contact;

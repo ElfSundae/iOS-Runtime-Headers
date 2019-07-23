@@ -3,16 +3,16 @@
  */
 
 @interface NRDeviceCollectionHistoryEntry : NSObject <NSCopying, NSSecureCoding> {
-    NSDate *_date;
-    NRDeviceCollectionDiff *_diff;
-    NRDeviceCollectionHistory *_historyManager;
-    unsigned long long _index;
-    unsigned long _switchIndex;
+    NSDate * _date;
+    NRDeviceCollectionDiff * _diff;
+    NRDeviceCollectionHistory * _historyManager;
+    unsigned long long  _index;
+    unsigned long  _switchIndex;
 }
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NRDeviceCollectionDiff *diff;
-@property (nonatomic, retain) NRDeviceCollectionHistory *historyManager;
+@property (nonatomic) NRDeviceCollectionHistory *historyManager;
 @property (nonatomic) unsigned long long index;
 @property (nonatomic, readonly) NRMutableDeviceCollection *state;
 @property (nonatomic) unsigned long switchIndex;

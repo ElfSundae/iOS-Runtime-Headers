@@ -3,14 +3,14 @@
  */
 
 @interface _UIDynamicItemObservingBehavior : UIDynamicItemBehavior {
-    id /* block */ _completionHandler;
-    double _completionHandlerInvocationDelay;
-    BOOL _enabled;
-    int _frameCount;
+    id /* block */  _completionHandler;
+    double  _completionHandlerInvocationDelay;
+    BOOL  _enabled;
+    int  _frameCount;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _targetVelocity;
+    }  _targetVelocity;
 }
 
 @property (nonatomic, copy) id /* block */ completionHandler;

@@ -3,23 +3,23 @@
  */
 
 @interface SUWebViewManager : NSObject <SUScriptInterfaceDelegate, UIWebViewDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate> {
-    SSAuthenticationContext *_authenticationContext;
-    SUClientInterface *_clientInterface;
-    <SUWebViewManagerDelegate> *_delegate;
-    ISURLRequestPerformance *_initialRequestPerformance;
-    NSLock *_lock;
-    int _modalAlertClickedIndex;
-    id _originalFrameLoadDelegate;
-    id _originalPolicyDelegate;
-    id _originalResourceLoadDelegate;
-    id _originalUIDelegate;
-    NSMutableSet *_requireCellularURLs;
-    NSMapTable *_scriptInterfaces;
-    SUScriptWindowContext *_scriptWindowContext;
-    NSSet *_suppressCookiesHosts;
-    int _usingNetworkCount;
-    struct __CFSet { } *_webFramesPendingInitialRequest;
-    UIWebView *_webView;
+    SSAuthenticationContext * _authenticationContext;
+    SUClientInterface * _clientInterface;
+    <SUWebViewManagerDelegate> * _delegate;
+    ISURLRequestPerformance * _initialRequestPerformance;
+    NSLock * _lock;
+    id  _originalFrameLoadDelegate;
+    id  _originalPolicyDelegate;
+    id  _originalResourceLoadDelegate;
+    id  _originalUIDelegate;
+    SUWebScriptReloadContext * _pendingWebScriptReloadContext;
+    NSMutableSet * _requireCellularURLs;
+    NSMapTable * _scriptInterfaces;
+    SUScriptWindowContext * _scriptWindowContext;
+    NSSet * _suppressCookiesHosts;
+    int  _usingNetworkCount;
+    struct __CFSet { } * _webFramesPendingInitialRequest;
+    UIWebView * _webView;
 }
 
 @property (nonatomic, copy) SSAuthenticationContext *authenticationContext;
@@ -44,9 +44,9 @@
 - (id)_delegate;
 - (void)_endUsingNetwork;
 - (void)_enumerateScriptInterfacesWithBlock:(id /* block */)arg1;
-- (id)_newAlertWithMessage:(id)arg1;
+- (BOOL)_presentModalAlertWithMessage:(id)arg1 includingCancelButton:(BOOL)arg2 configurationHandler:(id /* block */)arg3;
+- (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (id)_userIdentifier;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(int)arg2;
 - (id)authenticationContext;
 - (void)connectToWebView:(id)arg1;
 - (void)dealloc;

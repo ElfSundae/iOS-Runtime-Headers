@@ -15,7 +15,7 @@
         int exitState; 
         double estExitTime; 
         double startTime; 
-    } fActivity;
+    }  fActivity;
 }
 
 @property (nonatomic, readonly) int confidence;

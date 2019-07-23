@@ -3,8 +3,8 @@
  */
 
 @interface CKActionMenuWindow : UIAutoRotatingWindow <CKDismissViewDelegate> {
-    CKActionMenuView *_actionMenuView;
-    CKDismissView *_dismissView;
+    CKActionMenuView * _actionMenuView;
+    CKDismissView * _dismissView;
 }
 
 @property (nonatomic, retain) CKActionMenuView *actionMenuView;
@@ -17,11 +17,11 @@
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (BOOL)_canAffectStatusBarAppearance;
 - (BOOL)_shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)actionMenuGestureRecognized:(id)arg1;
 - (id)actionMenuView;
-- (void)dealloc;
 - (void)dismissActionMenuViewAnimated:(BOOL)arg1;
 - (id)dismissView;
 - (void)dismissViewWasTapped:(id)arg1;

@@ -2,12 +2,12 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUAssetHidingHelper : NSObject <PUPhotoLibraryUIChangeObserver> {
-    PHManualFetchResult *__assetsFetchResults;
-    BOOL _areAllAssetsHidden;
-    BOOL _canToogleAssetsVisibility;
-    BOOL _didCheckAllAssetHidden;
-    BOOL _didCheckCanToogleAssetsVisibility;
+@interface PUAssetHidingHelper : NSObject <PXPhotoLibraryUIChangeObserver> {
+    PHManualFetchResult * __assetsFetchResults;
+    BOOL  _areAllAssetsHidden;
+    BOOL  _canToogleAssetsVisibility;
+    BOOL  _didCheckAllAssetHidden;
+    BOOL  _didCheckCanToogleAssetsVisibility;
 }
 
 @property (setter=_setAssetsFetchResult:, nonatomic, retain) PHManualFetchResult *_assetsFetchResults;
@@ -33,7 +33,7 @@
 - (BOOL)isHiding;
 - (id)menuItemTitleForTogglingAssetsVisibility;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)setAssets:(id)arg1;
 
 @end

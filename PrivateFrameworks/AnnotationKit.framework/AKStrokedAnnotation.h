@@ -3,11 +3,11 @@
  */
 
 @interface AKStrokedAnnotation : AKAnnotation <AKStrokedAnnotationProtocol> {
-    int _brushStyle;
-    BOOL _dashed;
-    BOOL _hasShadow;
-    UIColor *_strokeColor;
-    float _strokeWidth;
+    int  _brushStyle;
+    BOOL  _dashed;
+    BOOL  _hasShadow;
+    UIColor * _strokeColor;
+    float  _strokeWidth;
 }
 
 @property int brushStyle;

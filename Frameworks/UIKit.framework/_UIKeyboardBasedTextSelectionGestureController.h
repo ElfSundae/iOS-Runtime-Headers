@@ -3,8 +3,8 @@
  */
 
 @interface _UIKeyboardBasedTextSelectionGestureController : _UIKeyboardTextSelectionGestureController {
-    BOOL _delayForceMagnify;
-    BOOL _didLongForcePress;
+    BOOL  _delayForceMagnify;
+    BOOL  _didLongForcePress;
 }
 
 @property (nonatomic) BOOL delayForceMagnify;

@@ -3,7 +3,7 @@
  */
 
 @interface AVCompositionTrackReaderInspector : AVTrackReaderInspector {
-    struct OpaqueFigMutableComposition { } *_figMutableComposition;
+    struct OpaqueFigMutableComposition { } * _figMutableComposition;
 }
 
 @property (getter=_mutableComposition, nonatomic, readonly) struct OpaqueFigMutableComposition { }*mutableComposition;

@@ -3,17 +3,16 @@
  */
 
 @interface UIRepeatedAction : NSObject {
-    BOOL _didCompleteInvocationDelay;
-    BOOL _didCompletePreInvocationDelay;
-    BOOL _disableRepeat;
-    NSInvocation *_invocation;
-    id _invocationArgument;
-    float _invocationDelay;
-    float _preInvocationDelay;
-    float _repeatedDelay;
-    BOOL _rescheduleAfterNextFire;
-    BOOL _skipInitialFire;
-    NSTimer *_timer;
+    BOOL  _didCompleteInvocationDelay;
+    BOOL  _didCompletePreInvocationDelay;
+    BOOL  _disableRepeat;
+    NSInvocation * _invocation;
+    id  _invocationArgument;
+    float  _invocationDelay;
+    float  _preInvocationDelay;
+    float  _repeatedDelay;
+    BOOL  _skipInitialFire;
+    NSTimer * _timer;
 }
 
 @property (nonatomic) BOOL disableRepeat;
@@ -40,7 +39,7 @@
 - (id)invocation;
 - (id)invocationArgument;
 - (float)invocationDelay;
-- (void)invoke;
+- (BOOL)invoke;
 - (float)preInvocationDelay;
 - (float)repeatedDelay;
 - (void)reset;

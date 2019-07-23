@@ -35,6 +35,7 @@
 - (id)hostname;
 - (id)href;
 - (BOOL)noHref;
+- (id)origin;
 - (id)pathname;
 - (id)ping;
 - (id)port;

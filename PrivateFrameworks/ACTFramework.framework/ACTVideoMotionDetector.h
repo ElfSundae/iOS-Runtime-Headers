@@ -3,12 +3,12 @@
  */
 
 @interface ACTVideoMotionDetector : ACTVideoProcessor {
-    float _colGradient;
-    int _curProjIndex;
-    int _frameCount;
-    double _lastFrameTimestamp;
-    BOOL _outputRawMarkers;
-    int _processedFrameCount;
+    float  _colGradient;
+    int  _curProjIndex;
+    int  _frameCount;
+    double  _lastFrameTimestamp;
+    BOOL  _outputRawMarkers;
+    int  _processedFrameCount;
     struct __sbp_Slowmo_Projection { 
         struct FastRegistration_Signatures { 
             float *piRow; 
@@ -37,15 +37,15 @@
             unsigned int width; 
             unsigned int rowBytes; 
         } allocatedvImage; 
-    } _projections;
-    NSDictionary *_result;
-    ACTSlowmoResults *_results;
-    float _rowGradient;
-    BOOL _singleTimeRange;
-    BOOL _skipSecondPass;
-    double _startTimestamp;
-    NSURL *_url;
-    BOOL _verbose;
+    }  _projections;
+    NSDictionary * _result;
+    ACTSlowmoResults * _results;
+    float  _rowGradient;
+    BOOL  _singleTimeRange;
+    BOOL  _skipSecondPass;
+    double  _startTimestamp;
+    NSURL * _url;
+    BOOL  _verbose;
 }
 
 @property (readonly) NSDictionary *result;

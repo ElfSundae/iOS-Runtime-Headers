@@ -6,18 +6,18 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorSceneReferencePoint;
-    int _currentRotationCount;
-    double _currentTouchAngle;
-    double _initialTouchAngle;
-    double _initialTouchDistance;
-    double _lastTouchTime;
-    float _postRecognitionWeight;
-    float _preRecognitionWeight;
-    float _previousVelocity;
-    UITouch *_touches;
-    id _transformAnalyzer;
-    float _velocity;
+    }  _anchorSceneReferencePoint;
+    int  _currentRotationCount;
+    double  _currentTouchAngle;
+    double  _initialTouchAngle;
+    double  _initialTouchDistance;
+    double  _lastTouchTime;
+    float  _postRecognitionWeight;
+    float  _preRecognitionWeight;
+    float  _previousVelocity;
+    UITouch * _touches;
+    id  _transformAnalyzer;
+    float  _velocity;
 }
 
 @property (nonatomic) float rotation;

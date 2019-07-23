@@ -3,8 +3,8 @@
  */
 
 @interface _UIPreviewActionSheetTitleView : UIView {
-    UILabel *_label;
-    NSString *_title;
+    UILabel * _label;
+    NSString * _title;
 }
 
 @property (nonatomic) UILabel *label;

@@ -3,25 +3,27 @@
  */
 
 @interface MKUserLocationView : MKAnnotationView <VKPuckAnimatorTarget> {
-    CALayer *_accuracyLayer;
-    BOOL _allowsAccuracyRing;
-    BOOL _allowsHeadingIndicator;
-    BOOL _allowsPulse;
-    BOOL _effectsEnabled;
-    double _heading;
-    double _headingAccuracy;
-    MKUserLocationHeadingLayer *_headingLayer;
-    CLLocation *_lastLocation;
-    double _locationAccuracy;
-    VKAnnotationMarker *_marker;
-    float _maxRadiusToShowAccuracyRing;
-    double _presentationCourse;
-    CALayer *_pulseLayer;
-    BOOL _shouldDisplayHeading;
-    BOOL _shouldDisplayInaccurateHeading;
-    BOOL _shouldPulse;
-    BOOL _stale;
-    int _zoomDirection;
+    CALayer * _accuracyLayer;
+    BOOL  _allowsAccuracyRing;
+    BOOL  _allowsHeadingIndicator;
+    BOOL  _allowsPulse;
+    BOOL  _effectsEnabled;
+    BOOL  _forcesConeIndicator;
+    double  _heading;
+    double  _headingAccuracy;
+    int  _headingIndicatorStyle;
+    CALayer<MKUserLocationHeadingIndicator> * _headingLayer;
+    CLLocation * _lastLocation;
+    double  _locationAccuracy;
+    VKAnnotationMarker * _marker;
+    float  _maxRadiusToShowAccuracyRing;
+    double  _presentationCourse;
+    CALayer * _pulseLayer;
+    BOOL  _shouldDisplayHeading;
+    BOOL  _shouldDisplayInaccurateHeading;
+    BOOL  _shouldPulse;
+    BOOL  _stale;
+    int  _zoomDirection;
 }
 
 @property (nonatomic) BOOL allowsAccuracyRing;
@@ -30,9 +32,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isEffectsEnabled, nonatomic) BOOL effectsEnabled;
+@property (nonatomic) BOOL forcesConeIndicator;
 @property (readonly) unsigned int hash;
 @property (nonatomic) double heading;
 @property (nonatomic) double headingAccuracy;
+@property (nonatomic) int headingIndicatorStyle;
 @property (nonatomic, readonly) CLLocation *lastLocation;
 @property (nonatomic, readonly) double locationAccuracy;
 @property (nonatomic) float maxRadiusToShowAccuracyRing;
@@ -40,7 +44,7 @@
 @property (nonatomic) double presentationCourse;
 @property (nonatomic) BOOL shouldDisplayHeading;
 @property (nonatomic) BOOL shouldDisplayInaccurateHeading;
-@property (getter=isStale, nonatomic) BOOL stale;
+@property (getter=isStale, setter=setStale:, nonatomic) BOOL stale;
 @property (readonly) Class superclass;
 @property (nonatomic) int zoomDirection;
 
@@ -53,7 +57,8 @@
 - (id)_accuracyAnimation:(float)arg1;
 - (id)_animationToSynchronizePulse:(id*)arg1;
 - (id)_baseLayer;
-- (struct UIImage { Class x1; }*)_headingImageForAccuracy:(double)arg1 anchorPoint:(struct CGPoint { float x1; float x2; }*)arg2;
+- (int)_enforcedHeadingIndicatorStyle;
+- (id)_headingImageForAccuracy:(double)arg1 anchorPoint:(struct CGPoint { float x1; float x2; }*)arg2;
 - (BOOL)_hideLargeAccuracyRing;
 - (BOOL)_isLocationStale:(id)arg1;
 - (id)_layerToMatchAccuracyRing;
@@ -66,23 +71,28 @@
 - (void)_resumePulse;
 - (void)_setAnimatingToCoordinate:(BOOL)arg1;
 - (void)_setMapPitchRadians:(float)arg1;
-- (void)_setPresentationCoordinate:(struct { double x1; double x2; })arg1;
+- (void)_setPresentationCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 - (void)_setTracking:(BOOL)arg1;
 - (BOOL)_shouldPulseForLocation:(id)arg1;
 - (BOOL)_shouldShowAccuracyRing;
 - (BOOL)_tracking;
 - (void)_updateFromMap;
+- (void)_updateHeadingLayerForStyleChange;
 - (void)_updateHideLargeAccuracyRing;
 - (void)_updateLayers;
 - (void)_updatePulse;
 - (void)_updateShowHeadingLayer;
+- (void)_updateShowHeadingLayer:(BOOL)arg1 animatedIfPossible:(BOOL)arg2;
+- (void)_updateShowHeadingLayerAnimatedIfPossible:(BOOL)arg1;
 - (id)_vkMarker;
 - (BOOL)allowsAccuracyRing;
 - (BOOL)allowsHeadingIndicator;
 - (BOOL)allowsPulse;
 - (void)didMoveToWindow;
+- (BOOL)forcesConeIndicator;
 - (double)heading;
 - (double)headingAccuracy;
+- (int)headingIndicatorStyle;
 - (id)init;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (BOOL)isEffectsEnabled;
@@ -99,8 +109,10 @@
 - (void)setAllowsPulse:(BOOL)arg1;
 - (void)setAnimatingToCoordinate:(BOOL)arg1;
 - (void)setEffectsEnabled:(BOOL)arg1;
+- (void)setForcesConeIndicator:(BOOL)arg1;
 - (void)setHeading:(double)arg1;
 - (void)setHeadingAccuracy:(double)arg1;
+- (void)setHeadingIndicatorStyle:(int)arg1;
 - (void)setLocationAccuracy:(double)arg1 duration:(double)arg2;
 - (void)setMaxRadiusToShowAccuracyRing:(float)arg1;
 - (void)setOpacity:(float)arg1;

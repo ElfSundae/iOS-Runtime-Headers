@@ -3,12 +3,12 @@
  */
 
 @interface SiriUIKeyline : UIView {
-    UIColor *_customBackgroundColor;
-    float _customLeftPadding;
-    float _customRightPadding;
-    UIView *_keyLineView;
-    int _keylineType;
-    BOOL _veritical;
+    UIColor * _customBackgroundColor;
+    float  _customLeftPadding;
+    float  _customRightPadding;
+    UIView * _keyLineView;
+    int  _keylineType;
+    BOOL  _veritical;
 }
 
 @property (nonatomic, retain) UIColor *customBackgroundColor;
@@ -21,12 +21,13 @@
 + (id)keylineForSelectableRow;
 + (id)keylineWithDefaultInsets;
 + (id)keylineWithKeylineType:(int)arg1;
++ (id)keylineWithKeylineType:(int)arg1 platterStyling:(BOOL)arg2;
 + (id)starkKeyline;
 + (id)verticalKeyline;
 
 - (void).cxx_destruct;
 - (BOOL)_isVeritical;
-- (id)_keylineColorForType:(int)arg1;
+- (id)_keylineColorForType:(int)arg1 platterStyling:(BOOL)arg2;
 - (float)_keylineThicknessForType:(int)arg1;
 - (void)_setVertical:(BOOL)arg1;
 - (struct CGSize { float x1; float x2; })_sizeThatFits:(struct CGSize { float x1; float x2; })arg1 useAutolayout:(BOOL)arg2;
@@ -34,6 +35,7 @@
 - (float)customLeftPadding;
 - (float)customRightPadding;
 - (id)initWithKeylineType:(int)arg1;
+- (id)initWithKeylineType:(int)arg1 platterStyling:(BOOL)arg2;
 - (struct CGSize { float x1; float x2; })intrinsicContentSize;
 - (int)keylineType;
 - (void)layoutSubviews;

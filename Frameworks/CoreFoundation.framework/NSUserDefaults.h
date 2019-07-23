@@ -3,16 +3,17 @@
  */
 
 @interface NSUserDefaults : NSObject {
-    struct __CFString { } *_container_;
-    struct __CFString { } *_identifier_;
-    id _kvo_;
-    void *_reserved;
+    struct __CFString { } * _container_;
+    struct __CFString { } * _identifier_;
+    id  _kvo_;
+    void * _reserved;
 }
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
 - (struct __CFString { }*)_container;
 - (struct __CFString { }*)_identifier;
+- (BOOL)_observingCFPreferences;
 - (void)_setContainer:(struct __CFURL { }*)arg1;
 - (void)_setIdentifier:(struct __CFString { }*)arg1;
 
@@ -85,13 +86,17 @@
 
 // Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
 
++ (id)_sf_safariDefaults;
+
 - (id)_sf_dateForKey:(id)arg1;
+- (BOOL)_sf_javaScriptCanOpenWindowsAutomatically;
+- (BOOL)_sf_javaScriptEnabled;
+- (void)_sf_registerSafariDefaults;
 - (id)_sf_stringForKey:(id)arg1 defaultValue:(id)arg2;
+- (BOOL)_sf_warnAboutFraudulentWebsites;
 
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
-+ (id)_akColorForData:(id)arg1;
-+ (id)_akFontForData:(id)arg1;
 + (id)akDataForColor:(id)arg1;
 + (id)akDataForFont:(id)arg1;
 + (id)akDataForTextAttributes:(id)arg1;
@@ -143,8 +148,9 @@
 
 // Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
 
-+ (void)FU_backupStandardUserDefaultsKey:(id)arg1;
 + (id)_npsManager;
++ (void)fu_backupStandardUserDefaultsKey:(id)arg1;
++ (void)fu_synchronizeStandardUserDefaultsKey:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
 

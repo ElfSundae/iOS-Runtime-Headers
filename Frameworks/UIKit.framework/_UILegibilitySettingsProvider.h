@@ -3,19 +3,19 @@
  */
 
 @interface _UILegibilitySettingsProvider : NSObject {
-    float _accumulatedBrightness;
-    float _accumulatedContrast;
-    float _accumulatedLuminance;
-    float _accumulatedSaturation;
-    BOOL _accumulatorIsPrimed;
-    UIColor *_contentColor;
-    int _currentStyle;
-    BOOL _hasContrast;
-    float _mostRecentBrightness;
-    float _mostRecentContrast;
-    float _mostRecentLuminance;
-    float _mostRecentSaturation;
-    double _nextChangeBarrier;
+    float  _accumulatedBrightness;
+    float  _accumulatedContrast;
+    float  _accumulatedLuminance;
+    float  _accumulatedSaturation;
+    BOOL  _accumulatorIsPrimed;
+    UIColor * _contentColor;
+    int  _currentStyle;
+    BOOL  _hasContrast;
+    float  _mostRecentBrightness;
+    float  _mostRecentContrast;
+    float  _mostRecentLuminance;
+    float  _mostRecentSaturation;
+    double  _nextChangeBarrier;
 }
 
 @property (nonatomic) float accumulatedBrightness;

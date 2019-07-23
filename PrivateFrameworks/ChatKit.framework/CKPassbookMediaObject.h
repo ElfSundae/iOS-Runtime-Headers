@@ -3,8 +3,8 @@
  */
 
 @interface CKPassbookMediaObject : CKMediaObject {
-    UIImage *_icon;
-    PKPass *_pass;
+    UIImage * _icon;
+    PKPass * _pass;
 }
 
 @property (nonatomic, retain) UIImage *icon;
@@ -15,7 +15,7 @@
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)generateThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
 - (id)generateThumbnailForWidth:(float)arg1 orientation:(BOOL)arg2;
 - (id)icon;

@@ -3,11 +3,11 @@
  */
 
 @interface TPSlidingButton : UIView <_UIActionSliderDelegate> {
-    _UIActionSlider *_acceptButton;
-    <TPSlidingButtonDelegateProtocol> *_delegate;
-    UIImageView *_dialImageView;
-    UIButton *_sideButtonRight;
-    int _type;
+    _UIActionSlider * _acceptButton;
+    <TPSlidingButtonDelegateProtocol> * _delegate;
+    UIImageView * _dialImageView;
+    UIButton * _sideButtonRight;
+    int  _type;
 }
 
 @property (retain) _UIActionSlider *acceptButton;

@@ -3,9 +3,9 @@
  */
 
 @interface AKAnisetteData : NSObject <NSCopying, NSSecureCoding> {
-    NSString *_machineID;
-    NSString *_oneTimePassword;
-    unsigned long long _routingInfo;
+    NSString * _machineID;
+    NSString * _oneTimePassword;
+    unsigned long long  _routingInfo;
 }
 
 @property (nonatomic, copy) NSString *machineID;

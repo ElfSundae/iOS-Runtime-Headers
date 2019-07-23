@@ -8,8 +8,8 @@
         float left; 
         float bottom; 
         float right; 
-    } _insets;
-    BOOL _insetsFound;
+    }  _insets;
+    BOOL  _insetsFound;
 }
 
 @property struct UIEdgeInsets { float x1; float x2; float x3; float x4; } insets;

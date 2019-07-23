@@ -3,10 +3,10 @@
  */
 
 @interface SCNManipulableItem : NSObject {
-    float _screenSize;
-    id component;
-    unsigned int elementIndex;
-    SCNNode *node;
+    float  _screenSize;
+    id  component;
+    unsigned int  elementIndex;
+    SCNNode * node;
 }
 
 @property (nonatomic, retain) id component;

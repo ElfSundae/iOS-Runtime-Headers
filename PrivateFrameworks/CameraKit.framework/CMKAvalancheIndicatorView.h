@@ -3,10 +3,10 @@
  */
 
 @interface CMKAvalancheIndicatorView : UIView {
-    UIView *__backgroundView;
-    UILabel *__countLabel;
-    int __numberOfPhotos;
-    BOOL _showsWhenStarted;
+    UIView * __backgroundView;
+    UILabel * __countLabel;
+    int  __numberOfPhotos;
+    BOOL  _showsWhenStarted;
 }
 
 @property (nonatomic, readonly) UIView *_backgroundView;

@@ -3,11 +3,11 @@
  */
 
 @interface UITableViewCellSelectedBackground : UIView {
-    BOOL _multiselect;
-    UIColor *_multiselectBackgroundColor;
-    UIColor *_noneStyleBackgroundColor;
-    int _selectionStyle;
-    UIColor *_selectionTintColor;
+    BOOL  _multiselect;
+    UIColor * _multiselectBackgroundColor;
+    UIColor * _noneStyleBackgroundColor;
+    int  _selectionStyle;
+    UIColor * _selectionTintColor;
 }
 
 @property (getter=isMultiselect, nonatomic) BOOL multiselect;

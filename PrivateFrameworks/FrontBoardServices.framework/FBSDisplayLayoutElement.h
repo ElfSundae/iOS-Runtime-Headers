@@ -3,9 +3,9 @@
  */
 
 @interface FBSDisplayLayoutElement : NSObject <BSDescriptionProviding, BSSettingDescriptionProvider, BSXPCCoding, FBSDisplayLayoutElement, NSCopying, SBSDisplayLayoutElement> {
-    BOOL _application;
-    NSString *_bundleIdentifier;
-    BOOL _fillsDisplayBounds;
+    BOOL  _application;
+    NSString * _bundleIdentifier;
+    BOOL  _fillsDisplayBounds;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,11 +15,11 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSString *_identifier;
-    BOOL _keyboardFocus;
-    int _level;
-    BSMutableSettings *_otherSettings;
+    }  _frame;
+    NSString * _identifier;
+    BOOL  _keyboardFocus;
+    int  _level;
+    BSMutableSettings * _otherSettings;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,7 +29,7 @@
             float width; 
             float height; 
         } size; 
-    } _referenceFrame;
+    }  _referenceFrame;
 }
 
 @property (getter=isUIApplicationElement, nonatomic) BOOL UIApplicationElement;

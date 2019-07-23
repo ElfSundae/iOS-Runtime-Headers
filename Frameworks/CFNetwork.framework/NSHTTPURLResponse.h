@@ -3,7 +3,7 @@
  */
 
 @interface NSHTTPURLResponse : NSURLResponse {
-    NSHTTPURLResponseInternal *_httpInternal;
+    NSHTTPURLResponseInternal * _httpInternal;
 }
 
 @property (readonly, copy) NSDictionary *allHeaderFields;
@@ -43,6 +43,10 @@
 
 - (double)_maxAge;
 - (id)getSAPSignature;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (id)pk_valueForHTTPHeaderField:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Radio.framework/Radio
 

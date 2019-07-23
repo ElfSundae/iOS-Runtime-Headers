@@ -3,10 +3,10 @@
  */
 
 @interface AKToggleButton : UIButton {
-    UIColor *_selectedColor;
-    BOOL _shouldTintNormalImage;
-    BOOL _showsBackgroundColor;
-    UIImage *_templateImage;
+    UIColor * _selectedColor;
+    BOOL  _shouldTintNormalImage;
+    BOOL  _showsBackgroundColor;
+    UIImage * _templateImage;
 }
 
 @property (nonatomic, retain) UIColor *selectedColor;

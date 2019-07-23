@@ -3,10 +3,10 @@
  */
 
 @interface TSCH3DChartContinuousElementProperties : TSCH3DChartBasicElementProperties {
-    float mDepthGapFactor;
-    float mDepthLimitFactor;
-    unsigned int mMaxLimitingSeries;
-    float mShadowCameraDepthLimitAdjustmentFactor;
+    float  mDepthGapFactor;
+    float  mDepthLimitFactor;
+    unsigned int  mMaxLimitingSeries;
+    float  mShadowCameraDepthLimitAdjustmentFactor;
 }
 
 @property (nonatomic, readonly) float depthLimitFactor;
@@ -23,7 +23,7 @@
 - (float)p_interSetDepthGapProperty;
 - (float)p_sageInterSetDepthGapProperty;
 - (void)reset;
-- (void)resetWithEnumerator:(id)arg1 layoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })arg2;
+- (void)resetWithEnumerator:(id)arg1 layoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })arg2;
 - (int)seriesCount;
 - (struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })seriesSize;
 - (float)shadowCameraDepthLimitAdjustmentFactor;

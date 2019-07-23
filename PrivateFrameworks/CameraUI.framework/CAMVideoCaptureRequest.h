@@ -3,15 +3,17 @@
  */
 
 @interface CAMVideoCaptureRequest : CAMCaptureRequest <NSCopying, NSMutableCopying> {
-    <CAMVideoCaptureRequestDelegate> *_delegate;
-    double _maximumRecordedDuration;
-    long long _maximumRecordedFileSize;
-    long long _remainingDiskUsageThreshold;
-    BOOL _shouldGenerateVideoPreviewImage;
-    BOOL _timelapse;
-    int _torchMode;
+    int  _captureVideoConfiguration;
+    <CAMVideoCaptureRequestDelegate> * _delegate;
+    double  _maximumRecordedDuration;
+    long long  _maximumRecordedFileSize;
+    long long  _remainingDiskUsageThreshold;
+    BOOL  _shouldGenerateVideoPreviewImage;
+    BOOL  _timelapse;
+    int  _torchMode;
 }
 
+@property (nonatomic, readonly) int captureVideoConfiguration;
 @property (nonatomic, readonly) <CAMVideoCaptureRequestDelegate> *delegate;
 @property (nonatomic, readonly) double maximumRecordedDuration;
 @property (nonatomic, readonly) long long maximumRecordedFileSize;
@@ -21,6 +23,7 @@
 @property (nonatomic, readonly) int torchMode;
 
 - (void).cxx_destruct;
+- (int)captureVideoConfiguration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)delegate;
 - (id)description;

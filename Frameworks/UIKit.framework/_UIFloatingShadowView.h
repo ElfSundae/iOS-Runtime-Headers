@@ -3,8 +3,8 @@
  */
 
 @interface _UIFloatingShadowView : UIView {
-    BOOL __disableOutsetShadowPath;
-    float _cornerRadius;
+    BOOL  __disableOutsetShadowPath;
+    float  _cornerRadius;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,16 +14,16 @@
             float width; 
             float height; 
         } size; 
-    } _shadowContentsCenter;
-    BOOL _shadowEnabled;
-    float _shadowExpansion;
-    UIImage *_shadowImage;
-    float _shadowOpacity;
-    float _shadowRadius;
+    }  _shadowContentsCenter;
+    BOOL  _shadowEnabled;
+    float  _shadowExpansion;
+    UIImage * _shadowImage;
+    float  _shadowOpacity;
+    float  _shadowRadius;
     struct CGSize { 
         float width; 
         float height; 
-    } _shadowSize;
+    }  _shadowSize;
     struct CATransform3D { 
         float m11; 
         float m12; 
@@ -41,9 +41,9 @@
         float m42; 
         float m43; 
         float m44; 
-    } _shadowTransform;
-    float _shadowVerticalOffset;
-    UIView *_shadowView;
+    }  _shadowTransform;
+    float  _shadowVerticalOffset;
+    UIView * _shadowView;
 }
 
 @property (nonatomic) BOOL _disableOutsetShadowPath;

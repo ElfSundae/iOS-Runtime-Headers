@@ -3,23 +3,23 @@
  */
 
 @interface UICalloutBarButton : UIButton {
-    BOOL forceFlash;
-    SEL m_action;
-    float m_additionalContentHeight;
-    BOOL m_configured;
-    float m_contentScale;
-    float m_contentWidth;
-    float m_dividerOffset;
-    BOOL m_dontDismiss;
-    float m_imageVerticalAdjust;
-    BOOL m_isText;
-    BOOL m_padLeft;
-    BOOL m_padRight;
-    int m_page;
-    int m_position;
-    BOOL m_single;
-    UITextReplacement *m_textReplacement;
-    int m_type;
+    BOOL  forceFlash;
+    SEL  m_action;
+    float  m_additionalContentHeight;
+    BOOL  m_configured;
+    float  m_contentScale;
+    float  m_contentWidth;
+    float  m_dividerOffset;
+    BOOL  m_dontDismiss;
+    float  m_imageVerticalAdjust;
+    BOOL  m_isText;
+    BOOL  m_padLeft;
+    BOOL  m_padRight;
+    int  m_page;
+    int  m_position;
+    BOOL  m_single;
+    UITextReplacement * m_textReplacement;
+    int  m_type;
 }
 
 @property (nonatomic, readonly) SEL action;

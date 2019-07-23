@@ -3,12 +3,12 @@
  */
 
 @interface HKBloodPressureSeries : HKGraphSeries {
-    HKBloodPressureSeriesPresentationStyle *_selectedPresentationStyle;
-    _HKStretchableImage *_stretchableDiastolicSelectedImage;
-    _HKStretchableImage *_stretchableDiastolicUnselectedImage;
-    _HKStretchableImage *_stretchableSystolicSelectedImage;
-    _HKStretchableImage *_stretchableSystolicUnselectedImage;
-    HKBloodPressureSeriesPresentationStyle *_unselectedPresentationStyle;
+    HKBloodPressureSeriesPresentationStyle * _selectedPresentationStyle;
+    _HKStretchableImage * _stretchableDiastolicSelectedImage;
+    _HKStretchableImage * _stretchableDiastolicUnselectedImage;
+    _HKStretchableImage * _stretchableSystolicSelectedImage;
+    _HKStretchableImage * _stretchableSystolicUnselectedImage;
+    HKBloodPressureSeriesPresentationStyle * _unselectedPresentationStyle;
 }
 
 @property (nonatomic, retain) HKBloodPressureSeriesPresentationStyle *selectedPresentationStyle;

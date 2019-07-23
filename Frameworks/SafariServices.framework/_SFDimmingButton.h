@@ -3,9 +3,9 @@
  */
 
 @interface _SFDimmingButton : UIButton {
-    double _highlightAnimationDuration;
-    float _highlightedImageAlpha;
-    float _normalImageAlpha;
+    double  _highlightAnimationDuration;
+    float  _highlightedImageAlpha;
+    float  _normalImageAlpha;
 }
 
 @property (nonatomic) double highlightAnimationDuration;

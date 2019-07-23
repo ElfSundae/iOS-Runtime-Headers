@@ -6,7 +6,6 @@
 @required
 
 - (oneway void)actionButtonTapped;
-- (oneway void)controlsVisibilityChanged:(BOOL)arg1 animated:(BOOL)arg2 synchronizationFence:(BKSAnimationFenceHandle *)arg3;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)hostedWindowSizeChangeEnded;
 - (oneway void)pictureInPictureCancelRequestedAnimated:(void *)arg1 withCompletionHandler:(void *)arg2; // needs 2 arg types, found 8: BOOL, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, BOOL, NSError *, void*

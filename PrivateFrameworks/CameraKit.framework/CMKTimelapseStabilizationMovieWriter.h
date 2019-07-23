@@ -3,19 +3,19 @@
  */
 
 @interface CMKTimelapseStabilizationMovieWriter : NSObject <AVOfflineVideoStabilizerDataProvider, CMKTimelapseMovieWriterProtocol> {
-    id /* block */ __completion;
-    struct __CVBuffer { } *__firstSourceFrame;
-    NSArray *__frameFilePaths;
-    int __framesPerSecond;
-    int __framesWrittenCount;
-    NSObject<OS_dispatch_queue> *__movieWritingQueue;
-    AVAssetWriterInputPixelBufferAdaptor *__pixelBufferAdaptor;
-    int __sourceFramesReadCount;
-    AVOfflineVideoStabilizer *__stabilizer;
-    struct opaqueCMFormatDescription { } *__videoFormatDescription;
-    AVAssetWriterInput *__videoInput;
-    NSArray *__visMetadataFilePaths;
-    AVAssetWriter *__writer;
+    id /* block */  __completion;
+    struct __CVBuffer { } * __firstSourceFrame;
+    NSArray * __frameFilePaths;
+    int  __framesPerSecond;
+    int  __framesWrittenCount;
+    NSObject<OS_dispatch_queue> * __movieWritingQueue;
+    AVAssetWriterInputPixelBufferAdaptor * __pixelBufferAdaptor;
+    int  __sourceFramesReadCount;
+    AVOfflineVideoStabilizer * __stabilizer;
+    struct opaqueCMFormatDescription { } * __videoFormatDescription;
+    AVAssetWriterInput * __videoInput;
+    NSArray * __visMetadataFilePaths;
+    AVAssetWriter * __writer;
 }
 
 @property (nonatomic, readonly, copy) id /* block */ _completion;

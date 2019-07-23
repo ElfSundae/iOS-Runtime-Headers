@@ -3,10 +3,10 @@
  */
 
 @interface HKMinMaxSeries : HKGraphSeries {
-    UIImage *_selectedPointMarkerImage;
-    HKStrokeStyle *_selectedStrokeStyle;
-    UIImage *_unselectedPointMarkerImage;
-    HKStrokeStyle *_unselectedStrokeStyle;
+    UIImage * _selectedPointMarkerImage;
+    HKStrokeStyle * _selectedStrokeStyle;
+    UIImage * _unselectedPointMarkerImage;
+    HKStrokeStyle * _unselectedStrokeStyle;
 }
 
 @property (nonatomic, retain) UIImage *selectedPointMarkerImage;

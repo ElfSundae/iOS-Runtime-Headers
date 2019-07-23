@@ -5,6 +5,7 @@
 
 @required
 
+- (struct CGPoint { float x1; float x2; })adjustMappingPointForInfo:(NSObject<TSDInfo> *)arg1 fromPoint:(struct CGPoint { float x1; float x2; })arg2;
 - (struct CGPoint { float x1; float x2; })applyAdaptiveLayoutTo:(TSDLayout *)arg1 info:(NSObject<TSDInfo> *)arg2 offset:(struct CGPoint { float x1; float x2; })arg3;
 - (void)beginDynamicAdaptiveLayout;
 - (void)endDynamicAdaptiveLayout;

@@ -3,7 +3,7 @@
  */
 
 @interface _UISearchControllerView : UIView {
-    BOOL __disableSearchBarContainerViewOrdering;
+    BOOL  __disableSearchBarContainerViewOrdering;
 }
 
 @property (nonatomic) BOOL _disableSearchBarContainerViewOrdering;

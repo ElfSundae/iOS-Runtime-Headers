@@ -3,16 +3,16 @@
  */
 
 @interface NSByteCountFormatter : NSFormatter <NSObservable, NSObserver> {
-    BOOL _adaptive;
-    unsigned int _allowedUnits;
-    BOOL _allowsNonnumericFormatting;
-    BOOL _countStyle;
-    int _formattingContext;
-    BOOL _includesActualByteCount;
-    BOOL _includesCount;
-    BOOL _includesUnit;
-    int _reserved;
-    BOOL _zeroPadsFractionDigits;
+    BOOL  _adaptive;
+    unsigned int  _allowedUnits;
+    BOOL  _allowsNonnumericFormatting;
+    BOOL  _countStyle;
+    int  _formattingContext;
+    BOOL  _includesActualByteCount;
+    BOOL  _includesCount;
+    BOOL  _includesUnit;
+    int  _reserved;
+    BOOL  _zeroPadsFractionDigits;
 }
 
 @property (getter=isAdaptive) BOOL adaptive;

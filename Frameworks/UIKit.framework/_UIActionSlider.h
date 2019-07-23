@@ -3,46 +3,46 @@
  */
 
 @interface _UIActionSlider : UIControl <UIGestureRecognizerDelegate> {
-    BOOL _animating;
-    float _cachedTrackMaskWidth;
-    UIView *_contentView;
-    <_UIActionSliderDelegate> *_delegate;
+    BOOL  _animating;
+    float  _cachedTrackMaskWidth;
+    UIView * _contentView;
+    <_UIActionSliderDelegate> * _delegate;
     struct CGSize { 
         float width; 
         float height; 
-    } _knobImageOffset;
-    UIImageView *_knobImageView;
+    }  _knobImageOffset;
+    UIImageView * _knobImageView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _knobInsets;
-    float _knobPosition;
-    _UIActionSliderKnob *_knobView;
-    float _knobWidth;
-    BOOL _showingTrackLabel;
+    }  _knobInsets;
+    float  _knobPosition;
+    _UIActionSliderKnob * _knobView;
+    float  _knobWidth;
+    BOOL  _showingTrackLabel;
     struct CGPoint { 
         float x; 
         float y; 
-    } _slideGestureInitialPoint;
-    UIPanGestureRecognizer *_slideGestureRecognizer;
-    int _style;
-    int _textStyle;
-    UIView *_trackBackgroundView;
-    _UIBackdropView *_trackBlurView;
-    UIView *_trackDodgeView;
-    UIFont *_trackFont;
-    UIView<_UIActionSliderLabel> *_trackLabel;
+    }  _slideGestureInitialPoint;
+    UIPanGestureRecognizer * _slideGestureRecognizer;
+    int  _style;
+    int  _textStyle;
+    UIView * _trackBackgroundView;
+    _UIBackdropView * _trackBlurView;
+    UIView * _trackDodgeView;
+    UIFont * _trackFont;
+    UIView<_UIActionSliderLabel> * _trackLabel;
     struct CGSize { 
         float width; 
         float height; 
-    } _trackSize;
-    UIView *_trackSolidView;
-    NSString *_trackText;
-    float _trackTextBaselineFromBottom;
-    float _trackWidthProportion;
-    _UIVibrantSettings *_vibrantSettings;
+    }  _trackSize;
+    UIView * _trackSolidView;
+    NSString * _trackText;
+    float  _trackTextBaselineFromBottom;
+    float  _trackWidthProportion;
+    _UIVibrantSettings * _vibrantSettings;
 }
 
 @property (getter=isAnimating, nonatomic) BOOL animating;
@@ -99,6 +99,7 @@
 - (id)delegate;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 vibrantSettings:(id)arg2;

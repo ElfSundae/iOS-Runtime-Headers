@@ -3,49 +3,27 @@
  */
 
 @interface CIRedEyeRepair : NSObject {
-    unsigned char CbCrDistanceTable;
-    BOOL autoPupilTonality;
-    struct CGImageBlockSet { } *blockSet;
-    struct __CFData { } *dataRef;
-    BOOL debugRedEye;
-    NSArray *faces;
-    BOOL forceLoValue;
-    int iFaceIndex;
-    BOOL iLeft;
-    int imageSourceType;
-    BOOL infillBackground;
-    int lastClickBitmapMaxX;
-    int lastClickBitmapMaxY;
-    int lastClickBitmapMinX;
-    int lastClickBitmapMinY;
-    struct { 
-        char *baseAddress; 
-        int width; 
-        int height; 
-        int rowSamples; 
-        int rowBytes; 
-        int size; 
-        int samplesPerPixel; 
-        int bytesPerSample; 
-        float resolution; 
-    } lastClickCbCrBitmap;
-    struct { 
-        char *baseAddress; 
-        int width; 
-        int height; 
-        int rowSamples; 
-        int rowBytes; 
-        int size; 
-        int samplesPerPixel; 
-        int bytesPerSample; 
-        float resolution; 
-    } lastClickCbCrBitmaps;
+    unsigned char  CbCrDistanceTable;
+    BOOL  autoPupilTonality;
+    struct CGImageBlockSet { } * blockSet;
+    struct __CFData { } * dataRef;
+    BOOL  debugRedEye;
+    NSArray * faces;
+    BOOL  forceLoValue;
+    int  iFaceIndex;
+    BOOL  iLeft;
+    int  imageSourceType;
+    BOOL  infillBackground;
+    int  lastClickBitmapMaxX;
+    int  lastClickBitmapMaxY;
+    int  lastClickBitmapMinX;
+    int  lastClickBitmapMinY;
     struct { 
         int minrow; 
         int maxrow; 
         int mincol; 
         int maxcol; 
-    } lastClickIRects;
+    }  lastClickBitmapRects;
     struct { 
         char *baseAddress; 
         int width; 
@@ -56,7 +34,7 @@
         int samplesPerPixel; 
         int bytesPerSample; 
         float resolution; 
-    } lastClickYBitmap;
+    }  lastClickCbCrBitmap;
     struct { 
         char *baseAddress; 
         int width; 
@@ -67,13 +45,7 @@
         int samplesPerPixel; 
         int bytesPerSample; 
         float resolution; 
-    } lastClickYBitmaps;
-    float lastRepairIOD;
-    int lastRepairTag;
-    int lastSearchBitmapMaxX;
-    int lastSearchBitmapMaxY;
-    int lastSearchBitmapMinX;
-    int lastSearchBitmapMinY;
+    }  lastClickCbCrBitmaps;
     struct { 
         char *baseAddress; 
         int width; 
@@ -84,7 +56,7 @@
         int samplesPerPixel; 
         int bytesPerSample; 
         float resolution; 
-    } lastSearchCbCrBitmap;
+    }  lastClickYBitmap;
     struct { 
         char *baseAddress; 
         int width; 
@@ -95,32 +67,60 @@
         int samplesPerPixel; 
         int bytesPerSample; 
         float resolution; 
-    } lastSearchYBitmap;
-    struct { BOOL x1[256]; BOOL x2[32]; struct { char *x_3_1_1; int x_3_1_2; int x_3_1_3; int x_3_1_4; int x_3_1_5; int x_3_1_6; int x_3_1_7; int x_3_1_8; float x_3_1_9; } x3; int x4; int x5; struct { int x_6_1_1; int x_6_1_2; int x_6_1_3; int x_6_1_4; } x6; struct CGColorSpace {} *x7; unsigned int x8; int x9; int x10; BOOL x11; float x12; } *lf;
-    int linearCoefficients;
-    int loValue;
-    BOOL logRepairs;
-    int nLinears;
-    int nPolyPoints;
-    int nRepairs;
-    int nextRepairTag;
-    BOOL ownLF;
-    BOOL polyClosed;
+    }  lastClickYBitmaps;
+    float  lastRepairIOD;
+    int  lastRepairTag;
+    int  lastSearchBitmapMaxX;
+    int  lastSearchBitmapMaxY;
+    int  lastSearchBitmapMinX;
+    int  lastSearchBitmapMinY;
+    struct { 
+        char *baseAddress; 
+        int width; 
+        int height; 
+        int rowSamples; 
+        int rowBytes; 
+        int size; 
+        int samplesPerPixel; 
+        int bytesPerSample; 
+        float resolution; 
+    }  lastSearchCbCrBitmap;
+    struct { 
+        char *baseAddress; 
+        int width; 
+        int height; 
+        int rowSamples; 
+        int rowBytes; 
+        int size; 
+        int samplesPerPixel; 
+        int bytesPerSample; 
+        float resolution; 
+    }  lastSearchYBitmap;
+    struct { BOOL x1[256]; BOOL x2[32]; struct { char *x_3_1_1; int x_3_1_2; int x_3_1_3; int x_3_1_4; int x_3_1_5; int x_3_1_6; int x_3_1_7; int x_3_1_8; float x_3_1_9; } x3; int x4; int x5; struct { int x_6_1_1; int x_6_1_2; int x_6_1_3; int x_6_1_4; } x6; struct CGColorSpace {} *x7; unsigned int x8; int x9; int x10; BOOL x11; float x12; } * lf;
+    int  linearCoefficients;
+    int  loValue;
+    BOOL  logRepairs;
+    int  nLinears;
+    int  nPolyPoints;
+    int  nRepairs;
+    int  nextRepairTag;
+    BOOL  ownLF;
+    BOOL  polyClosed;
     struct { 
         float a; 
         float b; 
         float c; 
-    } polyLines;
-    BOOL polyPointConcave;
+    }  polyLines;
+    BOOL  polyPointConcave;
     struct CGPoint { 
         float x; 
         float y; 
-    } polyPoints;
-    BOOL pupilShadeAlignment;
-    int redEyeThresholdKind;
-    void *releaseMe;
-    BOOL renderAlpha;
-    BOOL renderSpecularShine;
+    }  polyPoints;
+    BOOL  pupilShadeAlignment;
+    int  redEyeThresholdKind;
+    void * releaseMe;
+    BOOL  renderAlpha;
+    BOOL  renderSpecularShine;
     struct { 
         int tag; 
         struct CGPoint { 
@@ -235,15 +235,15 @@
             float ymean; 
             float ystd; 
         } BI; 
-    } repairs;
-    float specularSize;
-    float specularSoftness;
+    }  repairs;
+    float  specularSize;
+    float  specularSoftness;
     struct { 
         int lo; 
         int med; 
         int hi; 
         int average; 
-    } standardTemplate;
+    }  standardTemplate;
 }
 
 + (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })supportRectangleWithFaceArray:(id)arg1 imageSize:(struct CGSize { float x1; float x2; })arg2;
@@ -302,8 +302,8 @@
 - (BOOL)renderSpecularShine;
 - (id)repairArray;
 - (void)repairExternalBuffer;
-- (struct { int x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; int x3; int x4; int x5; int x6; struct { char *x_7_1_1; int x_7_1_2; int x_7_1_3; int x_7_1_4; int x_7_1_5; int x_7_1_6; int x_7_1_7; int x_7_1_8; float x_7_1_9; } x7; struct { int x_8_1_1; int x_8_1_2; int x_8_1_3; int x_8_1_4; } x8; struct { int x_9_1_1; int x_9_1_2; int x_9_1_3; int x_9_1_4; } x9; bool x10; struct { int x_11_1_1; int x_11_1_2; int x_11_1_3; int x_11_1_4; } x11; int x12; BOOL x13; float x14; struct { int x_15_1_1; int x_15_1_2; int x_15_1_3; int x_15_1_4; int x_15_1_5; int x_15_1_6; int x_15_1_7; int x_15_1_8; int x_15_1_9; int x_15_1_10; BOOL x_15_1_11; struct { int x_12_2_1; int x_12_2_2; int x_12_2_3; int x_12_2_4; } x_15_1_12; struct { int x_13_2_1; int x_13_2_2; int x_13_2_3; int x_13_2_4; } x_15_1_13; int x_15_1_14; int x_15_1_15; int x_15_1_16; float x_15_1_17; struct { int x_18_2_1; float x_18_2_2; bool x_18_2_3; int x_18_2_4; float x_18_2_5; float x_18_2_6; float x_18_2_7; } x_15_1_18; struct { int x_19_2_1; int x_19_2_2; int x_19_2_3; int x_19_2_4; } x_15_1_19; } x15; struct { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_16_1_1; int x_16_1_2; float x_16_1_3; float x_16_1_4; float x_16_1_5; int x_16_1_6; struct { int x_7_2_1; int x_7_2_2; int x_7_2_3; int x_7_2_4; } x_16_1_7; float x_16_1_8; bool x_16_1_9; int x_16_1_10; int x_16_1_11; int x_16_1_12; int x_16_1_13; float x_16_1_14; float x_16_1_15; float x_16_1_16; float x_16_1_17; } x16; }*)repairWithTag:(int)arg1;
-- (struct { int x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; int x3; int x4; int x5; int x6; struct { char *x_7_1_1; int x_7_1_2; int x_7_1_3; int x_7_1_4; int x_7_1_5; int x_7_1_6; int x_7_1_7; int x_7_1_8; float x_7_1_9; } x7; struct { int x_8_1_1; int x_8_1_2; int x_8_1_3; int x_8_1_4; } x8; struct { int x_9_1_1; int x_9_1_2; int x_9_1_3; int x_9_1_4; } x9; bool x10; struct { int x_11_1_1; int x_11_1_2; int x_11_1_3; int x_11_1_4; } x11; int x12; BOOL x13; float x14; struct { int x_15_1_1; int x_15_1_2; int x_15_1_3; int x_15_1_4; int x_15_1_5; int x_15_1_6; int x_15_1_7; int x_15_1_8; int x_15_1_9; int x_15_1_10; BOOL x_15_1_11; struct { int x_12_2_1; int x_12_2_2; int x_12_2_3; int x_12_2_4; } x_15_1_12; struct { int x_13_2_1; int x_13_2_2; int x_13_2_3; int x_13_2_4; } x_15_1_13; int x_15_1_14; int x_15_1_15; int x_15_1_16; float x_15_1_17; struct { int x_18_2_1; float x_18_2_2; bool x_18_2_3; int x_18_2_4; float x_18_2_5; float x_18_2_6; float x_18_2_7; } x_15_1_18; struct { int x_19_2_1; int x_19_2_2; int x_19_2_3; int x_19_2_4; } x_15_1_19; } x15; struct { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_16_1_1; int x_16_1_2; float x_16_1_3; float x_16_1_4; float x_16_1_5; int x_16_1_6; struct { int x_7_2_1; int x_7_2_2; int x_7_2_3; int x_7_2_4; } x_16_1_7; float x_16_1_8; bool x_16_1_9; int x_16_1_10; int x_16_1_11; int x_16_1_12; int x_16_1_13; float x_16_1_14; float x_16_1_15; float x_16_1_16; float x_16_1_17; } x16; }*)repairs;
+- (struct { int x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; int x3; int x4; int x5; int x6; struct { char *x_7_1_1; int x_7_1_2; int x_7_1_3; int x_7_1_4; int x_7_1_5; int x_7_1_6; int x_7_1_7; int x_7_1_8; float x_7_1_9; } x7; struct { int x_8_1_1; int x_8_1_2; int x_8_1_3; int x_8_1_4; } x8; struct { int x_9_1_1; int x_9_1_2; int x_9_1_3; int x_9_1_4; } x9; bool x10; struct { int x_11_1_1; int x_11_1_2; int x_11_1_3; int x_11_1_4; } x11; int x12; BOOL x13; float x14; struct { int x_15_1_1; int x_15_1_2; int x_15_1_3; int x_15_1_4; int x_15_1_5; int x_15_1_6; int x_15_1_7; int x_15_1_8; int x_15_1_9; int x_15_1_10; BOOL x_15_1_11; struct { int x_12_2_1; int x_12_2_2; int x_12_2_3; int x_12_2_4; } x_15_1_12; struct { int x_13_2_1; int x_13_2_2; int x_13_2_3; int x_13_2_4; } x_15_1_13; int x_15_1_14; int x_15_1_15; int x_15_1_16; float x_15_1_17; struct { int x_18_2_1; float x_18_2_2; bool x_18_2_3; int x_18_2_4; float x_18_2_5; float x_18_2_6; float x_18_2_7; } x_15_1_18; struct { int x_19_2_1; int x_19_2_2; int x_19_2_3; int x_19_2_4; } x_15_1_19; } x15; }*)repairWithTag:(int)arg1;
+- (struct { int x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; int x3; int x4; int x5; int x6; struct { char *x_7_1_1; int x_7_1_2; int x_7_1_3; int x_7_1_4; int x_7_1_5; int x_7_1_6; int x_7_1_7; int x_7_1_8; float x_7_1_9; } x7; struct { int x_8_1_1; int x_8_1_2; int x_8_1_3; int x_8_1_4; } x8; struct { int x_9_1_1; int x_9_1_2; int x_9_1_3; int x_9_1_4; } x9; bool x10; struct { int x_11_1_1; int x_11_1_2; int x_11_1_3; int x_11_1_4; } x11; int x12; BOOL x13; float x14; struct { int x_15_1_1; int x_15_1_2; int x_15_1_3; int x_15_1_4; int x_15_1_5; int x_15_1_6; int x_15_1_7; int x_15_1_8; int x_15_1_9; int x_15_1_10; BOOL x_15_1_11; struct { int x_12_2_1; int x_12_2_2; int x_12_2_3; int x_12_2_4; } x_15_1_12; struct { int x_13_2_1; int x_13_2_2; int x_13_2_3; int x_13_2_4; } x_15_1_13; int x_15_1_14; int x_15_1_15; int x_15_1_16; float x_15_1_17; struct { int x_18_2_1; float x_18_2_2; bool x_18_2_3; int x_18_2_4; float x_18_2_5; float x_18_2_6; float x_18_2_7; } x_15_1_18; struct { int x_19_2_1; int x_19_2_2; int x_19_2_3; int x_19_2_4; } x_15_1_19; } x15; }*)repairs;
 - (void)setAutoPupilTonality:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace { }*)arg1;
 - (void)setDebug:(BOOL)arg1;

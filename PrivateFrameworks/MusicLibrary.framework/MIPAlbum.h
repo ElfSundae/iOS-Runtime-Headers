@@ -3,9 +3,10 @@
  */
 
 @interface MIPAlbum : PBCodable <NSCopying> {
-    MIPArtist *_artist;
-    NSString *_artworkId;
-    BOOL _compilation;
+    MIPArtist * _artist;
+    NSString * _artworkId;
+    NSString * _cloudId;
+    BOOL  _compilation;
     struct { 
         unsigned int persistentId : 1; 
         unsigned int storeId : 1; 
@@ -13,21 +14,23 @@
         unsigned int numTracks : 1; 
         unsigned int userRating : 1; 
         unsigned int compilation : 1; 
-    } _has;
-    NSString *_name;
-    int _numDiscs;
-    int _numTracks;
-    long long _persistentId;
-    NSString *_sortName;
-    long long _storeId;
-    int _userRating;
+    }  _has;
+    NSString * _name;
+    int  _numDiscs;
+    int  _numTracks;
+    long long  _persistentId;
+    NSString * _sortName;
+    long long  _storeId;
+    int  _userRating;
 }
 
 @property (nonatomic, retain) MIPArtist *artist;
 @property (nonatomic, retain) NSString *artworkId;
+@property (nonatomic, retain) NSString *cloudId;
 @property (nonatomic) BOOL compilation;
 @property (nonatomic, readonly) BOOL hasArtist;
 @property (nonatomic, readonly) BOOL hasArtworkId;
+@property (nonatomic, readonly) BOOL hasCloudId;
 @property (nonatomic) BOOL hasCompilation;
 @property (nonatomic, readonly) BOOL hasName;
 @property (nonatomic) BOOL hasNumDiscs;
@@ -47,6 +50,7 @@
 - (void).cxx_destruct;
 - (id)artist;
 - (id)artworkId;
+- (id)cloudId;
 - (BOOL)compilation;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -54,6 +58,7 @@
 - (id)dictionaryRepresentation;
 - (BOOL)hasArtist;
 - (BOOL)hasArtworkId;
+- (BOOL)hasCloudId;
 - (BOOL)hasCompilation;
 - (BOOL)hasName;
 - (BOOL)hasNumDiscs;
@@ -72,6 +77,7 @@
 - (BOOL)readFrom:(id)arg1;
 - (void)setArtist:(id)arg1;
 - (void)setArtworkId:(id)arg1;
+- (void)setCloudId:(id)arg1;
 - (void)setCompilation:(BOOL)arg1;
 - (void)setHasCompilation:(BOOL)arg1;
 - (void)setHasNumDiscs:(BOOL)arg1;

@@ -3,8 +3,8 @@
  */
 
 @interface _UIPlatterMenuSnapBehavior : UIDynamicBehavior {
-    UIAttachmentBehavior *_spring1;
-    UIAttachmentBehavior *_spring2;
+    UIAttachmentBehavior * _spring1;
+    UIAttachmentBehavior * _spring2;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } anchorPoint;

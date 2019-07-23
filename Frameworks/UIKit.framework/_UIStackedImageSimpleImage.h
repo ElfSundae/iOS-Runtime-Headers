@@ -3,7 +3,7 @@
  */
 
 @interface _UIStackedImageSimpleImage : NSObject <UINamedLayerImage> {
-    int _blendMode;
+    int  _blendMode;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,10 +13,10 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    UIImage *_imageObj;
-    NSString *_name;
-    float _opacity;
+    }  _frame;
+    UIImage * _imageObj;
+    NSString * _name;
+    float  _opacity;
 }
 
 @property (nonatomic) int blendMode;

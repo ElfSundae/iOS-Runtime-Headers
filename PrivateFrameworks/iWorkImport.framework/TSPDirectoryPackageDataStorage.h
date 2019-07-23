@@ -3,26 +3,29 @@
  */
 
 @interface TSPDirectoryPackageDataStorage : TSPFileDataStorage {
-    unsigned long long _cachedEncodedLength;
-    <TSPCryptoInfo> *_decryptionInfo;
-    BOOL _gilligan_isRemote;
-    BOOL _isMissingData;
-    TSPDirectoryPackage *_package;
-    unsigned char _packageIdentifier;
-    NSString *_path;
+    unsigned long long  _cachedEncodedLength;
+    <TSPCryptoInfo> * _decryptionInfo;
+    BOOL  _gilligan_isRemote;
+    BOOL  _isMissingData;
+    TSPDirectoryPackage * _package;
+    unsigned char  _packageIdentifier;
+    NSString * _path;
 }
 
+@property (nonatomic, readonly) TSPDirectoryPackage *package;
+
 - (void).cxx_destruct;
-- (id)AVAssetWithOptions:(id)arg1 forData:(id)arg2;
 - (BOOL)copyToTemporaryURL:(id)arg1 encryptionInfo:(id)arg2;
 - (id)decryptionInfo;
 - (void)didInitializeFromDocumentURL:(id)arg1;
 - (unsigned long long)encodedLength;
 - (BOOL)gilligan_isRemote;
+- (id)init;
 - (id)initWithPath:(id)arg1 package:(id)arg2 decryptionInfo:(id)arg3;
 - (BOOL)isInPackage:(id)arg1;
 - (BOOL)isMissingData;
 - (unsigned long long)length;
+- (id)package;
 - (unsigned char)packageIdentifier;
 - (id)packageLocator;
 - (void)performIOChannelReadWithAccessor:(id /* block */)arg1;

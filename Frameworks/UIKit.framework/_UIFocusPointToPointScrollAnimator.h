@@ -3,8 +3,8 @@
  */
 
 @interface _UIFocusPointToPointScrollAnimator : NSObject <_UIFocusScrollAnimator> {
-    float _defaultConvergenceRate;
-    CAMediaTimingFunction *_fancyTimingFunction;
+    float  _defaultConvergenceRate;
+    CAMediaTimingFunction * _fancyTimingFunction;
 }
 
 @property (readonly, copy) NSString *debugDescription;

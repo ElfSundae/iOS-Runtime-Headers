@@ -3,26 +3,26 @@
  */
 
 @interface IMDChat : NSObject {
-    NSString *_accountID;
-    NSString *_chatIdentifier;
-    NSMutableDictionary *_chatInfo;
-    NSString *_displayName;
-    NSString *_groupID;
-    NSString *_guid;
-    BOOL _hasHadSuccessfulQuery;
-    BOOL _isArchived;
-    BOOL _isFiltered;
-    NSString *_lastAddressedLocalHandle;
-    IMMessageItem *_lastMessage;
-    NSRecursiveLock *_lock;
-    NSArray *_participants;
-    NSDictionary *_properties;
-    NSString *_roomName;
-    long long _rowID;
-    NSString *_serviceName;
-    int _state;
-    unsigned char _style;
-    unsigned int _unreadCount;
+    NSString * _accountID;
+    NSString * _chatIdentifier;
+    NSMutableDictionary * _chatInfo;
+    NSString * _displayName;
+    NSString * _groupID;
+    NSString * _guid;
+    BOOL  _hasHadSuccessfulQuery;
+    BOOL  _isArchived;
+    BOOL  _isFiltered;
+    NSString * _lastAddressedLocalHandle;
+    IMMessageItem * _lastMessage;
+    NSRecursiveLock * _lock;
+    NSArray * _participants;
+    NSDictionary * _properties;
+    NSString * _roomName;
+    long long  _rowID;
+    NSString * _serviceName;
+    int  _state;
+    unsigned char  _style;
+    unsigned int  _unreadCount;
 }
 
 @property (readonly, retain) IMDAccount *account;
@@ -31,7 +31,7 @@
 @property (readonly, retain) NSDictionary *chatProperties;
 @property (readonly, retain) NSDictionary *dictionaryRepresentation;
 @property (copy) NSString *displayName;
-@property (copy) NSString *groupID;
+@property (setter=setGroupID:, copy) NSString *groupID;
 @property (copy) NSString *guid;
 @property BOOL hasHadSuccessfulQuery;
 @property (readonly) BOOL isArchived;
@@ -42,13 +42,13 @@
 @property (copy) NSArray *participants;
 @property (retain) NSDictionary *properties;
 @property (copy) NSString *roomName;
-@property long long rowID;
+@property (setter=_setRowID:) long long rowID;
 @property (readonly, retain) IMDService *service;
 @property (copy) NSString *serviceName;
 @property (readonly, retain) IMDServiceSession *serviceSession;
 @property int state;
 @property unsigned char style;
-@property unsigned int unreadCount;
+@property (setter=_setUnreadCount:) unsigned int unreadCount;
 
 - (void)_setRowID:(long long)arg1;
 - (void)_setUnreadCount:(unsigned int)arg1;

@@ -3,20 +3,20 @@
  */
 
 @interface _UISegmentedControlAppearanceStorage : NSObject {
-    NSMutableDictionary *_backgroundImages;
-    NSMutableDictionary *_backgroundPositionAdjustmentsForBarMetrics;
-    NSMutableDictionary *_contentPositionOffsets;
-    NSMutableDictionary *_dividerImages;
-    BOOL _isTiled;
-    unsigned int _leftCapWidth;
-    BOOL _legacyDontHighlight;
-    BOOL _legacySuppressOptionsBackground;
-    NSMutableDictionary *_miniBackgroundImages;
-    NSMutableDictionary *_miniContentPositionOffsets;
-    NSMutableDictionary *_miniDividerImages;
-    UIImage *_optionsBackgroundImage;
-    unsigned int _rightCapWidth;
-    NSMutableDictionary *_textAttributesForState;
+    NSMutableDictionary * _backgroundImages;
+    NSMutableDictionary * _backgroundPositionAdjustmentsForBarMetrics;
+    NSMutableDictionary * _contentPositionOffsets;
+    NSMutableDictionary * _dividerImages;
+    BOOL  _isTiled;
+    unsigned int  _leftCapWidth;
+    BOOL  _legacyDontHighlight;
+    BOOL  _legacySuppressOptionsBackground;
+    NSMutableDictionary * _miniBackgroundImages;
+    NSMutableDictionary * _miniContentPositionOffsets;
+    NSMutableDictionary * _miniDividerImages;
+    UIImage * _optionsBackgroundImage;
+    unsigned int  _rightCapWidth;
+    NSMutableDictionary * _textAttributesForState;
 }
 
 @property (nonatomic, retain) UIImage *optionsBackgroundImage;

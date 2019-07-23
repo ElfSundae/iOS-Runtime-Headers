@@ -16,11 +16,12 @@
 - (BOOL)drawsInOneStep;
 - (BOOL)drawsOutsideStrokeBounds;
 - (float)horizontalMarginForSwatch;
+- (float)i_verticalOffsetForSwatch;
 - (id)initWithColor:(id)arg1 width:(float)arg2 cap:(int)arg3 join:(int)arg4 pattern:(id)arg5 miterLimit:(float)arg6;
 - (id)initWithName:(id)arg1 color:(id)arg2 width:(float)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6 miterLimit:(float)arg7;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)paintLineEnd:(id)arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2 atAngle:(float)arg3 withScale:(float)arg4 inContext:(struct CGContext { }*)arg5 useFastDrawing:(BOOL)arg6;
-- (void)paintPath:(struct CGPath { }*)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext { }*)arg3 useFastDrawing:(BOOL)arg4;
+- (void)paintPath:(struct CGPath { }*)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext { }*)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 drawWithOpenGL:(BOOL)arg6 shouldReverseDrawOrder:(BOOL)arg7;
 - (BOOL)prefersToApplyToCAShapeLayerDuringManipulation;
 - (float)scale;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })transformInContext:(struct CGContext { }*)arg1;

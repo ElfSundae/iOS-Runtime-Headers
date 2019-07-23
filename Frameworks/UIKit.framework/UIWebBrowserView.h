@@ -3,9 +3,9 @@
  */
 
 @interface UIWebBrowserView : UIWebDocumentView <UIWebFormAccessoryDelegate, UIWebTouchEventsGestureRecognizerDelegate, WBUFormAutoFillWebView, _UIWebRotationDelegate> {
-    UIWebFormAccessory *_accessory;
-    unsigned int _accessoryEnabled;
-    NSHashTable *_activeHighlighters;
+    UIWebFormAccessory * _accessory;
+    unsigned int  _accessoryEnabled;
+    NSHashTable * _activeHighlighters;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,23 +15,23 @@
             float width; 
             float height; 
         } size; 
-    } _addressViewBounds;
-    unsigned int _allowDOMFocusRedirects;
-    unsigned int _allowsLinkPreview;
-    unsigned int _allowsPictureInPictureVideo;
-    unsigned int _alwaysDispatchesScrollEvents;
-    DOMNode *_assistedNodeStartingFocusRedirects;
-    unsigned int _audioSessionCategoryOverride;
-    <UIWebAutoFillDelegate> *_autoFillDelegate;
-    DOMNode *_currentAssistedNode;
-    NSMutableArray *_deferredTouchEvents;
-    unsigned int _dispatchedTouchEvents;
-    UIResponder *_editingDelegateForEverythingExceptForms;
-    unsigned int _forceInputView;
-    UIWebFormDelegate *_formDelegate;
-    unsigned int _formIsAutoFilling;
-    unsigned int _hasEditedTextField;
-    NSObject<UIFormPeripheral> *_input;
+    }  _addressViewBounds;
+    unsigned int  _allowDOMFocusRedirects;
+    unsigned int  _allowsLinkPreview;
+    unsigned int  _allowsPictureInPictureVideo;
+    unsigned int  _alwaysDispatchesScrollEvents;
+    DOMNode * _assistedNodeStartingFocusRedirects;
+    unsigned int  _audioSessionCategoryOverride;
+    <UIWebAutoFillDelegate> * _autoFillDelegate;
+    DOMNode * _currentAssistedNode;
+    NSMutableArray * _deferredTouchEvents;
+    unsigned int  _dispatchedTouchEvents;
+    UIResponder * _editingDelegateForEverythingExceptForms;
+    unsigned int  _forceInputView;
+    UIWebFormDelegate * _formDelegate;
+    unsigned int  _formIsAutoFilling;
+    unsigned int  _hasEditedTextField;
+    NSObject<UIFormPeripheral> * _input;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -41,9 +41,9 @@
             float width; 
             float height; 
         } size; 
-    } _inputViewBounds;
-    unsigned int _inputViewObeysDOMFocus;
-    float _lastAdjustmentForScroller;
+    }  _inputViewBounds;
+    unsigned int  _inputViewObeysDOMFocus;
+    float  _lastAdjustmentForScroller;
     struct { 
         NSMutableArray *all; 
         NSMutableArray *html; 
@@ -53,18 +53,18 @@
         NSMutableArray *warning; 
         NSMutableArray *tip; 
         NSMutableArray *log; 
-    } _messages;
-    NSMutableSet *_overflowScrollViews;
-    NSMutableSet *_overflowScrollViewsPendingDeletion;
-    NSMutableSet *_overflowScrollViewsPendingInsertion;
+    }  _messages;
+    NSMutableSet * _overflowScrollViews;
+    NSMutableSet * _overflowScrollViewsPendingDeletion;
+    NSMutableSet * _overflowScrollViewsPendingInsertion;
     struct { 
         UIWebPDFView *view; 
         NSTimer *timer; 
-    } _pdf;
-    BOOL _pendingGeometryChangeAfterOverflowScroll;
-    NSLock *_pendingOverflowDataLock;
-    NSMutableArray *_pendingOverflowScrolls;
-    UIWebTouchEventsGestureRecognizer *_webTouchEventsGestureRecognizer;
+    }  _pdf;
+    BOOL  _pendingGeometryChangeAfterOverflowScroll;
+    NSLock * _pendingOverflowDataLock;
+    NSMutableArray * _pendingOverflowScrolls;
+    UIWebTouchEventsGestureRecognizer * _webTouchEventsGestureRecognizer;
 }
 
 @property (nonatomic, retain) UIWebFormAccessory *_accessory;

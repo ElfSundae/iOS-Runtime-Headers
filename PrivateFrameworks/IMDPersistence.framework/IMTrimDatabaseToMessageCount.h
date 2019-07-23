@@ -3,7 +3,7 @@
  */
 
 @interface IMTrimDatabaseToMessageCount : IMAbstractDatabaseTrimmer {
-    long long _messageCount;
+    long long  _messageCount;
 }
 
 @property (nonatomic, readonly) long long messageCount;

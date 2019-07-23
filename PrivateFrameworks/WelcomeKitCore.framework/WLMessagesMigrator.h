@@ -3,8 +3,8 @@
  */
 
 @interface WLMessagesMigrator : WLMigrationWebService {
-    NSString *_accountGuid;
-    struct sqlite3 { } *_database;
+    NSString * _accountGuid;
+    struct sqlite3 { } * _database;
 }
 
 + (id)_attachmentPersistentPathForGuid:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 uti:(id)arg4;

@@ -3,7 +3,7 @@
  */
 
 @interface FIUIHealthSettingsDatePicker : UIDatePicker {
-    id /* block */ _dateUpdateHandler;
+    id /* block */  _dateUpdateHandler;
 }
 
 @property (nonatomic, copy) id /* block */ dateUpdateHandler;

@@ -3,11 +3,11 @@
  */
 
 @interface TPRenderingExporter : TSARenderingExporter {
-    BOOL mDidLimitPageLayout;
-    TPPdfHyperlinkController *mHyperlinkController;
-    int mLastPageIndexForLayout;
-    unsigned int mPageCount;
-    unsigned int mPageIndex;
+    BOOL  mDidLimitPageLayout;
+    TPPdfHyperlinkController * mHyperlinkController;
+    int  mLastPageIndexForLayout;
+    unsigned int  mPageCount;
+    unsigned int  mPageIndex;
 }
 
 @property (readonly) BOOL didLimitPageLayout;
@@ -17,7 +17,6 @@
 - (id)currentInfos;
 - (void)dealloc;
 - (BOOL)didLimitPageLayout;
-- (BOOL)hasMoreThanOnePageToPrint;
 - (BOOL)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 - (int)lastPageIndexForLayout;

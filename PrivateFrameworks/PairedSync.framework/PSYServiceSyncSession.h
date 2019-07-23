@@ -3,15 +3,15 @@
  */
 
 @interface PSYServiceSyncSession : NSObject {
-    BOOL _complete;
-    <PSYServiceSyncSessionDelegate> *_delegate;
-    BOOL _isComplete;
-    NRDevice *_pairedDevice;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSUUID *_sessionIdentifier;
-    unsigned long long _switchID;
-    PSYSyncCoordinator *_syncCoordinator;
-    unsigned int _syncSessionType;
+    BOOL  _complete;
+    <PSYServiceSyncSessionDelegate> * _delegate;
+    BOOL  _isComplete;
+    NRDevice * _pairedDevice;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSUUID * _sessionIdentifier;
+    unsigned long long  _switchID;
+    PSYSyncCoordinator * _syncCoordinator;
+    unsigned int  _syncSessionType;
 }
 
 @property (getter=isComplete, nonatomic, readonly) BOOL complete;

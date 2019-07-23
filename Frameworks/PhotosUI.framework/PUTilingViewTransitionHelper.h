@@ -3,24 +3,24 @@
  */
 
 @interface PUTilingViewTransitionHelper : NSObject <PUInterruptibleViewControllerTransition, PUTilingViewControllerTransition> {
-    float __backgroundProgressOffset;
-    PUMaximumChangeRateValueFilter *__chromeProgressValueFilter;
-    int __currentOperation;
-    <PUTilingViewControllerTransitionEndPoint> *__endPointOwningTilingView;
-    <PUTilingViewControllerTransitionEndPoint> *__fromEndPoint;
-    unsigned int __interactionOptions;
-    float __progressSpeed;
-    double __startTime;
-    PUTilingView *__tilingView;
-    PUAnimationGroup *__tilingViewAnimationGroup;
-    <PUTilingViewControllerTransitionEndPoint> *__toEndPoint;
-    float __transitionProgressOffset;
-    PUMaximumChangeRateValueFilter *__transitionProgressValueFilter;
-    double _dismissalDuration;
-    BOOL _hasStarted;
-    double _presentationDuration;
-    PUViewControllerTransition<PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition> *_transition;
-    BOOL _transitionPaused;
+    float  __backgroundProgressOffset;
+    PUMaximumChangeRateValueFilter * __chromeProgressValueFilter;
+    int  __currentOperation;
+    <PUTilingViewControllerTransitionEndPoint> * __endPointOwningTilingView;
+    <PUTilingViewControllerTransitionEndPoint> * __fromEndPoint;
+    unsigned int  __interactionOptions;
+    float  __progressSpeed;
+    double  __startTime;
+    PUTilingView * __tilingView;
+    PUAnimationGroup * __tilingViewAnimationGroup;
+    <PUTilingViewControllerTransitionEndPoint> * __toEndPoint;
+    float  __transitionProgressOffset;
+    PUMaximumChangeRateValueFilter * __transitionProgressValueFilter;
+    double  _dismissalDuration;
+    BOOL  _hasStarted;
+    double  _presentationDuration;
+    PUViewControllerTransition<PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition> * _transition;
+    BOOL  _transitionPaused;
 }
 
 @property (setter=_setBackgroundProgressOffset:, nonatomic) float _backgroundProgressOffset;
@@ -39,12 +39,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double dismissalDuration;
-@property (nonatomic) BOOL hasStarted;
+@property (setter=_setHasStarted:, nonatomic) BOOL hasStarted;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) double presentationDuration;
 @property (readonly) Class superclass;
 @property (nonatomic) PUViewControllerTransition<PUTilingViewControllerTransition><PUInterruptibleViewControllerTransition> *transition;
-@property (getter=isTransitionPaused, nonatomic) BOOL transitionPaused;
+@property (getter=isTransitionPaused, setter=_setTransitionPaused:, nonatomic) BOOL transitionPaused;
 
 + (void)registerTransitionEndPoint:(id)arg1 forViewController:(id)arg2;
 + (id)transitionEndPointWithViewController:(id)arg1;

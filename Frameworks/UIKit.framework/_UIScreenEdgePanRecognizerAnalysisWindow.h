@@ -3,11 +3,11 @@
  */
 
 @interface _UIScreenEdgePanRecognizerAnalysisWindow : UIWindow {
-    UIView *_backgroundView;
-    NSMutableArray *_failureMessageLabels;
-    long _maximumVisibleOverlayItems;
-    UIDelayedAction *_messageFadeAction;
-    _UIScreenEdgePanRecognizer *_recognizer;
+    UIView * _backgroundView;
+    NSMutableArray * _failureMessageLabels;
+    long  _maximumVisibleOverlayItems;
+    UIDelayedAction * _messageFadeAction;
+    _UIScreenEdgePanRecognizer * _recognizer;
 }
 
 @property (nonatomic) long maximumVisibleOverlayItems;

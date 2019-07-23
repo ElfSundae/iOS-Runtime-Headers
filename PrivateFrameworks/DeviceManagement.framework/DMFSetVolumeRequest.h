@@ -3,7 +3,7 @@
  */
 
 @interface DMFSetVolumeRequest : CATTaskRequest {
-    float _volume;
+    float  _volume;
 }
 
 @property (nonatomic) float volume;

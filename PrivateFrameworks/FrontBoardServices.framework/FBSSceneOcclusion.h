@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } _rect;
+    }  _rect;
 }
 
 @property (readonly, copy) NSString *debugDescription;

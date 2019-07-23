@@ -6,19 +6,19 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _lowerLeftPoint;
+    }  _lowerLeftPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lowerRightPoint;
+    }  _lowerRightPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _upperLeftPoint;
+    }  _upperLeftPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _upperRightPoint;
+    }  _upperRightPoint;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } lowerLeftPoint;

@@ -3,17 +3,17 @@
  */
 
 @interface UIStatusBarServiceItemView : UIStatusBarItemView {
-    int _contentType;
-    unsigned int _crossfadeStep;
-    NSString *_crossfadeString;
-    float _crossfadeWidth;
-    float _letterSpacing;
-    BOOL _loopNowIfNecessary;
-    BOOL _loopingNecessaryForString;
-    BOOL _loopingNow;
-    float _maxWidth;
-    NSString *_serviceString;
-    float _serviceWidth;
+    int  _contentType;
+    unsigned int  _crossfadeStep;
+    NSString * _crossfadeString;
+    float  _crossfadeWidth;
+    float  _letterSpacing;
+    BOOL  _loopNowIfNecessary;
+    BOOL  _loopingNecessaryForString;
+    BOOL  _loopingNow;
+    float  _maxWidth;
+    NSString * _serviceString;
+    float  _serviceWidth;
 }
 
 - (void).cxx_destruct;

@@ -3,22 +3,18 @@
  */
 
 @interface GEOPBTransitIncidentEntity : PBCodable <GEOTransitIncidentEntity, NSCopying> {
-    unsigned long long _affectedMuid;
-    int _entityType;
-    GEOPBTransitIncidentEntityFilter *_filter;
+    unsigned long long  _affectedMuid;
+    GEOPBTransitIncidentEntityFilter * _filter;
     struct { 
         unsigned int affectedMuid : 1; 
-        unsigned int entityType : 1; 
-    } _has;
+    }  _has;
 }
 
 @property (nonatomic) unsigned long long affectedMuid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int entityType;
 @property (nonatomic, retain) GEOPBTransitIncidentEntityFilter *filter;
 @property (nonatomic) BOOL hasAffectedMuid;
-@property (nonatomic) BOOL hasEntityType;
 @property (nonatomic, readonly) BOOL hasFilter;
 @property (nonatomic, readonly) BOOL hasNextStopIDs;
 @property (readonly) unsigned int hash;
@@ -27,16 +23,13 @@
 @property (readonly) Class superclass;
 
 - (unsigned long long)affectedMuid;
-- (BOOL)affectsSequence:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (int)entityType;
 - (id)filter;
 - (BOOL)hasAffectedMuid;
-- (BOOL)hasEntityType;
 - (BOOL)hasFilter;
 - (BOOL)hasNextStopIDs;
 - (unsigned int)hash;
@@ -46,10 +39,8 @@
 - (id)nextStopIDs;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAffectedMuid:(unsigned long long)arg1;
-- (void)setEntityType:(int)arg1;
 - (void)setFilter:(id)arg1;
 - (void)setHasAffectedMuid:(BOOL)arg1;
-- (void)setHasEntityType:(BOOL)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

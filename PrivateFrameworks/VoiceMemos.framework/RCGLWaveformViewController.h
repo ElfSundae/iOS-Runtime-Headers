@@ -3,57 +3,58 @@
  */
 
 @interface RCGLWaveformViewController : UIViewController <RCGLWaveformRendererDelegate, RCWaveformSelectionOverlayDelegate, UIScrollViewDelegate> {
-    RCUIConfiguration *_UIConfiguration;
-    RCAcousticAnnotationView *_acousticAnnotationView;
-    UIView *_bottomLineView;
-    BOOL _capturing;
-    BOOL _clipTimeMarkersToDuration;
-    double _currentTime;
-    unsigned int _currentTimeDisplayOptions;
-    <RCGLWaveformViewDelegate> *_delegate;
-    BOOL _dragEnding;
-    double _duration;
+    RCUIConfiguration * _UIConfiguration;
+    RCAcousticAnnotationView * _acousticAnnotationView;
+    UIView * _backgroundView;
+    UIView * _bottomLineView;
+    BOOL  _capturing;
+    BOOL  _clipTimeMarkersToDuration;
+    double  _currentTime;
+    unsigned int  _currentTimeDisplayOptions;
+    <RCGLWaveformViewDelegate> * _delegate;
+    BOOL  _dragEnding;
+    double  _duration;
     struct { 
         double beginTime; 
         double endTime; 
-    } _highlightTimeRange;
-    BOOL _isScrollViewAutoScrolling;
-    BOOL _isScrollViewAutoScrollingBeginning;
-    BOOL _isScrollViewAutoScrollingPaused;
-    RCLayoutMetrics *_layoutMetrics;
-    float _layoutWidth;
-    double _maximumSelectionDuration;
-    double _overlayAutoscrollBaseDuration;
-    double _overlayAutoscrollRateForSelectionTracking;
-    NSTimer *_overlayAutoscrollTimer;
-    BOOL _playing;
-    RCGLWaveformRenderer *_rendererController;
-    float _resumingToForegroundAutoscrollRate;
-    RCWaveformScrollView *_scrollView;
-    BOOL _scrubbing;
-    BOOL _scrubbingEnabled;
+    }  _highlightTimeRange;
+    BOOL  _isScrollViewAutoScrolling;
+    BOOL  _isScrollViewAutoScrollingBeginning;
+    BOOL  _isScrollViewAutoScrollingPaused;
+    RCLayoutMetrics * _layoutMetrics;
+    float  _layoutWidth;
+    double  _maximumSelectionDuration;
+    double  _overlayAutoscrollBaseDuration;
+    double  _overlayAutoscrollRateForSelectionTracking;
+    NSTimer * _overlayAutoscrollTimer;
+    BOOL  _playing;
+    RCGLWaveformRenderer * _rendererController;
+    float  _resumingToForegroundAutoscrollRate;
+    RCWaveformScrollView * _scrollView;
+    BOOL  _scrubbing;
+    BOOL  _scrubbingEnabled;
     struct { 
         double beginTime; 
         double endTime; 
-    } _selectedTimeRange;
-    BOOL _selectedTimeRangeEditingEnabled;
-    BOOL _selectedTimeRangeScrubbingEnabled;
-    RCWaveformSelectionOverlay *_selectionOverlay;
-    float _selectionVisibleMargin;
-    BOOL _shouldUpdateInDisplayLink;
-    double _timeBeganAutoscrolling;
-    NSMutableArray *_timeMarkerViews;
-    BOOL _timeMarkerViewsNeedInitialLayout;
-    BOOL _timeMarkerViewsUpdatesDisabled;
-    UIView *_topLineView;
+    }  _selectedTimeRange;
+    BOOL  _selectedTimeRangeEditingEnabled;
+    BOOL  _selectedTimeRangeScrubbingEnabled;
+    RCWaveformSelectionOverlay * _selectionOverlay;
+    float  _selectionVisibleMargin;
+    BOOL  _shouldUpdateInDisplayLink;
+    double  _timeBeganAutoscrolling;
+    NSMutableArray * _timeMarkerViews;
+    BOOL  _timeMarkerViewsNeedInitialLayout;
+    BOOL  _timeMarkerViewsUpdatesDisabled;
+    UIView * _topLineView;
     struct { 
         double beginTime; 
         double endTime; 
-    } _visibleTimeRange;
+    }  _visibleTimeRange;
     struct { 
         double beginTime; 
         double endTime; 
-    } _visibleTimeRangeBeforeSelectionTracking;
+    }  _visibleTimeRangeBeforeSelectionTracking;
 }
 
 @property (nonatomic, copy) RCUIConfiguration *UIConfiguration;

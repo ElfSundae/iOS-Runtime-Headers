@@ -10,7 +10,7 @@
         float m22; 
         float tX; 
         float tY; 
-    } _transformStruct;
+    }  _transformStruct;
 }
 
 @property struct { float x1; float x2; float x3; float x4; float x5; float x6; } transformStruct;

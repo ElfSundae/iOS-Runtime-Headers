@@ -8,16 +8,16 @@
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _actualTime;
-    PUFilmstripAsset *_asset;
-    UIImage *_image;
-    BOOL _isReadyForDelivery;
-    int _requestNumber;
-    NSDictionary *_resultInfo;
+    }  _actualTime;
+    PUFilmstripAsset * _asset;
+    UIImage * _image;
+    BOOL  _isReadyForDelivery;
+    int  _requestNumber;
+    NSDictionary * _resultInfo;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
+    }  _targetSize;
 }
 
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } actualTime;

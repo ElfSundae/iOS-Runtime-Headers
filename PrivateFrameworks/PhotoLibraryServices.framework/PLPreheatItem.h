@@ -3,24 +3,24 @@
  */
 
 @interface PLPreheatItem : NSObject {
-    int _CPLNotifyRegistrationToken;
-    BOOL _CPLPrefetching;
-    BOOL _CPLPrefetchingCancelled;
-    NSString *_CPLPrefetchingDoneToken;
-    NSObject<OS_dispatch_queue> *_CPLPrefetchingIsolationQueue;
-    NSObject<OS_dispatch_group> *_CPLPrefetchingWaitGroup;
-    BOOL _CPLPrefetchingWasCancelled;
-    NSString *_assetUUID;
-    int _bestFormat;
-    BOOL _didCompleteCPLPrefetchingWithSuccessOrError;
-    int _format;
-    int _imageType;
+    int  _CPLNotifyRegistrationToken;
+    BOOL  _CPLPrefetching;
+    BOOL  _CPLPrefetchingCancelled;
+    NSString * _CPLPrefetchingDoneToken;
+    NSObject<OS_dispatch_queue> * _CPLPrefetchingIsolationQueue;
+    NSObject<OS_dispatch_group> * _CPLPrefetchingWaitGroup;
+    BOOL  _CPLPrefetchingWasCancelled;
+    NSString * _assetUUID;
+    int  _bestFormat;
+    BOOL  _didCompleteCPLPrefetchingWithSuccessOrError;
+    int  _format;
+    int  _imageType;
     struct CGSize { 
         float width; 
         float height; 
-    } _optimalSourcePixelSize;
-    int _prefetchCount;
-    NSString *_virtualCPLTaskIdentifier;
+    }  _optimalSourcePixelSize;
+    int  _prefetchCount;
+    NSString * _virtualCPLTaskIdentifier;
 }
 
 @property (nonatomic, readonly) BOOL CPLPrefetching;

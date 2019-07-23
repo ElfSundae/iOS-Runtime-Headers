@@ -3,9 +3,9 @@
  */
 
 @interface _WBUPasswordAlertActionViewController : UIViewController {
-    NSString *_detail;
-    int _style;
-    NSString *_title;
+    NSString * _detail;
+    int  _style;
+    NSString * _title;
 }
 
 - (void).cxx_destruct;

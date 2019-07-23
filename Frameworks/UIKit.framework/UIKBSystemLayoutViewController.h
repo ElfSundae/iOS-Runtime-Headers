@@ -6,16 +6,16 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _centeredOffsets;
-    NSMutableArray *_constraints;
-    unsigned int _horizontalLayoutType;
+    }  _centeredOffsets;
+    NSMutableArray * _constraints;
+    unsigned int  _horizontalLayoutType;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _minimumInsets;
-    unsigned int _verticalLayoutType;
+    }  _minimumInsets;
+    unsigned int  _verticalLayoutType;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } centeredOffsets;

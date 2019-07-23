@@ -6,27 +6,27 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } __lastContentOffset;
+    }  __lastContentOffset;
     struct CGSize { 
         float width; 
         float height; 
-    } __lastContentSize;
-    UIScrollView *__lastScrollView;
-    double __lastTime;
-    int __nextRegime;
-    int __nextRegimeCount;
-    NSTimer *__timeoutTimer;
-    <PUScrollViewSpeedometerDelegate> *_delegate;
-    BOOL _delegateSupportsRegimeChange;
-    float _fastLowerThreshold;
-    float _fastUpperThreshold;
-    float _mediumLowerThreshold;
-    float _mediumUpperThreshold;
-    int _regime;
+    }  __lastContentSize;
+    UIScrollView * __lastScrollView;
+    double  __lastTime;
+    int  __nextRegime;
+    int  __nextRegimeCount;
+    NSTimer * __timeoutTimer;
+    <PUScrollViewSpeedometerDelegate> * _delegate;
+    BOOL  _delegateSupportsRegimeChange;
+    float  _fastLowerThreshold;
+    float  _fastUpperThreshold;
+    float  _mediumLowerThreshold;
+    float  _mediumUpperThreshold;
+    int  _regime;
     struct CGPoint { 
         float x; 
         float y; 
-    } _scrollSpeed;
+    }  _scrollSpeed;
 }
 
 @property (setter=_setLastContentOffset:, nonatomic) struct CGPoint { float x1; float x2; } _lastContentOffset;
@@ -41,8 +41,8 @@
 @property (nonatomic) float fastUpperThreshold;
 @property (nonatomic) float mediumLowerThreshold;
 @property (nonatomic) float mediumUpperThreshold;
-@property (nonatomic) int regime;
-@property (nonatomic) struct CGPoint { float x1; float x2; } scrollSpeed;
+@property (setter=_setRegime:, nonatomic) int regime;
+@property (setter=_setScrollSpeed:, nonatomic) struct CGPoint { float x1; float x2; } scrollSpeed;
 
 - (void).cxx_destruct;
 - (void)_handleTimeoutTimer:(id)arg1;

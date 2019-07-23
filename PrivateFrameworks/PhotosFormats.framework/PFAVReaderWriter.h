@@ -3,13 +3,13 @@
  */
 
 @interface PFAVReaderWriter : NSObject <PFRWSampleBufferChannelDelegate> {
-    AVAsset *_asset;
-    id /* block */ _completionBlock;
-    <PFAVReaderWriterAdjustDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    NSURL *_outputURL;
-    id /* block */ _progressBlock;
-    NSObject<OS_dispatch_queue> *_serializationQueue;
+    AVAsset * _asset;
+    id /* block */  _completionBlock;
+    <PFAVReaderWriterAdjustDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
+    NSURL * _outputURL;
+    id /* block */  _progressBlock;
+    NSObject<OS_dispatch_queue> * _serializationQueue;
     struct { 
         struct { 
             long long value; 
@@ -23,13 +23,13 @@
             unsigned int flags; 
             long long epoch; 
         } duration; 
-    } _timeRange;
-    BOOL _writeInProgress;
-    AVAssetReader *assetReader;
-    AVAssetWriter *assetWriter;
-    BOOL cancelled;
-    NSArray *passthroughChannels;
-    NSArray *videoChannels;
+    }  _timeRange;
+    BOOL  _writeInProgress;
+    AVAssetReader * assetReader;
+    AVAssetWriter * assetWriter;
+    BOOL  cancelled;
+    NSArray * passthroughChannels;
+    NSArray * videoChannels;
 }
 
 @property (nonatomic, copy) AVAsset *asset;

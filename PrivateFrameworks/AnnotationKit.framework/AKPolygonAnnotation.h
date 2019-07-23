@@ -3,8 +3,8 @@
  */
 
 @interface AKPolygonAnnotation : AKRectangularShapeAnnotation <AKFlippableAnnotationProtocol> {
-    unsigned int _pointCount;
-    BOOL _verticallyFlipped;
+    unsigned int  _pointCount;
+    BOOL  _verticallyFlipped;
 }
 
 @property (readonly, copy) NSString *debugDescription;

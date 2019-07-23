@@ -3,25 +3,27 @@
  */
 
 @interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate> {
-    CAMHDRButton *_HDRButton;
-    NSMutableArray *__allowedControls;
-    UIView *__backgroundView;
-    CAMExpandableMenuButton *__expandedMenuButton;
+    CAMHDRButton * _HDRButton;
+    NSMutableArray * __allowedControls;
+    UIView * __backgroundView;
+    CAMExpandableMenuButton * __expandedMenuButton;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } __expandedMenuButtonTappableInsets;
-    int _backgroundStyle;
-    CAMElapsedTimeView *_elapsedTimeView;
-    CAMFlashButton *_flashButton;
-    CAMFlipButton *_flipButton;
-    CAMIrisButton *_irisButton;
-    int _orientation;
-    int _style;
-    CAMTimerButton *_timerButton;
-    <CAMControlVisibilityUpdateDelegate> *_visibilityUpdateDelegate;
+    }  __expandedMenuButtonTappableInsets;
+    int  _backgroundStyle;
+    CAMElapsedTimeView * _elapsedTimeView;
+    CAMFilterButton * _filterButton;
+    CAMFlashButton * _flashButton;
+    CAMFlipButton * _flipButton;
+    CAMFramerateIndicatorView * _framerateIndicatorView;
+    CAMIrisButton * _irisButton;
+    int  _orientation;
+    int  _style;
+    CAMTimerButton * _timerButton;
+    <CAMControlVisibilityUpdateDelegate> * _visibilityUpdateDelegate;
 }
 
 @property (nonatomic, retain) CAMHDRButton *HDRButton;
@@ -31,9 +33,11 @@
 @property (setter=_setExpandedMenuButtonTappableInsets:, nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } _expandedMenuButtonTappableInsets;
 @property (nonatomic) int backgroundStyle;
 @property (nonatomic, retain) CAMElapsedTimeView *elapsedTimeView;
+@property (nonatomic, retain) CAMFilterButton *filterButton;
 @property (nonatomic, retain) CAMFlashButton *flashButton;
 @property (nonatomic, retain) CAMFlipButton *flipButton;
 @property (getter=isFloating, nonatomic, readonly) BOOL floating;
+@property (nonatomic, retain) CAMFramerateIndicatorView *framerateIndicatorView;
 @property (nonatomic, retain) CAMIrisButton *irisButton;
 @property (nonatomic) int orientation;
 @property (nonatomic) int style;
@@ -52,6 +56,7 @@
 - (BOOL)_backgroundMasksToBoundsForStyle:(int)arg1;
 - (id)_backgroundView;
 - (void)_commonCAMTopBarInitialization;
+- (void)_computeHorizontalLayoutForViewsBetweenLeftView:(id)arg1 rightView:(id)arg2 views:(id)arg3 alignmentRects:(id)arg4;
 - (id)_expandedMenuButton;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_expandedMenuButtonTappableInsets;
 - (float)_interpolatedFloatingBarHeight;
@@ -72,8 +77,10 @@
 - (id)elapsedTimeView;
 - (void)expandMenuButton:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })expandedFrameForMenuButton:(id)arg1;
+- (id)filterButton;
 - (id)flashButton;
 - (id)flipButton;
+- (id)framerateIndicatorView;
 - (id)hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
@@ -85,8 +92,10 @@
 - (void)setBackgroundStyle:(int)arg1;
 - (void)setBackgroundStyle:(int)arg1 animated:(BOOL)arg2;
 - (void)setElapsedTimeView:(id)arg1;
+- (void)setFilterButton:(id)arg1;
 - (void)setFlashButton:(id)arg1;
 - (void)setFlipButton:(id)arg1;
+- (void)setFramerateIndicatorView:(id)arg1;
 - (void)setHDRButton:(id)arg1;
 - (void)setIrisButton:(id)arg1;
 - (void)setOrientation:(int)arg1;
@@ -94,12 +103,14 @@
 - (void)setStyle:(int)arg1 animated:(BOOL)arg2;
 - (void)setTimerButton:(id)arg1;
 - (void)setVisibilityUpdateDelegate:(id)arg1;
-- (BOOL)shouldHideElapsedTimeViewForMode:(int)arg1 device:(int)arg2;
-- (BOOL)shouldHideFlashButtonForMode:(int)arg1 device:(int)arg2;
-- (BOOL)shouldHideFlipButtonForMode:(int)arg1 device:(int)arg2;
-- (BOOL)shouldHideHDRButtonForMode:(int)arg1 device:(int)arg2;
-- (BOOL)shouldHideIrisButtonForMode:(int)arg1 device:(int)arg2;
-- (BOOL)shouldHideTimerButtonForMode:(int)arg1 device:(int)arg2;
+- (BOOL)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFilterButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFlashButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideIrisButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideTimerButtonForGraphConfiguration:(id)arg1;
 - (int)style;
 - (id)timerButton;
 - (id)visibilityUpdateDelegate;

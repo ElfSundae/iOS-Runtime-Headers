@@ -3,42 +3,45 @@
  */
 
 @interface CKAsset : NSObject <CKRecordValue, NSSecureCoding> {
-    NSString *_UUID;
-    int _arrayIndex;
-    NSData *_assetKey;
-    NSData *_authRequest;
-    NSString *_authToken;
-    NSURL *_contentBaseURL;
-    NSNumber *_deviceID;
-    NSString *_downloadBaseURL;
-    unsigned long long _downloadTokenExpiration;
-    NSURL *_downloadURL;
-    NSDate *_downloadURLExpiration;
-    BOOL _downloaded;
-    NSNumber *_fileID;
-    NSURL *_fileURL;
-    NSNumber *_generationCountToSave;
-    BOOL _hasSize;
-    NSData *_inlineData;
-    NSString *_owner;
-    CKRecord *_record;
-    CKRecordID *_recordID;
-    NSString *_recordKey;
-    NSData *_referenceSignature;
-    NSString *_requestor;
-    BOOL _shouldReadRawEncryptedData;
-    NSData *_signature;
-    unsigned long long _size;
-    int _storageGroupingPolicy;
-    int _uploadRank;
-    NSString *_uploadReceipt;
-    BOOL _uploaded;
-    BOOL _wasCached;
-    NSData *_wrappedAssetKey;
+    NSString * _UUID;
+    int  _arrayIndex;
+    NSData * _assetContent;
+    NSData * _assetKey;
+    NSData * _authRequest;
+    NSString * _authToken;
+    NSURL * _contentBaseURL;
+    NSNumber * _deviceID;
+    NSString * _downloadBaseURL;
+    unsigned long long  _downloadTokenExpiration;
+    NSURL * _downloadURL;
+    NSDate * _downloadURLExpiration;
+    BOOL  _downloaded;
+    NSNumber * _fileID;
+    NSURL * _fileURL;
+    NSNumber * _generationCountToSave;
+    BOOL  _hasSize;
+    NSData * _inlineData;
+    NSString * _itemTypeHint;
+    NSString * _owner;
+    CKRecord * _record;
+    CKRecordID * _recordID;
+    NSString * _recordKey;
+    NSData * _referenceSignature;
+    NSString * _requestor;
+    BOOL  _shouldReadRawEncryptedData;
+    NSData * _signature;
+    unsigned long long  _size;
+    int  _storageGroupingPolicy;
+    int  _uploadRank;
+    NSString * _uploadReceipt;
+    BOOL  _uploaded;
+    BOOL  _wasCached;
+    NSData * _wrappedAssetKey;
 }
 
 @property (nonatomic, retain) NSString *UUID;
 @property (nonatomic) int arrayIndex;
+@property (nonatomic, copy) NSData *assetContent;
 @property (nonatomic, readonly) NSString *assetHandleUUID;
 @property (nonatomic, retain) NSData *assetKey;
 @property (nonatomic, copy) NSData *authRequest;
@@ -58,6 +61,7 @@
 @property (nonatomic) BOOL hasSize;
 @property (readonly) unsigned int hash;
 @property (nonatomic, copy) NSData *inlineData;
+@property (nonatomic, retain) NSString *itemTypeHint;
 @property (nonatomic, retain) NSString *owner;
 @property (nonatomic) CKRecord *record;
 @property (nonatomic, retain) CKRecordID *recordID;
@@ -85,10 +89,11 @@
 + (BOOL)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)CKPropertiesDescription;
+- (id)CKPropertiesToDescribe:(BOOL)arg1;
 - (id)UUID;
 - (id)_initBare;
 - (int)arrayIndex;
+- (id)assetContent;
 - (id)assetHandleUUID;
 - (id)assetKey;
 - (id)authRequest;
@@ -113,6 +118,7 @@
 - (id)initWithFileURL:(id)arg1 signature:(id)arg2;
 - (id)initWithFileURL:(id)arg1 signature:(id)arg2 assetHandleUUID:(id)arg3;
 - (id)inlineData;
+- (id)itemTypeHint;
 - (id)openWithError:(id*)arg1;
 - (id)owner;
 - (id)record;
@@ -121,6 +127,7 @@
 - (id)referenceSignature;
 - (id)requestor;
 - (void)setArrayIndex:(int)arg1;
+- (void)setAssetContent:(id)arg1;
 - (void)setAssetKey:(id)arg1;
 - (void)setAuthRequest:(id)arg1;
 - (void)setAuthToken:(id)arg1;
@@ -134,6 +141,7 @@
 - (void)setGenerationCountToSave:(id)arg1;
 - (void)setHasSize:(BOOL)arg1;
 - (void)setInlineData:(id)arg1;
+- (void)setItemTypeHint:(id)arg1;
 - (void)setOwner:(id)arg1;
 - (void)setRecord:(id)arg1;
 - (void)setRecordID:(id)arg1;

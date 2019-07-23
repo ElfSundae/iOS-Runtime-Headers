@@ -3,28 +3,28 @@
  */
 
 @interface GEOBusiness : PBCodable <NSCopying> {
-    NSMutableArray *_attributeKeyValues;
-    NSMutableArray *_attributions;
-    NSMutableArray *_categorys;
-    GEOLatLng *_center;
+    NSMutableArray * _attributeKeyValues;
+    NSMutableArray * _attributions;
+    NSMutableArray * _categorys;
+    GEOLatLng * _center;
     struct { 
         unsigned int uID : 1; 
         unsigned int isClosed : 1; 
-    } _has;
-    BOOL _isClosed;
-    NSMutableArray *_localizedCategories;
-    NSString *_mapsURL;
-    NSString *_name;
-    NSMutableArray *_openHours;
-    NSString *_phoneticName;
-    NSMutableArray *_photos;
-    NSMutableArray *_placeDataAmendments;
-    NSMutableArray *_ratings;
-    NSMutableArray *_sources;
-    NSMutableArray *_starRatings;
-    NSString *_telephone;
-    unsigned long long _uID;
-    NSString *_uRL;
+    }  _has;
+    BOOL  _isClosed;
+    NSMutableArray * _localizedCategories;
+    NSString * _mapsURL;
+    NSString * _name;
+    NSMutableArray * _openHours;
+    NSString * _phoneticName;
+    NSMutableArray * _photos;
+    NSMutableArray * _placeDataAmendments;
+    NSMutableArray * _ratings;
+    NSMutableArray * _sources;
+    NSMutableArray * _starRatings;
+    NSString * _telephone;
+    unsigned long long  _uID;
+    NSString * _uRL;
 }
 
 @property (nonatomic, retain) NSMutableArray *attributeKeyValues;
@@ -53,6 +53,17 @@
 @property (nonatomic, retain) NSString *telephone;
 @property (nonatomic) unsigned long long uID;
 @property (nonatomic, retain) NSString *uRL;
+
++ (Class)attributeKeyValueType;
++ (Class)attributionType;
++ (Class)categoryType;
++ (Class)localizedCategoriesType;
++ (Class)openHoursType;
++ (Class)photoType;
++ (Class)placeDataAmendmentType;
++ (Class)ratingType;
++ (Class)sourceType;
++ (Class)starRatingType;
 
 - (id)_firstPhotoOfSize:(int)arg1;
 - (id)_photosOfSize:(int)arg1;

@@ -3,13 +3,13 @@
  */
 
 @interface SKUIDynamicShelfPageSection : SKUIStorePageSection <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver, SKUIObservableScrollViewDelegate, SKUIShelfPageSection, SKUIShelfPageSectionConfigurationDataSource, UICollectionViewDataSource, UICollectionViewDelegate> {
-    SKUIViewElementLayoutContext *_cellLayoutContext;
-    SKUIShelfPageSectionConfiguration *_configuration;
-    SKUIDynamicPageSectionIndexMapper *_dynamicPageSectionIndexMapper;
-    SKUIShelfViewElement<SKUIDynamicShelfViewElement> *_dynamicShelfViewElement;
-    <SKUIEntityProviding> *_entityProvider;
-    SKUIViewElementTextLayoutCache *_labelLayoutCache;
-    <SKUIScrollViewDelegateObserver> *_scrollViewDelegateObserver;
+    SKUIViewElementLayoutContext * _cellLayoutContext;
+    SKUIShelfPageSectionConfiguration * _configuration;
+    SKUIDynamicPageSectionIndexMapper * _dynamicPageSectionIndexMapper;
+    SKUIShelfViewElement<SKUIDynamicShelfViewElement> * _dynamicShelfViewElement;
+    <SKUIEntityProviding> * _entityProvider;
+    SKUIViewElementTextLayoutCache * _labelLayoutCache;
+    <SKUIScrollViewDelegateObserver> * _scrollViewDelegateObserver;
 }
 
 @property (nonatomic, readonly) SKUIShelfPageSectionConfiguration *configuration;
@@ -31,7 +31,7 @@
 - (id)cellForIndexPath:(id)arg1;
 - (struct CGSize { float x1; float x2; })cellSizeForIndexPath:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didConfirmButtonElement:(id)arg2 withClickInfo:(id)arg3 forItemAtIndexPath:(id)arg4;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 layout:(id)arg2 willApplyLayoutAttributes:(id)arg3;
 - (int)collectionView:(id)arg1 numberOfItemsInSection:(int)arg2;

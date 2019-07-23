@@ -3,9 +3,9 @@
  */
 
 @interface CIMirror : CIFilter {
-    NSNumber *inputAngle;
-    CIImage *inputImage;
-    CIVector *inputPoint;
+    NSNumber * inputAngle;
+    CIImage * inputImage;
+    CIVector * inputPoint;
 }
 
 @property (nonatomic, retain) NSNumber *inputAngle;

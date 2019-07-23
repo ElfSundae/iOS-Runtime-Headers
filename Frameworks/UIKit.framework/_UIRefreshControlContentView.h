@@ -3,11 +3,13 @@
  */
 
 @interface _UIRefreshControlContentView : UIView {
-    UIRefreshControl *_refreshControl;
-    UIColor *_tintColor;
+    _UIFeedbackImpactBehavior * _impactFeedbackBehavior;
+    UIRefreshControl * _refreshControl;
+    UIColor * _tintColor;
 }
 
 @property (nonatomic, retain) NSAttributedString *attributedTitle;
+@property (nonatomic, retain) _UIFeedbackImpactBehavior *impactFeedbackBehavior;
 @property (nonatomic, readonly) float maximumSnappingHeight;
 @property (nonatomic, readonly) float minimumSnappingHeight;
 @property (nonatomic) UIRefreshControl *refreshControl;
@@ -18,11 +20,13 @@
 - (float)_heightAtWhichNoneOfTheInterfaceElementsAreVisibleEvenIfTheControlIsStillPartiallyOnScreen;
 - (id)attributedTitle;
 - (void)didTransitionFromState:(int)arg1 toState:(int)arg2;
+- (id)impactFeedbackBehavior;
 - (float)maximumSnappingHeight;
 - (float)minimumSnappingHeight;
 - (id)refreshControl;
 - (void)refreshControlInvalidatedSnappingHeight;
 - (void)setAttributedTitle:(id)arg1;
+- (void)setImpactFeedbackBehavior:(id)arg1;
 - (void)setRefreshControl:(id)arg1;
 - (void)setTintColor:(id)arg1;
 - (int)style;

@@ -3,11 +3,11 @@
  */
 
 @interface MPContentTastePendingUpdateRecord : NSObject {
-    NSUUID *_UUID;
-    NSString *_playlistGlobalID;
-    long long _storeAdamID;
-    unsigned int _tasteType;
-    int _type;
+    NSUUID * _UUID;
+    NSString * _playlistGlobalID;
+    long long  _storeAdamID;
+    unsigned int  _tasteType;
+    int  _type;
 }
 
 @property (nonatomic, readonly) NSUUID *UUID;

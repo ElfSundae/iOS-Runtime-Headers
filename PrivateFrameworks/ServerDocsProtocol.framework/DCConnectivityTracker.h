@@ -3,10 +3,10 @@
  */
 
 @interface DCConnectivityTracker : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionDownloadDelegate> {
-    NSCountedSet *_delegates;
-    SDFFreshObjectQueue *_events;
-    BOOL _isConnected;
-    NSString *_server;
+    NSCountedSet * _delegates;
+    SDFFreshObjectQueue * _events;
+    BOOL  _isConnected;
+    NSString * _server;
 }
 
 @property (readonly, copy) NSString *debugDescription;

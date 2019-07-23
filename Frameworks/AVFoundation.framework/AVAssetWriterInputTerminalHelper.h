@@ -3,8 +3,8 @@
  */
 
 @interface AVAssetWriterInputTerminalHelper : AVAssetWriterInputHelper <AVAssetWriterInputMediaDataRequesterDelegate> {
-    BOOL _didRequestMediaDataOnce;
-    int _terminalStatus;
+    BOOL  _didRequestMediaDataOnce;
+    int  _terminalStatus;
 }
 
 @property (readonly, copy) NSString *debugDescription;

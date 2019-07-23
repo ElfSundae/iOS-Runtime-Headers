@@ -6,8 +6,8 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _coordinate;
-    id _userInfo;
+    }  _coordinate;
+    id  _userInfo;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } coordinate;

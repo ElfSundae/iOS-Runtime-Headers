@@ -12,26 +12,27 @@
             float width; 
             float height; 
         } size; 
-    } _alignmentRect;
-    NSObject<TDCustomAssetSource> *_customAsset;
-    NSString *_elementName;
-    NSDate *_modificationDate;
-    NSString *_name;
-    NSString *_partName;
-    CUIRenditionKey *_renditionKey;
-    int _renditionType;
+    }  _alignmentRect;
+    NSObject<TDCustomAssetSource> * _customAsset;
+    NSString * _elementName;
+    NSDate * _modificationDate;
+    NSString * _name;
+    BOOL  _optOutOfThinning;
+    NSString * _partName;
+    CUIRenditionKey * _renditionKey;
+    int  _renditionType;
     struct CGSize { 
         float width; 
         float height; 
-    } _resizableSliceSize;
-    int _resizingMode;
+    }  _resizableSliceSize;
+    int  _resizingMode;
     struct { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _sliceInsets;
-    int _templateRenderingMode;
+    }  _sliceInsets;
+    int  _templateRenderingMode;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } alignmentRect;
@@ -40,6 +41,7 @@
 @property (nonatomic) BOOL isTemplate;
 @property (nonatomic, copy) NSDate *modificationDate;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic) BOOL optOutOfThinning;
 @property (nonatomic, copy) NSString *partName;
 @property (nonatomic, copy) CUIRenditionKey *renditionKey;
 @property (nonatomic) int renditionType;
@@ -55,6 +57,7 @@
 - (BOOL)isTemplate;
 - (id)modificationDate;
 - (id)name;
+- (BOOL)optOutOfThinning;
 - (id)partName;
 - (id)renditionKey;
 - (int)renditionSubtype;
@@ -67,6 +70,7 @@
 - (void)setIsTemplate:(BOOL)arg1;
 - (void)setModificationDate:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setOptOutOfThinning:(BOOL)arg1;
 - (void)setPartName:(id)arg1;
 - (void)setRenditionKey:(id)arg1;
 - (void)setRenditionType:(int)arg1;

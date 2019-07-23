@@ -3,7 +3,7 @@
  */
 
 @interface EKUIMiniMonthView : EKUIYearMonthView {
-    NSDateComponents *_dateComponents;
+    NSDateComponents * _dateComponents;
 }
 
 @property (nonatomic, retain) NSDateComponents *dateComponents;

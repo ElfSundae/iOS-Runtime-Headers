@@ -3,9 +3,9 @@
  */
 
 @interface ICSearchIndexableNoteContextIdentifier : NSObject <ICPropertyListSerializable, NSCopying> {
-    NSString *_contextIdentifierString;
-    BOOL _forAnyContext;
-    BOOL _isMainContext;
+    NSString * _contextIdentifierString;
+    BOOL  _forAnyContext;
+    BOOL  _isMainContext;
 }
 
 @property (nonatomic, readonly) NSString *contextIdentifierString;

@@ -3,7 +3,7 @@
  */
 
 @interface _UIViewServiceDummyPopoverController : UIPopoverController {
-    <_UIViewServiceDummyPopoverControllerDelegate> *_dummyPopoverControllerDelegate;
+    <_UIViewServiceDummyPopoverControllerDelegate> * _dummyPopoverControllerDelegate;
 }
 
 @property (nonatomic) <_UIViewServiceDummyPopoverControllerDelegate> *dummyPopoverControllerDelegate;

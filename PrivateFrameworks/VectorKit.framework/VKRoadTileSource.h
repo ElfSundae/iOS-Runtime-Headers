@@ -4,6 +4,7 @@
 
 @interface VKRoadTileSource : VKVectorTileSource
 
+- (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4;
 - (unsigned long long)mapLayerForZoomLevelRange;
 - (BOOL)minimumZoomLevelBoundsCamera;
 - (void)releaseTraffic;

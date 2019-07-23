@@ -3,8 +3,8 @@
  */
 
 @interface MPRadioStationRemotePlaybackQueue : MPRemotePlaybackQueue {
-    long long _stationID;
-    NSString *_stationStringID;
+    long long  _stationID;
+    NSString * _stationStringID;
 }
 
 @property (nonatomic, readonly) long long stationID;

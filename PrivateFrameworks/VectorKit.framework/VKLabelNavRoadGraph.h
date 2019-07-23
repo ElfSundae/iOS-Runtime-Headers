@@ -3,11 +3,11 @@
  */
 
 @interface VKLabelNavRoadGraph : NSObject {
-    unsigned int _currentRoadStartSimplifiedPointIndex;
-    NSMutableSet *_duplicateTiles;
-    unsigned int _firstPOIAligningRouteSegment;
-    NSMutableArray *_intersections;
-    NSMutableArray *_junctions;
+    unsigned int  _currentRoadStartSimplifiedPointIndex;
+    NSMutableSet * _duplicateTiles;
+    unsigned int  _firstPOIAligningRouteSegment;
+    NSMutableArray * _intersections;
+    NSMutableArray * _junctions;
     struct Box<double, 2> { 
         struct Matrix<double, 2, 1> { 
             double _e[2]; 
@@ -15,11 +15,11 @@
         struct Matrix<double, 2, 1> { 
             double _e[2]; 
         } _maximum; 
-    } _offRouteJunctionSelectRect;
-    NSMutableArray *_offRouteJunctions;
-    BOOL _offRouteJunctionsValid;
-    NSMutableArray *_oppositeCarriagewayJunctions;
-    BOOL _oppositeCarriagewayJunctionsValid;
+    }  _offRouteJunctionSelectRect;
+    NSMutableArray * _offRouteJunctions;
+    BOOL  _offRouteJunctionsValid;
+    NSMutableArray * _oppositeCarriagewayJunctions;
+    BOOL  _oppositeCarriagewayJunctionsValid;
     struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>, std::__1::hash<std::__1::basic_string<char> >, std::__1::equal_to<std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> > > > { 
         struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> >, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> >, std::__1::hash<std::__1::basic_string<char> >, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> >, std::__1::equal_to<std::__1::basic_string<char> >, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> > > > { 
             struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> >, void *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature> >, void *> *> > > { 
@@ -44,33 +44,33 @@
                 float __first_; 
             } __p3_; 
         } __table_; 
-    } _routeFeatureMap;
-    BOOL _routeFeatureMapValid;
+    }  _routeFeatureMap;
+    BOOL  _routeFeatureMapValid;
     struct PolylineCoordinate { 
         unsigned int index; 
         float offset; 
-    } _routeUserOffset;
+    }  _routeUserOffset;
     struct vector<RouteSegment, std::__1::allocator<RouteSegment> > { 
         struct RouteSegment {} *__begin_; 
         struct RouteSegment {} *__end_; 
         struct __compressed_pair<RouteSegment *, std::__1::allocator<RouteSegment> > { 
             struct RouteSegment {} *__first_; 
         } __end_cap_; 
-    } _screenRouteSegments;
-    BOOL _screenRouteValid;
+    }  _screenRouteSegments;
+    BOOL  _screenRouteValid;
     struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { 
         struct Matrix<double, 2, 1> {} *__begin_; 
         struct Matrix<double, 2, 1> {} *__end_; 
         struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { 
             struct Matrix<double, 2, 1> {} *__first_; 
         } __end_cap_; 
-    } _simplifiedRoutePoints;
-    BOOL _simplifiedRouteValid;
-    NSMutableDictionary *_tileDatasByIndex;
-    NSMutableSet *_tiles;
+    }  _simplifiedRoutePoints;
+    BOOL  _simplifiedRouteValid;
+    NSMutableDictionary * _tileDatasByIndex;
+    NSMutableSet * _tiles;
     struct Matrix<float, 2, 1> { 
         float _e[2]; 
-    } _unitHeading;
+    }  _unitHeading;
 }
 
 @property (nonatomic, retain) NSMutableArray *junctions;
@@ -92,7 +92,6 @@
 - (void)dealloc;
 - (void)evaluateDualCarriagewayForJunction:(id)arg1 outputJunctionList:(id)arg2;
 - (id)initWithJunctions:(id)arg1;
-- (BOOL)isOnScreenRouteBackwardsAtJunction:(id)arg1 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; }*)arg2;
 - (BOOL)isPriorRouteCollinearWithRoad:(id)arg1 distance:(float)arg2;
 - (id)junctionForRoad:(id)arg1 nearJunction:(BOOL)arg2 crossTileEdge:(BOOL)arg3;
 - (id)junctionListForDepth:(unsigned int)arg1;
@@ -107,5 +106,6 @@
 - (void)setJunctions:(id)arg1;
 - (void)setTiles:(id)arg1;
 - (void)startingLabelLayoutWithContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; }*)arg1 routeUserOffset:(struct PolylineCoordinate { unsigned int x1; float x2; })arg2;
+- (struct Matrix<float, 2, 1> { float x1[2]; })unitHeading;
 
 @end

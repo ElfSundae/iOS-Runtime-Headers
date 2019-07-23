@@ -3,9 +3,9 @@
  */
 
 @interface GEORouteIncident : PBCodable <NSCopying> {
-    NSString *_crossStreet;
-    long long _endTime;
-    BOOL _endTimeReliable;
+    NSString * _crossStreet;
+    long long  _endTime;
+    BOOL  _endTimeReliable;
     struct { 
         unsigned int endTime : 1; 
         unsigned int startTime : 1; 
@@ -15,17 +15,17 @@
         unsigned int significance : 1; 
         unsigned int type : 1; 
         unsigned int endTimeReliable : 1; 
-    } _has;
-    NSString *_incidentId;
-    NSString *_info;
-    unsigned int _laneClosureCount;
-    int _laneClosureType;
-    GEOLatLng *_position;
-    int _significance;
-    long long _startTime;
-    NSString *_street;
-    int _type;
-    long long _updateTime;
+    }  _has;
+    NSString * _incidentId;
+    NSString * _info;
+    unsigned int  _laneClosureCount;
+    int  _laneClosureType;
+    GEOLatLng * _position;
+    int  _significance;
+    long long  _startTime;
+    NSString * _street;
+    int  _type;
+    long long  _updateTime;
 }
 
 @property (nonatomic, retain) NSString *crossStreet;
@@ -55,8 +55,9 @@
 @property (nonatomic) int type;
 @property (nonatomic) long long updateTime;
 
-// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
-
+- (int)StringAsLaneClosureType:(id)arg1;
+- (int)StringAsSignificance:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)crossStreet;
@@ -84,6 +85,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (unsigned int)laneClosureCount;
 - (int)laneClosureType;
+- (id)laneClosureTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)position;
 - (BOOL)readFrom:(id)arg1;
@@ -109,14 +111,12 @@
 - (void)setType:(int)arg1;
 - (void)setUpdateTime:(long long)arg1;
 - (int)significance;
+- (id)significanceAsString:(int)arg1;
 - (long long)startTime;
 - (id)street;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (long long)updateTime;
 - (void)writeTo:(id)arg1;
-
-// Image: /System/Library/Frameworks/MapKit.framework/MapKit
-
-- (struct CGImage { }*)_mapKitImage;
 
 @end

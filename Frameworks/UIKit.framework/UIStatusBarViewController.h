@@ -3,11 +3,11 @@
  */
 
 @interface UIStatusBarViewController : UIViewController {
-    BOOL _iPhoneWS;
-    BOOL _keyboardVisible;
-    UIView *_statusBar;
-    UIClassicStatusBarView *_statusBarBackgroundView;
-    UIWindow *_window;
+    BOOL  _iPhoneWS;
+    BOOL  _keyboardVisible;
+    UIView * _statusBar;
+    UIClassicStatusBarView * _statusBarBackgroundView;
+    UIWindow * _window;
 }
 
 + (double)statusBarOrientationAnimationDurationFrom:(int)arg1 to:(int)arg2;

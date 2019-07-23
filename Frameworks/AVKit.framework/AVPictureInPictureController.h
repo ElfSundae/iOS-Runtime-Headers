@@ -3,25 +3,24 @@
  */
 
 @interface AVPictureInPictureController : NSObject <AVPictureInPictureViewControllerDelegate, PGPictureInPictureProxyDelegate> {
-    BOOL _allowsPictureInPicturePlayback;
-    <AVPictureInPictureControllerDelegate> *_delegate;
+    BOOL  _allowsPictureInPicturePlayback;
+    <AVPictureInPictureControllerDelegate> * _delegate;
     struct { 
-        unsigned int pictureInPictureControllerWillStartPictureInPicture : 1; 
-        unsigned int pictureInPictureControllerDidStartPictureInPicture : 1; 
-        unsigned int pictureInPictureController_failedToStartPictureInPictureWithError : 1; 
-        unsigned int pictureInPictureControllerWillStopPictureInPicture : 1; 
-        unsigned int pictureInPictureControllerDidStopPictureInPicture : 1; 
-        unsigned int pictureInPictureController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler : 1; 
-    } _delegateRespondsTo;
-    NSObject<OS_dispatch_source> *_fullScreenCheckTimer;
-    unsigned int _isFullScreen;
-    unsigned int _isPlaying;
-    PGPictureInPictureProxy *_pictureInPictureProxy;
-    AVPictureInPictureViewController *_pictureInPictureViewController;
-    AVPlayerController *_playerController;
-    AVPlayerLayer *_playerLayer;
-    __AVPlayerLayerView *_playerLayerView;
-    AVPlayerControllerTimeResolver *_timeResolver;
+        BOOL pictureInPictureControllerWillStartPictureInPicture; 
+        BOOL pictureInPictureControllerDidStartPictureInPicture; 
+        BOOL pictureInPictureController_failedToStartPictureInPictureWithError; 
+        BOOL pictureInPictureControllerWillStopPictureInPicture; 
+        BOOL pictureInPictureControllerDidStopPictureInPicture; 
+        BOOL pictureInPictureController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler; 
+    }  _delegateRespondsTo;
+    NSObject<OS_dispatch_source> * _fullScreenCheckTimer;
+    BOOL  _isFullScreen;
+    BOOL  _isPlaying;
+    PGPictureInPictureProxy * _pictureInPictureProxy;
+    AVPictureInPictureViewController * _pictureInPictureViewController;
+    AVPlayerController * _playerController;
+    AVPlayerLayer * _playerLayer;
+    __AVPlayerLayerView * _playerLayerView;
 }
 
 @property (nonatomic) BOOL allowsPictureInPicturePlayback;
@@ -82,5 +81,6 @@
 - (void)setPlayerController:(id)arg1;
 - (void)startPictureInPicture;
 - (void)stopPictureInPicture;
+- (void)stopPictureInPictureEvenWhenInBackground;
 
 @end

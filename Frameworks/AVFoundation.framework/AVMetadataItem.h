@@ -3,7 +3,7 @@
  */
 
 @interface AVMetadataItem : NSObject <AVAsynchronousKeyValueLoading, NSCopying, NSMutableCopying> {
-    AVMetadataItemInternal *_priv;
+    AVMetadataItemInternal * _priv;
 }
 
 @property (nonatomic, readonly, copy) NSString *dataType;
@@ -58,6 +58,7 @@
 - (void)_updateIdentifier;
 - (void)_updateLanguageInformationFromExtendedLanguageTag:(id)arg1;
 - (void)_updateLanguageInformationFromLocale:(id)arg1;
+- (id)_valueFromCFType:(void*)arg1;
 - (void)cancelLoading;
 - (id)commonKey;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

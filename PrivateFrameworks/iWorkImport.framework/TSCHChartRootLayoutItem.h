@@ -3,8 +3,8 @@
  */
 
 @interface TSCHChartRootLayoutItem : TSCHChartLayoutItem <TSCHUnretainedParent> {
-    TSCHChartAbstractAreaLayoutItem *mChartArea;
-    TSCHChartInfo *mChartInfo;
+    TSCHChartAbstractAreaLayoutItem * mChartArea;
+    TSCHChartInfo * mChartInfo;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,19 +14,19 @@
             float width; 
             float height; 
         } size; 
-    } mChartInnerFrame;
-    TSCHChartModel *mChartModel;
-    BOOL mInResize;
+    }  mChartInnerFrame;
+    TSCHChartModel * mChartModel;
+    BOOL  mInResize;
     struct { 
         BOOL forceOmitLegend; 
         BOOL forceOmitTitle; 
         BOOL forceOmitAxisTitle; 
         BOOL enable3DTightBounds; 
         BOOL enable3DScaledDepthBounds; 
-        BOOL enable3DSageMaxDepthRatio; 
+        int maxDepthRatioType; 
         unsigned int max3DLimitingSeries; 
-    } mLayoutSettings;
-    TSCHLegendAreaLayoutItem *mLegend;
+    }  mLayoutSettings;
+    TSCHLegendAreaLayoutItem * mLegend;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -36,12 +36,12 @@
             float width; 
             float height; 
         } size; 
-    } mLegendInnerFrame;
-    NSDictionary *mSeriesIndexedPieWedgeExplosions;
+    }  mLegendInnerFrame;
+    NSDictionary * mSeriesIndexedPieWedgeExplosions;
     struct CGSize { 
         float width; 
         float height; 
-    } mStartingSize;
+    }  mStartingSize;
 }
 
 @property (nonatomic, readonly) TSCHChartAbstractAreaLayoutItem *chartAreaLayoutItem;
@@ -65,7 +65,7 @@
 - (void)invalidateSeriesIndexedPieWedgeExplosions;
 - (void)invalidateTransientModel;
 - (BOOL)isInResize;
-- (struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })layoutSettings;
+- (struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })layoutSettings;
 - (id)legendAreaLayoutItem;
 - (id)model;
 - (void)p_layoutInward;
@@ -77,7 +77,7 @@
 - (void)setChartBodySize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setChartInnerFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 legendInnerFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)setDataSetIndex:(unsigned int)arg1;
-- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })arg1;
+- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })arg1;
 - (void)setLegendSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setSeriesIndexedPieWedgeExplosions:(id)arg1;
 - (struct CGSize { float x1; float x2; })startingSize;

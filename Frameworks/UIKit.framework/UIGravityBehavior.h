@@ -6,7 +6,7 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _gravity;
+    }  _gravity;
 }
 
 @property (nonatomic) float angle;
@@ -16,7 +16,7 @@
 
 + (BOOL)_isPrimitiveBehavior;
 
-- (void)_addItem:(id)arg1;
+- (void)_addGravityItem:(id)arg1;
 - (void)_associate;
 - (void)_dissociate;
 - (void)_setAngle:(float)arg1 magnitude:(float)arg2;

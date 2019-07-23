@@ -3,17 +3,17 @@
  */
 
 @interface SKUIPINInputControl : UIControl <SKUIViewElementView, UIKeyInput> {
-    UIColor *_boxBackgroundColor;
-    UIColor *_boxBorderColor;
-    UIFont *_font;
-    int _keyboardType;
-    NSMutableArray *_labels;
-    BOOL _needsLabelReload;
-    int _numberOfCharacters;
-    BOOL _secureTextEntry;
-    NSMutableString *_text;
-    UIColor *_textColor;
-    SKUIViewElement *_viewElement;
+    UIColor * _boxBackgroundColor;
+    UIColor * _boxBorderColor;
+    UIFont * _font;
+    int  _keyboardType;
+    NSMutableArray * _labels;
+    BOOL  _needsLabelReload;
+    int  _numberOfCharacters;
+    BOOL  _secureTextEntry;
+    NSMutableString * _text;
+    UIColor * _textColor;
+    SKUIViewElement * _viewElement;
 }
 
 @property (nonatomic) int autocapitalizationType;
@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic, copy) UIFont *font;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
 @property (nonatomic) int keyboardAppearance;
 @property (nonatomic) int keyboardType;
@@ -34,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) UIColor *textColor;
+@property (nonatomic, copy) NSString *textContentType;
 
 + (float)_defaultBoxSizeForFont:(id)arg1;
 + (struct CGSize { float x1; float x2; })preferredSizeForViewElement:(id)arg1 context:(id)arg2;

@@ -3,10 +3,10 @@
  */
 
 @interface TSDStrokePattern : NSObject <NSCopying, TSDMixing> {
-    unsigned int mCount;
-    float mPattern;
-    float mPhase;
-    int mType;
+    unsigned int  mCount;
+    float  mPattern;
+    float  mPhase;
+    int  mType;
 }
 
 @property (nonatomic, readonly) unsigned int count;
@@ -42,6 +42,9 @@
 - (int)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)p_applyToCAShapeLayer:(id)arg1 lineWidth:(float)arg2;
 - (id)p_initWithType:(int)arg1 pattern:(const float*)arg2 count:(unsigned int)arg3 phase:(float)arg4;
+- (id)p_patternString;
+- (float)p_renderableLengthForUnclippedPatternWithLineWidth:(float)arg1 withinAvailableLength:(float)arg2;
+- (id)p_typeString;
 - (float*)pattern;
 - (int)patternType;
 - (float)phase;

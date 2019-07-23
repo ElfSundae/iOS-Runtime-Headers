@@ -12,10 +12,10 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
-    float _rotationAngle;
-    AKSignature *_signature;
-    UIColor *_strokeColor;
+    }  _rectangle;
+    float  _rotationAngle;
+    AKSignature * _signature;
+    UIColor * _strokeColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -2,8 +2,18 @@
    Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
  */
 
-@interface SKUISearchBar : UISearchBar
+@interface SKUISearchBar : UISearchBar {
+    float  _intrinsicWidth;
+}
 
-- (id)hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
+@property (nonatomic) float intrinsicWidth;
+
+- (id)init;
+- (float)intrinsicWidth;
+- (void)setIntrinsicWidth:(float)arg1;
+- (void)setShowsCancelButton:(BOOL)arg1;
+- (void)setShowsCancelButton:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)showsCancelButton;
+- (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 
 @end

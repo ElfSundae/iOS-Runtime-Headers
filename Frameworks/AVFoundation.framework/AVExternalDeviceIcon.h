@@ -3,7 +3,7 @@
  */
 
 @interface AVExternalDeviceIcon : NSObject {
-    AVExternalDeviceIconInternal *_externalDeviceIcon;
+    AVExternalDeviceIconInternal * _externalDeviceIcon;
 }
 
 @property (nonatomic, readonly) NSData *imageData;

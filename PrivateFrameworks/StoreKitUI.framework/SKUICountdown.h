@@ -3,28 +3,28 @@
  */
 
 @interface SKUICountdown : NSObject {
-    NSURL *_URL;
-    SKUIArtworkList *_artworkList;
-    unsigned int _dateFormat;
-    SKUIArtworkList *_endArtworkList;
-    NSDate *_endDate;
-    long long _finalValue;
-    UIColor *_flapBottomColor;
-    UIColor *_flapTopColor;
-    BOOL _flapped;
-    UIColor *_fontColor;
-    long long _initialValue;
-    BOOL _isLoaded;
-    NSString *_numberFormat;
-    int _rate;
-    NSDate *_startDate;
-    int _type;
+    NSURL * _URL;
+    <SKUIArtworkProviding> * _artworkProvider;
+    unsigned int  _dateFormat;
+    <SKUIArtworkProviding> * _endArtworkProvider;
+    NSDate * _endDate;
+    long long  _finalValue;
+    UIColor * _flapBottomColor;
+    UIColor * _flapTopColor;
+    BOOL  _flapped;
+    UIColor * _fontColor;
+    long long  _initialValue;
+    BOOL  _isLoaded;
+    NSString * _numberFormat;
+    int  _rate;
+    NSDate * _startDate;
+    int  _type;
 }
 
 @property (nonatomic, copy) NSURL *URL;
-@property (nonatomic, retain) SKUIArtworkList *artworkList;
+@property (nonatomic, retain) <SKUIArtworkProviding> *artworkProvider;
 @property (nonatomic) unsigned int dateFormat;
-@property (nonatomic, retain) SKUIArtworkList *endArtworkList;
+@property (nonatomic, retain) <SKUIArtworkProviding> *endArtworkProvider;
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic) long long finalValue;
 @property (nonatomic, copy) UIColor *flapBottomColor;
@@ -39,9 +39,9 @@
 
 - (void).cxx_destruct;
 - (id)URL;
-- (id)artworkList;
+- (id)artworkProvider;
 - (unsigned int)dateFormat;
-- (id)endArtworkList;
+- (id)endArtworkProvider;
 - (id)endDate;
 - (long long)finalValue;
 - (id)flapBottomColor;
@@ -53,9 +53,9 @@
 - (BOOL)isLoaded;
 - (id)numberFormat;
 - (int)rate;
-- (void)setArtworkList:(id)arg1;
+- (void)setArtworkProvider:(id)arg1;
 - (void)setDateFormat:(unsigned int)arg1;
-- (void)setEndArtworkList:(id)arg1;
+- (void)setEndArtworkProvider:(id)arg1;
 - (void)setEndDate:(id)arg1;
 - (void)setFinalValue:(long long)arg1;
 - (void)setFlapBottomColor:(id)arg1;

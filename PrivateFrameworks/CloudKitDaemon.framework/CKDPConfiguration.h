@@ -3,13 +3,13 @@
  */
 
 @interface CKDPConfiguration : PBCodable <NSCopying> {
-    unsigned long long _created;
-    unsigned long long _expires;
-    NSMutableArray *_fields;
+    unsigned long long  _created;
+    unsigned long long  _expires;
+    NSMutableArray * _fields;
     struct { 
         unsigned int created : 1; 
         unsigned int expires : 1; 
-    } _has;
+    }  _has;
 }
 
 @property (nonatomic) unsigned long long created;
@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSMutableArray *fields;
 @property (nonatomic) BOOL hasCreated;
 @property (nonatomic) BOOL hasExpires;
+
++ (Class)fieldsType;
 
 - (void).cxx_destruct;
 - (void)addFields:(id)arg1;

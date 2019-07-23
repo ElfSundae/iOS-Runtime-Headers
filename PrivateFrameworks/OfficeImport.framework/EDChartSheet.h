@@ -12,9 +12,9 @@
             float width; 
             float height; 
         } size; 
-    } mBounds;
-    bool mIsBoundsSet;
-    CHDChart *mMainChart;
+    }  mBounds;
+    bool  mIsBoundsSet;
+    CHDChart * mMainChart;
 }
 
 - (void)addDrawable:(id)arg1;

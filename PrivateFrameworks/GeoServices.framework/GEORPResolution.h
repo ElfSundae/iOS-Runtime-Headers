@@ -3,19 +3,19 @@
  */
 
 @interface GEORPResolution : PBCodable <NSCopying> {
-    GEOMapRegion *_displayRegion;
-    int _displayStyle;
+    GEOMapRegion * _displayRegion;
+    int  _displayStyle;
     struct { 
         unsigned int resolutionDate : 1; 
         unsigned int transitLineMuid : 1; 
         unsigned int displayStyle : 1; 
-    } _has;
-    NSString *_localizedAlertText;
-    NSMutableArray *_localizedChangeLists;
-    NSString *_localizedDescription;
-    double _resolutionDate;
-    unsigned long long _transitLineMuid;
-    NSMutableArray *_updatedPlaces;
+    }  _has;
+    NSString * _localizedAlertText;
+    NSMutableArray * _localizedChangeLists;
+    NSString * _localizedDescription;
+    double  _resolutionDate;
+    unsigned long long  _transitLineMuid;
+    NSMutableArray * _updatedPlaces;
 }
 
 @property (nonatomic, retain) GEOMapRegion *displayRegion;
@@ -33,6 +33,10 @@
 @property (nonatomic) unsigned long long transitLineMuid;
 @property (nonatomic, retain) NSMutableArray *updatedPlaces;
 
++ (Class)localizedChangeListType;
++ (Class)updatedPlaceType;
+
+- (int)StringAsDisplayStyle:(id)arg1;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
 - (void)clearLocalizedChangeLists;
@@ -44,6 +48,7 @@
 - (id)dictionaryRepresentation;
 - (id)displayRegion;
 - (int)displayStyle;
+- (id)displayStyleAsString:(int)arg1;
 - (BOOL)hasDisplayRegion;
 - (BOOL)hasDisplayStyle;
 - (BOOL)hasLocalizedAlertText;

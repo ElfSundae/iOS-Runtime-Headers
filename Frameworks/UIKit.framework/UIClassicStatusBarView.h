@@ -3,7 +3,7 @@
  */
 
 @interface UIClassicStatusBarView : _UIScrollsToTopInitiatorView {
-    UIImage *_image;
+    UIImage * _image;
 }
 
 @property (nonatomic, retain) UIImage *image;

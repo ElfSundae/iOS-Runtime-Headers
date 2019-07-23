@@ -3,7 +3,7 @@
  */
 
 @interface AVMutableComposition : AVComposition {
-    AVMutableCompositionInternal *_mutablePriv;
+    AVMutableCompositionInternal * _mutablePriv;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } naturalSize;

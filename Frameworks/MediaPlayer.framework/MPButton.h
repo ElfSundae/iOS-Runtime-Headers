@@ -8,25 +8,30 @@
         float left; 
         float bottom; 
         float right; 
-    } _alignmentRectInsets;
+    }  _alignmentRectInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _hitRectInsets;
-    double _holdDelayInterval;
-    unsigned int _holding;
+    }  _hitRectInsets;
+    BOOL  _hitTestDebugEnabled;
+    UIView * _hitTestDebugView;
+    double  _holdDelayInterval;
+    unsigned int  _holding;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } alignmentRectInsets;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } hitRectInsets;
+@property (nonatomic) BOOL hitTestDebugEnabled;
 @property (nonatomic) double holdDelayInterval;
+@property (getter=isHolding, nonatomic, readonly) BOOL holding;
 
 + (id)easyTouchButtonWithType:(int)arg1;
 + (float)easyTouchDefaultCharge;
 + (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })easyTouchDefaultHitRectInsets;
 
+- (void).cxx_destruct;
 - (void)_delayedTriggerHold;
 - (void)_handleTouchCancel;
 - (void)_handleTouchDown;
@@ -38,11 +43,17 @@
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })hitRect;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })hitRectInsets;
+- (BOOL)hitTestDebugEnabled;
 - (double)holdDelayInterval;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (BOOL)isHolding;
+- (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (void)setAlignmentRectInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setHitRectInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
+- (void)setHitTestDebugEnabled:(BOOL)arg1;
 - (void)setHoldDelayInterval:(double)arg1;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end

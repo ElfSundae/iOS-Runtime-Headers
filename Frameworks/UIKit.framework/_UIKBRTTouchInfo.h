@@ -3,42 +3,40 @@
  */
 
 @interface _UIKBRTTouchInfo : _UIKBRTObject {
-    BOOL _canLogTouch;
-    double _currentTimestamp;
+    double  _currentTimestamp;
     struct CGPoint { 
         float x; 
         float y; 
-    } _currentTouchPoint;
-    BOOL _currentTouchState;
-    float _majorRadius;
-    float _majorRadiusTolerance;
-    double _originalTimestamp;
+    }  _currentTouchPoint;
+    BOOL  _currentTouchState;
+    float  _currentZGradient;
+    float  _maximumRadius;
+    double  _originalTimestamp;
     struct CGPoint { 
         float x; 
         float y; 
-    } _originalTouchPoint;
-    BOOL _preRuleTouchState;
-    _UIKBRTTimerBlock *_timer;
-    NSObject<OS_dispatch_queue> *_timerQueue;
-    id _touchIdentifier;
-    NSUUID *_touchUUID;
+    }  _originalTouchPoint;
+    float  _originalZGradient;
+    BOOL  _preRuleTouchState;
+    _UIKBRTTimerBlock * _timer;
+    NSObject<OS_dispatch_queue> * _timerQueue;
+    id  _touchIdentifier;
 }
 
-@property (nonatomic, readonly) BOOL canLogTouch;
 @property (nonatomic, readonly) double currentTimestamp;
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } currentTouchPoint;
 @property (nonatomic) BOOL currentTouchState;
-@property (nonatomic, readonly) float majorRadius;
-@property (nonatomic, readonly) float majorRadiusTolerance;
+@property (nonatomic, readonly) float currentZGradient;
+@property (nonatomic, readonly) float maximumRadius;
 @property (nonatomic, readonly) _UIKBRTTouchInfo *nextTouch;
 @property (nonatomic, readonly) double originalTimestamp;
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } originalTouchPoint;
+@property (nonatomic, readonly) float originalZGradient;
 @property (nonatomic) BOOL preRuleTouchState;
 @property (nonatomic, readonly) _UIKBRTTouchInfo *previousTouch;
 @property (nonatomic, readonly) _UIKBRTTimerBlock *timer;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *timerQueue;
 @property (nonatomic, readonly) id touchIdentifier;
-@property (nonatomic, readonly) NSUUID *touchUUID;
 
 + (id)createTouchInfoForTouch:(id)arg1 withIdentifier:(id)arg2 canLogTouch:(BOOL)arg3;
 + (void)setTouchInfo:(id)arg1 forIdentifier:(id)arg2;
@@ -46,20 +44,20 @@
 + (id)touchInfoForTouch:(id)arg1 withIdentifier:(id)arg2;
 
 - (void).cxx_destruct;
-- (BOOL)canLogTouch;
 - (void)cleanup;
 - (double)currentTimestamp;
 - (struct CGPoint { float x1; float x2; })currentTouchPoint;
 - (BOOL)currentTouchState;
+- (float)currentZGradient;
 - (void)dealloc;
 - (void)fireTimerNow;
 - (id)initWithTouch:(id)arg1 withIdentifier:(id)arg2 canLogTouch:(BOOL)arg3;
 - (void)invalidateTimer;
-- (float)majorRadius;
-- (float)majorRadiusTolerance;
+- (float)maximumRadius;
 - (id)nextTouch;
 - (double)originalTimestamp;
 - (struct CGPoint { float x1; float x2; })originalTouchPoint;
+- (float)originalZGradient;
 - (BOOL)preRuleTouchState;
 - (id)previousTouch;
 - (void)setCurrentTouchState:(BOOL)arg1;
@@ -69,7 +67,6 @@
 - (id)timer;
 - (id)timerQueue;
 - (id)touchIdentifier;
-- (id)touchUUID;
 - (void)updateTouch:(id)arg1;
 - (BOOL)willChangeTouchInfo:(id)arg1 toState:(BOOL)arg2;
 

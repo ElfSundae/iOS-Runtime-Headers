@@ -16,7 +16,6 @@
 
 @optional
 
-- (void)addTextAttachmentView:(UIView *)arg1 forAttachment:(NSTextAttachment *)arg2;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })markedRange;
 - (void)setMarkedRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (void)setTextContainer:(NSTextContainer *)arg1;

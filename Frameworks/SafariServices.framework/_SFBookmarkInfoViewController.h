@@ -3,22 +3,22 @@
  */
 
 @interface _SFBookmarkInfoViewController : _SFPopoverSizingTableViewController <UITableViewDataSource, UITableViewDelegate, _SFBookmarkTextEntryTableViewControllerDelegate> {
-    BOOL _addingBookmark;
-    BOOL _addingToFavorites;
-    SFBookmarkTextEntryTableViewCell *_addressCell;
-    WebBookmark *_bookmark;
-    WebBookmarkCollection *_collection;
-    <_SFBookmarkInfoViewControllerDelegate> *_delegate;
-    BOOL _didSelectFolder;
-    unsigned int _editingField;
-    BOOL _folderPickerExpanded;
-    NSArray *_folders;
-    _SFSiteIconView *_iconImageView;
-    WebBookmark *_parentBookmark;
-    BOOL _saveWhenDismissed;
-    int _selectedFolderIndex;
-    UITextField *_textFieldToRestoreFirstResponder;
-    SFBookmarkTextEntryTableViewCell *_titleCell;
+    BOOL  _addingBookmark;
+    BOOL  _addingToFavorites;
+    SFBookmarkTextEntryTableViewCell * _addressCell;
+    WebBookmark * _bookmark;
+    WebBookmarkCollection * _collection;
+    <_SFBookmarkInfoViewControllerDelegate> * _delegate;
+    BOOL  _didSelectFolder;
+    unsigned int  _editingField;
+    BOOL  _folderPickerExpanded;
+    NSArray * _folders;
+    _SFSiteIconView * _iconImageView;
+    WebBookmark * _parentBookmark;
+    BOOL  _saveWhenDismissed;
+    int  _selectedFolderIndex;
+    UITextField * _textFieldToRestoreFirstResponder;
+    SFBookmarkTextEntryTableViewCell * _titleCell;
 }
 
 @property (nonatomic, retain) WebBookmark *bookmark;
@@ -37,7 +37,6 @@
 - (void)_didBeginEditingTextField:(id)arg1;
 - (void)_didChangeEditingTextField:(id)arg1;
 - (void)_editField:(unsigned int)arg1;
-- (void)_reloadData;
 - (void)_reloadFolderInfoForced:(BOOL)arg1;
 - (void)_removeActionsForTextFields;
 - (void)_returnWasPressedInTextField:(id)arg1;
@@ -64,6 +63,7 @@
 - (BOOL)isEditingField;
 - (void)loadView;
 - (int)numberOfSectionsInTableView:(id)arg1;
+- (void)reloadData;
 - (void)saveChanges;
 - (void)setBookmark:(id)arg1;
 - (void)setDelegate:(id)arg1;

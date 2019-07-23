@@ -3,14 +3,14 @@
  */
 
 @interface MBSnapshot : NSObject <NSCoding, NSCopying> {
-    NSDate *_date;
-    NSString *_deviceName;
-    BOOL _isCompatible;
-    unsigned long long _quotaReserved;
-    unsigned int _snapshotID;
-    NSString *_snapshotUUID;
-    int _state;
-    NSString *_systemVersion;
+    NSDate * _date;
+    NSString * _deviceName;
+    BOOL  _isCompatible;
+    unsigned long long  _quotaReserved;
+    unsigned int  _snapshotID;
+    NSString * _snapshotUUID;
+    int  _state;
+    NSString * _systemVersion;
 }
 
 @property (nonatomic, readonly) NSDate *date;

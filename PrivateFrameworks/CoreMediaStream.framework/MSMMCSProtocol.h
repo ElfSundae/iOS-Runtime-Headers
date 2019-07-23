@@ -3,10 +3,10 @@
  */
 
 @interface MSMMCSProtocol : NSObject <MSStorageProtocol> {
-    NSString *_MMCSDirPath;
-    struct _mmcs_engine { } *_engine;
-    NSString *_engineDirPath;
-    NSString *_personID;
+    NSString * _MMCSDirPath;
+    struct _mmcs_engine { } * _engine;
+    NSString * _engineDirPath;
+    NSString * _personID;
 }
 
 @property (readonly, copy) NSString *debugDescription;

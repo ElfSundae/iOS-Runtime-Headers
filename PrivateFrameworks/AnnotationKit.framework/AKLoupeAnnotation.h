@@ -3,8 +3,8 @@
  */
 
 @interface AKLoupeAnnotation : AKStrokedAnnotation <AKRectangularAnnotationProtocol> {
-    NSData *_imageData;
-    float _magnification;
+    NSData * _imageData;
+    float  _magnification;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
+    }  _rectangle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)adjustModelToCompensateForOriginalExif;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (void)flattenModelExifOrientation:(int)arg1 withModelSize:(struct CGSize { float x1; float x2; })arg2;

@@ -3,10 +3,10 @@
  */
 
 @interface FBSSystemServiceClient : BSBaseXPCClient <FBSSystemServiceClient> {
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    BOOL _connectionDenied;
-    <FBSSystemServiceClientDelegate> *_delegate;
-    BOOL _invalidated;
+    NSObject<OS_dispatch_queue> * _calloutQueue;
+    BOOL  _connectionDenied;
+    <FBSSystemServiceClientDelegate> * _delegate;
+    BOOL  _invalidated;
 }
 
 @property (nonatomic, readonly, retain) NSObject<OS_dispatch_queue> *calloutQueue;

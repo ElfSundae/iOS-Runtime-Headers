@@ -3,17 +3,19 @@
  */
 
 @interface WKScrollView : UIWebScrollView {
-    WKScrollViewDelegateForwarder *_delegateForwarder;
-    <UIScrollViewDelegate> *_externalDelegate;
-    WKWebView<UIScrollViewDelegate> *_internalDelegate;
-    float _preferredScrollDecelerationFactor;
+    WKScrollViewDelegateForwarder * _delegateForwarder;
+    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<UIScrollViewDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<UIScrollViewDelegate> > { 
+        id m_weakReference; 
+    }  _externalDelegate;
+    WKWebView<UIScrollViewDelegate> * _internalDelegate;
+    float  _preferredScrollDecelerationFactor;
 }
 
 @property (nonatomic) WKWebView<UIScrollViewDelegate> *internalDelegate;
 @property (nonatomic, readonly) float preferredScrollDecelerationFactor;
 
-// Image: /System/Library/Frameworks/WebKit.framework/WebKit
-
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (struct CGSize { float x1; float x2; })_currentTopLeftRubberbandAmount;
 - (void)_restoreContentOffsetWithRubberbandAmount:(struct CGSize { float x1; float x2; })arg1;
 - (float)_rubberBandOffsetForOffset:(float)arg1 maxOffset:(float)arg2 minOffset:(float)arg3 range:(float)arg4 outside:(BOOL*)arg5;
@@ -25,13 +27,8 @@
 - (id)internalDelegate;
 - (float)preferredScrollDecelerationFactor;
 - (void)setContentInset:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
+- (void)setDecelerationRate:(float)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setInternalDelegate:(id)arg1;
-
-// Image: /System/Library/AccessibilityBundles/QuickSpeak.bundle/QuickSpeak
-
-+ (Class)safeCategoryBaseClass;
-
-- (id)_accessibilitySpeakSelectionTextInputResponder;
 
 @end

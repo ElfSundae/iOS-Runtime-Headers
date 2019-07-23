@@ -67,13 +67,13 @@
         unsigned char euuid[16]; 
         unsigned char vuuid[16]; 
         unsigned short ifnet_properties; 
-    } _descriptor;
-    NSUUID *_euuid;
-    NSData *_localAddress;
-    NSString *_processName;
-    NSData *_remoteAddress;
-    NSUUID *_uuid;
-    NSUUID *_vuuid;
+    }  _descriptor;
+    NSUUID * _euuid;
+    NSData * _localAddress;
+    NSString * _processName;
+    NSData * _remoteAddress;
+    NSUUID * _uuid;
+    NSUUID * _vuuid;
 }
 
 @property (readonly) int epid;

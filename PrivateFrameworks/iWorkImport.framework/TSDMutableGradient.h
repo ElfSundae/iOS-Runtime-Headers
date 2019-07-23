@@ -29,7 +29,9 @@
 - (void)setGradientStops:(id)arg1;
 - (void)setGradientType:(unsigned int)arg1;
 - (void)setInflectionOfStopAtIndex:(unsigned int)arg1 toInflection:(float)arg2;
+- (void)setIsAdvancedGradient:(BOOL)arg1;
 - (void)setLastColor:(id)arg1;
+- (void)setOpacity:(float)arg1;
 - (void)swapStopAtIndex:(unsigned int)arg1 withStopAtIndex:(unsigned int)arg2;
 
 @end

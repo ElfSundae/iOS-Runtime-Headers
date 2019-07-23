@@ -3,23 +3,24 @@
  */
 
 @interface NanoPhoneVoicemailMeta : PBCodable <NSCopying, SYObject> {
-    NSString *_callbackNumber;
-    NSString *_dataPath;
-    double _date;
-    int _duration;
-    int _flags;
+    NSString * _callbackNumber;
+    NSString * _dataPath;
+    double  _date;
+    int  _duration;
+    int  _flags;
     struct { 
         unsigned int date : 1; 
         unsigned int identifier : 1; 
         unsigned int remoteUID : 1; 
         unsigned int duration : 1; 
         unsigned int flags : 1; 
-    } _has;
-    long long _identifier;
-    long long _remoteUID;
-    NSString *_sender;
-    NanoPhoneVoicemailBody *_voicemailBody;
-    long long _voicemailNumber;
+    }  _has;
+    long long  _identifier;
+    long long  _remoteUID;
+    NSString * _sender;
+    NanoPhoneVoicemailBody * _voicemailBody;
+    long long  _voicemailNumber;
+    NanoPhoneVoicemailTranscript * _voicemailTranscript;
 }
 
 @property (nonatomic, retain) NSString *callbackNumber;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL hasRemoteUID;
 @property (nonatomic, readonly) BOOL hasSender;
 @property (nonatomic, readonly) BOOL hasVoicemailBody;
+@property (nonatomic, readonly) BOOL hasVoicemailTranscript;
 @property (readonly) unsigned int hash;
 @property (nonatomic) long long identifier;
 @property (nonatomic) long long remoteUID;
@@ -45,6 +47,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NanoPhoneVoicemailBody *voicemailBody;
 @property (nonatomic) long long voicemailNumber;
+@property (nonatomic, retain) NanoPhoneVoicemailTranscript *voicemailTranscript;
 
 + (id)voicemailWithMessage:(id)arg1;
 + (id)voicemailWithSYContext:(id)arg1;
@@ -76,6 +79,7 @@
 - (BOOL)hasRemoteUID;
 - (BOOL)hasSender;
 - (BOOL)hasVoicemailBody;
+- (BOOL)hasVoicemailTranscript;
 - (unsigned int)hash;
 - (long long)identifier;
 - (id)initWithVoicemail:(id)arg1;
@@ -100,11 +104,13 @@
 - (void)setSender:(id)arg1;
 - (void)setVoicemailBody:(id)arg1;
 - (void)setVoicemailNumber:(long long)arg1;
+- (void)setVoicemailTranscript:(id)arg1;
 - (id)syncId;
 - (int)syncOperation;
 - (id)voicemailBody;
 - (id)voicemailDescription;
 - (long long)voicemailNumber;
+- (id)voicemailTranscript;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetExportSession : NSObject {
-    AVAssetExportSessionInternal *_exportSession;
+    AVAssetExportSessionInternal * _exportSession;
 }
 
 @property (nonatomic, readonly, retain) AVAsset *asset;
@@ -35,11 +35,10 @@
 + (id)_mediaTypesToFailPassthroughExport;
 + (id)_mediaTypesToStripOnPassthroughExport;
 + (id)_settingForPreset:(id)arg1;
++ (id)_temporalMetadataPresetBlacklist;
 + (id)_utTypesForAudioOnly;
 + (id)_utTypesForDefaultPassthroughPreset;
 + (id)_utTypesForPresets;
-+ (id)_utTypesForTemporalMetadataPresets;
-+ (id)_videoCompressionPropertiesForVideoSetting:(id)arg1;
 + (id)_videoOnlyPresets;
 + (id)allExportPresets;
 + (void)determineCompatibilityOfExportPreset:(id)arg1 withAsset:(id)arg2 outputFileType:(id)arg3 completionHandler:(id /* block */)arg4;
@@ -66,7 +65,7 @@
 - (void)_createFormatWriterOptions:(id*)arg1 forFileFormat:(id)arg2;
 - (void)_createRemakerAndBeginExport;
 - (id)_determineCompatibleFileTypes;
-- (struct CGSize { float x1; float x2; })_getSourceDimension;
+- (id)_effectiveColorPropertiesForVideoSetting:(id)arg1;
 - (float)_getSourceVideoFrameRate;
 - (int)_getTrackCountOfType:(id)arg1 checkEnabled:(BOOL)arg2;
 - (struct CGSize { float x1; float x2; })_getUntransformedSourceDimension;
@@ -84,6 +83,10 @@
 - (void)_updateProgress;
 - (void)_validateOutputFileTypeForExport;
 - (BOOL)_validateSettablePropertiesReturningError:(id*)arg1;
+- (id)_videoCompositionProcessorProperties;
+- (id)_videoCompressionPropertiesForVideoSetting:(id)arg1 targetFrameRate:(float)arg2;
+- (id)_videoProcessingOptionsForVideoSetting:(id)arg1 withRemaker:(struct OpaqueFigRemaker { }*)arg2;
+- (id)_videoScalingPropertiesForVideoSetting:(id)arg1;
 - (id)asset;
 - (id)audioMix;
 - (id)audioTimePitchAlgorithm;

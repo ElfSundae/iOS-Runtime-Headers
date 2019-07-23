@@ -3,29 +3,27 @@
  */
 
 @interface TPPhonePad : UIControl <TPDialerKeypadProtocol> {
-    float _bottomHeight;
-    <TPDialerKeypadDelegate> *_delegate;
-    unsigned int _delegateSoundCallbacks;
-    int _downKey;
-    int _highlightKey;
-    unsigned int _incompleteSounds;
-    struct __CFSet { } *_inflightSounds;
-    struct __CFDictionary { } *_keyToButtonMap;
-    float _leftWidth;
-    float _midHeight;
-    float _midWidth;
-    BOOL _playsSounds;
-    float _rightWidth;
-    unsigned int _soundsActivated;
-    BOOL _supportsHardPause;
-    float _topHeight;
+    float  _bottomHeight;
+    <TPDialerKeypadDelegate> * _delegate;
+    unsigned int  _delegateSoundCallbacks;
+    int  _downKey;
+    int  _highlightKey;
+    unsigned int  _incompleteSounds;
+    struct __CFSet { } * _inflightSounds;
+    struct __CFDictionary { } * _keyToButtonMap;
+    float  _leftWidth;
+    float  _midHeight;
+    float  _midWidth;
+    BOOL  _playsSounds;
+    float  _rightWidth;
+    unsigned int  _soundsActivated;
+    float  _topHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
 @property (readonly) Class superclass;
-@property BOOL supportsHardPause;
 
 + (void)_delayedDeactivate;
 + (BOOL)launchFieldTestIfNeeded:(id)arg1;
@@ -67,13 +65,10 @@
 - (void)performTapActionEndForHighlightedKey;
 - (BOOL)pointMostlyInside:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (void)removeFromSuperview;
-- (id)scriptingInfoWithChildren;
 - (void)setButton:(id)arg1 forKeyAtIndex:(unsigned int)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setNeedsDisplayForKey:(int)arg1;
 - (void)setPlaysSounds:(BOOL)arg1;
-- (void)setSupportsHardPause:(BOOL)arg1;
-- (BOOL)supportsHardPause;
 
 @end

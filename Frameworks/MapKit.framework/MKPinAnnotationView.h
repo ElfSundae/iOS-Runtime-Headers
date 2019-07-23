@@ -3,13 +3,14 @@
  */
 
 @interface MKPinAnnotationView : MKAnnotationView {
-    BOOL _animatesDrop;
-    id _delegate;
-    UIColor *_pinTintColor;
-    UIImageView *_shadowView;
-    int _state;
+    BOOL  _animatesDrop;
+    <_MKPinAnnotationViewDelegate> * _delegate;
+    UIColor * _pinTintColor;
+    UIImageView * _shadowView;
+    int  _state;
 }
 
+@property (setter=_setDelegate:, nonatomic) <_MKPinAnnotationViewDelegate> *_delegate;
 @property (nonatomic) BOOL animatesDrop;
 @property (nonatomic) unsigned int pinColor;
 @property (nonatomic, retain) UIColor *pinTintColor;
@@ -23,11 +24,11 @@
 + (struct CGPoint { float x1; float x2; })_perceivedAnchorPoint;
 + (struct CGSize { float x1; float x2; })_perceivedSize;
 + (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_pinFrameForPosition:(struct CGPoint { float x1; float x2; })arg1;
-+ (id)_pinsWithMapType:(unsigned int)arg1 mapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; })arg2 pinColor:(id)arg3 traits:(id)arg4;
++ (id)_pinsWithMapType:(unsigned int)arg1 mapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; BOOL x5; })arg2 pinColor:(id)arg3 traits:(id)arg4;
 + (id)_reuseIdentifier;
 + (struct CGPoint { float x1; float x2; })_rightCalloutOffset;
 + (struct CGPoint { float x1; float x2; })_shadowAnchorPoint;
-+ (struct UIImage { Class x1; }*)_shadowImage;
++ (id)_shadowImage;
 + (id)greenPinColor;
 + (Class)layerClass;
 + (id)purplePinColor;
@@ -42,9 +43,9 @@
 - (void)_dropAfterDraggingAndRevertPosition:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_dropAfterDraggingDidEnd:(id)arg1;
 - (void)_dropFromDistance:(float)arg1 maxDistance:(float)arg2 withDelay:(double)arg3;
-- (struct UIImage { Class x1; }*)_floatingImage;
-- (struct UIImage { Class x1; }*)_highlightedImage;
-- (struct UIImage { Class x1; }*)_image;
+- (id)_floatingImage;
+- (id)_highlightedImage;
+- (id)_image;
 - (void)_invalidateImage;
 - (void)_liftBeforeDropDidEnd:(id)arg1;
 - (void)_liftDidEnd:(id)arg1;
@@ -55,7 +56,7 @@
 - (id)_pins;
 - (void)_removeAllAnimations;
 - (void)_setDelegate:(id)arg1;
-- (void)_setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; })arg1;
+- (void)_setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; BOOL x5; })arg1;
 - (void)_setMapType:(unsigned int)arg1;
 - (void)_setRotationRadians:(float)arg1 withAnimation:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_significantBounds;

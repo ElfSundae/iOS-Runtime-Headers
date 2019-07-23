@@ -3,13 +3,21 @@
  */
 
 @interface TSDImageProvider : NSObject {
-    TSUFlushingManager *mFlushingManager;
-    TSPData *mImageData;
-    int mInterest;
-    int mLoadState;
-    int mOwnerCount;
-    int mRetainCount;
+    TSUFlushingManager * mFlushingManager;
+    TSPData * mImageData;
+    int  mInterest;
+    int  mLoadState;
+    int  mOwnerCount;
+    int  mRetainCount;
 }
+
+@property (nonatomic, readonly) struct CGSize { float x1; float x2; } dpiAdjustedNaturalSize;
+@property (nonatomic) int i_loadState;
+@property (nonatomic, readonly, retain) TSPData *imageData;
+@property (nonatomic, readonly) unsigned int imageGamut;
+@property (nonatomic, readonly) BOOL isError;
+@property (nonatomic, readonly) BOOL isValid;
+@property (nonatomic, readonly) struct CGSize { float x1; float x2; } naturalSize;
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 
@@ -21,7 +29,9 @@
 - (void)flush;
 - (BOOL)hasFlushableContent;
 - (void)i_commonInit;
+- (int)i_loadState;
 - (id)imageData;
+- (unsigned int)imageGamut;
 - (id)initWithImageData:(id)arg1;
 - (int)interest;
 - (BOOL)isError;
@@ -34,5 +44,6 @@
 - (id)retain;
 - (unsigned int)retainCount;
 - (void)setFlushingManager:(id)arg1;
+- (void)setI_loadState:(int)arg1;
 
 @end

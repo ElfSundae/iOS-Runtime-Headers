@@ -3,7 +3,7 @@
  */
 
 @interface CMKShutterIndicatorView : UIView {
-    NSAttributedString *__indicatorText;
+    NSAttributedString * __indicatorText;
 }
 
 @property (nonatomic, readonly) NSAttributedString *_indicatorText;

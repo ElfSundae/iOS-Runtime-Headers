@@ -3,10 +3,10 @@
  */
 
 @interface _HKStretchableImage : NSObject {
-    UIImage *_bottomImage;
-    UIImage *_centerImage;
-    UIImage *_singlePointImage;
-    UIImage *_topImage;
+    UIImage * _bottomImage;
+    UIImage * _centerImage;
+    UIImage * _singlePointImage;
+    UIImage * _topImage;
 }
 
 @property (nonatomic, retain) UIImage *bottomImage;

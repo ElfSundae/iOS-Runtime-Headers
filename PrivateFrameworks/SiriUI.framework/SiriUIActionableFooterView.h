@@ -3,11 +3,11 @@
  */
 
 @interface SiriUIActionableFooterView : SiriUIReusableFooterView {
-    UIButton *_button;
-    <SiriUIActionableFooterViewDelegate> *_delegate;
-    BOOL _hasKeyline;
-    SiriUIKeyline *_keyline;
-    SiriUISnippetViewController *_snippetViewController;
+    UIButton * _button;
+    <SiriUIActionableFooterViewDelegate> * _delegate;
+    BOOL  _hasKeyline;
+    SiriUIKeyline * _keyline;
+    SiriUISnippetViewController * _snippetViewController;
 }
 
 @property (nonatomic) <SiriUIActionableFooterViewDelegate> *delegate;

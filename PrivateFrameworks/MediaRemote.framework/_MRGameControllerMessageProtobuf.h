@@ -3,12 +3,12 @@
  */
 
 @interface _MRGameControllerMessageProtobuf : PBCodable <NSCopying> {
-    _MRGameControllerButtonsProtobuf *_buttons;
-    unsigned long long _controllerID;
+    _MRGameControllerButtonsProtobuf * _buttons;
+    unsigned long long  _controllerID;
     struct { 
         unsigned int controllerID : 1; 
-    } _has;
-    _MRGameControllerMotionProtobuf *_motion;
+    }  _has;
+    _MRGameControllerMotionProtobuf * _motion;
 }
 
 @property (nonatomic, retain) _MRGameControllerButtonsProtobuf *buttons;

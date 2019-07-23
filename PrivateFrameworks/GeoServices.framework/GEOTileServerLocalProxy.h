@@ -3,12 +3,12 @@
  */
 
 @interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOResourceManifestTileGroupObserver> {
-    NSString *_cacheLocation;
-    GEODBReader *_dbReader;
-    GEODBWriter *_dbWriter;
-    NSMutableArray *_inProgress;
-    NSLock *_inProgressLock;
-    NSMapTable *_providers;
+    NSString * _cacheLocation;
+    GEODBReader * _dbReader;
+    GEODBWriter * _dbWriter;
+    NSMutableArray * _inProgress;
+    NSLock * _inProgressLock;
+    NSMapTable * _providers;
 }
 
 @property (readonly, copy) NSString *debugDescription;

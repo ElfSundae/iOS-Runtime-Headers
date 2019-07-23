@@ -3,16 +3,18 @@
  */
 
 @interface SYSyncAllObjects : PBCodable <NSCopying> {
-    NSMutableArray *_allObjects;
-    SYMessageHeader *_header;
-    NSString *_syncID;
-    unsigned long long _version;
+    NSMutableArray * _allObjects;
+    SYMessageHeader * _header;
+    NSString * _syncID;
+    unsigned long long  _version;
 }
 
 @property (nonatomic, retain) NSMutableArray *allObjects;
 @property (nonatomic, retain) SYMessageHeader *header;
 @property (nonatomic, retain) NSString *syncID;
 @property (nonatomic) unsigned long long version;
+
++ (Class)allObjectsType;
 
 - (void).cxx_destruct;
 - (void)addAllObjects:(id)arg1;

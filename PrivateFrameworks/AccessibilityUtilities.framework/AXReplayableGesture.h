@@ -3,8 +3,8 @@
  */
 
 @interface AXReplayableGesture : NSObject <NSCoding> {
-    NSArray *_allEvents;
-    BOOL _arePointsDeviceRelative;
+    NSArray * _allEvents;
+    BOOL  _arePointsDeviceRelative;
 }
 
 + (id)tapGestureForInterfaceOrientedPoint:(struct CGPoint { float x1; float x2; })arg1;

@@ -3,8 +3,8 @@
  */
 
 @interface VMUSimpleDeserializer : VMUAbstractSerializer {
-    void *_cache;
-    id /* block */ _destructor;
+    void * _cache;
+    id /* block */  _destructor;
 }
 
 - (unsigned int*)_deserializeValues:(unsigned int)arg1;

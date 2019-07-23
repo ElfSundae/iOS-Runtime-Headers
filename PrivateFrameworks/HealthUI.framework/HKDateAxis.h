@@ -3,9 +3,9 @@
  */
 
 @interface HKDateAxis : HKAxis {
-    NSArray *_cachedAxisLabels;
-    HKValueRange *_chartableDateRange;
-    HKDateIntervalCache *_intervalCache;
+    NSArray * _cachedAxisLabels;
+    HKValueRange * _chartableDateRange;
+    HKDateIntervalCache * _intervalCache;
 }
 
 @property (nonatomic, retain) HKValueRange *chartableDateRange;

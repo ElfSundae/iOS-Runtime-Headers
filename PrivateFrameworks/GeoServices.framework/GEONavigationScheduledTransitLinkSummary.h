@@ -7,12 +7,12 @@
         unsigned int lineID : 1; 
         unsigned int scheduledArrival : 1; 
         unsigned int scheduledDeparture : 1; 
-    } _has;
-    unsigned long long _lineID;
-    double _scheduledArrival;
-    double _scheduledDeparture;
-    GEONavigationTransitStopSummary *_stopFrom;
-    GEONavigationTransitStopSummary *_stopTo;
+    }  _has;
+    unsigned long long  _lineID;
+    double  _scheduledArrival;
+    double  _scheduledDeparture;
+    GEONavigationTransitStopSummary * _stopFrom;
+    GEONavigationTransitStopSummary * _stopTo;
 }
 
 @property (nonatomic) BOOL hasLineID;

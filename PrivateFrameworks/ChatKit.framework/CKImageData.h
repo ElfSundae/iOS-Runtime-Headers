@@ -3,28 +3,32 @@
  */
 
 @interface CKImageData : NSObject {
-    unsigned int _count;
-    NSData *_data;
-    struct CGImageSource { } *_imageSource;
-    BOOL _initializedProperties;
-    int _orientation;
+    unsigned int  _count;
+    NSData * _data;
+    struct CGImageSource { } * _imageSource;
+    BOOL  _initializedProperties;
+    int  _orientation;
     struct CGSize { 
         float width; 
         float height; 
-    } _pxSize;
+    }  _pxSize;
+    NSURL * _url;
 }
 
 @property (nonatomic, readonly, copy) NSString *MIMEType;
 @property (nonatomic, readonly, copy) NSString *UTIType;
 @property (nonatomic, readonly) unsigned int count;
 @property (nonatomic, retain) NSData *data;
-@property (nonatomic, readonly, retain) UIImage *image;
+@property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) int orientation;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } ptSize;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } pxSize;
+@property (nonatomic, retain) NSURL *url;
 
 + (id)UTITypeForData:(id)arg1;
++ (BOOL)supportsASTC;
 
+- (void).cxx_destruct;
 - (id)MIMEType;
 - (id)UTIType;
 - (void)_initializeProperties;
@@ -36,14 +40,18 @@
 - (id)durationsWithMaxCount:(unsigned int)arg1;
 - (id)image;
 - (id)initWithData:(id)arg1;
+- (id)initWithURL:(id)arg1;
 - (int)orientation;
 - (struct CGSize { float x1; float x2; })ptSize;
 - (struct CGSize { float x1; float x2; })pxSize;
 - (void)setData:(id)arg1;
+- (void)setUrl:(id)arg1;
+- (id)thumbnailAtIndex:(unsigned int)arg1 fillToSize:(struct CGSize { float x1; float x2; })arg2 maxCount:(unsigned int)arg3;
 - (id)thumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)thumbnailFillToSizeCropping:(struct CGSize { float x1; float x2; })arg1;
 - (id)thumbnailFitToSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)thumbnailsFillToSize:(struct CGSize { float x1; float x2; })arg1 maxCount:(unsigned int)arg2;
 - (id)thumbnailsFitToSize:(struct CGSize { float x1; float x2; })arg1 maxCount:(unsigned int)arg2;
+- (id)url;
 
 @end

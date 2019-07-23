@@ -3,13 +3,13 @@
  */
 
 @interface CMKButtonLabel : UIView {
-    UILabel *__label;
+    UILabel * __label;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
-    NSString *_text;
-    BOOL _wantsLegibilityShadow;
+    }  _contentSize;
+    NSString * _text;
+    BOOL  _wantsLegibilityShadow;
 }
 
 @property (nonatomic, readonly, retain) UILabel *_label;

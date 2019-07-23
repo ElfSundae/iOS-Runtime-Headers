@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } _activeFrame;
+    }  _activeFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -22,7 +22,7 @@
             float width; 
             float height; 
         } size; 
-    } _baseFrame;
+    }  _baseFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -32,22 +32,25 @@
             float width; 
             float height; 
         } size; 
-    } _collapsedFrame;
-    BOOL _isAutocorrection;
-    BOOL _isCenter;
-    BOOL _isLongCandidate;
-    BOOL _isTypedString;
-    TIKeyboardCandidate *_prediction;
-    int _state;
-    UIKBKeyView *m_activeKeyView;
-    UIKBKeyView *m_enabledKeyView;
+    }  _collapsedFrame;
+    BOOL  _isAutocorrection;
+    BOOL  _isCenter;
+    BOOL  _isLongCandidate;
+    BOOL  _isTypedString;
+    TIKeyboardCandidate * _prediction;
+    unsigned int  _slotID;
+    int  _state;
+    UIKBKeyView * m_activeKeyView;
+    UIKBKeyView * m_enabledKeyView;
     struct CGSize { 
         float width; 
         float height; 
-    } m_keyViewSize;
-    UIMorphingLabel *m_label;
-    BOOL m_lightKeyboard;
-    UIView *m_maskView;
+    }  m_keyViewSize;
+    UIMorphingLabel * m_label;
+    BOOL  m_lightKeyboard;
+    UIView * m_maskView;
+    float  m_maskViewMargin;
+    UILabel * m_suggestionLabel;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } activeFrame;
@@ -58,12 +61,14 @@
 @property (nonatomic) BOOL isLongCandidate;
 @property (nonatomic) BOOL isTypedString;
 @property (nonatomic, readonly, retain) TIKeyboardCandidate *prediction;
+@property (nonatomic) unsigned int slotID;
 @property (nonatomic) int state;
 
 + (id)newKeyViewWithSize:(struct CGSize { float x1; float x2; })arg1 state:(int)arg2 needsBackground:(BOOL)arg3;
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })activeFrame;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })baseFrame;
+- (void)clearKeyViewForState:(int)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })collapsedFrame;
 - (void)dealloc;
 - (void)dimKeys:(id)arg1;
@@ -83,14 +88,20 @@
 - (void)setIsCenter:(BOOL)arg1;
 - (void)setIsLongCandidate:(BOOL)arg1;
 - (void)setIsTypedString:(BOOL)arg1;
+- (void)setKeyViewForState:(int)arg1;
+- (void)setSlotID:(unsigned int)arg1;
 - (void)setState:(int)arg1;
+- (void)setState:(int)arg1 withAttrText:(id)arg2;
 - (void)setState:(int)arg1 withText:(id)arg2;
 - (void)setText:(id)arg1 prediction:(id)arg2 active:(BOOL)arg3;
 - (void)setVisibleRect;
+- (BOOL)shouldDisplayHeaderForPrediction:(id)arg1;
+- (unsigned int)slotID;
 - (int)state;
 - (id)textColor;
 - (void)touchMoved:(float)arg1;
 - (void)updateBackgroundWithRenderConfig:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })visibleRect;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end

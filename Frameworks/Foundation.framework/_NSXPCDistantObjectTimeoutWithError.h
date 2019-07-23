@@ -3,7 +3,7 @@
  */
 
 @interface _NSXPCDistantObjectTimeoutWithError : _NSXPCDistantObjectWithError {
-    double _timeout;
+    double  _timeout;
 }
 
 @property double timeout;

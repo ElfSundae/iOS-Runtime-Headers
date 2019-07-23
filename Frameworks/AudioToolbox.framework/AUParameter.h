@@ -3,13 +3,13 @@
  */
 
 @interface AUParameter : AUParameterNode <NSSecureCoding> {
-    BOOL __localValueStale;
-    unsigned long long _address;
-    NSArray *_dependentParameters;
-    _AUStaticParameterInfo *_info;
-    int _numRecordingObservers;
-    int _numUIObservers;
-    float _value;
+    BOOL  __localValueStale;
+    unsigned long long  _address;
+    NSArray * _dependentParameters;
+    _AUStaticParameterInfo * _info;
+    int  _numRecordingObservers;
+    int  _numUIObservers;
+    float  _value;
 }
 
 @property (nonatomic) BOOL _localValueStale;
@@ -51,8 +51,10 @@
 - (void)setNumRecordingObservers:(int)arg1;
 - (void)setNumUIObservers:(int)arg1;
 - (void)setValue:(float)arg1;
+- (void)setValue:(float)arg1 extOriginator:(struct AUParameterObserverExtendedToken { unsigned int x1; })arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)setValue:(float)arg1 originator:(void*)arg2;
 - (void)setValue:(float)arg1 originator:(void*)arg2 atHostTime:(unsigned long long)arg3;
+- (void)setValue:(float)arg1 originator:(void*)arg2 atHostTime:(unsigned long long)arg3 eventType:(unsigned int)arg4;
 - (void)set_clumpID:(unsigned long)arg1;
 - (void)set_localValueStale:(BOOL)arg1;
 - (id)stringFromValue:(const float*)arg1;

@@ -3,24 +3,24 @@
  */
 
 @interface UIMovieScrubberTrackView : UIView {
-    NSDictionary *_childThumbnailViews;
-    <UIMovieScrubberTrackViewDataSource> *_dataSource;
-    <UIMovieScrubberTrackViewDelegate> *_delegate;
-    double _duration;
-    double _endValue;
-    UIView *_maskContainerView;
-    UIMovieScrubberTrackOverlayView *_overlayView;
-    double _startValue;
-    NSArray *_summaryThumbnailChildTimestamps;
-    NSArray *_summaryThumbnailTimestamps;
-    NSArray *_summaryThumbnailViews;
+    NSDictionary * _childThumbnailViews;
+    <UIMovieScrubberTrackViewDataSource> * _dataSource;
+    <UIMovieScrubberTrackViewDelegate> * _delegate;
+    double  _duration;
+    double  _endValue;
+    UIView * _maskContainerView;
+    UIMovieScrubberTrackOverlayView * _overlayView;
+    double  _startValue;
+    NSArray * _summaryThumbnailChildTimestamps;
+    NSArray * _summaryThumbnailTimestamps;
+    NSArray * _summaryThumbnailViews;
     struct CGSize { 
         float width; 
         float height; 
-    } _thumbnailSize;
-    NSDictionary *_thumbnailStartXValues;
-    NSMutableDictionary *_thumbnailViews;
-    NSArray *_timestamps;
+    }  _thumbnailSize;
+    NSDictionary * _thumbnailStartXValues;
+    NSMutableDictionary * _thumbnailViews;
+    NSArray * _timestamps;
     struct { 
         unsigned int delegateSizeOriginDelta : 1; 
         unsigned int delegateDidExpand : 1; 
@@ -33,12 +33,12 @@
         unsigned int editing : 1; 
         unsigned int editingHandle; 
         unsigned int zoomIsDisabled : 1; 
-    } _trackFlags;
-    float _unclampedZoomWidthDelta;
-    double _value;
-    float _zoomAnimationDuration;
-    float _zoomOriginXDelta;
-    float _zoomWidthDelta;
+    }  _trackFlags;
+    float  _unclampedZoomWidthDelta;
+    double  _value;
+    float  _zoomAnimationDuration;
+    float  _zoomOriginXDelta;
+    float  _zoomWidthDelta;
 }
 
 @property (nonatomic) <UIMovieScrubberTrackViewDataSource> *dataSource;

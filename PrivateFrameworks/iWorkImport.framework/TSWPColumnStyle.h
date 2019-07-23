@@ -16,7 +16,6 @@
 + (id)defaultStyleWithContext:(id)arg1;
 + (id)defaultValueForProperty:(int)arg1;
 + (id)properties;
-+ (id)propertiesAllowingNSNull;
 
 - (struct CGSize { float x1; float x2; })adjustedInsetsForTarget:(id)arg1;
 - (BOOL)alwaysStartsNewTarget;

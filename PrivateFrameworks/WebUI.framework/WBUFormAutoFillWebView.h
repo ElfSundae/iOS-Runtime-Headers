@@ -3,8 +3,8 @@
  */
 
 @interface WBUFormAutoFillWebView : WKWebView <WBUFormAutoFillWebView> {
-    NSDictionary *_lastPasswordGenerationOrSubmitEventForm;
-    WBUFormAutoFillFrameHandle *_lastPasswordGenerationOrSubmitEventFrame;
+    NSDictionary * _lastPasswordGenerationOrSubmitEventForm;
+    WBUFormAutoFillFrameHandle * _lastPasswordGenerationOrSubmitEventFrame;
 }
 
 @property (readonly, copy) NSString *debugDescription;

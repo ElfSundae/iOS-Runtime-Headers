@@ -3,7 +3,7 @@
  */
 
 @interface PSEnrollContainerViewController : UIViewController {
-    BiometricKitUIEnrollViewController *_enrollController;
+    BiometricKitUIEnrollViewController * _enrollController;
 }
 
 @property (nonatomic, retain) BiometricKitUIEnrollViewController *enrollController;

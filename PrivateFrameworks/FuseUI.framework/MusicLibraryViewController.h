@@ -3,36 +3,36 @@
  */
 
 @interface MusicLibraryViewController : UIViewController <MusicActionableHeaderViewDelegate, MusicClientContextConsuming, MusicLibraryBrowseCollectionViewControllerDelegate, MusicSplitInitialStateProviding, MusicVerticalScrollingContainerViewControllerDelegate, SKUIIndexBarControlDataSource, SKUIIndexBarControlDelegate, SKUIProxyScrollViewDelegate, SKUITabBarItemRootViewController, UIViewControllerRestoration> {
-    MusicLibraryArtistsViewConfiguration *_artistsViewConfiguration;
-    MusicClientContext *_clientContext;
-    NSMutableArray *_entityProviderNotificationObservers;
-    MusicHairlineView *_hairlineView;
-    BOOL _hasIndexBarEntries;
-    SKUIIndexBarControl *_indexBarControl;
-    int _indexBarControlVisibleTransactionCount;
-    MusicVerticalScrollingContainerItem *_indexBarMinimumVerticalScrollingContainerItem;
-    <MusicIndexBarDataSource><MusicIndexBarScrollDelegate> *_indexBarSupportDataSource;
-    float _indexBarTrailingLayoutInsetAddition;
-    BOOL _isContainedWithinSplitViewPrimary;
-    BOOL _isIndexBarTracking;
-    BOOL _isIndexBarVisible;
-    UIViewController *_libraryBrowseViewController;
-    BOOL _needsIndexBarVisibilityUpdate;
-    SKUIProxyScrollView *_proxyScrollView;
+    MusicLibraryArtistsViewConfiguration * _artistsViewConfiguration;
+    MusicClientContext * _clientContext;
+    NSMutableArray * _entityProviderNotificationObservers;
+    MusicHairlineView * _hairlineView;
+    BOOL  _hasIndexBarEntries;
+    SKUIIndexBarControl * _indexBarControl;
+    int  _indexBarControlVisibleTransactionCount;
+    MusicVerticalScrollingContainerItem * _indexBarMinimumVerticalScrollingContainerItem;
+    <MusicIndexBarDataSource><MusicIndexBarScrollDelegate> * _indexBarSupportDataSource;
+    float  _indexBarTrailingLayoutInsetAddition;
+    BOOL  _isContainedWithinSplitViewPrimary;
+    BOOL  _isIndexBarTracking;
+    BOOL  _isIndexBarVisible;
+    UIViewController * _libraryBrowseViewController;
+    BOOL  _needsIndexBarVisibilityUpdate;
+    SKUIProxyScrollView * _proxyScrollView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _proxyScrollViewContentInsetAdditions;
-    MusicActionableHeaderView *_recentlyAddedHeaderView;
-    MusicLibraryBrowseCollectionViewController *_recentlyAddedViewController;
-    MusicLibraryViewConfiguration *_selectedViewConfiguration;
-    BOOL _shouldAnimatePendingIndexBarVisibilityUpdate;
-    MusicStandaloneShuffleViewController *_shuffleAllViewController;
-    MusicSwitcherButtonContainerView *_switcherButtonContainerView;
-    MusicVerticalScrollingContainerViewController *_verticalScrollingContainerViewController;
-    NSArray *_viewConfigurations;
+    }  _proxyScrollViewContentInsetAdditions;
+    MusicActionableHeaderView * _recentlyAddedHeaderView;
+    MusicLibraryBrowseCollectionViewController * _recentlyAddedViewController;
+    MusicLibraryViewConfiguration * _selectedViewConfiguration;
+    BOOL  _shouldAnimatePendingIndexBarVisibilityUpdate;
+    MusicStandaloneShuffleViewController * _shuffleAllViewController;
+    MusicSwitcherButtonContainerView * _switcherButtonContainerView;
+    MusicVerticalScrollingContainerViewController * _verticalScrollingContainerViewController;
+    NSArray * _viewConfigurations;
 }
 
 @property (nonatomic, retain) SKUIClientContext *clientContext;

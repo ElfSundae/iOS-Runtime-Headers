@@ -3,10 +3,13 @@
  */
 
 @interface TPBodyRep : TSWPRep {
-    NSSet *_lastSelectedInfos;
+    TPBodyLayout * _bodyLayout;
+    NSSet * _lastSelectedInfos;
 }
 
-- (id)colorBehindLayer:(id)arg1;
+@property (nonatomic, readonly) TPBodyLayout *bodyLayout;
+
+- (id)bodyLayout;
 - (void)dealloc;
 - (id)hitRep:(struct CGPoint { float x1; float x2; })arg1;
 - (id)hitRepChrome:(struct CGPoint { float x1; float x2; })arg1;

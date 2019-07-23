@@ -3,12 +3,12 @@
  */
 
 @interface UICollectionViewLayoutAttributes : NSObject <NSCopying, UIDynamicItem> {
-    float _alpha;
+    float  _alpha;
     struct CGPoint { 
         float x; 
         float y; 
-    } _center;
-    NSString *_elementKind;
+    }  _center;
+    NSString * _elementKind;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,20 +18,20 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSIndexPath *_indexPath;
-    NSString *_isCloneString;
+    }  _frame;
+    NSIndexPath * _indexPath;
+    NSString * _isCloneString;
     struct { 
         unsigned int isCellKind : 1; 
         unsigned int isDecorationView : 1; 
         unsigned int isHidden : 1; 
         unsigned int isClone : 1; 
-    } _layoutFlags;
-    NSString *_reuseIdentifier;
+    }  _layoutFlags;
+    NSString * _reuseIdentifier;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
     struct CATransform3D { 
         float m11; 
         float m12; 
@@ -49,8 +49,8 @@
         float m42; 
         float m43; 
         float m44; 
-    } _transform;
-    int _zIndex;
+    }  _transform;
+    int  _zIndex;
 }
 
 @property (nonatomic) float alpha;

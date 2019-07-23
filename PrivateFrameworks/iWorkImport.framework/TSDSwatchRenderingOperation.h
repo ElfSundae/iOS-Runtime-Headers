@@ -3,18 +3,18 @@
  */
 
 @interface TSDSwatchRenderingOperation : NSOperation {
-    struct CGImage { } *mDeliveredImage;
-    TSKDocumentRoot *mDocumentRoot;
-    NSString *mIdentifier;
-    float mImageScale;
+    struct CGImage { } * mDeliveredImage;
+    TSKDocumentRoot * mDocumentRoot;
+    NSString * mIdentifier;
+    float  mImageScale;
     struct CGSize { 
         float width; 
         float height; 
-    } mImageSize;
-    unsigned int mInsertPopoverPageNumber;
-    unsigned int mInsertPopoverPageType;
-    NSObject<TSSPreset> *mPreset;
-    <TSKAccessControllerReadTicket> *mRenderingTicket;
+    }  mImageSize;
+    unsigned int  mInsertPopoverPageNumber;
+    unsigned int  mInsertPopoverPageType;
+    NSObject<TSSPreset> * mPreset;
+    <TSKAccessControllerReadTicket> * mRenderingTicket;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,10 +24,13 @@
             float width; 
             float height; 
         } size; 
-    } mSwatchFrame;
-    UIView *mView;
+    }  mSwatchFrame;
+    UIView * mView;
+    BOOL  mWaitingToBecomeReady;
+    TSUWeakReference * mWeakDelegateReference;
 }
 
+@property (nonatomic) <TSDSwatchRenderingOperationDelegate> *delegate;
 @property (nonatomic, readonly) struct CGImage { }*deliveredImage;
 @property (readonly) TSKDocumentRoot *documentRoot;
 @property (copy) NSString *identifier;
@@ -42,6 +45,7 @@
 
 - (void)cancel;
 - (void)dealloc;
+- (id)delegate;
 - (void)deliverCGImage:(struct CGImage { }*)arg1;
 - (struct CGImage { }*)deliveredImage;
 - (void)doWorkWithReadLock;
@@ -52,14 +56,18 @@
 - (id)initWithPreset:(id)arg1 imageSize:(struct CGSize { float x1; float x2; })arg2 imageScale:(float)arg3 swatchFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 documentRoot:(id)arg5;
 - (unsigned int)insertPopoverPageNumber;
 - (unsigned int)insertPopoverPageType;
+- (BOOL)isReady;
 - (void)main;
 - (BOOL)needsPressedStateBackground;
 - (void)p_animateSwatchIn;
+- (void)p_applicationDidBecomeActive:(id)arg1;
 - (void)p_deliverResultOnMainThread:(id)arg1;
+- (void)p_didFinishRendering;
 - (id)p_extendedRenderingTicket;
 - (struct CGImage { }*)p_newSwatchPressedStateBackgroundFromCGImage:(struct CGImage { }*)arg1;
 - (id)preset;
 - (id)renderingTicket;
+- (void)setDelegate:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setInsertPopoverPageNumber:(unsigned int)arg1;
 - (void)setInsertPopoverPageType:(unsigned int)arg1;

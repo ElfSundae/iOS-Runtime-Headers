@@ -3,14 +3,13 @@
  */
 
 @interface NSXPCEncoder : NSXPCCoder {
-    BOOL _askForReplacement;
-    NSXPCConnection *_connection;
-    <NSXPCEncoderDelegate> *_delegate;
-    void **_encoder;
-    unsigned long long _genericIndex;
-    NSObject<OS_xpc_object> *_oolObjects;
-    struct __CFDictionary { } *_replacedByDelegateObjects;
-    struct __CFDictionary { } *_replacedObjects;
+    BOOL  _askForReplacement;
+    NSXPCConnection * _connection;
+    <NSXPCEncoderDelegate> * _delegate;
+    void ** _encoder;
+    unsigned long long  _genericIndex;
+    NSObject<OS_xpc_object> * _oolObjects;
+    struct __CFDictionary { } * _replacedByDelegateObjects;
 }
 
 @property NSXPCConnection *_connection;
@@ -20,13 +19,14 @@
 
 - (void)_checkObject:(id)arg1;
 - (id)_connection;
-- (id)_createRootXPCObject;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
 - (void)_encodeCString:(const char *)arg1 forKey:(id)arg2;
 - (void)_encodeObject:(id)arg1;
 - (void)_insertIntoXPCObject:(id)arg1;
+- (id)_newRootXPCObject;
 - (id)_replaceObject:(id)arg1;
 - (BOOL)allowsKeyedCoding;
+- (id)connection;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
@@ -45,7 +45,6 @@
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void*)arg2;
 - (void)encodeXPCObject:(id)arg1 forKey:(id)arg2;
-- (void)finalize;
 - (id)init;
 - (void)setDelegate:(id)arg1;
 - (void)set_connection:(id)arg1;

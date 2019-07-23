@@ -3,83 +3,84 @@
  */
 
 @interface BWFileCoordinatorNode : BWNode {
-    long long _currSettingsID;
-    struct OpaqueCMBlockBuffer { } *_emptyMetadataSampleData;
-    BOOL _firstAudioHasBeenProcessed;
-    BOOL _flagsLastFrameForVideoCompressor;
-    const struct opaqueCMFormatDescription {} **_formatDescriptionsForInputs;
-    BOOL _haveSeenAudioWhenStarting;
+    unsigned int  _coarseAFStatusCounter;
+    long long  _currSettingsID;
+    struct OpaqueCMBlockBuffer { } * _emptyMetadataSampleData;
+    BOOL  _firstAudioHasBeenProcessed;
+    BOOL  _flagsLastFrameForVideoCompressor;
+    const struct opaqueCMFormatDescription {} ** _formatDescriptionsForInputs;
+    BOOL  _haveSeenAudioWhenStarting;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _inputOffset;
+    }  _inputOffset;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _largestMetadataPTS;
+    }  _largestMetadataPTS;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _largestStagedSupportingAudioVideoStagedPTS;
+    }  _largestStagedSupportingAudioVideoStagedPTS;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _lastMasterDuration;
+    }  _lastMasterDuration;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _lastMasterEndingPTS;
+    }  _lastMasterEndingPTS;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _lastMasterPTS;
-    BOOL _lowLatencyCanTossExtraVideoWhenStopping;
-    BOOL _lowLatencyCanTransitionEarlyToRecording;
-    BOOL _lowLatencyModeEnabled;
-    BWNodeInput *_masterInput;
-    unsigned int _masterInputIndex;
+    }  _lastMasterPTS;
+    BOOL  _lowLatencyCanTossExtraVideoWhenStopping;
+    BOOL  _lowLatencyCanTransitionEarlyToRecording;
+    BOOL  _lowLatencyModeEnabled;
+    BWNodeInput * _masterInput;
+    unsigned int  _masterInputIndex;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _masterStartingPTS;
+    }  _masterStartingPTS;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _masterStoppingPTS;
-    unsigned int _numActionOnlyOutputs;
-    unsigned int _numAudioInputs;
-    unsigned int _numInputs;
-    unsigned int _numMetadataInputs;
-    unsigned int _numOutputs;
-    unsigned int _numVideoInputs;
-    int _recordingState;
-    BOOL _sendFlushMarkerWhenStopping;
-    FigCaptureRecordingSettings *_settings;
-    NSArray *_stagingQueues;
-    struct OpaqueFigSimpleMutex { } *_stateMutex;
+    }  _masterStoppingPTS;
+    unsigned int  _numActionOnlyOutputs;
+    unsigned int  _numAudioInputs;
+    unsigned int  _numInputs;
+    unsigned int  _numMetadataInputs;
+    unsigned int  _numOutputs;
+    unsigned int  _numVideoInputs;
+    int  _recordingState;
+    BOOL  _sendFlushMarkerWhenStopping;
+    FigCaptureRecordingSettings * _settings;
+    NSArray * _stagingQueues;
+    struct OpaqueFigSimpleMutex { } * _stateMutex;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _stopRecordingPTS;
-    long _terminationErrorCode;
+    }  _stopRecordingPTS;
+    long  _terminationErrorCode;
 }
 
 + (void)initialize;
@@ -97,6 +98,7 @@
 - (void)_prepareToStartRecordingWithSettings:(id)arg1;
 - (void)_printStagingEvent:(struct opaqueCMSampleBuffer { }*)arg1 forNodeInputIndex:(unsigned int)arg2;
 - (void)_stopRecordingWithErrorCode:(long)arg1;
+- (void)cancelStartRecordingWithSettings:(id)arg1;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;

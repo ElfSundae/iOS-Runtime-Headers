@@ -3,17 +3,17 @@
  */
 
 @interface _UILinearForceLevelClassifier : _UIForceLevelClassifier <UIDebuggingInformationObserver> {
-    BOOL _anyForceObservations;
-    int _impulseObservationState;
-    float _impulseSmoothingFactor;
-    float _lastForceForImpulse;
-    float _lastTimestampForImpulse;
-    float _revealThreshold;
-    float _smoothedForce;
-    float _smoothedImpulse;
-    float _smoothingFactor;
-    float _standardThreshold;
-    float _strongThreshold;
+    BOOL  _anyForceObservations;
+    int  _impulseObservationState;
+    float  _impulseSmoothingFactor;
+    float  _lastForceForImpulse;
+    float  _lastTimestampForImpulse;
+    float  _revealThreshold;
+    float  _smoothedForce;
+    float  _smoothedImpulse;
+    float  _smoothingFactor;
+    float  _standardThreshold;
+    float  _strongThreshold;
 }
 
 @property (nonatomic, readonly) float currentImpulse;

@@ -6,11 +6,11 @@
     struct { 
         double x; 
         double y; 
-    } _centerPoint;
-    NSMutableSet *_edgeBuilders;
-    id /* block */ _edgeHandler;
-    double _mapRadius;
-    GEOMapTileFinder *_tileFinder;
+    }  _centerPoint;
+    NSMutableSet * _edgeBuilders;
+    id /* block */  _edgeHandler;
+    double  _mapRadius;
+    GEOMapTileFinder * _tileFinder;
 }
 
 @property (nonatomic, copy) id /* block */ edgeHandler;

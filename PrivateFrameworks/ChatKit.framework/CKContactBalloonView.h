@@ -3,11 +3,11 @@
  */
 
 @interface CKContactBalloonView : CKColoredBalloonView <CKContactBalloonViewProtocol> {
-    UIImageView *_chevron;
-    UIImageView *_contactImageView;
-    CKMediaObject *_mediaObject;
-    UILabel *_nameLabel;
-    UILabel *_organizationLabel;
+    UIImageView * _chevron;
+    UIImageView * _contactImageView;
+    CKMediaObject * _mediaObject;
+    UILabel * _nameLabel;
+    UILabel * _organizationLabel;
 }
 
 @property (nonatomic, retain) UIImageView *chevron;
@@ -20,12 +20,13 @@
 @property (nonatomic, retain) UILabel *organizationLabel;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })alignmentRectInsets;
 - (id)chevron;
+- (void)configureForComposition:(id)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(float)arg2 orientation:(BOOL)arg3;
 - (void)configureForMessagePart:(id)arg1;
 - (id)contactImageView;
-- (void)dealloc;
 - (id)description;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;

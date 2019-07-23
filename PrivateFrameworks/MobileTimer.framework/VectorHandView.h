@@ -3,7 +3,7 @@
  */
 
 @interface VectorHandView : UIView <HandView> {
-    RenderedHandViewFactory *_factory;
+    RenderedHandViewFactory * _factory;
 }
 
 @property (readonly, copy) NSString *debugDescription;

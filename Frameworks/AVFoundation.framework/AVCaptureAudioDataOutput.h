@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureAudioDataOutput : AVCaptureOutput {
-    AVCaptureAudioDataOutputInternal *_internal;
+    AVCaptureAudioDataOutputInternal * _internal;
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *sampleBufferCallbackQueue;

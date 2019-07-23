@@ -6,19 +6,19 @@
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _computedSections;
+    }  _computedSections;
     struct CGSize { 
         float width; 
         float height; 
-    } _interSectionSpacing;
-    BOOL _leftToRight;
-    int _numberOfSections;
-    NSMutableDictionary *_sectionInfos;
-    int _seedSection;
+    }  _interSectionSpacing;
+    BOOL  _leftToRight;
+    int  _numberOfSections;
+    NSMutableDictionary * _sectionInfos;
+    int  _seedSection;
     struct CGPoint { 
         float x; 
         float y; 
-    } _seedSectionOrigin;
+    }  _seedSectionOrigin;
 }
 
 @property (nonatomic, readonly) struct _NSRange { unsigned int x1; unsigned int x2; } computedSections;

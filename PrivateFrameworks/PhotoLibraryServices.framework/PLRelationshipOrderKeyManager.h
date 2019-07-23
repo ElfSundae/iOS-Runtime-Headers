@@ -3,14 +3,14 @@
  */
 
 @interface PLRelationshipOrderKeyManager : NSObject {
-    BOOL _conflictDetected;
-    NSMutableDictionary *_enqueuedAlbumAssetsOrderValueUpdates;
-    NSMutableDictionary *_enqueuedFolderAlbumsOrderValueUpdates;
-    BOOL _hasStashedLocationValues;
-    NSMutableDictionary *_locationsCache;
-    NSObject<OS_dispatch_queue> *_locationsCacheQueue;
-    PLPhotoLibrary *_locationsPhotoLibrary;
-    PLPhotoLibrary *_photoLibrary;
+    BOOL  _conflictDetected;
+    NSMutableDictionary * _enqueuedAlbumAssetsOrderValueUpdates;
+    NSMutableDictionary * _enqueuedFolderAlbumsOrderValueUpdates;
+    BOOL  _hasStashedLocationValues;
+    NSMutableDictionary * _locationsCache;
+    NSObject<OS_dispatch_queue> * _locationsCacheQueue;
+    PLPhotoLibrary * _locationsPhotoLibrary;
+    PLPhotoLibrary * _photoLibrary;
 }
 
 @property (nonatomic, readonly) BOOL conflictDetected;

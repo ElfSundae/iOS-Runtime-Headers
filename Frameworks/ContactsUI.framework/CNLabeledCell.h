@@ -3,9 +3,9 @@
  */
 
 @interface CNLabeledCell : CNContactCell {
-    UIImageView *_chevron;
-    NSDictionary *_labelTextAttributes;
-    NSDictionary *_valueTextAttributes;
+    UIImageView * _chevron;
+    NSDictionary * _labelTextAttributes;
+    NSDictionary * _valueTextAttributes;
 }
 
 @property (nonatomic, readonly) float bottomBaselineConstant;

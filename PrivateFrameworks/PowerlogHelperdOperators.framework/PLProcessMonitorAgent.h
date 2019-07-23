@@ -3,14 +3,14 @@
  */
 
 @interface PLProcessMonitorAgent : PLAgent {
-    PLNSNotificationOperatorComposition *_asertionNotifications;
-    PLEntryNotificationOperatorComposition *_batteryLevelChanged;
-    NSDate *_currentCachedDate;
-    double _currentCachedTotalCPUTime;
-    BOOL _firstBoot;
-    PLMonotonicTimer *_logTimer;
-    NSDate *_previousCacheDate;
-    NSMutableSet *_processes;
+    PLNSNotificationOperatorComposition * _asertionNotifications;
+    PLEntryNotificationOperatorComposition * _batteryLevelChanged;
+    NSDate * _currentCachedDate;
+    double  _currentCachedTotalCPUTime;
+    BOOL  _firstBoot;
+    PLMonotonicTimer * _logTimer;
+    NSDate * _previousCacheDate;
+    NSMutableSet * _processes;
 }
 
 @property (retain) PLNSNotificationOperatorComposition *asertionNotifications;

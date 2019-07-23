@@ -39,16 +39,22 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)grammarDetails;
 - (id)initWithCoder:(id)arg1;
+- (id)leadingText;
 - (unsigned int)numberOfRanges;
 - (id)orthography;
 - (id)phoneNumber;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })range;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })rangeAtIndex:(unsigned int)arg1;
+- (id)referenceDate;
 - (id)regularExpression;
 - (id)replacementString;
 - (id)resultByAdjustingRangesWithOffset:(int)arg1;
 - (unsigned long long)resultType;
+- (BOOL)timeIsApproximate;
+- (BOOL)timeIsPast;
+- (BOOL)timeIsSignificant;
 - (id)timeZone;
+- (id)trailingText;
 - (void*)underlyingResult;
 
 @end

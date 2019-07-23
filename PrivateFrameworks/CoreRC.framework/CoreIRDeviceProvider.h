@@ -10,19 +10,19 @@
         unsigned long long *repeatArray; 
         unsigned int repeatCount; 
         unsigned int command; 
-    } _buttonArray;
-    unsigned long _buttonCount;
-    NSMutableSet *_commandMappings;
-    const struct { unsigned int x1; unsigned long long *x2; unsigned int x3; unsigned long long *x4; unsigned int x5; unsigned int x6; } *_lastButtonPressed;
-    unsigned long long _lastCommandTicks;
-    NSDictionary *_matchingDict;
-    unsigned long long _maxRecentDelayTicks;
-    unsigned long long _pressAndHoldTimeoutGenerationCount;
+    }  _buttonArray;
+    unsigned long  _buttonCount;
+    NSMutableSet * _commandMappings;
+    const struct { unsigned int x1; unsigned long long *x2; unsigned int x3; unsigned long long *x4; unsigned int x5; unsigned int x6; } * _lastButtonPressed;
+    unsigned long long  _lastCommandTimestamp;
+    NSDictionary * _matchingDict;
+    unsigned long long  _pressAndHoldTimeoutGenerationCount;
 }
 
 @property (nonatomic, copy) NSDictionary *matchingDict;
 @property (nonatomic, copy) NSDictionary *persistentProperties;
 
++ (void)load;
 + (BOOL)supportsSecureCoding;
 
 - (struct { unsigned int x1; unsigned long long *x2; unsigned int x3; unsigned long long *x4; unsigned int x5; unsigned int x6; }*)_findButtonWithCommand:(unsigned int)arg1;
@@ -34,8 +34,8 @@
 - (BOOL)clearAllStoredCommands:(id*)arg1;
 - (void)dealloc;
 - (BOOL)disableButtonCombination:(id)arg1 delay:(double)arg2 error:(id*)arg3;
-- (BOOL)dispatch3rdPartyButtonEventWithCommand:(unsigned int)arg1 pressed:(BOOL)arg2 toDevice:(id)arg3;
-- (BOOL)dispatchEventForCommand:(id)arg1 matchingButton:(const struct { unsigned int x1; unsigned long long *x2; unsigned int x3; unsigned long long *x4; unsigned int x5; unsigned int x6; }*)arg2 toDevice:(id)arg3;
+- (BOOL)dispatchButtonEventWithCommand:(unsigned int)arg1 pressed:(BOOL)arg2 timestamp:(unsigned long long)arg3 toDevice:(id)arg4;
+- (BOOL)dispatchEventForCommand:(id)arg1 matchingButton:(const struct { unsigned int x1; unsigned long long *x2; unsigned int x3; unsigned long long *x4; unsigned int x5; unsigned int x6; }*)arg2 timestamp:(unsigned long long)arg3 toDevice:(id)arg4;
 - (BOOL)dispatchEventsForCommand:(id)arg1 toDevice:(id)arg2;
 - (BOOL)enableButtonCombination:(id)arg1 delay:(double)arg2 error:(id*)arg3;
 - (void)encodeWithCoder:(id)arg1;
@@ -62,7 +62,7 @@
 - (BOOL)setOSDName:(id)arg1 error:(id*)arg2;
 - (void)setPersistentProperties:(id)arg1;
 - (id)startLearningSessionWithReason:(unsigned int)arg1 error:(id*)arg2;
-- (void)synthesizeButtonRelease;
+- (void)synthesizeButtonReleaseWithTimestamp:(unsigned long long)arg1;
 - (BOOL)updateMappingWithSession:(id)arg1 error:(id*)arg2;
 
 @end

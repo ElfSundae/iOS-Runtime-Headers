@@ -3,20 +3,20 @@
  */
 
 @interface UIStepper : UIControl {
-    BOOL _autorepeat;
-    BOOL _continuous;
-    NSMutableDictionary *_dividerImages;
-    BOOL _isRtoL;
-    double _maximumValue;
-    UIImageView *_middleView;
-    double _minimumValue;
-    UIButton *_minusButton;
-    UIButton *_plusButton;
-    int _repeatCount;
-    NSTimer *_repeatTimer;
-    double _stepValue;
-    double _value;
-    BOOL _wraps;
+    BOOL  _autorepeat;
+    BOOL  _continuous;
+    NSMutableDictionary * _dividerImages;
+    BOOL  _isRtoL;
+    double  _maximumValue;
+    UIImageView * _middleView;
+    double  _minimumValue;
+    UIButton * _minusButton;
+    UIButton * _plusButton;
+    int  _repeatCount;
+    NSTimer * _repeatTimer;
+    double  _stepValue;
+    double  _value;
+    BOOL  _wraps;
 }
 
 @property (nonatomic) BOOL autorepeat;
@@ -34,6 +34,7 @@
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned int)_controlEventsForActionTriggered;
+- (void)_emitValueChanged;
 - (struct CGSize { float x1; float x2; })_intrinsicSizeWithinSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_setBackgroundImage:(id)arg1 forState:(unsigned int)arg2;

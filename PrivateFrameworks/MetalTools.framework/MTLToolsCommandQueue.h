@@ -3,7 +3,7 @@
  */
 
 @interface MTLToolsCommandQueue : MTLToolsObject <MTLCommandQueueSPI> {
-    MTLToolsPointerArray *_commandBuffers;
+    MTLToolsPointerArray * _commandBuffers;
 }
 
 @property (getter=isStatEnabled, nonatomic) BOOL StatEnabled;
@@ -11,16 +11,17 @@
 @property (getter=getStatOptions, nonatomic) unsigned long long StatOptions;
 @property int backgroundTrackingPID;
 @property (nonatomic, readonly) MTLToolsPointerArray *commandBuffers;
-@property (getter=counterInfo, retain) NSMutableDictionary *counterInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
 @property BOOL executionEnabled;
 @property (readonly) unsigned int hash;
+@property BOOL isOpenGLQueue;
 @property (copy) NSString *label;
-@property (getter=numInternalSampleCounters, nonatomic) unsigned int numInternalSampleCounters;
-@property (getter=numRequestedCounters, nonatomic) unsigned int numRequestedCounters;
+@property (readonly) unsigned int maxCommandBufferCount;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
+@property (readonly) unsigned int qosClass;
+@property (readonly) int qosRelativePriority;
 @property BOOL skipRender;
 @property (readonly) Class superclass;
 
@@ -41,23 +42,24 @@
 - (unsigned long long)getStatOptions;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (void)insertDebugCaptureBoundary;
+- (BOOL)isOpenGLQueue;
 - (BOOL)isProfilingEnabled;
 - (BOOL)isStatEnabled;
 - (id)label;
-- (unsigned int)numInternalSampleCounters;
-- (unsigned int)numRequestedCounters;
+- (unsigned int)maxCommandBufferCount;
+- (unsigned int)qosClass;
+- (int)qosRelativePriority;
 - (int)requestCounters:(id)arg1;
+- (int)requestCounters:(id)arg1 withIndex:(unsigned int)arg2;
 - (BOOL)setBackgroundGPUPriority:(unsigned int)arg1;
 - (BOOL)setBackgroundGPUPriority:(unsigned int)arg1 offset:(unsigned short)arg2;
 - (void)setBackgroundTrackingPID:(int)arg1;
 - (void)setCompletionQueue:(id)arg1;
-- (void)setCounterInfo:(id)arg1;
 - (void)setExecutionEnabled:(BOOL)arg1;
 - (BOOL)setGPUPriority:(unsigned int)arg1;
 - (BOOL)setGPUPriority:(unsigned int)arg1 offset:(unsigned short)arg2;
+- (void)setIsOpenGLQueue:(BOOL)arg1;
 - (void)setLabel:(id)arg1;
-- (void)setNumInternalSampleCounters:(unsigned int)arg1;
-- (void)setNumRequestedCounters:(unsigned int)arg1;
 - (void)setProfilingEnabled:(BOOL)arg1;
 - (void)setSkipRender:(BOOL)arg1;
 - (void)setStatEnabled:(BOOL)arg1;
@@ -65,5 +67,6 @@
 - (void)setStatOptions:(unsigned long long)arg1;
 - (void)setSubmissionQueue:(id)arg1;
 - (BOOL)skipRender;
+- (id)subdivideCounterList:(id)arg1;
 
 @end

@@ -7,9 +7,9 @@
         unsigned int alignment : 4; 
         unsigned int refCount : 24; 
         unsigned int unused : 4; 
-    } _flags;
-    float _location;
-    id _reserved;
+    }  _flags;
+    float  _location;
+    id  _reserved;
 }
 
 @property (nonatomic, readonly) int alignment;

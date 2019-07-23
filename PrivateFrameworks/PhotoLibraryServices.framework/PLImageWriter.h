@@ -3,18 +3,18 @@
  */
 
 @interface PLImageWriter : NSObject <PLPhotoBakedThumbnailsDelegate> {
-    BOOL _databaseIsCorrupt;
-    NSMutableArray *_highPriorityJobs;
-    unsigned int _highPrioritySequentialJobCount;
-    NSMutableDictionary *_inProgressAvalancheFds;
-    int _jobQueueAvailabilityToken;
-    NSRecursiveLock *_jobsLock;
-    NSMutableArray *_lowPriorityJobs;
-    PLXPCTransaction *_transaction;
-    NSCountedSet *_unfinishedHighPriorityJobs;
-    int _unfinishedJobCount;
-    NSCountedSet *_unfinishedLowPriorityJobs;
-    BOOL _writerThreadRunning;
+    BOOL  _databaseIsCorrupt;
+    NSMutableArray * _highPriorityJobs;
+    unsigned int  _highPrioritySequentialJobCount;
+    NSMutableDictionary * _inProgressAvalancheFds;
+    int  _jobQueueAvailabilityToken;
+    NSRecursiveLock * _jobsLock;
+    NSMutableArray * _lowPriorityJobs;
+    PLXPCTransaction * _transaction;
+    NSCountedSet * _unfinishedHighPriorityJobs;
+    int  _unfinishedJobCount;
+    NSCountedSet * _unfinishedLowPriorityJobs;
+    BOOL  _writerThreadRunning;
 }
 
 + (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext { }*)arg2;
@@ -54,7 +54,7 @@
 - (void)_removeInProgressExtendedAttributesForFileAtURL:(id)arg1;
 - (void)_removeTransientKeys:(id)arg1;
 - (void)_setAdjustmentsForNewVideo:(id)arg1 withAdjustmentsDictionary:(id)arg2;
-- (BOOL)_transferVideoIncomingPathToVideoDestinationPath:(id)arg1 shouldRemoveIncoming:(BOOL*)arg2 error:(id*)arg3;
+- (BOOL)_transferVideoFromIncomingPath:(id)arg1 toDestinationPath:(id)arg2 shouldRemoveIncoming:(BOOL*)arg3 error:(id*)arg4;
 - (void)_writerThread;
 - (id)cameraAssetPathForNewAssetWithExtension:(id)arg1;
 - (BOOL)canEnqueueJob:(id)arg1;

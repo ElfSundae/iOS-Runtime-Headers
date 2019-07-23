@@ -3,9 +3,9 @@
  */
 
 @interface CAMPanoramaArrowView : UIView {
-    UIImageView *_arrowHead;
-    UIView *_arrowTail;
-    CAShapeLayer *_arrowTailPiecesLayer;
+    UIImageView * _arrowHead;
+    UIView * _arrowTail;
+    CAShapeLayer * _arrowTailPiecesLayer;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,13 +15,13 @@
             float width; 
             float height; 
         } size; 
-    } _arrowTailRect;
-    float _currentNormalizedSpeed;
-    struct CGPath { } *_currentTailPiecesPath;
-    float _tailBigDelta;
-    float _tailBiggestDelta;
-    float _tailMediumDelta;
-    float _tailSmallDelta;
+    }  _arrowTailRect;
+    float  _currentNormalizedSpeed;
+    struct CGPath { } * _currentTailPiecesPath;
+    float  _tailBigDelta;
+    float  _tailBiggestDelta;
+    float  _tailMediumDelta;
+    float  _tailSmallDelta;
 }
 
 - (void).cxx_destruct;

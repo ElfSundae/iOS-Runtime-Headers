@@ -3,7 +3,7 @@
  */
 
 @interface HKQueryAnchor : NSObject <NSCopying, NSSecureCoding> {
-    long long _rowid;
+    long long  _rowid;
 }
 
 @property (getter=_rowid, setter=_setRowid:, nonatomic) long long rowid;

@@ -3,7 +3,7 @@
  */
 
 @interface MBAggregateDictionary : NSObject {
-    NSMutableDictionary *_scalars;
+    NSMutableDictionary * _scalars;
 }
 
 @property (nonatomic, readonly) NSDictionary *scalars;

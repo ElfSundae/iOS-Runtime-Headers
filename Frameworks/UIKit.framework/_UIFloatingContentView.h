@@ -3,46 +3,46 @@
  */
 
 @interface _UIFloatingContentView : UIView {
-    BOOL __disableOutsetShadowPath;
+    BOOL  __disableOutsetShadowPath;
     struct CGSize { 
         float width; 
         float height; 
-    } _asymmetricFocusedSizeIncrease;
+    }  _asymmetricFocusedSizeIncrease;
     struct CGSize { 
         float width; 
         float height; 
-    } _asymmetricScaleFactor;
-    struct __CFDictionary { } *_backgroundColorsByState;
-    _UIFloatingContentSpecialAnimatingView *_containerView;
-    NSMutableArray *_contentMotionEffects;
-    BOOL _contentOpaque;
+    }  _asymmetricScaleFactor;
+    struct __CFDictionary { } * _backgroundColorsByState;
+    _UIFloatingContentSpecialAnimatingView * _containerView;
+    NSMutableArray * _contentMotionEffects;
+    BOOL  _contentOpaque;
     struct CGPoint { 
         float x; 
         float y; 
-    } _contentRotation;
+    }  _contentRotation;
     struct CGPoint { 
         float x; 
         float y; 
-    } _contentTranslation;
-    UIView *_contentView;
-    unsigned int _controlState;
-    float _cornerRadius;
-    BOOL _customScale;
-    <_UIFloatingContentViewDelegate> *_floatingContentViewDelegate;
-    _UIFocusAnimationConfiguration *_focusAnimationConfiguration;
-    id /* block */ _focusAnimationConfigurationHandler;
+    }  _contentTranslation;
+    UIView * _contentView;
+    unsigned int  _controlState;
+    float  _cornerRadius;
+    BOOL  _customScale;
+    <_UIFloatingContentViewDelegate> * _floatingContentViewDelegate;
+    _UIFocusAnimationConfiguration * _focusAnimationConfiguration;
+    id /* block */  _focusAnimationConfigurationHandler;
     struct CGPoint { 
         float x; 
         float y; 
-    } _focusDirection;
+    }  _focusDirection;
     struct CGPoint { 
         float x; 
         float y; 
-    } _focusScaleAnchorPoint;
-    int _highlightStyle;
-    _UIFloatingContentSpecialAnimatingView *_highlightView;
-    BOOL _roundContentWhenDeselected;
-    BOOL _scalesBackwards;
+    }  _focusScaleAnchorPoint;
+    int  _highlightStyle;
+    _UIFloatingContentSpecialAnimatingView * _highlightView;
+    BOOL  _roundContentWhenDeselected;
+    BOOL  _scalesBackwards;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -52,32 +52,34 @@
             float width; 
             float height; 
         } size; 
-    } _shadowContentsCenter;
-    BOOL _shadowEnabled;
+    }  _shadowContentsCenter;
+    BOOL  _shadowEnabled;
     struct CGSize { 
         float width; 
         float height; 
-    } _shadowExpansion;
-    UIImage *_shadowImage;
-    float _shadowOpacity;
-    float _shadowRadius;
+    }  _shadowExpansion;
+    UIImage * _shadowImage;
+    float  _shadowOpacityDark;
+    float  _shadowOpacityLight;
+    float  _shadowRadius;
     struct CGSize { 
         float width; 
         float height; 
-    } _shadowSize;
-    float _shadowVerticalOffset;
-    UIView *_shadowView;
-    BOOL _stretchableShadowImage;
-    BOOL _symmetricScale;
+    }  _shadowSize;
+    float  _shadowVerticalOffset;
+    UIView * _shadowView;
+    BOOL  _stretchableShadowImage;
+    BOOL  _symmetricScale;
     struct CGSize { 
         float width; 
         float height; 
-    } _unfocusedShadowExpansion;
-    float _unfocusedShadowOpacity;
-    float _unfocusedShadowRadius;
-    float _unfocusedShadowVerticalOffset;
-    BOOL _useShadowImage;
-    _UIFloatingContentSpecialAnimatingView *_visualEffectContainerView;
+    }  _unfocusedShadowExpansion;
+    float  _unfocusedShadowOpacity;
+    float  _unfocusedShadowRadius;
+    float  _unfocusedShadowVerticalOffset;
+    BOOL  _useShadowImage;
+    _UIFloatingContentSpecialAnimatingView * _visualEffectContainerView;
+    float  _visualEffectContainerViewScaleFactor;
 }
 
 @property (nonatomic) BOOL _disableOutsetShadowPath;
@@ -111,13 +113,16 @@
 @property (nonatomic) float unfocusedShadowVerticalOffset;
 @property (nonatomic) BOOL useShadowImage;
 @property (nonatomic, readonly) UIView *visualEffectContainerView;
+@property (nonatomic) float visualEffectContainerViewScaleFactor;
 
 + (id)_defaultFocusAnimationConfiguration;
 + (Class)layerClass;
 
 - (void).cxx_destruct;
 - (BOOL)_applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2;
+- (float)_currentShadowOpacity;
 - (BOOL)_disableOutsetShadowPath;
+- (float)_effectiveShadowOpacity;
 - (float)_effectiveShadowRadius;
 - (void)_installContentMotionEffects;
 - (void)_layoutShadow;
@@ -187,6 +192,7 @@
 - (void)setShadowImage:(id)arg1;
 - (void)setShadowImage:(id)arg1 stretchable:(BOOL)arg2;
 - (void)setShadowOpacity:(float)arg1;
+- (void)setShadowOpacity:(float)arg1 forUserInterfaceStyle:(int)arg2;
 - (void)setShadowRadius:(float)arg1;
 - (void)setShadowSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setShadowVerticalOffset:(float)arg1;
@@ -195,19 +201,23 @@
 - (void)setUnfocusedShadowRadius:(float)arg1;
 - (void)setUnfocusedShadowVerticalOffset:(float)arg1;
 - (void)setUseShadowImage:(BOOL)arg1;
+- (void)setVisualEffectContainerViewScaleFactor:(float)arg1;
 - (void)set_disableOutsetShadowPath:(BOOL)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })shadowContentsCenter;
 - (struct CGSize { float x1; float x2; })shadowExpansion;
 - (id)shadowImage;
 - (float)shadowOpacity;
+- (float)shadowOpacityForUserInterfaceStyle:(int)arg1;
 - (float)shadowRadius;
 - (struct CGSize { float x1; float x2; })shadowSize;
 - (float)shadowVerticalOffset;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize { float x1; float x2; })unfocusedShadowExpansion;
 - (float)unfocusedShadowOpacity;
 - (float)unfocusedShadowRadius;
 - (float)unfocusedShadowVerticalOffset;
 - (BOOL)useShadowImage;
 - (id)visualEffectContainerView;
+- (float)visualEffectContainerViewScaleFactor;
 
 @end

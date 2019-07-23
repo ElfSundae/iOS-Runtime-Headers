@@ -3,13 +3,13 @@
  */
 
 @interface RCSavedRecordingsModel : NSObject <NSFetchedResultsControllerDelegate> {
-    NSManagedObjectContext *_context;
-    NSFetchedResultsController *_fetchController;
-    int _isSavingDisabledCount;
-    NSManagedObjectModel *_model;
-    int _notifyToken;
-    NSFetchRequest *_savedRecordingsFetchRequest;
-    BOOL _valid;
+    NSManagedObjectContext * _context;
+    NSFetchedResultsController * _fetchController;
+    int  _isSavingDisabledCount;
+    NSManagedObjectModel * _model;
+    int  _notifyToken;
+    NSFetchRequest * _savedRecordingsFetchRequest;
+    BOOL  _valid;
 }
 
 @property (nonatomic, readonly) unsigned int count;

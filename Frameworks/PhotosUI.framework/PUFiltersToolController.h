@@ -3,13 +3,13 @@
  */
 
 @interface PUFiltersToolController : PUPhotoEditToolController <UICollectionViewDataSource, UICollectionViewDelegate> {
-    unsigned int __cachedSelectionIndex;
-    UICollectionView *__collectionView;
-    UICollectionViewFlowLayout *__collectionViewLayout;
-    BOOL __needsThumbnails;
-    NSMutableDictionary *__thumbnailImages;
-    NSArray *_collectionViewConstraints;
-    BOOL _didPerformInitialScrollToReveal;
+    unsigned int  __cachedSelectionIndex;
+    UICollectionView * __collectionView;
+    UICollectionViewFlowLayout * __collectionViewLayout;
+    BOOL  __needsThumbnails;
+    NSMutableDictionary * __thumbnailImages;
+    NSArray * _collectionViewConstraints;
+    BOOL  _didPerformInitialScrollToReveal;
 }
 
 @property (setter=_setCachedSelectionIndex:, nonatomic) unsigned int _cachedSelectionIndex;
@@ -45,11 +45,13 @@
 - (void)_updateCollectionView;
 - (void)_updateCollectionViewInsets;
 - (void)_updateEffectSelection;
+- (void)basePhotoInvalidated;
 - (BOOL)canResetToDefaultValue;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (int)collectionView:(id)arg1 numberOfItemsInSection:(int)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
 - (id)localizedName;
 - (id)localizedResetToolActionTitle;

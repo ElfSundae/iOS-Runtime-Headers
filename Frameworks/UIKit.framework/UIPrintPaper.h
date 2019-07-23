@@ -3,8 +3,8 @@
  */
 
 @interface UIPrintPaper : NSObject {
-    id _internal;
-    int _paperOrientation;
+    id  _internal;
+    int  _paperOrientation;
 }
 
 @property (readonly) struct CGSize { float x1; float x2; } paperSize;

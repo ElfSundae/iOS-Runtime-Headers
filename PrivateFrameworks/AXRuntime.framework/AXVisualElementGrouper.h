@@ -3,8 +3,8 @@
  */
 
 @interface AXVisualElementGrouper : AXElementGrouper {
-    float _maximumDistanceForAligningEdges;
-    float _maximumNeighbourDistance;
+    float  _maximumDistanceForAligningEdges;
+    float  _maximumNeighbourDistance;
 }
 
 @property (nonatomic) float maximumDistanceForAligningEdges;
@@ -12,7 +12,7 @@
 
 - (id)_groupablesForItems:(id)arg1;
 - (id)init;
-- (id)initWithPadInterfaceHeuristics:(BOOL)arg1;
+- (id)initWithHeuristics:(int)arg1;
 - (float)maximumDistanceForAligningEdges;
 - (float)maximumNeighbourDistance;
 - (void)setMaximumDistanceForAligningEdges:(float)arg1;

@@ -3,16 +3,16 @@
  */
 
 @interface GKBubbleControl : UIControl <NSCopying> {
-    BOOL _animateOnTouch;
-    BOOL _animatingIn;
-    GKBubbleView *_bubbleView;
-    UIView *_contentView;
-    NSLayoutConstraint *_contentViewHeightConstraint;
-    NSLayoutConstraint *_contentViewWidthConstraint;
-    NSString *_debuggingTag;
-    NSLayoutConstraint *_maxHeightConstraint;
-    NSLayoutConstraint *_maxWidthConstraint;
-    float _maximumDimension;
+    BOOL  _animateOnTouch;
+    BOOL  _animatingIn;
+    GKBubbleView * _bubbleView;
+    UIView * _contentView;
+    NSLayoutConstraint * _contentViewHeightConstraint;
+    NSLayoutConstraint * _contentViewWidthConstraint;
+    NSString * _debuggingTag;
+    NSLayoutConstraint * _maxHeightConstraint;
+    NSLayoutConstraint * _maxWidthConstraint;
+    float  _maximumDimension;
 }
 
 @property (nonatomic) BOOL animateOnTouch;

@@ -3,13 +3,13 @@
  */
 
 @interface MSCLAttachmentPropertiesTableViewSection : NSObject <MSCLSettingsTableViewCellDelegate, MSCLTokenTextViewDelegate, UITextFieldDelegate> {
-    SKUIClientContext *_clientContext;
-    BOOL _isExplicit;
-    <MSCLAttachmentPropertiesTableViewSectionDelegate> *_sectionDelegate;
-    float _sectionHeaderHeight;
-    int _sectionType;
-    NSArray *_tableViewCells;
-    MSCLVideoCoverImageSelectionView *_videoCoverImageView;
+    SKUIClientContext * _clientContext;
+    BOOL  _isExplicit;
+    <MSCLAttachmentPropertiesTableViewSectionDelegate> * _sectionDelegate;
+    float  _sectionHeaderHeight;
+    int  _sectionType;
+    NSArray * _tableViewCells;
+    MSCLVideoCoverImageSelectionView * _videoCoverImageView;
 }
 
 @property (nonatomic, readonly) SKUIClientContext *clientContext;

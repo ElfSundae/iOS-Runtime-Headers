@@ -3,17 +3,17 @@
  */
 
 @interface ISCrossfadeItem : NSObject {
-    NSArray *_animations;
-    double _crossfadeDuration;
-    int _firstImageOrientation;
-    NSArray *_images;
-    unsigned int _numberOfFrames;
+    NSArray * _animations;
+    double  _crossfadeDuration;
+    int  _firstImageOrientation;
+    NSArray * _images;
+    unsigned int  _numberOfFrames;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _videoDuration;
+    }  _videoDuration;
 }
 
 @property (nonatomic, readonly, copy) NSArray *animations;

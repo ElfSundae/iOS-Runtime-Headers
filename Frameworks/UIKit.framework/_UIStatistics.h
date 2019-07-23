@@ -3,25 +3,42 @@
  */
 
 @interface _UIStatistics : NSObject {
-    NSMutableSet *_children;
-    NSString *_key;
-    double _sampleRate;
-    double _sampleValue;
+    NSMutableSet * _children;
+    NSString * _key;
+    double  _sampleRate;
+    double  _sampleValue;
 }
 
 @property (nonatomic) double sampleRate;
 
-+ (id)_sharedStatisticScalarWithDomain:(id)arg1 statisticsClass:(Class)arg2 identifierReporting:(int)arg3;
++ (id)_sharedStatisticWithDomain:(id)arg1 statisticsClass:(Class)arg2 identifierReporting:(int)arg3;
 + (id)alertButtonTapCount;
 + (id)controlInteractionDurationDistributionWithCategory:(id)arg1 suffix:(id)arg2;
 + (id)controlTapCountWithCategory:(id)arg1 suffix:(id)arg2;
 + (id)controlValueChangeEmittedCountWithCategory:(id)arg1 suffix:(id)arg2;
-+ (id)orbPeekCount;
-+ (id)orbPeekDuration;
-+ (id)orbPopCount;
-+ (id)orbTapCount;
++ (unsigned long long)currentTime;
++ (id)feedbackBehaviorActivationCountWithSuffix:(id)arg1;
++ (id)feedbackBehaviorActivationDurationWithSuffix:(id)arg1;
++ (id)feedbackBehaviorActivationTimeOutCountWithSuffix:(id)arg1;
++ (id)feedbackBehaviorPlayCountWithSuffix:(id)arg1;
++ (id)feedbackBehaviorPreparationCountWithSuffix:(id)arg1;
++ (id)feedbackEngineActivationCountWithSuffix:(id)arg1;
++ (id)feedbackEngineActivationDurationWithSuffix:(id)arg1;
++ (id)feedbackEngineOutOfChannelsCountWithSuffix:(id)arg1;
++ (id)feedbackEnginePrewarmCountWithSuffix:(id)arg1;
++ (id)feedbackEnginePrewarmDurationWithSuffix:(id)arg1;
++ (id)maxForce;
 + (id)pinchGestureCount;
++ (id)previewInteractionAlertPresentationCount;
++ (id)previewInteractionPeekCount;
++ (id)previewInteractionPeekDuration;
++ (id)previewInteractionPeekForce;
++ (id)previewInteractionPopCount;
++ (id)previewInteractionPopForce;
++ (id)previewInteractionTapCount;
 + (id)scrollBounceCount;
++ (id)scrollViewVerticalVelocityInteractive;
++ (id)scrollViewVerticalVelocityNoninteractive;
 + (id)scrubberUsageCount;
 + (id)scrubberUsageTime;
 + (id)zoomGestureCount;
@@ -42,6 +59,7 @@
 - (id)init;
 - (id)initWithDomain:(id)arg1;
 - (id)initWithDomain:(id)arg1 identifierReporting:(int)arg2;
+- (void)randomizeSampleValue;
 - (double)sampleRate;
 - (void)setSampleRate:(double)arg1;
 

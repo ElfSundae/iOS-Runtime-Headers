@@ -10,7 +10,6 @@
 - (unsigned long long)deviceIdentifier;
 - (unsigned int)errorCode;
 - (id)initWithErrorCode:(unsigned int)arg1 deviceIdentifier:(unsigned long long)arg2;
-- (double)timestamp;
 - (unsigned int)type;
 
 @end

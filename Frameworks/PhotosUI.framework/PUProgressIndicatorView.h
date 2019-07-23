@@ -3,26 +3,26 @@
  */
 
 @interface PUProgressIndicatorView : UIView {
-    int __currentState;
-    double __timestampBeganShowing;
-    _UIBackdropView *_backgroundView;
-    NSArray *_backgroundViewConstraints;
-    id /* block */ _completionHandler;
-    float _currentProgress;
-    BOOL _isDeterminate;
-    NSArray *_labelAndPieProgressConstraints;
-    NSArray *_labelAndSpinnerConstraints;
-    NSString *_localizedMessage;
-    UILabel *_messageLabel;
-    NSArray *_messageLabelConstraints;
-    PLRoundProgressView *_pieProgressView;
-    NSArray *_pieProgressViewConstraints;
-    BOOL _showsBackground;
-    UIActivityIndicatorView *_spinnerView;
-    NSArray *_spinnerViewConstraints;
-    int _style;
-    BOOL _wantsAnimatedHide;
-    BOOL _wantsImmediateHide;
+    int  __currentState;
+    double  __timestampBeganShowing;
+    _UIBackdropView * _backgroundView;
+    NSArray * _backgroundViewConstraints;
+    id /* block */  _completionHandler;
+    float  _currentProgress;
+    BOOL  _isDeterminate;
+    NSArray * _labelAndPieProgressConstraints;
+    NSArray * _labelAndSpinnerConstraints;
+    NSString * _localizedMessage;
+    UILabel * _messageLabel;
+    NSArray * _messageLabelConstraints;
+    PLRoundProgressView * _pieProgressView;
+    NSArray * _pieProgressViewConstraints;
+    BOOL  _showsBackground;
+    UIActivityIndicatorView * _spinnerView;
+    NSArray * _spinnerViewConstraints;
+    int  _style;
+    BOOL  _wantsAnimatedHide;
+    BOOL  _wantsImmediateHide;
 }
 
 @property (setter=_setCurrentState:, nonatomic) int _currentState;
@@ -37,12 +37,14 @@
 - (void).cxx_destruct;
 - (int)_currentState;
 - (void)_endShowingProgressIfReady;
+- (void)_handleBeginShowingAnimated:(BOOL)arg1 wasImmediate:(BOOL)arg2;
 - (id)_newBackdropBackgroundView;
 - (void)_setCurrentState:(int)arg1;
 - (void)_setTimestampBeganShowing:(double)arg1;
 - (double)_timestampBeganShowing;
 - (void)_updatePieProgress;
 - (void)_updateProgressViewsAnimated:(BOOL)arg1 completion:(id /* block */)arg2;
+- (void)_updateProgressViewsWithAnimation:(int)arg1 completion:(id /* block */)arg2;
 - (void)_updateSubviewsOrdering;
 - (void)beginShowingProgressImmediately:(BOOL)arg1 animated:(BOOL)arg2;
 - (float)currentProgress;

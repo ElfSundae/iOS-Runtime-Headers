@@ -3,31 +3,31 @@
  */
 
 @interface GQHPagesState : GQHState <GQWrapPointGenerator> {
-    long mAttachmentIdCounter;
-    struct __CFArray { } *mAttachmentPositions;
-    GQDSStyle *mCurrentBaseParagraphStyle;
-    GQDSStyle *mCurrentBaseSpanStyle;
-    struct __CFString { } *mCurrentCachedParagraphClass;
-    struct __CFString { } *mCurrentCachedSpanClass;
-    BOOL mCurrentFrameHasSandbagFloats;
-    int mCurrentHintColumnIndex;
-    int mCurrentHintPageIndex;
-    GQHStyle *mCurrentLayoutStyle;
-    int mCurrentPageIndex;
-    GQHStyle *mCurrentParagraphStyle;
-    GQDSStyle *mCurrentSectionStyle;
-    GQHStyle *mCurrentSpanStyle;
-    GQWrapPointSet *mCurrentWrapPointSet;
-    BOOL mDidFindContainerHint;
-    BOOL mDidInsertPageHeader;
-    struct __CFDictionary { } *mDrawablePagesOrderToCssZOrderClassMap;
-    long mFirstAttachmentId;
-    struct __CFDictionary { } *mFloatingDrawables;
-    struct __CFDictionary { } *mFooters;
-    BOOL mHasLayoutDrawables;
-    int mHeaderFooterPageNumber;
-    struct __CFDictionary { } *mHeaders;
-    BOOL mIsMappingHeadersFooters;
+    long  mAttachmentIdCounter;
+    struct __CFArray { } * mAttachmentPositions;
+    GQDSStyle * mCurrentBaseParagraphStyle;
+    GQDSStyle * mCurrentBaseSpanStyle;
+    struct __CFString { } * mCurrentCachedParagraphClass;
+    struct __CFString { } * mCurrentCachedSpanClass;
+    BOOL  mCurrentFrameHasSandbagFloats;
+    int  mCurrentHintColumnIndex;
+    int  mCurrentHintPageIndex;
+    GQHStyle * mCurrentLayoutStyle;
+    int  mCurrentPageIndex;
+    GQHStyle * mCurrentParagraphStyle;
+    GQDSStyle * mCurrentSectionStyle;
+    GQHStyle * mCurrentSpanStyle;
+    GQWrapPointSet * mCurrentWrapPointSet;
+    BOOL  mDidFindContainerHint;
+    BOOL  mDidInsertPageHeader;
+    struct __CFDictionary { } * mDrawablePagesOrderToCssZOrderClassMap;
+    long  mFirstAttachmentId;
+    struct __CFDictionary { } * mFloatingDrawables;
+    struct __CFDictionary { } * mFooters;
+    BOOL  mHasLayoutDrawables;
+    int  mHeaderFooterPageNumber;
+    struct __CFDictionary { } * mHeaders;
+    BOOL  mIsMappingHeadersFooters;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -37,23 +37,23 @@
             float width; 
             float height; 
         } size; 
-    } mLastFrame;
-    GQDWPContainerHint *mLastInsertedContainerHint;
-    BOOL mMappingFloatingDrawables;
-    int mMode;
+    }  mLastFrame;
+    GQDWPContainerHint * mLastInsertedContainerHint;
+    BOOL  mMappingFloatingDrawables;
+    int  mMode;
     struct CGSize { 
         float width; 
         float height; 
-    } mPageSize;
-    struct __CFDictionary { } *mPageWrapPointsMap;
-    int mProgressiveIndex;
-    struct __CFArray { } *mSectionStyles;
-    BOOL mSplitNextAttachment;
-    int mStartPageAt;
-    int mStartPageAtValueChangedAtPageIndex;
-    BOOL mStartedPage;
-    BOOL mStartedSection;
-    struct __CFArray { } *mTocHrefStack;
+    }  mPageSize;
+    struct __CFDictionary { } * mPageWrapPointsMap;
+    int  mProgressiveIndex;
+    struct __CFArray { } * mSectionStyles;
+    BOOL  mSplitNextAttachment;
+    int  mStartPageAt;
+    int  mStartPageAtValueChangedAtPageIndex;
+    BOOL  mStartedPage;
+    BOOL  mStartedSection;
+    struct __CFArray { } * mTocHrefStack;
 }
 
 @property (readonly, copy) NSString *debugDescription;

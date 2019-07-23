@@ -3,26 +3,26 @@
  */
 
 @interface UISectionRowData : NSObject <NSCopying> {
-    unsigned int _arrayLength;
-    BOOL _estimatesRowHeights;
-    int _footerAlignment;
-    float _footerHeight;
-    float _footerOffset;
-    NSMutableIndexSet *_forcedNegativeRows;
-    int _headerAlignment;
-    float _headerHeight;
-    float _headerOffset;
-    float _maxFooterTitleWidth;
-    float _maxHeaderTitleWidth;
-    unsigned int _numRows;
-    UITableViewRowData *_rowData;
-    float *_rowHeights;
-    float *_rowOffsets;
-    float _sectionHeight;
-    float _sectionOffset;
-    BOOL _sectionOffsetValid;
-    int _sectionRowOffset;
-    BOOL _valid;
+    unsigned int  _arrayLength;
+    BOOL  _estimatesHeights;
+    int  _footerAlignment;
+    float  _footerHeight;
+    float  _footerOffset;
+    NSMutableIndexSet * _forcedNegativeRows;
+    int  _headerAlignment;
+    float  _headerHeight;
+    float  _headerOffset;
+    float  _maxFooterTitleWidth;
+    float  _maxHeaderTitleWidth;
+    unsigned int  _numRows;
+    UITableViewRowData * _rowData;
+    float * _rowHeights;
+    float * _rowOffsets;
+    float  _sectionHeight;
+    float  _sectionOffset;
+    BOOL  _sectionOffsetValid;
+    int  _sectionRowOffset;
+    BOOL  _valid;
 }
 
 - (void).cxx_destruct;
@@ -35,6 +35,8 @@
 - (void)addOffset:(float)arg1 fromRow:(int)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (float)defaultSectionFooterHeight;
+- (float)defaultSectionHeaderHeight;
 - (void)deleteRowAtIndex:(int)arg1;
 - (float)heightForEmptySection:(int)arg1 inTableView:(id)arg2 rowData:(id)arg3;
 - (float)heightForFooterInSection:(int)arg1 canGuess:(BOOL)arg2;

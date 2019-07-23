@@ -3,14 +3,14 @@
  */
 
 @interface WLWelcomeViewController : UIViewController <WLSourceDevicesDelegate> {
-    WLMigrationCompletedViewController *_completedViewController;
-    id /* block */ _completionHandler;
-    BOOL _dismissAfterTimeout;
-    WLIntroViewController *_introViewController;
-    WLWelcomeViewControllerMetrics *_metrics;
-    WLPairingViewController *_pairingViewController;
-    WLMigrationProgressViewController *_progressViewController;
-    WLSourceDevicesController *_sourceDevicesController;
+    WLMigrationCompletedViewController * _completedViewController;
+    id /* block */  _completionHandler;
+    BOOL  _dismissAfterTimeout;
+    WLIntroViewController * _introViewController;
+    WLWelcomeViewControllerMetrics * _metrics;
+    WLPairingViewController * _pairingViewController;
+    WLMigrationProgressViewController * _progressViewController;
+    WLSourceDevicesController * _sourceDevicesController;
 }
 
 @property (nonatomic, copy) id /* block */ completionHandler;

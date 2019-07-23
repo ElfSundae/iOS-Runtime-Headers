@@ -3,14 +3,14 @@
  */
 
 @interface MusicArtworkPlaceholderKey : NSObject <NSCopying> {
-    int _integerHeight;
-    int _integerScale;
-    int _integerWidth;
-    float _scale;
+    int  _integerHeight;
+    int  _integerScale;
+    int  _integerWidth;
+    float  _scale;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
 }
 
 @property (nonatomic, readonly) float scale;

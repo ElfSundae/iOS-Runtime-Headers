@@ -3,7 +3,7 @@
  */
 
 @interface FBApplicationTerminationAssertionServiceServer : FBSystemServiceFacility {
-    NSMutableDictionary *_assertionsByClient;
+    NSMutableDictionary * _assertionsByClient;
 }
 
 - (void)_handleAcquireTerminationAssertionMessage:(id)arg1 fromClient:(id)arg2;

@@ -3,7 +3,7 @@
  */
 
 @interface _MKStackingPlaceholderView : UIView {
-    NSLayoutConstraint *_contentHeightConstraint;
+    NSLayoutConstraint * _contentHeightConstraint;
 }
 
 @property (nonatomic) float contentHeight;

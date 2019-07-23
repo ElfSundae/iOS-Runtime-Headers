@@ -3,7 +3,7 @@
  */
 
 @interface PUDefaultTileTransitionCoordinator : PUTileTransitionCoordinator {
-    NSNumber *_animationDuration;
+    NSNumber * _animationDuration;
 }
 
 @property (nonatomic, copy) NSNumber *animationDuration;

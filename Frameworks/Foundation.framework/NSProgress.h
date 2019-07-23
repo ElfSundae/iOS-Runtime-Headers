@@ -3,28 +3,27 @@
  */
 
 @interface NSProgress : NSObject <NSProgressPublisher> {
-    NSMutableDictionary *_acknowledgementHandlersByBundleID;
-    id /* block */ _cancellationHandler;
-    NSMutableSet *_children;
-    NSXPCConnection *_connection;
-    int _disconnectingBlockageCount;
-    unsigned long long _flags;
-    NSMutableDictionary *_lastNotificationTimesByKey;
-    NSLock *_lock;
-    NSProgress *_parent;
-    id /* block */ _pausingHandler;
-    id /* block */ _prioritizationHandler;
-    NSString *_publisherID;
-    int _remoteObserverCount;
-    long long _reserved4;
-    id /* block */ _resumingHandler;
-    int _unpublishingBlockageCount;
-    NSMutableDictionary *_userInfoLastNotificationTimesByKey;
-    id _userInfoProxy;
-    id _values;
+    NSMutableDictionary * _acknowledgementHandlersByLowercaseBundleID;
+    id /* block */  _cancellationHandler;
+    NSMutableSet * _children;
+    unsigned long long  _flags;
+    NSMutableDictionary * _lastNotificationTimesByKey;
+    NSLock * _lock;
+    NSProgress * _parent;
+    id /* block */  _pausingHandler;
+    id /* block */  _prioritizationHandler;
+    NSString * _publisherID;
+    long long  _reserved4;
+    id  _reserved5;
+    int  _reserved6;
+    int  _reserved7;
+    int  _reserved8;
+    id /* block */  _resumingHandler;
+    NSMutableDictionary * _userInfoLastNotificationTimesByKey;
+    id  _userInfoProxy;
+    id  _values;
 }
 
-@property BOOL _adoptChildUserInfo;
 @property (getter=isCancellable) BOOL cancellable;
 @property (copy) id /* block */ cancellationHandler;
 @property (getter=isCancelled, readonly) BOOL cancelled;
@@ -62,6 +61,7 @@
 + (id)_publisherInterface;
 + (id)_registrarInterface;
 + (void)_removeSubscriber:(id)arg1;
++ (id)_serverConnection;
 + (id)_subscriberInterface;
 + (id)addSubscriberForFileURL:(id)arg1 usingBlock:(id /* block */)arg2;
 + (id)addSubscriberForFileURL:(id)arg1 withPublishingHandler:(id /* block */)arg2;
@@ -92,8 +92,6 @@
 - (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(BOOL)arg3;
 - (id)_setValueForKeys:(id /* block */)arg1 settingBlock:(id /* block */)arg2;
-- (void)_unblockDisconnecting;
-- (void)_unblockUnpublishing;
 - (void)_unpublish;
 - (void)_updateChild:(id)arg1 fraction:(id)arg2 portion:(long long)arg3;
 - (void)_updateFractionCompleted:(id)arg1;
@@ -151,8 +149,6 @@
 - (void)setTotalUnitCount:(long long)arg1;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
 - (void)set_adoptChildUserInfo:(BOOL)arg1;
-- (oneway void)startProvidingValuesWithInitialAcceptor:(id /* block */)arg1;
-- (oneway void)stopProvidingValues;
 - (long long)totalUnitCount;
 - (void)unpublish;
 - (id)userInfo;

@@ -3,14 +3,14 @@
  */
 
 @interface NSURLConnectionInternalConnection : NSURLConnectionInternal <NSURLConnectionRequired> {
-    struct _CFURLConnection { } *_cfConn;
-    int _cfConnLock;
-    struct _CFURLAuthChallenge { } *_currCFChallenge;
-    NSURLAuthenticationChallenge *_currNSChallenge;
-    long long _expectedTotalBytes;
-    struct __CFString { } *_fileName;
-    bool _shouldSkipCancelOnRelease;
-    long long _totalBytes;
+    struct _CFURLConnection { } * _cfConn;
+    int  _cfConnLock;
+    struct _CFURLAuthChallenge { } * _currCFChallenge;
+    NSURLAuthenticationChallenge * _currNSChallenge;
+    long long  _expectedTotalBytes;
+    struct __CFString { } * _fileName;
+    bool  _shouldSkipCancelOnRelease;
+    long long  _totalBytes;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,13 +3,13 @@
  */
 
 @interface ShadowInfo : NSObject {
-    UIColor *_color;
+    UIColor * _color;
     struct CGSize { 
         float width; 
         float height; 
-    } _offset;
-    float _radius;
-    float _scale;
+    }  _offset;
+    float  _radius;
+    float  _scale;
 }
 
 @property (nonatomic, copy) UIColor *color;

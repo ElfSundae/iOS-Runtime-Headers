@@ -3,7 +3,7 @@
  */
 
 @interface AVMutableMetadataItem : AVMetadataItem {
-    AVMutableMetadataItemInternal *_mutablePriv;
+    AVMutableMetadataItemInternal * _mutablePriv;
 }
 
 @property (nonatomic, copy) NSString *dataType;

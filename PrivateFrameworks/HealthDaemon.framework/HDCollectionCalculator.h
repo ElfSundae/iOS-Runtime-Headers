@@ -3,11 +3,11 @@
  */
 
 @interface HDCollectionCalculator : NSObject {
-    NSArray *_bucketBoundaries;
-    unsigned int _currentBucket;
-    double _currentEndDate;
-    double _currentStartDate;
-    BOOL _detailBySource;
+    NSArray * _bucketBoundaries;
+    unsigned int  _currentBucket;
+    double  _currentEndDate;
+    double  _currentStartDate;
+    BOOL  _detailBySource;
 }
 
 @property (nonatomic, readonly) NSArray *bucketBoundaries;

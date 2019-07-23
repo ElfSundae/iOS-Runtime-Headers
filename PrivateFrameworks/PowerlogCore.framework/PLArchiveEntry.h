@@ -3,7 +3,8 @@
  */
 
 @interface PLArchiveEntry : PLEntry {
-    BOOL _systemTimeOffsetModified;
+    NSString * _crPath;
+    BOOL  _systemTimeOffsetModified;
 }
 
 @property (nonatomic, readonly) NSString *compressedPath;
@@ -28,6 +29,7 @@
 + (void)load;
 + (id)storageQueue;
 
+- (void).cxx_destruct;
 - (id)compressedPath;
 - (id)crPath;
 - (id)endDate;
@@ -35,7 +37,6 @@
 - (id)initEntryWithRawData:(id)arg1;
 - (id)initWithMetadata:(id)arg1;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 andUUID:(id)arg3;
-- (void)linkToCR;
 - (void)log;
 - (long long)mainDBSizeAtStart;
 - (id)name;

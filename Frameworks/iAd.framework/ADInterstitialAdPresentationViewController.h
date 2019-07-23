@@ -3,8 +3,8 @@
  */
 
 @interface ADInterstitialAdPresentationViewController : UIViewController {
-    ADCountdownButton *_closeButton;
-    ADInterstitialAd *_interstitialAd;
+    ADCountdownButton * _closeButton;
+    ADInterstitialAd * _interstitialAd;
 }
 
 @property (nonatomic, retain) ADCountdownButton *closeButton;

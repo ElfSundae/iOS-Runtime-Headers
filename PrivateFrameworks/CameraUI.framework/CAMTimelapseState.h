@@ -3,27 +3,28 @@
  */
 
 @interface CAMTimelapseState : NSObject <NSCoding, NSCopying> {
-    BOOL _allFramesWritten;
-    int _captureOrientation;
-    double _captureTimeInterval;
-    float _focusLensPosition;
-    int _frameIndexStride;
-    NSDate *_lastFrameResponseTime;
-    int _nextFrameIndex;
+    BOOL  _allFramesWritten;
+    int  _captureDevice;
+    int  _captureOrientation;
+    double  _captureTimeInterval;
+    float  _focusLensPosition;
+    int  _frameIndexStride;
+    NSDate * _lastFrameResponseTime;
+    int  _nextFrameIndex;
     struct CGSize { 
         float width; 
         float height; 
-    } _nominalIntermediateFrameSize;
-    unsigned short _sessionIdentifier;
-    CLLocation *_startLocation;
-    NSDate *_startTime;
-    int _stopReasons;
-    NSDate *_stopTime;
-    NSString *_timelapseUUID;
-    BOOL _usingFrontCamera;
+    }  _nominalIntermediateFrameSize;
+    unsigned short  _sessionIdentifier;
+    CLLocation * _startLocation;
+    NSDate * _startTime;
+    int  _stopReasons;
+    NSDate * _stopTime;
+    NSString * _timelapseUUID;
 }
 
 @property (nonatomic) BOOL allFramesWritten;
+@property (nonatomic) int captureDevice;
 @property (nonatomic) int captureOrientation;
 @property (nonatomic, readonly) double captureTimeInterval;
 @property (nonatomic, readonly) int connectionMode;
@@ -38,7 +39,6 @@
 @property (nonatomic) int stopReasons;
 @property (nonatomic, retain) NSDate *stopTime;
 @property (nonatomic, retain) NSString *timelapseUUID;
-@property (getter=isUsingFrontCamera, nonatomic) BOOL usingFrontCamera;
 
 + (double)maxTimeToWaitForWrittenFrameAfterStop;
 + (id)stateWithContentsOfFile:(id)arg1;
@@ -48,6 +48,7 @@
 - (BOOL)addStopReasons:(int)arg1 stopTime:(id)arg2;
 - (BOOL)allFramesWritten;
 - (BOOL)canContinueCapture;
+- (int)captureDevice;
 - (int)captureOrientation;
 - (double)captureTimeInterval;
 - (int)connectionMode;
@@ -65,13 +66,13 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToState:(id)arg1;
 - (BOOL)isReadyForWritingMovie;
-- (BOOL)isUsingFrontCamera;
 - (id)lastFrameResponseTime;
 - (BOOL)mergeSecondaryState:(id)arg1;
 - (int)nextFrameIndex;
 - (struct CGSize { float x1; float x2; })nominalIntermediateFrameSize;
 - (unsigned short)sessionIdentifier;
 - (void)setAllFramesWritten:(BOOL)arg1;
+- (void)setCaptureDevice:(int)arg1;
 - (void)setCaptureOrientation:(int)arg1;
 - (void)setFocusLensPosition:(float)arg1;
 - (void)setLastFrameResponseTime:(id)arg1;
@@ -82,7 +83,6 @@
 - (void)setStopReasons:(int)arg1;
 - (void)setStopTime:(id)arg1;
 - (void)setTimelapseUUID:(id)arg1;
-- (void)setUsingFrontCamera:(BOOL)arg1;
 - (id)startLocation;
 - (id)startTime;
 - (int)stopReasons;

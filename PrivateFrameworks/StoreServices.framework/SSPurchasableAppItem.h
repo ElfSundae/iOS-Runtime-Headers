@@ -16,6 +16,7 @@
 - (id)companyName;
 - (int)contentRatingFlags;
 - (id)description;
+- (BOOL)hasMessagesExtension;
 - (id)humanReadableVersion;
 - (long long)iTunesVersion;
 - (id)iconTitle;

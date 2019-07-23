@@ -3,10 +3,10 @@
  */
 
 @interface SYSyncBatchResponse : PBCodable <NSCopying> {
-    SYErrorInfo *_error;
-    SYMessageHeader *_header;
-    unsigned long long _index;
-    NSString *_sessionID;
+    SYErrorInfo * _error;
+    SYMessageHeader * _header;
+    unsigned long long  _index;
+    NSString * _sessionID;
 }
 
 @property (nonatomic, retain) SYErrorInfo *error;

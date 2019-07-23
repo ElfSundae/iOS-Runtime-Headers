@@ -8,11 +8,11 @@
         float left; 
         float bottom; 
         float right; 
-    } _coverInsets;
-    UIButton *_hintButton;
-    UIImageView *_hintImageView;
-    UILabel *_hintLabel;
-    UIButton *_referenceButton;
+    }  _coverInsets;
+    UIButton * _hintButton;
+    UIImageView * _hintImageView;
+    UILabel * _hintLabel;
+    UIButton * _referenceButton;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } coverInsets;
@@ -21,8 +21,8 @@
 @property (nonatomic, retain) UILabel *hintLabel;
 @property (nonatomic, retain) UIButton *referenceButton;
 
+- (void).cxx_destruct;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })coverInsets;
-- (void)dealloc;
 - (id)hintButton;
 - (id)hintImageView;
 - (id)hintLabel;

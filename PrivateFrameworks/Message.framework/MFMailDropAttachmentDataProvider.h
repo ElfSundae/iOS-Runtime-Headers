@@ -3,7 +3,7 @@
  */
 
 @interface MFMailDropAttachmentDataProvider : MFAttachmentLibraryDataProvider <NSURLSessionDownloadDelegate> {
-    NSMutableDictionary *_attachments;
+    NSMutableDictionary * _attachments;
 }
 
 @property (readonly, copy) NSString *debugDescription;

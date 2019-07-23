@@ -3,10 +3,10 @@
  */
 
 @interface WBSSQLiteStatement : NSObject {
-    NSArray *_columnNames;
-    NSDictionary *_columnNamesToIndexes;
-    WBSSQLiteDatabase *_database;
-    struct sqlite3_stmt { } *_handle;
+    NSArray * _columnNames;
+    NSDictionary * _columnNamesToIndexes;
+    WBSSQLiteDatabase * _database;
+    struct sqlite3_stmt { } * _handle;
 }
 
 @property (nonatomic, readonly) NSArray *columnNames;

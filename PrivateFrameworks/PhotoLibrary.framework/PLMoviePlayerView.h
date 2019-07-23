@@ -3,10 +3,9 @@
  */
 
 @interface PLMoviePlayerView : UIView {
-    PLAirPlayBackgroundView *_airPlayView;
-    PLAVPlayerView *_avPlayerView;
-    BOOL _destinationPlaceholderHidden;
-    PLVideoOutBackgroundView *_videoOutView;
+    PLAVPlayerView * _avPlayerView;
+    BOOL  _destinationPlaceholderHidden;
+    int  _destinationPlaceholderStyle;
 }
 
 @property (getter=isDestinationPlaceholderHidden, nonatomic) BOOL destinationPlaceholderHidden;
@@ -14,8 +13,6 @@
 @property (nonatomic, retain) AVPlayer *player;
 @property (nonatomic, readonly, retain) UIView *videoView;
 
-- (void)_clearAirPlayView;
-- (void)_clearVideoView;
 - (void)_installBackgroundView:(id)arg1;
 - (void)dealloc;
 - (int)destinationPlaceholderStyle;
@@ -24,10 +21,9 @@
 - (id)player;
 - (void)reattachVideoView;
 - (void)setDestinationPlaceholderHidden:(BOOL)arg1;
-- (void)setDestinationPlaceholderStyle:(int)arg1 airPlayDeviceName:(id)arg2;
 - (void)setPlayer:(id)arg1;
-- (void)setScaleMode:(unsigned int)arg1;
-- (void)setScaleMode:(unsigned int)arg1 duration:(double)arg2;
+- (void)setScaleMode:(int)arg1;
+- (void)setScaleMode:(int)arg1 duration:(double)arg2;
 - (id)videoView;
 
 @end

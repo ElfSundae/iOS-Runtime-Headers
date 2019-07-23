@@ -2,19 +2,19 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMTimelapseBackendController : NSObject <CAMNebulaDaemonTimelapseProtocol, CAMVideoCaptureRequestDelegate> {
-    BKSApplicationStateMonitor *__applicationStateMonitor;
-    BOOL __capturing;
-    CAMTimelapseState *__currentState;
-    CAMNebulaKeepAliveController *__keepAliveController;
-    <CAMTimelapseMovieWriterProtocol> *__movieWriter;
-    int __notifyRegisterTokenResumeIO;
-    int __notifyRegisterTokenSuspendIO;
-    BOOL __oldMovieWriterEnabled;
-    CAMPersistenceController *__persistenceController;
-    NSMutableArray *__sessionContexts;
-    NSObject<OS_dispatch_queue> *__workQueue;
-    BOOL __writingMovie;
+@interface CAMTimelapseBackendController : NSObject <CAMNebulaDaemonTimelapseProtocol, CAMPersistenceResultDelegate, CAMVideoCaptureRequestDelegate> {
+    BKSApplicationStateMonitor * __applicationStateMonitor;
+    BOOL  __capturing;
+    CAMTimelapseState * __currentState;
+    CAMNebulaKeepAliveController * __keepAliveController;
+    <CAMTimelapseMovieWriterProtocol> * __movieWriter;
+    int  __notifyRegisterTokenResumeIO;
+    int  __notifyRegisterTokenSuspendIO;
+    BOOL  __oldMovieWriterEnabled;
+    CAMPersistenceController * __persistenceController;
+    NSMutableArray * __sessionContexts;
+    NSObject<OS_dispatch_queue> * __workQueue;
+    BOOL  __writingMovie;
 }
 
 @property (nonatomic, readonly) BKSApplicationStateMonitor *_applicationStateMonitor;
@@ -76,6 +76,7 @@
 - (void)handleClientDisconnection;
 - (id)init;
 - (id)initWithPersistenceController:(id)arg1 keepAliveController:(id)arg2;
+- (void)persistenceController:(id)arg1 didGenerateVideoLocalPersistenceResult:(id)arg2 forCaptureResult:(id)arg3 fromRequest:(id)arg4;
 - (void)resumeTimelapseWithUUID:(id)arg1;
 - (void)startTimelapseWithUUID:(id)arg1;
 - (void)stopTimelapseWithUUID:(id)arg1;

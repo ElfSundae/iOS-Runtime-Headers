@@ -9,8 +9,8 @@
         struct __compressed_pair<MPU::LayoutInterpolator::EntriesContainer *, std::__1::allocator<MPU::LayoutInterpolator::EntriesContainer> > { 
             struct EntriesContainer {} *__first_; 
         } __end_cap_; 
-    } _entriesContainers;
-    BOOL _hasEntryWithSpecificSecondaryReferenceMetric;
+    }  _entriesContainers;
+    BOOL  _hasEntryWithSpecificSecondaryReferenceMetric;
 }
 
 - (id).cxx_construct;

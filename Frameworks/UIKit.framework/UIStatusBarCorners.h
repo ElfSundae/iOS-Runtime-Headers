@@ -3,10 +3,10 @@
  */
 
 @interface UIStatusBarCorners : UIView {
-    int _cornerAlignment;
-    int _cornerStyle;
-    UIView *_leftCorner;
-    UIView *_rightCorner;
+    int  _cornerAlignment;
+    int  _cornerStyle;
+    UIView * _leftCorner;
+    UIView * _rightCorner;
 }
 
 + (float)cornerRadius;

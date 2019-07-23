@@ -3,7 +3,7 @@
  */
 
 @interface AKGeometryHelper : NSObject {
-    AKPageController *_pageController;
+    AKPageController * _pageController;
 }
 
 @property AKPageController *pageController;
@@ -27,6 +27,7 @@
 + (float)angleOfVector:(struct CGVector { float x1; float x2; })arg1;
 + (BOOL)annotationHasRotation:(id)arg1 outAngle:(float*)arg2;
 + (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })boundsOfRotatedRectangle:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 angle:(float)arg2;
++ (struct CGPoint { float x1; float x2; })centerOfRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 + (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })centeredCircleToEllipseTransform:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 + (struct CGPoint { float x1; float x2; })compareVectorDirectionsFirstVector:(struct CGPoint { float x1; float x2; })arg1 secondVector:(struct CGPoint { float x1; float x2; })arg2;
 + (int)concatExifOrientation:(int)arg1 withExifOrientation:(int)arg2;

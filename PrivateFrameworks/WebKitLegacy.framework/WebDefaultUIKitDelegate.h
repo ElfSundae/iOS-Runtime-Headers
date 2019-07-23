@@ -11,7 +11,7 @@
 - (id)checkSpellingOfString:(id)arg1;
 - (struct CGPoint { float x1; float x2; })contentsPointForWebView:(id)arg1;
 - (void)deleteFromInput;
-- (void)deleteFromInputwithFlags:(unsigned int)arg1;
+- (void)deleteFromInputWithFlags:(unsigned int)arg1;
 - (int)deviceOrientation;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })documentVisibleRectForWebView:(id)arg1;
 - (int)getPasteboardChangeCount;

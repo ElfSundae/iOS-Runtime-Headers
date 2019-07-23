@@ -3,18 +3,18 @@
  */
 
 @interface UIKeyboardSquishTransition : UIKeyboardKeyplaneTransition {
-    unsigned int _animationType;
-    NSArray *_commonVisibleKeys;
-    BOOL _disableMeshOptimization;
-    NSArray *_endGeometries;
-    float _offsetX;
-    double _opacityAnimationBeginTime;
-    BOOL _opacityAnimationDirectionForward;
-    CADisplayLink *_opacityAnimationDisplayLink;
-    float _previousProgress;
-    NSArray *_startGeometries;
-    BOOL _useInteractiveOpacity;
-    float _widthRatio;
+    unsigned int  _animationType;
+    NSArray * _commonVisibleKeys;
+    BOOL  _disableMeshOptimization;
+    NSArray * _endGeometries;
+    float  _offsetX;
+    double  _opacityAnimationBeginTime;
+    BOOL  _opacityAnimationDirectionForward;
+    CADisplayLink * _opacityAnimationDisplayLink;
+    float  _previousProgress;
+    NSArray * _startGeometries;
+    BOOL  _useInteractiveOpacity;
+    float  _widthRatio;
 }
 
 @property (nonatomic) unsigned int animationType;

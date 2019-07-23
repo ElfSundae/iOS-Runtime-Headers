@@ -3,7 +3,7 @@
  */
 
 @interface UITextAttachmentView : UIView <NSTextAttachmentCell> {
-    NSTextAttachment *_attachment;
+    NSTextAttachment * _attachment;
 }
 
 @property (nonatomic) NSTextAttachment *attachment;

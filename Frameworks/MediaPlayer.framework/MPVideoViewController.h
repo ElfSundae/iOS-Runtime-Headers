@@ -3,38 +3,37 @@
  */
 
 @interface MPVideoViewController : MPViewController <MPSwipableViewDelegate, MPVideoControllerProtocol, UIModalViewDelegate> {
-    UIAlertController *_alertController;
-    unsigned int _allowsDetailScrubbing;
-    unsigned int _allowsTVOutInBackground;
-    unsigned int _allowsWirelessPlayback;
-    unsigned int _alwaysAllowHidingControlsOverlay;
-    int _artworkImageStyle;
-    unsigned int _attemptAutoPlayWhenControlsHidden;
-    unsigned int _backgroundTaskId;
-    MPVideoBackgroundView *_backgroundView;
-    UIColor *_backstopColor;
-    MPSwipableView *_backstopView;
-    BOOL _batteryMonitoringWasEnabled;
-    unsigned int _canAnimateControlsOverlay;
-    unsigned int _canShowControlsOverlay;
-    MPClosedCaptionDisplay *_captionView;
-    unsigned long long _desiredParts;
-    unsigned int _disableAutoRotation;
-    unsigned int _disableControlsAutohide;
-    unsigned long long _disabledParts;
-    unsigned int _displayPlaybackErrorAlerts;
-    unsigned int _hasShownFirstVideoFrame;
-    unsigned int _inlinePlaybackUsesTVOut;
-    unsigned int _itemTypeOverride;
-    UIActivityIndicatorView *_loadingIndicator;
-    unsigned int _playAfterPop;
-    UIImage *_posterImage;
-    unsigned int _scaleMode;
-    unsigned int _scaleModeOverride;
-    unsigned int _scheduledLoadingIndicator;
-    unsigned int _tvOutEnabled;
-    MPTVOutWindow *_tvOutWindow;
-    unsigned long long _visibleParts;
+    UIAlertController * _alertController;
+    unsigned int  _allowsDetailScrubbing;
+    unsigned int  _allowsTVOutInBackground;
+    unsigned int  _allowsWirelessPlayback;
+    unsigned int  _alwaysAllowHidingControlsOverlay;
+    int  _artworkImageStyle;
+    unsigned int  _attemptAutoPlayWhenControlsHidden;
+    unsigned int  _backgroundTaskId;
+    MPVideoBackgroundView * _backgroundView;
+    UIColor * _backstopColor;
+    MPSwipableView * _backstopView;
+    BOOL  _batteryMonitoringWasEnabled;
+    unsigned int  _canAnimateControlsOverlay;
+    unsigned int  _canShowControlsOverlay;
+    unsigned long long  _desiredParts;
+    unsigned int  _disableAutoRotation;
+    unsigned int  _disableControlsAutohide;
+    unsigned long long  _disabledParts;
+    unsigned int  _displayPlaybackErrorAlerts;
+    unsigned int  _hasShownFirstVideoFrame;
+    unsigned int  _inlinePlaybackUsesTVOut;
+    int  _itemTypeOverride;
+    UIActivityIndicatorView * _loadingIndicator;
+    unsigned int  _playAfterPop;
+    UIImage * _posterImage;
+    int  _scaleMode;
+    int  _scaleModeOverride;
+    unsigned int  _scheduledLoadingIndicator;
+    unsigned int  _tvOutEnabled;
+    MPTVOutWindow * _tvOutWindow;
+    unsigned long long  _visibleParts;
 }
 
 @property (nonatomic) BOOL TVOutEnabled;
@@ -67,11 +66,11 @@
 @property (nonatomic, readonly) unsigned int hostedWindowContextID;
 @property (nonatomic) BOOL inlinePlaybackUsesTVOut;
 @property (nonatomic, retain) MPAVItem *item;
-@property (nonatomic) unsigned int itemTypeOverride;
+@property (nonatomic) int itemTypeOverride;
 @property (nonatomic) int orientation;
 @property (nonatomic, retain) MPAVController *player;
 @property (nonatomic, retain) UIImage *posterImage;
-@property (nonatomic) unsigned int scaleMode;
+@property (nonatomic) int scaleMode;
 @property (nonatomic, readonly) BOOL showArtworkForTVOut;
 @property (nonatomic, readonly) BOOL showArtworkInImageView;
 @property (readonly) Class superclass;
@@ -96,10 +95,9 @@
 - (void)_delayedUpdateBackgroundView;
 - (void)_endBackgroundTask;
 - (void)_exitPlayerForPlaybackError;
-- (void)_fixupViewHierarchyIfNecessary;
 - (void)_hideLoadingIndicator;
 - (void)_itemDurationDidChange:(id)arg1;
-- (unsigned int)_itemTypeWithActualTypePreference;
+- (int)_itemTypeWithActualTypePreference;
 - (void)_popForTimeJump:(id)arg1;
 - (void)_scheduleLoadingIndicatorIfNeeded;
 - (void)_screenDidConnect:(id)arg1;
@@ -108,7 +106,6 @@
 - (void)_showStillFrameIfNotAlreadyPlaying;
 - (void)_updateAlwaysPlayWheneverPossible;
 - (void)_updateBackgroundView:(BOOL)arg1;
-- (void)_updateClosedCaptionDisplay;
 - (void)_updateIdleTimerDisabledFromPlaybackState:(int)arg1;
 - (void)_updateProgressControlForItem:(id)arg1;
 - (void)_videoView_applicationSuspendedNotification:(id)arg1;
@@ -166,9 +163,8 @@
 - (BOOL)isFullscreenForLayoutPurposes;
 - (BOOL)isTransitioningFromFullscreen;
 - (BOOL)isTransitioningToFullscreen;
-- (unsigned int)itemTypeOverride;
+- (int)itemTypeOverride;
 - (void)loadView;
-- (id)newAlternateTracksTransition;
 - (id)newArtworkImageView;
 - (void)noteIgnoredChangeTypes:(unsigned int)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
@@ -177,7 +173,7 @@
 - (void)registerForPlayerNotifications;
 - (void)reloadArtworkImageView;
 - (void)removeChildViewController:(id)arg1;
-- (unsigned int)scaleMode;
+- (int)scaleMode;
 - (void)setAllowsDetailScrubbing:(BOOL)arg1;
 - (void)setAllowsTVOutInBackground:(BOOL)arg1;
 - (void)setAllowsWirelessPlayback:(BOOL)arg1;
@@ -188,7 +184,6 @@
 - (void)setBackstopColor:(id)arg1;
 - (void)setCanAnimateControlsOverlay:(BOOL)arg1;
 - (void)setCanShowControlsOverlay:(BOOL)arg1;
-- (void)setClosedCaptions:(id)arg1;
 - (void)setControlsNeedLayout;
 - (void)setControlsOverlayVisible:(BOOL)arg1;
 - (void)setControlsOverlayVisible:(BOOL)arg1 animate:(BOOL)arg2;
@@ -203,19 +198,18 @@
 - (void)setFullscreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setInlinePlaybackUsesTVOut:(BOOL)arg1;
 - (void)setItem:(id)arg1;
-- (void)setItemTypeOverride:(unsigned int)arg1;
+- (void)setItemTypeOverride:(int)arg1;
 - (void)setOrientation:(int)arg1 animate:(BOOL)arg2;
 - (void)setOwnsStatusBar:(BOOL)arg1;
 - (void)setPlayer:(id)arg1;
 - (void)setPosterImage:(id)arg1;
-- (void)setScaleMode:(unsigned int)arg1;
-- (void)setScaleMode:(unsigned int)arg1 animated:(BOOL)arg2;
-- (void)setScaleModeOverride:(unsigned int)arg1 animated:(BOOL)arg2;
+- (void)setScaleMode:(int)arg1;
+- (void)setScaleMode:(int)arg1 animated:(BOOL)arg2;
+- (void)setScaleModeOverride:(int)arg1 animated:(BOOL)arg2;
 - (void)setTVOutEnabled:(BOOL)arg1;
 - (void)setUseHostedWindowWhenFullscreen:(BOOL)arg1;
 - (void)setVisibleParts:(unsigned long long)arg1;
 - (void)setVisibleParts:(unsigned long long)arg1 animate:(BOOL)arg2;
-- (void)showAlternateTracksController:(id)arg1;
 - (BOOL)showArtworkForTVOut;
 - (BOOL)showArtworkInImageView;
 - (void)tearDownTVOutWindow;
@@ -234,6 +228,5 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (unsigned long long)visibleParts;
 - (unsigned long long)visiblePartsForProposedParts:(unsigned long long)arg1;
-- (void)willChangeToInterfaceOrientation:(int)arg1;
 
 @end

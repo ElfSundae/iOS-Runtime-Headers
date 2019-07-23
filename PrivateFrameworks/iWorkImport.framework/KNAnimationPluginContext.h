@@ -3,8 +3,8 @@
  */
 
 @interface KNAnimationPluginContext : NSObject <KNAnimationPluginContext> {
-    TSDGLState *_GLState;
-    KNAnimatedBuild *_animatedBuild;
+    TSDGLState * _GLState;
+    KNAnimatedBuild * _animatedBuild;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } _boundingRect;
+    }  _boundingRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,18 +24,19 @@
             float width; 
             float height; 
         } size; 
-    } _boundingRectOnCanvas;
-    unsigned int _direction;
-    double _duration;
-    BOOL _isMotionBlurred;
-    BOOL _isPreview;
-    BOOL _isWarmingUp;
-    NSArray *_magicMoveMatches;
-    double _percent;
-    int _rendererType;
-    TSDRep *_rep;
-    NSArray *_textures;
-    NSDictionary *_transitionAttributes;
+    }  _boundingRectOnCanvas;
+    unsigned int  _direction;
+    double  _duration;
+    BOOL  _isMotionBlurred;
+    BOOL  _isPreview;
+    BOOL  _isWarmingUp;
+    NSArray * _magicMoveMatches;
+    double  _percent;
+    KNAnimationRandomGenerator * _randomGenerator;
+    int  _rendererType;
+    TSDRep * _rep;
+    NSArray * _textures;
+    NSDictionary * _transitionAttributes;
 }
 
 @property (nonatomic, retain) TSDGLState *GLState;
@@ -56,6 +57,7 @@
 @property (nonatomic) BOOL isWarmingUp;
 @property (nonatomic) NSArray *magicMoveMatches;
 @property (nonatomic) double percent;
+@property (nonatomic, readonly) KNAnimationRandomGenerator *randomGenerator;
 @property (nonatomic) int rendererType;
 @property (nonatomic) TSDRep *rep;
 @property (readonly) Class superclass;
@@ -79,6 +81,7 @@
 - (BOOL)isWarmingUp;
 - (id)magicMoveMatches;
 - (double)percent;
+- (id)randomGenerator;
 - (int)rendererType;
 - (id)rep;
 - (void)setAnimatedBuild:(id)arg1;

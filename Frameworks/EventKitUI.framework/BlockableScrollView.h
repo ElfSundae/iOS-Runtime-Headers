@@ -3,8 +3,8 @@
  */
 
 @interface BlockableScrollView : UIScrollView {
-    NSObject<BlockableScrollViewDelegate> *_blockableDelegate;
-    BOOL _isResizing;
+    NSObject<BlockableScrollViewDelegate> * _blockableDelegate;
+    BOOL  _isResizing;
 }
 
 @property (nonatomic) NSObject<BlockableScrollViewDelegate> *blockableDelegate;

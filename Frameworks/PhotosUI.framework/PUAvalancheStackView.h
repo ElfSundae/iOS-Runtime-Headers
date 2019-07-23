@@ -3,10 +3,10 @@
  */
 
 @interface PUAvalancheStackView : UIView {
-    int _contentMode;
-    CALayer *_imageLayer;
-    CALayer *_stackLayer0;
-    CALayer *_stackLayer1;
+    int  _contentMode;
+    CALayer * _imageLayer;
+    CALayer * _stackLayer0;
+    CALayer * _stackLayer1;
 }
 
 @property (nonatomic) int contentMode;

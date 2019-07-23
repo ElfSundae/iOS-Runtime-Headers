@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureStillImageOutput : AVCaptureOutput {
-    AVCaptureStillImageOutputInternal *_internal;
+    AVCaptureStillImageOutputInternal * _internal;
 }
 
 @property (nonatomic) BOOL automaticallyEnablesStillImageStabilizationWhenAvailable;
@@ -15,7 +15,7 @@
 @property (getter=isStillImageStabilizationActive, nonatomic, readonly) BOOL stillImageStabilizationActive;
 @property (getter=isStillImageStabilizationSupported, nonatomic, readonly) BOOL stillImageStabilizationSupported;
 
-+ (struct CGImage { }*)cgImageForBGRASurface:(struct __IOSurface { }*)arg1 size:(unsigned long)arg2;
++ (struct __CFDictionary { }*)_copyAttachmentsAndPropagateFaceRegionsToExifAuxDictionaryForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 + (void)initialize;
 + (id)jpegStillImageNSDataRepresentation:(struct opaqueCMSampleBuffer { }*)arg1;
 + (id)jpegStillImageNSDataRepresentationForSurface:(struct __IOSurface { }*)arg1 size:(unsigned long)arg2 metadata:(id)arg3;
@@ -51,7 +51,6 @@
 - (id)init;
 - (BOOL)isCapturingStillImage;
 - (BOOL)isEV0CaptureEnabled;
-- (BOOL)isHDRCaptureEnabled;
 - (BOOL)isHDRSupported;
 - (BOOL)isHighResolutionStillImageOutputEnabled;
 - (BOOL)isLensStabilizationDuringBracketedCaptureEnabled;
@@ -72,7 +71,6 @@
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (void)setAutomaticallyEnablesStillImageStabilizationWhenAvailable:(BOOL)arg1;
 - (void)setEV0CaptureEnabled:(BOOL)arg1;
-- (void)setHDRCaptureEnabled:(BOOL)arg1;
 - (void)setHDRMode:(int)arg1;
 - (void)setHighResolutionStillImageOutputEnabled:(BOOL)arg1;
 - (void)setLensStabilizationDuringBracketedCaptureEnabled:(BOOL)arg1;

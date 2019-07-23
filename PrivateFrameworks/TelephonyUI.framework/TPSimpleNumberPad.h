@@ -3,9 +3,9 @@
  */
 
 @interface TPSimpleNumberPad : TPNumberPad {
-    <TPSimpleNumberPadDelegate> *_delegate;
-    UIButton *_deleteButton;
-    BOOL _showsDeleteButton;
+    <TPSimpleNumberPadDelegate> * _delegate;
+    UIButton * _deleteButton;
+    BOOL  _showsDeleteButton;
 }
 
 @property <TPSimpleNumberPadDelegate> *delegate;

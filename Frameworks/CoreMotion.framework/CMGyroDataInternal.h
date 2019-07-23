@@ -7,7 +7,7 @@
         float x; 
         float y; 
         float z; 
-    } fRotationRate;
+    }  fRotationRate;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

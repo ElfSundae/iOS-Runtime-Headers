@@ -3,7 +3,7 @@
  */
 
 @interface CMKFlashBadge : CMKBadgeView {
-    UIImage *__contentImage;
+    UIImage * __contentImage;
 }
 
 @property (nonatomic, retain) UIImage *_contentImage;

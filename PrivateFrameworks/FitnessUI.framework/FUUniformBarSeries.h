@@ -3,17 +3,19 @@
  */
 
 @interface FUUniformBarSeries : FUChartSeries {
-    struct CGGradient { } *_barGradient;
-    float _barSpacing;
-    float _barWidth;
-    NSDate *_minDate;
-    NSArray *_plotPoints;
-    float _roundedCornerRadius;
+    struct CGGradient { } * _barGradient;
+    float  _barSpacing;
+    float  _barWidth;
+    float  _fadeInPercentage;
+    NSDate * _minDate;
+    NSArray * _plotPoints;
+    float  _roundedCornerRadius;
 }
 
 @property (nonatomic) struct CGGradient { }*barGradient;
 @property (nonatomic) float barSpacing;
 @property (nonatomic) float barWidth;
+@property (nonatomic) float fadeInPercentage;
 @property (nonatomic) NSDate *minDate;
 @property (nonatomic, retain) NSArray *plotPoints;
 @property (nonatomic) float roundedCornerRadius;
@@ -26,6 +28,7 @@
 - (float)barWidth;
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext { }*)arg2;
+- (float)fadeInPercentage;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)minDate;
@@ -34,6 +37,7 @@
 - (void)setBarGradient:(struct CGGradient { }*)arg1;
 - (void)setBarSpacing:(float)arg1;
 - (void)setBarWidth:(float)arg1;
+- (void)setFadeInPercentage:(float)arg1;
 - (void)setMinDate:(id)arg1;
 - (void)setPlotPoints:(id)arg1;
 - (void)setRoundedCornerRadius:(float)arg1;

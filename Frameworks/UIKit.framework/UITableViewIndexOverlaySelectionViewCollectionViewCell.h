@@ -3,11 +3,11 @@
  */
 
 @interface UITableViewIndexOverlaySelectionViewCollectionViewCell : UICollectionViewCell {
-    UIButton *_button;
-    float _rightMargin;
-    BOOL _rightMarginAdjusted;
-    SEL _tapAction;
-    id _tapTarget;
+    UIButton * _button;
+    float  _rightMargin;
+    BOOL  _rightMarginAdjusted;
+    SEL  _tapAction;
+    id  _tapTarget;
 }
 
 @property (readonly) UIButton *button;
@@ -28,5 +28,6 @@
 - (void)setTextAlignment:(int)arg1;
 - (id)text;
 - (int)textAlignment;
+- (void)tintColorDidChange;
 
 @end

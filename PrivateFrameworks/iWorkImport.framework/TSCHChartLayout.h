@@ -12,25 +12,25 @@
             float width; 
             float height; 
         } size; 
-    } _legendModelGeometryFrame;
-    TSCHChartInfo *mChartInfo;
+    }  _legendModelGeometryFrame;
+    TSCHChartInfo * mChartInfo;
     struct { 
         BOOL forceOmitLegend; 
         BOOL forceOmitTitle; 
         BOOL forceOmitAxisTitle; 
         BOOL enable3DTightBounds; 
         BOOL enable3DScaledDepthBounds; 
-        BOOL enable3DSageMaxDepthRatio; 
+        int maxDepthRatioType; 
         unsigned int max3DLimitingSeries; 
-    } mLayoutSettings;
-    BOOL mNeedsLayout;
+    }  mLayoutSettings;
+    BOOL  mNeedsLayout;
 }
 
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } chartAreaFrame;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } chartBodyFrame;
 @property (readonly) TSCHChartInfo *chartInfo;
 @property unsigned int dataSetIndex;
-@property struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; } layoutSettings;
+@property struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; } layoutSettings;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } legendDrawingFrame;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } legendFrame;
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } legendGeometryFrame;
@@ -68,7 +68,7 @@
 - (void)layoutForCircumscribingSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)layoutForResizingSize:(struct CGSize { float x1; float x2; })arg1;
 - (BOOL)layoutFrameShouldEncloseInfoGeometry;
-- (struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })layoutSettings;
+- (struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })layoutSettings;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })legendDrawingFrame;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })legendFrame;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })legendGeometryFrame;
@@ -81,7 +81,7 @@
 - (id)renderersWithRep:(id)arg1;
 - (void)setDataSetIndex:(unsigned int)arg1;
 - (void)setForceOmitLegend:(BOOL)arg1;
-- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })arg1;
+- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })arg1;
 - (void)setLegendGeometryFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setLegendModelGeometryFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setLegendSize:(struct CGSize { float x1; float x2; })arg1;

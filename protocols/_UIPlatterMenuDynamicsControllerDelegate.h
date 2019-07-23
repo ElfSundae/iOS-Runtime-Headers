@@ -17,4 +17,8 @@
 - (void)platterMenuDynamicsControllerDidDismissWithController:(_UIPlatterMenuDynamicsController *)arg1;
 - (UIView *)trailingSwipeActionView;
 
+@optional
+
+- (void)translationDidUpdateForPlatterMenuDynamicsController:(_UIPlatterMenuDynamicsController *)arg1;
+
 @end

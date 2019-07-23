@@ -6,46 +6,48 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _accumulatedAcceleration;
+    }  _accumulatedAcceleration;
     struct CGPoint { 
         float x; 
         float y; 
-    } _accumulatedBounding;
-    NSMutableArray *_activeGestures;
+    }  _accumulatedBounding;
+    NSMutableArray * _activeGestures;
     struct CGPoint { 
         float x; 
         float y; 
-    } _cursorLocationBase;
-    <_UIKeyboardTextSelectionGestureControllerDelegate> *_delegate;
-    BOOL _didFloatCursor;
-    BOOL _didSuppressSelectionGrabbers;
-    BOOL _isLongPressing;
-    BOOL _isPanning;
+    }  _cursorLocationBase;
+    <_UIKeyboardTextSelectionGestureControllerDelegate> * _delegate;
+    BOOL  _didFloatCursor;
+    BOOL  _didSuppressSelectionGrabbers;
+    _UIFeedbackStatesBehavior * _feedbackBehaviour;
+    BOOL  _isLongPressing;
+    BOOL  _isPanning;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastPanTranslation;
-    double _lastPressTimestamp;
-    UIDelayedAction *_longForcePressAction;
-    int _panGestureState;
-    int _previousForcePressCount;
-    int _previousRepeatedGranularity;
-    BOOL _suppressTwoFingerPan;
-    UIDelayedAction *_tapLogTimer;
-    double _twoFingerTapTimestamp;
-    BOOL _wasNestedPinchingDisabled;
-    BOOL _wasScrollingEnabled;
-    UITextMagnifierTimeWeightedPoint *_weightedPoint;
+    }  _lastPanTranslation;
+    double  _lastPressTimestamp;
+    UIDelayedAction * _longForcePressAction;
+    int  _panGestureState;
+    int  _previousForcePressCount;
+    int  _previousRepeatedGranularity;
+    BOOL  _suppressTwoFingerPan;
+    UIDelayedAction * _tapLogTimer;
+    double  _twoFingerTapTimestamp;
+    BOOL  _wasNestedPinchingDisabled;
+    BOOL  _wasScrollingEnabled;
+    UITextMagnifierTimeWeightedPoint * _weightedPoint;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } accumulatedAcceleration;
 @property (nonatomic) struct CGPoint { float x1; float x2; } accumulatedBounding;
-@property (nonatomic) NSMutableArray *activeGestures;
+@property (nonatomic, retain) NSMutableArray *activeGestures;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UIKeyboardTextSelectionGestureControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFloatCursor;
 @property (nonatomic) BOOL didSuppressSelectionGrabbers;
+@property (nonatomic, retain) _UIFeedbackStatesBehavior *feedbackBehaviour;
 @property (readonly) unsigned int hash;
 @property (nonatomic) BOOL isLongPressing;
 @property (nonatomic) BOOL isPanning;
@@ -74,6 +76,8 @@
 - (void)_granularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;
 - (void)_logTapCounts:(id)arg1;
 - (void)_longForcePressDetected:(id)arg1;
+- (void)_prepareForGesture;
+- (void)_tidyUpGesture;
 - (void)_willBeginIndirectSelectionGesture:(id)arg1;
 - (struct CGPoint { float x1; float x2; })acceleratedTranslation:(struct CGPoint { float x1; float x2; })arg1 velocity:(struct CGPoint { float x1; float x2; })arg2 final:(BOOL)arg3;
 - (struct CGPoint { float x1; float x2; })accumulatedAcceleration;
@@ -111,6 +115,7 @@
 - (void)endOneFingerSelectWithExecutionContext:(id)arg1;
 - (void)endTwoFingerLongPressWithExecutionContext:(id)arg1;
 - (void)endTwoFingerPanWithExecutionContext:(id)arg1;
+- (id)feedbackBehaviour;
 - (void)finishTwoFingerLongPressWithExecutionContext:(id)arg1;
 - (BOOL)forceTouchGestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -147,6 +152,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDidFloatCursor:(BOOL)arg1;
 - (void)setDidSuppressSelectionGrabbers:(BOOL)arg1;
+- (void)setFeedbackBehaviour:(id)arg1;
 - (void)setIsLongPressing:(BOOL)arg1;
 - (void)setIsPanning:(BOOL)arg1;
 - (void)setLastPanTranslation:(struct CGPoint { float x1; float x2; })arg1;

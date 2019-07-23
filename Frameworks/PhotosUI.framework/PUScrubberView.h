@@ -3,42 +3,42 @@
  */
 
 @interface PUScrubberView : UIView <PUBrowsingViewModelChangeObserver, PUPlaybackTimeIndicatorTileViewControllerDelegate, PUScrubberTilingLayoutDelegate, PUTilingViewScrollDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUVideoScrubberControllerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
-    float __decelerationDistance;
-    NSIndexPath *__decelerationTargetIndexPath;
+    float  __decelerationDistance;
+    NSIndexPath * __decelerationTargetIndexPath;
     struct CGPoint { 
         float x; 
         float y; 
-    } __decelerationTargetOffset;
-    BOOL __isHandlingScrollViewWillEndDragging;
-    BOOL __isHandlingUserScroll;
-    BOOL __isScrubbingAwayFromContentEdge;
-    int __layoutTransitionsDisabledCount;
-    BOOL __scrollViewSettled;
-    PUScrubberTilingLayout *__scrubberLayout;
-    float __scrubbingTransitionProgress;
-    BOOL __snapToExpandedItem;
-    UITapGestureRecognizer *__tapGestureRecognizer;
-    BOOL __thinLoupe;
-    PUTilingView *__tilingView;
-    BOOL __useLoupe;
-    BOOL __useSmoothingTransitionCoordinator;
-    PUVideoScrubberController *__videoScrubberController;
-    NSMutableDictionary *_aspectRatioByIndexPath;
-    PUBrowsingSession *_browsingSession;
-    NSString *_contentScrubbingIdentifier;
-    <PUScrubberViewDelegate> *_delegate;
+    }  __decelerationTargetOffset;
+    BOOL  __isHandlingScrollViewWillEndDragging;
+    BOOL  __isHandlingUserScroll;
+    BOOL  __isScrubbingAwayFromContentEdge;
+    int  __layoutTransitionsDisabledCount;
+    BOOL  __scrollViewSettled;
+    PUScrubberTilingLayout * __scrubberLayout;
+    float  __scrubbingTransitionProgress;
+    BOOL  __snapToExpandedItem;
+    UITapGestureRecognizer * __tapGestureRecognizer;
+    BOOL  __thinLoupe;
+    PUTilingView * __tilingView;
+    BOOL  __useLoupe;
+    BOOL  __useSmoothingTransitionCoordinator;
+    PUVideoScrubberController * __videoScrubberController;
+    NSMutableDictionary * _aspectRatioByIndexPath;
+    PUBrowsingSession * _browsingSession;
+    NSString * _contentScrubbingIdentifier;
+    <PUScrubberViewDelegate> * _delegate;
     struct { 
         BOOL respondsToShouldIgnoreHitTestWithEvent; 
-    } _delegateFlags;
-    BOOL _isForPreview;
-    BOOL _loupeEffectIsValid;
-    BOOL _scrubberLayoutIsValid;
-    BOOL _scrubberLayoutNeedsTransition;
-    NSString *_scrubbingIdentifier;
-    BOOL _snapToExpandedIsValid;
-    PUTouchingGestureRecognizer *_touchingGestureRecognizer;
-    NSString *_transitionLayoutIdentifier;
-    int _type;
+    }  _delegateFlags;
+    BOOL  _isForPreview;
+    BOOL  _loupeEffectIsValid;
+    BOOL  _scrubberLayoutIsValid;
+    BOOL  _scrubberLayoutNeedsTransition;
+    NSString * _scrubbingIdentifier;
+    BOOL  _snapToExpandedIsValid;
+    PUTouchingGestureRecognizer * _touchingGestureRecognizer;
+    NSString * _transitionLayoutIdentifier;
+    int  _type;
 }
 
 @property (setter=_setDecelerationDistance:, nonatomic) float _decelerationDistance;

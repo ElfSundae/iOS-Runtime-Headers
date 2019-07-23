@@ -3,12 +3,12 @@
  */
 
 @interface GQHKeynoteState : GQHState {
-    int mCurrentSlide;
-    int mProgressiveIndex;
+    int  mCurrentSlide;
+    int  mProgressiveIndex;
     struct CGSize { 
         float width; 
         float height; 
-    } mSlideSize;
+    }  mSlideSize;
 }
 
 - (int)currentSlide;

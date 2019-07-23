@@ -6,12 +6,12 @@
     struct CGSize { 
         float width; 
         float height; 
-    } __displaySize;
-    float __initialScale;
+    }  __displaySize;
+    float  __initialScale;
     struct CGSize { 
         float width; 
         float height; 
-    } __initialSize;
+    }  __initialSize;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -19,23 +19,23 @@
         float d; 
         float tx; 
         float ty; 
-    } _affineTransform;
-    BOOL _hasUserInput;
+    }  _affineTransform;
+    BOOL  _hasUserInput;
     struct CGSize { 
         float width; 
         float height; 
-    } _transformPadding;
-    NSString *_userInputOriginIdentifier;
+    }  _transformPadding;
+    NSString * _userInputOriginIdentifier;
 }
 
 @property (setter=_setDisplaySize:, nonatomic) struct CGSize { float x1; float x2; } _displaySize;
 @property (setter=_setInitialScale:, nonatomic) float _initialScale;
 @property (setter=_setInitialSize:, nonatomic) struct CGSize { float x1; float x2; } _initialSize;
-@property (nonatomic) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } affineTransform;
-@property (nonatomic) BOOL hasUserInput;
+@property (setter=_setAffineTransform:, nonatomic) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } affineTransform;
+@property (setter=_setHasUserInput:, nonatomic) BOOL hasUserInput;
 @property (nonatomic, readonly) PUModelTileTransform *modelTileTransform;
-@property (nonatomic) struct CGSize { float x1; float x2; } transformPadding;
-@property (nonatomic, copy) NSString *userInputOriginIdentifier;
+@property (setter=_setTransformPadding:, nonatomic) struct CGSize { float x1; float x2; } transformPadding;
+@property (setter=_setUserInputOriginIdentifier:, nonatomic, copy) NSString *userInputOriginIdentifier;
 
 + (id)displayTileTransformWithModelTileTransform:(id)arg1 initialScale:(float)arg2 initialSize:(struct CGSize { float x1; float x2; })arg3 displaySize:(struct CGSize { float x1; float x2; })arg4 secondaryDisplayTileTransform:(id)arg5;
 

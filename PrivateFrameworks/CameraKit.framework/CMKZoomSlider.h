@@ -3,14 +3,14 @@
  */
 
 @interface CMKZoomSlider : UISlider {
-    BOOL __autozooming;
-    UIView *__maxTrackMaskView;
-    UIView *__minTrackMaskView;
-    UIImageView *__thumbImageView;
-    NSTimer *__visibilityTimer;
-    <CMKZoomSliderDelegate> *_delegate;
-    BOOL _maximumAutozooming;
-    BOOL _minimumAutozooming;
+    BOOL  __autozooming;
+    UIView * __maxTrackMaskView;
+    UIView * __minTrackMaskView;
+    UIImageView * __thumbImageView;
+    NSTimer * __visibilityTimer;
+    <CMKZoomSliderDelegate> * _delegate;
+    BOOL  _maximumAutozooming;
+    BOOL  _minimumAutozooming;
 }
 
 @property (getter=_isAutozooming, setter=_setAutozooming:, nonatomic) BOOL _autozooming;
@@ -19,8 +19,8 @@
 @property (nonatomic, readonly) UIImageView *_thumbImageView;
 @property (nonatomic, readonly) NSTimer *_visibilityTimer;
 @property (nonatomic) <CMKZoomSliderDelegate> *delegate;
-@property (getter=isMaximumAutozooming, nonatomic) BOOL maximumAutozooming;
-@property (getter=isMinimumAutozooming, nonatomic) BOOL minimumAutozooming;
+@property (getter=isMaximumAutozooming, setter=_setMaximumAutozooming:, nonatomic) BOOL maximumAutozooming;
+@property (getter=isMinimumAutozooming, setter=_setMinimumAutozooming:, nonatomic) BOOL minimumAutozooming;
 
 - (void).cxx_destruct;
 - (void)_beginAutozooming;

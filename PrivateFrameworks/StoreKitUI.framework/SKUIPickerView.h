@@ -3,11 +3,11 @@
  */
 
 @interface SKUIPickerView : UIView <UIPickerViewDataSource, UIPickerViewDelegate> {
-    _UIBackdropView *_backdropView;
-    <SKUIPickerViewDelegate> *_delegate;
-    UIPickerView *_pickerView;
-    UIView *_separatorView;
-    NSArray *_titles;
+    _UIBackdropView * _backdropView;
+    <SKUIPickerViewDelegate> * _delegate;
+    UIPickerView * _pickerView;
+    UIView * _separatorView;
+    NSArray * _titles;
 }
 
 @property (readonly, copy) NSString *debugDescription;

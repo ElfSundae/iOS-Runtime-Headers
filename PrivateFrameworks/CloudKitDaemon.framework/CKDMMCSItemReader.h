@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDMMCSItemReader : NSObject <CKDMMCSItemReaderProtocol> {
-    CKDMMCSItem *_MMCSItem;
-    CKDMMCSItemGroupContext *_MMCSRequest;
-    NSFileHandle *_fileHandle;
+@interface CKDMMCSItemReader : NSObject <CKDMMCSItemReaderWriterProtocol> {
+    CKDMMCSItem * _MMCSItem;
+    CKDMMCSItemGroupContext * _MMCSRequest;
+    NSFileHandle * _fileHandle;
 }
 
 @property (nonatomic, retain) CKDMMCSItem *MMCSItem;
@@ -29,5 +29,6 @@
 - (void)setFileHandle:(id)arg1;
 - (void)setMMCSItem:(id)arg1;
 - (void)setMMCSRequest:(id)arg1;
+- (BOOL)writeBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesWritten:(unsigned long long*)arg4 error:(id*)arg5;
 
 @end

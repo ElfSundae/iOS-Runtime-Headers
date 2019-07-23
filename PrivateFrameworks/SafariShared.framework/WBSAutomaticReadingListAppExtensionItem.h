@@ -3,8 +3,8 @@
  */
 
 @interface WBSAutomaticReadingListAppExtensionItem : WBSAutomaticReadingListItem {
-    UIImage *_profileImage;
-    NSString *_title;
+    UIImage * _profileImage;
+    NSString * _title;
 }
 
 @property (nonatomic, retain) UIImage *profileImage;

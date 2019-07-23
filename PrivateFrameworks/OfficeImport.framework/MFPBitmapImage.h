@@ -3,16 +3,16 @@
  */
 
 @interface MFPBitmapImage : MFPImage {
-    NSData *mBitmapData;
-    OITSUImage *mPhoneBitmapImage;
+    NSData * mBitmapData;
+    OITSUImage * mPhoneBitmapImage;
     struct CGSize { 
         float width; 
         float height; 
-    } mPixelSize;
+    }  mPixelSize;
     struct CGSize { 
         float width; 
         float height; 
-    } mPointSize;
+    }  mPointSize;
 }
 
 - (void)dealloc;

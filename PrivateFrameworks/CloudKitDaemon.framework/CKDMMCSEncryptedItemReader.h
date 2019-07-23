@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDMMCSEncryptedItemReader : NSObject <CKDMMCSItemReaderProtocol> {
-    CKDMMCSItem *_MMCSItem;
-    CKDMMCSItemGroupContext *_MMCSRequest;
-    struct _mkbbackupref { } *_handle;
+@interface CKDMMCSEncryptedItemReader : NSObject <CKDMMCSItemReaderWriterProtocol> {
+    CKDMMCSItem * _MMCSItem;
+    CKDMMCSItemGroupContext * _MMCSRequest;
+    struct _mkbbackupref { } * _handle;
 }
 
 @property (nonatomic, retain) CKDMMCSItem *MMCSItem;
@@ -29,5 +29,6 @@
 - (void)setHandle:(struct _mkbbackupref { }*)arg1;
 - (void)setMMCSItem:(id)arg1;
 - (void)setMMCSRequest:(id)arg1;
+- (BOOL)writeBytesAtOffset:(unsigned long long)arg1 bytes:(char *)arg2 length:(unsigned long long)arg3 bytesWritten:(unsigned long long*)arg4 error:(id*)arg5;
 
 @end

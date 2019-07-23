@@ -3,11 +3,11 @@
  */
 
 @interface ODIState : NSObject {
-    NSMutableArray *mDefaultStyleLabelNames;
-    ODDDiagram *mDiagram;
-    OADOrientedBounds *mDiagramOrientedBounds;
-    OADDrawingTheme *mDrawingTheme;
-    OADGroup *mGroup;
+    NSMutableArray * mDefaultStyleLabelNames;
+    ODDDiagram * mDiagram;
+    OADOrientedBounds * mDiagramOrientedBounds;
+    OADDrawingTheme * mDrawingTheme;
+    OADGroup * mGroup;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,12 +17,12 @@
             float width; 
             float height; 
         } size; 
-    } mLogicalBounds;
-    int mPointCount;
-    int mPointIndex;
-    NSMutableArray *mPresentationNames;
-    float mScale;
-    OADShapeStyle *mTextStyle;
+    }  mLogicalBounds;
+    int  mPointCount;
+    int  mPointIndex;
+    NSMutableArray * mPresentationNames;
+    float  mScale;
+    OADShapeStyle * mTextStyle;
 }
 
 - (void)dealloc;

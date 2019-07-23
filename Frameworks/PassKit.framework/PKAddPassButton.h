@@ -3,30 +3,30 @@
  */
 
 @interface PKAddPassButton : UIButton {
-    int _addPassButtonStyle;
+    int  _addPassButtonStyle;
     struct CGSize { 
         float width; 
         float height; 
-    } _boundsSize;
-    CAFilter *_highlightFilter;
-    BOOL _highlighted;
+    }  _boundsSize;
+    CAFilter * _highlightFilter;
+    BOOL  _highlighted;
     struct CGSize { 
         float width; 
         float height; 
-    } _iconSize;
-    UIImageView *_iconView;
-    CAShapeLayer *_layer;
-    PKShapeView *_maskView;
-    UILabel *_multiLineLabel;
+    }  _iconSize;
+    UIImageView * _iconView;
+    CAShapeLayer * _layer;
+    PKShapeView * _maskView;
+    UILabel * _multiLineLabel;
     struct CGSize { 
         float width; 
         float height; 
-    } _multilineSize;
-    UILabel *_singleLineLabel;
+    }  _multilineSize;
+    UILabel * _singleLineLabel;
     struct CGSize { 
         float width; 
         float height; 
-    } _singlelineSize;
+    }  _singlelineSize;
 }
 
 @property (nonatomic) int addPassButtonStyle;
@@ -34,12 +34,15 @@
 + (id)addPassButtonWithStyle:(int)arg1;
 + (Class)layerClass;
 
+- (void).cxx_destruct;
 - (void)_adjustVisibleLabel;
 - (void)_applyStyle;
 - (void)_createHighlightFilterIfNecessary;
+- (void)_sharedInit;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (int)addPassButtonStyle;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithAddPassButtonStyle:(int)arg1;
 - (id)initWithCoder:(id)arg1;

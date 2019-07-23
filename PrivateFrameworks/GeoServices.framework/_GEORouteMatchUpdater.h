@@ -3,11 +3,11 @@
  */
 
 @interface _GEORouteMatchUpdater : NSObject {
-    GEOMapAccess *_mapAccess;
-    GEOMotionContext *_motionContext;
-    GEOComposedRoute *_route;
-    GEOTransitRouteMatcher *_routeMatcher;
-    double _stationRadius;
+    GEOMapAccess * _mapAccess;
+    GEOMotionContext * _motionContext;
+    GEOComposedRoute * _route;
+    GEOTransitRouteMatcher * _routeMatcher;
+    double  _stationRadius;
 }
 
 - (BOOL)_isLocation:(id)arg1 nearStation:(id)arg2;

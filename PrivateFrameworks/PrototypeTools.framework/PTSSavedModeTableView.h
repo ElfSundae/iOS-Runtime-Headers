@@ -3,9 +3,9 @@
  */
 
 @interface PTSSavedModeTableView : UITableView <PTSHUDControl> {
-    int _alignment;
-    _UISettings *_settings;
-    NSString *_valueKeyPath;
+    int  _alignment;
+    _UISettings * _settings;
+    NSString * _valueKeyPath;
 }
 
 @property (nonatomic) int alignment;

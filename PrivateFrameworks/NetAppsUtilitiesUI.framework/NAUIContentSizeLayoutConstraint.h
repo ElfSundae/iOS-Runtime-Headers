@@ -3,17 +3,17 @@
  */
 
 @interface NAUIContentSizeLayoutConstraint : NSLayoutConstraint {
-    float _additionalConstant;
-    BOOL _allowsAccessibilityTextStyleSizes;
-    BOOL _autoUpdatingConstantShrinks;
-    id _autoitem;
-    id /* block */ _constantLoadingBlock;
-    float _defaultConstant;
-    NAUITextStyleDescriptor *_dynamicTextStyleDescriptor;
-    BOOL _isConstantUpdatingConstraint;
-    id _preferredContentSizeDidChangeObserver;
-    NSString *_textStyle;
-    float _textStyleDefaultBodyLeading;
+    float  _additionalConstant;
+    BOOL  _allowsAccessibilityTextStyleSizes;
+    BOOL  _autoUpdatingConstantShrinks;
+    id  _autoitem;
+    id /* block */  _constantLoadingBlock;
+    float  _defaultConstant;
+    NAUITextStyleDescriptor * _dynamicTextStyleDescriptor;
+    BOOL  _isConstantUpdatingConstraint;
+    id  _preferredContentSizeDidChangeObserver;
+    NSString * _textStyle;
+    float  _textStyleDefaultBodyLeading;
 }
 
 @property (nonatomic) float additionalConstant;

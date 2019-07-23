@@ -3,11 +3,11 @@
  */
 
 @interface UIStatusBarLayoutManager : NSObject {
-    UIStatusBarForegroundView *_foregroundView;
-    UIStatusBarItemView *_itemViews;
-    BOOL _persistentAnimationsEnabled;
-    int _region;
-    BOOL _usesVerticalLayout;
+    UIStatusBarForegroundView * _foregroundView;
+    UIStatusBarItemView * _itemViews;
+    BOOL  _persistentAnimationsEnabled;
+    int  _region;
+    BOOL  _usesVerticalLayout;
 }
 
 @property (nonatomic) UIStatusBarForegroundView *foregroundView;
@@ -38,6 +38,7 @@
 - (id)initWithRegion:(int)arg1 foregroundView:(id)arg2 usesVerticalLayout:(BOOL)arg3;
 - (BOOL)itemIsVisible:(id)arg1;
 - (void)itemView:(id)arg1 sizeChangedBy:(float)arg2;
+- (id)itemViewOfType:(int)arg1;
 - (void)makeVisibleItemsPerformPendedActions;
 - (BOOL)persistentAnimationsEnabled;
 - (void)positionInvisibleItems;
@@ -51,6 +52,7 @@
 - (void)setPersistentAnimationsEnabled:(BOOL)arg1;
 - (void)setVisibilityOfAllItems:(BOOL)arg1;
 - (void)setVisibilityOfItem:(id)arg1 visible:(BOOL)arg2;
+- (void)setVisibilityOfItemType:(int)arg1 visible:(BOOL)arg2;
 - (float)sizeNeededForItem:(id)arg1;
 - (float)sizeNeededForItems:(id)arg1;
 - (BOOL)updateDoubleHeightItem;

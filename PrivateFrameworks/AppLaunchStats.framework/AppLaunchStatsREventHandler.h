@@ -3,10 +3,10 @@
  */
 
 @interface AppLaunchStatsREventHandler : NSObject {
-    AppLaunchStatsComputation *aplsComputation;
-    AppLaunchStatsState *aplsState;
-    AppLaunchStatsStateHandlerQueue *aplsStateHandlerQueue;
-    NSObject<OS_dispatch_queue> *rEventQueue;
+    AppLaunchStatsComputation * aplsComputation;
+    AppLaunchStatsState * aplsState;
+    AppLaunchStatsStateHandlerQueue * aplsStateHandlerQueue;
+    NSObject<OS_dispatch_queue> * rEventQueue;
 }
 
 - (void).cxx_destruct;

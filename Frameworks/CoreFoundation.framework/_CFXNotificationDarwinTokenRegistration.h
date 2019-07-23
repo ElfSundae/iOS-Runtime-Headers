@@ -3,7 +3,7 @@
  */
 
 @interface _CFXNotificationDarwinTokenRegistration : _CFXNotificationTokenRegistration {
-    int _notifyToken;
+    int  _notifyToken;
 }
 
 @property (readonly) int notifyToken;

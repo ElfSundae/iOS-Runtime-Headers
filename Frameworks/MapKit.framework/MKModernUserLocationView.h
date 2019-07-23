@@ -3,21 +3,24 @@
  */
 
 @interface MKModernUserLocationView : MKUserLocationView {
-    CALayer *_baseDimmingLayer;
-    CALayer *_baseLayer;
-    CALayer *_innerCircleLayer;
-    struct UIImage { Class x1; } *_innerImageMask;
-    BOOL _isShowingStaleColor;
-    BOOL _rotateInnerImageToMatchCourse;
-    BOOL _shouldInnerPulse;
+    CALayer * _baseDimmingLayer;
+    CALayer * _baseLayer;
+    CALayer * _innerCircleLayer;
+    UIImage * _innerImageMask;
+    BOOL  _isShowingStaleColor;
+    BOOL  _rotateInnerImageToMatchCourse;
+    BOOL  _shouldInnerPulse;
+    BOOL  _shouldShowOuterRing;
 }
 
 @property (nonatomic, retain) UIImage *innerImageMask;
 @property (nonatomic) BOOL rotateInnerImageToMatchCourse;
 @property (nonatomic) BOOL shouldInnerPulse;
+@property (nonatomic) BOOL shouldShowOuterRing;
 
 + (float)baseDiameter;
 + (float)innerDiameter;
++ (float)outerRingWidth;
 
 - (void).cxx_destruct;
 - (struct CGColor { }*)_accuracyFillColor;
@@ -25,12 +28,13 @@
 - (id)_baseDimmingLayer;
 - (id)_baseLayer;
 - (void)_dealloc;
+- (struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })_innerCircleLayerDefaultTransform;
 - (id)_innerPulseAnimation;
 - (id)_layerToMatchAccuracyRing;
 - (id)_pulseAnimation;
 - (id)_pulseLayer;
 - (void)_resetLayerToMatchAccuracyRing;
-- (void)_setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; })arg1;
+- (void)_setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; BOOL x5; })arg1;
 - (void)_setMapRotationRadians:(float)arg1;
 - (void)_setMapType:(unsigned int)arg1;
 - (void)_setPresentationCourse:(double)arg1;
@@ -48,10 +52,12 @@
 - (id)innerImageMask;
 - (BOOL)rotateInnerImageToMatchCourse;
 - (void)setEffectsEnabled:(BOOL)arg1;
-- (void)setInnerImageMask:(struct UIImage { Class x1; }*)arg1;
+- (void)setInnerImageMask:(id)arg1;
 - (void)setRotateInnerImageToMatchCourse:(BOOL)arg1;
 - (void)setShouldInnerPulse:(BOOL)arg1;
+- (void)setShouldShowOuterRing:(BOOL)arg1;
 - (BOOL)shouldInnerPulse;
+- (BOOL)shouldShowOuterRing;
 - (void)tintColorDidChange;
 
 @end

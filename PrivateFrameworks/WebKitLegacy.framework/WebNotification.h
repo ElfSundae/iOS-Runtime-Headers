@@ -5,7 +5,7 @@
 @interface WebNotification : NSObject {
     struct RetainPtr<WebNotificationPrivate> { 
         void *m_ptr; 
-    } _private;
+    }  _private;
 }
 
 - (id).cxx_construct;

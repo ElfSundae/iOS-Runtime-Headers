@@ -3,9 +3,9 @@
  */
 
 @interface SKAttributeValue : NSObject <NSCoding> {
-    int _type;
-    float floatValues;
-    unsigned short halfFloatValues;
+    int  _type;
+    float  floatValues;
+    unsigned short  halfFloatValues;
 }
 
 @property (nonatomic) float floatValue;

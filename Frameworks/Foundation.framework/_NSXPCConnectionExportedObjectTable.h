@@ -3,17 +3,16 @@
  */
 
 @interface _NSXPCConnectionExportedObjectTable : NSObject {
-    NSLock *_lock;
-    unsigned long long _next;
-    struct __CFDictionary { } *_objectToProxyNumber;
-    struct __CFDictionary { } *_proxyNumberToObject;
-    BOOL _valid;
+    NSLock * _lock;
+    unsigned long long  _next;
+    struct __CFDictionary { } * _objectToProxyNumber;
+    struct __CFDictionary { } * _proxyNumberToObject;
+    BOOL  _valid;
 }
 
 - (void)dealloc;
 - (id)description;
 - (id)exportedObjectForProxyNumber:(unsigned long long)arg1;
-- (void)finalize;
 - (id)init;
 - (id)interfaceForProxyNumber:(unsigned long long)arg1;
 - (void)invalidate;

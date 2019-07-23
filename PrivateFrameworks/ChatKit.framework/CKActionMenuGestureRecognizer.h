@@ -6,16 +6,16 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastScreenLocation;
-    double _lastTouchTime;
-    CKActionMenuGestureVelocitySample *_previousVelocitySample;
-    CKActionMenuGestureVelocitySample *_velocitySample;
+    }  _lastScreenLocation;
+    double  _lastTouchTime;
+    CKActionMenuGestureVelocitySample * _previousVelocitySample;
+    CKActionMenuGestureVelocitySample * _velocitySample;
 }
 
 + (id)actionMenuGestureRecognizer;
 
+- (void).cxx_destruct;
 - (struct CGPoint { float x1; float x2; })_convertVelocitySample:(id)arg1 fromScreenCoordinatesToView:(id)arg2;
-- (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)reset;
 - (void)setAllowableMovement:(float)arg1;

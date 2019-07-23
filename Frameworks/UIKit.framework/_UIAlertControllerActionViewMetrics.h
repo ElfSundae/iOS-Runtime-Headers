@@ -3,8 +3,8 @@
  */
 
 @interface _UIAlertControllerActionViewMetrics : NSObject {
-    float _descriptiveLabelTextWidth;
-    float _labelTextWidth;
+    float  _descriptiveLabelTextWidth;
+    float  _labelTextWidth;
 }
 
 @property (nonatomic) float descriptiveLabelTextWidth;

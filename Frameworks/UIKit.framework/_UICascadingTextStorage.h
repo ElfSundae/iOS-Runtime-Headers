@@ -3,7 +3,7 @@
  */
 
 @interface _UICascadingTextStorage : NSConcreteTextStorage {
-    NSMutableDictionary *_defaultAttributes;
+    NSMutableDictionary * _defaultAttributes;
 }
 
 @property (nonatomic, copy) NSDictionary *defaultAttributes;

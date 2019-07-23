@@ -3,11 +3,11 @@
  */
 
 @interface _UIBackdropViewSettingsCombiner : _UIBackdropViewSettings {
-    _UIBackdropViewSettings *_inputSettingsA;
-    _UIBackdropViewSettings *_inputSettingsB;
-    _UIBackdropViewSettings *_outputSettingsA;
-    _UIBackdropViewSettings *_outputSettingsB;
-    float _weighting;
+    _UIBackdropViewSettings * _inputSettingsA;
+    _UIBackdropViewSettings * _inputSettingsB;
+    _UIBackdropViewSettings * _outputSettingsA;
+    _UIBackdropViewSettings * _outputSettingsB;
+    float  _weighting;
 }
 
 @property (nonatomic, retain) _UIBackdropViewSettings *inputSettingsA;

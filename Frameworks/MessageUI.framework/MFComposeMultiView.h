@@ -3,14 +3,14 @@
  */
 
 @interface MFComposeMultiView : MFComposeHeaderView {
-    BOOL _accountAutoselected;
-    NSString *_accountDescription;
-    BOOL _accountHasUnsafeDomain;
-    UILabel *_accountLabel;
-    MFHeaderLabelView *_imageSizeHeaderLabelView;
-    UILabel *_imageSizeLabel;
-    BOOL _imageSizeShown;
-    UILabel *_placeholderImageSizeLabel;
+    BOOL  _accountAutoselected;
+    NSString * _accountDescription;
+    BOOL  _accountHasUnsafeDomain;
+    UILabel * _accountLabel;
+    MFHeaderLabelView * _imageSizeHeaderLabelView;
+    UILabel * _imageSizeLabel;
+    BOOL  _imageSizeShown;
+    UILabel * _placeholderImageSizeLabel;
 }
 
 @property (getter=isAccountAutoselected, nonatomic) BOOL accountAutoselected;

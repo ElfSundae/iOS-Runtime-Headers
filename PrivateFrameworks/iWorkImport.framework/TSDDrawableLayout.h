@@ -3,13 +3,14 @@
  */
 
 @interface TSDDrawableLayout : TSDLayout <TSDWrappable> {
-    TSUBezierPath *mCachedExternalWrapPath;
-    TSUBezierPath *mCachedWrapPath;
-    TSDWrapSegments *mCachedWrapSegments;
+    TSUBezierPath * mCachedExternalWrapPath;
+    TSUBezierPath * mCachedWrapPath;
+    TSDWrapSegments * mCachedWrapSegments;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, copy) TSDLayoutGeometry *geometry;
 @property (nonatomic, readonly) BOOL hasAlpha;
 @property (readonly) unsigned int hash;
 @property (readonly) Class superclass;
@@ -29,6 +30,7 @@
 - (void)invalidateExteriorWrap;
 - (void)invalidateParentForWrap;
 - (BOOL)isHTMLWrap;
+- (unsigned int)pageCountForAttachment:(id)arg1;
 - (unsigned int)pageNumber;
 - (unsigned int)pageNumberForAttachment:(id)arg1;
 - (void)parentDidChange;

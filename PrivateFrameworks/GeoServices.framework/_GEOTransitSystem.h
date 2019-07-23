@@ -3,7 +3,7 @@
  */
 
 @interface _GEOTransitSystem : NSObject <GEOTransitSystem> {
-    GEOPBTransitSystem *_system;
+    GEOPBTransitSystem * _system;
 }
 
 @property (nonatomic, readonly) <GEOTransitArtworkDataSource> *artwork;

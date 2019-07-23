@@ -3,39 +3,39 @@
  */
 
 @interface PUIProgressWindow : NSObject {
-    struct CGImage { } *_appleLogo;
-    CAContext *_context;
-    float _currentProgress;
-    float _displayOrientation;
-    float _displayScale;
+    struct CGImage { } * _appleLogo;
+    CAContext * _context;
+    float  _currentProgress;
+    float  _displayOrientation;
+    float  _displayScale;
     struct CGSize { 
         float width; 
         float height; 
-    } _displaySize;
-    BOOL _forceInverted;
+    }  _displaySize;
+    BOOL  _forceInverted;
     struct CGSize { 
         float width; 
         float height; 
-    } _framebufferSize;
-    struct __IOSurface { } *_ioSurface;
-    CALayer *_ioSurfaceLayer;
-    CALayer *_layer;
+    }  _framebufferSize;
+    struct __IOSurface { } * _ioSurface;
+    CALayer * _ioSurfaceLayer;
+    CALayer * _layer;
     struct CGSize { 
         float width; 
         float height; 
-    } _layerPositioningSize;
-    NSString *_pluginName;
-    CALayer *_pluginNameLayer;
-    CALayer *_progressLayer;
-    float _progressWidth;
-    float _progressXDelta;
-    float _progressYDelta;
-    BOOL _renderWithIOSurface;
-    BOOL _showPluginName;
-    BOOL _showsProgressBar;
-    BOOL _sideways;
-    BOOL _weCreatedTheContext;
-    BOOL _white;
+    }  _layerPositioningSize;
+    NSString * _pluginName;
+    CALayer * _pluginNameLayer;
+    CALayer * _progressLayer;
+    float  _progressWidth;
+    float  _progressXDelta;
+    float  _progressYDelta;
+    BOOL  _renderWithIOSurface;
+    BOOL  _showPluginName;
+    BOOL  _showsProgressBar;
+    BOOL  _sideways;
+    BOOL  _weCreatedTheContext;
+    BOOL  _white;
 }
 
 @property (nonatomic, readonly) CALayer *layer;

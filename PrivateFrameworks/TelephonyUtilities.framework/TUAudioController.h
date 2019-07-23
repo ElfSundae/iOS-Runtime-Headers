@@ -3,8 +3,8 @@
  */
 
 @interface TUAudioController : NSObject {
-    NSObject<OS_dispatch_semaphore> *_modifyingStateLock;
-    NSObject<OS_dispatch_group> *_outstandingRequestsGroup;
+    NSObject<OS_dispatch_semaphore> * _modifyingStateLock;
+    NSObject<OS_dispatch_group> * _outstandingRequestsGroup;
 }
 
 - (void).cxx_destruct;

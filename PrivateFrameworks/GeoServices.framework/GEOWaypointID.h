@@ -3,20 +3,20 @@
  */
 
 @interface GEOWaypointID : PBCodable <NSCopying> {
-    int _addressGeocodeAccuracyHint;
-    GEOStructuredAddress *_addressHint;
-    NSMutableArray *_formattedAddressLineHints;
+    int  _addressGeocodeAccuracyHint;
+    GEOStructuredAddress * _addressHint;
+    NSMutableArray * _formattedAddressLineHints;
     struct { 
         unsigned int muid : 1; 
         unsigned int resultProviderId : 1; 
         unsigned int addressGeocodeAccuracyHint : 1; 
         unsigned int placeTypeHint : 1; 
-    } _has;
-    GEOLatLng *_locationHint;
-    unsigned long long _muid;
-    NSString *_placeNameHint;
-    int _placeTypeHint;
-    unsigned long long _resultProviderId;
+    }  _has;
+    GEOLatLng * _locationHint;
+    unsigned long long  _muid;
+    NSString * _placeNameHint;
+    int  _placeTypeHint;
+    unsigned long long  _resultProviderId;
 }
 
 @property (nonatomic) int addressGeocodeAccuracyHint;
@@ -35,8 +35,13 @@
 @property (nonatomic) int placeTypeHint;
 @property (nonatomic) unsigned long long resultProviderId;
 
++ (Class)formattedAddressLineHintType;
+
+- (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
+- (int)StringAsPlaceTypeHint:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (int)addressGeocodeAccuracyHint;
+- (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (id)addressHint;
 - (void)clearFormattedAddressLineHints;
 - (void)copyTo:(id)arg1;
@@ -61,6 +66,7 @@
 - (unsigned long long)muid;
 - (id)placeNameHint;
 - (int)placeTypeHint;
+- (id)placeTypeHintAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned long long)resultProviderId;
 - (void)setAddressGeocodeAccuracyHint:(int)arg1;

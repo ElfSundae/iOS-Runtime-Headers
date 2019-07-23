@@ -3,51 +3,52 @@
  */
 
 @interface UITouch : NSObject <_UIResponderForwardable> {
-    <_UITouchPhaseChangeDelegate> *__phaseChangeDelegate;
-    UIWindow *__windowServerHitTestWindow;
-    float _altitudeAngle;
-    float _azimuthAngleInCADisplay;
-    float _azimuthAngleInWindow;
+    <_UITouchPhaseChangeDelegate> * __phaseChangeDelegate;
+    UIWindow * __windowServerHitTestWindow;
+    float  _altitudeAngle;
+    float  _azimuthAngleInCADisplay;
+    float  _azimuthAngleInWindow;
     struct CGSize { 
         float width; 
         float height; 
-    } _displacement;
-    BOOL _eaten;
-    int _edgeType;
-    long _forceCorrelationToken;
-    NSMutableArray *_forwardingRecord;
-    NSMutableArray *_gestureRecognizers;
-    BOOL _hasForceUpdate;
-    struct __IOHIDEvent { } *_hidEvent;
+    }  _displacement;
+    BOOL  _eaten;
+    int  _edgeType;
+    long  _forceCorrelationToken;
+    NSMutableArray * _forwardingRecord;
+    NSMutableArray * _gestureRecognizers;
+    BOOL  _hasForceUpdate;
+    struct __IOHIDEvent { } * _hidEvent;
     struct CGPoint { 
         float x; 
         float y; 
-    } _locationInWindow;
-    float _majorRadiusTolerance;
-    float _maximumPossiblePressure;
-    float _movementMagnitudeSquared;
-    BOOL _needsForceUpdate;
-    unsigned char _pathIdentity;
-    unsigned char _pathIndex;
-    float _pathMajorRadius;
-    int _phase;
+    }  _locationInWindow;
+    float  _majorRadiusTolerance;
+    float  _maxObservedPressure;
+    float  _maximumPossiblePressure;
+    float  _movementMagnitudeSquared;
+    BOOL  _needsForceUpdate;
+    unsigned char  _pathIdentity;
+    unsigned char  _pathIndex;
+    float  _pathMajorRadius;
+    int  _phase;
     struct CGPoint { 
         float x; 
         float y; 
-    } _preciseLocationInWindow;
+    }  _preciseLocationInWindow;
     struct CGPoint { 
         float x; 
         float y; 
-    } _precisePreviousLocationInWindow;
-    float _pressure;
+    }  _precisePreviousLocationInWindow;
+    float  _pressure;
     struct CGPoint { 
         float x; 
         float y; 
-    } _previousLocationInWindow;
-    float _previousPressure;
-    unsigned long long _senderID;
-    unsigned int _tapCount;
-    double _timestamp;
+    }  _previousLocationInWindow;
+    float  _previousPressure;
+    unsigned long long  _senderID;
+    unsigned int  _tapCount;
+    double  _timestamp;
     struct { 
         unsigned int _firstTouchForView : 1; 
         unsigned int _isTap : 1; 
@@ -57,11 +58,13 @@
         unsigned int _deliversUpdatesInTouchesMovedIsValid : 1; 
         unsigned int _deliversUpdatesInTouchesMoved : 1; 
         unsigned int _isPredictedTouch : 1; 
-    } _touchFlags;
-    int _type;
-    UIView *_view;
-    UIView *_warpedIntoView;
-    UIWindow *_window;
+        unsigned int _didDispatchAsEnded : 1; 
+    }  _touchFlags;
+    int  _type;
+    UIView * _view;
+    UIView * _warpedIntoView;
+    UIWindow * _window;
+    float  _zGradient;
 }
 
 @property (setter=_setDisplacement:, nonatomic) struct CGSize { float x1; float x2; } _displacement;
@@ -83,7 +86,8 @@
 @property (setter=_setSenderID:, nonatomic) unsigned long long _senderID;
 @property (nonatomic, readonly) float _unclampedForce;
 @property (setter=_setWindowServerHitTestWindow:, nonatomic, retain) UIWindow *_windowServerHitTestWindow;
-@property (nonatomic) float altitudeAngle;
+@property (setter=_setZGradient:, nonatomic) float _zGradient;
+@property (setter=_setAltitudeAngle:, nonatomic) float altitudeAngle;
 @property (nonatomic, readonly) float azimuthAngle;
 @property (setter=_setAzimuthAngleInCADisplay:, nonatomic) float azimuthAngleInCADisplay;
 @property (nonatomic, readonly) float azimuthAngleInWindow;
@@ -109,7 +113,7 @@
 @property (nonatomic, readonly) unsigned int tapCount;
 @property (nonatomic) double timestamp;
 @property (nonatomic, readonly) double timestamp;
-@property (nonatomic) int type;
+@property (setter=_setType:, nonatomic) int type;
 @property (nonatomic, retain) UIView *view;
 @property (nonatomic, readonly) UIView *view;
 @property (nonatomic, retain) UIView *warpedIntoView;
@@ -119,7 +123,6 @@
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent { }*)arg1 phase:(int)arg2 view:(id)arg3;
-+ (void)_setShouldReverseAltitudeAngleSense:(BOOL)arg1;
 
 - (void).cxx_destruct;
 - (void)_abandonForwardingRecord;
@@ -188,6 +191,7 @@
 - (void)_setSenderID:(unsigned long long)arg1;
 - (void)_setType:(int)arg1;
 - (void)_setWindowServerHitTestWindow:(id)arg1;
+- (void)_setZGradient:(float)arg1;
 - (BOOL)_shouldDeliverTouchForTouchesMoved;
 - (float)_standardForceAmount;
 - (BOOL)_supportsForce;
@@ -196,7 +200,9 @@
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint { float x1; float x2; })arg1 toLocation:(struct CGPoint { float x1; float x2; })arg2;
 - (void)_updateWithChildEvent:(struct __IOHIDEvent { }*)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
+- (void)_willBeDispatchedAsEnded;
 - (id)_windowServerHitTestWindow;
+- (float)_zGradient;
 - (float)altitudeAngle;
 - (float)azimuthAngle;
 - (float)azimuthAngleInCADisplay;

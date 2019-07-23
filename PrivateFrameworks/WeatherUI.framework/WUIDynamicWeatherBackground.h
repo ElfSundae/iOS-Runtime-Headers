@@ -3,13 +3,13 @@
  */
 
 @interface WUIDynamicWeatherBackground : UIView {
-    NSCache *_backgroundCache;
-    WUIWeatherCondition *_condition;
-    CALayer *_currentBackground;
-    WUIGradientLayer *_gradientLayer;
-    CALayer *_rootLayer;
-    NSNumber *_sunHeightOverride;
-    CALayer *_transitionBackground;
+    NSCache * _backgroundCache;
+    WUIWeatherCondition * _condition;
+    CALayer * _currentBackground;
+    WUIGradientLayer * _gradientLayer;
+    CALayer * _rootLayer;
+    NSNumber * _sunHeightOverride;
+    CALayer * _transitionBackground;
 }
 
 @property (nonatomic, retain) NSCache *backgroundCache;

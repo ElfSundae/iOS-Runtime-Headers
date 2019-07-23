@@ -3,9 +3,9 @@
  */
 
 @interface WebSecurityOrigin : NSObject {
-    <WebQuotaManager> *_applicationCacheQuotaManager;
-    <WebQuotaManager> *_databaseQuotaManager;
-    WebSecurityOriginPrivate *_private;
+    <WebQuotaManager> * _applicationCacheQuotaManager;
+    <WebQuotaManager> * _databaseQuotaManager;
+    WebSecurityOriginPrivate * _private;
 }
 
 + (id)webSecurityOriginFromDatabaseIdentifier:(id)arg1;
@@ -16,7 +16,6 @@
 - (id)databaseIdentifier;
 - (id)databaseQuotaManager;
 - (void)dealloc;
-- (void)finalize;
 - (id)host;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

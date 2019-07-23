@@ -21,8 +21,18 @@
 
 - (void)nsli_addConstraint:(NSLayoutConstraint *)arg1;
 - (void)nsli_addConstraint:(NSLayoutConstraint *)arg1 mutuallyExclusiveConstraints:(id*)arg2;
+- (<NSLayoutItem> *)nsli_ancestorSharedWithItem:(id <NSLayoutItem>)arg1;
+- (NSISVariable *)nsli_boundsHeightVariable;
+- (NSISVariable *)nsli_boundsWidthVariable;
+- (BOOL)nsli_canHostIndependentVariableAnchor;
+- (struct CGSize { float x1; float x2; })nsli_engineToUserScalingCoefficients;
 - (NSISVariable *)nsli_heightVariable;
 - (NSArray *)nsli_installedConstraints;
+- (BOOL)nsli_isLegalConstraintItem;
+- (BOOL)nsli_isRTL;
+- (<NSLayoutItem> *)nsli_itemDescribingLayoutDirectionForConstraint:(NSLayoutConstraint *)arg1 toItem:(id <NSLayoutItem>)arg2;
+- (NSLayoutAnchor *)nsli_layoutAnchorForAttribute:(int)arg1;
+- (BOOL)nsli_lowersExpressionRelativeToConstraintContainer;
 - (float)nsli_marginOffsetForAttribute:(int)arg1;
 - (NSISVariable *)nsli_minXVariable;
 - (NSISVariable *)nsli_minYVariable;

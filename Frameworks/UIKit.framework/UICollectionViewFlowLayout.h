@@ -3,32 +3,32 @@
  */
 
 @interface UICollectionViewFlowLayout : UICollectionViewLayout {
-    NSMutableDictionary *_cachedItemAttributes;
-    NSMutableDictionary *_cachedItemFrames;
+    NSMutableDictionary * _cachedItemAttributes;
+    NSMutableDictionary * _cachedItemFrames;
     struct CGPoint { 
         float x; 
         float y; 
-    } _contentOffsetAdjustment;
+    }  _contentOffsetAdjustment;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSizeAdjustment;
+    }  _contentSizeAdjustment;
     struct CGSize { 
         float width; 
         float height; 
-    } _currentLayoutSize;
-    _UIFlowLayoutInfo *_data;
-    NSMutableDictionary *_deletedItemsAttributesDict;
-    NSMutableDictionary *_deletedSectionFootersAttributesDict;
-    NSMutableDictionary *_deletedSectionHeadersAttributesDict;
+    }  _currentLayoutSize;
+    _UIFlowLayoutInfo * _data;
+    NSMutableDictionary * _deletedItemsAttributesDict;
+    NSMutableDictionary * _deletedSectionFootersAttributesDict;
+    NSMutableDictionary * _deletedSectionHeadersAttributesDict;
     struct CGSize { 
         float width; 
         float height; 
-    } _estimatedItemSize;
+    }  _estimatedItemSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _footerReferenceSize;
+    }  _footerReferenceSize;
     struct { 
         unsigned int delegateSizeForItem : 1; 
         unsigned int delegateReferenceSizeForHeader : 1; 
@@ -43,29 +43,31 @@
         unsigned int delegateSizesForSection : 1; 
         unsigned int sectionHeadersFloat : 1; 
         unsigned int sectionFootersFloat : 1; 
-    } _gridLayoutFlags;
+        unsigned int headerFollowsSectionMargins : 1; 
+        unsigned int footerFollowsSectionMargins : 1; 
+    }  _gridLayoutFlags;
     struct CGSize { 
         float width; 
         float height; 
-    } _headerReferenceSize;
-    NSMutableArray *_indexPathsToValidate;
-    NSMutableDictionary *_insertedItemsAttributesDict;
-    NSMutableDictionary *_insertedSectionFootersAttributesDict;
-    NSMutableDictionary *_insertedSectionHeadersAttributesDict;
-    float _interitemSpacing;
+    }  _headerReferenceSize;
+    NSMutableArray * _indexPathsToValidate;
+    NSMutableDictionary * _insertedItemsAttributesDict;
+    NSMutableDictionary * _insertedSectionFootersAttributesDict;
+    NSMutableDictionary * _insertedSectionHeadersAttributesDict;
+    float  _interitemSpacing;
     struct CGSize { 
         float width; 
         float height; 
-    } _itemSize;
-    float _lineSpacing;
-    NSDictionary *_rowAlignmentsOptionsDictionary;
-    int _scrollDirection;
+    }  _itemSize;
+    float  _lineSpacing;
+    NSDictionary * _rowAlignmentsOptionsDictionary;
+    int  _scrollDirection;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _sectionInset;
+    }  _sectionInset;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } estimatedItemSize;
@@ -85,29 +87,35 @@
 - (void).cxx_destruct;
 - (BOOL)_boundsAndInsetsAreValidForReferenceDimension;
 - (void)_calculateAttributesForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (struct CGSize { float x1; float x2; })_estimatedItemSize;
+- (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
+- (float)_dimensionFromCollectionView;
+- (struct CGSize { float x1; float x2; })_effectiveEstimatedItemSize;
 - (BOOL)_estimatesSizes;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
-- (id)_fetchAndCache:(BOOL)arg1 newLayoutAttributesForCellWithIndexPath:(id)arg2 frame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3;
+- (id)_fetchAndCacheNewLayoutAttributesForCellWithIndexPath:(id)arg1 frame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)_fetchItemsInfoForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (BOOL)_footerFollowsSectionMargins;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForFooterInSection:(int)arg1 usingData:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForHeaderInSection:(int)arg1 usingData:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForItem:(int)arg1 inSection:(int)arg2 usingData:(id)arg3;
-- (void)_getSizingInfos;
+- (void)_getSizingInfosWithExistingSizingDictionary:(id)arg1;
+- (BOOL)_headerFollowsSectionMargins;
 - (void)_invalidateButKeepAllInfo;
 - (void)_invalidateButKeepDelegateInfo;
 - (id)_layoutAttributesForItemsInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)_resetCachedItems;
 - (BOOL)_roundsToScreenScale;
 - (id)_rowAlignmentOptions;
 - (int)_sectionArrayIndexForIndexPath:(id)arg1;
-- (void)_setEstimatedItemSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)_setFooterFollowsSectionMargins:(BOOL)arg1;
+- (void)_setHeaderFollowsSectionMargins:(BOOL)arg1;
 - (void)_setNeedsLayoutComputationWithoutInvalidation;
 - (void)_setRoundsToScreenScale:(BOOL)arg1;
 - (void)_setRowAlignmentsOptions:(id)arg1;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (void)_updateContentSizeScrollingDimensionWithDelta:(float)arg1;
 - (void)_updateDelegateFlags;
-- (void)_updateItemsLayoutForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)_updateItemsLayoutForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 allowsPartialUpdate:(BOOL)arg2;
 - (struct CGSize { float x1; float x2; })collectionViewContentSize;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGSize { float x1; float x2; })estimatedItemSize;

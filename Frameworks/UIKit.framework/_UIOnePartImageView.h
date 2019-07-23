@@ -3,7 +3,7 @@
  */
 
 @interface _UIOnePartImageView : UIView {
-    UIImage *_image;
+    UIImage * _image;
 }
 
 - (void).cxx_destruct;

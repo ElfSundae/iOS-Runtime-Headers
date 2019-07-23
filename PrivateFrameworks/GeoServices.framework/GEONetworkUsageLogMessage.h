@@ -3,7 +3,7 @@
  */
 
 @interface GEONetworkUsageLogMessage : PBCodable <NSCopying> {
-    int _connectionType;
+    int  _connectionType;
     struct { 
         unsigned int requestErrorCode : 1; 
         unsigned int connectionType : 1; 
@@ -13,17 +13,17 @@
         unsigned int responseDataSize : 1; 
         unsigned int responseTime : 1; 
         unsigned int isConnectedToCarplay : 1; 
-    } _has;
-    BOOL _isConnectedToCarplay;
-    int _networkService;
-    int _placeRequestType;
-    int _requestDataSize;
-    long long _requestErrorCode;
-    NSString *_requestErrorDescription;
-    NSString *_requestErrorDomain;
-    int _responseDataSize;
-    int _responseTime;
-    NSMutableArray *_tileSetUsages;
+    }  _has;
+    BOOL  _isConnectedToCarplay;
+    int  _networkService;
+    int  _placeRequestType;
+    int  _requestDataSize;
+    long long  _requestErrorCode;
+    NSString * _requestErrorDescription;
+    NSString * _requestErrorDomain;
+    int  _responseDataSize;
+    int  _responseTime;
+    NSMutableArray * _tileSetUsages;
 }
 
 @property (nonatomic) int connectionType;
@@ -48,9 +48,15 @@
 @property (nonatomic) int responseTime;
 @property (nonatomic, retain) NSMutableArray *tileSetUsages;
 
++ (Class)tileSetUsageType;
+
+- (int)StringAsConnectionType:(id)arg1;
+- (int)StringAsNetworkService:(id)arg1;
+- (int)StringAsPlaceRequestType:(id)arg1;
 - (void)addTileSetUsage:(id)arg1;
 - (void)clearTileSetUsages;
 - (int)connectionType;
+- (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -71,7 +77,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)networkService;
+- (id)networkServiceAsString:(int)arg1;
 - (int)placeRequestType;
+- (id)placeRequestTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)requestDataSize;
 - (long long)requestErrorCode;

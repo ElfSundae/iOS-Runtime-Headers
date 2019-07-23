@@ -3,14 +3,14 @@
  */
 
 @interface HKHorizontalTimePeriodSeries : HKGraphSeries <HKAxisLabelDataSource> {
-    NSArray *_cachedAxisLabels;
-    NSArray *_enumerationValueOrdering;
-    UIColor *_fillColor;
-    float _lineSpacingPercentage;
-    float _lineWidth;
-    UIImage *_selectedPointMarkerImage;
-    float _topInsetPercentage;
-    NSDictionary *_valueLabels;
+    NSArray * _cachedAxisLabels;
+    NSArray * _enumerationValueOrdering;
+    UIColor * _fillColor;
+    float  _lineSpacingPercentage;
+    float  _lineWidth;
+    UIImage * _selectedPointMarkerImage;
+    float  _topInsetPercentage;
+    NSDictionary * _valueLabels;
 }
 
 @property (readonly, copy) NSString *debugDescription;

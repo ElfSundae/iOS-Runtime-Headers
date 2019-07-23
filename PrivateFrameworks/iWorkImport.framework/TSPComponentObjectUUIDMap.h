@@ -3,8 +3,8 @@
  */
 
 @interface TSPComponentObjectUUIDMap : NSObject <NSCopying, NSMutableCopying> {
-    NSDictionary *_identifierToObjectUUIDDictionary;
-    NSDictionary *_objectUUIDToIdentifierDictionary;
+    NSDictionary * _identifierToObjectUUIDDictionary;
+    NSDictionary * _objectUUIDToIdentifierDictionary;
 }
 
 @property (nonatomic, readonly) unsigned int count;
@@ -19,9 +19,10 @@
 - (id)identifierToObjectUUIDDictionary;
 - (id)init;
 - (id)initWithIdentifierToObjectUUIDDictionary:(id)arg1 objectUUIDToIdentifierDictionary:(id)arg2;
-- (id)initWithMessage:(struct RepeatedPtrField<TSP::ObjectUUIDMapEntry> { void **x1; int x2; int x3; int x4; })arg1;
+- (id)initWithMessage:(const struct RepeatedPtrField<TSP::ObjectUUIDMapEntry> { void **x1; int x2; int x3; int x4; }*)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)objectUUIDForIdentifier:(long long)arg1;
 - (id)objectUUIDToIdentifierDictionary;
+- (void)saveToMessage:(struct RepeatedPtrField<TSP::ObjectUUIDMapEntry> { void **x1; int x2; int x3; int x4; }*)arg1;
 
 @end

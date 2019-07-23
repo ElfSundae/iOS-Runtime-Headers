@@ -3,13 +3,13 @@
  */
 
 @interface CMKBlurredSnapshotView : UIView {
-    UIView *__dimmingView;
-    UIView *__lowQualityBlurView;
-    BOOL __supportsBlur;
-    BOOL _blurred;
-    BOOL _dimmed;
-    UIView *_snapshotView;
-    int _style;
+    UIView * __dimmingView;
+    UIView * __lowQualityBlurView;
+    BOOL  __supportsBlur;
+    BOOL  _blurred;
+    BOOL  _dimmed;
+    UIView * _snapshotView;
+    int  _style;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _targetFrame;
+    }  _targetFrame;
 }
 
 @property (nonatomic, readonly) UIView *_dimmingView;

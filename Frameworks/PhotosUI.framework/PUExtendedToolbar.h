@@ -3,21 +3,22 @@
  */
 
 @interface PUExtendedToolbar : UIToolbar <PUToolbarViewModelChangeObserver> {
-    UIView *__accessoryView;
-    UIView *__accessoryViewContainer;
-    NSMutableSet *__accessoryViewContainers;
-    float __accessoryViewTopOutset;
-    UIToolbar *__containedToolbar;
-    float __containedToolbarHeight;
-    BOOL __isUpdating;
-    BOOL __needsUpdateAccessoryView;
-    BOOL __needsUpdateAccessoryViewContainer;
-    BOOL __needsUpdateAccessoryViewTopOutset;
-    BOOL __needsUpdateContainedToolbar;
-    BOOL __needsUpdateToolbarItems;
-    int __numberOfNestedChanges;
-    NSArray *__toolbarItems;
-    PUToolbarViewModel *_toolbarViewModel;
+    UIView * __accessoryView;
+    UIView * __accessoryViewContainer;
+    NSMutableSet * __accessoryViewContainers;
+    float  __accessoryViewTopOutset;
+    UIToolbar * __containedToolbar;
+    float  __containedToolbarHeight;
+    BOOL  __isUpdating;
+    float  __minimumBackgroundHeight;
+    BOOL  __needsUpdateAccessoryView;
+    BOOL  __needsUpdateAccessoryViewContainer;
+    BOOL  __needsUpdateAccessoryViewTopOutset;
+    BOOL  __needsUpdateContainedToolbar;
+    BOOL  __needsUpdateToolbarItems;
+    int  __numberOfNestedChanges;
+    NSArray * __toolbarItems;
+    PUToolbarViewModel * _toolbarViewModel;
 }
 
 @property (setter=_setAccessoryView:, nonatomic, retain) UIView *_accessoryView;
@@ -27,6 +28,7 @@
 @property (setter=_setContainedToolbar:, nonatomic, retain) UIToolbar *_containedToolbar;
 @property (setter=_setContainedToolbarHeight:, nonatomic) float _containedToolbarHeight;
 @property (setter=_setUpdating:, nonatomic) BOOL _isUpdating;
+@property (setter=_setMinimumBackgroundHeight:, nonatomic) float _minimumBackgroundHeight;
 @property (setter=_setNeedsUpdateAccessoryView:, nonatomic) BOOL _needsUpdateAccessoryView;
 @property (setter=_setNeedsUpdateAccessoryViewContainer:, nonatomic) BOOL _needsUpdateAccessoryViewContainer;
 @property (setter=_setNeedsUpdateAccessoryViewTopOutset:, nonatomic) BOOL _needsUpdateAccessoryViewTopOutset;
@@ -56,6 +58,7 @@
 - (void)_invalidateContainedToolbar;
 - (void)_invalidateToolbarItems;
 - (BOOL)_isUpdating;
+- (float)_minimumBackgroundHeight;
 - (BOOL)_needsUpdate;
 - (BOOL)_needsUpdateAccessoryView;
 - (BOOL)_needsUpdateAccessoryViewContainer;
@@ -70,6 +73,7 @@
 - (void)_setAccessoryViewTopOutset:(float)arg1;
 - (void)_setContainedToolbar:(id)arg1;
 - (void)_setContainedToolbarHeight:(float)arg1;
+- (void)_setMinimumBackgroundHeight:(float)arg1;
 - (void)_setNeedsUpdate;
 - (void)_setNeedsUpdateAccessoryView:(BOOL)arg1;
 - (void)_setNeedsUpdateAccessoryViewContainer:(BOOL)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface MFPGraphics : NSObject {
-    NSMutableDictionary *mAvailableFonts;
+    NSMutableDictionary * mAvailableFonts;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,12 +13,12 @@
             float width; 
             float height; 
         } size; 
-    } mCanvas;
-    MFPGraphicsState *mCurrentState;
-    int mHorzDpi;
-    MFPObjectTable *mObjectTable;
-    NSMutableArray *mStateStack;
-    int mVertDpi;
+    }  mCanvas;
+    MFPGraphicsState * mCurrentState;
+    int  mHorzDpi;
+    MFPObjectTable * mObjectTable;
+    NSMutableArray * mStateStack;
+    int  mVertDpi;
 }
 
 + (float)unitsPerInch:(int)arg1;

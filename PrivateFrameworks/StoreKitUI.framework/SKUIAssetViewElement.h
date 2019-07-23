@@ -3,14 +3,14 @@
  */
 
 @interface SKUIAssetViewElement : SKUIViewElement {
-    BOOL _ITunesStream;
-    double _initialPlaybackTime;
-    long long _itemIdentifier;
-    NSURL *_keyCertificateURL;
-    NSURL *_keyServerURL;
-    double _playbackDuration;
-    NSString *_secureKeyDeliveryType;
-    NSURL *_url;
+    BOOL  _ITunesStream;
+    double  _initialPlaybackTime;
+    long long  _itemIdentifier;
+    NSURL * _keyCertificateURL;
+    NSURL * _keyServerURL;
+    double  _playbackDuration;
+    NSString * _secureKeyDeliveryType;
+    NSURL * _url;
 }
 
 @property (getter=isITunesStream, nonatomic, readonly) BOOL ITunesStream;

@@ -3,29 +3,30 @@
  */
 
 @interface VKPShieldVariant : PBCodable <NSCopying> {
-    unsigned int _atlasIndex;
-    unsigned int _backgroundColor;
-    unsigned int _borderColor;
-    float _capWidthLeft;
-    float _capWidthRight;
-    float _centerOffsetX;
+    unsigned int  _atlasIndex;
+    unsigned int  _backgroundColor;
+    unsigned int  _borderColor;
+    float  _capWidthLeft;
+    float  _capWidthRight;
+    float  _centerOffsetX;
     struct { 
         float *list; 
         unsigned int count; 
         unsigned int size; 
-    } _centerPoints;
+    }  _centerPoints;
     struct { 
         float _a; 
         unsigned int _b; 
         unsigned int _g; 
         unsigned int _r; 
-    } _fontColor;
-    NSString *_fontName;
-    float _fontSize;
+    }  _fontColor;
+    NSString * _fontName;
+    float  _fontSize;
     struct { 
         unsigned int textShadow : 1; 
         unsigned int textStroke : 1; 
         unsigned int fontColor : 1; 
+        unsigned int nonDigitFontColor : 1; 
         unsigned int atlasIndex : 1; 
         unsigned int backgroundColor : 1; 
         unsigned int borderColor : 1; 
@@ -33,6 +34,7 @@
         unsigned int capWidthRight : 1; 
         unsigned int centerOffsetX : 1; 
         unsigned int fontSize : 1; 
+        unsigned int lineSpacing : 1; 
         unsigned int maxDigits : 1; 
         unsigned int minDigits : 1; 
         unsigned int nonDigitFontSize : 1; 
@@ -41,19 +43,26 @@
         unsigned int quadIndex : 1; 
         unsigned int textBaseline : 1; 
         unsigned int textMaskColor : 1; 
-    } _has;
-    struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; } *_layers;
-    unsigned int _layersCount;
-    unsigned int _layersSpace;
-    unsigned int _maxDigits;
-    unsigned int _minDigits;
-    NSString *_nonDigitFontName;
-    float _nonDigitFontSize;
-    float _paddingLeft;
-    float _paddingRight;
-    unsigned int _quadIndex;
-    float _textBaseline;
-    int _textMaskColor;
+    }  _has;
+    struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; } * _layers;
+    unsigned int  _layersCount;
+    unsigned int  _layersSpace;
+    float  _lineSpacing;
+    unsigned int  _maxDigits;
+    unsigned int  _minDigits;
+    struct { 
+        float _a; 
+        unsigned int _b; 
+        unsigned int _g; 
+        unsigned int _r; 
+    }  _nonDigitFontColor;
+    NSString * _nonDigitFontName;
+    float  _nonDigitFontSize;
+    float  _paddingLeft;
+    float  _paddingRight;
+    unsigned int  _quadIndex;
+    float  _textBaseline;
+    int  _textMaskColor;
     struct { 
         struct { 
             float _a; 
@@ -68,7 +77,7 @@
             unsigned int offsetX : 1; 
             unsigned int offsetY : 1; 
         } _has; 
-    } _textShadow;
+    }  _textShadow;
     struct { 
         struct { 
             float _a; 
@@ -77,7 +86,7 @@
             unsigned int _r; 
         } _color; 
         float _width; 
-    } _textStroke;
+    }  _textStroke;
 }
 
 @property (nonatomic) unsigned int atlasIndex;
@@ -100,8 +109,10 @@
 @property (nonatomic) BOOL hasFontColor;
 @property (nonatomic, readonly) BOOL hasFontName;
 @property (nonatomic) BOOL hasFontSize;
+@property (nonatomic) BOOL hasLineSpacing;
 @property (nonatomic) BOOL hasMaxDigits;
 @property (nonatomic) BOOL hasMinDigits;
+@property (nonatomic) BOOL hasNonDigitFontColor;
 @property (nonatomic, readonly) BOOL hasNonDigitFontName;
 @property (nonatomic) BOOL hasNonDigitFontSize;
 @property (nonatomic) BOOL hasPaddingLeft;
@@ -113,8 +124,10 @@
 @property (nonatomic) BOOL hasTextStroke;
 @property (nonatomic, readonly) struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; }*layers;
 @property (nonatomic, readonly) unsigned int layersCount;
+@property (nonatomic) float lineSpacing;
 @property (nonatomic) unsigned int maxDigits;
 @property (nonatomic) unsigned int minDigits;
+@property (nonatomic) struct { float x1; unsigned int x2; unsigned int x3; unsigned int x4; } nonDigitFontColor;
 @property (nonatomic, retain) NSString *nonDigitFontName;
 @property (nonatomic) float nonDigitFontSize;
 @property (nonatomic) float paddingLeft;
@@ -156,8 +169,10 @@
 - (BOOL)hasFontColor;
 - (BOOL)hasFontName;
 - (BOOL)hasFontSize;
+- (BOOL)hasLineSpacing;
 - (BOOL)hasMaxDigits;
 - (BOOL)hasMinDigits;
+- (BOOL)hasNonDigitFontColor;
 - (BOOL)hasNonDigitFontName;
 - (BOOL)hasNonDigitFontSize;
 - (BOOL)hasPaddingLeft;
@@ -172,10 +187,12 @@
 - (struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; })layerAtIndex:(unsigned int)arg1;
 - (struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; }*)layers;
 - (unsigned int)layersCount;
+- (float)lineSpacing;
 - (unsigned int)maxDigits;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minDigits;
 - (struct CGImage { }*)newImageWithTextureAtlases:(id)arg1 atlasToImageCache:(id)arg2 atlasToImageCacheLock:(id)arg3 contentScale:(float)arg4 colors:(struct { struct Matrix<float, 4, 1> { float x_1_1_1[4]; } x1; }*)arg5;
+- (struct { float x1; unsigned int x2; unsigned int x3; unsigned int x4; })nonDigitFontColor;
 - (id)nonDigitFontName;
 - (float)nonDigitFontSize;
 - (float)paddingLeft;
@@ -200,8 +217,10 @@
 - (void)setHasCenterOffsetX:(BOOL)arg1;
 - (void)setHasFontColor:(BOOL)arg1;
 - (void)setHasFontSize:(BOOL)arg1;
+- (void)setHasLineSpacing:(BOOL)arg1;
 - (void)setHasMaxDigits:(BOOL)arg1;
 - (void)setHasMinDigits:(BOOL)arg1;
+- (void)setHasNonDigitFontColor:(BOOL)arg1;
 - (void)setHasNonDigitFontSize:(BOOL)arg1;
 - (void)setHasPaddingLeft:(BOOL)arg1;
 - (void)setHasPaddingRight:(BOOL)arg1;
@@ -211,8 +230,10 @@
 - (void)setHasTextShadow:(BOOL)arg1;
 - (void)setHasTextStroke:(BOOL)arg1;
 - (void)setLayers:(struct { unsigned int x1; int x2; int x3; float x4; unsigned int x5; struct { unsigned int x_6_1_1 : 1; unsigned int x_6_1_2 : 1; unsigned int x_6_1_3 : 1; unsigned int x_6_1_4 : 1; unsigned int x_6_1_5 : 1; } x6; }*)arg1 count:(unsigned int)arg2;
+- (void)setLineSpacing:(float)arg1;
 - (void)setMaxDigits:(unsigned int)arg1;
 - (void)setMinDigits:(unsigned int)arg1;
+- (void)setNonDigitFontColor:(struct { float x1; unsigned int x2; unsigned int x3; unsigned int x4; })arg1;
 - (void)setNonDigitFontName:(id)arg1;
 - (void)setNonDigitFontSize:(float)arg1;
 - (void)setPaddingLeft:(float)arg1;

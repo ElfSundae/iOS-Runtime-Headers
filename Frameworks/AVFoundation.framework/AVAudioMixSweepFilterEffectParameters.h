@@ -3,7 +3,7 @@
  */
 
 @interface AVAudioMixSweepFilterEffectParameters : AVAudioMixEffectParameters {
-    AVAudioMixSweepFilterEffectParametersInternal *_sweepFilterAudioEffect;
+    AVAudioMixSweepFilterEffectParametersInternal * _sweepFilterAudioEffect;
 }
 
 @property (nonatomic, readonly) float bypassThreshold;

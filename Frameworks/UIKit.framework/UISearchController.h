@@ -3,26 +3,28 @@
  */
 
 @interface UISearchController : UIViewController <NSCoding, UIViewControllerAnimatedTransitioning, UIViewControllerPresenting, UIViewControllerTransitioningDelegate, _UIScrollNotification> {
-    int __previousSearchBarPosition;
-    float __resultsContentScrollViewPresentationOffset;
-    BOOL __showResultsForEmptySearch;
-    <UIViewControllerAnimatedTransitioning> *_animator;
-    UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
-    int _barPresentationStyle;
+    int  __previousSearchBarPosition;
+    float  __resultsContentScrollViewPresentationOffset;
+    BOOL  __showResultsForEmptySearch;
+    <UIViewControllerAnimatedTransitioning> * _animator;
+    UITapGestureRecognizer * _backButtonDismissGestureRecognizer;
+    int  _barPresentationStyle;
     struct { 
         unsigned int searchBarWasTableHeaderView : 1; 
         unsigned int searchBarWasFirstResponder : 1; 
-    } _controllerFlags;
-    <UISearchControllerDelegate> *_delegate;
-    _UISearchControllerDidScrollDelegate *_didScrollDelegate;
-    BOOL _hidesNavigationBarDuringPresentation;
-    BOOL _obscuresBackgroundDuringPresentation;
-    UIView *_resultsControllerViewContainer;
-    UISearchBar *_searchBar;
-    UIViewController *_searchResultsController;
-    <UISearchResultsUpdating> *_searchResultsUpdater;
-    UISystemInputViewController *_systemInputViewController;
-    id _windowWillAnimateToken;
+    }  _controllerFlags;
+    <UISearchControllerDelegate> * _delegate;
+    _UISearchControllerDidScrollDelegate * _didScrollDelegate;
+    UITapGestureRecognizer * _doneButtonGestureRecognizer;
+    BOOL  _hidesNavigationBarDuringPresentation;
+    BOOL  _obscuresBackgroundDuringPresentation;
+    UIView * _resultsControllerViewContainer;
+    UISearchBar * _searchBar;
+    UIViewController * _searchResultsController;
+    <UISearchResultsUpdating> * _searchResultsUpdater;
+    BOOL  _shouldFocusResults;
+    UISystemInputViewController * _systemInputViewController;
+    id  _windowWillAnimateToken;
 }
 
 @property (nonatomic, readonly) int _barPresentationStyle;
@@ -66,6 +68,7 @@
 - (void)_dismissPresentation:(BOOL)arg1;
 - (void)_endWatchingPresentingController;
 - (void)_installBackGestureRecognizer;
+- (void)_installDoneGestureRecognizer;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (id)_locatePresentingViewController;
@@ -93,8 +96,10 @@
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
 - (id)_systemInputViewController;
 - (void)_uninstallBackGestureRecognizer;
+- (void)_uninstallDoneGestureRecognizer;
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateBarPresentationStyleForPresentingViewController:(id)arg1;
+- (void)_updateFocusFromDoneButton:(id)arg1;
 - (void)_updateSearchBarMaskIfNecessary;
 - (void)_updateSearchResultsContentScrollViewWithDelta:(struct CGSize { float x1; float x2; })arg1;
 - (void)_updateSearchResultsControllerWithDelta:(struct CGSize { float x1; float x2; })arg1;
@@ -118,7 +123,7 @@
 - (BOOL)isActive;
 - (void)loadView;
 - (BOOL)obscuresBackgroundDuringPresentation;
-- (id)preferredFocusedItem;
+- (id)preferredFocusEnvironments;
 - (id)searchBar;
 - (id)searchResultsController;
 - (id)searchResultsUpdater;
@@ -134,6 +139,7 @@
 - (void)set_resultsControllerViewContainer:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { float x1; float x2; })arg1 withTransitionCoordinator:(id)arg2;

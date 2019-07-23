@@ -3,8 +3,8 @@
  */
 
 @interface FBSSceneSnapshotContext : NSObject <BSDescriptionProviding, BSXPCCoding> {
-    BSSettings *_clientExtendedData;
-    double _expirationInterval;
+    BSSettings * _clientExtendedData;
+    double  _expirationInterval;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,12 +14,12 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSSet *_layersToExclude;
-    NSString *_name;
-    float _scale;
-    NSString *_sceneID;
-    FBSSceneSettings *_settings;
+    }  _frame;
+    NSSet * _layersToExclude;
+    NSString * _name;
+    float  _scale;
+    NSString * _sceneID;
+    FBSSceneSettings * _settings;
 }
 
 @property (nonatomic, copy) BSSettings *clientExtendedData;

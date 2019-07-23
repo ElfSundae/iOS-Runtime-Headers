@@ -3,13 +3,17 @@
  */
 
 @interface AKToolController : NSObject {
-    AKController *_controller;
-    unsigned int _toolMode;
+    AKController * _controller;
+    BOOL  _shapeDetectionBeforePen;
+    unsigned int  _toolMode;
+    unsigned int  _toolModeBeforePen;
 }
 
 @property AKController *controller;
 @property (nonatomic, readonly) BOOL isInDefaultMode;
+@property BOOL shapeDetectionBeforePen;
 @property (nonatomic) unsigned int toolMode;
+@property unsigned int toolModeBeforePen;
 
 + (void)cascadeAnnotations:(id)arg1 onPageController:(id)arg2 forPaste:(BOOL)arg3;
 
@@ -32,11 +36,18 @@
 - (void)dealloc;
 - (id)initWithController:(id)arg1;
 - (BOOL)isInDefaultMode;
+- (BOOL)isToolSenderEnabled:(id)arg1;
 - (void)performToolActionForSender:(id)arg1;
 - (void)resetToDefaultMode;
+- (void)restoreAfterSketchForPen;
 - (void)setController:(id)arg1;
+- (void)setIntelligentSketchForPen;
+- (void)setShapeDetectionBeforePen:(BOOL)arg1;
 - (void)setToolMode:(unsigned int)arg1;
+- (void)setToolModeBeforePen:(unsigned int)arg1;
+- (BOOL)shapeDetectionBeforePen;
 - (unsigned int)toolMode;
-- (BOOL)validateToolSender:(id)arg1;
+- (unsigned int)toolModeBeforePen;
+- (void)updateToolSenderState:(id)arg1 enabled:(BOOL)arg2;
 
 @end

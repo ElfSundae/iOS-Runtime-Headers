@@ -3,23 +3,23 @@
  */
 
 @interface UIClientRotationContext : NSObject {
-    UISnapshotView *_contentSnapshotViewStart;
-    float _contentTopAdjustmentStart;
-    UIView *_contentView;
-    BOOL _contentWasHidden;
-    double _duration;
-    UIView *_footerEndSnapshotView;
-    UISnapshotView *_footerSnapshotViewStart;
-    UIView *_footerStartSnapshotView;
-    UIView *_footerView;
-    BOOL _footerWasHidden;
-    int _fromOrientation;
-    UISnapshotView *_headerSnapshotViewStart;
-    UIView *_headerView;
-    BOOL _headerWasHidden;
-    BOOL _orderKeyboardInAfterRotating;
-    id _rotatingClient;
-    UIView *_rotatingSnapshotView;
+    UISnapshotView * _contentSnapshotViewStart;
+    float  _contentTopAdjustmentStart;
+    UIView * _contentView;
+    BOOL  _contentWasHidden;
+    double  _duration;
+    UIView * _footerEndSnapshotView;
+    UISnapshotView * _footerSnapshotViewStart;
+    UIView * _footerStartSnapshotView;
+    UIView * _footerView;
+    BOOL  _footerWasHidden;
+    int  _fromOrientation;
+    UISnapshotView * _headerSnapshotViewStart;
+    UIView * _headerView;
+    BOOL  _headerWasHidden;
+    BOOL  _orderKeyboardInAfterRotating;
+    id  _rotatingClient;
+    UIView * _rotatingSnapshotView;
     struct { 
         BOOL animateContentRotation; 
         BOOL preserveHeight; 
@@ -28,15 +28,15 @@
         BOOL preventAdditveAnimations; 
         float contentStretchRightEdgeInset; 
         int edgeClip; 
-    } _rotationSettings;
-    BOOL _skipClientRotationCallbacks;
-    BOOL _skipFooterRotation;
-    BOOL _skipHeaderRotation;
-    UIView *_snapshotTargetView;
-    BOOL _snapshotTargetWasHidden;
-    int _toOrientation;
-    UIWindow *_window;
-    float contentBottomInset;
+    }  _rotationSettings;
+    BOOL  _skipClientRotationCallbacks;
+    BOOL  _skipFooterRotation;
+    BOOL  _skipHeaderRotation;
+    UIView * _snapshotTargetView;
+    BOOL  _snapshotTargetWasHidden;
+    int  _toOrientation;
+    UIWindow * _window;
+    float  contentBottomInset;
 }
 
 @property (nonatomic, readonly) UIView *contentView;

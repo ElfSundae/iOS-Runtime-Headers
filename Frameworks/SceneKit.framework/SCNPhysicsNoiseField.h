@@ -3,8 +3,8 @@
  */
 
 @interface SCNPhysicsNoiseField : SCNPhysicsField {
-    float _animationSpeed;
-    float _smoothness;
+    float  _animationSpeed;
+    float  _smoothness;
 }
 
 @property (nonatomic) float animationSpeed;

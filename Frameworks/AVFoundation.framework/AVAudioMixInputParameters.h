@@ -3,7 +3,7 @@
  */
 
 @interface AVAudioMixInputParameters : NSObject <NSCopying, NSMutableCopying> {
-    AVAudioMixInputParametersInternal *_inputParameters;
+    AVAudioMixInputParametersInternal * _inputParameters;
 }
 
 @property (nonatomic, readonly, retain) const struct opaqueMTAudioProcessingTap { }*audioTapProcessor;

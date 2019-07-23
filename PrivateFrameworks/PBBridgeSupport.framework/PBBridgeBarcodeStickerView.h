@@ -3,13 +3,13 @@
  */
 
 @interface PBBridgeBarcodeStickerView : UIView {
-    UILabel *_altTextLabel;
-    PBBridgeBarcode *_barcode;
-    UIImageView *_barcodeView;
-    BOOL _drawBarcode;
-    NSMutableArray *_matteConstraints;
-    UIImageView *_matteView;
-    NSMutableArray *_stickerConstraints;
+    UILabel * _altTextLabel;
+    PBBridgeBarcode * _barcode;
+    UIImageView * _barcodeView;
+    BOOL  _drawBarcode;
+    NSMutableArray * _matteConstraints;
+    UIImageView * _matteView;
+    NSMutableArray * _stickerConstraints;
 }
 
 @property (nonatomic, retain) PBBridgeBarcode *barcode;

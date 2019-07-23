@@ -12,8 +12,8 @@
             float width; 
             float height; 
         } size; 
-    } mBounds;
-    OADFill *mFill;
+    }  mBounds;
+    OADFill * mFill;
 }
 
 - (id)blipAtIndex:(unsigned int)arg1;

@@ -3,18 +3,18 @@
  */
 
 @interface SFUZipArchiveOutputStream : NSObject <SFUSimpleOutputStream> {
-    char *mBuffer;
-    SFUCryptoKey *mCryptoKey;
-    SFUZipOutputEntry *mCurrentEntry;
-    SFUZipFreeSpaceEntry *mCurrentFreeSpace;
-    NSData *mEncryptedDocumentUuid;
-    NSMutableArray *mEntries;
-    <SFUOutputStream> *mEntryOutputStream;
-    unsigned long long mFreeBytes;
-    NSMutableArray *mFreeList;
-    SFUZipOutputEntry *mLastEntryInFile;
-    SFUMoveableFileOutputStream *mOutputStream;
-    NSData *mPassphraseHint;
+    char * mBuffer;
+    SFUCryptoKey * mCryptoKey;
+    SFUZipOutputEntry * mCurrentEntry;
+    SFUZipFreeSpaceEntry * mCurrentFreeSpace;
+    NSData * mEncryptedDocumentUuid;
+    NSMutableArray * mEntries;
+    <SFUOutputStream> * mEntryOutputStream;
+    unsigned long long  mFreeBytes;
+    NSMutableArray * mFreeList;
+    SFUZipOutputEntry * mLastEntryInFile;
+    SFUMoveableFileOutputStream * mOutputStream;
+    NSData * mPassphraseHint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 + (unsigned long)approximateBytesForEntryHeaderWithName:(id)arg1;
++ (BOOL)createZipWithItemsAtPath:(id)arg1 zippedPath:(id)arg2 rootPathComponentName:(id)arg3;
 
 - (void)beginEntryWithName:(id)arg1 isCompressed:(BOOL)arg2 uncompressedSize:(unsigned long long)arg3;
 - (id)beginUncompressedUnknownSizeEntryWithName:(id)arg1;

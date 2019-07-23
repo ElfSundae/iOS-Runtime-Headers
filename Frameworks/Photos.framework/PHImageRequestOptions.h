@@ -3,17 +3,17 @@
  */
 
 @interface PHImageRequestOptions : NSObject <NSCopying> {
-    BOOL _allowPlaceholder;
-    BOOL _allowSecondaryOpportunisticImage;
-    double _aspectRatioHint;
-    id /* block */ _cachingCompletedHandler;
-    BOOL _deliveryFirstResultAsynchronously;
-    int _deliveryMode;
-    double _demoteFactor;
-    double _downloadUpdateInterval;
-    int _loadingMode;
-    BOOL _memoryCachingAllowed;
-    BOOL _networkAccessAllowed;
+    BOOL  _allowPlaceholder;
+    BOOL  _allowSecondaryOpportunisticImage;
+    double  _aspectRatioHint;
+    id /* block */  _cachingCompletedHandler;
+    BOOL  _deliveryFirstResultAsynchronously;
+    int  _deliveryMode;
+    double  _demoteFactor;
+    double  _downloadUpdateInterval;
+    int  _loadingMode;
+    BOOL  _memoryCachingAllowed;
+    BOOL  _networkAccessAllowed;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -23,13 +23,13 @@
             float width; 
             float height; 
         } size; 
-    } _normalizedCropRect;
-    id /* block */ _progressHandler;
-    int _rank;
-    int _requestID;
-    int _resizeMode;
-    BOOL _synchronous;
-    int _version;
+    }  _normalizedCropRect;
+    id /* block */  _progressHandler;
+    int  _rank;
+    int  _requestID;
+    int  _resizeMode;
+    BOOL  _synchronous;
+    int  _version;
 }
 
 @property (nonatomic) BOOL allowPlaceholder;

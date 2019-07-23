@@ -3,9 +3,9 @@
  */
 
 @interface EKStatsOperation : NSObject {
-    double _doubleValue;
-    long long _intValue;
-    int _type;
+    double  _doubleValue;
+    long long  _intValue;
+    int  _type;
 }
 
 @property double doubleValue;

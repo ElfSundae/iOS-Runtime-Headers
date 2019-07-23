@@ -3,10 +3,10 @@
  */
 
 @interface WBWebsiteDataRecord : NSObject {
-    NSMutableSet *_cookieDomains;
-    NSString *_domain;
-    NSMutableSet *_securityOriginHosts;
-    unsigned long long _usage;
+    NSMutableSet * _cookieDomains;
+    NSString * _domain;
+    NSMutableSet * _securityOriginHosts;
+    unsigned long long  _usage;
 }
 
 @property (nonatomic, readonly, copy) NSObject<OS_xpc_object> *XPCDictionaryRepresentation;

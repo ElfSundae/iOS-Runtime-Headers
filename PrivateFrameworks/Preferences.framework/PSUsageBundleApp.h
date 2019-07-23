@@ -3,11 +3,11 @@
  */
 
 @interface PSUsageBundleApp : NSObject {
-    NSString *_bundleIdentifier;
-    NSArray *_categories;
-    NSString *_name;
-    PSWeakReference *_storageReporterReference;
-    float _totalSize;
+    NSString * _bundleIdentifier;
+    NSArray * _categories;
+    NSString * _name;
+    PSWeakReference * _storageReporterReference;
+    float  _totalSize;
 }
 
 @property (nonatomic, retain) NSString *bundleIdentifier;

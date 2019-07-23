@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/WebApp.framework/WebApp
  */
 
-@interface WebAppController : WebUIDelegate <UIApplicationDelegate, UIWebViewDelegate, UIWebViewPrivateDelegate, WebPolicyDelegate> {
-    NSMutableArray *_alerts;
-    WebUIAuthenticationManager *_authenticationManager;
-    NSDictionary *_connectionProperties;
-    WebUIDownloadManager *_downloadManager;
-    NSArray *_fallbackURLs;
-    NSMutableSet *_highLevelDomainsAndPortsToUseOnlyAvailableIdentityWithoutPrompting;
+@interface WebAppController : NSObject <UIApplicationDelegate, UIWebViewDelegate, UIWebViewPrivateDelegate, WebPolicyDelegate> {
+    NSMutableArray * _alerts;
+    WebUIAuthenticationManager * _authenticationManager;
+    NSDictionary * _connectionProperties;
+    WebUIDownloadManager * _downloadManager;
+    NSArray * _fallbackURLs;
+    NSMutableSet * _highLevelDomainsAndPortsToUseOnlyAvailableIdentityWithoutPrompting;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,11 +18,11 @@
             float width; 
             float height; 
         } size; 
-    } _inputViewScreenBoundsAfterRotation;
-    BOOL _isSuspended;
-    UIView *_loadingView;
-    int _orientation;
-    unsigned int _rotationEdgePin;
+    }  _inputViewScreenBoundsAfterRotation;
+    BOOL  _isSuspended;
+    UIView * _loadingView;
+    int  _orientation;
+    unsigned int  _rotationEdgePin;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -32,15 +32,15 @@
             float width; 
             float height; 
         } size; 
-    } _rotationRect;
-    WBUSheetController *_sheetController;
-    UIWindow *_window;
-    BOOL snapshotHideTimeHasExpired;
-    NSTimer *snapshotHideTimer;
-    UIWebClip *webClip;
-    UIWebView *webView;
-    BOOL webViewDidLayout;
-    BOOL webViewHasFinishedLoading;
+    }  _rotationRect;
+    WBUSheetController * _sheetController;
+    UIWindow * _window;
+    BOOL  snapshotHideTimeHasExpired;
+    NSTimer * snapshotHideTimer;
+    UIWebClip * webClip;
+    UIWebView * webView;
+    BOOL  webViewDidLayout;
+    BOOL  webViewHasFinishedLoading;
 }
 
 @property (readonly, copy) NSString *debugDescription;

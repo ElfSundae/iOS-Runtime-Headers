@@ -6,9 +6,9 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _availableScreenSize;
-    WAKView *_contentView;
-    BOOL _entireWindowVisibleForTesting;
+    }  _availableScreenSize;
+    WAKView * _contentView;
+    BOOL  _entireWindowVisibleForTesting;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,14 +18,14 @@
             float width; 
             float height; 
         } size; 
-    } _exposedScrollViewRect;
-    struct SpinLock { 
-        struct Atomic<unsigned int> { 
-            struct atomic<unsigned int> { 
-                unsigned int __a_; 
+    }  _exposedScrollViewRect;
+    struct Lock { 
+        struct Atomic<unsigned char> { 
+            struct atomic<unsigned char> { 
+                unsigned char __a_; 
             } value; 
-        } m_lock; 
-    } _exposedScrollViewRectLock;
+        } m_byte; 
+    }  _exposedScrollViewRectLock;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -35,7 +35,7 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
+    }  _frame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -45,19 +45,19 @@
             float width; 
             float height; 
         } size; 
-    } _frozenVisibleRect;
-    CALayer *_hostLayer;
-    WAKView *_nextResponder;
-    WAKView *_responderView;
-    CALayer *_rootLayer;
-    float _screenScale;
+    }  _frozenVisibleRect;
+    CALayer * _hostLayer;
+    WAKView * _nextResponder;
+    WAKView * _responderView;
+    CALayer * _rootLayer;
+    float  _screenScale;
     struct CGSize { 
         float width; 
         float height; 
-    } _screenSize;
-    struct LegacyTileCache { id x1; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x2; void*x3; void*x4; void*x5; int x6; in void*x7; void*x8; const void*x9; unsigned char x10; void*x11; unsigned int x12; void*x13; void*x14; void*x15; void*x16; void*x17; char *x18; void*x19; void*x20; void *x21; } *_tileCache;
-    BOOL _useOrientationDependentFontAntialiasing;
-    BOOL _visible;
+    }  _screenSize;
+    struct LegacyTileCache { id x1; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x2; void*x3; void*x4; void*x5; int x6; in void*x7; void*x8; const void*x9; unsigned char x10; void*x11; unsigned int x12; void*x13; void*x14; void*x15; void*x16; void*x17; char *x18; void*x19; void*x20; void *x21; } * _tileCache;
+    BOOL  _useOrientationDependentFontAntialiasing;
+    BOOL  _visible;
 }
 
 @property (nonatomic) struct CGImage { }*contentReplacementImage;
@@ -75,6 +75,8 @@
 - (struct CGImage { }*)contentReplacementImage;
 - (id)contentView;
 - (struct CGPoint { float x1; float x2; })convertBaseToScreen:(struct CGPoint { float x1; float x2; })arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })convertRectFromScreen:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })convertRectToScreen:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (struct CGPoint { float x1; float x2; })convertScreenToBase:(struct CGPoint { float x1; float x2; })arg1;
 - (float)currentTileScale;
 - (void)dealloc;

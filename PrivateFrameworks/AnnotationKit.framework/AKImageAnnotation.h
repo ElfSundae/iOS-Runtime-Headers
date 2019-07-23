@@ -3,9 +3,9 @@
  */
 
 @interface AKImageAnnotation : AKAnnotation <AKFlippableAnnotationProtocol, AKRectangularAnnotationProtocol, AKRotatableAnnotationProtocol> {
-    BOOL _hasShadow;
-    BOOL _horizontallyFlipped;
-    UIImage *_image;
+    BOOL  _hasShadow;
+    BOOL  _horizontallyFlipped;
+    UIImage * _image;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,9 +15,9 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
-    float _rotationAngle;
-    BOOL _verticallyFlipped;
+    }  _rectangle;
+    float  _rotationAngle;
+    BOOL  _verticallyFlipped;
 }
 
 @property (readonly, copy) NSString *debugDescription;

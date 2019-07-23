@@ -3,7 +3,6 @@
  */
 
 @interface GKPath : NSObject {
-    BOOL _cyclical;
     struct PolylinePathway { 
         int (**_vptr$PolylinePathway)(); 
         int pointCount; 
@@ -30,20 +29,23 @@
         float *lengths; 
         struct Vec3 {} *normals; 
         float totalPathLength; 
-    } _pathway;
-    float _radius;
+    }  _pathway;
 }
 
 @property (getter=isCyclical, nonatomic) BOOL cyclical;
 @property (readonly) unsigned int numPoints;
 @property (nonatomic) float radius;
 
++ (id)pathWithFloat3Points:(/* Warning: Unrecognized filer type: '8' using 'void*' */ void**)arg1 count:(unsigned long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 + (id)pathWithGraphNodes:(id)arg1 radius:(float)arg2;
 + (id)pathWithPoints:(/* Warning: Unrecognized filer type: '8' using 'void*' */ void**)arg1 count:(unsigned long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 
 - (id).cxx_construct;
-- (BOOL)cyclical;
-- (id)init;
+- (void).cxx_destruct;
+- (BOOL)_cyclical;
+- (void)float2AtIndex:(unsigned int)arg1;
+- (void)float3AtIndex:(unsigned int)arg1;
+- (id)initWithFloat3Points:(/* Warning: Unrecognized filer type: '8' using 'void*' */ void**)arg1 count:(unsigned long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 - (id)initWithGraphNodes:(id)arg1 radius:(float)arg2;
 - (id)initWithPoints:(/* Warning: Unrecognized filer type: '8' using 'void*' */ void**)arg1 count:(unsigned long)arg2 radius:(float)arg3 cyclical:(BOOL)arg4;
 - (BOOL)isCyclical;
@@ -53,5 +55,6 @@
 - (float)radius;
 - (void)setCyclical:(BOOL)arg1;
 - (void)setRadius:(float)arg1;
+- (void)set_cyclical:(BOOL)arg1;
 
 @end

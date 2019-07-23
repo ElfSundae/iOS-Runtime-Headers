@@ -3,19 +3,19 @@
  */
 
 @interface IDSWRMMetricContainer : NSObject {
-    unsigned long long _MessageDeliveredDeliveryError;
-    unsigned long long _MessageDeliveredRTT;
-    unsigned long long _MessageDeliveredSize;
-    unsigned long long _MessageReceivedSize;
-    unsigned long long _MessageSentSize;
-    unsigned long long _StreamBytesReceived;
-    unsigned long long _StreamBytesSent;
-    unsigned long long _StreamPacketsReceived;
-    unsigned long long _StreamPacketsSent;
-    unsigned long long _numMessageDeliveredRTT;
-    unsigned long long _numMessageDeliveredSize;
-    unsigned long long _numMessageReceivedSize;
-    unsigned long long _numMessageSentSize;
+    unsigned long long  _MessageDeliveredDeliveryError;
+    unsigned long long  _MessageDeliveredRTT;
+    unsigned long long  _MessageDeliveredSize;
+    unsigned long long  _MessageReceivedSize;
+    unsigned long long  _MessageSentSize;
+    unsigned long long  _StreamBytesReceived;
+    unsigned long long  _StreamBytesSent;
+    unsigned long long  _StreamPacketsReceived;
+    unsigned long long  _StreamPacketsSent;
+    unsigned long long  _numMessageDeliveredRTT;
+    unsigned long long  _numMessageDeliveredSize;
+    unsigned long long  _numMessageReceivedSize;
+    unsigned long long  _numMessageSentSize;
 }
 
 @property (nonatomic) unsigned long long MessageDeliveredDeliveryError;

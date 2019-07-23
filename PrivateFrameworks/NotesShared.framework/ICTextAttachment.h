@@ -3,7 +3,7 @@
  */
 
 @interface ICTextAttachment : NSTextAttachment <TTAttachment> {
-    ICAttachment *_attachment;
+    ICAttachment * _attachment;
 }
 
 @property (retain) ICAttachment *attachment;
@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSString *viewIdentifier;
 
 + (float)defaultAttachmentThumbnailViewHeight;
++ (Class)textAttachmentClassForAttachment:(id)arg1;
 + (BOOL)textAttachmentIsContent:(id)arg1;
 + (id)textAttachmentWithAttachment:(id)arg1;
 + (id)textAttachmentWithIdentifier:(id)arg1;
@@ -32,6 +33,7 @@
 - (Class)attachmentViewClass;
 - (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;
 - (id)initWithAttachment:(id)arg1;
+- (BOOL)isEqualToModelComparable:(id)arg1;
 - (struct UIView { Class x1; }*)newlyCreatedView;
 - (struct UIView { Class x1; }*)newlyCreatedViewForManualRendering;
 - (BOOL)requiresSpaceAfterAttachmentForPrinting;

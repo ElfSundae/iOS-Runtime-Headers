@@ -3,26 +3,26 @@
  */
 
 @interface SFInteractiveDismissController : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate> {
-    float _accelerations;
-    float _averageAcceleration;
-    float _averageVelocity;
-    <SFInteractiveDismissControllerDelegate> *_delegate;
-    UIView *_dimmingView;
-    unsigned int _dismissMode;
-    UIScreenEdgePanGestureRecognizer *_edgeSwipeGestureRecognizer;
-    UIView *_edgeSwipeView;
-    int _interactionState;
-    float _previousAcceleration;
-    float _previousDisplacement;
-    double _previousTimeStamp;
-    float _previousVelocity;
-    unsigned int _sampleCount;
-    double _skipTimeStamp;
-    float _timestamps;
-    float _totalDistance;
-    <UIViewControllerContextTransitioning> *_transitionContext;
-    float _velocities;
-    UIViewController *_viewControllerToBeDismissed;
+    float  _accelerations;
+    float  _averageAcceleration;
+    float  _averageVelocity;
+    <SFInteractiveDismissControllerDelegate> * _delegate;
+    UIView * _dimmingView;
+    unsigned int  _dismissMode;
+    UIScreenEdgePanGestureRecognizer * _edgeSwipeGestureRecognizer;
+    UIView * _edgeSwipeView;
+    int  _interactionState;
+    float  _previousAcceleration;
+    float  _previousDisplacement;
+    double  _previousTimeStamp;
+    float  _previousVelocity;
+    unsigned int  _sampleCount;
+    double  _skipTimeStamp;
+    float  _timestamps;
+    float  _totalDistance;
+    <UIViewControllerContextTransitioning> * _transitionContext;
+    float  _velocities;
+    UIViewController * _viewControllerToBeDismissed;
 }
 
 @property (nonatomic) float averageAcceleration;

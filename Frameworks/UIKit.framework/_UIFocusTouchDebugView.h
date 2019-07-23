@@ -3,8 +3,8 @@
  */
 
 @interface _UIFocusTouchDebugView : UIView {
-    UIView *_boundaryView;
-    UIView *_touchView;
+    UIView * _boundaryView;
+    UIView * _touchView;
 }
 
 - (void).cxx_destruct;

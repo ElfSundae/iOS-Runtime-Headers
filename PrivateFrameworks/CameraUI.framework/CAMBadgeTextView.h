@@ -9,6 +9,6 @@
 - (id)_textAttributes;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_textInsets;
 - (struct CGSize { float x1; float x2; })_textSize;
-- (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
+- (struct CGSize { float x1; float x2; })intrinsicContentSize;
 
 @end

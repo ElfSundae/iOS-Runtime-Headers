@@ -3,8 +3,8 @@
  */
 
 @interface SKConstraint : NSObject <NSCoding, NSCopying> {
-    BOOL _enabled;
-    SKNode *_referenceNode;
+    BOOL  _enabled;
+    SKNode * _referenceNode;
 }
 
 @property BOOL enabled;

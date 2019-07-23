@@ -3,9 +3,9 @@
  */
 
 @interface MusicHairlineView : UIView {
-    UIColor *_lineColor;
-    UIView *_lineView;
-    int _verticalAlignment;
+    UIColor * _lineColor;
+    UIView * _lineView;
+    int  _verticalAlignment;
 }
 
 @property (nonatomic, retain) UIColor *lineColor;

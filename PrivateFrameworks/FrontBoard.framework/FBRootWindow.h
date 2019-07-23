@@ -3,9 +3,9 @@
  */
 
 @interface FBRootWindow : _UIRootWindow <FBSceneTransformTarget> {
-    UIView *_sceneContainerView;
-    UIView *_systemGestureView;
-    NSHashTable *_transforms;
+    UIView * _sceneContainerView;
+    UIView * _systemGestureView;
+    NSHashTable * _transforms;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,15 +3,16 @@
  */
 
 @interface _NSProgressProxy : NSProgress {
-    <NSProgressPublisher> *_forwarder;
-    BOOL _isOld;
-    id /* block */ _unpublishingHandler;
+    <NSProgressPublisher> * _forwarder;
+    BOOL  _isOld;
+    id /* block */  _unpublishingHandler;
 }
 
 - (void)_acknowledgeWithSuccess:(BOOL)arg1;
 - (id)_initWithForwarder:(id)arg1 values:(id)arg2 isOld:(BOOL)arg3;
 - (void)_invokePublishingHandler:(id /* block */)arg1;
 - (void)_invokeUnpublishingHandler;
+- (void)_setRemoteValue:(id)arg1 forKey:(id)arg2 inUserInfo:(BOOL)arg3;
 - (void)acknowledgeWithSuccess:(BOOL)arg1;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1;
 - (void)cancel;

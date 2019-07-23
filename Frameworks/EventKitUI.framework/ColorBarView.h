@@ -3,8 +3,8 @@
  */
 
 @interface ColorBarView : UIView {
-    UIColor *_color;
-    BOOL _dashedLines;
+    UIColor * _color;
+    BOOL  _dashedLines;
 }
 
 @property (nonatomic, retain) UIColor *color;

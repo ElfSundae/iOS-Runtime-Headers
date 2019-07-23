@@ -3,9 +3,9 @@
  */
 
 @interface PKDaemonClient : NSObject {
-    NSObject<OS_xpc_object> *_pkd;
-    long long _protocolVersion;
-    NSObject<OS_dispatch_queue> *_replyQueue;
+    NSObject<OS_xpc_object> * _pkd;
+    long long  _protocolVersion;
+    NSObject<OS_dispatch_queue> * _replyQueue;
 }
 
 @property (retain) NSObject<OS_xpc_object> *pkd;
@@ -18,6 +18,7 @@
 - (void)accessPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(id /* block */)arg3;
 - (void)addPlugIns:(id)arg1 reply:(id /* block */)arg2;
 - (void)bulkPlugins:(unsigned long long)arg1 reply:(id /* block */)arg2;
+- (void)bulkSetPluginAnnotations:(id)arg1 reply:(id /* block */)arg2;
 - (id)convertFromXPC:(id)arg1;
 - (void)copyReceipt:(id /* block */)arg1;
 - (id)errorInReply:(id)arg1;

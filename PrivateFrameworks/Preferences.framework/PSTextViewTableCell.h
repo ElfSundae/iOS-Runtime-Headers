@@ -3,7 +3,7 @@
  */
 
 @interface PSTextViewTableCell : PSTableCell <UITextContentViewDelegate> {
-    PSTextView *_textView;
+    PSTextView * _textView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

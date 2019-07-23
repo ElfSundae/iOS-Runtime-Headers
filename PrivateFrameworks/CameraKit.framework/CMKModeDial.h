@@ -3,14 +3,14 @@
  */
 
 @interface CMKModeDial : UIControl {
-    NSDictionary *__items;
-    UIView *__itemsContainerView;
-    CAGradientLayer *__maskLayer;
-    UIView *__meshTransformView;
-    NSArray *__modes;
-    <CMKModeDialDataSource> *_dataSource;
-    int _orientation;
-    int _selectedMode;
+    NSDictionary * __items;
+    UIView * __itemsContainerView;
+    CAGradientLayer * __maskLayer;
+    UIView * __meshTransformView;
+    NSArray * __modes;
+    <CMKModeDialDataSource> * _dataSource;
+    int  _orientation;
+    int  _selectedMode;
 }
 
 @property (setter=_setItems:, nonatomic, retain) NSDictionary *_items;

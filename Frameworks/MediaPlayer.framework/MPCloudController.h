@@ -3,17 +3,16 @@
  */
 
 @interface MPCloudController : NSObject {
-    MSVDistributedNotificationObserver *_addToPlaylistBehaviorChangedObserver;
-    NSObject<HSCloudAvailability> *_cloudAvailabilityController;
-    HSCloudClient *_cloudClient;
-    SSVMediaContentTasteController *_contentTasteController;
-    BOOL _isCloudEnabled;
-    BOOL _isInitialImport;
-    BOOL _isUpdateInProgress;
-    BOOL _jaliscoGeniusEnabled;
-    int _preferencesChangedNotifyToken;
-    BOOL _preferencesChangedNotifyTokenIsValid;
-    NSObject<OS_dispatch_queue> *_queue;
+    MSVDistributedNotificationObserver * _addToPlaylistBehaviorChangedObserver;
+    NSObject<HSCloudAvailability> * _cloudAvailabilityController;
+    HSCloudClient * _cloudClient;
+    BOOL  _isCloudEnabled;
+    BOOL  _isInitialImport;
+    BOOL  _isUpdateInProgress;
+    BOOL  _jaliscoGeniusEnabled;
+    int  _preferencesChangedNotifyToken;
+    BOOL  _preferencesChangedNotifyTokenIsValid;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly) BOOL canDefaultMediaLibraryShowCloudContent;
@@ -30,6 +29,7 @@
 @property (nonatomic, readonly) BOOL isUpdateInProgress;
 @property (getter=isJaliscoGeniusEnabled, nonatomic, readonly) BOOL jaliscoGeniusEnabled;
 
++ (BOOL)isEnablingCloudLibraryDestructive;
 + (BOOL)isMediaApplication;
 + (void)migrateCellularDataPreferencesIfNeeded;
 + (id)sharedCloudController;
@@ -38,6 +38,7 @@
 - (void)_initializeUpdateInProgressState;
 - (void)acceptJaliscGeniusTermsAndConditionsVersion:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)addGeniusPlaylistWithPersistentID:(unsigned long long)arg1 name:(id)arg2 seedItemSagaIDs:(id)arg3 itemSagaIDs:(id)arg4 completionHandler:(id /* block */)arg5;
+- (void)addItemWithSagaID:(unsigned long long)arg1 toPlaylistWithPersistentID:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)addStoreItemWithAdamID:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)addStoreItemWithAdamID:(long long)arg1 toPlaylistWithPersistentID:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -61,11 +62,16 @@
 - (void)fetchRecommendedContentWithSeedTrackID:(long long)arg1 seedTrackIDType:(int)arg2 count:(unsigned long long)arg3 completion:(id /* block */)arg4;
 - (BOOL)hasCloudLockerAccount;
 - (BOOL)hasProperNetworkConditionsToPlayMedia;
+- (BOOL)hasProperNetworkConditionsToShowCloudMedia;
+- (void)hasProperNetworkConditionsToShowCloudMediaDidChangeNotification:(id)arg1;
 - (BOOL)hasPurchaseHistoryAccount;
 - (void)hideItemsWithPurchaseHistoryIDs:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
 - (BOOL)isCellularDataRestricted;
 - (void)isCellularDataRestrictedDidChangeNotification:(id)arg1;
+- (BOOL)isCellularDataRestrictedForMusic;
+- (BOOL)isCellularDataRestrictedForStoreApps;
+- (BOOL)isCellularDataRestrictedForVideos;
 - (BOOL)isCloudEnabled;
 - (BOOL)isCloudLibraryEnabled;
 - (BOOL)isGeniusEnabled;
@@ -92,6 +98,9 @@
 - (void)setLikedState:(int)arg1 forPlaylistWithGlobalID:(id)arg2;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistWithPersistentID:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (BOOL)shouldProhibitActionsForCurrentNetworkConditions;
+- (BOOL)shouldProhibitMusicActionForCurrentNetworkConditions;
+- (BOOL)shouldProhibitStoreAppsActionForCurrentNetworkConditions;
+- (BOOL)shouldProhibitVideosActionForCurrentNetworkConditions;
 - (void)updateSubscribedPlaylistWithSagaID:(unsigned long long)arg1 ignoreMinRefreshInterval:(BOOL)arg2 completionHandler:(id /* block */)arg3;
 - (void)uploadArtworkForPlaylist:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)uploadCloudItemProperties;

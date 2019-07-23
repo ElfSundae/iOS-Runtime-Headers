@@ -3,32 +3,32 @@
  */
 
 @interface PUPlayPauseBarItemsController : NSObject <PUBrowsingVideoPlayerChangeObserver, PUBrowsingViewModelChangeObserver> {
-    AVPlayer *__avPlayer;
-    NSHashTable *__changeObservers;
-    PUPlayPauseBarItemsControllerChange *__currentChange;
-    BOOL __isPerformingChanges;
-    BOOL __isUpdating;
-    BOOL __needsUpdateAVPlayer;
-    BOOL __needsUpdateCurrentPlaybackTimeAndDuration;
-    BOOL __needsUpdatePlayPauseState;
-    BOOL __needsUpdateVideoPlayer;
-    NSObject<OS_dispatch_queue> *__observerQueue;
-    id __timeObservationToken;
-    PUBrowsingVideoPlayer *__videoPlayer;
+    AVPlayer * __avPlayer;
+    NSHashTable * __changeObservers;
+    PUPlayPauseBarItemsControllerChange * __currentChange;
+    BOOL  __isPerformingChanges;
+    BOOL  __isUpdating;
+    BOOL  __needsUpdateAVPlayer;
+    BOOL  __needsUpdateCurrentPlaybackTimeAndDuration;
+    BOOL  __needsUpdatePlayPauseState;
+    BOOL  __needsUpdateVideoPlayer;
+    NSObject<OS_dispatch_queue> * __observerQueue;
+    id  __timeObservationToken;
+    PUBrowsingVideoPlayer * __videoPlayer;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _currentPlaybackTime;
-    int _playPauseState;
+    }  _currentPlaybackTime;
+    int  _playPauseState;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _playbackDuration;
-    PUBrowsingViewModel *_viewModel;
+    }  _playbackDuration;
+    PUBrowsingViewModel * _viewModel;
 }
 
 @property (setter=_setAVPlayer:, nonatomic, retain) AVPlayer *_avPlayer;
@@ -43,12 +43,12 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *_observerQueue;
 @property (setter=_setTimeObservationToken:, nonatomic, retain) id _timeObservationToken;
 @property (setter=_setVideoPlayer:, nonatomic, retain) PUBrowsingVideoPlayer *_videoPlayer;
-@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } currentPlaybackTime;
+@property (setter=_setCurrentPlaybackTime:, nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } currentPlaybackTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
-@property (nonatomic) int playPauseState;
-@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } playbackDuration;
+@property (setter=_setPlayPauseState:, nonatomic) int playPauseState;
+@property (setter=_setPlaybackDuration:, nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } playbackDuration;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) PUBrowsingViewModel *viewModel;
 

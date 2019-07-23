@@ -32,7 +32,7 @@
                 long long epoch; 
             } duration; 
         } target; 
-    } _timeMapping;
+    }  _timeMapping;
 }
 
 @property (getter=isEmpty, nonatomic, readonly) BOOL empty;

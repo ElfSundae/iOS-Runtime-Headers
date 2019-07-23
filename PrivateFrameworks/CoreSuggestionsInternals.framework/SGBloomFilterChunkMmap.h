@@ -3,10 +3,11 @@
  */
 
 @interface SGBloomFilterChunkMmap : NSObject <SGBloomFilterChunk> {
-    char *_buf;
-    unsigned int *_countPtr;
-    int _fd;
-    NSString *_path;
+    char * _buf;
+    unsigned int * _countPtr;
+    int  _fd;
+    unsigned int  _mask;
+    NSString * _path;
 }
 
 @property (nonatomic, readonly) unsigned int count;

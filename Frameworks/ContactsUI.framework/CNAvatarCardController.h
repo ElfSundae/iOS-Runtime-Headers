@@ -3,15 +3,15 @@
  */
 
 @interface CNAvatarCardController : NSObject {
-    NSArray *_actionCategories;
-    BOOL _actionsNeedRefresh;
-    CNAvatarView *_avatarView;
-    BOOL _bypassActionValidation;
-    NSArray *_contacts;
-    <CNAvatarCardControllerDelegate> *_delegate;
-    CNContactHeaderDisplayView *_headerView;
-    UIButton *_infoButton;
-    UIGestureRecognizer *_rolloverGestureRecognizer;
+    NSArray * _actionCategories;
+    BOOL  _actionsNeedRefresh;
+    CNAvatarView * _avatarView;
+    BOOL  _bypassActionValidation;
+    NSArray * _contacts;
+    <CNAvatarCardControllerDelegate> * _delegate;
+    CNContactOrbHeaderView * _headerView;
+    UIButton * _infoButton;
+    UIGestureRecognizer * _rolloverGestureRecognizer;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -21,7 +21,8 @@
             float width; 
             float height; 
         } size; 
-    } _sourceRect;
+    }  _sourceRect;
+    UIView * _sourceView;
 }
 
 @property (nonatomic, copy) NSArray *actionCategories;
@@ -31,7 +32,7 @@
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, retain) NSArray *contacts;
 @property (nonatomic) <CNAvatarCardControllerDelegate> *delegate;
-@property (nonatomic, retain) CNContactHeaderDisplayView *headerView;
+@property (nonatomic, retain) CNContactOrbHeaderView *headerView;
 @property (nonatomic, retain) UIButton *infoButton;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *name;
@@ -45,6 +46,7 @@
 + (BOOL)avatarCardEnabled;
 + (int)avatarCardImplementation;
 + (id)descriptorForRequiredKeys;
++ (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(BOOL)arg1;
 + (BOOL)showsWithTapAndHold;
 
 - (void).cxx_destruct;

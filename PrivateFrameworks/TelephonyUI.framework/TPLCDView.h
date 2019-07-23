@@ -3,12 +3,12 @@
  */
 
 @interface TPLCDView : TPLCDBar {
-    UIView *_contentView;
-    TPLCDSubImageView *_imageView;
-    TPLCDTextView *_labelView;
-    unsigned int _layoutAsLabelled;
-    TPLCDTextView *_textView;
-    BOOL _verticallyCenterTextViewIfLabelless;
+    UIView * _contentView;
+    TPLCDSubImageView * _imageView;
+    TPLCDTextView * _labelView;
+    unsigned int  _layoutAsLabelled;
+    TPLCDTextView * _textView;
+    BOOL  _verticallyCenterTextViewIfLabelless;
 }
 
 @property BOOL verticallyCenterTextViewIfLabelless;

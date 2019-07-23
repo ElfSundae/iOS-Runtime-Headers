@@ -3,12 +3,12 @@
  */
 
 @interface MusicLibraryAdaptiveViewController : UIViewController <MusicClientContextConsuming, MusicIndexBarDataSource, MusicIndexBarScrollDelegate, MusicLibraryViewConfigurationConsuming> {
-    UIViewController<MusicLibraryViewConfigurationConsuming> *_activeViewController;
-    MusicClientContext *_clientContext;
-    int _horizontalSizeClassForActiveView;
-    BOOL _isActiveViewControllerIndexBarDataSource;
-    BOOL _isActiveViewControllerIndexBarScrollDelegate;
-    MusicLibraryAdaptiveViewConfiguration *_libraryViewConfiguration;
+    UIViewController<MusicLibraryViewConfigurationConsuming> * _activeViewController;
+    MusicClientContext * _clientContext;
+    int  _horizontalSizeClassForActiveView;
+    BOOL  _isActiveViewControllerIndexBarDataSource;
+    BOOL  _isActiveViewControllerIndexBarScrollDelegate;
+    MusicLibraryAdaptiveViewConfiguration * _libraryViewConfiguration;
 }
 
 @property (nonatomic, readonly) UIViewController<MusicLibraryViewConfigurationConsuming> *activeViewController;

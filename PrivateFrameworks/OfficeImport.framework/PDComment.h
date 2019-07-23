@@ -3,15 +3,15 @@
  */
 
 @interface PDComment : NSObject {
-    NSString *_author;
-    unsigned int mAuthorId;
-    NSDate *mDate;
-    unsigned int mIndex;
+    NSString * _author;
+    unsigned int  mAuthorId;
+    NSDate * mDate;
+    unsigned int  mIndex;
     struct CGPoint { 
         float x; 
         float y; 
-    } mPosition;
-    NSString *mText;
+    }  mPosition;
+    NSString * mText;
 }
 
 @property (nonatomic, retain) NSString *author;

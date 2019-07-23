@@ -5,13 +5,13 @@
 @interface SYMessageHeader : PBCodable <NSCopying> {
     struct { 
         unsigned int timeout : 1; 
-    } _has;
-    SYPeer *_sender;
-    unsigned long long _sequenceNumber;
-    SYVectorClock *_state;
-    double _timeout;
-    double _timestamp;
-    unsigned int _version;
+    }  _has;
+    SYPeer * _sender;
+    unsigned long long  _sequenceNumber;
+    SYVectorClock * _state;
+    double  _timeout;
+    double  _timestamp;
+    unsigned int  _version;
 }
 
 @property (nonatomic) BOOL hasTimeout;

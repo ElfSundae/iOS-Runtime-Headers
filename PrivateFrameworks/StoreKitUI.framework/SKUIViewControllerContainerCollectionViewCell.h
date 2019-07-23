@@ -3,10 +3,10 @@
  */
 
 @interface SKUIViewControllerContainerCollectionViewCell : UICollectionViewCell {
-    NSIndexPath *_indexPath;
-    BOOL _managesViewControllerContainerViewLayout;
-    float _maximumContentWidth;
-    SKUIViewControllerContainerView *_viewControllerContainerView;
+    NSIndexPath * _indexPath;
+    BOOL  _managesViewControllerContainerViewLayout;
+    float  _maximumContentWidth;
+    SKUIViewControllerContainerView * _viewControllerContainerView;
 }
 
 @property (nonatomic, readonly) NSIndexPath *indexPath;

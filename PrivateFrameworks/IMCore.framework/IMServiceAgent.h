@@ -3,7 +3,7 @@
  */
 
 @interface IMServiceAgent : NSObject {
-    NSDictionary *_currentAVChatInfo;
+    NSDictionary * _currentAVChatInfo;
 }
 
 @property (nonatomic, readonly) NSDictionary *currentAVChatInfo;
@@ -21,6 +21,7 @@
 + (void)setServiceAgentCapabilities:(int)arg1;
 + (id)sharedAgent;
 
+- (void).cxx_destruct;
 - (id)currentAVChatInfo;
 - (void)launchIfNecessary;
 - (id)myAvailableMessages;

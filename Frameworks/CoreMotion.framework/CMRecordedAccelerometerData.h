@@ -7,10 +7,10 @@
         double x; 
         double y; 
         double z; 
-    } _accelerationValue;
-    unsigned long long _identifier;
-    double _startDateValue;
-    double _timestampValue;
+    }  _accelerationValue;
+    unsigned long long  _identifier;
+    double  _startDateValue;
+    double  _timestampValue;
 }
 
 @property (readonly) unsigned long long identifier;

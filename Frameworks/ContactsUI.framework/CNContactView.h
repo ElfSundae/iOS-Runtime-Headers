@@ -2,28 +2,28 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNContactView : UITableView {
-    NSDictionary *_actionTextAttributes;
-    BOOL _cellsLayoutCachingEnabled;
-    CNContact *_contact;
+@interface CNContactView : CNMaskingTableView {
+    NSDictionary * _actionTextAttributes;
+    BOOL  _cellsLayoutCachingEnabled;
+    CNContact * _contact;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentMargins;
-    UIView *_customHeaderView;
-    NSDictionary *_labelTextAttributes;
-    BOOL _needsUpdateVisibleCells;
+    }  _contentMargins;
+    UIView * _customHeaderView;
+    NSDictionary * _labelTextAttributes;
+    BOOL  _needsUpdateVisibleCells;
     struct CGSize { 
         float width; 
         float height; 
-    } _oldSize;
-    UIColor *_sectionBackgroundColor;
-    UIColor *_selectedCellBackgroundColor;
-    BOOL _shouldUseExpandedContentStyle;
-    BOOL _shouldUseMapTiles;
-    NSDictionary *_valueTextAttributes;
+    }  _oldSize;
+    UIColor * _sectionBackgroundColor;
+    UIColor * _selectedCellBackgroundColor;
+    BOOL  _shouldUseExpandedContentStyle;
+    BOOL  _shouldUseMapTiles;
+    NSDictionary * _valueTextAttributes;
 }
 
 @property (nonatomic, copy) NSDictionary *actionTextAttributes;
@@ -99,7 +99,6 @@
 - (void)setSelectedCellBackgroundColor:(id)arg1;
 - (void)setShouldUseExpandedContentStyle:(BOOL)arg1;
 - (void)setShouldUseMapTiles:(BOOL)arg1;
-- (void)setTableHeaderView:(id)arg1;
 - (void)setValueTextAttributes:(id)arg1;
 - (BOOL)shouldUseExpandedContentStyle;
 - (BOOL)shouldUseMapTiles;

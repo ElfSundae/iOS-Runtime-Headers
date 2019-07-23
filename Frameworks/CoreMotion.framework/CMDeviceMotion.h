@@ -3,7 +3,7 @@
  */
 
 @interface CMDeviceMotion : CMLogItem {
-    id _internal;
+    id  _internal;
 }
 
 @property (nonatomic, readonly) CMAttitude *attitude;

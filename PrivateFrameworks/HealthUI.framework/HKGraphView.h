@@ -2,42 +2,42 @@
    Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
  */
 
-@interface HKGraphView : UIView <HKGraphRenderDelegate, HKSeriesDelegate, UIScrollViewDelegate> {
-    HKPropertyAnimationApplier *_animationApplier;
-    NSArray *_axesToShowSimultaneously;
+@interface HKGraphView : UIView <HKGraphRenderDelegate, HKScrollPerformanceTestable, HKSeriesDelegate, UIScrollViewDelegate> {
+    HKPropertyAnimationApplier * _animationApplier;
+    NSArray * _axesToShowSimultaneously;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _axisInset;
-    HKValueRange *_axisRange;
-    UIImage *_bottomFeatheringImage;
-    HKValueRange *_chartableDateRange;
-    NSMutableArray *_currentSeries;
-    <HKGraphViewDelegate> *_delegate;
-    unsigned int _featheringOptions;
-    BOOL _haveRescaledSinceRender;
-    UIImage *_leftFeatheringImage;
-    int _maximumDateZoom;
-    int _minimumDateZoom;
-    BOOL _needsUpdateGraphViewConfiguration;
-    UIColor *_outlineColor;
-    unsigned int _outlineOptions;
-    UIView<HKGraphRenderer> *_renderView;
-    UIImage *_rightFeatheringImage;
-    UIScrollView *_scrollView;
-    UIView *_scrollViewContent;
-    _HKGraphViewSelectionContext *_selectionContext;
-    HKGraphViewSelectionStyle *_selectionStyle;
-    BOOL _shouldInformDelegateOfUpdates;
-    BOOL _shouldListenToScrollViewDelegate;
-    UIImage *_topFeatheringImage;
-    UIColor *_topMarginColor;
-    HKValueRange *_visibleDateRange;
-    HKDateAxis *_xAxis;
-    int _xAxisDateZoom;
-    NSMutableDictionary *_zoomToSeriesMapping;
+    }  _axisInset;
+    HKValueRange * _axisRange;
+    UIImage * _bottomFeatheringImage;
+    HKValueRange * _chartableDateRange;
+    NSMutableArray * _currentSeries;
+    <HKGraphViewDelegate> * _delegate;
+    unsigned int  _featheringOptions;
+    BOOL  _haveRescaledSinceRender;
+    UIImage * _leftFeatheringImage;
+    int  _maximumDateZoom;
+    int  _minimumDateZoom;
+    BOOL  _needsUpdateGraphViewConfiguration;
+    UIColor * _outlineColor;
+    unsigned int  _outlineOptions;
+    UIView<HKGraphRenderer> * _renderView;
+    UIImage * _rightFeatheringImage;
+    UIScrollView * _scrollView;
+    UIView * _scrollViewContent;
+    _HKGraphViewSelectionContext * _selectionContext;
+    HKGraphViewSelectionStyle * _selectionStyle;
+    BOOL  _shouldInformDelegateOfUpdates;
+    BOOL  _shouldListenToScrollViewDelegate;
+    UIImage * _topFeatheringImage;
+    UIColor * _topMarginColor;
+    HKValueRange * _visibleDateRange;
+    HKDateAxis * _xAxis;
+    int  _xAxisDateZoom;
+    NSMutableDictionary * _zoomToSeriesMapping;
 }
 
 @property (nonatomic, readonly) NSArray *allSeries;
@@ -163,6 +163,7 @@
 - (void)setXAxisDateZoom:(int)arg1 animated:(BOOL)arg2;
 - (void)setZoomScale:(float)arg1;
 - (BOOL)stillAnimating:(id)arg1;
+- (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 options:(id)arg4;
 - (id)topMarginColor;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (id)visibleDateRange;

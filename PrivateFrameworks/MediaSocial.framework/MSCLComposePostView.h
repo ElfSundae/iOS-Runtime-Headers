@@ -3,22 +3,22 @@
  */
 
 @interface MSCLComposePostView : UIScrollView <NSLayoutManagerDelegate, UITextViewDelegate> {
-    int _allowedCharacterCount;
-    UIButton *_attachmentButton;
-    NSMutableArray *_attachmentViews;
-    UILabel *_characterCountLabel;
-    <MSCLComposePostViewDataSource> *_dataSource;
-    NSArray *_footerViews;
-    NSArray *_headerViews;
-    int _numberOfAttachments;
+    int  _allowedCharacterCount;
+    UIButton * _attachmentButton;
+    NSMutableArray * _attachmentViews;
+    UILabel * _characterCountLabel;
+    <MSCLComposePostViewDataSource> * _dataSource;
+    NSArray * _footerViews;
+    NSArray * _headerViews;
+    int  _numberOfAttachments;
     struct CGPoint { 
         float x; 
         float y; 
-    } _preCompletionContentOffset;
-    NSArray *_scrollableHeaderViews;
-    UITapGestureRecognizer *_tapRecognizer;
-    UIViewController *_textCompletionViewController;
-    MSCLTokenTextView *_textView;
+    }  _preCompletionContentOffset;
+    NSArray * _scrollableHeaderViews;
+    UITapGestureRecognizer * _tapRecognizer;
+    UIViewController * _textCompletionViewController;
+    MSCLTokenTextView * _textView;
 }
 
 @property (nonatomic) int allowedCharacterCount;

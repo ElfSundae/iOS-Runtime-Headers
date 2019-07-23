@@ -3,14 +3,14 @@
  */
 
 @interface _SFFluidProgressView : UIView <WBSFluidProgressControllerDelegate> {
-    UIView *_clippingView;
-    float _cornerRadius;
-    <_SFFluidProgressViewDelegate> *_delegate;
-    float _progress;
-    BOOL _progressAnimationSuppressed;
-    UIImageView *_progressBar;
-    UIColor *_progressBarFillColor;
-    WBSFluidProgressState *_state;
+    UIView * _clippingView;
+    float  _cornerRadius;
+    <_SFFluidProgressViewDelegate> * _delegate;
+    float  _progress;
+    BOOL  _progressAnimationSuppressed;
+    UIImageView * _progressBar;
+    UIColor * _progressBarFillColor;
+    WBSFluidProgressState * _state;
 }
 
 @property (nonatomic) float cornerRadius;

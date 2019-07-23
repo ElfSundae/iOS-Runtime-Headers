@@ -3,14 +3,14 @@
  */
 
 @interface _PLSettingsExtractionPayload : NSObject {
-    PFAdjustment *_adjustmentData;
-    double _baseDuration;
+    PFAdjustment * _adjustmentData;
+    double  _baseDuration;
     struct CGSize { 
         float width; 
         float height; 
-    } _baseImageSize;
-    int _baseOrientation;
-    PLPhotoEditMutableModel *_model;
+    }  _baseImageSize;
+    int  _baseOrientation;
+    PLPhotoEditMutableModel * _model;
 }
 
 @property (nonatomic, retain) PFAdjustment *adjustmentData;

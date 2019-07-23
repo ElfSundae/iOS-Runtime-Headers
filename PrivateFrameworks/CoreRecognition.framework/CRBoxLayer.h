@@ -3,11 +3,11 @@
  */
 
 @interface CRBoxLayer : CAReplicatorLayer {
-    CATextLayer *_codeLayer;
-    NSMutableArray *_completionBlocks;
-    BOOL _customInit;
-    float _demoSpeed;
-    CAShapeLayer *_reticleLayer;
+    CATextLayer * _codeLayer;
+    NSMutableArray * _completionBlocks;
+    BOOL  _customInit;
+    float  _demoSpeed;
+    CAShapeLayer * _reticleLayer;
 }
 
 @property (retain) CATextLayer *codeLayer;

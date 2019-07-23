@@ -3,8 +3,8 @@
  */
 
 @interface EKShareePickerViewController : UIViewController <EKEventAttendeePickerDelegate> {
-    <EKShareePickerViewControllerDelegate> *_delegate;
-    EKCalendarShareePicker *_picker;
+    <EKShareePickerViewControllerDelegate> * _delegate;
+    EKCalendarShareePicker * _picker;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,18 +3,18 @@
  */
 
 @interface CalendarEventAlarmTable : UITableView <UITableViewDataSource, UITableViewDelegate> {
-    int _alarmIdentifier;
-    <CalendarEventAlarmTableDelegate> *_alarmTableDelegate;
-    BOOL _customSelected;
-    NSString *_customString;
-    BOOL _eventHasTravelTime;
-    BOOL _immediateAlarmCreation;
-    BOOL _leaveNowAlarmSelected;
-    NSIndexPath *_selectedItem;
-    BOOL _shouldAllowAlarmsTriggeringAfterStartDate;
-    BOOL _shouldShowLeaveNowOption;
-    <EKStyleProvider> *_styleProvider;
-    BOOL _useAllDayAlarms;
+    int  _alarmIdentifier;
+    <CalendarEventAlarmTableDelegate> * _alarmTableDelegate;
+    BOOL  _customSelected;
+    NSString * _customString;
+    BOOL  _eventHasTravelTime;
+    BOOL  _immediateAlarmCreation;
+    BOOL  _leaveNowAlarmSelected;
+    NSIndexPath * _selectedItem;
+    BOOL  _shouldAllowAlarmsTriggeringAfterStartDate;
+    BOOL  _shouldShowLeaveNowOption;
+    <EKStyleProvider> * _styleProvider;
+    BOOL  _useAllDayAlarms;
 }
 
 @property (nonatomic) <CalendarEventAlarmTableDelegate> *alarmTableDelegate;

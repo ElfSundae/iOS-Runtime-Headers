@@ -3,21 +3,21 @@
  */
 
 @interface UICollectionViewLayout : NSObject <NSCoding> {
-    UIDynamicAnimator *_animator;
-    UICollectionView *_collectionView;
+    UIDynamicAnimator * _animator;
+    UICollectionView * _collectionView;
     struct CGSize { 
         float width; 
         float height; 
-    } _collectionViewBoundsSize;
-    struct _UICollectionViewCompositionLayout { Class x1; } *_compositionLayout;
-    NSMutableDictionary *_decorationViewClassDict;
-    NSMutableDictionary *_decorationViewExternalObjectsTables;
-    NSMutableDictionary *_decorationViewNibDict;
-    NSMutableDictionary *_deletedDecorationIndexPathsDict;
-    NSMutableIndexSet *_deletedSectionsSet;
-    NSMutableDictionary *_deletedSupplementaryIndexPathsDict;
-    NSArray *_elementKinds;
-    NSMutableDictionary *_finalAnimationLayoutAttributesDict;
+    }  _collectionViewBoundsSize;
+    struct _UICollectionViewCompositionLayout { Class x1; } * _compositionLayout;
+    NSMutableDictionary * _decorationViewClassDict;
+    NSMutableDictionary * _decorationViewExternalObjectsTables;
+    NSMutableDictionary * _decorationViewNibDict;
+    NSMutableDictionary * _deletedDecorationIndexPathsDict;
+    NSMutableIndexSet * _deletedSectionsSet;
+    NSMutableDictionary * _deletedSupplementaryIndexPathsDict;
+    NSArray * _elementKinds;
+    NSMutableDictionary * _finalAnimationLayoutAttributesDict;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -27,30 +27,32 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSMutableDictionary *_initialAnimationLayoutAttributesDict;
-    NSMutableDictionary *_insertedDecorationIndexPathsDict;
-    NSMutableIndexSet *_insertedSectionsSet;
-    NSMutableDictionary *_insertedSupplementaryIndexPathsDict;
-    UICollectionViewLayoutInvalidationContext *_invalidationContext;
-    NSIndexSet *_items;
+    }  _frame;
+    NSMutableDictionary * _initialAnimationLayoutAttributesDict;
+    NSMutableDictionary * _insertedDecorationIndexPathsDict;
+    NSMutableIndexSet * _insertedSectionsSet;
+    NSMutableDictionary * _insertedSupplementaryIndexPathsDict;
+    UICollectionViewLayoutInvalidationContext * _invalidationContext;
+    NSIndexSet * _items;
     struct { 
         unsigned int inTransitionFromTransitionLayout : 1; 
         unsigned int inTransitionToTransitionLayout : 1; 
         unsigned int prepared : 1; 
-    } _layoutFlags;
+        unsigned int wantsRightToLeftHorizontalMirroringIfNeeded : 1; 
+    }  _layoutFlags;
     struct CGPoint { 
         float x; 
         float y; 
-    } _layoutOffset;
-    unsigned int _layoutOffsetEdges;
-    NSIndexSet *_sections;
-    UICollectionViewLayout *_siblingLayout;
-    int _sublayoutType;
-    UICollectionViewLayout *_transitioningFromLayout;
-    UICollectionViewLayout *_transitioningToLayout;
+    }  _layoutOffset;
+    unsigned int  _layoutOffsetEdges;
+    NSIndexSet * _sections;
+    UICollectionViewLayout * _siblingLayout;
+    int  _sublayoutType;
+    UICollectionViewLayout * _transitioningFromLayout;
+    UICollectionViewLayout * _transitioningToLayout;
 }
 
+@property (setter=_setWantsRightToLeftHorizontalMirroringIfNeeded:, nonatomic) BOOL _wantsRightToLeftHorizontalMirroringIfNeeded;
 @property (nonatomic, readonly) UICollectionView *collectionView;
 @property (getter=_compositionLayout, setter=_setCompositionLayout:, nonatomic) _UICollectionViewCompositionLayout *compositionLayout;
 @property (getter=_elementKinds, setter=_setElementKinds:, nonatomic, copy) NSArray *elementKinds;
@@ -72,12 +74,14 @@
 - (id /* block */)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2;
 - (id /* block */)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned int)arg3;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_bounds;
+- (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (struct _UICollectionViewCompositionLayout { Class x1; }*)_compositionLayout;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
 - (id)_dynamicAnimator;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_dynamicReferenceBounds;
 - (id)_elementKinds;
+- (BOOL)_estimatesSizes;
 - (void)_finalizeCollectionViewItemAnimations;
 - (void)_finalizeLayoutTransition;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frame;
@@ -94,6 +98,7 @@
 - (struct CGPoint { float x1; float x2; })_layoutOffset;
 - (unsigned int)_layoutOffsetEdges;
 - (struct CGPoint { float x1; float x2; })_offsetInTopParentLayout:(struct _UICollectionViewCompositionLayout { Class x1; }**)arg1;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_preferredLayoutMargins;
 - (void)_prepareForTransitionFromLayout:(id)arg1;
 - (void)_prepareForTransitionToLayout:(id)arg1;
 - (void)_prepareToAnimateFromCollectionViewItems:(id)arg1 atContentOffset:(struct CGPoint { float x1; float x2; })arg2 toItems:(id)arg3 atContentOffset:(struct CGPoint { float x1; float x2; })arg4;
@@ -113,10 +118,13 @@
 - (void)_setSections:(id)arg1;
 - (void)_setSiblingLayout:(id)arg1;
 - (void)_setSublayoutType:(int)arg1;
+- (void)_setWantsRightToLeftHorizontalMirroringIfNeeded:(BOOL)arg1;
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (id)_siblingLayout;
 - (int)_sublayoutType;
 - (BOOL)_supportsAdvancedTransitionAnimations;
+- (BOOL)_wantsRightToLeftHorizontalMirroringIfNeeded;
+- (BOOL)canBeEdited;
 - (id)collectionView;
 - (struct CGSize { float x1; float x2; })collectionViewContentSize;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })convertRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 fromLayout:(id)arg2;
@@ -143,6 +151,7 @@
 - (id)invalidationContextForEndingInteractiveMovementOfItemsToFinalIndexPaths:(id)arg1 previousIndexPaths:(id)arg2 movementCancelled:(BOOL)arg3;
 - (id)invalidationContextForInteractivelyMovingItems:(id)arg1 withTargetPosition:(struct CGPoint { float x1; float x2; })arg2 previousIndexPaths:(id)arg3 previousPosition:(struct CGPoint { float x1; float x2; })arg4;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
+- (BOOL)isEditing;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint { float x1; float x2; })arg2;
@@ -155,6 +164,7 @@
 - (void)prepareLayout;
 - (void)registerClass:(Class)arg1 forDecorationViewOfKind:(id)arg2;
 - (void)registerNib:(id)arg1 forDecorationViewOfKind:(id)arg2;
+- (void)setEditing:(BOOL)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)snapshottedLayoutAttributeForItemAtIndexPath:(id)arg1;
@@ -167,5 +177,9 @@
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
 - (id)pu_layoutAttributesForElementClosestToPoint:(struct CGPoint { float x1; float x2; })arg1 inRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 passingTest:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+
+- (void)music_collectionViewInheritedLayoutInsetsDidChange;
 
 @end

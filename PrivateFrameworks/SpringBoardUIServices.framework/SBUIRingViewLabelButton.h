@@ -3,8 +3,8 @@
  */
 
 @interface SBUIRingViewLabelButton : UIControl {
-    UILabel *_label;
-    TPRevealingRingView *_ringView;
+    UILabel * _label;
+    TPRevealingRingView * _ringView;
 }
 
 @property (nonatomic, readonly) TPRevealingRingView *backgroundRing;

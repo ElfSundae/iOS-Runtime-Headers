@@ -3,30 +3,30 @@
  */
 
 @interface CMKBottomBar : UIView <CMKExpandableMenuButtonDelegate> {
-    CMKHDRButton *_HDRButton;
-    UIView *__elapsedTimeViewCenteringLayoutSpacer;
-    CMKExpandableMenuButton *__expandedMenuButton;
-    UIView *__filterButtonBottomLayoutSpacer;
-    UIView *__hdrButtonCenteringLayoutSpacer;
-    UIView *__imageWellBottomLayoutSpacer;
-    UIView *__shutterButtomBottomLayoutSpacer;
-    UIView *__slalomIndicatorBottomLayoutSpacer;
-    UIView *__stillDuringVideoButtonBottomLayoutSpacer;
-    int _backgroundStyle;
-    UIView *_backgroundView;
-    UIButton *_cancelButton;
-    <CMKBottomBarDelegate> *_delegate;
-    CMKElapsedTimeView *_elapsedTimeView;
-    CMKFilterButton *_filterButton;
-    CMKFlashButton *_flashButton;
-    CMKFlipButton *_flipButton;
-    CMKImageWell *_imageWell;
-    CMKModeDial *_modeDial;
-    int _orientation;
-    CMKShutterButton *_shutterButton;
-    CMKSlalomIndicatorView *_slalomIndicatorView;
-    CMKShutterButton *_stillDuringVideoButton;
-    CMKTimerButton *_timerButton;
+    CMKHDRButton * _HDRButton;
+    UIView * __elapsedTimeViewCenteringLayoutSpacer;
+    CMKExpandableMenuButton * __expandedMenuButton;
+    UIView * __filterButtonBottomLayoutSpacer;
+    UIView * __hdrButtonCenteringLayoutSpacer;
+    UIView * __imageWellBottomLayoutSpacer;
+    UIView * __shutterButtomBottomLayoutSpacer;
+    UIView * __slalomIndicatorBottomLayoutSpacer;
+    UIView * __stillDuringVideoButtonBottomLayoutSpacer;
+    int  _backgroundStyle;
+    UIView * _backgroundView;
+    UIButton * _cancelButton;
+    <CMKBottomBarDelegate> * _delegate;
+    CMKElapsedTimeView * _elapsedTimeView;
+    CMKFilterButton * _filterButton;
+    CMKFlashButton * _flashButton;
+    CMKFlipButton * _flipButton;
+    CMKImageWell * _imageWell;
+    CMKModeDial * _modeDial;
+    int  _orientation;
+    CMKShutterButton * _shutterButton;
+    CMKSlalomIndicatorView * _slalomIndicatorView;
+    CMKShutterButton * _stillDuringVideoButton;
+    CMKTimerButton * _timerButton;
 }
 
 @property (nonatomic, retain) CMKHDRButton *HDRButton;

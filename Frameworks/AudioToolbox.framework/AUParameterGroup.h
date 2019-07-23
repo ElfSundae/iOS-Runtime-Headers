@@ -3,8 +3,8 @@
  */
 
 @interface AUParameterGroup : AUParameterNode <NSSecureCoding> {
-    NSMutableDictionary *_childIndicesByIdentifier;
-    NSArray *_children;
+    NSMutableDictionary * _childIndicesByIdentifier;
+    NSArray * _children;
 }
 
 @property (nonatomic, readonly) NSArray *allParameters;

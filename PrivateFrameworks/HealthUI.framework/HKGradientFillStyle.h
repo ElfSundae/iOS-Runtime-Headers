@@ -3,11 +3,11 @@
  */
 
 @interface HKGradientFillStyle : HKFillStyle {
-    int _fillDirection;
-    float _fillPercentage;
-    UIColor *_firstColor;
-    float _gradientSize;
-    UIColor *_secondColor;
+    int  _fillDirection;
+    float  _fillPercentage;
+    UIColor * _firstColor;
+    float  _gradientSize;
+    UIColor * _secondColor;
 }
 
 @property (nonatomic) int fillDirection;

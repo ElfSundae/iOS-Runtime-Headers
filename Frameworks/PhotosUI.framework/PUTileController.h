@@ -3,14 +3,14 @@
  */
 
 @interface PUTileController : NSObject {
-    BOOL _active;
-    int _animationCount;
-    BOOL _detached;
-    PUTileLayoutInfo *_layoutInfo;
-    BOOL _reusable;
-    NSString *_reuseIdentifier;
-    PUTilingView *_tilingView;
-    BOOL _wantsVisibleRectChanges;
+    BOOL  _active;
+    int  _animationCount;
+    BOOL  _detached;
+    PUTileLayoutInfo * _layoutInfo;
+    BOOL  _reusable;
+    NSString * _reuseIdentifier;
+    PUTilingView * _tilingView;
+    BOOL  _wantsVisibleRectChanges;
 }
 
 @property (getter=isActive, nonatomic) BOOL active;

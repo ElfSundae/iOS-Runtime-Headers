@@ -3,9 +3,9 @@
  */
 
 @interface CKSpeakerButton : UIButton {
-    BOOL _orientation;
-    BOOL _shouldShowText;
-    BOOL _speakerEnabled;
+    BOOL  _orientation;
+    BOOL  _shouldShowText;
+    BOOL  _speakerEnabled;
 }
 
 @property (nonatomic) BOOL orientation;

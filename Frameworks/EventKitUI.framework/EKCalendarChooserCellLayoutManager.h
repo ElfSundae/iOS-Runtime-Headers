@@ -3,7 +3,7 @@
  */
 
 @interface EKCalendarChooserCellLayoutManager : UITableViewCellLayoutManager {
-    id _realLayoutManager;
+    id  _realLayoutManager;
 }
 
 + (id)sharedLayoutManagerForStyle:(int)arg1;

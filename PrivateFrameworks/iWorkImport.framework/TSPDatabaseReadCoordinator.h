@@ -3,21 +3,22 @@
  */
 
 @interface TSPDatabaseReadCoordinator : TSPReadCoordinatorBase <TSPDatabaseReaderDelegate, TSPReadCoordinator> {
-    NSMutableDictionary *_appRelativeDataDictionary;
-    NSObject<OS_dispatch_queue> *_appRelativeDataQueue;
-    NSUUID *_baseObjectUUID;
-    TSPObjectContext *_context;
-    NSMapTable *_dataDictionary;
-    NSObject<OS_dispatch_queue> *_dataQueue;
-    TSPDatabase *_database;
-    unsigned long long _databaseVersion;
-    TSPDocumentResourceDataProvider *_documentResourceDataProvider;
-    TSPFinalizeHandlerQueue *_finalizeHandlerQueue;
-    NSMapTable *_objects;
-    NSURL *_packageURL;
+    NSMutableDictionary * _appRelativeDataDictionary;
+    NSObject<OS_dispatch_queue> * _appRelativeDataQueue;
+    NSUUID * _baseObjectUUID;
+    TSPObjectContext * _context;
+    NSMapTable * _dataDictionary;
+    NSObject<OS_dispatch_queue> * _dataQueue;
+    TSPDatabase * _database;
+    unsigned long long  _databaseVersion;
+    TSPDocumentResourceDataProvider * _documentResourceDataProvider;
+    TSPFinalizeHandlerQueue * _finalizeHandlerQueue;
+    NSMapTable * _objects;
+    NSURL * _packageURL;
 }
 
 @property (nonatomic, readonly) NSUUID *baseObjectUUID;
+@property (nonatomic, readonly) BOOL canRetainObjectReferencedByWeakLazyReference;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long fileFormatVersion;
@@ -25,13 +26,14 @@
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL isCrossAppPaste;
 @property (nonatomic, readonly) BOOL isCrossDocumentPaste;
-@property (nonatomic, readonly) BOOL isFromCopy;
 @property (nonatomic, readonly) BOOL isReadingFromDocument;
 @property (nonatomic, readonly) unsigned char packageIdentifier;
+@property (nonatomic, readonly) int sourceType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)baseObjectUUID;
+- (BOOL)canRetainObjectReferencedByWeakLazyReference;
 - (id)context;
 - (id)createUpgradedOldAppBundleResourcePath:(id)arg1;
 - (id)dataForAppRelativePath:(id)arg1 filename:(id)arg2;
@@ -58,6 +60,7 @@
 - (void)reader:(id)arg1 didUnarchiveObject:(id)arg2;
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
+- (int)sourceType;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(BOOL)arg2;
 
 @end

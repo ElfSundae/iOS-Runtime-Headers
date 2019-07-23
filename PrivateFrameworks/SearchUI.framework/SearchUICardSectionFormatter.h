@@ -3,19 +3,19 @@
  */
 
 @interface SearchUICardSectionFormatter : NSObject {
-    float _imageXInset;
-    float _imageYInset;
-    UIFont *_primaryFont;
-    float _primaryTextBaselineFromBottom;
-    float _primaryTextBaselineFromTop;
-    BOOL _primaryTextIsVibrant;
-    float _primaryTextLeadingInset;
-    UIFont *_secondaryFont;
-    float _secondaryTextBaselineFromBottom;
-    float _secondaryTextBaselineFromTop;
-    BOOL _secondaryTextIsVibrant;
-    float _secondaryTextLeadingInset;
-    unsigned int _style;
+    float  _imageXInset;
+    float  _imageYInset;
+    UIFont * _primaryFont;
+    float  _primaryTextBaselineFromBottom;
+    float  _primaryTextBaselineFromTop;
+    BOOL  _primaryTextIsVibrant;
+    float  _primaryTextLeadingInset;
+    UIFont * _secondaryFont;
+    float  _secondaryTextBaselineFromBottom;
+    float  _secondaryTextBaselineFromTop;
+    BOOL  _secondaryTextIsVibrant;
+    float  _secondaryTextLeadingInset;
+    unsigned int  _style;
 }
 
 @property (nonatomic) float imageXInset;

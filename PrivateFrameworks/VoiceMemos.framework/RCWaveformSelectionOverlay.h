@@ -3,34 +3,34 @@
  */
 
 @interface RCWaveformSelectionOverlay : UIView {
-    RCUIConfiguration *_UIConfiguration;
-    double _assetCurrentTime;
-    double _assetDuration;
-    RCTextLayer *_beginTimeLayer;
-    BOOL _beginTimeLayerOffsetForThumb;
-    RCOverlayBarLayer *_beginTimeSelection;
-    RCOverlayBarLayer *_currentTimeBar;
-    <RCWaveformSelectionOverlayDelegate> *_delegate;
-    BOOL _displayingSelectionTimes;
-    BOOL _editingEnabled;
-    RCTextLayer *_endTimeLayer;
-    BOOL _endTimeLayerOffsetForThumb;
-    RCOverlayBarLayer *_endTimeSelection;
-    CALayer *_middleSelectionOverlay;
-    double _requestedAnimatedLayoutDuration;
-    BOOL _requestedNonAnimatedLayout;
+    RCUIConfiguration * _UIConfiguration;
+    double  _assetCurrentTime;
+    double  _assetDuration;
+    RCTextLayer * _beginTimeLayer;
+    BOOL  _beginTimeLayerOffsetForThumb;
+    RCOverlayBarLayer * _beginTimeSelection;
+    RCOverlayBarLayer * _currentTimeBar;
+    <RCWaveformSelectionOverlayDelegate> * _delegate;
+    BOOL  _displayingSelectionTimes;
+    BOOL  _editingEnabled;
+    RCTextLayer * _endTimeLayer;
+    BOOL  _endTimeLayerOffsetForThumb;
+    RCOverlayBarLayer * _endTimeSelection;
+    CALayer * _middleSelectionOverlay;
+    double  _requestedAnimatedLayoutDuration;
+    BOOL  _requestedNonAnimatedLayout;
     struct { 
         double beginTime; 
         double endTime; 
-    } _selectedTimeRange;
-    double _selectedTimeRangeMaximumDuration;
-    double _selectedTimeRangeMinimumDuration;
+    }  _selectedTimeRange;
+    double  _selectedTimeRangeMaximumDuration;
+    double  _selectedTimeRangeMinimumDuration;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _selectionAreaInsets;
+    }  _selectionAreaInsets;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -40,10 +40,10 @@
             float width; 
             float height; 
         } size; 
-    } _selectionRect;
-    BOOL _sublayersCreated;
-    double _trackedAssetCurrentTime;
-    NSMutableDictionary *_trackedTouches;
+    }  _selectionRect;
+    BOOL  _sublayersCreated;
+    double  _trackedAssetCurrentTime;
+    NSMutableDictionary * _trackedTouches;
 }
 
 @property (nonatomic, copy) RCUIConfiguration *UIConfiguration;

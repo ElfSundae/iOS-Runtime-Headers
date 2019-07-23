@@ -16,7 +16,7 @@
         struct __compressed_pair<unsigned long, std::__1::allocator<geo::TransitEdgePiece> > { 
             unsigned long __first_; 
         } __size_; 
-    } _pieces;
+    }  _pieces;
 }
 
 - (id).cxx_construct;

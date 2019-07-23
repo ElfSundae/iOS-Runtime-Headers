@@ -12,13 +12,13 @@
             float width; 
             float height; 
         } size; 
-    } _badgesContainerFrame;
-    unsigned int _badgesCorner;
+    }  _badgesContainerFrame;
+    unsigned int  _badgesCorner;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _badgesOffset;
-    float _bottomBadgeInset;
+    }  _badgesOffset;
+    float  _bottomBadgeInset;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,8 +28,8 @@
             float width; 
             float height; 
         } size; 
-    } _floatingBadgesContainerFrame;
-    NSIndexPath *_indexPath;
+    }  _floatingBadgesContainerFrame;
+    NSIndexPath * _indexPath;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -39,17 +39,17 @@
             float width; 
             float height; 
         } size; 
-    } _itemFrame;
+    }  _itemFrame;
     struct CGPoint { 
         float x; 
         float y; 
-    } _optionBadgeCenter;
-    UICollectionViewLayoutAttributes *_optionBadgeLayoutAttributes;
+    }  _optionBadgeCenter;
+    UICollectionViewLayoutAttributes * _optionBadgeLayoutAttributes;
     struct CGPoint { 
         float x; 
         float y; 
-    } _selectionBadgeCenter;
-    UICollectionViewLayoutAttributes *_selectionBadgeLayoutAttributes;
+    }  _selectionBadgeCenter;
+    UICollectionViewLayoutAttributes * _selectionBadgeLayoutAttributes;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -59,7 +59,7 @@
             float width; 
             float height; 
         } size; 
-    } _visibleItemFrame;
+    }  _visibleItemFrame;
 }
 
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } badgesContainerFrame;

@@ -3,9 +3,9 @@
  */
 
 @interface HKEmergencyCardTableItem : NSObject {
-    _HKMedicalIDData *_data;
-    BOOL _isInEditMode;
-    UIViewController *_owningViewController;
+    _HKMedicalIDData * _data;
+    BOOL  _isInEditMode;
+    UIViewController * _owningViewController;
 }
 
 @property (nonatomic, retain) _HKMedicalIDData *data;
@@ -33,7 +33,9 @@
 - (BOOL)shouldHighlightRowAtIndex:(int)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndex:(int)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndex:(int)arg2;
+- (float)tableView:(id)arg1 estimatedHeightForRowAtIndex:(int)arg2;
 - (float)tableView:(id)arg1 heightForRowAtIndex:(int)arg2;
+- (void)timeZoneDidChange:(id)arg1;
 - (id)title;
 - (id)titleForFooter;
 - (id)titleForHeader;

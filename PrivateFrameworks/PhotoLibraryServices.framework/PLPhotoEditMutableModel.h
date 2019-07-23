@@ -3,8 +3,8 @@
  */
 
 @interface PLPhotoEditMutableModel : PLPhotoEditModel {
-    _UIDynamicValueAnimation *_currentCopyAnimation;
-    int _transactionDepth;
+    _UIDynamicValueAnimation * _currentCopyAnimation;
+    int  _transactionDepth;
 }
 
 @property (nonatomic) int appliedOrientation;
@@ -33,6 +33,7 @@
 @property (nonatomic) float highlightsLevelOffset;
 @property (nonatomic, copy) NSArray *legacyAutoEnhanceFilters;
 @property (nonatomic) BOOL legacyAutoEnhanceIsOn;
+@property (nonatomic) float localLightLevelOffset;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } normalizedCropRect;
 @property (nonatomic, copy) NSArray *redEyeCorrections;
 @property (nonatomic) float shadowsLevelOffset;
@@ -91,6 +92,7 @@
 - (void)setHighlightsLevelOffset:(float)arg1;
 - (void)setLegacyAutoEnhanceFilters:(id)arg1;
 - (void)setLegacyAutoEnhanceIsOn:(BOOL)arg1;
+- (void)setLocalLightLevelOffset:(float)arg1;
 - (void)setNormalizedCropRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setRedEyeCorrections:(id)arg1;
 - (void)setShadowsLevelOffset:(float)arg1;

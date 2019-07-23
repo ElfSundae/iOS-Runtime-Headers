@@ -3,7 +3,7 @@
  */
 
 @interface CMKFocusLockAttachmentView : CMKFocusAttachmentView {
-    BOOL _locked;
+    BOOL  _locked;
 }
 
 @property (getter=isLocked, nonatomic) BOOL locked;

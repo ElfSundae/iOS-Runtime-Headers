@@ -3,10 +3,10 @@
  */
 
 @interface MBManagerClient : MBManager <MBConnectionHandler> {
-    MBConnection *_conn;
-    NSObject<OS_dispatch_queue> *_eventQueue;
-    NSObject<MBManagerDelegate> *_privateDelegate;
-    int _stateToken;
+    MBConnection * _conn;
+    NSObject<OS_dispatch_queue> * _eventQueue;
+    NSObject<MBManagerDelegate> * _privateDelegate;
+    int  _stateToken;
 }
 
 @property NSObject<MBManagerDelegate> *privateDelegate;
@@ -50,7 +50,6 @@
 - (id)getAppleIDsForBackupUDID:(id)arg1 snapshotID:(unsigned int)arg2 error:(id*)arg3;
 - (id)getBackupListWithError:(id*)arg1;
 - (id)getBackupListWithFiltering:(BOOL)arg1 error:(id*)arg2;
-- (int)getLogLevel;
 - (id)initWithDelegate:(id)arg1 eventQueue:(id)arg2;
 - (void)insufficientFreeSpaceToRestore;
 - (void)invalidate;
@@ -61,6 +60,8 @@
 - (void)keyBagIsUnlocked;
 - (BOOL)mergeSnapshots:(id)arg1 backupUUID:(id)arg2 error:(id*)arg3;
 - (unsigned long long)nextBackupSize;
+- (id)nextBackupSizeInfo;
+- (BOOL)pinSnapshotID:(unsigned int)arg1 backupUDID:(id)arg2 error:(id*)arg3;
 - (BOOL)prepareForBackgroundRestoreWithError:(id*)arg1;
 - (void)prioritizeRestoreFileWithPath:(id)arg1;
 - (id)privateDelegate;
@@ -69,6 +70,7 @@
 - (BOOL)releaseLockWithBackupUDID:(id)arg1 owner:(id)arg2 error:(id*)arg3;
 - (BOOL)removeDomainName:(id)arg1 error:(id*)arg2;
 - (void)repair;
+- (id)reservedBackupSizeListWithError:(id*)arg1;
 - (BOOL)restoreApplicationWithBundleID:(id)arg1 failed:(BOOL)arg2 context:(id)arg3 error:(id*)arg4;
 - (BOOL)restoreApplicationWithBundleID:(id)arg1 failed:(BOOL)arg2 error:(id*)arg3;
 - (BOOL)restoreApplicationWithBundleID:(id)arg1 failed:(BOOL)arg2 withQOS:(int)arg3 context:(id)arg4 error:(id*)arg5;
@@ -78,14 +80,16 @@
 - (BOOL)restoreFileWithPath:(id)arg1 context:(id)arg2 error:(id*)arg3;
 - (BOOL)restoreFileWithPath:(id)arg1 error:(id*)arg2;
 - (id)restoreFilesForDomain:(id)arg1 relativePath:(id)arg2 pendingOnly:(BOOL)arg3 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg4 error:(id*)arg5;
+- (BOOL)restoreFilesWithPaths:(id)arg1 context:(id)arg2 error:(id*)arg3;
+- (BOOL)restoreFilesWithPaths:(id)arg1 error:(id*)arg2;
 - (id)restoreInfo;
 - (id)restoreState;
+- (BOOL)restoreSupportsBatching;
 - (BOOL)saveKeybagsForBackupUDID:(id)arg1 withError:(id*)arg2;
 - (void)setAllowiTunesBackup:(BOOL)arg1;
 - (void)setBackupEnabled:(BOOL)arg1;
 - (void)setBackupEnabled:(BOOL)arg1 forDomainName:(id)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)setLogLevel:(int)arg1;
 - (void)setPrivateDelegate:(id)arg1;
 - (void)setRestoreSessionWithBackupUDID:(id)arg1 snapshotUUID:(id)arg2;
 - (BOOL)setupBackupWithPasscode:(id)arg1 error:(id*)arg2;
@@ -94,6 +98,8 @@
 - (BOOL)startScanForBundleIDs:(id)arg1 error:(id*)arg2;
 - (BOOL)startScanWithError:(id*)arg1;
 - (void)syncBackupEnabled;
+- (BOOL)unpinSnapshotID:(unsigned int)arg1 backupUDID:(id)arg2 error:(id*)arg3;
+- (BOOL)unsetLocalBackupPasswordWithError:(id*)arg1;
 - (void)wakeUp;
 
 @end

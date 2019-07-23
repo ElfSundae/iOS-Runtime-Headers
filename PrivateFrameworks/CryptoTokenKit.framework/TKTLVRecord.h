@@ -3,9 +3,9 @@
  */
 
 @interface TKTLVRecord : NSObject {
-    NSData *_data;
-    unsigned long long _tag;
-    NSData *_value;
+    NSData * _data;
+    unsigned long long  _tag;
+    NSData * _value;
 }
 
 @property (nonatomic, readonly) NSData *data;

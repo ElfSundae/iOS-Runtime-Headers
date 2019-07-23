@@ -3,8 +3,8 @@
  */
 
 @interface SGBloomFilterChunkInMemory : NSObject <SGBloomFilterChunk> {
-    char *_buf;
-    unsigned int _count;
+    char * _buf;
+    unsigned int  _count;
 }
 
 @property (nonatomic, readonly) unsigned int count;

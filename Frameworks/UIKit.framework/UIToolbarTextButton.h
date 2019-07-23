@@ -3,13 +3,12 @@
  */
 
 @interface UIToolbarTextButton : UIToolbarButton {
-    NSSet *_possibleTitles;
-    NSString *_pressedTitle;
-    NSString *_title;
+    NSSet * _possibleTitles;
+    NSString * _pressedTitle;
+    NSString * _title;
 }
 
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
-- (id)_scriptingInfo;
 - (void)_setPressed:(BOOL)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })alignmentRectInsets;

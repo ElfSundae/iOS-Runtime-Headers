@@ -3,16 +3,16 @@
  */
 
 @interface AXEventTapManager : NSObject {
-    NSMutableArray *_addedEventTapPairs;
-    NSRecursiveLock *_eventTapLock;
-    NSMutableArray *_eventTaps;
-    id /* block */ _installationEventRepPost;
-    id /* block */ _installationGSCallback;
-    id /* block */ _installationHIDCallback;
-    struct __IOHIDEventSystemClient { } *_ioSystemPostBackClient;
-    BOOL _isEnumeratingEventTaps;
-    NSMutableSet *_removedEventTapIdentifiers;
-    BOOL _shouldReorderEventTaps;
+    NSMutableArray * _addedEventTapPairs;
+    NSRecursiveLock * _eventTapLock;
+    NSMutableArray * _eventTaps;
+    id /* block */  _installationEventRepPost;
+    id /* block */  _installationGSCallback;
+    id /* block */  _installationHIDCallback;
+    struct __IOHIDEventSystemClient { } * _ioSystemPostBackClient;
+    BOOL  _isEnumeratingEventTaps;
+    NSMutableSet * _removedEventTapIdentifiers;
+    BOOL  _shouldReorderEventTaps;
 }
 
 @property (nonatomic, copy) id /* block */ installationEventRepPost;

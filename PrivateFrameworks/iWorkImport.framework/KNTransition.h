@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface KNTransition : TSPContainedObject <KNInspectableAnimation> {
-    KNTransitionAttributes *mAttributes;
+@interface KNTransition : TSPContainedObject <KNInspectableAnimation, TSKModel> {
+    KNTransitionAttributes * mAttributes;
 }
 
 @property (nonatomic, readonly) KNAnimationInfo *animationInfo;
@@ -24,7 +24,9 @@
 @property (nonatomic, readonly) int customTextDelivery;
 @property (nonatomic, readonly) int customTimingCurve;
 @property (nonatomic, readonly) float customTwist;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) double delay;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned int direction;
 @property (nonatomic, readonly) KNAnimationPluginMenu *directionMenu;
 @property (nonatomic, readonly) unsigned int directionType;
@@ -32,10 +34,12 @@
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) NSString *effect;
 @property (nonatomic, readonly) BOOL hasAutomaticTrigger;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) NSSet *inspectableAttributes;
 @property (nonatomic, readonly) BOOL isMagicMove;
 @property (nonatomic, readonly) NSArray *localizedEventTriggerNames;
 @property (nonatomic, readonly) int randomNumberSeed;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) BOOL supportsBounce;
 @property (nonatomic, readonly) BOOL supportsCustomEffectTimingCurve1;
 @property (nonatomic, readonly) BOOL supportsCustomEffectTimingCurve2;
@@ -95,7 +99,7 @@
 - (BOOL)supportsCustomEffectTimingCurve3;
 - (BOOL)supportsDirection;
 - (BOOL)supportsDuration;
-- (BOOL)supportsRandomNumberSeed;
+- (BOOL)supportsRandomNumberSeedInspection;
 - (BOOL)supportsTimingCurves;
 
 @end

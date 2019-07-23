@@ -3,21 +3,21 @@
  */
 
 @interface SCNPhysicsContact : NSObject {
-    float _collisionImpulse;
+    float  _collisionImpulse;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _contactNormal;
+    }  _contactNormal;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _contactPoint;
-    float _distance;
-    SCNNode *_nodeA;
-    SCNNode *_nodeB;
-    int _updateCount;
+    }  _contactPoint;
+    float  _distance;
+    SCNNode * _nodeA;
+    SCNNode * _nodeB;
+    int  _updateCount;
 }
 
 @property (nonatomic, readonly) float collisionImpulse;

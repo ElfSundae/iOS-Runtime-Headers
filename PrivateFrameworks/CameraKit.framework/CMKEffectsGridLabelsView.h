@@ -3,20 +3,20 @@
  */
 
 @interface CMKEffectsGridLabelsView : UIView <_UIBackdropViewObserver> {
-    _UIBackdropView *__backdropView;
-    _UILegibilitySettingsProvider *__legibilitySettingsProvider;
-    BOOL _disableLayoutForLabels;
-    NSArray *_filterIndices;
-    NSArray *_filterLabelViews;
-    CMKEffectsGridView *_gridView;
-    int _orientation;
+    _UIBackdropView * __backdropView;
+    _UILegibilitySettingsProvider * __legibilitySettingsProvider;
+    BOOL  _disableLayoutForLabels;
+    NSArray * _filterIndices;
+    NSArray * _filterLabelViews;
+    CMKEffectsGridView * _gridView;
+    int  _orientation;
 }
 
 @property (nonatomic, retain) _UIBackdropView *_backdropView;
 @property (nonatomic, retain) _UILegibilitySettingsProvider *_legibilitySettingsProvider;
 @property (getter=isDisabledLayoutForLabels, nonatomic) BOOL disableLayoutForLabels;
-@property (nonatomic, retain) NSArray *filterIndices;
-@property (nonatomic, retain) NSArray *filterLabelViews;
+@property (setter=_setFilterIndices:, nonatomic, retain) NSArray *filterIndices;
+@property (setter=_setFilterLabelViews:, nonatomic, retain) NSArray *filterLabelViews;
 @property (nonatomic, retain) CMKEffectsGridView *gridView;
 @property (nonatomic) int orientation;
 

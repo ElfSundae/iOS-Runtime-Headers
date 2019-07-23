@@ -3,22 +3,23 @@
  */
 
 @interface PUStackedAlbumTransition : PUNavigationTransition <PUCollectionViewLayoutTransitioningDelegate, PUTransitionViewAnimatorDelegate> {
-    id __disableToken;
-    PUStackedAlbumTransitionLayout *__interactiveTransitionLayout;
-    PUPhotoPinchGestureRecognizer *__photoPinchGestureRecognizer;
-    PUStackedAlbumLayout *__transitionLayout;
-    PUTransitionViewAnimator *__transitionViewAnimator;
-    UIView *_animatorView;
-    <PUStackedAlbumTransitionDelegate> *_delegate;
-    BOOL _forFolder;
+    id  __disableToken;
+    PUStackedAlbumTransitionLayout * __interactiveTransitionLayout;
+    PUPhotoPinchGestureRecognizer * __photoPinchGestureRecognizer;
+    PUStackedAlbumLayout * __transitionLayout;
+    PUTransitionViewAnimator * __transitionViewAnimator;
+    UIView * _animatorView;
+    <PUStackedAlbumTransitionDelegate> * _delegate;
+    BOOL  _didAnimateRoundedCorners;
+    BOOL  _forFolder;
     struct CGPoint { 
         float x; 
         float y; 
-    } _interactionCenter;
-    BOOL _isExpanding;
-    BOOL _isForStandInAlbum;
-    PHCollection *_ph_photoCollection;
-    <PLAssetContainer> *_photoCollection;
+    }  _interactionCenter;
+    BOOL  _isExpanding;
+    BOOL  _isForStandInAlbum;
+    PHCollection * _ph_photoCollection;
+    <PLAssetContainer> * _photoCollection;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,8 +29,8 @@
             float width; 
             float height; 
         } size; 
-    } _popTransitionInitialVisibleBounds;
-    NSSet *_popTransitionInitialVisibleStackedAssetIndexPaths;
+    }  _popTransitionInitialVisibleBounds;
+    NSSet * _popTransitionInitialVisibleStackedAssetIndexPaths;
 }
 
 @property (setter=_setDisableToken:, nonatomic, retain) id _disableToken;
@@ -44,7 +45,7 @@
 @property (nonatomic, readonly) UIViewController<PUStackedAlbumControllerTransition> *fromViewController;
 @property (readonly) unsigned int hash;
 @property (nonatomic) struct CGPoint { float x1; float x2; } interactionCenter;
-@property (nonatomic) BOOL isExpanding;
+@property (setter=_setExpanding:, nonatomic) BOOL isExpanding;
 @property (setter=setForStandInAlbum:, nonatomic) BOOL isForStandInAlbum;
 @property (setter=ph_setPhotoCollection:, nonatomic, retain) PHCollection *ph_photoCollection;
 @property (nonatomic, retain) <PLAssetContainer> *photoCollection;

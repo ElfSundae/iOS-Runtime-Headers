@@ -3,14 +3,14 @@
  */
 
 @interface CPShape : CPGraphicObject <CPDisposable> {
-    BOOL boundsComputed;
-    struct CGColor { } *fillColor;
-    union CGPDFObject { } *fillObject;
-    BOOL isUprightRectangle;
-    int lineCap;
-    int lineJoin;
-    float lineWidth;
-    float miterLimit;
+    BOOL  boundsComputed;
+    struct CGColor { } * fillColor;
+    struct CGPDFObject { } * fillObject;
+    BOOL  isUprightRectangle;
+    int  lineCap;
+    int  lineJoin;
+    float  lineWidth;
+    float  miterLimit;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -18,13 +18,13 @@
         float d; 
         float tx; 
         float ty; 
-    } paintTransform;
-    struct CGPath { } *path;
-    unsigned int pdfObjectID;
-    BOOL renderedBoundsComputed;
-    struct CGColor { } *strokeColor;
-    union CGPDFObject { } *strokeObject;
-    int windingRule;
+    }  paintTransform;
+    struct CGPath { } * path;
+    unsigned int  pdfObjectID;
+    BOOL  renderedBoundsComputed;
+    struct CGColor { } * strokeColor;
+    struct CGPDFObject { } * strokeObject;
+    int  windingRule;
 }
 
 - (void)accept:(id)arg1;
@@ -36,7 +36,7 @@
 - (void)dealloc;
 - (void)dispose;
 - (struct CGColor { }*)fillColor;
-- (union CGPDFObject { }*)fillObject;
+- (struct CGPDFObject { }*)fillObject;
 - (void)finalize;
 - (BOOL)hasFill;
 - (BOOL)hasSamePathAs:(id)arg1;
@@ -60,7 +60,7 @@
 - (void)recomputeRenderedBounds;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })renderedBounds;
 - (void)setFillColor:(struct CGColor { }*)arg1;
-- (void)setFillObject:(union CGPDFObject { }*)arg1;
+- (void)setFillObject:(struct CGPDFObject { }*)arg1;
 - (void)setLineCap:(int)arg1;
 - (void)setLineJoin:(int)arg1;
 - (void)setLineWidth:(float)arg1;
@@ -69,11 +69,11 @@
 - (void)setPath:(struct CGPath { }*)arg1;
 - (void)setPdfObjectID:(unsigned int)arg1;
 - (void)setStrokeColor:(struct CGColor { }*)arg1;
-- (void)setStrokeObject:(union CGPDFObject { }*)arg1;
+- (void)setStrokeObject:(struct CGPDFObject { }*)arg1;
 - (void)setWindingRule:(int)arg1;
 - (id)string;
 - (struct CGColor { }*)strokeColor;
-- (union CGPDFObject { }*)strokeObject;
+- (struct CGPDFObject { }*)strokeObject;
 - (int)windingRule;
 - (long)zOrder;
 

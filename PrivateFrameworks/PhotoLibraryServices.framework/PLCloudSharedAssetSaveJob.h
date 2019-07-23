@@ -3,19 +3,19 @@
  */
 
 @interface PLCloudSharedAssetSaveJob : PLCloudSharingJob {
-    NSArray *_assetCollectionInfos;
-    NSString *_cloudAlbumGUID;
-    NSArray *_cloudAssetGUIDsToDelete;
-    NSString *_cloudPersonID;
-    AssetCollectionInfo *_currentAssetCollectionInfo;
-    MSASAssetCollection *_currentCloudAssetCollection;
-    NSString *_currentCloudAssetGUID;
-    unsigned int _currentCloudAssetMediaAssetType;
-    NSString *_currentFilePath;
-    BOOL _isVideo;
-    long long _jobType;
-    NSDictionary *_mstreamdInfoDictionary;
-    BOOL _replacingOriginalWithDerivative;
+    NSArray * _assetCollectionInfos;
+    NSString * _cloudAlbumGUID;
+    NSArray * _cloudAssetGUIDsToDelete;
+    NSString * _cloudPersonID;
+    AssetCollectionInfo * _currentAssetCollectionInfo;
+    MSASAssetCollection * _currentCloudAssetCollection;
+    NSString * _currentCloudAssetGUID;
+    unsigned int  _currentCloudAssetMediaAssetType;
+    NSString * _currentFilePath;
+    BOOL  _isVideo;
+    long long  _jobType;
+    NSDictionary * _mstreamdInfoDictionary;
+    BOOL  _replacingOriginalWithDerivative;
 }
 
 @property (nonatomic, retain) NSArray *assetCollectionInfos;

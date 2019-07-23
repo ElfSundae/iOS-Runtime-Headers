@@ -3,8 +3,9 @@
  */
 
 @interface UIBarItem : NSObject <NSCoding, UIAppearance> {
-    BOOL _hasCustomizableInstanceAppearanceModifications;
-    BOOL _shouldArchiveUIAppearanceTags;
+    BOOL  _hasCustomizableInstanceAppearanceModifications;
+    BOOL  _shouldArchiveUIAppearanceTags;
+    int  _tag;
 }
 
 @property (setter=_setHasCustomizableInstanceAppearanceModifications:, nonatomic) BOOL _hasCustomizableInstanceAppearanceModifications;
@@ -47,7 +48,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)resolvedTitle;
 - (BOOL)selected;
+- (void)setTag:(int)arg1;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
+- (int)tag;
 - (id)titleTextAttributesForState:(unsigned int)arg1;
 
 @end

@@ -3,14 +3,14 @@
  */
 
 @interface PUAirPlaySettings : PUSettings {
-    BOOL _compensateForOverscan;
-    BOOL _ignoreMirroredScreens;
-    float _maximumZoomForScrollPadding;
-    float _minimumZoomForScrollPadding;
-    unsigned int _placeholderForMirroredScreen;
-    unsigned int _placeholderForSecondScreen;
-    float _simulatedScreenContentHeight;
-    float _simulatedScreenContentWidth;
+    BOOL  _compensateForOverscan;
+    BOOL  _ignoreMirroredScreens;
+    float  _maximumZoomForScrollPadding;
+    float  _minimumZoomForScrollPadding;
+    unsigned int  _placeholderForMirroredScreen;
+    unsigned int  _placeholderForSecondScreen;
+    float  _simulatedScreenContentHeight;
+    float  _simulatedScreenContentWidth;
 }
 
 @property (nonatomic) BOOL compensateForOverscan;

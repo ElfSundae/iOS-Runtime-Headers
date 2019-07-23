@@ -3,19 +3,19 @@
  */
 
 @interface PUFeedCell : UICollectionViewCell <UIGestureRecognizerDelegate> {
-    UITapGestureRecognizer *__tapGestureRecognizer;
-    <PUFeedCellDelegate> *_delegate;
+    UITapGestureRecognizer * __tapGestureRecognizer;
+    <PUFeedCellDelegate> * _delegate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _edgeParallaxOffset;
-    NSIndexPath *_indexPath;
+    }  _edgeParallaxOffset;
+    NSIndexPath * _indexPath;
     struct CGPoint { 
         float x; 
         float y; 
-    } _parallaxOffset;
-    NSString *_representedElementKind;
-    BOOL _tappable;
+    }  _parallaxOffset;
+    NSString * _representedElementKind;
+    BOOL  _tappable;
 }
 
 @property (setter=_setTapGestureRecognizer:, nonatomic, retain) UITapGestureRecognizer *_tapGestureRecognizer;

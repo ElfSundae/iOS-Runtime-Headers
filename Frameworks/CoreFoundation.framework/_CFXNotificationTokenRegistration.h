@@ -3,10 +3,10 @@
  */
 
 @interface _CFXNotificationTokenRegistration : _CFXNotificationRegistrationBase {
-    id /* block */ _handler;
-    unsigned long _options;
-    BOOL _registered;
-    unsigned long long _token;
+    id /* block */  _handler;
+    unsigned long  _options;
+    BOOL  _registered;
+    unsigned long long  _token;
 }
 
 @property (readonly, copy) id /* block */ handler;
@@ -28,7 +28,6 @@
 - (void)addToObserver:(id)arg1;
 - (id /* block */)copyHandler;
 - (void)dealloc;
-- (void)finalize;
 - (id /* block */)handler;
 - (id)initWithToken:(unsigned long long)arg1 options:(unsigned long)arg2 queue:(id)arg3 handler:(id /* block */)arg4;
 - (void)invalidate;

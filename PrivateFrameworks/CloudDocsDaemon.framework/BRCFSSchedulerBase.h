@@ -3,15 +3,15 @@
  */
 
 @interface BRCFSSchedulerBase : NSObject <BRCLifeCycle> {
-    BOOL _hasActiveWork;
-    BOOL _hasWork;
-    NSObject<OS_dispatch_group> *_hasWorkGroup;
-    BOOL _isCancelled;
-    NSString *_name;
-    NSObject<OS_dispatch_queue> *_schedulerQueue;
-    BRCDeadlineToken *_schedulerToken;
-    BRCAccountSession *_session;
-    PQLNameInjection *_tableName;
+    BOOL  _hasActiveWork;
+    BOOL  _hasWork;
+    NSObject<OS_dispatch_group> * _hasWorkGroup;
+    BOOL  _isCancelled;
+    NSString * _name;
+    NSObject<OS_dispatch_queue> * _schedulerQueue;
+    BRCDeadlineSource * _schedulerSource;
+    BRCAccountSession * _session;
+    PQLNameInjection * _tableName;
 }
 
 @property (readonly) BOOL closed;
@@ -21,19 +21,16 @@
 @property (nonatomic) BOOL hasWork;
 @property (retain) NSObject<OS_dispatch_group> *hasWorkGroup;
 @property (readonly) unsigned int hash;
-@property (nonatomic) BOOL isCancelled;
+@property (nonatomic, readonly) BOOL isCancelled;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canRetryThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)_close;
 - (void)_computeStamps:(struct throttle_stamps { unsigned int x1; int x2; long long x3; long long x4; long long x5; }*)arg1 throttleID:(long long)arg2 zone:(id)arg3 throttle:(id)arg4 hasBeenTried:(BOOL)arg5;
-- (void)_deleteThrottleID:(long long)arg1 zone:(id)arg2;
+- (void)_deleteThrottleID:(long long)arg1;
 - (void)_describe:(id)arg1 zone:(id)arg2 now:(long long)arg3 context:(id)arg4;
 - (id)_initWithSession:(id)arg1 name:(id)arg2 tableName:(id)arg3;
-- (void)_schedule;
-- (void)_scheduleDone:(long long)arg1 nextWork:(long long)arg2;
-- (void)_signalForNextWork:(long long)arg1;
 - (long long)_updateStamps:(struct throttle_stamps { unsigned int x1; int x2; long long x3; long long x4; long long x5; }*)arg1 throttle:(id)arg2 now:(long long)arg3;
 - (void)cancel;
 - (void)close;
@@ -46,12 +43,17 @@
 - (BOOL)hasWork;
 - (id)hasWorkGroup;
 - (BOOL)isCancelled;
+- (BOOL)isZoneIdle:(id)arg1;
+- (void)moveAppLibraryTransfers:(id)arg1 toAppLibrary:(id)arg2;
 - (void)resetBackoffForThrottleID:(long long)arg1 zone:(id)arg2;
 - (void)resume;
+- (void)schedule;
+- (void)scheduleDidFinishWithTimestamp:(long long)arg1 nextScheduleTimestamp:(long long)arg2;
 - (void)setHasActiveWork:(BOOL)arg1;
 - (void)setHasWork:(BOOL)arg1;
 - (void)setHasWorkGroup:(id)arg1;
-- (void)setIsCancelled:(BOOL)arg1;
+- (void)signal;
+- (void)signalWithDeadline:(long long)arg1;
 - (void)suspend;
 - (void)updateThrottleID:(long long)arg1 zone:(id)arg2 state:(int)arg3;
 

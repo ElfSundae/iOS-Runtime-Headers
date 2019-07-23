@@ -6,8 +6,8 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _expandedSize;
-    BOOL _isExpanded;
+    }  _expandedSize;
+    BOOL  _isExpanded;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } expandedSize;

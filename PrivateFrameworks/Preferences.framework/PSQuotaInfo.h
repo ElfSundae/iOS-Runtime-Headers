@@ -3,9 +3,9 @@
  */
 
 @interface PSQuotaInfo : NSObject {
-    NSMutableDictionary *_mediaKindDict;
-    unsigned long long _totalStorage;
-    unsigned long long _usedStorage;
+    NSMutableDictionary * _mediaKindDict;
+    unsigned long long  _totalStorage;
+    unsigned long long  _usedStorage;
 }
 
 @property (nonatomic) unsigned long long totalStorage;

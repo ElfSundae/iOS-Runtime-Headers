@@ -3,25 +3,27 @@
  */
 
 @interface UIKeyboardTouchInfo : NSObject {
-    BOOL _dragged;
+    BOOL  _dragged;
+    int  _fingerID;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialDragPoint;
-    int _initialKeyState;
+    }  _initialDragPoint;
+    int  _initialKeyState;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialPoint;
-    UIKBTree *_key;
-    UIKBTree *_keyplane;
-    BOOL _maySuppressUpAction;
-    UIKBTree *_slidOffKey;
-    int _stage;
-    UIKBTouchState *_touch;
+    }  _initialPoint;
+    UIKBTree * _key;
+    UIKBTree * _keyplane;
+    BOOL  _maySuppressUpAction;
+    UIKBTree * _slidOffKey;
+    int  _stage;
+    UIKBTouchState * _touch;
 }
 
 @property (nonatomic) BOOL dragged;
+@property (nonatomic) int fingerID;
 @property (nonatomic) struct CGPoint { float x1; float x2; } initialDragPoint;
 @property (nonatomic) int initialKeyState;
 @property (nonatomic) struct CGPoint { float x1; float x2; } initialPoint;
@@ -34,6 +36,7 @@
 
 - (void)dealloc;
 - (BOOL)dragged;
+- (int)fingerID;
 - (struct CGPoint { float x1; float x2; })initialDragPoint;
 - (int)initialKeyState;
 - (struct CGPoint { float x1; float x2; })initialPoint;
@@ -41,6 +44,7 @@
 - (id)keyplane;
 - (BOOL)maySuppressUpAction;
 - (void)setDragged:(BOOL)arg1;
+- (void)setFingerID:(int)arg1;
 - (void)setInitialDragPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setInitialKeyState:(int)arg1;
 - (void)setInitialPoint:(struct CGPoint { float x1; float x2; })arg1;

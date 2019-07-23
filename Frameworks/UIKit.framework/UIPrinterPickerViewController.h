@@ -3,20 +3,20 @@
  */
 
 @interface UIPrinterPickerViewController : UIViewController <UINavigationControllerDelegate, UIPrinterBrowserOwner> {
-    BOOL _animated;
-    BOOL _dismissed;
-    UINavigationController *_navigationController;
-    BOOL _observingRotation;
-    id _originalNavControllerDelegate;
-    UIViewController *_originalViewControllerInNav;
-    UIViewController *_parentController;
-    BOOL _parentHasNoPopover;
-    UIPopoverController *_poverController;
-    PKPrinter *_printer;
-    UIPrinterBrowserViewController *_printerBrowserViewController;
-    UIPrinterPickerController *_printerPickerController;
-    BOOL _userSelectedPrinter;
-    UIWindow *_window;
+    BOOL  _animated;
+    BOOL  _dismissed;
+    UINavigationController * _navigationController;
+    BOOL  _observingRotation;
+    id  _originalNavControllerDelegate;
+    UIViewController * _originalViewControllerInNav;
+    UIViewController * _parentController;
+    BOOL  _parentHasNoPopover;
+    UIPopoverController * _poverController;
+    PKPrinter * _printer;
+    UIPrinterBrowserViewController * _printerBrowserViewController;
+    UIPrinterPickerController * _printerPickerController;
+    BOOL  _userSelectedPrinter;
+    UIWindow * _window;
 }
 
 @property (readonly, copy) NSString *debugDescription;

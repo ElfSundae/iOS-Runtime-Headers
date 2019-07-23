@@ -3,10 +3,10 @@
  */
 
 @interface FUFlightLocation : NSObject {
-    float psi;
-    float theta;
-    float x;
-    float y;
+    float  psi;
+    float  theta;
+    float  x;
+    float  y;
 }
 
 @property float psi;

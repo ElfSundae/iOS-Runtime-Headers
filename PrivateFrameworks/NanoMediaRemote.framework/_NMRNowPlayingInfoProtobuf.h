@@ -3,15 +3,16 @@
  */
 
 @interface _NMRNowPlayingInfoProtobuf : PBCodable <NSCopying> {
-    NSString *_album;
-    NSString *_artist;
-    NSData *_artworkDataDigest;
-    double _duration;
-    double _elapsedTime;
+    NSString * _album;
+    NSString * _artist;
+    NSData * _artworkDataDigest;
+    double  _duration;
+    double  _elapsedTime;
     struct { 
         unsigned int duration : 1; 
         unsigned int elapsedTime : 1; 
         unsigned int radioStationIdentifier : 1; 
+        unsigned int storeAdamID : 1; 
         unsigned int timestamp : 1; 
         unsigned int uniqueIdentifier : 1; 
         unsigned int playbackRate : 1; 
@@ -21,20 +22,21 @@
         unsigned int isAlwaysLive : 1; 
         unsigned int isExplicitTrack : 1; 
         unsigned int isMusicApp : 1; 
-    } _has;
-    BOOL _isAdvertisement;
-    BOOL _isAlwaysLive;
-    BOOL _isExplicitTrack;
-    BOOL _isMusicApp;
-    float _playbackRate;
-    NSString *_radioStationHash;
-    long long _radioStationIdentifier;
-    NSString *_radioStationName;
-    int _repeatMode;
-    int _shuffleMode;
-    double _timestamp;
-    NSString *_title;
-    unsigned long long _uniqueIdentifier;
+    }  _has;
+    BOOL  _isAdvertisement;
+    BOOL  _isAlwaysLive;
+    BOOL  _isExplicitTrack;
+    BOOL  _isMusicApp;
+    float  _playbackRate;
+    NSString * _radioStationHash;
+    long long  _radioStationIdentifier;
+    NSString * _radioStationName;
+    int  _repeatMode;
+    int  _shuffleMode;
+    long long  _storeAdamID;
+    double  _timestamp;
+    NSString * _title;
+    unsigned long long  _uniqueIdentifier;
 }
 
 @property (nonatomic, retain) NSString *album;
@@ -57,6 +59,7 @@
 @property (nonatomic, readonly) BOOL hasRadioStationName;
 @property (nonatomic) BOOL hasRepeatMode;
 @property (nonatomic) BOOL hasShuffleMode;
+@property (nonatomic) BOOL hasStoreAdamID;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic, readonly) BOOL hasTitle;
 @property (nonatomic) BOOL hasUniqueIdentifier;
@@ -70,11 +73,14 @@
 @property (nonatomic, retain) NSString *radioStationName;
 @property (nonatomic) int repeatMode;
 @property (nonatomic) int shuffleMode;
+@property (nonatomic) long long storeAdamID;
 @property (nonatomic) double timestamp;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) unsigned long long uniqueIdentifier;
 
 - (void).cxx_destruct;
+- (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsShuffleMode:(id)arg1;
 - (id)album;
 - (id)artist;
 - (id)artworkDataDigest;
@@ -99,6 +105,7 @@
 - (BOOL)hasRadioStationName;
 - (BOOL)hasRepeatMode;
 - (BOOL)hasShuffleMode;
+- (BOOL)hasStoreAdamID;
 - (BOOL)hasTimestamp;
 - (BOOL)hasTitle;
 - (BOOL)hasUniqueIdentifier;
@@ -115,6 +122,7 @@
 - (id)radioStationName;
 - (BOOL)readFrom:(id)arg1;
 - (int)repeatMode;
+- (id)repeatModeAsString:(int)arg1;
 - (void)setAlbum:(id)arg1;
 - (void)setArtist:(id)arg1;
 - (void)setArtworkDataDigest:(id)arg1;
@@ -130,6 +138,7 @@
 - (void)setHasRadioStationIdentifier:(BOOL)arg1;
 - (void)setHasRepeatMode:(BOOL)arg1;
 - (void)setHasShuffleMode:(BOOL)arg1;
+- (void)setHasStoreAdamID:(BOOL)arg1;
 - (void)setHasTimestamp:(BOOL)arg1;
 - (void)setHasUniqueIdentifier:(BOOL)arg1;
 - (void)setIsAdvertisement:(BOOL)arg1;
@@ -142,13 +151,17 @@
 - (void)setRadioStationName:(id)arg1;
 - (void)setRepeatMode:(int)arg1;
 - (void)setShuffleMode:(int)arg1;
+- (void)setStoreAdamID:(long long)arg1;
 - (void)setTimestamp:(double)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setUniqueIdentifier:(unsigned long long)arg1;
 - (int)shuffleMode;
+- (id)shuffleModeAsString:(int)arg1;
+- (long long)storeAdamID;
 - (double)timestamp;
 - (id)title;
 - (unsigned long long)uniqueIdentifier;
+- (BOOL)validateUniqueIdentifier:(id*)arg1 error:(id*)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

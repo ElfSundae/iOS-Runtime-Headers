@@ -3,7 +3,7 @@
  */
 
 @interface UIRegion : NSObject <NSCoding, NSCopying> {
-    PKRegion *_region;
+    PKRegion * _region;
 }
 
 @property (nonatomic, readonly) PKRegion *_region;

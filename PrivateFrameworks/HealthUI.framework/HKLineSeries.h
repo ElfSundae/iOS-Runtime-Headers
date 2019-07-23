@@ -3,9 +3,9 @@
  */
 
 @interface HKLineSeries : HKGraphSeries {
-    NSArray *_highlightedPresentationStyles;
-    UIImage *_selectedPointMarkerImage;
-    NSArray *_unhighlightedPresentationStyles;
+    NSArray * _highlightedPresentationStyles;
+    UIImage * _selectedPointMarkerImage;
+    NSArray * _unhighlightedPresentationStyles;
 }
 
 @property (nonatomic, retain) NSArray *highlightedPresentationStyles;

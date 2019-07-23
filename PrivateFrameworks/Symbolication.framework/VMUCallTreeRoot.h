@@ -3,19 +3,18 @@
  */
 
 @interface VMUCallTreeRoot : VMUCallTreeNode {
-    NSMapTable *_addressToLeafSymbolNameMap;
-    NSMapTable *_addressToSymbolNameMap;
-    NSArray *_binaryImages;
-    NSString *_binaryImagesDescription;
-    NSMapTable *_dispatchQueueSerialNumToNameMap;
-    unsigned int _options;
-    VMUSampler *_sampler;
+    NSMapTable * _addressToLeafSymbolNameMap;
+    NSMapTable * _addressToSymbolNameMap;
+    NSArray * _binaryImages;
+    NSString * _binaryImagesDescription;
+    unsigned int  _options;
+    VMUSampler * _sampler;
     struct _CSTypeRef { 
         unsigned int _opaque_1; 
         unsigned int _opaque_2; 
-    } _symbolicator;
-    NSMapTable *_threadPortToNameMap;
-    NSHashTable *_uniqueNodeNames;
+    }  _symbolicator;
+    NSMapTable * _threadPortToNameMap;
+    NSHashTable * _uniqueNodeNames;
 }
 
 - (id)addBacktrace:(id)arg1;
@@ -27,6 +26,5 @@
 - (id)descriptionStringForAddress:(unsigned long long)arg1 atTime:(unsigned long long)arg2 leafFrame:(BOOL)arg3 startOfRecursion:(BOOL)arg4;
 - (id)initWithCallGraphFile:(id)arg1 fileHeader:(id*)arg2 topFunctionsList:(id*)arg3 binaryImagesList:(id*)arg4;
 - (id)initWithSymbolicator:(struct _CSTypeRef { unsigned int x1; unsigned int x2; })arg1 sampler:(id)arg2 options:(unsigned int)arg3;
-- (id)threadDescriptionStringForBacktrace:(id)arg1 returnedAddress:(unsigned long long*)arg2;
 
 @end

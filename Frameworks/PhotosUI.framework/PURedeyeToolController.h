@@ -3,14 +3,14 @@
  */
 
 @interface PURedeyeToolController : PUPhotoEditToolController <UIGestureRecognizerDelegate> {
-    BOOL _failureAnimationIsInProgress;
-    PUPhotoEditOverlayBadge *_failureLabel;
-    NSArray *_failureLabelConstraints;
-    PUPhotoEditOverlayBadge *_instructionLabel;
-    NSArray *_instructionLabelConstraints;
-    BOOL _isModelChangeLocal;
-    NSMutableArray *_knownCorrections;
-    UITapGestureRecognizer *_tapGestureRecognizer;
+    BOOL  _failureAnimationIsInProgress;
+    PUPhotoEditOverlayBadge * _failureLabel;
+    NSArray * _failureLabelConstraints;
+    PUPhotoEditOverlayBadge * _instructionLabel;
+    NSArray * _instructionLabelConstraints;
+    BOOL  _isModelChangeLocal;
+    NSMutableArray * _knownCorrections;
+    UITapGestureRecognizer * _tapGestureRecognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,7 +44,6 @@
 - (id)toolbarIcon;
 - (void)updateViewConstraints;
 - (void)viewDidLoad;
-- (BOOL)wantsIrisAutoDisableWarning;
 - (BOOL)wantsSecondaryToolbarVisible;
 - (BOOL)wantsZoomAndPanEnabled;
 

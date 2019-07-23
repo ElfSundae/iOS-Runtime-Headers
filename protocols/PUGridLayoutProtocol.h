@@ -28,6 +28,8 @@
 - (void)setSectionHeaderHeight:(float)arg1;
 - (void)setSectionHeadersEnabled:(BOOL)arg1;
 - (void)setSectionTopPadding:(float)arg1;
+- (void)setUsesAspectItems:(BOOL)arg1;
 - (struct CGPoint { float x1; float x2; })targetContentOffsetForViewSizeTransitionContext:(id)arg1;
+- (BOOL)usesAspectItems;
 
 @end

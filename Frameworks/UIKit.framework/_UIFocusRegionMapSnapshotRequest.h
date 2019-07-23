@@ -3,9 +3,9 @@
  */
 
 @interface _UIFocusRegionMapSnapshotRequest : NSObject <NSCopying> {
-    BOOL _clipToSnapshotRect;
-    unsigned int _focusHeading;
-    UIView *_focusableRegionAncestorView;
+    BOOL  _clipToSnapshotRect;
+    unsigned int  _focusHeading;
+    UIView * _focusableRegionAncestorView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,10 +15,10 @@
             float width; 
             float height; 
         } size; 
-    } _focusedRect;
-    BOOL _includeFocusContainerGuides;
-    BOOL _includeFocusGuides;
-    UIView *_rootView;
+    }  _focusedRect;
+    BOOL  _includeFocusContainerGuides;
+    BOOL  _includeFocusGuides;
+    UIView * _rootView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,7 +28,7 @@
             float width; 
             float height; 
         } size; 
-    } _snapshotRect;
+    }  _snapshotRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -38,7 +38,7 @@
             float width; 
             float height; 
         } size; 
-    } _viewSearchRect;
+    }  _viewSearchRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -48,7 +48,7 @@
             float width; 
             float height; 
         } size; 
-    } _visualRepresentationMinimumArea;
+    }  _visualRepresentationMinimumArea;
 }
 
 @property (nonatomic) BOOL clipToSnapshotRect;

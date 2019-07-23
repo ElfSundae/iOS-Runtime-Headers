@@ -3,14 +3,14 @@
  */
 
 @interface UISelectionGrabber : UIView {
-    int _applicationDeactivationReason;
-    BOOL m_activeFlattened;
-    BOOL m_alertFlattened;
-    BOOL m_animating;
-    UISelectionGrabberDot *m_dotView;
-    BOOL m_isDotted;
-    BOOL m_navigationTransitionFlattened;
-    int m_orientation;
+    int  _applicationDeactivationReason;
+    BOOL  m_activeFlattened;
+    BOOL  m_alertFlattened;
+    BOOL  m_animating;
+    UISelectionGrabberDot * m_dotView;
+    BOOL  m_isDotted;
+    BOOL  m_navigationTransitionFlattened;
+    int  m_orientation;
 }
 
 @property (nonatomic) BOOL activeFlattened;

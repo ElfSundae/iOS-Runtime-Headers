@@ -3,8 +3,8 @@
  */
 
 @interface TSUUIImage : TSUImage {
-    TSUUIImageAutoreleasePoolGuard *mGuard;
-    UIImage *mUIImage;
+    TSUUIImageAutoreleasePoolGuard * mGuard;
+    UIImage * mUIImage;
 }
 
 + (void)i_performBlockWithUIImageLock:(id /* block */)arg1;

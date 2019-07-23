@@ -3,29 +3,32 @@
  */
 
 @interface MFMailMessageLibrary : MFMessageLibrary <MFContentProtectionObserver, MFLibrarySearchableIndexDataSource, MFSQLiteConnectionPoolDelegate> {
-    NSString *_activeAccountClause;
-    MFSQLiteConnectionPool *_connectionPool;
-    <MFMailMessageLibraryDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_keyBagQueue;
-    MFWeakObjectCache *_libraryMessageCache;
-    struct __CFDictionary { } *_mailboxCache;
-    <MFMailboxPathProvider> *_mailboxPathProvider;
-    NSMutableSet *_messagesToThreadAtUnlock;
-    MFMailMessageLibraryMigrator *_migrator;
-    NSString *_nonLocalAccountClause;
-    int _protectedDataAvailability;
-    MFDbJournal *_protectedJournal;
-    NSObject<OS_dispatch_queue> *_queue;
-    MFLibrarySearchableIndex *_searchableIndex;
-    NSObject<OS_dispatch_source> *_suspendTimer;
-    NSString *_threadLocalHandleKey;
+    NSString * _activeAccountClause;
+    MFSQLiteConnectionPool * _connectionPool;
+    <MFMailMessageLibraryDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _keyBagQueue;
+    MFWeakObjectCache * _libraryMessageCache;
+    struct __CFDictionary { } * _mailboxCache;
+    <MFMailboxPathProvider> * _mailboxPathProvider;
+    NSMutableSet * _messagesToThreadAtUnlock;
+    MFWeakSet * _middleware;
+    MFMailMessageLibraryMigrator * _migrator;
+    NSString * _nonLocalAccountClause;
+    int  _protectedDataAvailability;
+    MFDbJournal * _protectedJournal;
+    NSObject<OS_dispatch_queue> * _queue;
+    MFLibrarySearchableIndex * _searchableIndex;
+    NSObject<OS_os_activity> * _spotlightVerificationActivity;
+    NSObject<OS_dispatch_source> * _suspendTimer;
+    NSString * _threadLocalHandleKey;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MFMailMessageLibraryDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
-@property (nonatomic, readonly) int protectedDataAvailability;
+@property (nonatomic, readonly) unsigned int protectedDataAvailability;
+@property (nonatomic, retain) MFLibrarySearchableIndex *searchableIndex;
 @property (readonly) Class superclass;
 
 + (void)_removeLibrary:(BOOL)arg1 atPath:(id)arg2;
@@ -40,16 +43,18 @@
 - (id)_activeConnectionWrapper;
 - (void)_addMessageToThreadAtUnlock:(unsigned int)arg1;
 - (id)_addThreadingInfoWithContext:(id)arg1 usingDatabase:(struct sqlite3 { }*)arg2;
-- (id)_assignTransaction:(long long)arg1 forLibraryIDs:(id)arg2 database:(struct sqlite3 { }*)arg3;
+- (void)_assignTransaction:(long long)arg1 forLibraryIDIndexSet:(id)arg2 missingLibraryIDIndexSet:(id*)arg3 database:(struct sqlite3 { }*)arg4;
+- (void)_assignTransaction:(long long)arg1 forLibraryIDs:(id)arg2 missingLibraryIDIndexSet:(id*)arg3 database:(struct sqlite3 { }*)arg4;
 - (void)_assignTransaction:(long long)arg1 forSpotlightTombstones:(id)arg2 type:(int)arg3 database:(struct sqlite3 { }*)arg4;
 - (unsigned int)_attachmentCountForAggregatedMailboxes:(id)arg1;
 - (BOOL)_canSelectMessagesWithOptions:(unsigned int)arg1 db:(struct sqlite3 { }*)arg2;
 - (BOOL)_checkpointDatabase;
+- (unsigned int)_computeUnreadCountForMailboxes:(id)arg1;
 - (id)_connectionForWriting:(BOOL)arg1;
 - (struct __CFDictionary { }*)_copyReferenceHashesWithoutMessagesForMessageWithConversation:(id)arg1;
 - (id)_firstDateForQuery:(id)arg1 inMailbox:(id)arg2;
 - (unsigned int)_flaggedCountForAggregatedMailboxes:(id)arg1;
-- (id)_foundSampleSetForSubjects:(id)arg1 foundSubjects:(id*)arg2;
+- (id)_foundSampleSetForSubjects:(id)arg1 foundSubjects:(id*)arg2 queryDescription:(id*)arg3;
 - (id)_getReferencesForHashesWithOwners:(struct __CFDictionary { }*)arg1;
 - (void)_handleBusyError;
 - (void)_handleCorruptDatabase;
@@ -74,24 +79,27 @@
 - (id)_nonLocalAccountsClause;
 - (void)_notifyDidCompact:(BOOL)arg1 messages:(id)arg2 mailboxes:(id)arg3;
 - (void)_performTransaction:(id /* block */)arg1 forWriting:(BOOL)arg2;
+- (void)_postCorruptSearchableIndexNotificationWithErrorLog:(id)arg1 andState:(unsigned int)arg2;
 - (struct sqlite3_stmt { }*)_prepareBatchStatement:(struct sqlite3 { }*)arg1 pattern:(id)arg2 libraryIDs:(unsigned int*)arg3 batchSize:(unsigned int)arg4;
 - (struct sqlite3_stmt { }*)_prepareBatchStatement:(struct sqlite3 { }*)arg1 pattern:(id)arg2 objects:(id*)arg3 count:(unsigned int)arg4;
 - (void)_purgeSpotlightTombstonesBeforeTransaction:(long long)arg1 database:(struct sqlite3 { }*)arg2;
 - (id)_queryForMailboxesIDsFromMailboxes:(id)arg1;
+- (id)_quotedLikeSubclauseForColumn:(id)arg1 value:(id)arg2;
 - (id)_quotedPrefixLikeSubclauseForColumn:(id)arg1 value:(id)arg2;
 - (void)_reconcileAfterKeybagUnlock;
 - (void)_reconcileJournal;
-- (void)_removeCachedLibraryMessageWithLibraryID:(unsigned int)arg1;
 - (void)_resetTransactionIndexForAccount:(id)arg1 mailboxID:(unsigned int)arg2;
 - (BOOL)_rollbackToCheckpoint;
 - (id)_setActiveConnection:(id)arg1 forWriting:(BOOL)arg2;
 - (BOOL)_setMessageData:(id)arg1 libraryID:(unsigned int)arg2 part:(id)arg3 partial:(BOOL)arg4 complete:(BOOL)arg5;
 - (void)_setMessageDataString:(id)arg1 forKey:(id)arg2 forMessage:(id)arg3;
-- (void)_setProtectedDataAvailabilityState:(int)arg1;
+- (void)_setProtectedDataAvailabilityState:(unsigned int)arg1;
 - (id)_stringsForIndexSet:(id)arg1;
+- (void)_tellMiddlewareDidAddMessages:(id)arg1;
 - (BOOL)_writeEmlxFile:(id)arg1 withBodyData:(id)arg2 protectionClass:(int)arg3;
 - (id)accountForMessage:(id)arg1;
 - (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(BOOL)arg3 newMessagesByOldMessage:(id)arg4 remoteIDs:(id)arg5 setFlags:(unsigned long long)arg6 clearFlags:(unsigned long long)arg7 messageFlagsForMessages:(id)arg8 copyFiles:(BOOL)arg9 addPOPUIDs:(BOOL)arg10 dataSectionsByMessage:(id)arg11;
+- (void)addMiddleware:(id)arg1;
 - (long long)addReferenceForContext:(id)arg1 usingDatabase:(struct sqlite3 { }*)arg2 mergeHandler:(id /* block */)arg3;
 - (void)addSpotlightTombstones:(id)arg1 type:(int)arg2;
 - (id)allMailboxURLStrings;
@@ -103,6 +111,7 @@
 - (void)applicationWillSuspend;
 - (int)attachProtectedDatabase:(struct sqlite3 { }*)arg1;
 - (unsigned int)attachmentCountForMailbox:(id)arg1;
+- (unsigned int)attachmentCountForMailboxes:(id)arg1;
 - (id)attachmentsDirectoryForLibraryID:(unsigned int)arg1 mailboxID:(unsigned int)arg2;
 - (int)beginTransaction:(struct sqlite3 { }*)arg1 withType:(int)arg2;
 - (id)bodyDataAtPath:(id)arg1 headerData:(id*)arg2;
@@ -125,6 +134,8 @@
 - (id)copyMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inRemoteMailbox:(id)arg3;
 - (struct __CFDictionary { }*)copySendersByLibraryIDForConversation:(long long)arg1 mailbox:(id)arg2 limit:(int)arg3;
+- (unsigned int)countMessagesMatchingCriterion:(id)arg1;
+- (id)countMessagesMatchingCriterion:(id)arg1 groupBy:(unsigned int)arg2;
 - (int)countOfMessagesMissingFromThreadContainingMessage:(id)arg1;
 - (unsigned int)countOfRelatedMessagesMatchingCriterion:(id)arg1 forConversationsContainingMessagesMatchingCriterion:(id)arg2 forMailboxCriterion:(id)arg3;
 - (int)createLibraryIDForAccount:(id)arg1;
@@ -205,6 +216,7 @@
 - (id)metadataForMessage:(id)arg1 key:(id)arg2;
 - (BOOL)migrate;
 - (unsigned int)minimumRemoteIDForMailbox:(id)arg1;
+- (id)missingReferencesForConversationContainingMessage:(id)arg1;
 - (id)newConnectionForConnectionPool:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1;
 - (unsigned int)nonDeletedCountForAggregatedMailboxes:(id)arg1 includeServerSearchResults:(BOOL)arg2 includeThreadSearchResults:(BOOL)arg3;
@@ -217,10 +229,11 @@
 - (id)oldestMessageInMailbox:(id)arg1;
 - (id)orderedBatchOfMessagesEndingAtRowId:(unsigned int)arg1 limit:(unsigned int)arg2 success:(BOOL*)arg3;
 - (id)pathForMailboxURL:(id)arg1;
+- (void)performIncrementalVacuumForSchema:(id)arg1;
 - (void)performReadTransaction:(id /* block */)arg1;
 - (void)performWriteTransaction:(id /* block */)arg1;
 - (struct sqlite3_stmt { }*)preparedStatement:(struct sqlite3 { }*)arg1 pattern:(id)arg2;
-- (int)protectedDataAvailability;
+- (unsigned int)protectedDataAvailability;
 - (void)pruneConversationTables:(double)arg1;
 - (id)queryForCriterion:(id)arg1 db:(struct sqlite3 { }*)arg2 options:(unsigned int)arg3;
 - (id)queryForCriterion:(id)arg1 db:(struct sqlite3 { }*)arg2 options:(unsigned int)arg3 baseTable:(unsigned int)arg4;
@@ -228,9 +241,11 @@
 - (id)queryForCriterion:(id)arg1 db:(struct sqlite3 { }*)arg2 options:(unsigned int)arg3 baseTable:(unsigned int)arg4 isSubquery:(BOOL)arg5 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg6;
 - (id)queryForCriterion:(id)arg1 db:(struct sqlite3 { }*)arg2 options:(unsigned int)arg3 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg4;
 - (void)rebuildActiveAccountsClauseWithAccounts:(id)arg1;
+- (void)recomputeUnreadCountForMailboxWithURL:(id)arg1;
 - (id)referencesFromHeaders:(id)arg1;
 - (id)remoteStoreForMessage:(id)arg1;
 - (void)removeAllMessagesFromMailbox:(id)arg1 removeMailbox:(BOOL)arg2 andNotify:(BOOL)arg3;
+- (void)removeMiddleware:(id)arg1;
 - (void)removeSearchableItemsForAccount:(id)arg1;
 - (void)removeSearchableItemsForAccount:(id)arg1 mailboxID:(unsigned int)arg2;
 - (void)removeSearchableItemsForMailbox:(id)arg1;
@@ -239,6 +254,8 @@
 - (BOOL)renameMailboxes:(id)arg1 to:(id)arg2;
 - (void)renameOrRemoveDatabase;
 - (int)rollbackTransaction:(struct sqlite3 { }*)arg1;
+- (void)scheduleIncrementalVacuum;
+- (id)searchableIndex;
 - (id)searchableIndex:(id)arg1 assignTransaction:(long long)arg2 updates:(id)arg3;
 - (void)searchableIndex:(id)arg1 invalidateItemsGreaterThanTransaction:(long long)arg2;
 - (void)sendMessagesForStatement:(struct sqlite3_stmt { }*)arg1 db:(struct sqlite3 { }*)arg2 to:(id)arg3 options:(unsigned int)arg4 timestamp:(unsigned long long)arg5;
@@ -263,6 +280,7 @@
 - (void)setMailboxPathProvider:(id)arg1;
 - (void)setMessage:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setNumberOfAttachments:(unsigned int)arg1 isSigned:(BOOL)arg2 isEncrypted:(BOOL)arg3 forMessage:(id)arg4;
+- (void)setSearchableIndex:(id)arg1;
 - (void)setSequenceIdentifier:(id)arg1 forMailbox:(id)arg2;
 - (void)setSequenceIdentifier:(id)arg1 forMessageWithLibraryID:(unsigned int)arg2;
 - (void)setSequenceIdentifier:(id)arg1 forMessagesWithRemoteIDs:(id)arg2 inMailbox:(id)arg3;
@@ -285,7 +303,6 @@
 - (id)updateFlagsForMessages:(id)arg1 changes:(id)arg2 transformer:(id /* block */)arg3;
 - (void)updateFlagsForMessagesInPlace:(id)arg1 success:(BOOL*)arg2;
 - (void)updateMessage:(id)arg1 withMetadata:(id /* block */)arg2;
-- (void)updateRecipientsForMessage:(id)arg1 fromHeaders:(id)arg2;
 - (void)updateThreadingInfoForMessage:(id)arg1 fromHeaders:(id)arg2;
 - (id)updatesForSearchableIndex:(id)arg1 count:(unsigned int)arg2;
 - (id)urlForMailboxID:(unsigned int)arg1;

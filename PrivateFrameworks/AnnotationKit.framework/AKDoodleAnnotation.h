@@ -3,12 +3,12 @@
  */
 
 @interface AKDoodleAnnotation : AKAnnotation <AKRectangularAnnotationProtocol, AKRotatableAnnotationProtocol, AKStrokedAnnotationProtocol> {
-    int _brushStyle;
-    BOOL _dashed;
-    BOOL _hasShadow;
-    UIBezierPath *_path;
-    BOOL _pathIsDot;
-    BOOL _pathIsPrestroked;
+    int  _brushStyle;
+    BOOL  _dashed;
+    BOOL  _hasShadow;
+    UIBezierPath * _path;
+    BOOL  _pathIsDot;
+    BOOL  _pathIsPrestroked;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,10 +18,10 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
-    float _rotationAngle;
-    UIColor *_strokeColor;
-    float _strokeWidth;
+    }  _rectangle;
+    float  _rotationAngle;
+    UIColor * _strokeColor;
+    float  _strokeWidth;
 }
 
 @property (getter=brushStyle) int brushStyle;

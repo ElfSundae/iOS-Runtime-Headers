@@ -3,13 +3,13 @@
  */
 
 @interface TSPDecoderReadCoordinator : TSPReadCoordinatorBase <TSPReadCoordinator> {
-    TSPObjectContext *_context;
-    NSObject<OS_dispatch_queue> *_dataQueue;
-    <TSPDecoder> *_decoder;
-    <TSPDecoderReadCoordinatorDelegate> *_delegate;
-    TSPFinalizeHandlerQueue *_finalizeHandlerQueue;
-    NSMapTable *_objects;
-    TSPComponent *_rootObjectComponent;
+    TSPObjectContext * _context;
+    NSObject<OS_dispatch_queue> * _dataQueue;
+    <TSPDecoder> * _decoder;
+    <TSPDecoderReadCoordinatorDelegate> * _delegate;
+    TSPFinalizeHandlerQueue * _finalizeHandlerQueue;
+    NSMapTable * _objects;
+    TSPComponent * _rootObjectComponent;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)baseObjectUUID;
+- (BOOL)canRetainObjectReferencedByWeakLazyReference;
 - (id)context;
 - (void)didReferenceExternalObject:(id)arg1 withIdentifier:(long long)arg2;
 - (void)didUpdateLazyReferenceDelegate:(id)arg1;
@@ -32,7 +33,6 @@
 - (BOOL)isCrossAppPaste;
 - (BOOL)isCrossDocumentPaste;
 - (BOOL)isExternalLazyReference:(id)arg1;
-- (BOOL)isFromCopy;
 - (BOOL)isReadingFromDocument;
 - (id)objectForIdentifier:(long long)arg1;
 - (unsigned char)packageIdentifier;
@@ -45,6 +45,7 @@
 - (void)reader:(id)arg1 didUnarchiveObject:(id)arg2;
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
+- (int)sourceType;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(BOOL)arg2;
 
 @end

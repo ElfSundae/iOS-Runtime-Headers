@@ -10,22 +10,22 @@
         unsigned long long fTimestampLast; 
         long long fTimestampLastDelta; 
         int fAccelerationLast[3]; 
-    } fAccelUnpacker;
-    unsigned long long fBlockOffset;
-    NSMutableArray *fCachedAccel;
-    CLSensorRecorderAccelMeta *fCurrentBlock;
-    unsigned long long fCurrentBlockDataIdentifier;
-    unsigned long long fCurrentBlockIdentifier;
-    double fCurrentBlockStartTime;
-    unsigned long long fCurrentBlockTimestamp;
-    unsigned long long fCurrentIdentifier;
-    NSObject<OS_xpc_object> *fDataBuffer;
-    unsigned long fDataBufferLength;
-    char *fDataBufferPtr;
-    NSArray *fMetaArray;
-    CMSensorRecorderInternal *fProxy;
-    unsigned long long fRetrievedDataBufferIdentifier;
-    unsigned long long fStartingIdentifier;
+    }  fAccelUnpacker;
+    unsigned long long  fBlockOffset;
+    NSMutableArray * fCachedAccel;
+    CLSensorRecorderAccelMeta * fCurrentBlock;
+    long long  fCurrentBlockDataIdentifier;
+    unsigned long long  fCurrentBlockIdentifier;
+    double  fCurrentBlockStartTime;
+    unsigned long long  fCurrentBlockTimestamp;
+    unsigned long long  fCurrentIdentifier;
+    NSObject<OS_xpc_object> * fDataBuffer;
+    unsigned long  fDataBufferLength;
+    char * fDataBufferPtr;
+    NSArray * fMetaArray;
+    CMSensorRecorderInternal * fProxy;
+    long long  fRetrievedDataBufferIdentifier;
+    unsigned long long  fStartingIdentifier;
 }
 
 - (id).cxx_construct;

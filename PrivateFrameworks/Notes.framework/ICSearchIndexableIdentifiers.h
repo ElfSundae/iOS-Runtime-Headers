@@ -3,7 +3,7 @@
  */
 
 @interface ICSearchIndexableIdentifiers : NSObject <ICPropertyListSerializable, NSCopying, NSMutableCopying> {
-    NSOrderedSet *_identifiers;
+    NSOrderedSet * _identifiers;
 }
 
 @property (nonatomic, readonly) unsigned int count;

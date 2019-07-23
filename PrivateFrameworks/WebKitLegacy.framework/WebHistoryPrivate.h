@@ -7,13 +7,13 @@
         struct __compressed_pair<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray> > > *, std::__1::default_delete<WTF::HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray> > > > > { 
             struct HashMap<long long, WTF::RetainPtr<NSMutableArray>, WTF::IntHash<unsigned long long>, WTF::HashTraits<long long>, WTF::HashTraits<WTF::RetainPtr<NSMutableArray> > > {} *__first_; 
         } __ptr_; 
-    } _entriesByDate;
-    NSMutableDictionary *_entriesByURL;
-    NSMutableArray *_orderedLastVisitedDays;
-    int ageInDaysLimit;
-    BOOL ageInDaysLimitSet;
-    int itemLimit;
-    BOOL itemLimitSet;
+    }  _entriesByDate;
+    NSMutableDictionary * _entriesByURL;
+    NSMutableArray * _orderedLastVisitedDays;
+    int  ageInDaysLimit;
+    BOOL  ageInDaysLimitSet;
+    int  itemLimit;
+    BOOL  itemLimitSet;
 }
 
 + (void)initialize;
@@ -29,7 +29,6 @@
 - (BOOL)containsURL:(id)arg1;
 - (id)data;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)findKey:(long long*)arg1 forDay:(double)arg2;
 - (int)historyAgeInDaysLimit;
 - (int)historyItemLimit;

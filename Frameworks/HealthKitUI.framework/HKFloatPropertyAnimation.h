@@ -3,9 +3,9 @@
  */
 
 @interface HKFloatPropertyAnimation : HKAnimatableObjectPropertyAnimation {
-    float _currentValue;
-    float _endValue;
-    float _startValue;
+    float  _currentValue;
+    float  _endValue;
+    float  _startValue;
 }
 
 @property (nonatomic, readonly) float currentValue;

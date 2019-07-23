@@ -6,10 +6,10 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } mEndPoint;
-    BOOL mIsFilled;
-    GQDBezierPath *mPath;
-    double mScale;
+    }  mEndPoint;
+    BOOL  mIsFilled;
+    GQDBezierPath * mPath;
+    double  mScale;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,21 +3,20 @@
  */
 
 @interface _CDSystemMonitor : NSObject {
-    unsigned int _chargingState;
-    BOOL _inBatterySaverMode;
-    unsigned int _memState;
-    NSString *_powerSource;
-    NSObject<OS_dispatch_queue> *_queue;
-    CDContextStore *_store;
-    unsigned int _thermalState;
-    BOOL _userInactive;
-    NSObject<OS_dispatch_source> *backlightChangeDispatch;
-    int backlightMonitorToken;
-    BOOL backlightTimerDispatched;
-    NSObject<OS_dispatch_source> *memPressureMonitor;
-    NSObject<OS_dispatch_source> *psChangeDispatch;
-    BOOL psChangeTimerDispatched;
-    NSMutableArray *registrations;
+    unsigned int  _chargingState;
+    BOOL  _inBatterySaverMode;
+    unsigned int  _memState;
+    NSString * _powerSource;
+    NSObject<OS_dispatch_queue> * _queue;
+    unsigned int  _thermalState;
+    BOOL  _userInactive;
+    NSObject<OS_dispatch_source> * backlightChangeDispatch;
+    int  backlightMonitorToken;
+    BOOL  backlightTimerDispatched;
+    NSObject<OS_dispatch_source> * memPressureMonitor;
+    NSObject<OS_dispatch_source> * psChangeDispatch;
+    BOOL  psChangeTimerDispatched;
+    NSMutableArray * registrations;
 }
 
 @property (nonatomic) unsigned int chargingState;
@@ -44,7 +43,6 @@
 - (void)notifyPsChange;
 - (id)powerSource;
 - (void)registerForNotifications;
-- (void)registerForPredicate:(id)arg1 withHandler:(id /* block */)arg2;
 - (id)registerHandler:(id /* block */)arg1 onQueue:(id)arg2;
 - (void)sendNotification:(unsigned int)arg1;
 - (void)setChargingState:(unsigned int)arg1;

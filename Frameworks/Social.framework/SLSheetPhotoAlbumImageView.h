@@ -3,13 +3,13 @@
  */
 
 @interface SLSheetPhotoAlbumImageView : SLSheetImagePreviewView {
-    BOOL _allAttachmentsAreImages;
-    CALayer *_frameLayer;
-    NSMutableArray *_frameViews;
-    CALayer *_glossLayer;
-    UILabel *_imageCountLabel;
-    int _imageQuantity;
-    int _numPreviewImagesAdded;
+    BOOL  _allAttachmentsAreImages;
+    CALayer * _frameLayer;
+    NSMutableArray * _frameViews;
+    CALayer * _glossLayer;
+    UILabel * _imageCountLabel;
+    int  _imageQuantity;
+    int  _numPreviewImagesAdded;
 }
 
 + (unsigned int)displayedFrameMaximum;

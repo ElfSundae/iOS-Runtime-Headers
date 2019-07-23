@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
  */
 
-@interface FIUIBadge : FIUIAnimatableObject {
+@interface FIUIBadge : HKAnimatableObject {
     struct CGPoint { 
         float x; 
         float y; 
-    } _position;
-    float _rotationX;
-    float _rotationY;
+    }  _position;
+    float  _rotationX;
+    float  _rotationY;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } position;

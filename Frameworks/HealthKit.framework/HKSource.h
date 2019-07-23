@@ -3,11 +3,11 @@
  */
 
 @interface HKSource : NSObject <HDCoding, NSCopying, NSSecureCoding> {
-    NSString *_bundleIdentifier;
-    BOOL _localDevice;
-    NSString *_name;
-    unsigned long long _options;
-    NSString *_productType;
+    NSString * _bundleIdentifier;
+    BOOL  _localDevice;
+    NSString * _name;
+    unsigned long long  _options;
+    NSString * _productType;
 }
 
 @property (readonly) NSString *bundleIdentifier;
@@ -33,6 +33,7 @@
 + (BOOL)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (BOOL)_hasFirstPartyBundleID;
 - (id)_init;
 - (BOOL)_isAppleWatch;
 - (BOOL)_isApplication;

@@ -3,9 +3,9 @@
  */
 
 @interface _UIPageViewControllerContentView : UIView {
-    UIPageControl *_pageControl;
-    UIPageViewController *_pageViewController;
-    _UIQueuingScrollView *_scrollView;
+    UIPageControl * _pageControl;
+    UIPageViewController * _pageViewController;
+    _UIQueuingScrollView * _scrollView;
 }
 
 @property (nonatomic, readonly) UIPageControl *pageControl;

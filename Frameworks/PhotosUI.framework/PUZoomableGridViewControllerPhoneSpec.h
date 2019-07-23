@@ -13,7 +13,6 @@
 - (void)configureCollectionsLevelGridLayout:(id)arg1 forWidth:(float)arg2;
 - (void)configureFullMomentsLevelGridLayout:(id)arg1 forWidth:(float)arg2;
 - (void)configureYearsLevelGridLayout:(id)arg1 forWidth:(float)arg2;
-- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })fullMomentsLevelSectionHeaderContentInset;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })fullMomentsLevelSectionHeaderHighlightInset;
 - (struct CGSize { float x1; float x2; })fullMomentsLevelThumbnailSize;
 - (float)fullMomentsSectionHeaderHeight;

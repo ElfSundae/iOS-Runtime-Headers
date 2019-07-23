@@ -3,23 +3,24 @@
  */
 
 @interface PKMerchant : NSObject <NSSecureCoding> {
-    NSString *_displayName;
-    NSString *_industryCategory;
-    int _industryCode;
-    double _locationLatitude;
-    double _locationLongitude;
-    unsigned long long _mapsIdentifier;
-    NSString *_mapsName;
-    NSString *_name;
-    NSString *_phoneNumber;
-    NSString *_rawName;
-    int _resultProviderIdentifier;
-    NSURL *_url;
+    NSString * _displayName;
+    NSString * _industryCategory;
+    int  _industryCode;
+    double  _locationLatitude;
+    double  _locationLongitude;
+    unsigned long long  _mapsIdentifier;
+    NSString * _mapsName;
+    NSString * _name;
+    NSString * _phoneNumber;
+    NSString * _rawName;
+    int  _resultProviderIdentifier;
+    NSURL * _url;
 }
 
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, copy) NSString *industryCategory;
 @property (nonatomic) int industryCode;
+@property (nonatomic, readonly) BOOL isValid;
 @property (nonatomic, copy) CLLocation *location;
 @property (nonatomic) double locationLatitude;
 @property (nonatomic) double locationLongitude;
@@ -33,8 +34,8 @@
 
 + (BOOL)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (void)_regenerateDisplayName;
-- (void)dealloc;
 - (id)description;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMerchant:(id)arg1;
+- (BOOL)isValid;
 - (id)location;
 - (double)locationLatitude;
 - (double)locationLongitude;

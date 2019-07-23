@@ -3,9 +3,9 @@
  */
 
 @interface _UIReflectingView : UIView {
-    UIView *_containerView;
-    UIView *_gradientView;
-    float _reflectionAlpha;
+    UIView * _containerView;
+    UIView * _gradientView;
+    float  _reflectionAlpha;
 }
 
 @property (nonatomic, readonly, retain) UIView *containerView;

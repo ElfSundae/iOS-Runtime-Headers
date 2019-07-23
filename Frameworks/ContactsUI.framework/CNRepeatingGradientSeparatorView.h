@@ -3,9 +3,9 @@
  */
 
 @interface CNRepeatingGradientSeparatorView : UIView {
-    UIColor *_endColor;
-    int _lineCount;
-    UIColor *_startColor;
+    UIColor * _endColor;
+    int  _lineCount;
+    UIColor * _startColor;
 }
 
 @property (nonatomic, retain) UIColor *endColor;

@@ -3,9 +3,9 @@
  */
 
 @interface NRClientInfo : NSObject <NSCopying, NSSecureCoding> {
-    NSArray *_entitlements;
-    unsigned long long _lastIndexCheckin;
-    NSString *_processName;
+    NSArray * _entitlements;
+    unsigned long long  _lastIndexCheckin;
+    NSString * _processName;
 }
 
 @property (nonatomic, retain) NSArray *entitlements;

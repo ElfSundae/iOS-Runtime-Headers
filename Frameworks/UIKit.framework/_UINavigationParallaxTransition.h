@@ -3,19 +3,20 @@
  */
 
 @interface _UINavigationParallaxTransition : NSObject <UIViewControllerAnimatedTransitioningEx, _UIBasicAnimationFactory> {
-    BOOL __shouldReverseLayoutDirection;
-    _UIParallaxDimmingView *_borderDimmingView;
-    UIView *_clipUnderView;
-    BOOL _clipUnderlapWhileTransitioning;
-    UIView *_containerFromView;
-    UIView *_containerToView;
-    _UIParallaxDimmingView *_contentDimmingView;
-    BOOL _interactionAborted;
-    _UINavigationInteractiveTransitionBase *_interactionController;
-    int _operation;
-    <UIViewControllerContextTransitioning> *_transitionContext;
-    float _transitionGap;
-    int _transitionStyle;
+    BOOL  __shouldReverseLayoutDirection;
+    _UIParallaxDimmingView * _borderDimmingView;
+    UIView * _clipUnderView;
+    BOOL  _clipUnderlapWhileTransitioning;
+    UIView * _containerFromView;
+    UIView * _containerToView;
+    _UIParallaxDimmingView * _contentDimmingView;
+    NSUUID * _currentRunningAnimationsUUID;
+    BOOL  _interactionAborted;
+    _UINavigationInteractiveTransitionBase * _interactionController;
+    int  _operation;
+    <UIViewControllerContextTransitioning> * _transitionContext;
+    float  _transitionGap;
+    int  _transitionStyle;
 }
 
 @property (setter=_setShouldReverseLayoutDirection:, nonatomic) BOOL _shouldReverseLayoutDirection;
@@ -40,6 +41,7 @@
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_setShouldReverseLayoutDirection:(BOOL)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
+- (void)_stopTransitionImmediately;
 - (id)_timingFunctionForAnimation;
 - (void)animateKeyboard:(id)arg1;
 - (void)animateTransition:(id)arg1;

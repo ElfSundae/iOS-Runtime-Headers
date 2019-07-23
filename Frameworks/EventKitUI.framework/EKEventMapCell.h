@@ -3,8 +3,8 @@
  */
 
 @interface EKEventMapCell : UITableViewCell {
-    EKEventMapDetailItem *_detailItem;
-    UIView *_mapView;
+    EKEventMapDetailItem * _detailItem;
+    UIView * _mapView;
 }
 
 @property (nonatomic) EKEventMapDetailItem *detailItem;

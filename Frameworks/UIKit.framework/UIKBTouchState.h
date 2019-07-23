@@ -6,13 +6,13 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _locationInWindow;
-    unsigned int _pathIndex;
-    float _pathMajorRadius;
-    int _phase;
-    double _timestamp;
-    NSUUID *_touchUUID;
-    UIWindow *_window;
+    }  _locationInWindow;
+    unsigned int  _pathIndex;
+    float  _pathMajorRadius;
+    int  _phase;
+    double  _timestamp;
+    NSUUID * _touchUUID;
+    UIWindow * _window;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } locationInWindow;

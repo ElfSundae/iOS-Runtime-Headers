@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/CoreRecognition.framework/CoreRecognition
  */
 
-@interface CRTextFeature : NSObject {
+@interface CRTextFeature : NSObject <NSCoding> {
     struct CGPoint { 
         float x; 
         float y; 
-    } _bottomLeft;
+    }  _bottomLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } _bottomRight;
+    }  _bottomRight;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -20,21 +20,23 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    NSArray *_subFeatures;
+    }  _bounds;
+    BOOL  _shouldExpandToFullWidth;
+    NSArray * _subFeatures;
     struct CGPoint { 
         float x; 
         float y; 
-    } _topLeft;
+    }  _topLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } _topRight;
+    }  _topRight;
 }
 
 @property struct CGPoint { float x1; float x2; } bottomLeft;
 @property struct CGPoint { float x1; float x2; } bottomRight;
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;
+@property BOOL shouldExpandToFullWidth;
 @property (retain) NSArray *subFeatures;
 @property struct CGPoint { float x1; float x2; } topLeft;
 @property struct CGPoint { float x1; float x2; } topRight;
@@ -47,13 +49,17 @@
 - (struct CGPoint { float x1; float x2; })bottomLeft;
 - (struct CGPoint { float x1; float x2; })bottomRight;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })bounds;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCITextFeature:(id)arg1 inImage:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (void)setBottomLeft:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setBottomRight:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)setShouldExpandToFullWidth:(BOOL)arg1;
 - (void)setSubFeatures:(id)arg1;
 - (void)setTopLeft:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setTopRight:(struct CGPoint { float x1; float x2; })arg1;
+- (BOOL)shouldExpandToFullWidth;
 - (float)slopeOfSubFeatures;
 - (id)subFeatures;
 - (id)textFeatureScaledToImage:(id)arg1;

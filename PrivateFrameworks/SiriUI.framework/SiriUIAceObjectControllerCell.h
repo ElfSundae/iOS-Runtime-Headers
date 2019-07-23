@@ -2,18 +2,22 @@
    Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
  */
 
-@interface SiriUIAceObjectControllerCell : SiriUIClearBackgroundCell {
-    SiriUIAceObjectViewController *_aceViewController;
-    UIView *_animationView;
-    int _insertionAnimationType;
-    UIView *_replacedView;
-    int _replacementAnimationType;
+@interface SiriUIAceObjectControllerCell : SiriUIClearBackgroundCell <CAAnimationDelegate> {
+    SiriUIAceObjectViewController * _aceViewController;
+    UIView * _animationView;
+    int  _insertionAnimationType;
+    UIView * _replacedView;
+    int  _replacementAnimationType;
 }
 
 @property (nonatomic, retain) SiriUIAceObjectViewController *aceViewController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic) int insertionAnimationType;
 @property (nonatomic, retain) UIView *replacedView;
 @property (nonatomic) int replacementAnimationType;
+@property (readonly) Class superclass;
 
 + (id)reuseIdentifier;
 

@@ -3,10 +3,11 @@
  */
 
 @interface AKCodeEntryView : UIView <UIKeyInput> {
-    NSArray *_activeConstraints;
-    NSArray *_generatorFields;
-    NSMutableString *_stringValue;
-    UITapGestureRecognizer *_tapGestureRecognizer;
+    NSArray * _activeConstraints;
+    NSArray * _generatorFields;
+    BOOL  _passcodeFieldDisabled;
+    NSMutableString * _stringValue;
+    UITapGestureRecognizer * _tapGestureRecognizer;
 }
 
 @property (nonatomic, retain) NSArray *activeConstraints;
@@ -17,6 +18,7 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic, readonly) UILabel *firstGeneratorField;
 @property (nonatomic, retain) NSArray *generatorFields;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
 @property (nonatomic) int keyboardAppearance;
 @property (nonatomic) int keyboardType;
@@ -25,6 +27,7 @@
 @property (nonatomic) int spellCheckingType;
 @property (nonatomic, copy) NSString *stringValue;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *textContentType;
 
 - (void).cxx_destruct;
 - (void)_syncStringValueToLabels;
@@ -46,6 +49,7 @@
 - (void)passcodeFieldTapped:(id)arg1;
 - (void)setActiveConstraints:(id)arg1;
 - (void)setGeneratorFields:(id)arg1;
+- (void)setPasscodeFieldDisabled:(BOOL)arg1;
 - (void)setStringValue:(id)arg1;
 - (id)stringValue;
 - (void)updateConstraints;

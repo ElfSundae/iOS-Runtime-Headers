@@ -3,8 +3,8 @@
  */
 
 @interface EKUIBlurryView : UIView {
-    BOOL _hasActivated;
-    BOOL _shouldRasterizeForTransition;
+    BOOL  _hasActivated;
+    BOOL  _shouldRasterizeForTransition;
 }
 
 @property float blurRadius;

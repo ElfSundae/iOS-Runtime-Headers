@@ -3,15 +3,15 @@
  */
 
 @interface HDAppSubscriptionManager : NSObject <HDDatabaseProtectedDataObserver> {
-    HDAppAssertionManager *_appAssertionManager;
-    int _backgroundAppRefreshNotifyToken;
-    HDDaemon *_healthDaemon;
-    NSObject<OS_dispatch_queue> *_launchQueue;
-    NSMutableDictionary *_launchTimerLaunchTimes;
-    NSObject<OS_dispatch_queue> *_launchTimerQueue;
-    NSMutableDictionary *_launchTimers;
-    NSMutableSet *_pendingTypeCodes;
-    BOOL _shouldScheduleLaunches;
+    HDAppAssertionManager * _appAssertionManager;
+    int  _backgroundAppRefreshNotifyToken;
+    HDDaemon * _healthDaemon;
+    NSObject<OS_dispatch_queue> * _launchQueue;
+    NSMutableDictionary * _launchTimerLaunchTimes;
+    NSObject<OS_dispatch_queue> * _launchTimerQueue;
+    NSMutableDictionary * _launchTimers;
+    NSMutableSet * _pendingTypeCodes;
+    BOOL  _shouldScheduleLaunches;
 }
 
 @property (nonatomic, retain) HDAppAssertionManager *appAssertionManager;

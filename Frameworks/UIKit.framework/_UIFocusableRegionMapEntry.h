@@ -3,13 +3,13 @@
  */
 
 @interface _UIFocusableRegionMapEntry : _UIFocusRegionMapEntry {
-    BOOL _focusCandidate;
-    <_UIFocusRegion> *_focusableRegion;
-    BOOL _isFocusGuide;
+    BOOL  _focusCandidate;
+    <_UILegacyFocusRegion> * _focusableRegion;
+    BOOL  _isFocusGuide;
 }
 
 @property (getter=isFocusCandidate, nonatomic) BOOL focusCandidate;
-@property (nonatomic) <_UIFocusRegion> *focusableRegion;
+@property (nonatomic) <_UILegacyFocusRegion> *focusableRegion;
 @property (nonatomic) BOOL isFocusGuide;
 
 - (void).cxx_destruct;

@@ -3,15 +3,15 @@
  */
 
 @interface CMKTimelapseController : NSObject <CMKStillImageCaptureRequestDelegate, UIAlertViewDelegate> {
-    BOOL __backendRecoveryNeeded;
-    NSObject<OS_dispatch_source> *__captureTimer;
-    CMKLowDiskSpaceAlertView *__diskSpaceAlert;
-    BOOL __ignoringTimerCallbacksForTearDown;
-    BOOL __ignoringTimerCallbacksWaitingForCaptureResponse;
-    NSCountedSet *__inFlightTimelapseUUIDs;
-    NSMutableSet *__pendingCompletedStates;
-    BOOL __previewStarted;
-    CMKTimelapseState *__state;
+    BOOL  __backendRecoveryNeeded;
+    NSObject<OS_dispatch_source> * __captureTimer;
+    CMKLowDiskSpaceAlertView * __diskSpaceAlert;
+    BOOL  __ignoringTimerCallbacksForTearDown;
+    BOOL  __ignoringTimerCallbacksWaitingForCaptureResponse;
+    NSCountedSet * __inFlightTimelapseUUIDs;
+    NSMutableSet * __pendingCompletedStates;
+    BOOL  __previewStarted;
+    CMKTimelapseState * __state;
 }
 
 @property (setter=_setBackendRecoveryNeeded:, nonatomic) BOOL _backendRecoveryNeeded;

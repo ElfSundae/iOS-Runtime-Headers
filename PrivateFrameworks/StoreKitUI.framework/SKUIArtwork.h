@@ -3,14 +3,13 @@
  */
 
 @interface SKUIArtwork : NSObject <SKUICacheCoding> {
-    int _height;
-    NSURL *_url;
-    NSString *_urlString;
-    int _width;
+    int  _height;
+    NSURL * _url;
+    NSString * _urlString;
+    int  _width;
 }
 
 @property (nonatomic, readonly) NSURL *URL;
-@property (getter=_lookupDictionary, nonatomic, readonly) NSDictionary *_lookupDictionary;
 @property (nonatomic, readonly) NSMutableDictionary *cacheRepresentation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

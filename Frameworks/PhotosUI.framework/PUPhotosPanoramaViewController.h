@@ -3,8 +3,8 @@
  */
 
 @interface PUPhotosPanoramaViewController : PUPhotosGridViewController {
-    PUPhotosPanoramaViewControllerSpec *_panoramaSpec;
-    PHAssetCollection *_userPanoAlbum;
+    PUPhotosPanoramaViewControllerSpec * _panoramaSpec;
+    PHAssetCollection * _userPanoAlbum;
 }
 
 @property (nonatomic, readonly) PUSectionedGridLayout *mainGridLayout;

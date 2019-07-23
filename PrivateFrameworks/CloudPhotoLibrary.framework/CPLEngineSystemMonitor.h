@@ -3,10 +3,10 @@
  */
 
 @interface CPLEngineSystemMonitor : NSObject <CPLEngineComponent, CPLNetworkWatcherDelegate> {
-    CPLEngineLibrary *_engineLibrary;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSURL *_volumeURL;
-    CPLNetworkWatcher *_watcher;
+    CPLEngineLibrary * _engineLibrary;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSURL * _volumeURL;
+    CPLNetworkWatcher * _watcher;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetWriterUnknownHelper : AVAssetWriterHelper {
-    short _alternateGroupID;
+    short  _alternateGroupID;
 }
 
 - (BOOL)_canAddInput:(id)arg1 exceptionReason:(id*)arg2;

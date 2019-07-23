@@ -19,7 +19,6 @@
 - (id)description;
 - (id)descriptionWithLocale:(id)arg1;
 - (double)doubleValue;
-- (void)finalize;
 - (float)floatValue;
 - (void)getValue:(void*)arg1;
 - (unsigned int)hash;

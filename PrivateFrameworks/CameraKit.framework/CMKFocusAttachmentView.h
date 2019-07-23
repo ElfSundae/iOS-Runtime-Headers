@@ -3,13 +3,13 @@
  */
 
 @interface CMKFocusAttachmentView : UIView {
-    UILabel *__label;
+    UILabel * __label;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _textInsets;
+    }  _textInsets;
 }
 
 @property (nonatomic, retain) UILabel *_label;

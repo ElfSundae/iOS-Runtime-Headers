@@ -3,18 +3,18 @@
  */
 
 @interface FBSceneHostWrapperView : UIView <BSDescriptionProviding, FBSceneHostView, FBSceneLayerHostContainerViewDataSource, FBSceneLayerManagerObserver, _FBSceneGeometryObserver> {
-    unsigned int _appearanceStyle;
-    UIColor *_backgroundColorWhileHosting;
-    UIColor *_backgroundColorWhileNotHosting;
-    <FBSceneHostViewDelegate> *_delegate;
-    NSMutableSet *_hiddenLayers;
-    FBSceneLayerHostContainerView *_hostContainerView;
-    unsigned int _hostedLayerTypes;
-    FBSceneLayerManager *_layerManager;
-    FBSceneHostManager *_manager;
-    NSString *_requester;
-    FBScene *_scene;
-    BOOL _usingDefaultLayerTypes;
+    unsigned int  _appearanceStyle;
+    UIColor * _backgroundColorWhileHosting;
+    UIColor * _backgroundColorWhileNotHosting;
+    <FBSceneHostViewDelegate> * _delegate;
+    NSMutableSet * _hiddenLayers;
+    FBSceneLayerHostContainerView * _hostContainerView;
+    unsigned int  _hostedLayerTypes;
+    FBSceneLayerManager * _layerManager;
+    FBSceneHostManager * _manager;
+    NSString * _requester;
+    FBScene * _scene;
+    BOOL  _usingDefaultLayerTypes;
 }
 
 @property (nonatomic) unsigned int appearanceStyle;
@@ -36,6 +36,7 @@
 @property (nonatomic, readonly, retain) FBScene *scene;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_backgroundColorWhileHosting;
 - (id)_backgroundColorWhileNotHosting;
 - (id)_hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;

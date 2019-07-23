@@ -3,8 +3,8 @@
  */
 
 @interface PGLayerHostView : UIView {
-    _UIRemoteView *_remoteView;
-    BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
+    _UIRemoteView * _remoteView;
+    BKSTouchDeliveryPolicyAssertion * _touchDeliveryPolicyAssertion;
 }
 
 @property (nonatomic, retain) PGHostedWindowHostingHandle *hostedWindowHostingHandle;

@@ -3,19 +3,19 @@
  */
 
 @interface MusicContextualActionsHeaderLockupView : MusicEntityHorizontalLockupView {
-    UIImageView *_disclosureImageView;
-    float _downloadProgress;
-    MusicDownloadProgressButton *_downloadProgressButton;
-    int _downloadProgressType;
-    MusicContextualActionsHeaderBlendingHighlightView *_highlightView;
-    BOOL _highlighted;
-    UIButton *_likeButton;
-    unsigned int _likeState;
-    UIButton *_radioButton;
-    UIButton *_shareButton;
-    BOOL _supportsRadio;
-    BOOL _supportsSelection;
-    BOOL _supportsSharing;
+    UIImageView * _disclosureImageView;
+    float  _downloadProgress;
+    MusicDownloadProgressButton * _downloadProgressButton;
+    int  _downloadProgressType;
+    MusicContextualActionsHeaderBlendingHighlightView * _highlightView;
+    BOOL  _highlighted;
+    UIButton * _likeButton;
+    unsigned int  _likeState;
+    UIButton * _radioButton;
+    UIButton * _shareButton;
+    BOOL  _supportsRadio;
+    BOOL  _supportsSelection;
+    BOOL  _supportsSharing;
 }
 
 @property (nonatomic) <MusicContextualActionsHeaderLockupViewDelegate> *delegate;
@@ -32,7 +32,6 @@
 - (void)_configureArtworkCatalog:(id)arg1;
 - (void)_downloadProgressButtonAction:(id)arg1;
 - (void)_likeButtonAction:(id)arg1;
-- (void)_radioButtonAction:(id)arg1;
 - (void)_setHighlighted:(BOOL)arg1;
 - (void)_shareButtonAction:(id)arg1;
 - (id)_touchForEvent:(id)arg1;

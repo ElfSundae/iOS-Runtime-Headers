@@ -3,18 +3,18 @@
  */
 
 @interface PUPhotosGridViewControllerSpec : NSObject {
-    PUAlbumPickerViewControllerSpec *_albumPickerViewControllerSpec;
+    PUAlbumPickerViewControllerSpec * _albumPickerViewControllerSpec;
     struct CGSize { 
         float width; 
         float height; 
-    } _baseInterItemSpacing;
-    BOOL _canDisplayEditActionsInNavigationBar;
-    BOOL _canDisplayOptionsInPopover;
-    BOOL _canDisplaySlideshowButton;
-    int _layoutVariant;
-    float _maxSearchBarWidth;
-    PUPhotosPickerViewControllerSpec *_photosPickerViewControllerSpec;
-    BOOL _usesStackPopTransition;
+    }  _baseInterItemSpacing;
+    BOOL  _canDisplayEditActionsInNavigationBar;
+    BOOL  _canDisplayOptionsInPopover;
+    BOOL  _canDisplaySlideshowButton;
+    int  _layoutVariant;
+    float  _maxSearchBarWidth;
+    PUPhotosPickerViewControllerSpec * _photosPickerViewControllerSpec;
+    BOOL  _usesStackPopTransition;
 }
 
 @property (nonatomic, readonly) PUAlbumPickerViewControllerSpec *albumPickerViewControllerSpec;
@@ -60,7 +60,6 @@
 - (id)init;
 - (int)layoutVariant;
 - (float)maxSearchBarWidth;
-- (id)photoBrowserSpec;
 - (id)photosPickerViewControllerSpec;
 - (float)sectionHeaderHeight;
 - (int)sectionHeaderStyle;

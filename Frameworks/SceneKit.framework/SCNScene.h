@@ -3,20 +3,22 @@
  */
 
 @interface SCNScene : NSObject <NSSecureCoding> {
-    SCNAuthoringEnvironment *_authoringEnvironment;
-    SCNMaterialProperty *_background;
-    id _fogColor;
-    float _fogDensityExponent;
-    float _fogEndDistance;
-    float _fogStartDistance;
-    double _lastEvalTime;
-    BOOL _paused;
-    BOOL _pausedForEditing;
-    SCNPhysicsWorld *_physicsWorld;
-    SCNNode *_rootNode;
-    struct __C3DScene { } *_scene;
-    SCNSceneSource *_sceneSource;
-    NSMutableDictionary *_userAttributes;
+    SCNAuthoringEnvironment * _authoringEnvironment;
+    SCNMaterialProperty * _background;
+    SCNMaterialProperty * _environment;
+    id  _fogColor;
+    float  _fogDensityExponent;
+    float  _fogEndDistance;
+    float  _fogStartDistance;
+    double  _lastEvalTime;
+    SCNNode * _layerRootNode;
+    BOOL  _paused;
+    BOOL  _pausedForEditing;
+    SCNPhysicsWorld * _physicsWorld;
+    SCNNode * _rootNode;
+    struct __C3DScene { } * _scene;
+    SCNSceneSource * _sceneSource;
+    NSMutableDictionary * _userAttributes;
 }
 
 @property (nonatomic, readonly) SCNMaterialProperty *background;
@@ -24,6 +26,7 @@
 @property (nonatomic) float fogDensityExponent;
 @property (nonatomic) float fogEndDistance;
 @property (nonatomic) float fogStartDistance;
+@property (nonatomic, readonly) SCNMaterialProperty *lightingEnvironment;
 @property (getter=isPaused, nonatomic) BOOL paused;
 @property (nonatomic, readonly) SCNPhysicsWorld *physicsWorld;
 @property (nonatomic, readonly) SCNNode *rootNode;
@@ -46,7 +49,7 @@
 + (id)supportedFileUTIsForImport;
 + (BOOL)supportsSecureCoding;
 
-- (void*)__CFObject;
+- (const void*)__CFObject;
 - (void)_customDecodingOfSCNScene:(id)arg1;
 - (void)_customEncodingOfSCNScene:(id)arg1;
 - (void)_didDecodeSCNScene:(id)arg1;
@@ -80,6 +83,7 @@
 - (BOOL)isPausedForEditing;
 - (BOOL)isPausedOrPausedByInheritance;
 - (double)lastEvalTime;
+- (id)lightingEnvironment;
 - (void)lock;
 - (id)particleSystems;
 - (id)physicsWorld;
@@ -88,6 +92,7 @@
 - (void)removeParticleSystem:(id)arg1;
 - (id)root;
 - (id)rootNode;
+- (id)rootNodeForLayer:(int)arg1;
 - (id)scene;
 - (struct __C3DScene { }*)sceneRef;
 - (id)sceneSource;
@@ -103,6 +108,7 @@
 - (void)setPausedForEditing:(BOOL)arg1;
 - (void)setPlaybackSpeed:(float)arg1;
 - (void)setRootNode:(id)arg1;
+- (void)setRootNode:(id)arg1 forLayer:(int)arg2;
 - (void)setSceneSource:(id)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setUpAxis:(struct SCNVector3 { float x1; float x2; float x3; })arg1;

@@ -3,13 +3,13 @@
  */
 
 @interface UIKBBackgroundView : UIKBSplitImageView <UIKBCacheableView> {
-    BOOL _centerFilled;
-    NSObject *_geometryCacheKey;
-    BOOL _hasCandidateKeys;
-    UITextInputTraits *_inputTraits;
-    BOOL _isSplit;
-    UIKBTree *_keyplane;
-    UIKBRenderConfig *_renderConfig;
+    BOOL  _centerFilled;
+    NSObject * _geometryCacheKey;
+    BOOL  _hasCandidateKeys;
+    UITextInputTraits * _inputTraits;
+    BOOL  _isSplit;
+    UIKBTree * _keyplane;
+    UIKBRenderConfig * _renderConfig;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _splitLeftCacheRect;
+    }  _splitLeftCacheRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,7 +29,7 @@
             float width; 
             float height; 
         } size; 
-    } _splitLeftRect;
+    }  _splitLeftRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -39,7 +39,7 @@
             float width; 
             float height; 
         } size; 
-    } _splitRightCacheRect;
+    }  _splitRightCacheRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -49,9 +49,9 @@
             float width; 
             float height; 
         } size; 
-    } _splitRightRect;
-    int _topCorners;
-    int _visualStyle;
+    }  _splitRightRect;
+    int  _topCorners;
+    int  _visualStyle;
 }
 
 @property (nonatomic, readonly) BOOL cacheDeferable;

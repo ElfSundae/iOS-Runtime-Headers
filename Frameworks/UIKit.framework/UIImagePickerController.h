@@ -12,19 +12,19 @@
             float width; 
             float height; 
         } size; 
-    } _cropRect;
-    id _image;
+    }  _cropRect;
+    id  _image;
     struct { 
         unsigned int visible : 1; 
         unsigned int isCleaningUp : 1; 
         unsigned int savingOptions : 3; 
         unsigned int didRevertStatusBar : 1; 
-    } _imagePickerFlags;
-    NSArray *_mediaTypes;
-    BOOL _previousStatusBarHidden;
-    int _previousStatusBarStyle;
-    NSMutableDictionary *_properties;
-    int _sourceType;
+    }  _imagePickerFlags;
+    NSArray * _mediaTypes;
+    BOOL  _previousStatusBarHidden;
+    int  _previousStatusBarStyle;
+    NSMutableDictionary * _properties;
+    int  _sourceType;
 }
 
 @property (nonatomic) BOOL allowsEditing;
@@ -122,9 +122,5 @@
 // Image: /System/Library/PrivateFrameworks/AppleAccountUI.framework/AppleAccountUI
 
 + (id)aaui_fixedCropRect:(id)arg1 forOriginalImage:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
-
-- (BOOL)ckCanDismissWhenSuspending;
 
 @end

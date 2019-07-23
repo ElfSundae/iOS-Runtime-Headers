@@ -3,14 +3,14 @@
  */
 
 @interface CSVMapper : CMMapper {
-    CMArchiveManager *mArchiver;
-    unsigned int mColumnCount;
-    NSString *mFileName;
+    CMArchiveManager * mArchiver;
+    unsigned int  mColumnCount;
+    NSString * mFileName;
     struct CGSize { 
         float width; 
         float height; 
-    } mPageSize;
-    NSMutableArray *mRows;
+    }  mPageSize;
+    NSMutableArray * mRows;
 }
 
 - (void)dealloc;

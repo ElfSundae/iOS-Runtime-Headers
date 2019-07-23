@@ -3,9 +3,9 @@
  */
 
 @interface TSCHChartNonRep : NSObject <TSCHSupportsRendering> {
-    TSCHChartInfo *mChartInfo;
-    TSCHChartLayout *mChartLayout;
-    NSArray *mRenderers;
+    TSCHChartInfo * mChartInfo;
+    TSCHChartLayout * mChartLayout;
+    NSArray * mRenderers;
 }
 
 @property (nonatomic, retain) TSCHChartInfo *chartInfo;

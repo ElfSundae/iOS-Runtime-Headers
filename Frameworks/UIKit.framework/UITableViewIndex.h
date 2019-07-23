@@ -3,27 +3,27 @@
  */
 
 @interface UITableViewIndex : UIControl {
-    float _bottomPadding;
+    float  _bottomPadding;
     struct CGSize { 
         float width; 
         float height; 
-    } _cachedSize;
+    }  _cachedSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _cachedSizeToFit;
-    NSArray *_entries;
-    UIFont *_font;
-    int _idiom;
-    UIColor *_indexBackgroundColor;
-    UIColor *_indexColor;
-    UIColor *_indexTrackingBackgroundColor;
-    BOOL _pastBottom;
-    BOOL _pastTop;
-    int _selectedSection;
-    NSArray *_titles;
-    float _topPadding;
-    float _verticalTextHeightEstimate;
+    }  _cachedSizeToFit;
+    NSArray * _entries;
+    UIFont * _font;
+    int  _idiom;
+    UIColor * _indexBackgroundColor;
+    UIColor * _indexColor;
+    UIColor * _indexTrackingBackgroundColor;
+    BOOL  _pastBottom;
+    BOOL  _pastTop;
+    int  _selectedSection;
+    NSArray * _titles;
+    float  _topPadding;
+    float  _verticalTextHeightEstimate;
 }
 
 @property (nonatomic, retain) UIFont *font;
@@ -45,8 +45,8 @@
 - (id)_fontForIdiom:(int)arg1;
 - (int)_idiom;
 - (float)_minLineSpacingForIdiom:(int)arg1;
-- (void)_selectSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (void)_setIdiom:(int)arg1;
+- (BOOL)_updateSectionForTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_visibleBoundsForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 stride:(float*)arg2;
 - (void)_willChangeToIdiom:(int)arg1 onScreen:(id)arg2;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

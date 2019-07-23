@@ -3,15 +3,15 @@
  */
 
 @interface SPProtoAudioFilePlayerStatus : PBCodable <NSCopying> {
-    long long _errorCode;
-    NSData *_errorDict;
-    NSString *_errorDomain;
+    long long  _errorCode;
+    NSData * _errorDict;
+    NSString * _errorDomain;
     struct { 
         unsigned int errorCode : 1; 
         unsigned int status : 1; 
-    } _has;
-    NSString *_identifier;
-    int _status;
+    }  _has;
+    NSString * _identifier;
+    int  _status;
 }
 
 @property (nonatomic) long long errorCode;

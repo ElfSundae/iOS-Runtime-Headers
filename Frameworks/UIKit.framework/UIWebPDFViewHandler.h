@@ -3,21 +3,21 @@
  */
 
 @interface UIWebPDFViewHandler : NSObject <UIDocumentPasswordViewDelegate, UIWebPDFViewDelegate, UIWebPDFViewPrivateDelegate, _UIRotatingAlertControllerDelegate, _UIWebDoubleTapDelegate, _UIWebRotationDelegate> {
-    UIColor *_backgroundColorForUnRenderedContent;
-    BOOL _cachedScrollViewShadowsState;
-    UIAlertView *_currentAlert;
-    BOOL _hideActivityIndicatorForUnRenderedContent;
-    BOOL _hidePageViewsUntilReadyToRender;
-    float _initialZoomScale;
-    WebPDFNSNumberFormatter *_labelViewFormatter;
-    NSDictionary *_linkActionInfo;
-    _UIRotatingAlertController *_linkActionSheet;
-    NSArray *_linkActions;
-    _UIHighlightView *_linkHighlightView;
-    UIWebPDFLabelView *_pageLabelView;
-    UIDocumentPasswordView *_passwordEntryView;
-    NSObject<UIWebPDFViewHandlerDelegate> *_pdfHandlerDelegate;
-    UIWebPDFView *_pdfView;
+    UIColor * _backgroundColorForUnRenderedContent;
+    BOOL  _cachedScrollViewShadowsState;
+    UIAlertView * _currentAlert;
+    BOOL  _hideActivityIndicatorForUnRenderedContent;
+    BOOL  _hidePageViewsUntilReadyToRender;
+    float  _initialZoomScale;
+    WebPDFNSNumberFormatter * _labelViewFormatter;
+    NSDictionary * _linkActionInfo;
+    _UIRotatingAlertController * _linkActionSheet;
+    NSArray * _linkActions;
+    _UIHighlightView * _linkHighlightView;
+    UIWebPDFLabelView * _pageLabelView;
+    UIDocumentPasswordView * _passwordEntryView;
+    NSObject<UIWebPDFViewHandlerDelegate> * _pdfHandlerDelegate;
+    UIWebPDFView * _pdfView;
     struct _PDFHistoryItem { 
         BOOL restorePending; 
         BOOL isInitialScale; 
@@ -26,7 +26,7 @@
             float x; 
             float y; 
         } contentOffset; 
-    } _pendingHistoryItemRestore;
+    }  _pendingHistoryItemRestore;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -36,22 +36,26 @@
             float width; 
             float height; 
         } size; 
-    } _rectOfInterest;
-    BOOL _rectOfInterestConsidersHeight;
-    BOOL _scalesPageToFit;
-    NSMapTable *_searchControllers;
-    BOOL _showPageLabels;
-    BOOL _showsShadowsForHTMLContent;
+    }  _rectOfInterest;
+    BOOL  _rectOfInterestConsidersHeight;
+    BOOL  _scalesPageToFit;
+    NSMapTable * _searchControllers;
+    BOOL  _showPageLabels;
+    BOOL  _showsShadowsForHTMLContent;
 }
 
 @property (nonatomic, retain) UIColor *backgroundColorForUnRenderedContent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UIView *frontView;
+@property (readonly) unsigned int hash;
 @property (nonatomic) BOOL hideActivityIndicatorForUnRenderedContent;
 @property (nonatomic) BOOL hidePageViewsUntilReadyToRender;
 @property (nonatomic) NSObject<UIWebPDFViewHandlerDelegate> *pdfHandlerDelegate;
 @property (nonatomic, readonly) UIWebPDFView *pdfView;
 @property (nonatomic) BOOL scalesPageToFit;
 @property (nonatomic) BOOL showPageLabels;
+@property (readonly) Class superclass;
 
 - (id)_absoluteUrlRelativeToDocumentURL:(id)arg1;
 - (id)_actionForType:(int)arg1;

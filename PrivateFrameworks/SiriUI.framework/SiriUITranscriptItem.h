@@ -3,8 +3,8 @@
  */
 
 @interface SiriUITranscriptItem : NSObject {
-    AceObject *_aceObject;
-    NSUUID *_itemIdentifier;
+    AceObject * _aceObject;
+    NSUUID * _itemIdentifier;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,9 +14,9 @@
             float width; 
             float height; 
         } size; 
-    } _previousFrame;
-    BOOL _snippetViewControllerHasBeenUnloaded;
-    UIViewController<SiriUIViewController> *_viewController;
+    }  _previousFrame;
+    BOOL  _snippetViewControllerHasBeenUnloaded;
+    UIViewController<SiriUIViewController> * _viewController;
 }
 
 @property (nonatomic, retain) AceObject *aceObject;

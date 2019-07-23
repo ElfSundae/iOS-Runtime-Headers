@@ -3,8 +3,8 @@
  */
 
 @interface UITableViewCountView : UILabel {
-    int _count;
-    NSString *_countString;
+    int  _count;
+    NSString * _countString;
 }
 
 - (void).cxx_destruct;

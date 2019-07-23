@@ -3,8 +3,8 @@
  */
 
 @interface VCPVideoMetaFaceAnalyzer : VCPVideoMetaAnalyzer {
-    NSMutableDictionary *_activeFaces;
-    NSMutableArray *_faceResults;
+    NSMutableDictionary * _activeFaces;
+    NSMutableArray * _faceResults;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -12,7 +12,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
+    }  _transform;
 }
 
 - (void).cxx_destruct;

@@ -2,16 +2,16 @@
    Image: /System/Library/PrivateFrameworks/RemoteUI.framework/RemoteUI
  */
 
-@interface RUIHTMLHeaderView : UIView <RUIWebContainerViewDelegate, RemoteUITableHeader> {
-    NSURL *_baseURL;
-    <RUITableHeaderDelegate> *_delegate;
-    BOOL _isFirstSection;
-    RUIWebContainerView *_webContainerView;
+@interface RUIHTMLHeaderView : UIView <RUIHeader, RUIWebContainerViewDelegate> {
+    NSURL * _baseURL;
+    <RUIHeaderDelegate> * _delegate;
+    BOOL  _isFirstSection;
+    RUIWebContainerView * _webContainerView;
 }
 
 @property (nonatomic, retain) NSURL *baseURL;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <RUITableHeaderDelegate> *delegate;
+@property (nonatomic) <RUIHeaderDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
 @property (readonly) Class superclass;
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (id)baseURL;
 - (id)delegate;
-- (float)headerHeightForWidth:(float)arg1 inTableView:(id)arg2;
+- (float)headerHeightForWidth:(float)arg1 inView:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
 - (void)layoutSubviews;
 - (void)setBaseURL:(id)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface CAMExposureTargetBiasCommand : CAMCaptureCommand {
-    float __exposureTargetBias;
+    float  __exposureTargetBias;
 }
 
 @property (nonatomic, readonly) float _exposureTargetBias;

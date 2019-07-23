@@ -3,8 +3,8 @@
  */
 
 @interface BSXPCReply : NSObject {
-    NSObject<OS_xpc_object> *_reply;
-    int _sent;
+    NSObject<OS_xpc_object> * _reply;
+    int  _sent;
 }
 
 + (id)messageWithReply:(id)arg1;

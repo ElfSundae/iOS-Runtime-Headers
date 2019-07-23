@@ -3,7 +3,7 @@
  */
 
 @interface UIKeyboardSliceSet : NSObject {
-    NSMutableDictionary *_controlKeys;
+    NSMutableDictionary * _controlKeys;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,12 +13,12 @@
             float width; 
             float height; 
         } size; 
-    } _endRect;
-    float _leftWidth;
-    float _mergePoint;
-    float _rightWidth;
-    NSMutableSet *_slices;
-    NSString *_ssid;
+    }  _endRect;
+    float  _leftWidth;
+    float  _mergePoint;
+    float  _rightWidth;
+    NSMutableSet * _slices;
+    NSString * _ssid;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,10 +28,10 @@
             float width; 
             float height; 
         } size; 
-    } _startRect;
+    }  _startRect;
 }
 
-@property NSMutableDictionary *controlKeys;
+@property (retain) NSMutableDictionary *controlKeys;
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } endRect;
 @property float leftWidth;
 @property float mergePoint;

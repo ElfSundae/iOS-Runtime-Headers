@@ -3,8 +3,8 @@
  */
 
 @interface SupplyLevelView : UIView {
-    NSArray *colors;
-    int supplyLevel;
+    NSArray * colors;
+    int  supplyLevel;
 }
 
 @property (nonatomic, retain) NSArray *colors;

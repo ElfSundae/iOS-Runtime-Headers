@@ -3,9 +3,9 @@
  */
 
 @interface PSCloudStorageOffersManager : NSObject <CommerceRemoteUIDelegateDelegate> {
-    CommerceRemoteUIDelegate *_commerceDelegate;
-    <PSCloudStorageOffersManagerDelegate> *_delegate;
-    unsigned long long _requiredStorageThreshold;
+    CommerceRemoteUIDelegate * _commerceDelegate;
+    <PSCloudStorageOffersManagerDelegate> * _delegate;
+    unsigned long long  _requiredStorageThreshold;
 }
 
 @property (readonly, copy) NSString *debugDescription;

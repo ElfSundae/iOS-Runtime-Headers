@@ -3,12 +3,12 @@
  */
 
 @interface NSUbiquitousKeyValueStore : NSObject {
-    int _daemonWakeToken;
-    id _private1;
-    id _private2;
-    id _private3;
-    void *_private4;
-    void *_reserved;
+    int  _daemonWakeToken;
+    id  _private1;
+    id  _private2;
+    id  _private3;
+    void * _private4;
+    void * _reserved;
 }
 
 @property (readonly, copy) NSDictionary *dictionaryRepresentation;
@@ -50,7 +50,6 @@
 - (id)dictionaryForKey:(id)arg1;
 - (id)dictionaryRepresentation;
 - (double)doubleForKey:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 storeIdentifier:(id)arg2;
@@ -79,5 +78,9 @@
 // Image: /System/Library/PrivateFrameworks/SyncedDefaults.framework/SyncedDefaults
 
 - (void)_printDebugDescription;
+
+// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
+
++ (void)tsa_coalescedSynchronizeForDefaultStore;
 
 @end

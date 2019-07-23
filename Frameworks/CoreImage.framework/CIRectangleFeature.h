@@ -6,11 +6,11 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } bottomLeft;
+    }  bottomLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } bottomRight;
+    }  bottomRight;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -20,15 +20,15 @@
             float width; 
             float height; 
         } size; 
-    } bounds;
+    }  bounds;
     struct CGPoint { 
         float x; 
         float y; 
-    } topLeft;
+    }  topLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } topRight;
+    }  topRight;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } bottomLeft;

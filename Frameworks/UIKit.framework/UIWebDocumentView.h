@@ -2,20 +2,20 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIWebDocumentView : UIWebTiledView <DDDetectionControllerInteractionDelegate, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyInput, UIKeyboardInput, UIModalViewDelegate, UIPreviewItemDelegate, UITextAutoscrolling, UITextInputPrivate, UITextInputTokenizer, UIWebFileUploadPanelDelegate, WebFrameLoadDelegate, _UIRotatingAlertControllerDelegate, _UIWebDoubleTapDelegate> {
-    NSArray *_additionalSubviews;
-    unsigned int _alwaysConstrainsScale;
-    unsigned int _autoresizes;
-    UIAutoscroll *_autoscroll;
-    unsigned int _avoidFixedPositionUpdateViaDidScroll;
+@interface UIWebDocumentView : UIWebTiledView <DDDetectionControllerInteractionDelegate, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyInput, UIKeyboardInput, UIModalViewDelegate, UIPreviewItemDelegate, UITextAutoscrolling, UITextInputPrivate, UITextInputTokenizer, UIWebFileUploadPanelDelegate, WebEditingDelegate, WebFrameLoadDelegate, _UIRotatingAlertControllerDelegate, _UIWebDoubleTapDelegate> {
+    NSArray * _additionalSubviews;
+    unsigned int  _alwaysConstrainsScale;
+    unsigned int  _autoresizes;
+    UIAutoscroll * _autoscroll;
+    unsigned int  _avoidFixedPositionUpdateViaDidScroll;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _caretInsets;
-    CALayer *_contentLayersHostingLayer;
-    unsigned int _dataDetectorTypes;
+    }  _caretInsets;
+    CALayer * _contentLayersHostingLayer;
+    unsigned int  _dataDetectorTypes;
     struct _UIWebViewportConfiguration { 
         struct CGSize { 
             float width; 
@@ -26,15 +26,15 @@
         float maximumScale; 
         bool allowsUserScaling; 
         bool allowsShrinkToFit; 
-    } _defaultViewportConfigurations;
-    _UITextServiceSession *_definitionSession;
-    id _delegate;
-    DOMElement *_dictationResultPlaceholder;
-    id _dictationResultPlaceholderRemovalObserver;
-    unsigned int _didFirstVisuallyNonEmptyLayout;
-    float _documentScale;
-    int _documentType;
-    UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    }  _defaultViewportConfigurations;
+    _UITextServiceSession * _definitionSession;
+    id  _delegate;
+    DOMElement * _dictationResultPlaceholder;
+    id  _dictationResultPlaceholderRemovalObserver;
+    unsigned int  _didFirstVisuallyNonEmptyLayout;
+    float  _documentScale;
+    int  _documentType;
+    UITapGestureRecognizer * _doubleTapGestureRecognizer;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -44,13 +44,13 @@
             float width; 
             float height; 
         } size; 
-    } _doubleTapRect;
-    unsigned int _doubleTapRectIsReplaced;
+    }  _doubleTapRect;
+    unsigned int  _doubleTapRectIsReplaced;
     struct CGPoint { 
         float x; 
         float y; 
-    } _doubleTapStartPosition;
-    double _doubleTapStartTime;
+    }  _doubleTapStartPosition;
+    double  _doubleTapStartTime;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -60,29 +60,29 @@
             float width; 
             float height; 
         } size; 
-    } _exposedScrollViewRect;
-    UIWebFileUploadPanel *_fileUploadPanel;
+    }  _exposedScrollViewRect;
+    UIWebFileUploadPanel * _fileUploadPanel;
     struct CGSize { 
         float width; 
         float height; 
-    } _fixedLayoutOriginRoundingDelta;
+    }  _fixedLayoutOriginRoundingDelta;
     struct CGSize { 
         float width; 
         float height; 
-    } _fixedLayoutSizeRoundingDelta;
-    CALayer *_flattenedRotatingContentLayer;
-    unsigned int _geolocationDialogAllowed;
-    unsigned int _gesturesDisabled;
-    unsigned int _hasCustomScale;
-    unsigned int _hasDrawnTiles;
-    unsigned int _hasScrollPoint;
-    _UIWebHighlightLongPressGestureRecognizer *_highlightLongPressGestureRecognizer;
-    unsigned int _ignoresFocusEventFromFirstResponderChange;
-    unsigned int _ignoresFocusingMouse;
-    unsigned int _ignoresKeyEvents;
-    unsigned int _ignoresViewportOverflowWhenAutoresizing;
-    <UITextInputDelegate> *_inputDelegate;
-    unsigned int _inspectorSearchingForNode;
+    }  _fixedLayoutSizeRoundingDelta;
+    CALayer * _flattenedRotatingContentLayer;
+    unsigned int  _geolocationDialogAllowed;
+    unsigned int  _gesturesDisabled;
+    unsigned int  _hasCustomScale;
+    unsigned int  _hasDrawnTiles;
+    unsigned int  _hasScrollPoint;
+    _UIWebHighlightLongPressGestureRecognizer * _highlightLongPressGestureRecognizer;
+    unsigned int  _ignoresFocusEventFromFirstResponderChange;
+    unsigned int  _ignoresFocusingMouse;
+    unsigned int  _ignoresKeyEvents;
+    unsigned int  _ignoresViewportOverflowWhenAutoresizing;
+    <UITextInputDelegate> * _inputDelegate;
+    unsigned int  _inspectorSearchingForNode;
     /* Warning: unhandled struct encoding: '{?="timer"@"NSTimer""location"{CGPoint="x"f"y"f}"isBlocked"c"isCancelled"c"isOnWebThread"c"isDisplayingHighlight"c"attemptedClick"c"lastPanTranslation"{CGPoint="x"f"y"f}"element"@"DOMNode""delegate"@"interactionSheet"@"UIWebRotatingAlertController""allowsImageSheet"c"allowsDataDetectorsSheet"c"allowsLinkSheet"c"acceptsFirstResponder"c"documentScale"f"previewHintRects"@"NSArray""previewHintImage"@"UIImage"}' */ struct { 
         NSTimer *timer; 
         struct CGPoint { 
@@ -100,15 +100,15 @@
         } lastPanTranslation; 
         DOMNode *element; 
         id delegate; 
-    } _interaction;
-    unsigned int _isSettingRedrawFrame;
-    unsigned int _isShowingFullScreenPlugIn;
-    WebHistoryItem *_latestCommittedPageLoadHistoryItem;
-    _UITextServiceSession *_learnSession;
-    unsigned int _loadInProgress;
-    unsigned int _loadsSynchronously;
-    UILongPressGestureRecognizer *_longPressGestureRecognizer;
-    _UITextServiceSession *_lookupSession;
+    }  _interaction;
+    unsigned int  _isSettingRedrawFrame;
+    unsigned int  _isShowingFullScreenPlugIn;
+    WebHistoryItem * _latestCommittedPageLoadHistoryItem;
+    _UITextServiceSession * _learnSession;
+    unsigned int  _loadInProgress;
+    unsigned int  _loadsSynchronously;
+    UILongPressGestureRecognizer * _longPressGestureRecognizer;
+    _UITextServiceSession * _lookupSession;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -118,82 +118,86 @@
             float width; 
             float height; 
         } size; 
-    } _mainDocumentDoubleTapRect;
-    unsigned int _mouseDown;
-    unsigned int _mouseDownCount;
+    }  _mainDocumentDoubleTapRect;
+    unsigned int  _mouseDown;
+    unsigned int  _mouseDownCount;
     struct CGPoint { 
         float x; 
         float y; 
-    } _mouseDownPoint;
-    double _mouseDownTime;
-    unsigned int _mouseDragged;
-    unsigned int _mouseReentrancyGuard;
-    unsigned int _needsScrollNotifications;
-    int _orientation;
-    unsigned int _pageIsLoadedFromPageCache;
-    unsigned int _pageNeedsReset;
+    }  _mouseDownPoint;
+    double  _mouseDownTime;
+    unsigned int  _mouseDragged;
+    unsigned int  _mouseReentrancyGuard;
+    unsigned int  _needsScrollNotifications;
+    int  _orientation;
+    unsigned int  _pageIsLoadedFromPageCache;
+    unsigned int  _pageNeedsReset;
+    BOOL  _panGestureWasEnabled;
     struct CGSize { 
         float width; 
         float height; 
-    } _pendingSize;
-    UIWebPlaybackTargetPicker *_playbackTargetPicker;
-    struct __CFDictionary { } *_plugInViews;
-    UILongPressGestureRecognizer *_previewGestureRecognizer;
-    UIPreviewItemController *_previewItemController;
-    UILongPressGestureRecognizer *_previewSecondaryGestureRecognizer;
-    float _previousDocumentScale;
-    unsigned int _previousScrollWasScrollToTop;
-    unsigned int _printModeCount;
-    DOMRange *_rangeToRestoreAfterDictation;
-    unsigned int _renderTreeSize;
-    unsigned int _renderTreeSizeThresholdForReset;
-    unsigned int _scalesToFit;
+    }  _pendingSize;
+    BOOL  _pinchGestureWasEnabled;
+    UIWebPlaybackTargetPicker * _playbackTargetPicker;
+    struct __CFDictionary { } * _plugInViews;
+    UILongPressGestureRecognizer * _previewGestureRecognizer;
+    UIPreviewItemController * _previewItemController;
+    UILongPressGestureRecognizer * _previewSecondaryGestureRecognizer;
+    float  _previousDocumentScale;
+    unsigned int  _previousScrollWasScrollToTop;
+    unsigned int  _printModeCount;
+    DOMRange * _rangeToRestoreAfterDictation;
+    unsigned int  _renderTreeSize;
+    unsigned int  _renderTreeSizeThresholdForReset;
+    unsigned int  _scalesToFit;
     struct CGPoint { 
         float x; 
         float y; 
-    } _scrollPoint;
-    int _selectionAffinity;
-    _UITextServiceSession *_shareSession;
-    unsigned int _sheetsCount;
-    unsigned int _shouldCloseWebViewAtDealloc;
-    unsigned int _shouldIgnoreCustomViewport;
-    unsigned int _shouldOnlyRecognizeGesturesOnActiveElements;
-    unsigned int _shouldRemoveUserStyleSheet;
-    unsigned int _shouldRestoreScrollPosition;
-    unsigned int _shouldSendWillShowInteractionHighlight;
-    unsigned int _showingTextStyleOptions;
-    UITapGestureRecognizer *_singleTapGestureRecognizer;
-    unsigned int _sizeUpdateOccurredWhileSuspended;
-    unsigned int _sizeUpdatesSuspended;
-    unsigned int _standaloneEditableView;
-    DOMHTMLElement *_standaloneEditingElement;
-    unsigned int _subviewCachesNeedUpdate;
-    BOOL _suppressesIncrementalRendering;
-    UITextChecker *_textChecker;
-    UITextInteractionAssistant *_textSelectionAssistant;
-    id _textSuggestionDelegate;
-    UITextInputTraits *_traits;
-    UITapGestureRecognizer *_twoFingerDoubleTapGestureRecognizer;
-    UIPanGestureRecognizer *_twoFingerPanGestureRecognizer;
-    unsigned int _uiwdvIsResigningFirstResponder;
-    WebThreadSafeUndoManager *_undoManager;
-    unsigned int _updatesScrollView;
-    unsigned int _updatingSize;
-    unsigned int _usePreTimberlineTransparencyBehavior;
-    unsigned int _usingMinimalTilesDuringLoading;
-    _UIWebViewportHandler *_viewportHandler;
-    BOOL _wantsMinimalUI;
-    unsigned int _webCoreNeedsDraw;
-    unsigned int _webCoreNeedsSetNeedsDisplay;
-    UIWebSelectionAssistant *_webSelectionAssistant;
-    WebView *_webView;
-    unsigned int _widgetEditingView;
-    id m_parentTextView;
-    int m_selectionGranularity;
+    }  _scrollPoint;
+    int  _selectionAffinity;
+    _UITextServiceSession * _shareSession;
+    unsigned int  _sheetsCount;
+    unsigned int  _shouldCloseWebViewAtDealloc;
+    unsigned int  _shouldIgnoreCustomViewport;
+    unsigned int  _shouldOnlyRecognizeGesturesOnActiveElements;
+    unsigned int  _shouldRemoveUserStyleSheet;
+    unsigned int  _shouldRestoreScrollPosition;
+    unsigned int  _shouldSendWillShowInteractionHighlight;
+    unsigned int  _showingTextStyleOptions;
+    UITapGestureRecognizer * _singleTapGestureRecognizer;
+    unsigned int  _sizeUpdateOccurredWhileSuspended;
+    unsigned int  _sizeUpdatesSuspended;
+    unsigned int  _standaloneEditableView;
+    DOMHTMLElement * _standaloneEditingElement;
+    unsigned int  _subviewCachesNeedUpdate;
+    BOOL  _suppressesIncrementalRendering;
+    UITextChecker * _textChecker;
+    UITextInteractionAssistant * _textSelectionAssistant;
+    id  _textSuggestionDelegate;
+    UITextInputTraits * _traits;
+    UITapGestureRecognizer * _twoFingerDoubleTapGestureRecognizer;
+    UIPanGestureRecognizer * _twoFingerPanGestureRecognizer;
+    unsigned int  _uiwdvIsResigningFirstResponder;
+    WebThreadSafeUndoManager * _undoManager;
+    unsigned int  _updatesScrollView;
+    unsigned int  _updatingSize;
+    unsigned int  _usePreTimberlineTransparencyBehavior;
+    unsigned int  _usingMinimalTilesDuringLoading;
+    _UIWebViewportHandler * _viewportHandler;
+    BOOL  _wantsMinimalUI;
+    unsigned int  _webCoreNeedsDraw;
+    unsigned int  _webCoreNeedsSetNeedsDisplay;
+    UIWebSelectionAssistant * _webSelectionAssistant;
+    WebView * _webView;
+    unsigned int  _widgetEditingView;
+    id  m_parentTextView;
+    int  m_selectionGranularity;
 }
 
 @property (nonatomic, copy) NSIndexSet *PINEntrySeparatorIndexes;
 @property (getter=_acceptsFirstResponder, setter=_setAcceptsFirstResponder:) BOOL _acceptsFirstResponder;
+@property (nonatomic) int _textInputSource;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -207,6 +211,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
@@ -216,9 +221,16 @@
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } exposedScrollViewRect;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) int forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
+@property (nonatomic, retain) UIInputContextHistory *inputContextHistory;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
+@property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic, retain) UIColor *insertionPointColor;
 @property (nonatomic) unsigned int insertionPointWidth;
 @property (nonatomic, readonly) UITextInteractionAssistant *interactionAssistant;
@@ -254,8 +266,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (nonatomic) BOOL suppressesIncrementalRendering;
+@property (nonatomic, copy) NSString *textContentType;
+@property (nonatomic, readonly) <UITextInputSuggestionDelegate> *textInputSuggestionDelegate;
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) int textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet { }*textTrimmingSet;
@@ -335,7 +350,6 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_lastRectForRange:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_layoutRectForFixedPositionObjects;
 - (void)_longPressRecognized:(id)arg1;
-- (void)_lookup:(struct CGPoint { float x1; float x2; })arg1;
 - (void)_notifyContentHostingLayersOfScaleChange;
 - (void)_notifyPlugInViewsOfDidEndZooming;
 - (void)_notifyPlugInViewsOfDidZoom;
@@ -373,8 +387,6 @@
 - (void)_restoreViewportSettingsWithSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)_runLoadBlock:(id /* block */)arg1;
 - (void)_saveStateToHistoryItem:(id)arg1;
-- (id)_scriptingInfoForForm:(id)arg1;
-- (id)_scriptingInfoForLink:(id)arg1;
 - (void)_scrollRectToVisible:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 animated:(BOOL)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_selectionClipRect;
 - (void)_selectionLayoutChangedByScrolling:(BOOL)arg1;
@@ -388,6 +400,8 @@
 - (void)_setSubviewCachesNeedUpdate:(BOOL)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_share:(id)arg1;
+- (void)_shareElement:(id)arg1 withURL:(id)arg2;
+- (void)_shareText:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_shortcutPresentationRect;
 - (BOOL)_shouldFlattenContentLayersForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)_shouldResetForNewPage;
@@ -439,8 +453,8 @@
 - (id)beginPrintModeForFrame:(id)arg1 withSize:(struct CGSize { float x1; float x2; })arg2 startOffset:(float)arg3 minimumLayoutWidth:(float)arg4 maximumLayoutWidth:(float)arg5 tileClippedContent:(BOOL)arg6;
 - (id)beginPrintModeForFrame:(id)arg1 withWidth:(float)arg2 height:(float)arg3 startOffset:(float)arg4 shrinkToFit:(BOOL)arg5 tileClippedContent:(BOOL)arg6;
 - (id)beginPrintModeWithSize:(struct CGSize { float x1; float x2; })arg1 startOffset:(float)arg2 minimumLayoutWidth:(float)arg3 maximumLayoutWidth:(float)arg4 tileClippedContent:(BOOL)arg5;
-- (id)beginPrintModeWithWidth:(float)arg1 height:(float)arg2 startOffset:(float)arg3 shrinkToFit:(BOOL)arg4;
-- (id)beginPrintModeWithWidth:(float)arg1 height:(float)arg2 startOffset:(float)arg3 shrinkToFit:(BOOL)arg4 tileClippedContent:(BOOL)arg5;
+- (id)beginPrintModeWithWidth:(float)arg1 height:(float)arg2 startOffset:(float)arg3 shrinkToFit:(BOOL)arg4 forFrame:(id)arg5;
+- (id)beginPrintModeWithWidth:(float)arg1 height:(float)arg2 startOffset:(float)arg3 shrinkToFit:(BOOL)arg4 tileClippedContent:(BOOL)arg5 forFrame:(id)arg6;
 - (void)beginSelectionChange;
 - (id)beginningOfDocument;
 - (BOOL)canBecomeFirstResponder;
@@ -654,7 +668,6 @@
 - (BOOL)resignFirstResponder;
 - (void)revealedSelectionByScrollingWebFrame:(id)arg1;
 - (void)saveStateToCurrentHistoryItem;
-- (id)scriptingInfoWithChildren;
 - (void)scrollSelectionToVisible:(BOOL)arg1;
 - (void)scrollViewWasRemoved;
 - (void)select:(id)arg1;
@@ -851,7 +864,9 @@
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
-- (id)mf_NodeForAttachmentInRange:(id)arg1;
+- (id)_mf_URLsForAttachmentsInRange:(id)arg1 passingTest:(id /* block */)arg2;
+- (id)mf_DOMNodeForAttachment:(id)arg1;
+- (id)mf_URLsForAttachmentsBorderingRange:(id)arg1;
 - (id)mf_URLsForAttachmentsInRange:(id)arg1;
 
 @end

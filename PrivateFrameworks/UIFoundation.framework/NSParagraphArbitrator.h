@@ -3,16 +3,16 @@
  */
 
 @interface NSParagraphArbitrator : NSObject {
-    NSAttributedString *_attributedString;
-    float _hyphenationFactor;
-    unsigned int _lineBreakStrategy;
-    id /* block */ _lineWidth;
+    NSAttributedString * _attributedString;
+    float  _hyphenationFactor;
+    unsigned int  _lineBreakStrategy;
+    id /* block */  _lineWidth;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _paragraphRange;
-    int _typesetterBehavior;
-    id /* block */ _validateLineBreakContext;
+    }  _paragraphRange;
+    int  _typesetterBehavior;
+    id /* block */  _validateLineBreakContext;
 }
 
 @property (retain) NSAttributedString *attributedString;
@@ -35,6 +35,7 @@
 - (unsigned int)lineBreakStrategy;
 - (id /* block */)lineWidth;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })paragraphRange;
+- (void)reset;
 - (void)setAttributedString:(id)arg1;
 - (void)setHyphenationFactor:(float)arg1;
 - (void)setLineBreakStrategy:(unsigned int)arg1;

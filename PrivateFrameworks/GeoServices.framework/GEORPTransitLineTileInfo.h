@@ -5,10 +5,10 @@
 @interface GEORPTransitLineTileInfo : PBCodable <NSCopying> {
     struct { 
         unsigned int transitLineMuid : 1; 
-    } _has;
-    unsigned long long _transitLineMuid;
-    NSString *_transitLineName;
-    NSString *_transitSystemName;
+    }  _has;
+    unsigned long long  _transitLineMuid;
+    NSString * _transitLineName;
+    NSString * _transitSystemName;
 }
 
 @property (nonatomic) BOOL hasTransitLineMuid;

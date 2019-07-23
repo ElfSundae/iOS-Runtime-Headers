@@ -3,7 +3,7 @@
  */
 
 @interface CAMSetVideoZoomFactorCommand : CAMCaptureCommand {
-    float __videoZoomFactor;
+    float  __videoZoomFactor;
 }
 
 @property (nonatomic, readonly) float _videoZoomFactor;

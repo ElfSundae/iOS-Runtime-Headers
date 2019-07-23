@@ -3,8 +3,8 @@
  */
 
 @interface PLWallpaperButton : UIButton <_UIBackdropViewObserver> {
-    _UIBackdropView *_backdropView;
-    UIImageView *_titleMaskImageView;
+    _UIBackdropView * _backdropView;
+    UIImageView * _titleMaskImageView;
 }
 
 @property (nonatomic, retain) _UIBackdropView *backdropView;

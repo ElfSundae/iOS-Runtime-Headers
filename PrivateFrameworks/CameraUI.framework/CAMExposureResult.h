@@ -3,16 +3,16 @@
  */
 
 @interface CAMExposureResult : NSObject {
-    BOOL _adjustingExposure;
-    BOOL _deviceSupportsFocus;
-    BOOL _exposureDidEnd;
-    BOOL _exposureDidStart;
-    int _exposureMode;
-    float _exposureTargetBias;
+    BOOL  _adjustingExposure;
+    BOOL  _deviceSupportsFocus;
+    BOOL  _exposureDidEnd;
+    BOOL  _exposureDidStart;
+    int  _exposureMode;
+    float  _exposureTargetBias;
     struct CGPoint { 
         float x; 
         float y; 
-    } _pointOfInterest;
+    }  _pointOfInterest;
 }
 
 @property (getter=isAdjustingExposure, nonatomic, readonly) BOOL adjustingExposure;

@@ -3,12 +3,12 @@
  */
 
 @interface _MKZoomSliderView : UIView {
-    BOOL _active;
-    UIView *_knob;
-    NSLayoutConstraint *_knobCenterYConstraint;
-    float _lastTrackShadowImageScale;
-    UIImageView *_shadowImageView;
-    float _zoomFraction;
+    BOOL  _active;
+    UIView * _knob;
+    NSLayoutConstraint * _knobCenterYConstraint;
+    float  _lastTrackShadowImageScale;
+    UIImageView * _shadowImageView;
+    float  _zoomFraction;
 }
 
 @property (getter=isActive, nonatomic) BOOL active;

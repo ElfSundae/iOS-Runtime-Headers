@@ -3,21 +3,22 @@
  */
 
 @interface CAMTimelapsePlaceholderResult : NSObject <CAMTransientAssetConvertible> {
-    NSString *_assetUUID;
-    int _captureOrientation;
-    NSDate *_creationDate;
-    void *_previewImageSurface;
-    unsigned short _sessionIdentifier;
-    BOOL _usingFrontCamera;
+    NSString * _assetUUID;
+    int  _captureDevice;
+    int  _captureOrientation;
+    NSDate * _creationDate;
+    void * _previewImageSurface;
+    unsigned short  _sessionIdentifier;
     struct CGSize { 
         float width; 
         float height; 
-    } _videoDimensions;
+    }  _videoDimensions;
 }
 
 @property (nonatomic, readonly, copy) NSString *assetUUID;
 @property (nonatomic, readonly, copy) NSString *burstIdentifier;
 @property (nonatomic, readonly) NSDate *captureDate;
+@property (nonatomic, readonly) int captureDevice;
 @property (nonatomic, readonly) int captureOrientation;
 @property (nonatomic, readonly, copy) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +37,6 @@
 @property (nonatomic, readonly) unsigned short sessionIdentifier;
 @property (nonatomic, readonly, copy) NSDictionary *stillImageMetadata;
 @property (readonly) Class superclass;
-@property (getter=isUsingFrontCamera, nonatomic, readonly) BOOL usingFrontCamera;
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } videoDimensions;
 
@@ -44,17 +44,16 @@
 - (id)assetUUID;
 - (id)burstIdentifier;
 - (id)captureDate;
+- (int)captureDevice;
 - (int)captureOrientation;
 - (id)creationDate;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
-- (id)init;
-- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(int)arg4 usingFrontCamera:(BOOL)arg5 videoDimensions:(struct CGSize { float x1; float x2; })arg6 previewImageSurface:(void*)arg7;
+- (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(int)arg4 captureDevice:(int)arg5 videoDimensions:(struct CGSize { float x1; float x2; })arg6 previewImageSurface:(void*)arg7;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })irisStillDisplayTime;
 - (id)irisStillImageUUID;
 - (id)irisVideoPersistenceURL;
 - (BOOL)isExpectingPairedVideo;
-- (BOOL)isUsingFrontCamera;
 - (unsigned int)mediaType;
 - (unsigned int)numberOfRepresentedAssets;
 - (id)persistenceURL;

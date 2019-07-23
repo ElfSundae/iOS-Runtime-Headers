@@ -3,17 +3,18 @@
  */
 
 @interface GEOStyleAttributes : PBCodable <NSCopying> {
-    NSMutableArray *_attributes;
-    unsigned long long _customIconId;
+    NSMutableArray * _attributes;
+    unsigned long long  _customIconId;
     struct { 
         unsigned int customIconId : 1; 
-    } _has;
+    }  _has;
 }
 
 @property (nonatomic, retain) NSMutableArray *attributes;
 @property (nonatomic) unsigned long long customIconId;
 @property (nonatomic) BOOL hasCustomIconId;
 
++ (Class)attributeType;
 + (id)attributesForTransitLine:(id)arg1;
 + (id)attributesForTransitSystem:(id)arg1;
 

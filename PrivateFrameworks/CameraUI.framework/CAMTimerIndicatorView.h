@@ -3,15 +3,15 @@
  */
 
 @interface CAMTimerIndicatorView : UIView {
-    CAMAnimationDelegate *__animationDelegate;
-    UILabel *__countdownLabel;
-    int __deferredLabelOrientation;
-    UIView *__dimmingView;
-    int __labelOrientation;
-    BOOL __performingStyleAnimation;
-    int __remainingTicks;
-    int __startingTicks;
-    int _style;
+    CAMAnimationDelegate * __animationDelegate;
+    UILabel * __countdownLabel;
+    int  __deferredLabelOrientation;
+    UIView * __dimmingView;
+    int  __labelOrientation;
+    BOOL  __performingStyleAnimation;
+    int  __remainingTicks;
+    int  __startingTicks;
+    int  _style;
 }
 
 @property (nonatomic, readonly) CAMAnimationDelegate *_animationDelegate;

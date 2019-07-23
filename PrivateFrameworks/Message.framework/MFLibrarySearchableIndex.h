@@ -3,38 +3,39 @@
  */
 
 @interface MFLibrarySearchableIndex : NSObject <CSSearchableIndexDelegate, MFDiagnosticsGenerator> {
-    MFCoalescer *_budgetCoalescer;
-    NSObject<OS_dispatch_source> *_coalescingTimer;
-    unsigned int _currentMaximumBatchSize;
-    <MFLibrarySearchableIndexDataSource> *_dataSource;
-    NSObject<OS_dispatch_queue> *_dataSourceQueue;
-    CSSearchableIndex *_index;
-    NSString *_indexName;
-    NSObject<OS_dispatch_queue> *_indexingQueue;
-    NSMutableSet *_pendingDomainRemovals;
-    _MFLibrarySearchableIndexPendingRemovals *_pendingIdentifierRemovals;
-    NSMutableArray *_pendingItems;
-    NSObject<OS_dispatch_queue> *_queue;
-    double _remainingIndexingBudget;
-    int _remainingIndexingBudgetOverage;
-    long long _resumeCount;
-    MFLazyCache *_searchResultsCache;
-    struct { 
-        unsigned int isForeground : 1; 
-        unsigned int isActive : 1; 
-        unsigned int needsRefresh : 1; 
-        unsigned int needsVerification : 1; 
-        unsigned int clientStateFetched : 1; 
-        unsigned int coalesceTimerFired : 1; 
-        unsigned int scheduledProcessing : 1; 
-        unsigned int scheduledRefresh : 1; 
-        unsigned int scheduledVerification : 1; 
-    } _state;
-    unsigned int _throttledDataSourceBatchSize;
-    unsigned int _throttledIndexingBatchSize;
-    long long _transaction;
+    NSObject<OS_os_activity> * _batchIndexingActivity;
+    MFCoalescer * _budgetCoalescer;
+    BOOL  _clientStateFetched;
+    BOOL  _coalesceTimerFired;
+    NSObject<OS_dispatch_source> * _coalescingTimer;
+    CSSearchableIndex * _csIndex;
+    unsigned int  _currentMaximumBatchSize;
+    <MFLibrarySearchableIndexDataSource> * _dataSource;
+    NSObject<OS_dispatch_queue> * _dataSourceQueue;
+    NSString * _indexName;
+    NSObject<OS_dispatch_queue> * _indexingQueue;
+    BOOL  _isActive;
+    BOOL  _isForeground;
+    MFWeakSet * _middleware;
+    BOOL  _needsRefresh;
+    BOOL  _needsVerification;
+    NSMutableSet * _pendingDomainRemovals;
+    _MFLibrarySearchableIndexPendingRemovals * _pendingIdentifierRemovals;
+    NSMutableArray * _pendingItems;
+    NSObject<OS_dispatch_queue> * _queue;
+    double  _remainingIndexingBudget;
+    int  _remainingIndexingBudgetOverage;
+    long long  _resumeCount;
+    BOOL  _scheduledProcessing;
+    BOOL  _scheduledRefresh;
+    BOOL  _scheduledVerification;
+    MFLazyCache * _searchResultsCache;
+    unsigned int  _throttledDataSourceBatchSize;
+    unsigned int  _throttledIndexingBatchSize;
+    long long  _transaction;
 }
 
+@property (nonatomic, retain) CSSearchableIndex *csIndex;
 @property (nonatomic) <MFLibrarySearchableIndexDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -87,13 +88,16 @@
 - (long long)_transaction;
 - (void)_transitionWithBudgetTimeUsed:(double)arg1;
 - (void)_verifySpotlightIndex;
+- (void)addMiddleware:(id)arg1;
 - (void)applicationWillResume;
 - (void)applicationWillSuspend;
 - (id)copyDiagnosticInformation;
+- (id)csIndex;
 - (id)dataSource;
 - (void)dealloc;
 - (id)identifiersMatchingCriterion:(id)arg1;
 - (void)indexItems:(id)arg1;
+- (id)indexedEmptySubjectIdentifers;
 - (id)init;
 - (id)initWithName:(id)arg1 dataSource:(id)arg2;
 - (double)persistedRemainingIndexingBudget;
@@ -102,9 +106,11 @@
 - (void)removeItemsForDomainIdentifier:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1;
 - (void)removeItemsWithIdentifiers:(id)arg1 reasons:(id)arg2;
+- (void)requestSpotlightDiagnosticsForMessageRowId:(id)arg1;
 - (void)resume;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(id /* block */)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(id /* block */)arg3;
+- (void)setCsIndex:(id)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setRemainingIndexingBudget:(double)arg1 shouldPersist:(BOOL)arg2;
 - (void)suspend;

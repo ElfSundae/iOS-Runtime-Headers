@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureConnection : NSObject {
-    AVCaptureConnectionInternal *_internal;
+    AVCaptureConnectionInternal * _internal;
 }
 
 @property (getter=isActive, nonatomic, readonly) BOOL active;

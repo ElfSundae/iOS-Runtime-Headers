@@ -3,15 +3,15 @@
  */
 
 @interface EMWorksheetMapper : EMSheetMapper {
-    EDWorksheet *edWorksheet;
-    double *mColumnGrid;
-    ECColumnWidthConvertor *mColumnWidthConvertor;
-    int mHeight;
-    int mMaxPopulatedColumn;
-    int mMaxPopulatedRow;
-    double *mRowGrid;
-    CMStyle *mStyle;
-    int mWidth;
+    EDWorksheet * edWorksheet;
+    double * mColumnGrid;
+    ECColumnWidthConvertor * mColumnWidthConvertor;
+    int  mHeight;
+    int  mMaxPopulatedColumn;
+    int  mMaxPopulatedRow;
+    double * mRowGrid;
+    CMStyle * mStyle;
+    int  mWidth;
 }
 
 - (void)_initWithState:(id)arg1;

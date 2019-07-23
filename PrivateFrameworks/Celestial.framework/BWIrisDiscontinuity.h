@@ -8,19 +8,21 @@
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _discontinuityTime;
-    NSArray *_recipe;
+    }  _discontinuityTime;
+    NSArray * _recipe;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _targetFrameDuration;
-    NSArray *_timeSkews;
+    }  _targetFrameDuration;
+    NSArray * _timeSkews;
 }
 
 @property (readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } time;
 @property (nonatomic, retain) NSArray *timeSkews;
+
++ (int)maximumNumberOfConsecutiveDroppedFrames;
 
 - (int)_offsetIndexFromDiscontinuityForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (BOOL)containsVideoBufferTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

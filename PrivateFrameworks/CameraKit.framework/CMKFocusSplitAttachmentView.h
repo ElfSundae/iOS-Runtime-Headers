@@ -3,7 +3,7 @@
  */
 
 @interface CMKFocusSplitAttachmentView : CMKFocusAttachmentView {
-    BOOL _split;
+    BOOL  _split;
 }
 
 @property (nonatomic) BOOL split;

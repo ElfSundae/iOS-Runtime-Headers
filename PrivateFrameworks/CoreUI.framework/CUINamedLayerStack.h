@@ -3,9 +3,9 @@
  */
 
 @interface CUINamedLayerStack : CUINamedLookup {
-    CUIThemeRendition *_flattenedImageRendition;
-    NSArray *_layers;
-    CUIThemeRendition *_radiosityImageRendition;
+    CUIThemeRendition * _flattenedImageRendition;
+    NSArray * _layers;
+    CUIThemeRendition * _radiosityImageRendition;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*flattenedImage;

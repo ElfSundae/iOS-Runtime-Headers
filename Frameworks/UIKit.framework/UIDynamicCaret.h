@@ -3,14 +3,14 @@
  */
 
 @interface UIDynamicCaret : UIImageView <UIKeyboardCandidateList, _UIDynamicCaretDocumentContentDelegate> {
-    _UIDynamicCaretAlternatives *_alternativesView;
-    <UIKeyboardCandidateListDelegate> *_candidateListDelegate;
-    TIKeyboardCandidateResultSet *_candidateSet;
-    _UIDynamicCaretHelpLabel *_helpLabel;
-    _UIDynamicCaretInput *_inputView;
-    BOOL _justDeleted;
-    _UIDynamicCaretNoContentView *_noContentView;
-    int _selectedIndex;
+    _UIDynamicCaretAlternatives * _alternativesView;
+    <UIKeyboardCandidateListDelegate> * _candidateListDelegate;
+    TIKeyboardCandidateResultSet * _candidateSet;
+    _UIDynamicCaretHelpLabel * _helpLabel;
+    _UIDynamicCaretInput * _inputView;
+    BOOL  _justDeleted;
+    _UIDynamicCaretNoContentView * _noContentView;
+    int  _selectedIndex;
 }
 
 @property (nonatomic, retain) _UIDynamicCaretAlternatives *alternativesView;
@@ -41,7 +41,6 @@
 - (BOOL)isActive;
 - (BOOL)isDeleteCandidate:(id)arg1;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (void)layoutSubviews;
 - (id)noContentView;

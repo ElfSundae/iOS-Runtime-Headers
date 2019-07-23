@@ -3,29 +3,33 @@
  */
 
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport> {
-    SCNDisplayLink *__displayLink;
-    unsigned int __ibPreferredRenderingAPI;
-    NSString *__ibSceneName;
-    unsigned int _allowsBrowsing;
-    unsigned int _appIsDeactivated;
-    UIColor *_backgroundColor;
-    NSArray *_controllerGestureRecognizers;
-    double _currentSystemTime;
-    id _delegate;
-    <MTLDevice> *_device;
-    SCNEventHandler *_eventHandler;
-    unsigned int _firstDrawDone;
-    unsigned int _ibNoMultisampling;
-    unsigned int _isOpaque;
-    SCNJitterer *_jitterer;
-    NSRecursiveLock *_lock;
-    SCNRenderer *_renderer;
-    unsigned int _renderingAPI;
-    SCNScene *_scene;
-    char *_snapshotImageData;
-    unsigned long _snapshotImageDataLength;
-    SCNSpriteKitEventHandler *_spriteKitEventHandler;
-    unsigned int _viewIsOffscreen;
+    SCNDisplayLink * __displayLink;
+    unsigned int  __ibPreferredRenderingAPI;
+    NSString * __ibSceneName;
+    unsigned int  _allowsBrowsing;
+    unsigned int  _appIsDeactivated;
+    UIColor * _backgroundColor;
+    unsigned int  _backingSizeDidChange;
+    NSArray * _controllerGestureRecognizers;
+    double  _currentSystemTime;
+    id  _delegate;
+    <MTLDevice> * _device;
+    unsigned int  _drawOnMainThreadPending;
+    SCNEventHandler * _eventHandler;
+    unsigned int  _firstDrawDone;
+    unsigned int  _ibNoMultisampling;
+    unsigned int  _isOpaque;
+    SCNJitterer * _jitterer;
+    double  _lastUpdate;
+    NSRecursiveLock * _lock;
+    int  _preferredFramePerSeconds;
+    SCNRenderer * _renderer;
+    unsigned int  _renderingAPI;
+    SCNScene * _scene;
+    char * _snapshotImageData;
+    unsigned long  _snapshotImageDataLength;
+    SCNSpriteKitEventHandler * _spriteKitEventHandler;
+    unsigned int  _viewIsOffscreen;
 }
 
 @property (nonatomic) BOOL allowsCameraControl;
@@ -68,14 +72,17 @@
 + (Class)layerClass;
 + (unsigned int)renderingAPIForOptions:(id)arg1;
 
-- (void*)__CFObject;
+- (const void*)__CFObject;
+- (void)_adjustBackingLayerPixelFormat;
 - (id)_authoringEnvironment;
 - (BOOL)_canJitter;
-- (void)_checkAndUpdateDisplayLinkStateIfNeeded;
+- (BOOL)_checkAndUpdateDisplayLinkStateIfNeeded;
 - (void)_commonInit:(id)arg1;
 - (BOOL)_controlsOwnScaleFactor;
+- (id)_defaultBackgroundColor;
 - (id)_displayLink;
 - (void)_drawAtTime:(double)arg1;
+- (BOOL)_enablesDeferredShading;
 - (void)_enterBackground:(id)arg1;
 - (void)_enterForeground:(id)arg1;
 - (float)_flipY:(float)arg1;
@@ -85,6 +92,8 @@
 - (BOOL)_ibWantsMultisampling;
 - (BOOL)_isEditor;
 - (void)_jitterRedisplay;
+- (float)_runFPSTestWithDuration:(double)arg1;
+- (void)_sceneBackgroundDidChange:(id)arg1;
 - (void)_sceneDidUpdate:(id)arg1;
 - (void)_selectRenderingAPIWithOptions:(id)arg1;
 - (void)_setGestureRecognizers:(id)arg1;
@@ -93,6 +102,8 @@
 - (BOOL)_supportsJitteringSyncRedraw;
 - (void)_systemTimeAnimationStarted:(id)arg1;
 - (void)_updateGestureRecognizers;
+- (void)_updateOpacity;
+- (void)_updateProbes:(id)arg1 withProgress:(id)arg2;
 - (BOOL)allowsCameraControl;
 - (unsigned int)antialiasingMode;
 - (id)audioEngine;
@@ -124,6 +135,7 @@
 - (int)ibPreferredRenderingAPI;
 - (id)ibSceneName;
 - (BOOL)ibWantsMultisampling;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 options:(id)arg2;
@@ -134,6 +146,7 @@
 - (void)lock;
 - (BOOL)loops;
 - (id)nodesInsideFrustumWithPointOfView:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)overlaySKScene;
 - (void)pause:(id)arg1;
 - (void)pauseDisplayLink;
@@ -173,6 +186,7 @@
 - (void)setSceneTime:(double)arg1;
 - (void)setShowsStatistics:(BOOL)arg1;
 - (void)setTechnique:(id)arg1;
+- (void)set_enablesDeferredShading:(BOOL)arg1;
 - (void)set_ibPreferredRenderingAPI:(int)arg1;
 - (void)set_ibSceneName:(id)arg1;
 - (void)set_ibWantsMultisampling:(BOOL)arg1;

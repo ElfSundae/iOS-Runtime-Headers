@@ -3,25 +3,25 @@
  */
 
 @interface UIKeyboard : UIView <UIKBFocusGuideDelegate, UIKeyboardImplGeometryDelegate> {
-    BOOL _hasImpendingCursorLocation;
-    unsigned int _impendingCursorLocation;
-    UITextInputTraits *m_defaultTraits;
-    BOOL m_disableTouchInput;
-    NSMutableDictionary *m_focusGuides;
-    BOOL m_hasExplicitOrientation;
-    int m_idiom;
-    BOOL m_minimized;
-    int m_orientation;
-    BOOL m_respondingToImplGeometryChange;
-    UIView *m_snapshot;
-    BOOL m_typingDisabled;
+    BOOL  _hasImpendingCursorLocation;
+    unsigned int  _impendingCursorLocation;
+    UITextInputTraits * m_defaultTraits;
+    BOOL  m_disableTouchInput;
+    NSMutableDictionary * m_focusGuides;
+    BOOL  m_hasExplicitOrientation;
+    int  m_idiom;
+    BOOL  m_minimized;
+    int  m_orientation;
+    BOOL  m_respondingToImplGeometryChange;
+    UIView * m_snapshot;
+    BOOL  m_typingDisabled;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } m_unfocusedFocusGuideOutsets;
-    BOOL m_useRecentsAlert;
+    }  m_unfocusedFocusGuideOutsets;
+    BOOL  m_useRecentsAlert;
 }
 
 @property (nonatomic) BOOL caretBlinks;

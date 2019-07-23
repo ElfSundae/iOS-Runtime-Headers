@@ -3,9 +3,9 @@
  */
 
 @interface MCDProgressBarView : UIView {
-    UIView *_barView;
-    UIImageView *_indicatorView;
-    float _progress;
+    UIView * _barView;
+    UIImageView * _indicatorView;
+    float  _progress;
 }
 
 @property (nonatomic, retain) UIView *barView;

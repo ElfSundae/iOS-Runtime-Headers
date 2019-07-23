@@ -3,8 +3,8 @@
  */
 
 @interface _UIMirrorNinePatchView : UIView {
-    UIImage *_image;
-    UIImageView *_imageViews;
+    UIImage * _image;
+    UIImageView * _imageViews;
 }
 
 - (void).cxx_destruct;

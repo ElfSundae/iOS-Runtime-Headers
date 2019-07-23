@@ -3,12 +3,12 @@
  */
 
 @interface MRAudioDataBlock : NSObject <NSMutableCopying> {
-    MRAudioBuffer *_buffer;
-    float _gain;
+    MRAudioBuffer * _buffer;
+    float  _gain;
     struct { 
         double timestamp; 
         double sampleRate; 
-    } _time;
+    }  _time;
 }
 
 @property (nonatomic, readonly) MRAudioBuffer *buffer;

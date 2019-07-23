@@ -2,8 +2,8 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKDayViewContentGeometryDelegate : NSObject <CUIKSingleDayTimelineGeometryDelegate> {
-    EKDayViewContent *_dayViewContent;
+@interface EKDayViewContentGeometryDelegate : NSObject <CUIKSingleDayTimelineGeometryDelegate, EKDayOccurrenceViewDelegate> {
+    EKDayViewContent * _dayViewContent;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,7 +13,7 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
+    }  _frame;
 }
 
 @property (nonatomic) EKDayViewContent *dayViewContent;
@@ -38,6 +38,7 @@
 - (struct CGPoint { float x1; float x2; })pointForDate:(double)arg1;
 - (void)setDayViewContent:(id)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (BOOL)shouldReverseLayoutDirection;
 - (float)timeWidth;
 - (float)topPadding;
 

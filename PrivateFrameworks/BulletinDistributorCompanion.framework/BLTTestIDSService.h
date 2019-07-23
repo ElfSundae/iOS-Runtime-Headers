@@ -3,16 +3,16 @@
  */
 
 @interface BLTTestIDSService : NSObject <BLTAbstractIDSService> {
-    NSMutableDictionary *_actionsByRequestType;
-    NSMutableDictionary *_actionsByResponseType;
-    unsigned int _currentIdentifier;
-    NSMutableArray *_delegates;
-    unsigned int _maximumResponseDelay;
-    unsigned int _maximumSendDelay;
-    unsigned int _minimumResponseDelay;
-    unsigned int _minimumSendDelay;
-    BLTPBProtobufSequenceNumberManager *_sequenceNumberManager;
-    NSString *_service;
+    NSMutableDictionary * _actionsByRequestType;
+    NSMutableDictionary * _actionsByResponseType;
+    unsigned int  _currentIdentifier;
+    NSMutableArray * _delegates;
+    unsigned int  _maximumResponseDelay;
+    unsigned int  _maximumSendDelay;
+    unsigned int  _minimumResponseDelay;
+    unsigned int  _minimumSendDelay;
+    BLTPBProtobufSequenceNumberManager * _sequenceNumberManager;
+    NSString * _service;
 }
 
 @property (readonly, copy) NSString *debugDescription;

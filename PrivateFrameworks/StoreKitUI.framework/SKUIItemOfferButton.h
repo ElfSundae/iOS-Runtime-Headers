@@ -3,45 +3,47 @@
  */
 
 @interface SKUIItemOfferButton : UIControl <SKUIViewElementOfferButton> {
-    UIColor *_backgroundColor;
-    float _borderColorAlphaMultiplier;
-    BOOL _borderCornerRadiusMatchesHalfBoundingDimension;
-    UIView *_borderView;
-    SKUIFocusedTouchGestureRecognizer *_cancelGestureRecognizer;
-    id /* block */ _centerImageProvider;
-    UIImage *_cloudImage;
-    UIColor *_cloudTintColor;
-    UIColor *_confirmationColor;
-    NSMutableAttributedString *_confirmationTitleAttributedString;
+    UIColor * _backgroundColor;
+    float  _borderColorAlphaMultiplier;
+    BOOL  _borderCornerRadiusMatchesHalfBoundingDimension;
+    UIView * _borderView;
+    SKUIBuyButtonDescriptor * _buttonDescriptor;
+    SKUIFocusedTouchGestureRecognizer * _cancelGestureRecognizer;
+    id /* block */  _centerImageProvider;
+    UIImage * _cloudImage;
+    UIColor * _cloudTintColor;
+    UIColor * _confirmationColor;
+    NSMutableAttributedString * _confirmationTitleAttributedString;
     struct CGSize { 
         float width; 
         float height; 
-    } _confirmationTitleFitSize;
-    int _confirmationTitleStyle;
-    <SKUIItemOfferButtonDelegate> *_delegate;
-    BOOL _disabledButSelectable;
-    BOOL _downloadRestores;
-    SKUIButtonViewElement *_element;
-    int _fillStyle;
-    UIImage *_image;
-    UIImageView *_imageView;
-    float _progress;
-    SKUICircleProgressIndicator *_progressIndicator;
-    BOOL _showsConfirmationState;
-    SKUIItemOfferButtonState *_state;
-    NSMutableAttributedString *_titleAttributedString;
+    }  _confirmationTitleFitSize;
+    int  _confirmationTitleStyle;
+    <SKUIItemOfferButtonDelegate> * _delegate;
+    BOOL  _disabledButSelectable;
+    BOOL  _downloadRestores;
+    SKUIButtonViewElement * _element;
+    int  _fillStyle;
+    UIImage * _image;
+    UIImageView * _imageView;
+    NSString * _offerButtonStateDescription;
+    float  _progress;
+    SKUICircleProgressIndicator * _progressIndicator;
+    BOOL  _showsConfirmationState;
+    NSMutableAttributedString * _titleAttributedString;
     struct CGSize { 
         float width; 
         float height; 
-    } _titleFitSize;
-    UILabel *_titleLabel;
-    int _titleStyle;
-    BOOL _universal;
-    UIImageView *_universalImageView;
-    BOOL _usesDrawRectPath;
+    }  _titleFitSize;
+    UILabel * _titleLabel;
+    int  _titleStyle;
+    BOOL  _universal;
+    UIImageView * _universalImageView;
+    BOOL  _usesDrawRectPath;
 }
 
 @property (nonatomic) float borderColorAlphaMultiplier;
+@property (nonatomic, retain) SKUIBuyButtonDescriptor *buttonDescriptor;
 @property (nonatomic, copy) id /* block */ centerImageProvider;
 @property (nonatomic, copy) UIColor *cloudTintColor;
 @property (nonatomic, copy) NSString *confirmationTitle;
@@ -55,6 +57,7 @@
 @property (readonly) unsigned int hash;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic) <SKUIItemOfferButtonDelegate> *itemOfferDelegate;
+@property (nonatomic, readonly) NSString *offerButtonStateDescription;
 @property (nonatomic) float progress;
 @property (nonatomic) int progressType;
 @property (nonatomic, readonly) BOOL restores;
@@ -74,10 +77,14 @@
 + (BOOL)_sizeMattersForTitleStyle:(int)arg1;
 + (struct CGSize { float x1; float x2; })_titleSizeThatFitsForSize:(struct CGSize { float x1; float x2; })arg1 titleStyle:(int)arg2 mutableAttributedString:(id)arg3;
 + (id)_universalPlusImageWithTintColor:(id)arg1;
++ (BOOL)canOpenItemForItemState:(id)arg1 clientContext:(id)arg2;
 + (id)cloudImageWithTintColor:(id)arg1 arrowTintColor:(id)arg2;
 + (id)cloudTintColorForBackgroundColor:(id)arg1;
 + (id)itemOfferButtonWithAppearance:(id)arg1;
 + (id)localizedTitleForItemState:(id)arg1 clientContext:(id)arg2;
++ (id)playHighlightImageWithTintColor:(id)arg1;
++ (id)playImageWithTintColor:(id)arg1;
++ (id)playTintColorForBackgroundColor:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_adjustViewOrderingForProperties:(id)arg1;
@@ -106,6 +113,7 @@
 - (void)_updateForChangedTitleProperty;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (float)borderColorAlphaMultiplier;
+- (id)buttonDescriptor;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (id /* block */)centerImageProvider;
 - (id)cloudTintColor;
@@ -119,6 +127,7 @@
 - (id)element;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (int)fillStyle;
+- (BOOL)hasImage;
 - (id)image;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)isDisabledButSelectable;
@@ -127,12 +136,14 @@
 - (id)itemOfferDelegate;
 - (struct CGSize { float x1; float x2; })layoutSizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 - (void)layoutSubviews;
+- (id)offerButtonStateDescription;
 - (float)progress;
 - (int)progressType;
 - (void)removeButtonStateAnimations;
 - (BOOL)restores;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBorderColorAlphaMultiplier:(float)arg1;
+- (void)setButtonDescriptor:(id)arg1;
 - (void)setCenterImageProvider:(id /* block */)arg1;
 - (void)setCloudTintColor:(id)arg1;
 - (void)setColoringWithAppearance:(id)arg1;

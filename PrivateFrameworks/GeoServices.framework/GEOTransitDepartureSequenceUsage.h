@@ -3,12 +3,12 @@
  */
 
 @interface GEOTransitDepartureSequenceUsage : PBCodable <NSCopying> {
-    NSString *_direction;
+    NSString * _direction;
     struct { 
         unsigned int lineId : 1; 
-    } _has;
-    NSString *_headsign;
-    unsigned long long _lineId;
+    }  _has;
+    NSString * _headsign;
+    unsigned long long  _lineId;
 }
 
 @property (nonatomic, retain) NSString *direction;

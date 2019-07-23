@@ -3,9 +3,9 @@
  */
 
 @interface VKMapSnapshotRequest : NSObject {
-    NSLocale *_locale;
-    GEOResourceManifestConfiguration *_manifestConfiguration;
-    int _mapType;
+    NSLocale * _locale;
+    GEOResourceManifestConfiguration * _manifestConfiguration;
+    int  _mapType;
     struct { 
         struct { 
             double latitude; 
@@ -15,12 +15,12 @@
             double latitudeDelta; 
             double longitudeDelta; 
         } span; 
-    } _region;
-    unsigned int _scale;
+    }  _region;
+    unsigned int  _scale;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
 }
 
 @property (nonatomic, retain) NSLocale *locale;
@@ -31,6 +31,7 @@
 @property (nonatomic) struct CGSize { float x1; float x2; } size;
 
 - (struct VKRequestKey { struct { struct { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; int x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; id x4; })_requestKey;
+- (void)dealloc;
 - (id)description;
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;

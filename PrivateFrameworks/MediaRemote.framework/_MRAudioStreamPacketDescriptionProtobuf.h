@@ -3,14 +3,14 @@
  */
 
 @interface _MRAudioStreamPacketDescriptionProtobuf : PBCodable <NSCopying> {
-    unsigned int _dataByteSize;
+    unsigned int  _dataByteSize;
     struct { 
         unsigned int startOffset : 1; 
         unsigned int dataByteSize : 1; 
         unsigned int variableFramesInPacket : 1; 
-    } _has;
-    long long _startOffset;
-    unsigned int _variableFramesInPacket;
+    }  _has;
+    long long  _startOffset;
+    unsigned int  _variableFramesInPacket;
 }
 
 @property (nonatomic) unsigned int dataByteSize;

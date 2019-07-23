@@ -3,18 +3,18 @@
  */
 
 @interface SSVPlayActivityController : NSObject {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    SSXPCConnection *_connection;
-    NSMutableDictionary *_endpointIdentifierToEndpointRevisionInformation;
-    int _endpointRevisionInformationDidChangeNotifyToken;
-    BOOL _hasAttemptedTableCreation;
-    BOOL _hasLoadedEndpointRevisionInformation;
-    BOOL _hasSetupEndpointRevisionInformationDidChangeNotifyToken;
-    BOOL _hasValidEndpointRevisionInformationDidChangeNotifyToken;
-    NSMutableArray *_pendingFlushingSessions;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    SSVPlayActivityTable *_table;
-    unsigned int _writingStyle;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    SSXPCConnection * _connection;
+    NSMutableDictionary * _endpointIdentifierToEndpointRevisionInformation;
+    int  _endpointRevisionInformationDidChangeNotifyToken;
+    BOOL  _hasAttemptedTableCreation;
+    BOOL  _hasLoadedEndpointRevisionInformation;
+    BOOL  _hasSetupEndpointRevisionInformationDidChangeNotifyToken;
+    BOOL  _hasValidEndpointRevisionInformationDidChangeNotifyToken;
+    NSMutableArray * _pendingFlushingSessions;
+    NSObject<OS_dispatch_queue> * _serialQueue;
+    SSVPlayActivityTable * _table;
+    unsigned int  _writingStyle;
 }
 
 @property (nonatomic, readonly) unsigned int writingStyle;
@@ -39,6 +39,7 @@
 - (void)completePendingPlayActivityEventPersistentIDs:(id)arg1 forSessionToken:(unsigned long long)arg2 withResult:(unsigned int)arg3 completionHandler:(id /* block */)arg4;
 - (void)completePendingPlayActivityEvents:(id)arg1 forSessionToken:(unsigned long long)arg2 withResult:(unsigned int)arg3 completionHandler:(id /* block */)arg4;
 - (void)dealloc;
+- (void)flushPendingPlayActivityEventsForEndpointIdentifier:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)getHasPendingPlayEventsForEndpointIdentifier:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)getPlayActivityEventsFromRevision:(unsigned long long)arg1 toRevision:(unsigned long long)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)getRevisionInformationWithCompletionHandler:(id /* block */)arg1;

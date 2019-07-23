@@ -3,10 +3,10 @@
  */
 
 @interface SYFileTransferInfo : PBCodable <NSCopying> {
-    unsigned long long _decompressedFileSize;
-    NSString *_endAnchor;
-    SYMessageHeader *_header;
-    NSString *_startAnchor;
+    unsigned long long  _decompressedFileSize;
+    NSString * _endAnchor;
+    SYMessageHeader * _header;
+    NSString * _startAnchor;
 }
 
 @property (nonatomic) unsigned long long decompressedFileSize;

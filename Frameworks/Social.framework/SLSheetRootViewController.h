@@ -3,14 +3,14 @@
  */
 
 @interface SLSheetRootViewController : UIViewController <SLComposeSheetConfigurationItemObserving, UITableViewDataSource, UITableViewDelegate> {
-    UIViewController *_autoCompletionViewController;
-    NSArray *_configurationItems;
-    UIView *_contentView;
-    SLComposeServiceViewController *_delegate;
-    UINavigationItem *_navItem;
-    UIImage *_serviceIconImage;
-    UITableViewController *_tableViewController;
-    SLSheetTitleView *_titleView;
+    UIViewController * _autoCompletionViewController;
+    NSArray * _configurationItems;
+    UIView * _contentView;
+    SLComposeServiceViewController * _delegate;
+    UINavigationItem * _navItem;
+    UIImage * _serviceIconImage;
+    UITableViewController * _tableViewController;
+    SLSheetTitleView * _titleView;
 }
 
 @property (nonatomic, copy) NSArray *configurationItems;

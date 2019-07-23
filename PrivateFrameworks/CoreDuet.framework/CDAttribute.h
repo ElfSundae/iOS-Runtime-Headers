@@ -3,31 +3,32 @@
  */
 
 @interface CDAttribute : NSObject {
-    unsigned short _admissionMask;
-    NSObject<OS_dispatch_queue> *_deferredRequestsQ;
-    NSString *_fullName;
-    unsigned long long _integerId;
-    NSString *_name;
-    CDSession *_session;
-    CDSession *_sessionStrong;
-    CDSession *_sessionWeak;
-    int _type;
-    NSMutableArray *activeReports;
-    NSMutableDictionary *admissionCache;
-    NSObject<OS_dispatch_queue> *admissionCacheQueue;
-    int conditionChangeToken;
-    NSMutableDictionary *costCache;
-    BOOL delayedUpdatePending;
-    int focalAppToken;
-    NSDate *lastUpdate;
-    int localFocalInfoToken;
-    int resourceCallToken;
-    NSMutableArray *resourceCallbackList;
-    NSObject<OS_dispatch_queue> *resourceCallbackQueue;
-    NSMutableArray *revocationCallbackList;
-    int revocationToken;
-    int systemConditionChangeToken;
-    NSMutableDictionary *tokenCache;
+    unsigned short  _admissionMask;
+    NSObject<OS_dispatch_queue> * _deferredRequestsQ;
+    NSString * _fullName;
+    unsigned long long  _integerId;
+    NSString * _name;
+    CDSession * _session;
+    CDSession * _sessionStrong;
+    CDSession * _sessionWeak;
+    int  _type;
+    NSMutableArray * activeReports;
+    NSMutableDictionary * admissionCache;
+    NSObject<OS_dispatch_queue> * admissionCacheQueue;
+    int  conditionChangeToken;
+    NSMutableDictionary * costCache;
+    NSMutableDictionary * dateCache;
+    BOOL  delayedUpdatePending;
+    int  focalAppToken;
+    NSDate * lastUpdate;
+    int  localFocalInfoToken;
+    int  resourceCallToken;
+    NSMutableArray * resourceCallbackList;
+    NSObject<OS_dispatch_queue> * resourceCallbackQueue;
+    NSMutableArray * revocationCallbackList;
+    int  revocationToken;
+    int  systemConditionChangeToken;
+    NSMutableDictionary * tokenCache;
 }
 
 @property (readonly) NSObject<OS_dispatch_queue> *deferredRequestsQ;
@@ -58,6 +59,7 @@
 - (double)correlationOfValue:(id)arg1 toAttribute:(id)arg2 withValue:(id)arg3 temporalLeeway:(double)arg4 error:(id*)arg5;
 - (void)dealloc;
 - (id)deferredRequestsQ;
+- (id)description;
 - (BOOL)destroyWithError:(id*)arg1;
 - (id)distinctValuesForHistoryWindow:(id)arg1 error:(id*)arg2;
 - (id)fullName;
@@ -68,7 +70,7 @@
 - (id)initWithSession:(id)arg1 name:(id)arg2 type:(int)arg3 integerId:(unsigned long long)arg4 error:(id*)arg5;
 - (unsigned long long)integerId;
 - (long long)isAdmissionValid:(id)arg1;
-- (BOOL)isBypassClient;
+- (BOOL)isBypassClientForValue:(id)arg1;
 - (void)meteringInsertCachedToken:(id)arg1 meteringToken:(unsigned long long)arg2;
 - (unsigned int)meteringIsActive:(id)arg1;
 - (id)meteringLookupCachedToken:(id)arg1;
@@ -112,7 +114,7 @@
 - (id)temporalForecastOfValue:(id)arg1 forHistoryWindow:(id)arg2 forecastType:(int)arg3 maximumElements:(unsigned long long)arg4 error:(id*)arg5;
 - (id)temporalForecastXPCObjectToArray:(id)arg1 attributeValue:(id)arg2 forecastType:(int)arg3 error:(id*)arg4;
 - (int)type;
-- (id)updateCostOnDownload:(id)arg1 meteringToken:(unsigned long long)arg2;
+- (id)updateCostOnDownload:(id)arg1 meteringToken:(unsigned long long)arg2 date:(id)arg3;
 - (void)updateDuetWithCost;
 
 @end

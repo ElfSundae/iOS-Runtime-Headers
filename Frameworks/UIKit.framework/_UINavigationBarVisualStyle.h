@@ -3,9 +3,9 @@
  */
 
 @interface _UINavigationBarVisualStyle : NSObject {
-    _UINavigationBarVisualStyle *__legacyVisualStyle;
-    _UINavigationBarVisualStyleEnvironment *_environment;
-    int _idiom;
+    _UINavigationBarVisualStyle * __legacyVisualStyle;
+    _UINavigationBarVisualStyleEnvironment * _environment;
+    int  _idiom;
 }
 
 @property (nonatomic, readonly) _UINavigationBarVisualStyle *_legacyVisualStyle;
@@ -21,13 +21,13 @@
 @property (nonatomic, readonly) float buttonImagePadding;
 @property (nonatomic, retain) _UINavigationBarVisualStyleEnvironment *environment;
 @property (nonatomic, readonly) float headingFontSize;
+@property (nonatomic, readonly) float horizontalMarginAdjustment;
 @property (nonatomic) int idiom;
 @property (nonatomic, readonly) float interBlockSpace;
 @property (nonatomic, readonly) float interItemSpace;
 @property (nonatomic, readonly) float leftBackImageMargin;
 @property (nonatomic, readonly) float leftBackTitleMargin;
 @property (nonatomic, readonly) float leftEdgeMargin;
-@property (nonatomic, readonly) float leftMarginAdjustment;
 @property (nonatomic, readonly) float leftTextMargin;
 @property (nonatomic, readonly) float leftTitleMargin;
 @property (nonatomic, readonly) float maxBackButtonProportion;
@@ -66,6 +66,7 @@
 - (float)buttonImagePadding;
 - (id)environment;
 - (float)headingFontSize;
+- (float)horizontalMarginAdjustment;
 - (int)idiom;
 - (float)imageButtonMarginInNavigationBar:(id)arg1;
 - (float)interBlockSpace;
@@ -75,7 +76,6 @@
 - (float)leftBackTitleMarginForCustomBackButtonBackground:(id)arg1;
 - (float)leftBackTitleMarginLetterpressPadding;
 - (float)leftEdgeMargin;
-- (float)leftMarginAdjustment;
 - (float)leftTextMargin;
 - (float)leftTitleMargin;
 - (float)maxBackButtonProportion;
@@ -96,6 +96,7 @@
 - (void)setIdiom:(int)arg1;
 - (BOOL)shouldForceLegacyLeftBackTitleMarginForCustomBackButtonBackground:(id)arg1;
 - (float)textButtonMarginInNavigationBar:(id)arg1;
+- (id)timingFunctionForAnimationInView:(id)arg1 withKeyPath:(id)arg2 isInteractive:(BOOL)arg3;
 - (float)titleAccessorySpace;
 - (float)topBackMargin;
 - (float)topImageMargin;

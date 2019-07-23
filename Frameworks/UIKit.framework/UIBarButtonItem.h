@@ -2,19 +2,19 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIBarButtonItem : UIBarItem <NSCoding> {
-    id /* block */ __autoValidationHandler;
-    BOOL __hidden;
-    UIBarButtonItem *__itemVariation;
-    BOOL __needsViewUpdateForLetterpressImage;
-    UIBarButtonItemGroup *__owningButtonGroup;
-    UINavigationItem *__owningNavigationItem;
-    UILayoutGuide *__popoverLayoutGuide;
-    BOOL __showsBackButtonIndicator;
-    <_UIBarButtonItemViewOwner> *__viewOwner;
-    BOOL __viewWantsLetterpressImage;
-    SEL _action;
-    id _appearanceStorage;
+@interface UIBarButtonItem : UIBarItem <MFPopoverPresentationSource, NSCoding> {
+    id /* block */  __autoValidationHandler;
+    BOOL  __hidden;
+    UIBarButtonItem * __itemVariation;
+    BOOL  __needsViewUpdateForLetterpressImage;
+    UIBarButtonItemGroup * __owningButtonGroup;
+    UINavigationItem * __owningNavigationItem;
+    UILayoutGuide * __popoverLayoutGuide;
+    BOOL  __showsBackButtonIndicator;
+    <_UIBarButtonItemViewOwner> * __viewOwner;
+    BOOL  __viewWantsLetterpressImage;
+    SEL  _action;
+    id  _appearanceStorage;
     struct { 
         unsigned int enabled : 1; 
         unsigned int style : 3; 
@@ -25,35 +25,35 @@
         unsigned int disableAutosizing : 1; 
         unsigned int selected : 1; 
         unsigned int imageHasEffects : 1; 
-    } _barButtonItemFlags;
-    UIBarButtonItemGroup *_buttonGroup;
-    BOOL _flexible;
-    BOOL _groupRepresentative;
-    UIImage *_image;
+        unsigned int actsAsFakeBackButton : 1; 
+    }  _barButtonItemFlags;
+    UIBarButtonItemGroup * _buttonGroup;
+    BOOL  _flexible;
+    BOOL  _groupRepresentative;
+    UIImage * _image;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _imageInsets;
-    UIImage *_landscapeImagePhone;
+    }  _imageInsets;
+    UIImage * _landscapeImagePhone;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _landscapeImagePhoneInsets;
-    float _maximumWidth;
-    float _minimumWidth;
-    NSSet *_possibleSystemItems;
-    NSSet *_possibleTitles;
-    NSDictionary *_stylesForSizingTitles;
-    int _tag;
-    id _target;
-    NSString *_title;
-    float _toolbarCharge;
-    UIView *_view;
-    float _width;
+    }  _landscapeImagePhoneInsets;
+    float  _maximumWidth;
+    float  _minimumWidth;
+    NSSet * _possibleSystemItems;
+    NSSet * _possibleTitles;
+    NSDictionary * _stylesForSizingTitles;
+    id  _target;
+    NSString * _title;
+    float  _toolbarCharge;
+    UIView * _view;
+    float  _width;
 }
 
 @property (setter=_setAutoValidationHandler:, nonatomic, copy) id /* block */ _autoValidationHandler;
@@ -77,8 +77,11 @@
 @property (nonatomic) SEL action;
 @property (nonatomic, readonly) UIBarButtonItemGroup *buttonGroup;
 @property (nonatomic, retain) UIView *customView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic) BOOL enabled;
 @property (nonatomic, readonly) BOOL groupRepresentative;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL isSystemItem;
 @property (getter=_miniImage, setter=_setMiniImage:, nonatomic, retain) UIImage *miniImage;
 @property (getter=_miniImageInsets, setter=_setMiniImageInsets:, nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } miniImageInsets;
@@ -86,6 +89,7 @@
 @property (nonatomic, copy) NSSet *possibleTitles;
 @property (nonatomic) BOOL selected;
 @property (nonatomic) int style;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) int systemItem;
 @property (nonatomic) id target;
 @property (nonatomic, retain) UIColor *tintColor;
@@ -99,6 +103,7 @@
 + (Class)classForToolbarButton;
 
 - (void).cxx_destruct;
+- (BOOL)_actsAsFakeBackButton;
 - (id)_appearanceStorage;
 - (void)_applyPositionAdjustmentToSegmentedControl:(id)arg1;
 - (id /* block */)_autoValidationHandler;
@@ -131,8 +136,10 @@
 - (id)_resolveSystemTitle;
 - (float)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
+- (void)_setActsAsFakeBackButton:(BOOL)arg1;
 - (void)_setAutoValidationHandler:(id /* block */)arg1;
 - (void)_setButtonGroup:(id)arg1 isRepresentative:(BOOL)arg2;
+- (void)_setEnclosingBar:(id)arg1 onItem:(id)arg2;
 - (void)_setFlexible:(BOOL)arg1;
 - (void)_setHidden:(BOOL)arg1;
 - (void)_setImageHasEffects:(BOOL)arg1;
@@ -190,6 +197,7 @@
 - (BOOL)isCustomViewItem;
 - (BOOL)isEnabled;
 - (BOOL)isMinibarView;
+- (BOOL)isSpaceItem;
 - (BOOL)isSystemItem;
 - (id)itemVariation;
 - (id)landscapeImagePhone;
@@ -197,7 +205,6 @@
 - (id)nextResponder;
 - (id)possibleTitles;
 - (id)resolvedTitle;
-- (id)scriptingID;
 - (BOOL)selected;
 - (void)setAction:(SEL)arg1;
 - (void)setBackButtonBackgroundImage:(id)arg1 forState:(unsigned int)arg2 barMetrics:(int)arg3;
@@ -216,7 +223,6 @@
 - (void)setPossibleTitles:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)setStyle:(int)arg1;
-- (void)setTag:(int)arg1;
 - (void)setTarget:(id)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)setTitle:(id)arg1;
@@ -226,7 +232,6 @@
 - (void)setWidth:(float)arg1;
 - (int)style;
 - (int)systemItem;
-- (int)tag;
 - (id)target;
 - (id)tintColor;
 - (id)title;
@@ -238,10 +243,11 @@
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
+- (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
 - (void)mf_setImageOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (void)mf_setImageVerticalOffset:(float)arg1;
-- (void)mf_setMiniImageOffset:(struct CGPoint { float x1; float x2; })arg1;
-- (void)mf_setMiniImageVerticalOffset:(float)arg1;
+- (void)mf_setLandscapeImagePhoneOffset:(struct CGPoint { float x1; float x2; })arg1;
+- (void)mf_setLandscapeImagePhoneVerticalOffset:(float)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 

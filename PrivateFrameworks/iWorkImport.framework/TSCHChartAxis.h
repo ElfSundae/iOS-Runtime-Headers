@@ -3,16 +3,16 @@
  */
 
 @interface TSCHChartAxis : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning, TSCHUnretainedParent> {
-    TSUFastReadInvalidatingCache *mAnalysisCache;
-    TSCHChartAxisID *mAxisID;
-    TSCHChartModel *mChartModel;
-    TSUFastReadInvalidatingCache *mInterceptCache;
-    TSUFastReadInvalidatingCache *mMultiDataSetAnalysisCache;
-    <TSCHStyleActAlike> *mNonStyle;
-    unsigned int mNonStyleIndex;
-    TSCHChartAxis *mNonTransientCounterpart;
-    <TSCHStyleActAlike> *mStyle;
-    unsigned int mStyleIndex;
+    TSUFastReadInvalidatingCache * mAnalysisCache;
+    TSCHChartAxisID * mAxisID;
+    TSCHChartModel * mChartModel;
+    TSUFastReadInvalidatingCache * mInterceptCache;
+    TSUFastReadInvalidatingCache * mMultiDataSetAnalysisCache;
+    <TSCHStyleActAlike> * mNonStyle;
+    unsigned int  mNonStyleIndex;
+    TSUWeakReference * mNonTransientCounterpart;
+    <TSCHStyleActAlike> * mStyle;
+    unsigned int  mStyleIndex;
 }
 
 @property (nonatomic, readonly) TSCHChartAxisID *axisID;
@@ -107,6 +107,7 @@
 - (id)p_genericToDefaultPropertyMap;
 - (id)p_interceptAnalysisFromCurrentModel;
 - (id)p_multiDataAxisAnalysisFromCurrentModel;
+- (id)p_nonTransientCounterpart;
 - (unsigned int)p_rangeCount;
 - (void)p_setupMultiDataSetAnalysisCacheIfNeeded;
 - (void)propertiesWereMutated:(id)arg1;

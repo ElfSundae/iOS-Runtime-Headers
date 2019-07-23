@@ -3,29 +3,29 @@
  */
 
 @interface UIDynamicAnimator : NSObject {
-    float _accuracy;
-    id /* block */ _action;
-    NSMutableIndexSet *_availableFieldCategories;
-    NSMutableArray *_beginContacts;
-    NSMutableSet *_behaviorsToAdd;
-    NSMutableSet *_behaviorsToRemove;
-    NSMutableDictionary *_bodies;
-    BOOL _debugEnabled;
-    int _debugInterval;
-    <UIDynamicAnimatorDelegate> *_delegate;
-    BOOL _disableDisplayLink;
-    CADisplayLink *_displaylink;
-    UIDynamicsDebug *_dynamicsDebug;
-    double _elapsedTime;
-    NSMutableArray *_endContacts;
-    unsigned int _integralization;
-    BOOL _isInWorldStepMethod;
-    double _lastInterval;
-    double _lastUpdateTime;
-    BOOL _needsLocalBehaviorReevaluation;
-    NSMutableArray *_postSolverActions;
-    double _realElapsedTime;
-    <_UIDynamicReferenceSystem> *_referenceSystem;
+    float  _accuracy;
+    id /* block */  _action;
+    NSMutableIndexSet * _availableFieldCategories;
+    NSMutableArray * _beginContacts;
+    NSMutableSet * _behaviorsToAdd;
+    NSMutableSet * _behaviorsToRemove;
+    NSMutableDictionary * _bodies;
+    BOOL  _debugEnabled;
+    int  _debugInterval;
+    <UIDynamicAnimatorDelegate> * _delegate;
+    BOOL  _disableDisplayLink;
+    CADisplayLink * _displaylink;
+    UIDynamicsDebug * _dynamicsDebug;
+    double  _elapsedTime;
+    NSMutableArray * _endContacts;
+    unsigned int  _integralization;
+    BOOL  _isInWorldStepMethod;
+    double  _lastInterval;
+    double  _lastUpdateTime;
+    BOOL  _needsLocalBehaviorReevaluation;
+    NSMutableArray * _postSolverActions;
+    double  _realElapsedTime;
+    <_UIDynamicReferenceSystem> * _referenceSystem;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -35,25 +35,26 @@
             float width; 
             float height; 
         } size; 
-    } _referenceSystemBounds;
-    unsigned int _referenceSystemType;
-    NSMutableSet *_registeredBehaviors;
-    int _registeredCollisionGroups;
-    int _registeredImplicitBounds;
-    float _speed;
+    }  _referenceSystemBounds;
+    unsigned int  _referenceSystemType;
+    NSMutableSet * _registeredBehaviors;
+    int  _registeredCollisionGroups;
+    int  _registeredImplicitBounds;
+    float  _speed;
     struct { 
         unsigned int delegateImplementsDynamicAnimatorDidPause : 1; 
         unsigned int delegateImplementsDynamicAnimatorWillResume : 1; 
-    } _stateFlags;
-    BOOL _stopping;
-    UIDynamicAnimatorTicker *_ticker;
-    long long _ticks;
-    NSMutableArray *_topLevelBehaviors;
-    PKExtendedPhysicsWorld *_world;
+    }  _stateFlags;
+    BOOL  _stopping;
+    UIDynamicAnimatorTicker * _ticker;
+    long long  _ticks;
+    NSMutableArray * _topLevelBehaviors;
+    PKExtendedPhysicsWorld * _world;
 }
 
 @property (nonatomic, readonly, copy) NSArray *behaviors;
 @property (nonatomic) <UIDynamicAnimatorDelegate> *delegate;
+@property (nonatomic, readonly) double elapsedTime;
 @property (nonatomic, readonly) UIView *referenceView;
 @property (getter=isRunning, nonatomic, readonly) BOOL running;
 @property (nonatomic, retain) UIDynamicAnimatorTicker *ticker;

@@ -5,11 +5,23 @@
 @interface NSValue : NSObject <NSCopying, NSSecureCoding, TSDMixing>
 
 @property (readonly) struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; } CATransform3DValue;
+@property (nonatomic, readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } CGAffineTransformValue;
+@property (nonatomic, readonly) struct CGPoint { float x1; float x2; } CGPointValue;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } CGRectValue;
+@property (nonatomic, readonly) struct CGSize { float x1; float x2; } CGSizeValue;
+@property (nonatomic, readonly) struct CGVector { float x1; float x2; } CGVectorValue;
 @property (readonly) struct { double x1; double x2; } MKCoordinateSpanValue;
-@property (readonly) struct { double x1; double x2; } MKCoordinateValue;
+@property (readonly) struct CLLocationCoordinate2D { double x1; double x2; } MKCoordinateValue;
+@property (nonatomic, readonly) struct PXTileIdentifier { unsigned int x1; unsigned int x2[10]; } PXTileIdentifierValue;
+@property (nonatomic, readonly) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } UIEdgeInsetsValue;
 @property (readonly) struct { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; float x2; } UIKBHandwritingPointValue;
+@property (nonatomic, readonly) struct UIOffset { float x1; float x2; } UIOffsetValue;
+@property (nonatomic, readonly) struct HUGridPosition { int x1; int x2; } gridPositionValue;
+@property (nonatomic, readonly) struct HUGridSize { int x1; int x2; } gridSizeValue;
 @property (readonly) const char *objCType;
 @property (nonatomic, readonly) struct PUDisplayVelocity { float x1; float x2; float x3; float x4; } pu_displayVelocityValue;
+@property (nonatomic, readonly) struct PXViewSpecDescriptor { int x1; unsigned int x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; } px_viewSpecDescriptorValue;
+@property (readonly) struct AKQuadrilateral { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; } quadrilateralValue;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -65,13 +77,13 @@
 
 + (id)_mapkit_valueWithCGAffineTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1;
 + (id)_mapkit_valueWithCGPoint:(struct CGPoint { float x1; float x2; })arg1;
-+ (id)valueWithMKCoordinate:(struct { double x1; double x2; })arg1;
++ (id)valueWithMKCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 + (id)valueWithMKCoordinateSpan:(struct { double x1; double x2; })arg1;
 
 - (struct CADoublePoint { double x1; double x2; })CADoublePointValue;
 - (struct CADoubleRect { struct CADoublePoint { double x_1_1_1; double x_1_1_2; } x1; struct CADoubleSize { double x_2_1_1; double x_2_1_2; } x2; })CADoubleRectValue;
 - (struct { double x1; double x2; })MKCoordinateSpanValue;
-- (struct { double x1; double x2; })MKCoordinateValue;
+- (struct CLLocationCoordinate2D { double x1; double x2; })MKCoordinateValue;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })MKMapRectValue;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })_mapkit_CGAffineTransformValue;
 - (struct CGPoint { float x1; float x2; })_mapkit_CGPointValue;
@@ -81,8 +93,8 @@
 - (id)_mapkit_initWithCGPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)_mapkit_initWithCGRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)_mapkit_initWithMKMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)_mapkit_initWithZoomRegion:(struct { float x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (struct { float x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_mapkit_zoomRegionValue;
+- (id)_mapkit_initWithZoomRegion:(struct { float x1; struct CLLocationCoordinate2D { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct { float x1; struct CLLocationCoordinate2D { double x_2_1_1; double x_2_1_2; } x2; })_mapkit_zoomRegionValue;
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
@@ -146,11 +158,13 @@
 + (id)akValueWithRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 + (id)akValueWithSize:(struct CGSize { float x1; float x2; })arg1;
 + (id)valueWithCGRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
++ (id)valueWithQuadrilateral:(struct AKQuadrilateral { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; })arg1;
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })CGRectValue;
 - (struct CGPoint { float x1; float x2; })akPointValue;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })akRectValue;
 - (struct CGSize { float x1; float x2; })akSizeValue;
+- (struct AKQuadrilateral { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; })quadrilateralValue;
 
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
@@ -158,17 +172,17 @@
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })bs_CGRectValue;
 
-// Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
-
-+ (id)valueWithModeWithOptions:(struct CAMCaptureModeWithOptions { int x1; int x2; int x3; int x4; })arg1;
-
-- (struct CAMCaptureModeWithOptions { int x1; int x2; int x3; int x4; })modeWithOptions;
-
 // Image: /System/Library/PrivateFrameworks/CloudPhotoLibrary.framework/CloudPhotoLibrary
 
 - (id)cplFullDescription;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DrawingKit.framework/DrawingKit
+
++ (id)dk_valueWithRenderPoint:(struct { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; float x2; float x3; float x4; })arg1;
+
+- (struct { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; float x2; float x3; float x4; })dk_renderPointValue;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
 
@@ -198,11 +212,42 @@
 - (BOOL)hk_animatable;
 - (id)hk_midPointToValue:(id)arg1 percentage:(float)arg2;
 
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)valueWithGridPosition:(struct HUGridPosition { int x1; int x2; })arg1;
++ (id)valueWithGridSize:(struct HUGridSize { int x1; int x2; })arg1;
+
+- (struct HUGridPosition { int x1; int x2; })gridPositionValue;
+- (struct HUGridSize { int x1; int x2; })gridSizeValue;
+
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
++ (id)_lp_valueWithCGRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
++ (id)_lp_valueWithCGSize:(struct CGSize { float x1; float x2; })arg1;
+
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
 + (id)valueWithML3NameOrder:(struct { long long x1; int x2; })arg1;
 
 - (struct { long long x1; int x2; })ML3NameOrderValue;
+
+// Image: /System/Library/PrivateFrameworks/PDFKit.framework/PDFKit
+
++ (id)PDFKitValueWithPDFRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })PDFKitPDFRectValue;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (id)px_valueWithMemoryFontsSpecIdentifier:(struct PXMemoryFontsSpecIdentifier { int x1; int x2; int x3; float x4; })arg1;
++ (id)px_valueWithViewSpecDescriptor:(struct PXViewSpecDescriptor { int x1; unsigned int x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; })arg1;
++ (id)valueWithPXTileGeometry:(struct PXTileGeometry { struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_1_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; struct CGAffineTransform { float x_4_1_1; float x_4_1_2; float x_4_1_3; float x_4_1_4; float x_4_1_5; float x_4_1_6; } x4; float x5; float x6; BOOL x7; struct CGSize { float x_8_1_1; float x_8_1_2; } x8; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_9_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_9_1_2; } x9; void *x10; })arg1;
++ (id)valueWithPXTileIdentifier:(struct PXTileIdentifier { unsigned int x1; unsigned int x2[10]; })arg1;
+
+- (struct PXTileGeometry { struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_1_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; struct CGAffineTransform { float x_4_1_1; float x_4_1_2; float x_4_1_3; float x_4_1_4; float x_4_1_5; float x_4_1_6; } x4; float x5; float x6; BOOL x7; struct CGSize { float x_8_1_1; float x_8_1_2; } x8; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_9_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_9_1_2; } x9; void *x10; })PXTileGeometryValue;
+- (struct PXTileIdentifier { unsigned int x1; unsigned int x2[10]; })PXTileIdentifierValue;
+- (struct PXMemoryFontsSpecIdentifier { int x1; int x2; int x3; float x4; })px_memoryFontsSpecIdentifierValue;
+- (struct PXViewSpecDescriptor { int x1; unsigned int x2; struct CGSize { float x_3_1_1; float x_3_1_2; } x3; })px_viewSpecDescriptorValue;
 
 // Image: /System/Library/PrivateFrameworks/PhysicsKit.framework/PhysicsKit
 
@@ -212,11 +257,11 @@
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 
-+ (id)valueWithCLLocationCoordinate2D:(struct { double x1; double x2; })arg1;
-+ (id)valueWithMKCoordinateRegion:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
++ (id)valueWithCLLocationCoordinate2D:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
++ (id)valueWithMKCoordinateRegion:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 
-- (struct { double x1; double x2; })CLLocationCoordinate2DValue;
-- (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })MKCoordinateRegionValue;
+- (struct CLLocationCoordinate2D { double x1; double x2; })CLLocationCoordinate2DValue;
+- (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })MKCoordinateRegionValue;
 
 // Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
@@ -228,5 +273,11 @@
 
 - (id)mixedObjectWithFraction:(float)arg1 ofObject:(id)arg2;
 - (int)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+
+// Image: /usr/lib/libIOAccessoryManager.dylib
+
++ (id)valueWithDockState:(struct DockState { int x1; struct UnsignedWide { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; struct UnsignedWide { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; unsigned long long x4; unsigned char x5[6]; bool x6; bool x7; double x8; double x9; })arg1;
+
+- (struct DockState { int x1; struct UnsignedWide { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; struct UnsignedWide { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; unsigned long long x4; unsigned char x5[6]; bool x6; bool x7; double x8; double x9; })dockStateValue;
 
 @end

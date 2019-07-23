@@ -3,13 +3,13 @@
  */
 
 @interface HKHorizontalSingleLineSeries : HKGraphSeries <HKAxisLabelDataSource> {
-    UIColor *_baseColor;
-    float _lineWidth;
-    float _markRadius;
-    float _selectedLineWidth;
-    UIImage *_selectedPointMarkerImage;
-    BOOL _shouldConnectPoints;
-    float _topInsetPercentage;
+    UIColor * _baseColor;
+    float  _lineWidth;
+    float  _markRadius;
+    float  _selectedLineWidth;
+    UIImage * _selectedPointMarkerImage;
+    BOOL  _shouldConnectPoints;
+    float  _topInsetPercentage;
 }
 
 @property (nonatomic, retain) UIColor *baseColor;

@@ -3,8 +3,8 @@
  */
 
 @interface FBSOrientationObserverClient : FBSSystemServiceFacilityClient {
-    <FBSOrientationObserverClientDelegate> *_delegate;
-    unsigned int _interest;
+    <FBSOrientationObserverClientDelegate> * _delegate;
+    unsigned int  _interest;
 }
 
 - (void)activeInterfaceOrientationWithCompletion:(id /* block */)arg1;

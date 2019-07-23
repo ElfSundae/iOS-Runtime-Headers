@@ -28,6 +28,7 @@
 @property (copy) NSDictionary *requestParameters;
 @property BOOL requiresCellularDataNetwork;
 @property BOOL requiresExtendedValidationCertificates;
+@property BOOL requiresExternal;
 @property BOOL requiresHTTPS;
 @property BOOL shouldAddKBSyncData;
 @property BOOL shouldDecodeResponse;
@@ -62,6 +63,7 @@
 - (void)setRequestParameters:(id)arg1;
 - (void)setRequiresCellularDataNetwork:(BOOL)arg1;
 - (void)setRequiresExtendedValidationCertificates:(BOOL)arg1;
+- (void)setRequiresExternal:(BOOL)arg1;
 - (void)setRequiresHTTPS:(BOOL)arg1;
 - (void)setShouldAddKBSyncData:(BOOL)arg1;
 - (void)setShouldDecodeResponse:(BOOL)arg1;

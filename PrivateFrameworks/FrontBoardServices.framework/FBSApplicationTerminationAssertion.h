@@ -3,10 +3,10 @@
  */
 
 @interface FBSApplicationTerminationAssertion : NSObject {
-    int _assertionState;
-    NSString *_bundleID;
-    NSString *_reason;
-    unsigned long long _serialNumber;
+    int  _assertionState;
+    NSString * _bundleID;
+    NSString * _reason;
+    unsigned long long  _serialNumber;
 }
 
 @property (nonatomic, readonly) int assertionState;

@@ -3,8 +3,8 @@
  */
 
 @interface ICQUpgradeButton : UIButton {
-    ICQLink *_link;
-    ICQOffer *_offer;
+    ICQLink * _link;
+    ICQOffer * _offer;
 }
 
 @property (nonatomic, readonly) ICQLink *link;

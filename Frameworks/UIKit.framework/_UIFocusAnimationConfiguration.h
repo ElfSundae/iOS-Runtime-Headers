@@ -3,17 +3,17 @@
  */
 
 @interface _UIFocusAnimationConfiguration : NSObject <NSCopying> {
-    unsigned int _animationOptions;
-    double _focusingBaseDuration;
-    double _focusingDelay;
-    float _focusingDurationScaleFactorLowerBound;
-    float _focusingDurationScaleFactorUpperBound;
-    double _minimumFocusDuration;
-    float _unfocusingBackgroundFadeDurationPercentage;
-    double _unfocusingBaseDuration;
-    float _unfocusingDurationScaleFactorLowerBound;
-    float _unfocusingDurationScaleFactorUpperBound;
-    double _unfocusingRepositionBaseDuration;
+    unsigned int  _animationOptions;
+    double  _focusingBaseDuration;
+    double  _focusingDelay;
+    float  _focusingDurationScaleFactorLowerBound;
+    float  _focusingDurationScaleFactorUpperBound;
+    double  _minimumFocusDuration;
+    float  _unfocusingBackgroundFadeDurationPercentage;
+    double  _unfocusingBaseDuration;
+    float  _unfocusingDurationScaleFactorLowerBound;
+    float  _unfocusingDurationScaleFactorUpperBound;
+    double  _unfocusingRepositionBaseDuration;
 }
 
 @property (nonatomic) unsigned int animationOptions;

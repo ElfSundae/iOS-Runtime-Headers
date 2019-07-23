@@ -12,15 +12,15 @@
             float width; 
             float height; 
         } size; 
-    } _cropRect;
-    BOOL _hasVideo;
-    BOOL _magnifyEnabled;
-    NSString *_name;
-    float _parallaxFactor;
-    BOOL _portrait;
-    double _stillTimeInVideo;
-    BOOL _supportsCropping;
-    float _zoomScale;
+    }  _cropRect;
+    BOOL  _hasVideo;
+    BOOL  _magnifyEnabled;
+    NSString * _name;
+    float  _parallaxFactor;
+    BOOL  _portrait;
+    double  _stillTimeInVideo;
+    BOOL  _supportsCropping;
+    float  _zoomScale;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } bestWallpaperSize;

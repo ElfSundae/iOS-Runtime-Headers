@@ -2,12 +2,12 @@
    Image: /System/Library/PrivateFrameworks/Radio.framework/Radio
  */
 
-@interface RadioTrack : NSObject <NSSecureCoding, RURadioItemIdentifier> {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSDictionary *_bestOfferDictionary;
-    NSDate *_expirationDate;
-    BOOL _isPreorderAlbum;
-    NSMutableDictionary *_trackDictionary;
+@interface RadioTrack : NSObject <MPCRadioItemIdentifier, NSSecureCoding> {
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    NSDictionary * _bestOfferDictionary;
+    NSDate * _expirationDate;
+    BOOL  _isPreorderAlbum;
+    NSMutableDictionary * _trackDictionary;
 }
 
 @property (nonatomic, readonly, copy) NSData *adData;
@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, retain) NSDate *expirationDate;
 @property (nonatomic, readonly, copy) NSDictionary *feedbackDictionaryRepresentation;
+@property (nonatomic, readonly) BOOL hasLyrics;
 @property (readonly) unsigned int hash;
 @property (nonatomic) BOOL inWishList;
 @property (nonatomic, readonly) BOOL isExplicit;
@@ -80,6 +81,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)expirationDate;
 - (id)feedbackDictionaryRepresentation;
+- (BOOL)hasLyrics;
 - (BOOL)inWishList;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -100,7 +102,7 @@
 - (id)trackDictionary;
 - (id)trackInfo;
 
-// Image: /System/Library/PrivateFrameworks/RadioUI.framework/RadioUI
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 - (id)radioIdentifier;
 

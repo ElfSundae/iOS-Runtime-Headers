@@ -6,11 +6,11 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _center;
+    }  _center;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } center;

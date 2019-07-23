@@ -3,8 +3,8 @@
  */
 
 @interface _CICompositeFilter : CIFilter {
-    CIImage *inputBackgroundImage;
-    CIImage *inputImage;
+    CIImage * inputBackgroundImage;
+    CIImage * inputImage;
 }
 
 @property (nonatomic, retain) CIImage *inputBackgroundImage;

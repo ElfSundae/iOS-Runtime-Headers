@@ -3,10 +3,10 @@
  */
 
 @interface HKStrokeStyle : NSObject <NSCopying> {
-    int _lineCap;
-    int _lineJoin;
-    float _lineWidth;
-    UIColor *_strokeColor;
+    int  _lineCap;
+    int  _lineJoin;
+    float  _lineWidth;
+    UIColor * _strokeColor;
 }
 
 @property (nonatomic) int lineCap;

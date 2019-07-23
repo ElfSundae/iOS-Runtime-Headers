@@ -3,11 +3,11 @@
  */
 
 @interface GKEditActionsView : UIView {
-    NSArray *_actionButtons;
-    GKCollectionViewCell *_cell;
-    NSArray *_editActionConstraints;
-    CALayer *_maskLayer;
-    float _visibleWidth;
+    NSArray * _actionButtons;
+    GKCollectionViewCell * _cell;
+    NSArray * _editActionConstraints;
+    CALayer * _maskLayer;
+    float  _visibleWidth;
 }
 
 @property (nonatomic, retain) NSArray *actionButtons;

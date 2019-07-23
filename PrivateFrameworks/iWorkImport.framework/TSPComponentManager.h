@@ -3,16 +3,16 @@
  */
 
 @interface TSPComponentManager : NSObject <TSPComponentDelegate, TSPObjectModifyDelegate> {
-    NSCache *_componentCache;
-    NSMapTable *_componentDictionary;
-    NSObject<OS_dispatch_queue> *_componentQueue;
-    NSHashTable *_components;
-    TSPObjectContext *_context;
-    int _ignoreCachedObjectEvictionCount;
-    BOOL _isTornDown;
-    TSPComponent *_packageMetadataComponent;
-    NSObject<OS_dispatch_queue> *_readFlushedComponentQueue;
-    TSPComponent *_viewStateComponent;
+    NSCache * _componentCache;
+    NSMapTable * _componentDictionary;
+    NSObject<OS_dispatch_queue> * _componentQueue;
+    NSHashTable * _components;
+    TSPObjectContext * _context;
+    int  _ignoreCachedObjectEvictionCount;
+    BOOL  _isTornDown;
+    TSPComponent * _packageMetadataComponent;
+    NSObject<OS_dispatch_queue> * _readFlushedComponentQueue;
+    TSPComponent * _viewStateComponent;
 }
 
 @property (nonatomic, readonly) TSPObjectContext *context;
@@ -31,6 +31,8 @@
 @property (nonatomic, readonly) TSPComponent *supportObjectContainerComponent;
 @property (retain) TSPComponent *viewStateComponent;
 
++ (id)componentManagersPerformingCacheOperationOnCurrentThread;
+
 - (void).cxx_destruct;
 - (void)beginIgnoringCachedObjectEviction;
 - (void)cacheComponent:(id)arg1 isDiscardingContent:(BOOL)arg2;
@@ -40,6 +42,7 @@
 - (void)componentForRootObjectOfLazyReference:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (id)componentForRootObjectOfLazyReferenceImpl:(id)arg1;
 - (id)context;
+- (void)continueCacheOperationUsingBlock:(id /* block */)arg1;
 - (void)dealloc;
 - (void)didModifyFlushedComponent:(id)arg1 forObject:(id)arg2;
 - (void)dirtyAllComponentsForDocumentUpgradeInPackage:(unsigned char)arg1;
@@ -56,10 +59,13 @@
 - (id)initWithContext:(id)arg1;
 - (BOOL)isActive;
 - (BOOL)isDocumentComponentTreeModified;
+- (BOOL)isPerformingCacheOperation;
 - (BOOL)isSupportComponentTreeModified;
 - (void)loadFromPackage:(id)arg1 metadata:(id)arg2;
 - (id)objectForIdentifier:(long long)arg1;
+- (unsigned int)objectTargetType;
 - (id)packageMetadataComponent;
+- (void)performCacheOperationUsingBlock:(id /* block */)arg1;
 - (void)resumeLoadingModifiedFlushedComponents;
 - (void)retrieveOrCreateComponentForRootObject:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (id)rootComponentForPackageIdentifier:(unsigned char)arg1;

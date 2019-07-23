@@ -3,23 +3,23 @@
  */
 
 @interface PUPlaybackTimeLabel : UIView {
-    UIView *__backgroundView;
-    UILabel *__label;
-    BOOL __needsUpdateBackground;
-    BOOL __needsUpdateLabel;
+    UIView * __backgroundView;
+    UILabel * __label;
+    BOOL  __needsUpdateBackground;
+    BOOL  __needsUpdateLabel;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _currentPlaybackTime;
-    int _format;
+    }  _currentPlaybackTime;
+    int  _format;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _playbackDuration;
+    }  _playbackDuration;
 }
 
 @property (nonatomic, readonly) UIView *_backgroundView;

@@ -3,25 +3,25 @@
  */
 
 @interface MSCLAttachment : NSObject <NSCopying> {
-    NSString *_UTI;
-    MSCLStoreItem *_album;
-    NSArray *_artists;
-    UIImage *_assetImage;
-    NSURL *_assetURL;
-    NSString *_attachmentDescription;
-    NSString *_categoryName;
-    NSData *_data;
-    double _duration;
-    BOOL _explicitContent;
-    MPMediaItem *_mediaItem;
-    NSString *_message;
+    NSString * _UTI;
+    MSCLStoreItem * _album;
+    NSArray * _artists;
+    UIImage * _assetImage;
+    NSURL * _assetURL;
+    NSString * _attachmentDescription;
+    NSString * _categoryName;
+    NSData * _data;
+    double  _duration;
+    BOOL  _explicitContent;
+    MPMediaItem * _mediaItem;
+    NSString * _message;
     struct CGSize { 
         float width; 
         float height; 
-    } _pixelSize;
-    UIImage *_thumbnailImage;
-    double _thumbnailImageTime;
-    NSString *_title;
+    }  _pixelSize;
+    UIImage * _thumbnailImage;
+    double  _thumbnailImageTime;
+    NSString * _title;
 }
 
 @property (nonatomic, copy) NSString *UTI;

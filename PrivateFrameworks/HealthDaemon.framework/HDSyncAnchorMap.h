@@ -3,7 +3,7 @@
  */
 
 @interface HDSyncAnchorMap : NSObject <HDSyncAnchorMap> {
-    NSMutableDictionary *_anchorsByObjectType;
+    NSMutableDictionary * _anchorsByObjectType;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *anchorsByObjectType;

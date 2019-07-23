@@ -3,9 +3,9 @@
  */
 
 @interface CDDPluginConnection : NSObject {
-    unsigned long long _clientId;
-    CDDXPCConnection *_connection;
-    CDDebug *_debug;
+    unsigned long long  _clientId;
+    CDDXPCConnection * _connection;
+    CDDebug * _debug;
 }
 
 @property (readonly) unsigned long long clientId;
@@ -20,7 +20,6 @@
 - (id)debug;
 - (id)init;
 - (id)initWithClientId:(unsigned long long)arg1 error:(id*)arg2;
-- (id)messageWithError:(id*)arg1;
 - (BOOL)registerForSignoffWithError:(id*)arg1 replyHandler:(id /* block */)arg2;
 - (BOOL)requestSystemDataWithError:(id*)arg1 replyHandler:(id /* block */)arg2;
 - (BOOL)sendMessageWithType:(int)arg1 error:(id*)arg2 dictionaryKey:(id)arg3 dictionary:(id)arg4 replyHandler:(id /* block */)arg5;

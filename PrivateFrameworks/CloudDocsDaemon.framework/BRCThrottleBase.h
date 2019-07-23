@@ -3,12 +3,13 @@
  */
 
 @interface BRCThrottleBase : NSObject {
-    unsigned int _finalRetryCount;
-    unsigned int _initialRetryCount;
-    long long _maximumNsecsBetweenRetries;
-    long long _minimumNsecsBetweenRetries;
-    NSString *_name;
-    long long _nsecsBeforeForgettingCounter;
+    unsigned int  _finalRetryCount;
+    unsigned int  _initialRetryCount;
+    unsigned int  _maximumElementCount;
+    long long  _maximumNsecsBetweenRetries;
+    long long  _minimumNsecsBetweenRetries;
+    NSString * _name;
+    long long  _nsecsBeforeForgettingCounter;
 }
 
 @property (nonatomic, readonly) NSString *name;

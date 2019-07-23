@@ -3,7 +3,7 @@
  */
 
 @interface UIKBContainerKeyView : UIKBKeyView {
-    UIKBKeyView *_keyView;
+    UIKBKeyView * _keyView;
 }
 
 - (id)contentsKeyView;

@@ -12,9 +12,9 @@
             float width; 
             float height; 
         } size; 
-    } mBounds;
-    OITSUColor *mEndColor;
-    OITSUColor *mStartColor;
+    }  mBounds;
+    OITSUColor * mEndColor;
+    OITSUColor * mStartColor;
 }
 
 - (void)createShading;

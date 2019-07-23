@@ -3,14 +3,14 @@
  */
 
 @interface NCInteractiveNotificationHostViewController : _UIRemoteViewController <NCInteractiveNotificationHost, NCInteractiveNotificationHostDelegate, NCInteractiveNotificationHostInterface> {
-    NCViewServiceDescriptor *_accessoryViewService;
-    float _bottomOverhangHeight;
-    <NCInteractiveNotificationHostDelegate> *_delegate;
-    NCViewServiceDescriptor *_inlayViewService;
-    float _maximumHeight;
-    BOOL _modal;
-    BOOL _proximityMonitoringEnabled;
-    BOOL _showsKeyboard;
+    NCViewServiceDescriptor * _accessoryViewService;
+    float  _bottomOverhangHeight;
+    <NCInteractiveNotificationHostDelegate> * _delegate;
+    NCViewServiceDescriptor * _inlayViewService;
+    float  _maximumHeight;
+    BOOL  _modal;
+    BOOL  _proximityMonitoringEnabled;
+    BOOL  _showsKeyboard;
 }
 
 @property (nonatomic, retain) NCViewServiceDescriptor *accessoryViewService;
@@ -30,6 +30,7 @@
 + (void)requestInteractiveNotificationControllerWithName:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3 completion:(id /* block */)arg4;
 + (id)serviceViewControllerInterface;
 
+- (void).cxx_destruct;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)_dismissWithContext:(id)arg1;
 - (void)_proximityStateChanged:(id)arg1;

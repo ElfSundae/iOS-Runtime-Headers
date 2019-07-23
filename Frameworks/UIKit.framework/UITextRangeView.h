@@ -3,15 +3,15 @@
  */
 
 @interface UITextRangeView : UIView {
-    UITouch *m_activeTouch;
-    BOOL m_animateUpdate;
-    BOOL m_baseIsStart;
+    UITouch * m_activeTouch;
+    BOOL  m_animateUpdate;
+    BOOL  m_baseIsStart;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_basePoint;
-    BOOL m_commandsWereShowing;
-    UIResponder<UITextInput> *m_container;
+    }  m_basePoint;
+    BOOL  m_commandsWereShowing;
+    UIResponder<UITextInput> * m_container;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -21,35 +21,35 @@
             float width; 
             float height; 
         } size; 
-    } m_endEdge;
-    UISelectionGrabber *m_endGrabber;
+    }  m_endEdge;
+    UISelectionGrabber * m_endGrabber;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_extentPoint;
-    double m_firstMovedTime;
-    BOOL m_inGesture;
+    }  m_extentPoint;
+    double  m_firstMovedTime;
+    BOOL  m_inGesture;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_initialBasePoint;
-    float m_initialDistance;
+    }  m_initialBasePoint;
+    float  m_initialDistance;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_initialExtentPoint;
-    BOOL m_inputViewIsChanging;
-    BOOL m_isClearingRange;
-    BOOL m_magnifying;
-    int m_mode;
-    UIView *m_rectContainerView;
-    NSMutableArray *m_rectViews;
-    NSArray *m_rects;
-    BOOL m_rotating;
-    BOOL m_scaling;
-    BOOL m_scrolling;
-    UITextSelectionView *m_selectionView;
-    BOOL m_shouldStayVisible;
+    }  m_initialExtentPoint;
+    BOOL  m_inputViewIsChanging;
+    BOOL  m_isClearingRange;
+    BOOL  m_magnifying;
+    int  m_mode;
+    UIView * m_rectContainerView;
+    NSMutableArray * m_rectViews;
+    NSArray * m_rects;
+    BOOL  m_rotating;
+    BOOL  m_scaling;
+    BOOL  m_scrolling;
+    UITextSelectionView * m_selectionView;
+    BOOL  m_shouldStayVisible;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -59,15 +59,16 @@
             float width; 
             float height; 
         } size; 
-    } m_startEdge;
-    UISelectionGrabber *m_startGrabber;
+    }  m_startEdge;
+    UISelectionGrabber * m_startGrabber;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_touchOffset;
+    }  m_touchOffset;
 }
 
 @property (nonatomic, retain) UITouch *activeTouch;
+@property (nonatomic, readonly) struct CGPoint { float x1; float x2; } activeTouchPoint;
 @property (nonatomic) BOOL animateUpdate;
 @property (nonatomic, readonly) BOOL autoscrolled;
 @property (nonatomic) BOOL baseIsStart;
@@ -101,6 +102,7 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_selectionClipRect;
 - (BOOL)_startIsHorizontal;
 - (id)activeTouch;
+- (struct CGPoint { float x1; float x2; })activeTouchPoint;
 - (BOOL)animateUpdate;
 - (struct CGPoint { float x1; float x2; })applyTouchOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (BOOL)autoscrolled;

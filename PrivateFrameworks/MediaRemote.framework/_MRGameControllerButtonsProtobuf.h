@@ -3,13 +3,13 @@
  */
 
 @interface _MRGameControllerButtonsProtobuf : PBCodable <NSCopying> {
-    float _buttonA;
-    float _buttonB;
-    float _buttonPause;
-    float _buttonX;
-    float _buttonY;
-    float _dpadX;
-    float _dpadY;
+    float  _buttonA;
+    float  _buttonB;
+    float  _buttonPause;
+    float  _buttonX;
+    float  _buttonY;
+    float  _dpadX;
+    float  _dpadY;
     struct { 
         unsigned int buttonA : 1; 
         unsigned int buttonB : 1; 
@@ -26,15 +26,15 @@
         unsigned int rightThumbstickX : 1; 
         unsigned int rightThumbstickY : 1; 
         unsigned int rightTrigger : 1; 
-    } _has;
-    float _leftShoulder;
-    float _leftThumbstickX;
-    float _leftThumbstickY;
-    float _leftTrigger;
-    float _rightShoulder;
-    float _rightThumbstickX;
-    float _rightThumbstickY;
-    float _rightTrigger;
+    }  _has;
+    float  _leftShoulder;
+    float  _leftThumbstickX;
+    float  _leftThumbstickY;
+    float  _leftTrigger;
+    float  _rightShoulder;
+    float  _rightThumbstickX;
+    float  _rightThumbstickY;
+    float  _rightTrigger;
 }
 
 @property (nonatomic) float buttonA;

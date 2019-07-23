@@ -3,13 +3,19 @@
  */
 
 @interface TSWPShapeRep : TSDShapeRep <TSDContainerRep, TSDMagicMoveMatching, TSWPShapeLayoutDelegate> {
-    TSWPRep *_containedRep;
-    BOOL _editingContainedRep;
+    TSWPRep * _containedRep;
+    struct CGColor { } * _containedRepSecondaryHighlightColor;
+    int  _containedRepSecondaryHighlightPathStyle;
+    struct _NSRange { 
+        unsigned int location; 
+        unsigned int length; 
+    }  _containedRepSecondaryHighlightRange;
+    BOOL  _editingContainedRep;
     struct CGPoint { 
         float x; 
         float y; 
-    } _originalAutosizePositionOffset;
-    CALayer *_overflowGlyphLayer;
+    }  _originalAutosizePositionOffset;
+    CALayer * _overflowGlyphLayer;
 }
 
 @property (nonatomic, readonly) TSWPRep *containedRep;
@@ -34,6 +40,7 @@
 + (id)p_textureSetFromRep:(id)arg1 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 includeListLabel:(BOOL)arg3 desiredContentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4;
 
 - (void)addAdditionalChildLayersToArray:(id)arg1;
+- (BOOL)canMakePathEditable;
 - (id)childReps;
 - (id)containedRep;
 - (id)containerInfo;
@@ -42,7 +49,7 @@
 - (id)hitReps:(struct CGPoint { float x1; float x2; })arg1 withSlop:(struct CGSize { float x1; float x2; })arg2;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isShapeInvisible;
-- (id)newTextureRenderableForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 includeListLabel:(BOOL)arg2 isMagicMove:(BOOL)arg3 desiredContentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 includeGroupedShadow:(BOOL)arg5 groupedShadowOnly:(BOOL)arg6;
+- (id)newTextureRenderableForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 includeListLabel:(BOOL)arg2 isMagicMove:(BOOL)arg3 desiredContentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 includeGroupedShadow:(BOOL)arg5 groupedShadowOnly:(BOOL)arg6 textureBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg7;
 - (void)p_drawRubyInContext:(struct CGContext { }*)arg1 forRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;
 - (void)p_getBoundsRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1 contentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg2 transform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; }*)arg3 applyReflection:(BOOL*)arg4 applyShadow:(BOOL*)arg5 forRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg6 includeListLabel:(BOOL)arg7 isMagicMove:(BOOL)arg8;
 - (BOOL)p_hasContentForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 labelOnly:(BOOL)arg2;

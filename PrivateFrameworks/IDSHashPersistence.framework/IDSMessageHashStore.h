@@ -3,11 +3,11 @@
  */
 
 @interface IDSMessageHashStore : NSObject {
-    unsigned long long __initialProcessTime;
-    unsigned long long __initialServerTime;
-    NSObject<OS_dispatch_source> *_databaseCloseTimer;
-    double _databaseLastUpdateTime;
-    NSObject<OS_dispatch_queue> *_ivarQueue;
+    unsigned long long  __initialProcessTime;
+    unsigned long long  __initialServerTime;
+    NSObject<OS_dispatch_source> * _databaseCloseTimer;
+    double  _databaseLastUpdateTime;
+    NSObject<OS_dispatch_queue> * _ivarQueue;
 }
 
 @property (nonatomic) unsigned long long _initialProcessTime;

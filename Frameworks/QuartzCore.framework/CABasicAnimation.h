@@ -31,7 +31,11 @@
 - (float)startAngle;
 - (id)toValue;
 
-// Image: /System/Library/Frameworks/PassKit.framework/PassKit
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
+
++ (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
 - (void)pkui_updateForAdditiveAnimationFromPoint:(struct CGPoint { float x1; float x2; })arg1 toPoint:(struct CGPoint { float x1; float x2; })arg2;
 - (void)pkui_updateForAdditiveAnimationFromPoint:(struct CGPoint { float x1; float x2; })arg1 toPoint:(struct CGPoint { float x1; float x2; })arg2 withLayerPoint:(struct CGPoint { float x1; float x2; })arg3;
@@ -41,10 +45,6 @@
 - (void)pkui_updateForAdditiveAnimationFromSize:(struct CGSize { float x1; float x2; })arg1 toSize:(struct CGSize { float x1; float x2; })arg2 withLayerSize:(struct CGSize { float x1; float x2; })arg3;
 - (void)pkui_updateForAdditiveAnimationFromTransform:(struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1 toTransform:(struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg2;
 - (void)pkui_updateForAdditiveAnimationFromTransform:(struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1 toTransform:(struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg2 withLayerTransform:(struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg3;
-
-// Image: /System/Library/Frameworks/UIKit.framework/UIKit
-
-+ (id)normalizedAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

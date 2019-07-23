@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreThemeDefinition.framework/CoreThemeDefinition
  */
 
-@interface TDNamedAssetImportInfo : NSObject {
+@interface TDNamedAssetImportInfo : NSObject <NSCopying> {
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -12,55 +12,77 @@
             float width; 
             float height; 
         } size; 
-    } _alignmentRect;
+    }  _alignmentRect;
+    unsigned int  _arrayIndex;
     struct CGSize { 
         float width; 
         float height; 
-    } _canvasSize;
-    NSArray *_containedImageNames;
-    NSURL *_fileURL;
-    unsigned int _graphicsClass;
-    int _graphicsFeatureSetClass;
-    int _idiom;
-    NSArray *_layerReferences;
-    unsigned int _memoryClass;
-    NSDate *_modificationDate;
-    NSString *_name;
-    int _nameIdentifier;
-    int _renditionType;
+    }  _canvasSize;
+    int  _compressionType;
+    NSArray * _containedImageNames;
+    BOOL  _cubeMap;
+    int  _displayGamut;
+    NSURL * _fileURL;
+    unsigned int  _graphicsClass;
+    int  _graphicsFeatureSetClass;
+    int  _idiom;
+    BOOL  _isFlippable;
+    NSArray * _layerReferences;
+    int  _layoutDirection;
+    float  _lossyCompressionQuality;
+    unsigned int  _memoryClass;
+    NSDate * _modificationDate;
+    NSString * _name;
+    int  _nameIdentifier;
+    BOOL  _optOutOfThinning;
+    int  _renditionType;
     struct CGSize { 
         float width; 
         float height; 
-    } _resizableSliceSize;
-    int _resizingMode;
-    unsigned int _scaleFactor;
-    int _sizeClassHorizontal;
-    int _sizeClassVertical;
+    }  _resizableSliceSize;
+    int  _resizingMode;
+    unsigned int  _scaleFactor;
+    int  _sizeClassHorizontal;
+    int  _sizeClassVertical;
     struct { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _sliceInsets;
-    int _subtype;
-    NSSet *_tags;
-    int _templateRenderingMode;
-    NSString *_universalTypeIdentifier;
+    }  _sliceInsets;
+    int  _subtype;
+    NSSet * _tags;
+    int  _templateRenderingMode;
+    unsigned int  _textureDepth;
+    unsigned int  _textureHeight;
+    NSArray * _textureInfos;
+    int  _textureInterpretation;
+    int  _texturePixelFormat;
+    unsigned int  _textureWidth;
+    NSString * _universalTypeIdentifier;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } alignmentRect;
+@property (nonatomic) unsigned int arrayIndex;
 @property (nonatomic) struct CGSize { float x1; float x2; } canvasSize;
+@property (nonatomic) int compressionType;
 @property (nonatomic, copy) NSArray *containedImageNames;
+@property (nonatomic) BOOL cubeMap;
+@property (nonatomic) int displayGamut;
 @property (nonatomic, copy) NSURL *fileURL;
 @property (nonatomic) unsigned int graphicsClass;
 @property (nonatomic) int graphicsFeatureSetClass;
 @property (nonatomic) int idiom;
+@property (nonatomic) BOOL isFlippable;
 @property (nonatomic) BOOL isTemplate;
 @property (nonatomic, copy) NSArray *layerReferences;
+@property (nonatomic) int layoutDirection;
+@property (nonatomic) float lossyCompressionQuality;
 @property (nonatomic) unsigned int memoryClass;
 @property (nonatomic, copy) NSDate *modificationDate;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) int nameIdentifier;
+@property (nonatomic) BOOL optOutOfThinning;
 @property (nonatomic) int renditionType;
 @property (nonatomic) struct CGSize { float x1; float x2; } resizableSliceSize;
 @property (nonatomic) int resizingMode;
@@ -71,41 +93,65 @@
 @property (nonatomic) int subtype;
 @property (nonatomic, copy) NSSet *tags;
 @property (nonatomic) int templateRenderingMode;
+@property (nonatomic) unsigned int textureDepth;
+@property (nonatomic) unsigned int textureHeight;
+@property (nonatomic, copy) NSArray *textureInfos;
+@property (nonatomic) int textureInterpretation;
+@property (nonatomic) int texturePixelFormat;
+@property (nonatomic) unsigned int textureWidth;
 @property (nonatomic, copy) NSString *universalTypeIdentifier;
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })alignmentRect;
+- (unsigned int)arrayIndex;
 - (struct CGSize { float x1; float x2; })canvasSize;
+- (int)compressionType;
 - (id)containedImageNames;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (BOOL)cubeMap;
 - (void)dealloc;
+- (id)description;
+- (int)displayGamut;
 - (id)fileURL;
 - (unsigned int)graphicsClass;
 - (int)graphicsFeatureSetClass;
 - (int)idiom;
 - (id)init;
+- (BOOL)isFlippable;
 - (BOOL)isTemplate;
 - (id)layerReferences;
+- (int)layoutDirection;
+- (float)lossyCompressionQuality;
 - (unsigned int)memoryClass;
 - (id)modificationDate;
 - (id)name;
 - (int)nameIdentifier;
+- (BOOL)optOutOfThinning;
 - (int)renditionSubtype;
 - (int)renditionType;
 - (struct CGSize { float x1; float x2; })resizableSliceSize;
 - (int)resizingMode;
 - (unsigned int)scaleFactor;
 - (void)setAlignmentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)setArrayIndex:(unsigned int)arg1;
 - (void)setCanvasSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)setCompressionType:(int)arg1;
 - (void)setContainedImageNames:(id)arg1;
+- (void)setCubeMap:(BOOL)arg1;
+- (void)setDisplayGamut:(int)arg1;
 - (void)setFileURL:(id)arg1;
 - (void)setGraphicsClass:(unsigned int)arg1;
 - (void)setGraphicsFeatureSetClass:(int)arg1;
 - (void)setIdiom:(int)arg1;
+- (void)setIsFlippable:(BOOL)arg1;
 - (void)setIsTemplate:(BOOL)arg1;
 - (void)setLayerReferences:(id)arg1;
+- (void)setLayoutDirection:(int)arg1;
+- (void)setLossyCompressionQuality:(float)arg1;
 - (void)setMemoryClass:(unsigned int)arg1;
 - (void)setModificationDate:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setNameIdentifier:(int)arg1;
+- (void)setOptOutOfThinning:(BOOL)arg1;
 - (void)setRenditionType:(int)arg1;
 - (void)setResizableSliceSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setResizingMode:(int)arg1;
@@ -116,6 +162,12 @@
 - (void)setSubtype:(int)arg1;
 - (void)setTags:(id)arg1;
 - (void)setTemplateRenderingMode:(int)arg1;
+- (void)setTextureDepth:(unsigned int)arg1;
+- (void)setTextureHeight:(unsigned int)arg1;
+- (void)setTextureInfos:(id)arg1;
+- (void)setTextureInterpretation:(int)arg1;
+- (void)setTexturePixelFormat:(int)arg1;
+- (void)setTextureWidth:(unsigned int)arg1;
 - (void)setUniversalTypeIdentifier:(id)arg1;
 - (int)sizeClassHorizontal;
 - (int)sizeClassVertical;
@@ -123,6 +175,12 @@
 - (int)subtype;
 - (id)tags;
 - (int)templateRenderingMode;
+- (unsigned int)textureDepth;
+- (unsigned int)textureHeight;
+- (id)textureInfos;
+- (int)textureInterpretation;
+- (int)texturePixelFormat;
+- (unsigned int)textureWidth;
 - (id)universalTypeIdentifier;
 
 @end

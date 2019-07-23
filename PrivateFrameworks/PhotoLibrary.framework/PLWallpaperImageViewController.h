@@ -3,18 +3,18 @@
  */
 
 @interface PLWallpaperImageViewController : PLUIEditImageViewController <SBFLegibilitySettingsProviderDelegate> {
-    BOOL __statusBarHidden;
-    int __statusBarStyle;
-    unsigned int _didSetImageMode;
-    BOOL _isWallpaperEdit;
-    PLWallpaperNavigationItem *_navItem;
-    NSArray *_navigationToolbarItems;
-    int _previewType;
-    int _previewVariant;
-    BOOL _saveWallpaperData;
-    int _wallpaperMode;
-    SBSUIWallpaperPreviewViewController *_wallpaperPreviewViewController;
-    NSString *_wallpaperTitle;
+    BOOL  __statusBarHidden;
+    int  __statusBarStyle;
+    unsigned int  _didSetImageMode;
+    BOOL  _isWallpaperEdit;
+    PLWallpaperNavigationItem * _navItem;
+    NSArray * _navigationToolbarItems;
+    int  _previewType;
+    int  _previewVariant;
+    BOOL  _saveWallpaperData;
+    int  _wallpaperMode;
+    SBSUIWallpaperPreviewViewController * _wallpaperPreviewViewController;
+    NSString * _wallpaperTitle;
 }
 
 @property (setter=_setStatusBarHidden:, nonatomic) BOOL _statusBarHidden;

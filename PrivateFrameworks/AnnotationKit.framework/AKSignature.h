@@ -3,10 +3,10 @@
  */
 
 @interface AKSignature : NSObject <NSSecureCoding> {
-    float _baselineOffset;
-    NSDate *_creationDate;
-    struct CGPath { } *_path;
-    BOOL _shouldPersist;
+    float  _baselineOffset;
+    NSDate * _creationDate;
+    struct CGPath { } * _path;
+    BOOL  _shouldPersist;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,8 +16,8 @@
             float width; 
             float height; 
         } size; 
-    } _strokesBounds;
-    NSUUID *_uniqueID;
+    }  _strokesBounds;
+    NSUUID * _uniqueID;
 }
 
 @property float baselineOffset;

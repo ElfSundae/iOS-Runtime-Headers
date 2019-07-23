@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } _chevronFrame;
+    }  _chevronFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -22,8 +22,8 @@
             float width; 
             float height; 
         } size; 
-    } _dateFrame;
-    BOOL _invalid;
+    }  _dateFrame;
+    BOOL  _invalid;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,8 +33,8 @@
             float width; 
             float height; 
         } size; 
-    } _senderFrame;
-    BOOL _shouldShowChevron;
+    }  _senderFrame;
+    BOOL  _shouldShowChevron;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -44,8 +44,8 @@
             float width; 
             float height; 
         } size; 
-    } _summaryFrame;
-    float _summaryLabelCapFrameYOrigin;
+    }  _summaryFrame;
+    float  _summaryLabelCapFrameYOrigin;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -55,7 +55,7 @@
             float width; 
             float height; 
         } size; 
-    } _tableBounds;
+    }  _tableBounds;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -65,7 +65,7 @@
             float width; 
             float height; 
         } size; 
-    } _unreadFrame;
+    }  _unreadFrame;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } chevronFrame;

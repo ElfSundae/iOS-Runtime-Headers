@@ -3,25 +3,27 @@
  */
 
 @interface _NSSQLiteStoreMigrator : NSObject {
-    NSSQLAdapter *_adapter;
-    NSMutableDictionary *_addedEntityMigrations;
-    NSSQLConnection *_connection;
-    NSMutableDictionary *_copiedEntityMigrations;
-    NSSQLModel *_dstModel;
-    BOOL _hasPKTableChanges;
-    NSMappingModel *_mappingModel;
-    NSMutableArray *_pkTableUpdateStatements;
-    NSMutableDictionary *_reindexedEntities;
-    NSMutableDictionary *_reindexedPropertiesByEntity;
-    NSMutableDictionary *_removedEntityMigrations;
-    NSMutableDictionary *_sourceToDestinationEntityMap;
-    NSSQLModel *_srcModel;
-    NSSQLCore *_store;
-    NSMutableDictionary *_tableMigrationDescriptionsByEntity;
-    NSMutableDictionary *_transformedEntityMigrations;
+    NSSQLiteAdapter * _adapter;
+    NSMutableDictionary * _addedEntityMigrations;
+    NSMutableDictionary * _attributeTriggersToUpdate;
+    NSSQLiteConnection * _connection;
+    NSMutableDictionary * _copiedEntityMigrations;
+    NSSQLModel * _dstModel;
+    NSArray * _existingTableNames;
+    BOOL  _hasPKTableChanges;
+    NSMappingModel * _mappingModel;
+    NSMutableArray * _pkTableUpdateStatements;
+    NSMutableDictionary * _reindexedEntities;
+    NSMutableDictionary * _reindexedPropertiesByEntity;
+    NSMutableDictionary * _removedEntityMigrations;
+    NSMutableDictionary * _sourceToDestinationEntityMap;
+    NSSQLModel * _srcModel;
+    NSSQLCore * _store;
+    NSMutableDictionary * _tableMigrationDescriptionsByEntity;
+    NSMutableDictionary * _transformedEntityMigrations;
 }
 
-@property (readonly) NSSQLAdapter *adapter;
+@property (readonly) NSSQLiteAdapter *adapter;
 
 + (BOOL)_annotatesMigrationMetadata;
 + (void)_setAnnotatesMigrationMetadata:(BOOL)arg1;
@@ -32,12 +34,12 @@
 - (long long)_countUnreferencedPrimaryKeysForEntity:(id)arg1 inForeignKeyColumnName:(id)arg2 fromTable:(id)arg3;
 - (void)_determinePropertyDependenciesOnIDForEntity:(id)arg1;
 - (void)_determineReindexedEntitiesAndAffectedProperties;
+- (void)_disconnect;
 - (id)_originalRootsForAddedEntity:(id)arg1;
 - (void)_populateEntityMigrationDescriptionsAndEntityMap;
 - (void)_populateTableMigrationDescriptions;
 - (id)adapter;
 - (id)createEntityMigrationStatements;
-- (id)createIndexStatementsForEntity:(id)arg1;
 - (id)createStatementsForUpdatingEntityKeys;
 - (void)dealloc;
 - (id)entityMigrationDescriptionForEntity:(id)arg1;

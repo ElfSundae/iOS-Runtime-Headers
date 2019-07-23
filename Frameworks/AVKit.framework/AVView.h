@@ -3,8 +3,8 @@
  */
 
 @interface AVView : UIView {
-    _AVViewSublayerAnimationDelegateProxy *_sublayerAnimationDelegateProxy;
-    NSMutableArray *_sublayers;
+    _AVViewSublayerAnimationDelegateProxy * _sublayerAnimationDelegateProxy;
+    NSMutableArray * _sublayers;
 }
 
 @property (nonatomic, readonly) NSArray *sublayers;

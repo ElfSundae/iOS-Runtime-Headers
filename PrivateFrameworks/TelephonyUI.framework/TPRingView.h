@@ -3,11 +3,11 @@
  */
 
 @interface TPRingView : UIView {
-    CALayer *_dodgeRingLayer;
-    CALayer *_highlightDodgeLayer;
-    CALayer *_highlightLuminanceLayer;
-    CALayer *_luminanceRingLayer;
-    CALayer *_selectionLayer;
+    CALayer * _dodgeRingLayer;
+    CALayer * _highlightDodgeLayer;
+    CALayer * _highlightLuminanceLayer;
+    CALayer * _luminanceRingLayer;
+    CALayer * _selectionLayer;
 }
 
 @property (retain) CALayer *dodgeRingLayer;

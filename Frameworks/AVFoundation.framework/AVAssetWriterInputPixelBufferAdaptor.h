@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetWriterInputPixelBufferAdaptor : NSObject <AVKeyPathDependencyHost, AVWeakObservable> {
-    AVAssetWriterInputPixelBufferAdaptorInternal *_internal;
+    AVAssetWriterInputPixelBufferAdaptorInternal * _internal;
 }
 
 @property (nonatomic, readonly) AVAssetWriterInput *assetWriterInput;

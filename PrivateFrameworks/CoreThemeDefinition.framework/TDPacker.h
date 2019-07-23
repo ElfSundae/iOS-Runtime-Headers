@@ -3,10 +3,10 @@
  */
 
 @interface TDPacker : NSObject {
-    NSArray *_objectsToPack;
-    NSArray *_packedObjects;
-    _TDPackerNode *_root;
-    id /* block */ _sizeHandler;
+    NSArray * _objectsToPack;
+    NSArray * _packedObjects;
+    _TDPackerNode * _root;
+    id /* block */  _sizeHandler;
 }
 
 @property (nonatomic, retain) NSArray *objectsToPack;

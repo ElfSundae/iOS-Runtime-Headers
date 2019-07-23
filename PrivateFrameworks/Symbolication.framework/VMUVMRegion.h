@@ -3,43 +3,43 @@
  */
 
 @interface VMUVMRegion : NSObject {
-    unsigned int coalesced_region_count;
-    unsigned long long dirty_size;
-    unsigned char external_pager;
-    unsigned int is_macho_region;
-    unsigned int is_submap;
-    unsigned int is_unused_data_page_shared_with_active_content;
-    unsigned int is_unused_data_region;
-    unsigned int mallocBlockCount;
-    unsigned int mallocTypeFlag;
-    unsigned int maxProt;
-    unsigned int nesting_depth;
-    unsigned int object_id;
-    unsigned int pages_dirtied;
-    unsigned int pages_resident;
-    unsigned int pages_shared_now_private;
-    unsigned int pages_swapped_out;
-    NSString *path;
-    unsigned int prot;
-    unsigned long long purgable_empty_size;
-    unsigned long long purgable_non_vol_size;
-    unsigned long long purgable_vol_size;
-    int purgeable;
+    unsigned int  coalesced_region_count;
+    unsigned long long  dirty_size;
+    unsigned char  external_pager;
+    unsigned int  is_macho_region;
+    unsigned int  is_submap;
+    unsigned int  is_unused_data_page_shared_with_active_content;
+    unsigned int  is_unused_data_region;
+    unsigned int  mallocBlockCount;
+    unsigned int  mallocTypeFlag;
+    unsigned int  maxProt;
+    unsigned int  nesting_depth;
+    unsigned int  object_id;
+    unsigned int  pages_dirtied;
+    unsigned int  pages_resident;
+    unsigned int  pages_shared_now_private;
+    unsigned int  pages_swapped_out;
+    NSString * path;
+    unsigned int  prot;
+    unsigned long long  purgable_empty_size;
+    unsigned long long  purgable_non_vol_size;
+    unsigned long long  purgable_vol_size;
+    int  purgeable;
     struct _VMURange { 
         unsigned long long location; 
         unsigned long long length; 
-    } range;
-    unsigned int ref_count;
-    unsigned int reserved_flags;
-    unsigned long long resident_size;
-    unsigned char share_mode;
-    unsigned long long shared_now_private_size;
-    BOOL summarized;
-    unsigned long long swapped_out_size;
-    NSString *type;
-    unsigned int user_tag;
-    unsigned int virtual_pages;
-    unsigned int zone_index;
+    }  range;
+    unsigned int  ref_count;
+    unsigned int  reserved_flags;
+    unsigned long long  resident_size;
+    unsigned char  share_mode;
+    unsigned long long  shared_now_private_size;
+    BOOL  summarized;
+    unsigned long long  swapped_out_size;
+    NSString * type;
+    unsigned int  user_tag;
+    unsigned int  virtual_pages;
+    unsigned int  zone_index;
 }
 
 + (id)columnHeadersWithOptions:(unsigned int)arg1 maximumLength:(unsigned int)arg2;

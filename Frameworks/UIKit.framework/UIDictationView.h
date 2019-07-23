@@ -3,19 +3,21 @@
  */
 
 @interface UIDictationView : UIView <SUICFlamesViewDelegate> {
-    BOOL _automaticAppearanceWasEnabled;
-    UIKeyboardDicationBackground *_background;
-    UIButton *_endpointButton;
-    UIButton *_endpointButtonLandscape;
-    SUICFlamesView *_flamesView;
-    BOOL _keyboardInTransition;
-    UIDictationMeterView *_meterView;
-    int _state;
-    UIButton *_waveTapEndpointButton;
+    BOOL  _automaticAppearanceWasEnabled;
+    UIKeyboardDicationBackground * _background;
+    <UIDictationViewDisplayDelegate> * _displayDelegate;
+    UIButton * _endpointButton;
+    UIButton * _endpointButtonLandscape;
+    SUICFlamesView * _flamesView;
+    BOOL  _keyboardInTransition;
+    UIDictationMeterView * _meterView;
+    int  _state;
+    UIButton * _waveTapEndpointButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) <UIDictationViewDisplayDelegate> *displayDelegate;
 @property (readonly) unsigned int hash;
 @property (readonly) Class superclass;
 
@@ -32,6 +34,7 @@
 - (struct CGPoint { float x1; float x2; })contentOffset;
 - (struct CGSize { float x1; float x2; })currentScreenSize;
 - (void)dealloc;
+- (id)displayDelegate;
 - (BOOL)drawsOwnBackground;
 - (id)endpointButton;
 - (void)endpointButtonPressed;
@@ -43,6 +46,7 @@
 - (struct CGPoint { float x1; float x2; })positionForShow;
 - (void)prepareForReturnToKeyboard;
 - (void)returnToKeyboard;
+- (void)setDisplayDelegate:(id)arg1;
 - (void)setState:(int)arg1;
 - (void)show;
 - (BOOL)visible;

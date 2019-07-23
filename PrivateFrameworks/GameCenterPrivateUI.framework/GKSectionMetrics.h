@@ -3,29 +3,29 @@
  */
 
 @interface GKSectionMetrics : GKGridLayoutMetrics {
-    unsigned int _alignment;
-    float _calculatedItemHeightCache;
-    float _desiredItemHeight;
-    float _desiredItemWidth;
-    float _flowColumnWidth;
-    unsigned int _flowMaxColumnCount;
-    BOOL _incrementalRevealConsumesPadding;
-    unsigned int _incrementalRevealItemCount;
-    float _interitemSpacing;
-    NSDictionary *_itemHeightList;
-    unsigned int _lastLineItemAlignment;
-    float _lineSpacing;
-    float _marginBetweenItems;
-    unsigned int _maximumVisibleItemCount;
+    unsigned int  _alignment;
+    float  _calculatedItemHeightCache;
+    float  _desiredItemHeight;
+    float  _desiredItemWidth;
+    float  _flowColumnWidth;
+    unsigned int  _flowMaxColumnCount;
+    BOOL  _incrementalRevealConsumesPadding;
+    unsigned int  _incrementalRevealItemCount;
+    float  _interitemSpacing;
+    NSDictionary * _itemHeightList;
+    unsigned int  _lastLineItemAlignment;
+    float  _lineSpacing;
+    float  _marginBetweenItems;
+    unsigned int  _maximumVisibleItemCount;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _padding;
-    BOOL _shouldAlwaysIncludeShowMore;
-    BOOL _shouldShowSectionHeadersWhenNoItems;
-    BOOL _useViewSizeForFlowMaxColumnCount;
+    }  _padding;
+    BOOL  _shouldAlwaysIncludeShowMore;
+    BOOL  _shouldShowSectionHeadersWhenNoItems;
+    BOOL  _useViewSizeForFlowMaxColumnCount;
 }
 
 @property (nonatomic) unsigned int alignment;

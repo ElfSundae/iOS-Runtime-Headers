@@ -12,12 +12,12 @@
             float width; 
             float height; 
         } size; 
-    } mBounds;
-    unsigned int mFlipX;
-    unsigned int mFlipY;
-    int mModeX;
-    int mModeY;
-    float mRotation;
+    }  mBounds;
+    unsigned int  mFlipX;
+    unsigned int  mFlipY;
+    int  mModeX;
+    int  mModeY;
+    float  mRotation;
 }
 
 + (BOOL)directionCloserToVerticalThanToHorizontal:(float)arg1;

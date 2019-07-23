@@ -6,8 +6,8 @@
     struct mersenne_twister_engine<unsigned long long, 64, 312, 156, 31, 13043109905998158313, 29, 6148914691236517205, 17, 8202884508482404352, 37, 18444473444759240704, 43, 6364136223846793005> { 
         unsigned long long __x_[312]; 
         unsigned int __i_; 
-    } _engine;
-    unsigned long long _seed;
+    }  _engine;
+    unsigned long long  _seed;
 }
 
 @property (nonatomic) unsigned long long seed;

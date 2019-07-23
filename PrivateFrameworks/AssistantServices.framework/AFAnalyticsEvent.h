@@ -3,10 +3,10 @@
  */
 
 @interface AFAnalyticsEvent : NSObject <NSCopying, NSSecureCoding> {
-    int _categoryType;
-    NSDictionary *_context;
-    unsigned long long _machAbsoluteTime;
-    int _type;
+    int  _categoryType;
+    NSDictionary * _context;
+    unsigned long long  _machAbsoluteTime;
+    int  _type;
 }
 
 @property (nonatomic, readonly) int categoryType;

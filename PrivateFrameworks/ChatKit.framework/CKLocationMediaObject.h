@@ -3,13 +3,13 @@
  */
 
 @interface CKLocationMediaObject : CKContactMediaObject <MKAnnotation> {
-    struct { 
+    struct CLLocationCoordinate2D { 
         double latitude; 
         double longitude; 
-    } _coordinate;
+    }  _coordinate;
 }
 
-@property (nonatomic) struct { double x1; double x2; } coordinate;
+@property (nonatomic) struct CLLocationCoordinate2D { double x1; double x2; } coordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
@@ -29,7 +29,7 @@
 
 - (id)bbPreviewFillToSize:(struct CGSize { float x1; float x2; })arg1;
 - (struct CGSize { float x1; float x2; })bbSize;
-- (struct { double x1; double x2; })coordinate;
+- (struct CLLocationCoordinate2D { double x1; double x2; })coordinate;
 - (id)generatePlaceholderThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
 - (id)generatePlaceholderThumbnailForWidth:(float)arg1 orientation:(BOOL)arg2;
 - (id)generateThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
@@ -42,7 +42,8 @@
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
 - (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
 - (id)previewForWidth:(float)arg1 orientation:(BOOL)arg2;
-- (void)setCoordinate:(struct { double x1; double x2; })arg1;
+- (void)setCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
+- (id)title;
 - (id)vCardURLProperties;
 
 @end

@@ -3,12 +3,12 @@
  */
 
 @interface GKSearchBarView : UICollectionReusableView <UISearchBarDelegate> {
-    <UISearchBarDelegate> *_delegate;
-    float _leadingMargin;
-    GKSearchBar *_searchBar;
-    NSArray *_searchBarConstraints;
-    float _trailingMargin;
-    NSNumber *_usePadConstraints;
+    <UISearchBarDelegate> * _delegate;
+    float  _leadingMargin;
+    GKSearchBar * _searchBar;
+    NSArray * _searchBarConstraints;
+    float  _trailingMargin;
+    NSNumber * _usePadConstraints;
 }
 
 @property (readonly, copy) NSString *debugDescription;

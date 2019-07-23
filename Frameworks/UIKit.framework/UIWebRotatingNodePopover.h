@@ -3,14 +3,14 @@
  */
 
 @interface UIWebRotatingNodePopover : NSObject <UIPopoverControllerDelegate> {
-    <UIWebRotatingNodePopoverDelegate> *_dismissDelegate;
-    BOOL _isRotating;
-    DOMNode *_node;
-    UIPopoverController *_popoverController;
+    <UIWebRotatingNodePopoverDelegate> * _dismissDelegate;
+    BOOL  _isRotating;
+    DOMNode * _node;
+    UIPopoverController * _popoverController;
     struct CGPoint { 
         float x; 
         float y; 
-    } _presentationPoint;
+    }  _presentationPoint;
 }
 
 @property (readonly, copy) NSString *debugDescription;

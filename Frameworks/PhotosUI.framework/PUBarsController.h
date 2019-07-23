@@ -3,24 +3,24 @@
  */
 
 @interface PUBarsController : NSObject {
-    BOOL __isUpdateScheduled;
-    BOOL __needsUpdateBars;
-    BOOL __needsUpdateContentGuideInsets;
-    BOOL __needsUpdateGestureRecognizers;
-    int __updateBarsDisabledCount;
+    BOOL  __isUpdateScheduled;
+    BOOL  __needsUpdateBars;
+    BOOL  __needsUpdateContentGuideInsets;
+    BOOL  __needsUpdateGestureRecognizers;
+    int  __updateBarsDisabledCount;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentGuideInsets;
-    <PUBarsControllerDelegate> *_delegate;
+    }  _contentGuideInsets;
+    <PUBarsControllerDelegate> * _delegate;
     struct { 
         BOOL respondsToViewController; 
         BOOL respondsToViewHostingGestureRecognizers; 
         BOOL respondsToContentGuideInsetsDidChange; 
-    } _delegateFlags;
-    UIViewController *_viewController;
+    }  _delegateFlags;
+    UIViewController * _viewController;
 }
 
 @property (setter=_setUpdateScheduled:, nonatomic) BOOL _isUpdateScheduled;

@@ -3,29 +3,26 @@
  */
 
 @interface UIKeyboardCandidateBar : UIView <UICollectionViewDataSource, UIKeyboardCandidateBarLayoutDelegate, UIKeyboardCandidateList, UIKeyboardCandidateListDelegate> {
-    BOOL _canExtend;
-    <UIKeyboardCandidateListDelegate> *_candidateListDelegate;
-    UIImageView *_candidateMaskView;
-    TIKeyboardCandidateResultSet *_candidateResultSet;
-    NSArray *_candidateViews;
-    unsigned int _currentCandidateViewIndex;
-    <UIKeyboardCandidateBarDelegate> *_delegate;
-    BOOL _didSkipLayout;
-    NSIndexPath *_dragStartNextPageIndexPath;
+    BOOL  _canExtend;
+    <UIKeyboardCandidateListDelegate> * _candidateListDelegate;
+    UIImageView * _candidateMaskView;
+    TIKeyboardCandidateResultSet * _candidateResultSet;
+    NSArray * _candidateViews;
+    unsigned int  _currentCandidateViewIndex;
+    <UIKeyboardCandidateBarDelegate> * _delegate;
+    NSIndexPath * _dragStartNextPageIndexPath;
     struct CGPoint { 
         float x; 
         float y; 
-    } _dragStartOffset;
-    NSIndexPath *_dragStartPreviousPageIndexPath;
-    NSArray *_filteredCandidates;
-    BOOL _forceReloadInitiallyHiddenCandidates;
-    NSString *_inlineText;
-    UIKeyboardCandidatePocketShadow *_leftBorder;
-    UIKeyboardCandidatePocketShadow *_rightBorder;
-    UIKBThemedView *_secondaryCandidatesViewEdgeGradient;
-    BOOL _shouldSkipLayoutUntilScrollViewAnimationEnds;
-    id /* block */ _skippedSetCandidatesBlock;
-    float _upArrowWidth;
+    }  _dragStartOffset;
+    NSIndexPath * _dragStartPreviousPageIndexPath;
+    NSArray * _filteredCandidates;
+    BOOL  _forceReloadInitiallyHiddenCandidates;
+    NSString * _inlineText;
+    UIKeyboardCandidatePocketShadow * _leftBorder;
+    UIKeyboardCandidatePocketShadow * _rightBorder;
+    UIKBThemedView * _secondaryCandidatesViewEdgeGradient;
+    float  _upArrowWidth;
 }
 
 @property (nonatomic) BOOL canExtend;
@@ -39,7 +36,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UIKeyboardCandidateBarDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didSkipLayout;
 @property (nonatomic, copy) NSIndexPath *dragStartNextPageIndexPath;
 @property (nonatomic) struct CGPoint { float x1; float x2; } dragStartOffset;
 @property (nonatomic, copy) NSIndexPath *dragStartPreviousPageIndexPath;
@@ -50,8 +46,6 @@
 @property (nonatomic, retain) UIKeyboardCandidatePocketShadow *leftBorder;
 @property (nonatomic, retain) UIKeyboardCandidatePocketShadow *rightBorder;
 @property (nonatomic, retain) UIKBThemedView *secondaryCandidatesViewEdgeGradient;
-@property (nonatomic) BOOL shouldSkipLayoutUntilScrollViewAnimationEnds;
-@property (nonatomic, copy) id /* block */ skippedSetCandidatesBlock;
 @property (readonly) Class superclass;
 @property (nonatomic) float upArrowWidth;
 
@@ -80,7 +74,6 @@
 - (id)_indexPathForLastVisibleItem;
 - (id)_itemAtIndex:(unsigned int)arg1 inSection:(int)arg2;
 - (id)_nextPageIndexPath;
-- (void)_performSkippedLayoutIfNeeded;
 - (id)_previousPageIndexPath;
 - (void)_reloadData;
 - (void)_reloadDataByAppendingAtEnd:(BOOL)arg1 initiallyHiddenCandidatesChanged:(BOOL)arg2;
@@ -89,7 +82,6 @@
 - (unsigned int)_sectionIndexForSection:(int)arg1;
 - (void)_showCandidateAtIndex:(unsigned int)arg1 inSection:(int)arg2 scrollCellToVisible:(BOOL)arg3 animated:(BOOL)arg4;
 - (void)_showPageAtIndexPath:(id)arg1;
-- (BOOL)_showingInitiallyHiddenCandidates;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1;
 - (void)_stepSelectedCandidateInDirection:(BOOL)arg1 candidateView:(id)arg2 section:(int)arg3;
 - (void)_updateBorders;
@@ -122,7 +114,6 @@
 - (unsigned int)currentIndex;
 - (void)dealloc;
 - (id)delegate;
-- (BOOL)didSkipLayout;
 - (id)dragStartNextPageIndexPath;
 - (struct CGPoint { float x1; float x2; })dragStartOffset;
 - (id)dragStartPreviousPageIndexPath;
@@ -134,19 +125,20 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)inlineText;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (id)leftBorder;
+- (float)leftMarginForCollectionView:(id)arg1 layout:(id)arg2;
+- (unsigned int)maxNumberOfProactiveCells;
 - (int)numberOfSectionsInCollectionView:(id)arg1;
 - (void)revealHiddenCandidates;
 - (id)rightBorder;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { float x1; float x2; })arg2 targetContentOffset:(inout struct CGPoint { float x1; float x2; }*)arg3;
 - (id)secondaryCandidatesViewEdgeGradient;
+- (id)secureCandidateRenderTraits;
 - (unsigned int)selectedSortIndex;
 - (void)setCanExtend:(BOOL)arg1;
 - (void)setCandidateListDelegate:(id)arg1;
@@ -156,7 +148,6 @@
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 maxX:(float)arg4 layout:(BOOL)arg5;
 - (void)setCurrentCandidateViewIndex:(unsigned int)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setDidSkipLayout:(BOOL)arg1;
 - (void)setDragStartNextPageIndexPath:(id)arg1;
 - (void)setDragStartOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setDragStartPreviousPageIndexPath:(id)arg1;
@@ -167,11 +158,8 @@
 - (void)setLeftBorder:(id)arg1;
 - (void)setRightBorder:(id)arg1;
 - (void)setSecondaryCandidatesViewEdgeGradient:(id)arg1;
-- (void)setShouldSkipLayoutUntilScrollViewAnimationEnds:(BOOL)arg1;
-- (void)setSkippedSetCandidatesBlock:(id /* block */)arg1;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (void)setUpArrowWidth:(float)arg1;
-- (BOOL)shouldSkipLayoutUntilScrollViewAnimationEnds;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned int)arg1;
 - (void)showNextCandidate;
@@ -180,8 +168,8 @@
 - (void)showPreviousCandidate;
 - (void)showPreviousPage;
 - (void)showPreviousRow;
+- (float)singleCellWidthForProactiveCellCount:(unsigned int)arg1;
 - (struct CGSize { float x1; float x2; })sizeOfDummyItemForCollectionView:(id)arg1 layout:(id)arg2;
-- (id /* block */)skippedSetCandidatesBlock;
 - (id)statisticsIdentifier;
 - (float)upArrowWidth;
 - (unsigned int)viewOffsetForCandidateAtIndex:(unsigned int)arg1;

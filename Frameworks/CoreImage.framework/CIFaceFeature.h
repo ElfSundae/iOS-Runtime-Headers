@@ -12,31 +12,31 @@
             float width; 
             float height; 
         } size; 
-    } bounds;
-    float faceAngle;
-    BOOL hasFaceAngle;
-    BOOL hasLeftEyePosition;
-    BOOL hasMouthPosition;
-    BOOL hasRightEyePosition;
-    BOOL hasSmile;
-    BOOL hasTrackingFrameCount;
-    BOOL hasTrackingID;
-    BOOL leftEyeClosed;
+    }  bounds;
+    float  faceAngle;
+    BOOL  hasFaceAngle;
+    BOOL  hasLeftEyePosition;
+    BOOL  hasMouthPosition;
+    BOOL  hasRightEyePosition;
+    BOOL  hasSmile;
+    BOOL  hasTrackingFrameCount;
+    BOOL  hasTrackingID;
+    BOOL  leftEyeClosed;
     struct CGPoint { 
         float x; 
         float y; 
-    } leftEyePosition;
+    }  leftEyePosition;
     struct CGPoint { 
         float x; 
         float y; 
-    } mouthPosition;
-    BOOL rightEyeClosed;
+    }  mouthPosition;
+    BOOL  rightEyeClosed;
     struct CGPoint { 
         float x; 
         float y; 
-    } rightEyePosition;
-    int trackingFrameCount;
-    int trackingID;
+    }  rightEyePosition;
+    int  trackingFrameCount;
+    int  trackingID;
 }
 
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;

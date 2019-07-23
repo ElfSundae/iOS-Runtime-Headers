@@ -3,15 +3,15 @@
  */
 
 @interface SKUIShelfCollectionViewCell : SKUICollectionViewCell <SKUIPerspectiveView> {
-    UICollectionView *_collectionView;
+    UICollectionView * _collectionView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInset;
-    BOOL _rendersWithParallax;
-    BOOL _rendersWithPerspective;
+    }  _contentInset;
+    BOOL  _rendersWithParallax;
+    BOOL  _rendersWithPerspective;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;
@@ -38,6 +38,7 @@
 - (void)setPerspectiveTargetView:(id)arg1;
 - (void)setRendersWithParallax:(BOOL)arg1;
 - (void)setRendersWithPerspective:(BOOL)arg1;
+- (void)setSemanticContentAttribute:(int)arg1;
 - (void)setVanishingPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)updateForChangedDistanceFromVanishingPoint;
 

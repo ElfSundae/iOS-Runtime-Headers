@@ -3,18 +3,18 @@
  */
 
 @interface UIInlineCandidateTextView : UIView {
-    SEL _action;
-    BOOL _arrowHighlighted;
-    NSMutableArray *_candidateCellArray;
-    NSArray *_candidates;
-    _UIInlineCandidateCell *_currentlyPushedItem;
-    BOOL _phraseEditable;
-    unsigned int _selectedItem;
-    BOOL _showingArrow;
-    id _target;
-    BOOL m_animating;
-    int m_edgeType;
-    int m_type;
+    SEL  _action;
+    BOOL  _arrowHighlighted;
+    NSMutableArray * _candidateCellArray;
+    NSArray * _candidates;
+    _UIInlineCandidateCell * _currentlyPushedItem;
+    BOOL  _phraseEditable;
+    unsigned int  _selectedItem;
+    BOOL  _showingArrow;
+    id  _target;
+    BOOL  m_animating;
+    int  m_edgeType;
+    int  m_type;
 }
 
 - (BOOL)_arrowHighlighted;

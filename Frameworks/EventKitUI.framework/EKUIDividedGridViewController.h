@@ -3,13 +3,13 @@
  */
 
 @interface EKUIDividedGridViewController : UIViewController {
-    NSArray *_allCells;
-    NSArray *_buttonTitles;
-    UIColor *_cellBackgroundColor;
-    <EKUIDividedGridViewControllerDelegate> *_delegate;
-    float _preferredWidth;
-    int _type;
-    NSArray *_weekViews;
+    NSArray * _allCells;
+    NSArray * _buttonTitles;
+    UIColor * _cellBackgroundColor;
+    <EKUIDividedGridViewControllerDelegate> * _delegate;
+    float  _preferredWidth;
+    int  _type;
+    NSArray * _weekViews;
 }
 
 @property (retain) NSArray *allCells;

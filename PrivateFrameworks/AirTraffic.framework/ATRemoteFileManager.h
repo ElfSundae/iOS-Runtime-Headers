@@ -3,7 +3,7 @@
  */
 
 @interface ATRemoteFileManager : NSObject {
-    ATMessageLink *_messageLink;
+    ATMessageLink * _messageLink;
 }
 
 @property (nonatomic, retain) ATMessageLink *messageLink;

@@ -3,13 +3,13 @@
  */
 
 @interface ICQBannerView : UIView <UITextViewDelegate> {
-    NSArray *_activeConstraints;
-    <ICQBannerViewDelegate> *_delegate;
-    UIButton *_dismissButton;
-    BOOL _hasDismissButton;
-    ICQOffer *_offer;
-    _ICQTextView *_textView;
-    NSLayoutConstraint *_textViewHeightConstraint;
+    NSArray * _activeConstraints;
+    <ICQBannerViewDelegate> * _delegate;
+    UIButton * _dismissButton;
+    BOOL  _hasDismissButton;
+    ICQOffer * _offer;
+    _ICQTextView * _textView;
+    NSLayoutConstraint * _textViewHeightConstraint;
 }
 
 @property (nonatomic, retain) NSArray *activeConstraints;

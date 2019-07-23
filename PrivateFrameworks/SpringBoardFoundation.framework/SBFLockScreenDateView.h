@@ -2,68 +2,79 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
  */
 
-@interface SBFLockScreenDateView : UIView {
-    UIColor *_customSubtitleColor;
-    NSString *_customSubtitleText;
-    NSDate *_date;
-    float _dateAlpha;
-    float _dateAlphaPercentage;
-    UILabel *_dateLabel;
-    float _dateStrength;
-    _UILegibilityLabel *_legibilityDateLabel;
-    _UILegibilitySettings *_legibilitySettings;
-    _UILegibilityLabel *_legibilityTimeLabel;
-    UIColor *_textColor;
-    float _timeAlpha;
-    UILabel *_timeLabel;
-    float _timeStrength;
-    BOOL _useLegibilityLabels;
+@interface SBFLockScreenDateView : UIView <SBFScreenFadeReplicatable> {
+    float  _alignmentPercent;
+    SBFLockScreenDateSubtitleView * _customSubtitleView;
+    NSDate * _date;
+    SBFLockScreenDateSubtitleDateView * _dateSubtitleView;
+    _UILegibilitySettings * _legibilitySettings;
+    UIColor * _overrideTextColor;
+    NSHashTable * _replicatedViews;
+    float  _subtitleAlpha;
+    float  _subtitleLegibilityStrength;
+    float  _timeAlpha;
+    SBUILegibilityLabel * _timeLabel;
+    float  _timeLegibilityStrength;
+    BOOL  _useDashBoardValues;
 }
 
+@property (nonatomic) float alignmentPercent;
+@property (nonatomic, readonly) float contentAlpha;
+@property (nonatomic, retain) SBFLockScreenDateSubtitleView *customSubtitleView;
 @property (nonatomic, retain) NSDate *date;
-@property (nonatomic) float dateAlphaPercentage;
-@property (getter=isDateHidden, nonatomic) BOOL dateHidden;
-@property (nonatomic) float dateStrength;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic, retain) _UILegibilitySettings *legibilitySettings;
+@property (nonatomic, readonly) float subtitleBaselineOffsetFromOrigin;
+@property (getter=isSubtitleHidden, nonatomic) BOOL subtitleHidden;
+@property (nonatomic) float subtitleLegibilityStrength;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) UIColor *textColor;
-@property (nonatomic) float timeStrength;
+@property (nonatomic, readonly) float timeBaselineOffsetFromOrigin;
+@property (nonatomic) float timeLegibilityStrength;
 
 + (float)defaultHeight;
 
 - (void).cxx_destruct;
-- (void)_addLabels;
-- (id)_dateColor;
-- (id)_dateFont;
-- (id)_dateText;
-- (float)_effectiveDateAlpha;
-- (void)_layoutDateLabel;
-- (void)_layoutTimeLabel;
-- (void)_setDateAlpha:(float)arg1;
+- (void)_enumerateReplicateViews:(id /* block */)arg1;
+- (void)_layoutDateView;
+- (void)_layoutLegacyDateLabel;
+- (void)_layoutLegacyTimeLabel;
+- (void)_layoutSubtitleViews;
+- (id)_legacyTimeFont;
+- (void)_setSubtitleAlpha:(float)arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_subtitleViewFrameForView:(id)arg1 alignmentPercent:(float)arg2;
 - (id)_timeFont;
+- (id)_timeLabel;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_timeLabelFrameForAlignmentPercent:(float)arg1;
 - (void)_updateLabelAlpha;
 - (void)_updateLabels;
-- (void)_updateLegibilityLabelsWithUpdatedDateString:(BOOL)arg1;
-- (void)_useLegibilityLabels:(BOOL)arg1;
+- (float)alignmentPercent;
+- (float)contentAlpha;
+- (id)customSubtitleView;
 - (id)date;
-- (float)dateAlphaPercentage;
-- (float)dateBaselineOffsetFromOrigin;
-- (float)dateStrength;
+- (id)initForDashBoard:(BOOL)arg1 withFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (BOOL)isDateHidden;
+- (BOOL)isSubtitleHidden;
 - (void)layoutSubviews;
 - (id)legibilitySettings;
-- (void)setContentAlpha:(float)arg1 withDateVisible:(BOOL)arg2;
-- (void)setCustomSubtitleText:(id)arg1 withColor:(id)arg2;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })presentationExtentForAlignmentPercent:(float)arg1;
+- (id)replicate;
+- (void)setAlignmentPercent:(float)arg1;
+- (void)setContentAlpha:(float)arg1 withSubtitleVisible:(BOOL)arg2;
+- (void)setCustomSubtitleView:(id)arg1;
 - (void)setDate:(id)arg1;
-- (void)setDateAlphaPercentage:(float)arg1;
-- (void)setDateHidden:(BOOL)arg1;
-- (void)setDateStrength:(float)arg1;
 - (void)setLegibilitySettings:(id)arg1;
+- (void)setSubtitleHidden:(BOOL)arg1;
+- (void)setSubtitleLegibilityStrength:(float)arg1;
 - (void)setTextColor:(id)arg1;
-- (void)setTimeStrength:(float)arg1;
+- (void)setTimeLegibilityStrength:(float)arg1;
+- (float)subtitleBaselineOffsetFromOrigin;
+- (float)subtitleLegibilityStrength;
 - (id)textColor;
 - (float)timeBaselineOffsetFromOrigin;
-- (float)timeStrength;
+- (float)timeLegibilityStrength;
 - (void)updateFormat;
 
 @end

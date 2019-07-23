@@ -3,15 +3,15 @@
  */
 
 @interface SBSUIWallpaperPreviewView : UIView <SBFIrisWallpaperViewDelegate> {
-    int _batterySaverModeNotificationToken;
-    SBFLockScreenDateView *_dateView;
-    _UILegibilityLabel *_irisInstructionsLabel1;
-    _UILegibilityLabel *_irisInstructionsLabel2;
-    BOOL _irisPossible;
-    BOOL _observingParallaxChanges;
-    SBSUIEffectsSegmentedControl *_segmentedControl;
-    BOOL _usingSegmentedControl;
-    SBFWallpaperView *_wallpaperView;
+    int  _batterySaverModeNotificationToken;
+    SBFLockScreenDateView * _dateView;
+    _UILegibilityLabel * _irisInstructionsLabel1;
+    _UILegibilityLabel * _irisInstructionsLabel2;
+    BOOL  _irisPossible;
+    BOOL  _observingParallaxChanges;
+    SBSUIEffectsSegmentedControl * _segmentedControl;
+    BOOL  _usingSegmentedControl;
+    SBFWallpaperView * _wallpaperView;
 }
 
 @property (nonatomic, retain) SBFLockScreenDateView *dateView;

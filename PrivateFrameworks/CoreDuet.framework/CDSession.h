@@ -3,19 +3,19 @@
  */
 
 @interface CDSession : NSObject {
-    NSObject<OS_dispatch_queue> *_cacheSerializerQ;
-    NSMutableDictionary *_cachedAttributes;
-    NSMutableDictionary *_cachedBudgets;
-    CDDClientConnection *_cddClientConnection;
-    unsigned long long _clientId;
-    int _deviceChangeToken;
-    id /* block */ _deviceHandler;
-    NSSet *_deviceList;
-    BOOL _enabledCaching;
-    BOOL _unlocked;
-    BOOL _verbose;
-    int duetRestartToken;
-    NSArray *nonBundles;
+    NSObject<OS_dispatch_queue> * _cacheSerializerQ;
+    NSMutableDictionary * _cachedAttributes;
+    NSMutableDictionary * _cachedBudgets;
+    CDDClientConnection * _cddClientConnection;
+    unsigned long long  _clientId;
+    int  _deviceChangeToken;
+    id /* block */  _deviceHandler;
+    NSSet * _deviceList;
+    BOOL  _enabledCaching;
+    BOOL  _unlocked;
+    BOOL  _verbose;
+    int  duetRestartToken;
+    NSArray * nonBundles;
 }
 
 @property (retain) NSObject<OS_dispatch_queue> *cacheSerializerQ;
@@ -51,6 +51,7 @@
 - (id)copyDevicesUncached;
 - (void)dealloc;
 - (BOOL)deleteClientDataWithError:(id*)arg1;
+- (id)description;
 - (int)deviceChangeToken;
 - (id /* block */)deviceHandler;
 - (id)deviceList;

@@ -3,17 +3,17 @@
  */
 
 @interface PLSQLiteConnection : NSObject {
-    int _cacheSize;
-    NSString *_cachedClassName;
-    struct sqlite3 { } *_dbConnection;
-    NSObject<OS_dispatch_semaphore> *_dbSem;
-    int _entryCacheStorageSize;
-    NSString *_filePath;
-    NSMutableDictionary *_preparedDynamicStatements;
-    NSMutableDictionary *_preparedStatements;
-    NSMutableDictionary *_preparedUpdateStatements;
-    int _transactionInProgress;
-    NSString *_transactionLock;
+    int  _cacheSize;
+    NSString * _cachedClassName;
+    struct sqlite3 { } * _dbConnection;
+    NSObject<OS_dispatch_semaphore> * _dbSem;
+    int  _entryCacheStorageSize;
+    NSString * _filePath;
+    NSMutableDictionary * _preparedDynamicStatements;
+    NSMutableDictionary * _preparedStatements;
+    NSMutableDictionary * _preparedUpdateStatements;
+    int  _transactionInProgress;
+    NSString * _transactionLock;
 }
 
 @property int cacheSize;
@@ -43,9 +43,9 @@
 - (void)buildColumnInsert:(id*)arg1 andValueInsert:(id*)arg2 forEntry:(id)arg3;
 - (int)cacheSize;
 - (id)cachedClassName;
-- (void)checkPointDB;
 - (void)clearTableHasTimestampColumnCache;
 - (void)closeConnection;
+- (BOOL)commonInitProcessWithFilePath:(id)arg1 withCacheSize:(int)arg2;
 - (BOOL)copyDatabaseToPath:(id)arg1;
 - (BOOL)copyDatabaseToPath:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3;
 - (BOOL)copyDatabaseToPath:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 withTableFilters:(id)arg4 vacuumDB:(BOOL)arg5;
@@ -73,11 +73,15 @@
 - (id)init;
 - (id)initWithFilePath:(id)arg1;
 - (id)initWithFilePath:(id)arg1 withCacheSize:(int)arg2;
+- (id)initWithFilePath:(id)arg1 withCacheSize:(int)arg2 withFlags:(id)arg3;
+- (id)initWithFilePath:(id)arg1 withFlags:(id)arg2;
 - (BOOL)isTransactionInProgress;
 - (void)loadArrayValuesIntoEntry:(id)arg1;
 - (void)loadDynamicValuesIntoEntry:(id)arg1;
+- (void)moveToPath:(id)arg1;
 - (BOOL)openCurrentFile;
 - (BOOL)openCurrentFileWithCacheSize:(int)arg1;
+- (BOOL)openCurrentFileWithCacheSize:(int)arg1 withFlags:(id)arg2;
 - (BOOL)passesIntegrityCheck;
 - (id)performQuery:(id)arg1;
 - (id)performStatement:(id)arg1;

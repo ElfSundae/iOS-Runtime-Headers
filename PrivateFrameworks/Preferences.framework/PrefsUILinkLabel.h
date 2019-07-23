@@ -3,11 +3,11 @@
  */
 
 @interface PrefsUILinkLabel : UILabel {
-    NSURL *_URL;
-    SEL _action;
-    id _target;
-    BOOL _touchingURL;
-    NSURL *_url;
+    NSURL * _URL;
+    SEL  _action;
+    id  _target;
+    BOOL  _touchingURL;
+    NSURL * _url;
 }
 
 @property (nonatomic, retain) NSURL *URL;

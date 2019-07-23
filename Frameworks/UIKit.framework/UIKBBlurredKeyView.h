@@ -3,7 +3,7 @@
  */
 
 @interface UIKBBlurredKeyView : UIKBContainerKeyView {
-    UIKBBackdropView *_backdropView;
+    UIKBBackdropView * _backdropView;
 }
 
 - (void).cxx_destruct;

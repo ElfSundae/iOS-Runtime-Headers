@@ -3,19 +3,19 @@
  */
 
 @interface TSDMagicMoveMatchObject : NSObject {
-    NSMutableDictionary *_attributes;
-    NSString *_name;
+    NSMutableDictionary * _attributes;
+    NSString * _name;
     struct CGPoint { 
         float x; 
         float y; 
-    } _position;
-    TSDRep *_rep;
+    }  _position;
+    TSDRep * _rep;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _stringRange;
-    NSString *_stringValue;
-    int _zOrder;
+    }  _stringRange;
+    NSString * _stringValue;
+    int  _zOrder;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *attributes;
@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (id)description;
 - (unsigned int)hash;
+- (id)init;
 - (id)initWithRep:(id)arg1 position:(struct CGPoint { float x1; float x2; })arg2 stringValue:(id)arg3 stringRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)name;

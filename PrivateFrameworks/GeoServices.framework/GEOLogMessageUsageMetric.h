@@ -10,16 +10,16 @@
         unsigned int metricState : 1; 
         unsigned int metricType : 1; 
         unsigned int retryCount : 1; 
-    } _has;
-    unsigned int _messageCount;
-    unsigned long long _messageSize;
-    int _metricState;
-    int _metricType;
-    unsigned int _retryCount;
-    struct { 
+    }  _has;
+    unsigned int  _messageCount;
+    unsigned long long  _messageSize;
+    int  _metricState;
+    int  _metricType;
+    unsigned int  _retryCount;
+    struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
-    } _sessionId;
+    }  _sessionId;
 }
 
 @property (nonatomic) BOOL hasMessageCount;
@@ -33,13 +33,15 @@
 @property (nonatomic) int metricState;
 @property (nonatomic) int metricType;
 @property (nonatomic) unsigned int retryCount;
-@property (nonatomic) struct { unsigned long long x1; unsigned long long x2; } sessionId;
+@property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
 
 + (id)logMessageUsageMetricForFailedMsgWithCount:(int)arg1;
 + (id)logMessageUsageMetricForForcePurgeWithState:(int)arg1;
 + (id)logMessageUsageMetricForNetworkWithState:(int)arg1 messageCount:(int)arg2 messageSize:(long long)arg3 retryCount:(int)arg4;
 + (id)logMessageUsageMetricForPurgeWithState:(int)arg1 messageCount:(int)arg2;
 
+- (int)StringAsMetricState:(id)arg1;
+- (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -56,10 +58,12 @@
 - (unsigned int)messageCount;
 - (unsigned long long)messageSize;
 - (int)metricState;
+- (id)metricStateAsString:(int)arg1;
 - (int)metricType;
+- (id)metricTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)retryCount;
-- (struct { unsigned long long x1; unsigned long long x2; })sessionId;
+- (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionId;
 - (void)setHasMessageCount:(BOOL)arg1;
 - (void)setHasMessageSize:(BOOL)arg1;
 - (void)setHasMetricState:(BOOL)arg1;
@@ -71,7 +75,7 @@
 - (void)setMetricState:(int)arg1;
 - (void)setMetricType:(int)arg1;
 - (void)setRetryCount:(unsigned int)arg1;
-- (void)setSessionId:(struct { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setSessionId:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)writeTo:(id)arg1;
 
 @end

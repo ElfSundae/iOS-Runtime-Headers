@@ -3,21 +3,21 @@
  */
 
 @interface WBSAutomaticReadingListItem : NSObject {
-    UIImage *_fallbackProfileImage;
-    BOOL _fetchingProfileImage;
-    NSString *_originatorDisplayName;
-    id _originatorID;
-    UIImage *_originatorProfileImage;
-    BOOL _repostedByAuthenticatedUser;
-    NSString *_reposterDisplayName;
-    NSString *_reposterScreenName;
-    UIImage *_serviceImage;
-    NSString *_socialSourceAccountIdentifier;
-    NSDate *_sourceRecordCreationDate;
-    id _sourceRecordID;
-    NSString *_sourceRecordText;
-    NSString *_uniqueIdentifier;
-    NSString *_urlString;
+    UIImage * _fallbackProfileImage;
+    BOOL  _fetchingProfileImage;
+    NSString * _originatorDisplayName;
+    id  _originatorID;
+    UIImage * _originatorProfileImage;
+    BOOL  _repostedByAuthenticatedUser;
+    NSString * _reposterDisplayName;
+    NSString * _reposterScreenName;
+    UIImage * _serviceImage;
+    NSString * _socialSourceAccountIdentifier;
+    NSDate * _sourceRecordCreationDate;
+    id  _sourceRecordID;
+    NSString * _sourceRecordText;
+    NSString * _uniqueIdentifier;
+    NSString * _urlString;
 }
 
 @property (nonatomic, readonly) NSURL *biggerOriginatorProfileImageURL;

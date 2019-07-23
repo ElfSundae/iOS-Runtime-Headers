@@ -3,26 +3,26 @@
  */
 
 @interface UIKBHandwritingView : UIKBKeyView <UIGestureRecognizerDelegate> {
-    NSMutableSet *_activeTouches;
-    UIKBHandwritingBezierPathPointFIFO *_bezierPathFIFO;
-    UIBezierPath *_currentPath;
-    NSMutableArray *_currentPoints;
-    BOOL _initialPointPosted;
-    struct CGColor { } *_inkColor;
-    struct CGImage { } *_inkMask;
-    float _inkWidth;
-    NSMutableArray *_interpolatedPoints;
-    UIKBHandwritingQuadCurvePointFIFO *_interpolatingFIFO;
+    NSMutableSet * _activeTouches;
+    UIKBHandwritingBezierPathPointFIFO * _bezierPathFIFO;
+    UIBezierPath * _currentPath;
+    NSMutableArray * _currentPoints;
+    BOOL  _initialPointPosted;
+    struct CGColor { } * _inkColor;
+    struct CGImage { } * _inkMask;
+    float  _inkWidth;
+    NSMutableArray * _interpolatedPoints;
+    UIKBHandwritingQuadCurvePointFIFO * _interpolatingFIFO;
     struct { 
         struct CGPoint { 
             float x; 
             float y; 
         } point; 
         float force; 
-    } _previousPoint;
-    UIKBHandwritingBoxcarFilterPointFIFO *_smoothingFIFO;
-    UIKBHandwritingStrokePointFIFO *_strokeFIFO;
-    UIKBHandwritingStrokeView *_strokeView;
+    }  _previousPoint;
+    UIKBHandwritingBoxcarFilterPointFIFO * _smoothingFIFO;
+    UIKBHandwritingStrokePointFIFO * _strokeFIFO;
+    UIKBHandwritingStrokeView * _strokeView;
 }
 
 @property (nonatomic, retain) NSMutableSet *activeTouches;
@@ -44,6 +44,7 @@
 @property (nonatomic, retain) UIKBHandwritingStrokeView *strokeView;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)activeTouches;
 - (void)addInkPoint:(struct CGPoint { float x1; float x2; })arg1 value:(float)arg2;
 - (id)bezierPathFIFO;
@@ -54,6 +55,7 @@
 - (id)currentPoints;
 - (void)dealloc;
 - (void)deleteStrokesAtIndexes:(id)arg1;
+- (BOOL)endStrokeWithTouches:(id)arg1 event:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)initialPointPosted;
 - (struct CGColor { }*)inkColor;
@@ -81,6 +83,7 @@
 - (void)setSmoothingFIFO:(id)arg1;
 - (void)setStrokeFIFO:(id)arg1;
 - (void)setStrokeView:(id)arg1;
+- (BOOL)shouldAllowSelectionGestures:(BOOL)arg1;
 - (BOOL)shouldCache;
 - (id)smoothingFIFO;
 - (id)strokeFIFO;

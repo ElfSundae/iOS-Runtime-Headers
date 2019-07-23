@@ -3,8 +3,8 @@
  */
 
 @interface ISURLRequest : NSObject <NSCoding, NSCopying> {
-    NSLock *_lock;
-    SSMutableURLRequestProperties *_properties;
+    NSLock * _lock;
+    SSMutableURLRequestProperties * _properties;
 }
 
 @property (retain) NSData *HTTPBody;
@@ -23,6 +23,7 @@
 
 + (id)requestWithURL:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)HTTPBody;
 - (id)HTTPBodyStream;
 - (id)HTTPMethod;
@@ -34,7 +35,6 @@
 - (unsigned int)cachePolicy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)customHeaders;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)expectedContentLength;
 - (id)init;

@@ -3,8 +3,8 @@
  */
 
 @interface TSDShapeRep : TSDStyledRep <TSDMagicMoveMatching> {
-    BOOL mDirectlyManagesLayerContent;
-    BOOL mFrameInUnscaledCanvasIsValid;
+    BOOL  mDirectlyManagesLayerContent;
+    BOOL  mFrameInUnscaledCanvasIsValid;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } mFrameInUnscaledCanvasRelativeToSuper;
+    }  mFrameInUnscaledCanvasRelativeToSuper;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,8 +24,8 @@
             float width; 
             float height; 
         } size; 
-    } mOriginalAliasedAlignmentFrameInLayerFrame;
-    BOOL mShadowOnChildrenDisabled;
+    }  mOriginalAliasedAlignmentFrameInLayerFrame;
+    BOOL  mShadowOnChildrenDisabled;
 }
 
 + (float)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
@@ -38,7 +38,7 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })clipRect;
 - (id)colorBehindLayer:(id)arg1;
 - (BOOL)containsPoint:(struct CGPoint { float x1; float x2; })arg1;
-- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
+- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned int)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (void)drawInLayerContext:(struct CGContext { }*)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frameInUnscaledCanvas;
 - (id)imageOfStroke:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1;
@@ -47,17 +47,18 @@
 - (BOOL)isEditingChildRep;
 - (BOOL)p_beginApplyOpacity:(struct CGContext { }*)arg1 forDrawingInOneStep:(BOOL)arg2;
 - (void)p_drawChildrenWithoutOpacityInContext:(struct CGContext { }*)arg1;
-- (void)p_drawInContext:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(BOOL)arg4;
+- (void)p_drawInContext:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned int)arg3 withOpacity:(BOOL)arg4;
 - (void)p_drawLineEndForHead:(BOOL)arg1 withDelta:(struct CGPoint { float x1; float x2; })arg2 andStroke:(id)arg3 inContext:(struct CGContext { }*)arg4 useFastDrawing:(BOOL)arg5;
 - (BOOL)p_drawsSelfInOneStep;
 - (void)p_endApplyOpacity:(struct CGContext { }*)arg1 apply:(BOOL)arg2;
 - (id)pathSourceForSelectionHighlightBehavior;
 - (void)recursivelyDrawChildrenInContext:(struct CGContext { }*)arg1;
-- (void)setTextureAttributes:(id)arg1;
+- (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (id)shapeInfo;
 - (id)shapeLayout;
 - (float)shortestDistanceToPoint:(struct CGPoint { float x1; float x2; })arg1 countAsHit:(BOOL*)arg2;
 - (BOOL)shouldExpandHitRegionWhenSmall;
 - (BOOL)shouldHitTestWithFill;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })strokeBoundsWithOptions:(unsigned int)arg1 fallbackBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 
 @end

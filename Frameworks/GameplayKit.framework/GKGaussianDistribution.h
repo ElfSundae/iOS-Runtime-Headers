@@ -3,8 +3,8 @@
  */
 
 @interface GKGaussianDistribution : GKRandomDistribution {
-    float _deviation;
-    float _mean;
+    float  _deviation;
+    float  _mean;
 }
 
 @property (nonatomic, readonly) float deviation;

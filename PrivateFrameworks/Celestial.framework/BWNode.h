@@ -3,18 +3,18 @@
  */
 
 @interface BWNode : NSObject {
-    long long _configurationID;
-    BWGraph *_graph;
-    BWNodeInput *_input;
-    NSMutableArray *_inputs;
-    NSString *_name;
-    BWNodeOutput *_output;
-    NSMutableArray *_outputs;
-    <BWNodeRenderDelegate> *_renderDelegate;
-    BOOL _singleInput;
-    BOOL _singleOutput;
-    BOOL _supportsConcurrentLiveInputCallbacks;
-    BOOL _supportsLiveReconfiguration;
+    long long  _configurationID;
+    BWGraph * _graph;
+    BWNodeInput * _input;
+    NSMutableArray * _inputs;
+    NSString * _name;
+    BWNodeOutput * _output;
+    NSMutableArray * _outputs;
+    <BWNodeRenderDelegate> * _renderDelegate;
+    BOOL  _singleInput;
+    BOOL  _singleOutput;
+    BOOL  _supportsConcurrentLiveInputCallbacks;
+    BOOL  _supportsLiveReconfiguration;
 }
 
 @property (nonatomic) BWGraph *graph;
@@ -46,6 +46,7 @@
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleIrisReferenceMovieRequest:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
+- (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
 - (BOOL)hasNonLiveConfigurationChanges;
 - (id)init;
 - (id)input;

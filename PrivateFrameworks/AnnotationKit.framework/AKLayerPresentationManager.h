@@ -3,20 +3,20 @@
  */
 
 @interface AKLayerPresentationManager : NSObject {
-    float _alignmentGuidePositionX;
-    float _alignmentGuidePositionY;
-    CAShapeLayer *_alignmentGuideXLayer;
-    CAShapeLayer *_alignmentGuideYLayer;
-    NSMapTable *_annotationsToAdornmentLayers;
-    NSMapTable *_annotationsToAnnotationLayers;
-    CALayer *_cropAdornmentLayer;
-    CALayer *_cropAnnotationLayer;
-    float _currentScaleFactor;
-    BOOL _isObservingModel;
-    AKPageController *_pageController;
-    AKPageModelController *_pageModelController;
-    CALayer *_rootLayer;
-    BOOL _shouldPixelate;
+    float  _alignmentGuidePositionX;
+    float  _alignmentGuidePositionY;
+    CAShapeLayer * _alignmentGuideXLayer;
+    CAShapeLayer * _alignmentGuideYLayer;
+    NSMapTable * _annotationsToAdornmentLayers;
+    NSMapTable * _annotationsToAnnotationLayers;
+    CALayer * _cropAdornmentLayer;
+    CALayer * _cropAnnotationLayer;
+    float  _currentScaleFactor;
+    BOOL  _isObservingModel;
+    AKPageController * _pageController;
+    AKPageModelController * _pageModelController;
+    CALayer * _rootLayer;
+    BOOL  _shouldPixelate;
 }
 
 @property (nonatomic) float alignmentGuidePositionX;

@@ -3,33 +3,33 @@
  */
 
 @interface _CDActivity : NSObject {
-    CDAttribute *_admissionAttribute;
-    BOOL _afterUserIsInactive;
-    BOOL _allowOnBattery;
-    BOOL _beforeUserIsActive;
-    BOOL _budgeted;
-    int _budgetedPid;
-    unsigned long long _budgetingToken;
-    NSString *_bundleId;
-    BOOL _cpuIntensive;
-    BOOL _deviceWakeAllowed;
-    BOOL _discretionaryActivity;
-    NSDate *_executeBefore;
-    NSObject<OS_dispatch_queue> *_handlerQueue;
-    NSNumber *_identifier;
-    BOOL _ioIntensive;
-    double _leeway;
-    BOOL _memoryIntensive;
-    CDAttribute *_meteringAttribute;
-    NSString *_name;
-    NSString *_networkAvailability;
-    int _pid;
-    NSDate *_scheduledTime;
-    NSDate *_startAfter;
-    id /* block */ _startHandler;
-    unsigned int _state;
-    id /* block */ _suspendHandler;
-    BOOL _triggersRestart;
+    CDAttribute * _admissionAttribute;
+    BOOL  _afterUserIsInactive;
+    BOOL  _allowOnBattery;
+    BOOL  _beforeUserIsActive;
+    BOOL  _budgeted;
+    int  _budgetedPid;
+    unsigned long long  _budgetingToken;
+    NSString * _bundleId;
+    BOOL  _cpuIntensive;
+    BOOL  _deviceWakeAllowed;
+    BOOL  _discretionaryActivity;
+    NSDate * _executeBefore;
+    NSObject<OS_dispatch_queue> * _handlerQueue;
+    NSNumber * _identifier;
+    BOOL  _ioIntensive;
+    double  _leeway;
+    BOOL  _memoryIntensive;
+    CDAttribute * _meteringAttribute;
+    NSString * _name;
+    NSString * _networkAvailability;
+    int  _pid;
+    NSDate * _scheduledTime;
+    NSDate * _startAfter;
+    id /* block */  _startHandler;
+    unsigned int  _state;
+    id /* block */  _suspendHandler;
+    BOOL  _triggersRestart;
 }
 
 @property (retain) CDAttribute *admissionAttribute;

@@ -3,12 +3,12 @@
  */
 
 @interface GEOPDTransitConnection : PBCodable <NSCopying> {
-    NSString *_entityNameString;
+    NSString * _entityNameString;
     struct { 
         unsigned int muid : 1; 
-    } _has;
-    unsigned long long _muid;
-    NSMutableArray *_transitLabels;
+    }  _has;
+    unsigned long long  _muid;
+    NSMutableArray * _transitLabels;
 }
 
 @property (nonatomic, retain) NSString *entityNameString;
@@ -16,6 +16,8 @@
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic, retain) NSMutableArray *transitLabels;
+
++ (Class)transitLabelType;
 
 - (void)addTransitLabel:(id)arg1;
 - (void)clearTransitLabels;

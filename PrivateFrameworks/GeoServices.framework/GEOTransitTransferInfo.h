@@ -6,9 +6,9 @@
     struct { 
         unsigned int transferMuid : 1; 
         unsigned int transferTime : 1; 
-    } _has;
-    unsigned long long _transferMuid;
-    unsigned int _transferTime;
+    }  _has;
+    unsigned long long  _transferMuid;
+    unsigned int  _transferTime;
 }
 
 @property (nonatomic) BOOL hasTransferMuid;

@@ -3,7 +3,7 @@
  */
 
 @interface WBUFormAutoFillNodeWK2 : NSObject <WBSFormAutoFillNode> {
-    WKWebProcessPlugInNodeHandle *_nodeHandle;
+    WKWebProcessPlugInNodeHandle * _nodeHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;

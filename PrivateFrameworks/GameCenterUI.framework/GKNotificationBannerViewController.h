@@ -3,11 +3,11 @@
  */
 
 @interface GKNotificationBannerViewController : UIViewController {
-    BOOL _bannerAnimating;
-    GKNotificationBannerView *_bannerView;
-    BOOL _bannerVisible;
-    NSLayoutConstraint *_bannerWidthConstraint;
-    NSLayoutConstraint *_bannerYPositionConstraint;
+    BOOL  _bannerAnimating;
+    GKNotificationBannerView * _bannerView;
+    BOOL  _bannerVisible;
+    NSLayoutConstraint * _bannerWidthConstraint;
+    NSLayoutConstraint * _bannerYPositionConstraint;
 }
 
 @property (nonatomic) BOOL bannerAnimating;

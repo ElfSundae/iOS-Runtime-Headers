@@ -3,8 +3,8 @@
  */
 
 @interface _UIDocumentPickerRemoteViewController : _UIRemoteViewController <_UIDocumentPickerServiceInvalidating, _UIDocumentPickerViewControllerHost> {
-    NSString *_identifier;
-    UIViewController<_UIDocumentPickerRemoteViewControllerContaining> *_publicController;
+    NSString * _identifier;
+    UIViewController<_UIDocumentPickerRemoteViewControllerContaining> * _publicController;
 }
 
 @property (readonly, copy) NSString *debugDescription;

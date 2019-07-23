@@ -6,12 +6,13 @@
     struct CGSize { 
         float width; 
         float height; 
-    } primitiveCanvasSize;
+    }  primitiveCanvasSize;
 }
 
 @property (nonatomic, retain) TDImageStackAsset *asset;
 @property (nonatomic) struct CGSize { float x1; float x2; } canvasSize;
 @property (nonatomic, retain) NSString *canvasSizeString;
+@property (nonatomic, retain) TDThemeCompressionType *compressionType;
 @property (nonatomic, retain) NSOrderedSet *layerReferences;
 @property (nonatomic) struct CGSize { float x1; float x2; } primitiveCanvasSize;
 

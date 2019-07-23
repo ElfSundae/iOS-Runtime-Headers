@@ -3,13 +3,13 @@
  */
 
 @interface NRServerRequestReporter : NSObject {
-    NSString *_requestType;
-    double _startTime;
-    BOOL _submitted;
+    NSString * _requestType;
+    double  _startTime;
+    BOOL  _submitted;
     struct mach_timebase_info { 
         unsigned int numer; 
         unsigned int denom; 
-    } _timebaseInfo;
+    }  _timebaseInfo;
 }
 
 @property (nonatomic, retain) NSString *requestType;

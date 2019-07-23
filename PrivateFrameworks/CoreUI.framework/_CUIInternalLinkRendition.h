@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } _alphaCroppedFrame;
+    }  _alphaCroppedFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -22,8 +22,8 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    struct CGImage {} *_image;
+    }  _frame;
+    struct CGImage {} * _image;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,17 +33,17 @@
             float width; 
             float height; 
         } size; 
-    } _imageRect;
-    unsigned int _nimages;
+    }  _imageRect;
+    unsigned int  _nimages;
     struct CGSize { 
         float width; 
         float height; 
-    } _originalUncroppedSize;
-    CUIRenditionKey *_referenceKey;
-    CUIRenditionMetrics *_renditionMetrics;
-    CUIRenditionSliceInformation *_sliceInformation;
-    CUIStructuredThemeStore *_sourceProvider;
-    struct CGImage { } *_unslicedImage;
+    }  _originalUncroppedSize;
+    CUIRenditionKey * _referenceKey;
+    CUIRenditionMetrics * _renditionMetrics;
+    CUIRenditionSliceInformation * _sliceInformation;
+    CUIStructuredThemeStore * _sourceProvider;
+    struct CGImage { } * _unslicedImage;
 }
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_destinationFrame;
@@ -65,5 +65,6 @@
 - (struct CGSize { float x1; float x2; })originalUncroppedSize;
 - (id)sliceInformation;
 - (struct CGImage { }*)unslicedImage;
+- (struct CGSize { float x1; float x2; })unslicedSize;
 
 @end

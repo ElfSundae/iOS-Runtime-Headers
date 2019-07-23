@@ -3,38 +3,39 @@
  */
 
 @interface MFComposeRecipientTextView : MFComposeHeaderView <MFComposeRecipientAtomDelegate, MFMultiDragDestination, MFMultiDragSource, NSLayoutManagerDelegate, UITextViewDelegate> {
-    UIButton *_addButton;
-    BOOL _allowsDragAndDrop;
-    UIView *_atomContainerView;
-    NSMutableDictionary *_atomLayoutOptionsByRecipient;
-    NSMutableDictionary *_atomPresentationOptionsByRecipient;
-    int _atomViewAnimationDepth;
-    NSMutableArray *_atomViews;
-    UIFont *_baseFont;
-    NSTimer *_collapsableUpdateTimer;
-    BOOL _collapsedStateInitialized;
-    BOOL _didIgnoreFirstResponderResign;
+    UIButton * _addButton;
+    BOOL  _allowsDragAndDrop;
+    UIView * _atomContainerView;
+    NSMutableDictionary * _atomLayoutOptionsByRecipient;
+    NSMutableDictionary * _atomPresentationOptionsByRecipient;
+    int  _atomViewAnimationDepth;
+    NSMutableArray * _atomViews;
+    UIFont * _baseFont;
+    NSTimer * _collapsableUpdateTimer;
+    BOOL  _collapsedStateInitialized;
+    BOOL  _didIgnoreFirstResponderResign;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _dragSourceRange;
-    BOOL _editable;
-    BOOL _expanded;
-    int _hideLastAtomComma;
-    UIColor *_inactiveTextColor;
-    UITextView *_inactiveTextView;
-    BOOL _indicatesUnsafeRecipientsWhenCollapsed;
-    BOOL _isTextFieldCollapsed;
-    int _maxRecipients;
-    BOOL _notifyDelegateOfSizeChange;
-    BOOL _parentIsClosing;
-    <MFDraggableItem> *_pivotItem;
-    _MFAtomTextAttachment *_placeholderAttachment;
-    NSArray *_properties;
-    NSMutableArray *_recipientsBeingRemoved;
-    BOOL _separatorHidden;
-    _MFAtomTextView *_textView;
-    BOOL _textViewExclusionPathsAreValid;
+    }  _dragSourceRange;
+    BOOL  _editable;
+    BOOL  _expanded;
+    int  _hideLastAtomComma;
+    UIColor * _inactiveTextColor;
+    UITextView * _inactiveTextView;
+    BOOL  _indicatesUnsafeRecipientsWhenCollapsed;
+    BOOL  _isTextFieldCollapsed;
+    int  _maxRecipients;
+    BOOL  _notifyDelegateOfSizeChange;
+    BOOL  _parentIsClosing;
+    <MFDraggableItem> * _pivotItem;
+    _MFAtomTextAttachment * _placeholderAttachment;
+    NSArray * _properties;
+    NSMutableArray * _recipientsBeingRemoved;
+    BOOL  _separatorHidden;
+    _MFAtomTextView * _textView;
+    BOOL  _textViewExclusionPathsAreValid;
+    NSUndoManager * _undoManager;
 }
 
 @property (nonatomic, readonly) UIButton *addButton;
@@ -193,6 +194,7 @@
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (id)uncommentedAddresses;
+- (id)undoManager;
 - (id)viewForDragSource;
 - (id)viewForDraggedItem:(id)arg1 atScale:(float)arg2;
 - (void)willDropItems:(id)arg1;

@@ -3,10 +3,10 @@
  */
 
 @interface CMKPanoramaLabel : UIView <_UIBackdropViewObserver> {
-    _UIBackdropView *_backdropView;
-    _UILegibilitySettingsProvider *_legibilitySettingsProvider;
-    _UILegibilityView *_legibilityView;
-    NSString *_text;
+    _UIBackdropView * _backdropView;
+    _UILegibilitySettingsProvider * _legibilitySettingsProvider;
+    _UILegibilityView * _legibilityView;
+    NSString * _text;
 }
 
 @property (nonatomic, copy) NSString *text;

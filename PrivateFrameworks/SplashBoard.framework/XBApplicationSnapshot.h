@@ -3,11 +3,11 @@
  */
 
 @interface XBApplicationSnapshot : NSObject <BSDescriptionProviding, NSCoding> {
-    XBApplicationIdentity *_appIdentity;
-    int _backgroundStyle;
-    UIImage *_cachedImage;
-    int _classicMode;
-    int _compatibilityMode;
+    int  _backgroundStyle;
+    UIImage * _cachedImage;
+    int  _classicMode;
+    int  _compatibilityMode;
+    XBSnapshotContainerIdentity * _containerIdentity;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,22 +17,22 @@
             float width; 
             float height; 
         } size; 
-    } _contentFrame;
-    int _contentType;
-    NSDate *_creationDate;
-    NSDate *_expirationDate;
-    NSDictionary *_extendedData;
-    int _fileLocation;
-    NSString *_filename;
-    BOOL _fullScreen;
-    XBApplicationSnapshotGenerationContext *_generationContext;
-    NSString *_groupID;
-    NSString *_identifier;
-    unsigned int _imageAccessCount;
-    BOOL _imageOpaque;
-    int _imageOrientation;
-    BSTimer *_imagePurgeTimer;
-    float _imageScale;
+    }  _contentFrame;
+    int  _contentType;
+    NSDate * _creationDate;
+    NSDate * _expirationDate;
+    NSDictionary * _extendedData;
+    int  _fileFormat;
+    int  _fileLocation;
+    NSString * _filename;
+    BOOL  _fullScreen;
+    XBApplicationSnapshotGenerationContext * _generationContext;
+    NSString * _groupID;
+    NSString * _identifier;
+    unsigned int  _imageAccessCount;
+    BOOL  _imageOpaque;
+    int  _imageOrientation;
+    float  _imageScale;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -40,23 +40,25 @@
         float d; 
         float tx; 
         float ty; 
-    } _imageTransform;
-    int _interfaceOrientation;
-    BOOL _invalidated;
-    NSDate *_lastUsedDate;
-    NSString *_launchInterfaceIdentifier;
-    NSString *_name;
-    NSString *_path;
+    }  _imageTransform;
+    int  _interfaceOrientation;
+    BOOL  _invalidated;
+    BOOL  _keepImageAccessUntilExpiration;
+    NSDate * _lastUsedDate;
+    NSString * _launchInterfaceIdentifier;
+    NSString * _name;
+    NSString * _path;
     struct CGSize { 
         float width; 
         float height; 
-    } _referenceSize;
-    NSString *_relativePath;
-    NSString *_requiredOSVersion;
-    NSString *_scheme;
-    XBStatusBarSettings *_statusBarSettings;
-    NSString *_variantID;
-    NSMutableDictionary *_variantsByID;
+    }  _referenceSize;
+    NSString * _relativePath;
+    NSString * _requiredOSVersion;
+    NSString * _scheme;
+    XBStatusBarSettings * _statusBarSettings;
+    <XBSnapshotManifestStore> * _store;
+    NSString * _variantID;
+    NSMutableDictionary * _variantsByID;
 }
 
 @property (nonatomic, readonly) unsigned int _contentTypeMask;
@@ -66,19 +68,20 @@
 @property (nonatomic, readonly, copy) NSString *_sortableRequiredOSVersion;
 @property (nonatomic, readonly, copy) NSString *_sortableScheme;
 @property (nonatomic, readonly, retain) XBStatusBarSettings *_sortableStatusBarSettings;
-@property (copy) XBApplicationIdentity *appIdentity;
 @property (nonatomic) int backgroundStyle;
 @property (nonatomic) int classicMode;
 @property (nonatomic) int compatibilityMode;
+@property (copy) XBSnapshotContainerIdentity *containerIdentity;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } contentFrame;
 @property (nonatomic) int contentType;
 @property (nonatomic, readonly, retain) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) NSDate *expirationDate;
+@property (nonatomic, retain) NSDate *expirationDate;
 @property (getter=isExpired, nonatomic, readonly) BOOL expired;
 @property (nonatomic, copy) NSDictionary *extendedData;
 @property (nonatomic, readonly) BOOL fileExists;
+@property (nonatomic, readonly) int fileFormat;
 @property (nonatomic) int fileLocation;
 @property (nonatomic, readonly, copy) NSString *filename;
 @property (getter=isFullScreen, nonatomic) BOOL fullScreen;
@@ -101,6 +104,7 @@
 @property (nonatomic, copy) NSString *requiredOSVersion;
 @property (nonatomic, copy) NSString *scheme;
 @property (nonatomic, copy) XBStatusBarSettings *statusBarSettings;
+@property (getter=_store, nonatomic, readonly, retain) <XBSnapshotManifestStore> *store;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *variantID;
 
@@ -108,36 +112,39 @@
 
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
-- (void)_clearImagePurgeTimer;
 - (void)_commonInit;
-- (id)_configureDefaultPathWithinGroup;
+- (id)_configureDefaultPathWithinGroupForFormat:(int)arg1;
 - (void)_configureWithPath:(id)arg1;
 - (unsigned int)_contentTypeMask;
 - (id)_createVariantWithIdentifier:(id)arg1;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 includeVariants:(BOOL)arg2;
 - (id)_determineRelativePathForPath:(id)arg1 location:(int*)arg2;
 - (BOOL)_hasGenerationContext;
-- (id)_initWithGroupID:(id)arg1 appIdentity:(id)arg2;
-- (id)_initWithGroupID:(id)arg1 appIdentity:(id)arg2 generationContext:(id)arg3;
+- (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
 - (unsigned int)_interfaceOrientationMask;
 - (void)_invalidate;
 - (BOOL)_isInvalidated;
+- (void)_manifestQueueDecode_setStore:(id)arg1;
 - (BOOL)_path:(id)arg1 isRelativeToPath:(id)arg2 outRelativePath:(id*)arg3;
 - (void)_purgeCachedImageIfAppropriate:(BOOL)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_referenceBounds;
 - (BOOL)_shouldDeleteFileOnPurge;
+- (void)_snynchronized_evaluateImageAccessUntilExpirationEnablingIfNecessary:(BOOL)arg1;
 - (id)_sortableLaunchInterfaceIdentifier;
 - (id)_sortableName;
 - (id)_sortableRequiredOSVersion;
 - (id)_sortableScheme;
 - (id)_sortableStatusBarSettings;
-- (BOOL)_validateWithAppIdentity:(id)arg1;
-- (id)appIdentity;
+- (id)_store;
+- (BOOL)_synchronized_isExpired;
+- (BOOL)_validateWithContainerIdentity:(id)arg1;
 - (int)backgroundStyle;
 - (void)beginImageAccess;
+- (void)beginImageAccessUntilExpiration;
 - (id)cachedImageForInterfaceOrientation:(int)arg1;
 - (int)classicMode;
 - (int)compatibilityMode;
+- (id)containerIdentity;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })contentFrame;
 - (int)contentType;
 - (id)creationDate;
@@ -151,6 +158,7 @@
 - (id)expirationDate;
 - (id)extendedData;
 - (BOOL)fileExists;
+- (int)fileFormat;
 - (int)fileLocation;
 - (id)filename;
 - (id)generationContext;
@@ -177,15 +185,14 @@
 - (id)name;
 - (struct CGSize { float x1; float x2; })naturalSize;
 - (id)path;
-- (void)purgeCachedImageAfterInterval:(double)arg1;
 - (void)purgeImage;
 - (struct CGSize { float x1; float x2; })referenceSize;
 - (id)requiredOSVersion;
 - (id)scheme;
-- (void)setAppIdentity:(id)arg1;
 - (void)setBackgroundStyle:(int)arg1;
 - (void)setClassicMode:(int)arg1;
 - (void)setCompatibilityMode:(int)arg1;
+- (void)setContainerIdentity:(id)arg1;
 - (void)setContentFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setContentType:(int)arg1;
 - (void)setExpirationDate:(id)arg1;

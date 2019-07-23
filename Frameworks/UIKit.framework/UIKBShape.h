@@ -3,11 +3,11 @@
  */
 
 @interface UIKBShape : NSObject <NSCoding, NSCopying> {
-    int m_concaveCorner;
+    int  m_concaveCorner;
     struct CGSize { 
         float width; 
         float height; 
-    } m_concaveCornerOffset;
+    }  m_concaveCornerOffset;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,9 +17,9 @@
             float width; 
             float height; 
         } size; 
-    } m_frame;
-    UIKBGeometry *m_geometry;
-    UIKBShape *m_originalShape;
+    }  m_frame;
+    UIKBGeometry * m_geometry;
+    UIKBShape * m_originalShape;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,9 +29,9 @@
             float width; 
             float height; 
         } size; 
-    } m_paddedFrame;
-    BOOL m_scaled;
-    unsigned int m_uid;
+    }  m_paddedFrame;
+    BOOL  m_scaled;
+    unsigned int  m_uid;
 }
 
 @property (nonatomic) int concaveCorner;

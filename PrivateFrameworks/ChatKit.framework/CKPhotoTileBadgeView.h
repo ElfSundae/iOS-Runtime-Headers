@@ -3,12 +3,12 @@
  */
 
 @interface CKPhotoTileBadgeView : UIView {
-    UIView *__backgroundView;
-    UIImageView *__badgeImageView;
-    UILabel *__textLabel;
-    UIButton *_actionButton;
-    BOOL _enabled;
-    BOOL _selected;
+    UIView * __backgroundView;
+    UIImageView * __badgeImageView;
+    UILabel * __textLabel;
+    UIButton * _actionButton;
+    BOOL  _enabled;
+    BOOL  _selected;
 }
 
 @property (nonatomic, readonly) UIView *_backgroundView;
@@ -21,13 +21,13 @@
 + (float)horizontalBadgeInset;
 + (float)verticalBadgeInset;
 
+- (void).cxx_destruct;
 - (id)_backgroundView;
 - (id)_badgeImageView;
 - (id)_textLabel;
 - (void)_updateBadgeImage;
 - (void)_updateBadgeText;
 - (id)actionButton;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)isEnabled;
 - (BOOL)isSelected;

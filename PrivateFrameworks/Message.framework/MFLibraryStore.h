@@ -3,11 +3,11 @@
  */
 
 @interface MFLibraryStore : MFMailMessageStore {
-    MFMessageCriterion *_criterion;
-    NSDate *_earliestReceivedDate;
-    unsigned int _fetchWindow;
-    MFMessageLibrary *_library;
-    unsigned int _serverMessageCount;
+    MFMessageCriterion * _criterion;
+    NSDate * _earliestReceivedDate;
+    unsigned int  _fetchWindow;
+    MFMessageLibrary * _library;
+    unsigned int  _serverMessageCount;
 }
 
 @property (nonatomic, retain) NSDate *earliestReceivedDate;
@@ -35,14 +35,12 @@
 - (unsigned int)_fetchWindowMinimum;
 - (unsigned int)_fetchWindowMultiple;
 - (void)_handleFlagsChangedForMessages:(id)arg1 flags:(id)arg2 oldFlagsByMessage:(id)arg3;
-- (BOOL)_isSingleCoreDevice;
 - (id)_memberMessagesWithCompactionNotification:(id)arg1;
 - (void)_queueMessageFlagsChanged:(id)arg1;
 - (void)_queueMessagesAdded:(id)arg1;
 - (void)_queueMessagesWereCompacted:(id)arg1;
 - (void)_queueMessagesWillBeCompacted:(id)arg1;
 - (void)_setNeedsAutosave;
-- (void)_updateMailboxUnreadCount;
 - (void)addCountsForMessages:(id)arg1 shouldUpdateUnreadCount:(BOOL)arg2;
 - (unsigned int)allNonDeletedCountIncludingServerSearch:(BOOL)arg1 andThreadSearch:(BOOL)arg2;
 - (BOOL)allowsAppend;
@@ -54,6 +52,7 @@
 - (id)copyMessagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesMatchingText:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
+- (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)copyOfAllMessages;
 - (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
@@ -93,7 +92,6 @@
 - (id)initWithMailboxUid:(id)arg1 readOnly:(BOOL)arg2;
 - (void)invalidateFetchWindow;
 - (id)library;
-- (void)libraryFinishedSendingMessages;
 - (id)mailbox;
 - (id)messageForMessageID:(id)arg1 options:(unsigned int)arg2;
 - (id)messageWithLibraryID:(unsigned int)arg1 options:(unsigned int)arg2;

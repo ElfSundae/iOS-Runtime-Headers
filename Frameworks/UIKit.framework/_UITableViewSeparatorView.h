@@ -3,8 +3,8 @@
  */
 
 @interface _UITableViewSeparatorView : UIView {
-    UITableView *_table;
-    UITableViewCell *_tableCell;
+    UITableView * _table;
+    UITableViewCell * _tableCell;
 }
 
 - (void).cxx_destruct;

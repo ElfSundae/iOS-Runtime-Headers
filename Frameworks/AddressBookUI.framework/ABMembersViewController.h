@@ -3,16 +3,16 @@
  */
 
 @interface ABMembersViewController : ABAbstractViewController <ABMembersControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonEditDelegate, ABViewControllerBannerViewProtocol, CNAvatarCardControllerDelegate, CNContactViewControllerAddContactPresenter> {
-    _UIAccessDeniedView *_accessDeniedView;
-    CNAvatarCardController *_cardController;
-    CNContactStore *_contactStore;
-    id _insertionLabel;
-    int _insertionProperty;
-    id _insertionValue;
-    int _leftButtonBehavior;
-    ABMembersController *_membersController;
-    int _rightButtonBehavior;
-    BOOL _shouldHandleExternalChangeOnPersonViewControllers;
+    _UIAccessDeniedView * _accessDeniedView;
+    CNAvatarCardController * _cardController;
+    CNContactStore * _contactStore;
+    id  _insertionLabel;
+    int  _insertionProperty;
+    id  _insertionValue;
+    int  _leftButtonBehavior;
+    ABMembersController * _membersController;
+    int  _rightButtonBehavior;
+    BOOL  _shouldHandleExternalChangeOnPersonViewControllers;
 }
 
 @property (nonatomic, readonly) _UIAccessDeniedView *accessDeniedView;

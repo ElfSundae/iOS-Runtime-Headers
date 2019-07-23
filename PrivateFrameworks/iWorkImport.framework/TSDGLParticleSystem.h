@@ -3,41 +3,42 @@
  */
 
 @interface TSDGLParticleSystem : NSObject {
-    TSDGLDataBufferAttribute *_centerAttribute;
-    TSDGLDataBufferAttribute *_colorAttribute;
-    TSDGLDataBuffer *_dataBuffer;
-    unsigned int _direction;
-    float _duration;
-    BOOL _hasParticleTexture;
-    BOOL _isDataBufferInitialized;
-    BOOL _isInitialized;
-    TSDGLDataBufferAttribute *_lifeSpanAttribute;
+    TSDGLDataBufferAttribute * _centerAttribute;
+    TSDGLDataBufferAttribute * _colorAttribute;
+    TSDGLDataBuffer * _dataBuffer;
+    unsigned int  _direction;
+    float  _duration;
+    BOOL  _hasParticleTexture;
+    BOOL  _isDataBufferInitialized;
+    BOOL  _isInitialized;
+    TSDGLDataBufferAttribute * _lifeSpanAttribute;
     struct CGSize { 
         float width; 
         float height; 
-    } _objectSize;
-    unsigned int _particleCount;
+    }  _objectSize;
+    unsigned int  _particleCount;
     struct CGSize { 
         float width; 
         float height; 
-    } _particleSize;
-    TSDGLDataBufferAttribute *_particleTexCoordAttribute;
-    unsigned int _particlesHigh;
-    unsigned int _particlesWide;
-    TSDGLDataBufferAttribute *_positionAttribute;
-    TSDGLDataBufferAttribute *_rotationAttribute;
-    TSDGLDataBufferAttribute *_scaleAttribute;
-    TSDGLShader *_shader;
-    BOOL _shouldDraw;
+    }  _particleSize;
+    TSDGLDataBufferAttribute * _particleTexCoordAttribute;
+    unsigned int  _particlesHigh;
+    unsigned int  _particlesWide;
+    TSDGLDataBufferAttribute * _positionAttribute;
+    <TSDAnimationRandomGenerator> * _randomGenerator;
+    TSDGLDataBufferAttribute * _rotationAttribute;
+    TSDGLDataBufferAttribute * _scaleAttribute;
+    TSDGLShader * _shader;
+    BOOL  _shouldDraw;
     struct CGSize { 
         float width; 
         float height; 
-    } _slideSize;
-    TSDGLDataBufferAttribute *_speedAttribute;
-    TSDGLDataBufferAttribute *_texCoordAttribute;
-    unsigned int _textureCount;
-    BOOL *_visibilities;
-    unsigned int _visibleParticleCount;
+    }  _slideSize;
+    TSDGLDataBufferAttribute * _speedAttribute;
+    TSDGLDataBufferAttribute * _texCoordAttribute;
+    unsigned int  _textureCount;
+    BOOL * _visibilities;
+    unsigned int  _visibleParticleCount;
 }
 
 @property (nonatomic, readonly) TSDGLDataBufferAttribute *centerAttribute;
@@ -54,6 +55,7 @@
 @property (nonatomic, readonly) unsigned int particlesHigh;
 @property (nonatomic, readonly) unsigned int particlesWide;
 @property (nonatomic, readonly) TSDGLDataBufferAttribute *positionAttribute;
+@property (nonatomic, readonly) <TSDAnimationRandomGenerator> *randomGenerator;
 @property (nonatomic, readonly) TSDGLDataBufferAttribute *rotationAttribute;
 @property (nonatomic, readonly) TSDGLDataBufferAttribute *scaleAttribute;
 @property (nonatomic, readonly) TSDGLShader *shader;
@@ -85,8 +87,8 @@
 - (float)duration;
 - (unsigned int)indexFromPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (struct CGPoint { float x1; float x2; })indexPointFromIndex:(unsigned int)arg1;
-- (id)initWithNumberOfParticles:(unsigned int)arg1 objectSize:(struct CGSize { float x1; float x2; })arg2 slideSize:(struct CGSize { float x1; float x2; })arg3 duration:(float)arg4 direction:(unsigned int)arg5 shader:(id)arg6;
-- (id)initWithParticleSize:(struct CGSize { float x1; float x2; })arg1 particleSystemSize:(struct CGSize { float x1; float x2; })arg2 objectSize:(struct CGSize { float x1; float x2; })arg3 slideSize:(struct CGSize { float x1; float x2; })arg4 duration:(float)arg5 direction:(unsigned int)arg6 shader:(id)arg7;
+- (id)initWithNumberOfParticles:(unsigned int)arg1 objectSize:(struct CGSize { float x1; float x2; })arg2 slideSize:(struct CGSize { float x1; float x2; })arg3 duration:(float)arg4 direction:(unsigned int)arg5 shader:(id)arg6 randomGenerator:(id)arg7;
+- (id)initWithParticleSize:(struct CGSize { float x1; float x2; })arg1 particleSystemSize:(struct CGSize { float x1; float x2; })arg2 objectSize:(struct CGSize { float x1; float x2; })arg3 slideSize:(struct CGSize { float x1; float x2; })arg4 duration:(float)arg5 direction:(unsigned int)arg6 shader:(id)arg7 randomGenerator:(id)arg8;
 - (struct { float x1; float x2; })lifeSpanAtIndexPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)lifeSpanAttribute;
 - (struct CGContext { }*)newContextFromTexture:(id)arg1;
@@ -104,6 +106,7 @@
 - (unsigned int)particlesHigh;
 - (unsigned int)particlesWide;
 - (id)positionAttribute;
+- (id)randomGenerator;
 - (struct { float x1; float x2; float x3; })rotationAtIndexPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)rotationAttribute;
 - (float)rotationMax;

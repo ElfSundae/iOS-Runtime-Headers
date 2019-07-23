@@ -3,31 +3,31 @@
  */
 
 @interface PUImageRequester : NSObject {
-    int __changeCount;
-    PUImageRequesterChange *__currentChange;
-    int __currentFullsizeJPEGRequestID;
-    int __currentImageRequestID;
-    BOOL __hasCurrentIncompleteRequest;
-    BOOL __hasRequestedFullsizeImageData;
+    int  __changeCount;
+    PUImageRequesterChange * __currentChange;
+    int  __currentFullsizeJPEGRequestID;
+    int  __currentImageRequestID;
+    BOOL  __hasCurrentIncompleteRequest;
+    BOOL  __hasRequestedFullsizeImageData;
     struct CGSize { 
         float width; 
         float height; 
-    } __lastRequestedImageSize;
-    BOOL __needsUpdate;
-    NSHashTable *__observers;
-    BOOL __shouldUpdateImageOnCurrentRequestCompletion;
-    <PUDisplayAsset> *_asset;
-    NSData *_fullsizeImageData;
-    UIImage *_image;
-    BOOL _imageIsFullQuality;
-    BOOL _imageIsPlaceholder;
-    PUMediaProvider *_mediaProvider;
-    BOOL _networkAccessAllowed;
+    }  __lastRequestedImageSize;
+    BOOL  __needsUpdate;
+    NSHashTable * __observers;
+    BOOL  __shouldUpdateImageOnCurrentRequestCompletion;
+    <PUDisplayAsset> * _asset;
+    NSData * _fullsizeImageData;
+    UIImage * _image;
+    BOOL  _imageIsFullQuality;
+    BOOL  _imageIsPlaceholder;
+    PUMediaProvider * _mediaProvider;
+    BOOL  _networkAccessAllowed;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
-    BOOL _useFullsizeImageData;
+    }  _targetSize;
+    BOOL  _useFullsizeImageData;
 }
 
 @property (setter=_setChangeCount:, nonatomic) int _changeCount;
@@ -41,9 +41,9 @@
 @property (setter=_setObserver:, nonatomic, retain) NSHashTable *_observers;
 @property (setter=_setShouldUpdateImageOnCurrentRequestCompletion:, nonatomic) BOOL _shouldUpdateImageOnCurrentRequestCompletion;
 @property (nonatomic, readonly) <PUDisplayAsset> *asset;
-@property (nonatomic, retain) NSData *fullsizeImageData;
-@property (nonatomic, retain) UIImage *image;
-@property (nonatomic) BOOL imageIsFullQuality;
+@property (setter=_setFullsizeImageData:, nonatomic, retain) NSData *fullsizeImageData;
+@property (setter=_setImage:, nonatomic, retain) UIImage *image;
+@property (setter=_setImageIsFullQuality:, nonatomic) BOOL imageIsFullQuality;
 @property (setter=_setImageIsPlaceholder:, nonatomic) BOOL imageIsPlaceholder;
 @property (nonatomic, readonly) PUMediaProvider *mediaProvider;
 @property (getter=isNetworkAccessAllowed, nonatomic) BOOL networkAccessAllowed;
@@ -86,6 +86,7 @@
 - (id)asset;
 - (void)cancelAllImageRequests;
 - (id)fullsizeImageData;
+- (void)handlePreloadedImage:(id)arg1;
 - (id)image;
 - (BOOL)imageIsFullQuality;
 - (BOOL)imageIsPlaceholder;

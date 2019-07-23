@@ -3,17 +3,17 @@
  */
 
 @interface GEORPCorrectedLabel : PBCodable <NSCopying> {
-    GEOLatLng *_coordinate;
-    NSString *_correctedValue;
-    NSMutableArray *_featureHandles;
-    GEOMapRegion *_featureRegion;
+    GEOLatLng * _coordinate;
+    NSString * _correctedValue;
+    NSMutableArray * _featureHandles;
+    GEOMapRegion * _featureRegion;
     struct { 
         unsigned int uid : 1; 
         unsigned int localizedLabels : 1; 
-    } _has;
-    BOOL _localizedLabels;
-    NSString *_originalValue;
-    unsigned long long _uid;
+    }  _has;
+    BOOL  _localizedLabels;
+    NSString * _originalValue;
+    unsigned long long  _uid;
 }
 
 @property (nonatomic, retain) GEOLatLng *coordinate;
@@ -29,6 +29,8 @@
 @property (nonatomic) BOOL localizedLabels;
 @property (nonatomic, retain) NSString *originalValue;
 @property (nonatomic) unsigned long long uid;
+
++ (Class)featureHandleType;
 
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;

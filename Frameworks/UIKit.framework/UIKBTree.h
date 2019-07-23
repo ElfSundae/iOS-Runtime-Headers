@@ -3,12 +3,12 @@
  */
 
 @interface UIKBTree : NSObject <NSCopying> {
-    NSMutableDictionary *cache;
-    NSString *layoutTag;
-    NSString *name;
-    NSMutableDictionary *properties;
-    NSMutableArray *subtrees;
-    int type;
+    NSMutableDictionary * cache;
+    NSString * layoutTag;
+    NSString * name;
+    NSMutableDictionary * properties;
+    NSMutableArray * subtrees;
+    int  type;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *cache;
@@ -38,8 +38,12 @@
 - (int)_variantType;
 - (id)activeGeometriesList;
 - (id)activeShapesFromOutputShapes:(id)arg1 inputShapes:(id)arg2;
+- (void)addMessagesWriteboardKey;
+- (void)addkeyToCachedKeyList:(id)arg1;
 - (BOOL)allowRetestAfterCommittingDownActions;
 - (id)alternateKeyplaneName;
+- (id)alternateStrings;
+- (BOOL)alternatesOnTop;
 - (id)attributeSet:(BOOL)arg1;
 - (id)autolocalizedKeyCacheIterator;
 - (BOOL)avoidAutoDeactivation;
@@ -52,6 +56,7 @@
 - (id)cacheSecondaryDisplayString;
 - (id)cachedKeysByKeyName:(id)arg1;
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 scale:(float)arg3;
+- (void)clearManualAddedKey;
 - (void)clearTransientCaches;
 - (int)clipCorners;
 - (id)componentName;
@@ -71,6 +76,7 @@
 - (void)elaborateLayoutWithSize:(struct CGSize { float x1; float x2; })arg1 scale:(float)arg2;
 - (id)findLeftMoreKey;
 - (id)firstCachedKeyWithName:(id)arg1;
+- (id)firstKeyplaneSwitchKey;
 - (int)flickDirection;
 - (BOOL)forceMultitap;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frame;
@@ -116,6 +122,7 @@
 - (id)keysOrderedByPositionRTL;
 - (id)keysOrderedByPositionWithoutZip;
 - (id)keysWithString:(id)arg1;
+- (id)keysetCanContainWriteboardKey;
 - (id)layoutName;
 - (id)layoutTag;
 - (id)listShapes;
@@ -141,13 +148,17 @@
 - (float)primaryKeylayoutWidthRatio;
 - (id)properties;
 - (id)recursiveDescription;
+- (void)removeKeyFromCachedKeyList:(id)arg1;
 - (BOOL)renderKeyInKeyplane:(id)arg1;
 - (int)rendering;
 - (id)representedString;
+- (id)rightSpaceKey;
 - (id)secondaryDisplayStrings;
 - (id)secondaryRepresentedStrings;
 - (int)selectedVariantIndex;
 - (void)setActiveGeometriesList:(id)arg1;
+- (void)setAlternateStrings:(id)arg1;
+- (void)setAlternatesOnTop:(BOOL)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setCache:(id)arg1;
 - (void)setClipCorners:(int)arg1;

@@ -3,26 +3,26 @@
  */
 
 @interface FMSlidingPaneViewController : FMViewController {
-    float _animationDuration;
-    float _animationInitialVelocity;
-    unsigned int _animationOptions;
-    float _animationSpringDamping;
-    <FMSlidingPaneViewControllerDelegate> *_delegate;
-    BOOL _didHideToolbar;
+    float  _animationDuration;
+    float  _animationInitialVelocity;
+    unsigned int  _animationOptions;
+    float  _animationSpringDamping;
+    <FMSlidingPaneViewControllerDelegate> * _delegate;
+    BOOL  _didHideToolbar;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _paneContentInsets;
+    }  _paneContentInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _paneInsets;
-    SlidingPaneViewState *_paneState;
-    UIVisualEffect *_paneVisualEffect;
+    }  _paneInsets;
+    SlidingPaneViewState * _paneState;
+    UIVisualEffect * _paneVisualEffect;
 }
 
 @property (nonatomic) float animationDuration;

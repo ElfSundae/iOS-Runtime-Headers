@@ -3,11 +3,13 @@
  */
 
 @interface AVFigAssetInspector : AVAssetInspector {
-    struct OpaqueFigAsset { } *_figAsset;
-    struct OpaqueFigFormatReader { } *_formatReader;
-    long _formatReaderOnce;
-    BOOL didCheckForSaveRestriction;
-    BOOL hasSaveRestriction;
+    long  _checkIsStreamingOnce;
+    struct OpaqueFigAsset { } * _figAsset;
+    struct OpaqueFigFormatReader { } * _formatReader;
+    long  _formatReaderOnce;
+    BOOL  _isStreaming;
+    BOOL  didCheckForSaveRestriction;
+    BOOL  hasSaveRestriction;
 }
 
 @property (nonatomic, readonly) NSURL *URL;

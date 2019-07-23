@@ -27,6 +27,7 @@
 - (float)maxDepthRatio;
 - (float)minDepthRatio;
 - (struct CGSize { float x1; float x2; })minimumChartBodySize;
+- (struct CGSize { float x1; float x2; })minimumChartBodySizeForTransformingGeometry;
 - (BOOL)needsRefinementForInwardLayout;
 - (unsigned int)presentationDimension;
 - (Class)presetImagerClass;
@@ -34,7 +35,8 @@
 - (Class)repClass;
 - (Class)sageGeometeryHelperClass;
 - (float)sageMaxDepthRatio;
-- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })arg2;
+- (id)sceneWithChartInfo:(id)arg1 layoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })arg2;
+- (float)spiceMaxDepthRatio;
 - (Class)stageClass;
 - (BOOL)supportsAxisLabelsOrientation;
 - (BOOL)supportsAxisLine;

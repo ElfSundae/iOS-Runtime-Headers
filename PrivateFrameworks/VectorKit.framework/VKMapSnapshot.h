@@ -3,12 +3,12 @@
  */
 
 @interface VKMapSnapshot : NSObject <NSSecureCoding> {
-    VKCamera *_camera;
-    unsigned long _height;
-    struct CGImage { } *_image;
-    float _scale;
-    BOOL _showingNoDataPlaceholders;
-    unsigned long _width;
+    VKCamera * _camera;
+    unsigned long  _height;
+    struct CGImage { } * _image;
+    float  _scale;
+    BOOL  _showingNoDataPlaceholders;
+    unsigned long  _width;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*image;

@@ -3,12 +3,12 @@
  */
 
 @interface CNContactGridViewLayout : UICollectionViewFlowLayout <NSCopying> {
-    BOOL _needsUpdateLayout;
-    int _numberOfColumns;
-    float _offsetAfter;
-    float _offsetBefore;
-    NSIndexPath *_selectedIndexPath;
-    float _selectedItemWidthOffset;
+    BOOL  _needsUpdateLayout;
+    int  _numberOfColumns;
+    float  _offsetAfter;
+    float  _offsetBefore;
+    NSIndexPath * _selectedIndexPath;
+    float  _selectedItemWidthOffset;
 }
 
 @property (nonatomic) BOOL needsUpdateLayout;

@@ -14,9 +14,11 @@
 - (UIFont *)airPlayVideoPlaceholderTitleFont;
 - (UIColor *)airPlayVideoPlaceholderTitleTextColor;
 - (UIColor *)albumBadgeInTitleColor;
+- (UIColor *)albumCornersBackgroundColor;
 - (UIColor *)albumListBackgroundColor;
 - (float)albumListDisabledAlbumStackViewAlpha;
 - (float)albumListDisabledAlbumTitleAlpha;
+- (UIFont *)albumListSectionTitleLabelFont;
 - (UIFont *)albumListSubtitleLabelFont;
 - (UIFont *)albumListTitleLabelFont;
 - (NSAttributedString *)attributedStringForCloudFeedGroupHeaderWithText:(NSString *)arg1;
@@ -46,7 +48,7 @@
 - (void)configureAlbumListDeleteButton:(UIButton *)arg1;
 - (void)configureAlbumListEmptyStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListEmptyStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
-- (void)configureAlbumListPinButton:(UIButton *)arg1;
+- (void)configureAlbumListSectionTitleLabel:(UILabel *)arg1;
 - (void)configureAlbumListStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListSubtitleLabel:(UILabel *)arg1 asOpaque:(BOOL)arg2;
@@ -88,6 +90,8 @@
 - (UIColor *)gridViewCellBannerDestructiveTextColor;
 - (UIColor *)gridViewCellBannerTextColor;
 - (UIFont *)gridViewCellBannerTextFont;
+- (float)padAlbumCornerRadius;
+- (float)phoneAlbumCornerRadius;
 - (int)photoBrowserBarStyle;
 - (UIColor *)photoBrowserChromeHiddenBackgroundColor;
 - (UIColor *)photoBrowserChromeVisibleBackgroundColor;
@@ -95,6 +99,7 @@
 - (UIFont *)photoBrowserPhotoSubtitleFont;
 - (int)photoBrowserStatusBarStyle;
 - (UIFont *)photoBrowserTimeTitleFont;
+- (UIColor *)photoBrowserTitleViewTappableTextColor;
 - (UIColor *)photoBrowserTitleViewTextColor;
 - (UIFontDescriptor *)photoCollectionGlobalFooterSubtitleLabelFontDescriptor;
 - (UIFontDescriptor *)photoCollectionGlobalFooterTitleLabelFontDescriptor;
@@ -102,7 +107,7 @@
 - (UIFontDescriptor *)photoCollectionHeaderActionButtonFontDescriptorForStyle:(int)arg1;
 - (UIColor *)photoCollectionHeaderBackgroundColorForBackgroundStyle:(unsigned int)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderDateLabelFontDescriptorForStyle:(int)arg1;
-- (UIImage *)photoCollectionHeaderLocationIconForStyle:(int)arg1;
+- (UIImage *)photoCollectionHeaderDisclosureIconForStyle:(int)arg1;
 - (struct UIOffset { float x1; float x2; })photoCollectionHeaderLocationIconOffsetForStyle:(int)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderLocationLabelFontDescriptorForStyle:(int)arg1;
 - (UIFontDescriptor *)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(int)arg1;
@@ -143,17 +148,20 @@
 - (UIColor *)photoEditingToolbarSecondaryButtonColor;
 - (UIColor *)photoEditingTooltipColor;
 - (UIFont *)photoEditingTooltipFont;
+- (UIColor *)placeholderCellBackgroundColor;
 - (UIColor *)playbackTimeLabelBackgroundColor;
 - (UIFont *)playbackTimeLabelFont;
 - (UIColor *)playheadBackgroundColor;
 - (UIColor *)playheadColor;
 - (UIImage *)regularLoadErrorIcon;
 - (UIColor *)scrubberPlaceholderColor;
-- (UIColor *)searchContentViewBackgroundColor;
 - (NSDictionary *)searchDefaultAttributes;
 - (NSDictionary *)searchHighlightedAttributes;
+- (UIFont *)searchRecentLabelFont;
+- (UIColor *)searchRecentLabelTextColor;
 - (UIFont *)searchSubtitleLabelFont;
 - (UIColor *)searchSubtitleTextColor;
+- (UIColor *)searchTableViewBackgroundColor;
 - (UIFont *)searchTitleLabelFont;
 - (UIFont *)sharedAlbumCommentCardAlbumTitleFont;
 - (UIFont *)sharedAlbumCommentCardButtonFont;

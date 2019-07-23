@@ -3,13 +3,13 @@
  */
 
 @interface _AUStaticParameterInfo : NSObject <NSSecureCoding> {
-    unsigned long _clumpID;
-    unsigned long _flags;
-    float _maxValue;
-    float _minValue;
-    unsigned long _unit;
-    NSString *_unitName;
-    NSArray *_valueStrings;
+    unsigned long  _clumpID;
+    unsigned long  _flags;
+    float  _maxValue;
+    float  _minValue;
+    unsigned long  _unit;
+    NSString * _unitName;
+    NSArray * _valueStrings;
 }
 
 @property (nonatomic) unsigned long clumpID;

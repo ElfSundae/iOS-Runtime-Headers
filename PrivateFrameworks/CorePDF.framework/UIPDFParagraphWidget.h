@@ -3,7 +3,7 @@
  */
 
 @interface UIPDFParagraphWidget : NSObject <UIPDFSelectionWidget> {
-    CALayer *_bottomGrabber;
+    CALayer * _bottomGrabber;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,7 +13,7 @@
             float width; 
             float height; 
         } size; 
-    } _boundsInPDFSpace;
+    }  _boundsInPDFSpace;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -23,8 +23,8 @@
             float width; 
             float height; 
         } size; 
-    } _currentTrackingRect;
-    struct CGColor { } *_grabberColor;
+    }  _currentTrackingRect;
+    struct CGColor { } * _grabberColor;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -34,18 +34,18 @@
             float width; 
             float height; 
         } size; 
-    } _initialRect;
+    }  _initialRect;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialSelectionPointOnPage;
-    CALayer *_leftGrabber;
-    UIPDFPageView *_pageView;
-    CALayer *_rightGrabber;
-    CALayer *_selectedGrabber;
-    CALayer *_topGrabber;
-    BOOL _tracking;
-    CAShapeLayer *_trackingBorder;
+    }  _initialSelectionPointOnPage;
+    CALayer * _leftGrabber;
+    UIPDFPageView * _pageView;
+    CALayer * _rightGrabber;
+    CALayer * _selectedGrabber;
+    CALayer * _topGrabber;
+    BOOL  _tracking;
+    CAShapeLayer * _trackingBorder;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } currentSelectionPointOnPage;

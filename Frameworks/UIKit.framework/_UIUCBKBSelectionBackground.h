@@ -3,8 +3,8 @@
  */
 
 @interface _UIUCBKBSelectionBackground : UIView {
-    UIKBKeyView *_backgroundProvidingView;
-    BOOL _showButtonShape;
+    UIKBKeyView * _backgroundProvidingView;
+    BOOL  _showButtonShape;
 }
 
 @property (nonatomic) BOOL showButtonShape;

@@ -3,10 +3,10 @@
  */
 
 @interface CUIThemeGradient : NSObject <CUIThemeGradientDrawing> {
-    struct CGImage { } *_gradientImage;
-    struct CGFunction { } *colorShader;
-    struct CGColorSpace { } *colorSpace;
-    id gradientEvaluator;
+    struct CGImage { } * _gradientImage;
+    struct CGFunction { } * colorShader;
+    struct CGColorSpace { } * colorSpace;
+    id  gradientEvaluator;
 }
 
 - (id)_colorFromPSDGradientColor:(struct _psdGradientColor { double x1; double x2; double x3; double x4; })arg1;

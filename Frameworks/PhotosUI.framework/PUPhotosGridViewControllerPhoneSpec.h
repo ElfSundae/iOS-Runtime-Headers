@@ -15,7 +15,6 @@
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(float)arg2;
 - (int)forceLoadInitialSectionCount;
 - (float)globalFooterHeight;
-- (id)photoBrowserSpec;
 - (id)photosPickerViewControllerSpec;
 - (float)sectionHeaderHeight;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;

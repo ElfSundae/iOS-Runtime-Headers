@@ -3,12 +3,12 @@
  */
 
 @interface KNNoteLayout : TSDLayout <TSWPColumnMetrics, TSWPLayoutParent> {
-    TSWPLayout *mContainedLayout;
-    TSWPPadding *mPadding;
+    TSWPLayout * mContainedLayout;
+    TSWPPadding * mPadding;
     struct CGSize { 
         float width; 
         float height; 
-    } mSizeOfScrollViewEnclosingCanvas;
+    }  mSizeOfScrollViewEnclosingCanvas;
 }
 
 @property (nonatomic, readonly) BOOL alwaysStartsNewTarget;

@@ -3,8 +3,8 @@
  */
 
 @interface AVLoadingIndicatorView : UIView {
-    UIActivityIndicatorView *_activityIndicatorView;
-    UILabel *_label;
+    UIActivityIndicatorView * _activityIndicatorView;
+    UILabel * _label;
 }
 
 - (void).cxx_destruct;

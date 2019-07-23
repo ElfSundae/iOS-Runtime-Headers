@@ -3,14 +3,14 @@
  */
 
 @interface SCNMaterialAttachment : NSObject {
-    void *context;
-    unsigned int glID;
-    NSDictionary *options;
+    void * context;
+    unsigned int  glID;
+    NSDictionary * options;
     struct CGSize { 
         float width; 
         float height; 
-    } size;
-    unsigned int target;
+    }  size;
+    unsigned int  target;
 }
 
 @property (nonatomic) void*context;

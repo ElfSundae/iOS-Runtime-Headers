@@ -3,15 +3,15 @@
  */
 
 @interface ICAttachmentPreviewImageLoader : NSObject {
-    NSData *_data;
-    BOOL _delayLoadingURLs;
-    struct UIImage { Class x1; } *_image;
-    id /* block */ _imageDidLoadBlock;
-    int _imageOrientation;
-    struct UIImage { Class x1; } *_orientedImage;
-    struct UIImage { Class x1; } *_originalImage;
-    NSArray *_previewImageURLs;
-    float _scale;
+    NSData * _data;
+    BOOL  _delayLoadingURLs;
+    struct UIImage { Class x1; } * _image;
+    id /* block */  _imageDidLoadBlock;
+    int  _imageOrientation;
+    struct UIImage { Class x1; } * _orientedImage;
+    struct UIImage { Class x1; } * _originalImage;
+    NSArray * _previewImageURLs;
+    float  _scale;
 }
 
 @property (nonatomic, retain) NSData *data;

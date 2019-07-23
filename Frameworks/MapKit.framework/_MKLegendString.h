@@ -3,9 +3,9 @@
  */
 
 @interface _MKLegendString : CALayer {
-    float _baselineDistanceFromBottom;
-    struct __CTLine { } *_line;
-    NSAttributedString *_string;
+    float  _baselineDistanceFromBottom;
+    struct __CTLine { } * _line;
+    NSAttributedString * _string;
 }
 
 @property (nonatomic, readonly) float baselineDistanceFromBottom;

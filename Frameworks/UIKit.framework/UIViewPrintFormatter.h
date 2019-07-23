@@ -3,7 +3,7 @@
  */
 
 @interface UIViewPrintFormatter : UIPrintFormatter {
-    UIView *_view;
+    UIView * _view;
 }
 
 @property (nonatomic, readonly) UIView *view;

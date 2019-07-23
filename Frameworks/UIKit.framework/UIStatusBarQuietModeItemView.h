@@ -2,11 +2,16 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIStatusBarQuietModeItemView : UIStatusBarIndicatorItemView {
-    BOOL _hideForAction;
-    BOOL _inactive;
-    BOOL _registeredForNotifications;
+@interface UIStatusBarQuietModeItemView : UIStatusBarIndicatorItemView <CAAnimationDelegate> {
+    BOOL  _hideForAction;
+    BOOL  _inactive;
+    BOOL  _registeredForNotifications;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
+@property (readonly) Class superclass;
 
 - (void)_triggerAction:(id)arg1;
 - (float)_visibleAlpha;

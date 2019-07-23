@@ -2,27 +2,27 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITabBarController : UIViewController <GKContentRefresh, GKURLHandling, NSCoding, UIGestureRecognizerDelegate, UITabBarDelegate> {
-    <UIViewControllerAnimatedTransitioning> *__animator;
-    NSString *__backdropGroupName;
-    <UIViewControllerInteractiveTransitioning> *__interactor;
-    UIView *_accessoryView;
-    UITapGestureRecognizer *_backGestureRecognizer;
-    UIView *_containerView;
-    UIFocusContainerGuide *_contentFocusContainerGuide;
-    unsigned int _customMaxItems;
-    NSArray *_customizableViewControllers;
-    unsigned int _defaultMaxItems;
-    <UITabBarControllerDelegate> *_delegate;
-    NSMutableArray *_moreChildViewControllers;
-    UIMoreNavigationController *_moreNavigationController;
-    UITapGestureRecognizer *_nudgeLeftGestureRecognizer;
-    UITapGestureRecognizer *_nudgeRightGestureRecognizer;
-    NSMapTable *_rememberedFocusedViews;
-    UITapGestureRecognizer *_selectGestureRecognizer;
-    UIViewController *_selectedViewController;
-    UIViewController *_selectedViewControllerDuringWillAppear;
-    UITabBar *_tabBar;
+@interface UITabBarController : UIViewController <GKContentRefresh, GKURLHandling, NSCoding, UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate> {
+    <UIViewControllerAnimatedTransitioning> * __animator;
+    NSString * __backdropGroupName;
+    <UIViewControllerInteractiveTransitioning> * __interactor;
+    UIView * _accessoryView;
+    UITapGestureRecognizer * _backGestureRecognizer;
+    UILayoutContainerView * _containerView;
+    UIFocusContainerGuide * _contentFocusContainerGuide;
+    unsigned int  _customMaxItems;
+    NSArray * _customizableViewControllers;
+    unsigned int  _defaultMaxItems;
+    <UITabBarControllerDelegate> * _delegate;
+    NSMutableArray * _moreChildViewControllers;
+    UIMoreNavigationController * _moreNavigationController;
+    UITapGestureRecognizer * _nudgeLeftGestureRecognizer;
+    UITapGestureRecognizer * _nudgeRightGestureRecognizer;
+    NSMapTable * _rememberedFocusedItemsByViewController;
+    UITapGestureRecognizer * _selectGestureRecognizer;
+    UIViewController * _selectedViewController;
+    UIViewController * _selectedViewControllerDuringWillAppear;
+    UITabBar * _tabBar;
     struct { 
         unsigned int isShowingMoreItem : 1; 
         unsigned int needsToRebuildItems : 1; 
@@ -35,12 +35,12 @@
         unsigned int preferTabBarFocused : 1; 
         unsigned int offscreen : 1; 
         unsigned int hidNavBar : 1; 
-    } _tabBarControllerFlags;
-    id _tabBarItemsToViewControllers;
-    int _tabBarPosition;
-    UIGestureRecognizer *_touchDetectionGestureRecognizer;
-    UIViewController *_transientViewController;
-    UIView *_viewControllerTransitionView;
+    }  _tabBarControllerFlags;
+    id  _tabBarItemsToViewControllers;
+    int  _tabBarPosition;
+    UIGestureRecognizer * _touchDetectionGestureRecognizer;
+    UIViewController * _transientViewController;
+    UIView * _viewControllerTransitionView;
 }
 
 @property (setter=_setAccessoryView:, nonatomic, retain) UIView *_accessoryView;
@@ -55,6 +55,8 @@
 @property (nonatomic, retain) NSMutableArray *moreChildViewControllers;
 @property (nonatomic, readonly) UINavigationController *moreNavigationController;
 @property (nonatomic, readonly) BOOL pu_isTabBarHidden;
+@property (getter=px_isTabBarHidden, nonatomic, readonly) BOOL px_tabBarHidden;
+@property (getter=_rememberedFocusedItemsByViewController, nonatomic, readonly) NSMapTable *rememberedFocusedItemsByViewController;
 @property (nonatomic) unsigned int selectedIndex;
 @property (nonatomic) UIViewController *selectedViewController;
 @property (readonly) Class superclass;
@@ -82,7 +84,6 @@
 - (id)_animator;
 - (id)_backdropBarGroupName;
 - (id)_backdropGroupName;
-- (id)_childViewControllerForWhitePointAdaptivityStyle;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
@@ -93,11 +94,12 @@
 - (unsigned int)_effectiveMaxItems;
 - (int)_effectiveTabBarPosition;
 - (id)_existingMoreNavigationController;
-- (void)_forgetFocusedViewForViewController:(id)arg1;
+- (void)_forgetFocusedItemForViewController:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForViewController:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForWrapperViewForViewController:(id)arg1;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_getRotationContentSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; float x6; int x7; }*)arg1;
+- (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (void)_hideBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
 - (BOOL)_ignoreUnselectedTabsForStateRestoration;
 - (id)_interactor;
@@ -119,9 +121,10 @@
 - (BOOL)_reallyWantsFullScreenLayout;
 - (void)_rebuildTabBarItemsAnimated:(BOOL)arg1;
 - (void)_rebuildTabBarItemsIfNeeded;
-- (id)_recallRememberedFocusedViewForViewController:(id)arg1;
-- (void)_rememberFocusedView:(id)arg1 forViewController:(id)arg2;
-- (void)_rememberPresentingFocusedView:(id)arg1;
+- (id)_recallRememberedFocusedItemForViewController:(id)arg1;
+- (void)_rememberFocusedItem:(id)arg1 forViewController:(id)arg2;
+- (void)_rememberPresentingFocusedItem:(id)arg1;
+- (id)_rememberedFocusedItemsByViewController;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (void)_selectDefaultViewControllerIfNecessaryWithAppearanceTransitions:(BOOL)arg1;
 - (id)_selectedViewControllerInTabBar;
@@ -144,11 +147,12 @@
 - (BOOL)_shouldSynthesizeSupportedOrientations;
 - (BOOL)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(BOOL)arg2;
+- (int)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarItemClicked:(id)arg1;
 - (int)_tabBarPosition;
 - (id)_transitionView;
 - (BOOL)_transitionsChildViewControllers;
-- (void)_updateGestureRecognizersForIdiom:(int)arg1;
+- (void)_updateGestureRecognizersForTraitCollection:(id)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateLayoutForTraitCollection:(id)arg1;
 - (void)_updateOffscreenStatus:(BOOL)arg1;
@@ -165,6 +169,7 @@
 - (void)beginCustomizingTabBar:(id)arg1;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
+- (id)childViewControllerForWhitePointAdaptivityStyle;
 - (void)concealTabBarSelection;
 - (id)customizableViewControllers;
 - (void)dealloc;
@@ -182,6 +187,7 @@
 - (void)loadView;
 - (id)moreChildViewControllers;
 - (id)moreNavigationController;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (int)preferredInterfaceOrientationForPresentation;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
@@ -253,6 +259,15 @@
 - (void)_gkSetContentsNeedUpdateWithHandler:(id /* block */)arg1;
 - (BOOL)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkUpdateContentsWithCompletionHandlerAndError:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (BOOL)px_canPerformAddToTabAnimationForTab:(unsigned int)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { float x1; float x2; })arg1 inCoordinateSpace:(id)arg2;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })px_frameForTabItem:(unsigned int)arg1 inCoordinateSpace:(id)arg2;
+- (BOOL)px_isTabBarHidden;
+- (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
+- (void)px_performAddToTabAnimation:(unsigned int)arg1 withSnapshotView:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

@@ -12,14 +12,18 @@
             float width; 
             float height; 
         } size; 
-    } _alignmentRect;
-    BOOL _allowsMultiPassEncoding;
+    }  _alignmentRect;
+    BOOL  _allowsMultiPassEncoding;
+    BOOL  _allowsOptimalPacking;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } alignmentRect;
 @property (nonatomic, retain) NSString *alignmentRectString;
 @property (nonatomic) BOOL allowsMultiPassEncoding;
+@property (nonatomic) BOOL allowsOptimalPacking;
 @property (nonatomic, retain) TDPNGAsset *asset;
+@property (nonatomic, retain) TDThemeCompressionType *compressionType;
+@property (nonatomic) BOOL isTintable;
 @property (nonatomic, retain) NSString *nonAlphaImageAreaString;
 @property (nonatomic, retain) NSString *originalImageSizeString;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } primitiveAlignmentRect;
@@ -37,15 +41,18 @@
 - (id)_slicesToUseForCSI;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })alignmentRect;
 - (BOOL)allowsMultiPassEncoding;
+- (BOOL)allowsOptimalPacking;
 - (id)associatedFileModificationDateWithDocument:(id)arg1;
 - (void)awakeFromFetch;
 - (BOOL)canBePackedWithDocument:(id)arg1;
+- (void)copyAttributesInto:(id)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned int)arg2 document:(id)arg3;
 - (void)drawPackableRenditionInContext:(struct CGContext { }*)arg1 withDocument:(id)arg2;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })primitiveAlignmentRect;
 - (void)setAlignmentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setAllowsMultiPassEncoding:(BOOL)arg1;
+- (void)setAllowsOptimalPacking:(BOOL)arg1;
 - (void)setPrimitiveAlignmentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)updatePackingPropertiesWithDocument:(id)arg1;
 

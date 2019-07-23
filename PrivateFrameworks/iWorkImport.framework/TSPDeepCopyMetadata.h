@@ -3,10 +3,10 @@
  */
 
 @interface TSPDeepCopyMetadata : TSPObject {
-    NSDictionary *_cachedDataMap;
-    TSPComponentObjectUUIDMap *_componentObjectUUIDMap;
-    long long _rootObjectIdentifier;
-    unsigned long long _version;
+    NSDictionary * _cachedDataMap;
+    TSPComponentObjectUUIDMap * _componentObjectUUIDMap;
+    long long  _rootObjectIdentifier;
+    unsigned long long  _version;
 }
 
 @property (nonatomic, readonly) NSDictionary *cachedDataMap;

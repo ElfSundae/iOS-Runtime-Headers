@@ -6,11 +6,11 @@
     struct { 
         double x; 
         double y; 
-    } _centerPoint;
-    double _mapRadius;
-    unsigned long long _parentID;
-    unsigned long long _pointID;
-    GEOMapTileFinder *_tileFinder;
+    }  _centerPoint;
+    double  _mapRadius;
+    unsigned long long  _parentID;
+    unsigned long long  _pointID;
+    GEOMapTileFinder * _tileFinder;
 }
 
 @property (nonatomic, readonly) GEOMapAccess *map;

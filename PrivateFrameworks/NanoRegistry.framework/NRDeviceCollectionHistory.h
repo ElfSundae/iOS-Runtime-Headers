@@ -3,15 +3,15 @@
  */
 
 @interface NRDeviceCollectionHistory : NSObject <NRMutableStateParentDelegate, NSFastEnumeration, NSSecureCoding> {
-    NRMutableDeviceCollection *_deviceCollection;
-    BOOL _dirty;
-    NSMutableArray *_history;
-    NSMutableDictionary *_historyStateCache;
-    NSMutableArray *_historyStateCacheIndex;
-    NSMutableArray *_historyStateCacheMRU;
-    NSMutableOrderedSet *_observers;
-    NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _startIndex;
+    NRMutableDeviceCollection * _deviceCollection;
+    BOOL  _dirty;
+    NSMutableArray * _history;
+    NSMutableDictionary * _historyStateCache;
+    NSMutableArray * _historyStateCacheIndex;
+    NSMutableArray * _historyStateCacheMRU;
+    NSMutableOrderedSet * _observers;
+    NSObject<OS_dispatch_queue> * _queue;
+    unsigned long long  _startIndex;
 }
 
 @property (nonatomic, readonly) unsigned int count;

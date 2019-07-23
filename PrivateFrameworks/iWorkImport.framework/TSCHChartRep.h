@@ -3,45 +3,45 @@
  */
 
 @interface TSCHChartRep : TSWPTextHostRep <TSCHChartRepPlatformProtocols, TSCHSupportsRendering> {
-    TSCHSearchSelection *_selection;
-    TSCHSelectionPath *mActiveTextEditingPath;
-    BOOL mBuildingChunks;
-    BOOL mBuildingFinalBackground;
-    BOOL mBuildingFinalElements;
-    BOOL mCDECausedSetNeedsDisplay;
-    BOOL mCDEIsEditingInfo;
-    TSCHChartLayout *mChartLayout;
-    BOOL mChartRepGoingAway;
-    int mChunkPhase;
-    BOOL mChunkTexturesValid;
-    int mCurrentChunk;
-    id /* block */ mDrawingOpEndBlock;
-    id /* block */ mDrawingOpStartBlock;
-    BOOL mDrawingSearchReference;
-    TSCHLegendMoveKnob *mDynamicLegendKnob;
-    BOOL mEditorIsEditingInfo;
-    BOOL mFinishedBecomingSelected;
-    BOOL mForceSeparateLegendLayer;
-    unsigned int mInDynamicStandinLayoutOperation;
-    unsigned int mInDynamicStandinOperation;
-    BOOL mInZoom;
-    BOOL mInvalidateLegendLayerForLayerBasedRep;
-    BOOL mIs2DRepFor3DChartRep;
-    BOOL mIsKPFExportForMultiData;
-    BOOL mIsLayerBasedRep;
+    TSCHSearchSelection * _selection;
+    TSCHSelectionPath * mActiveTextEditingPath;
+    BOOL  mBuildingChunks;
+    BOOL  mBuildingFinalBackground;
+    BOOL  mBuildingFinalElements;
+    BOOL  mCDECausedSetNeedsDisplay;
+    BOOL  mCDEIsEditingInfo;
+    TSCHChartLayout * mChartLayout;
+    BOOL  mChartRepGoingAway;
+    int  mChunkPhase;
+    BOOL  mChunkTexturesValid;
+    int  mCurrentChunk;
+    id /* block */  mDrawingOpEndBlock;
+    id /* block */  mDrawingOpStartBlock;
+    BOOL  mDrawingSearchReference;
+    TSCHLegendMoveKnob * mDynamicLegendKnob;
+    BOOL  mEditorIsEditingInfo;
+    BOOL  mFinishedBecomingSelected;
+    BOOL  mForceSeparateLegendLayer;
+    unsigned int  mInDynamicStandinLayoutOperation;
+    unsigned int  mInDynamicStandinOperation;
+    BOOL  mInZoom;
+    BOOL  mInvalidateLegendLayerForLayerBasedRep;
+    BOOL  mIs2DRepFor3DChartRep;
+    BOOL  mIsKPFExportForMultiData;
+    BOOL  mIsLayerBasedRep;
     struct CGPoint { 
         float x; 
         float y; 
-    } mLastSubselectionLayerRelativeReferencePosition;
-    CAShapeLayer *mLegendBorderHaloLayer;
-    BOOL mLegendBorderHaloLayerPathValid;
-    TSCHRendererLayer *mLegendLayer;
-    CAShapeLayer *mMediatorEditingHaloLayer;
-    BOOL mMediatorEditingHaloLayerPathValid;
-    int mRenderPassChunkPhase;
-    NSArray *mRenderers;
-    CALayer *mSubselectionKnobLayer;
-    BOOL mWantsPreviewLayout;
+    }  mLastSubselectionLayerRelativeReferencePosition;
+    CAShapeLayer * mLegendBorderHaloLayer;
+    BOOL  mLegendBorderHaloLayerPathValid;
+    TSCHRendererLayer * mLegendLayer;
+    CAShapeLayer * mMediatorEditingHaloLayer;
+    BOOL  mMediatorEditingHaloLayerPathValid;
+    int  mRenderPassChunkPhase;
+    NSArray * mRenderers;
+    CALayer * mSubselectionKnobLayer;
+    BOOL  mWantsPreviewLayout;
 }
 
 @property (nonatomic, readonly, retain) TSCHSelectionPath *activeTextEditingPath;
@@ -63,6 +63,7 @@
 @property (nonatomic) BOOL forceSeparateLegendLayer;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL is2DRepFor3DChartRep;
+@property (nonatomic, readonly) BOOL isCorrectRepClassForInfo;
 @property (nonatomic, readonly) TSCHSearchSelection *selection;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) float viewScale;
@@ -106,6 +107,7 @@
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2 is2DRepFor3DChartRep:(BOOL)arg3;
 - (BOOL)is2DRepFor3DChartRep;
+- (BOOL)isCorrectRepClassForInfo;
 - (BOOL)isDrawingIntoPDF;
 - (BOOL)isEditing;
 - (BOOL)isLayerBasedRep;

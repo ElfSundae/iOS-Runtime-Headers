@@ -3,20 +3,20 @@
  */
 
 @interface BRCPackageItem : NSObject {
-    long long _assetRank;
-    BRCLocalContainer *_container;
-    NSData *_contentSignature;
-    unsigned long long _fileID;
-    BRCGenerationID *_generationID;
-    BOOL _isDirty;
-    BOOL _mode;
-    long long _mtime;
-    unsigned long long _packageID;
-    NSString *_pathInPackage;
-    NSData *_quarantineInfo;
-    long long _size;
-    NSString *_symlinkContent;
-    int _type;
+    long long  _assetRank;
+    NSData * _contentSignature;
+    unsigned long long  _fileID;
+    BRCGenerationID * _generationID;
+    BOOL  _isDirty;
+    BOOL  _mode;
+    long long  _mtime;
+    unsigned long long  _packageID;
+    NSString * _pathInPackage;
+    NSData * _quarantineInfo;
+    long long  _size;
+    NSString * _symlinkContent;
+    int  _type;
+    NSData * _xattrs;
 }
 
 @property (nonatomic, readonly) long long assetRank;
@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) BRCGenerationID *generationID;
 @property (nonatomic, readonly) BOOL isDirectory;
 @property (nonatomic, readonly) BOOL isFile;
-@property (nonatomic, readonly) BOOL isSymlink;
+@property (nonatomic, readonly) BOOL isSymLink;
 @property (nonatomic, readonly) BOOL mode;
 @property (nonatomic, readonly) long long mtime;
 @property (nonatomic, readonly) unsigned long long packageDocumentID;
@@ -34,16 +34,17 @@
 @property (nonatomic, readonly) long long size;
 @property (nonatomic, readonly) NSString *symlinkContent;
 @property (nonatomic, readonly) int type;
+@property (nonatomic, readonly) NSData *xattrs;
 
 + (BOOL)_deleteSnapshotAtPath:(id)arg1 error:(id*)arg2;
 + (BOOL)_rescanDirectoryInPackage:(id)arg1 error:(id*)arg2;
-+ (long long)aggregatePackageSizeInContainer:(id)arg1 packageID:(unsigned int)arg2;
-+ (BOOL)dumpContainer:(id)arg1 toContext:(id)arg2 error:(id*)arg3;
-+ (long long)largestPackageItemSizeInContainer:(id)arg1 documentID:(unsigned int)arg2;
++ (long long)aggregatePackageSizeForPackageID:(unsigned int)arg1 session:(id)arg2;
++ (BOOL)dumpSession:(id)arg1 toContext:(id)arg2 db:(id)arg3 error:(id*)arg4;
++ (long long)largestPackageItemSizeInDocumentID:(unsigned int)arg1 session:(id)arg2;
 + (BOOL)packageChangedAtRelativePath:(id)arg1;
 + (id)packageItemForRelpath:(id)arg1;
-+ (id)packageItemInContainer:(id)arg1 documentID:(unsigned int)arg2 relativePath:(id)arg3;
-+ (struct PQLResultSet { Class x1; }*)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned int)arg2 container:(id)arg3;
++ (id)packageItemWithDocumentID:(unsigned int)arg1 relativePath:(id)arg2 session:(id)arg3;
++ (struct PQLResultSet { Class x1; }*)packageItemsForDocumentID:(unsigned int)arg1 order:(unsigned int)arg2 session:(id)arg3;
 + (struct PQLResultSet { Class x1; }*)packageItemsForItem:(id)arg1 order:(unsigned int)arg2;
 + (BOOL)updateSignaturesForFilesInItem:(id)arg1 fromCKPackage:(id)arg2 error:(id*)arg3;
 + (BOOL)updateSnapshotAtPath:(id)arg1 error:(id*)arg2;
@@ -55,20 +56,22 @@
 - (id)description;
 - (unsigned long long)fileID;
 - (id)generationID;
-- (id)initFromPQLResultSet:(id)arg1 container:(id)arg2 error:(id*)arg3;
+- (id)initFromPQLResultSet:(id)arg1 session:(id)arg2 error:(id*)arg3;
 - (id)initWithPBItem:(id)arg1 forLocalItem:(id)arg2;
 - (id)initWithRelativePath:(id)arg1 markDirty:(BOOL)arg2;
 - (BOOL)isDirectory;
 - (BOOL)isFile;
-- (BOOL)isSymlink;
+- (BOOL)isSymLink;
 - (BOOL)mode;
 - (long long)mtime;
 - (unsigned long long)packageDocumentID;
 - (id)pathInPackage;
 - (id)quarantineInfo;
-- (BOOL)saveToDB;
+- (BOOL)saveToDBWithSession:(id)arg1;
+- (BOOL)setDirty:(BOOL)arg1 session:(id)arg2;
 - (long long)size;
 - (id)symlinkContent;
 - (int)type;
+- (id)xattrs;
 
 @end

@@ -3,8 +3,8 @@
  */
 
 @interface PSUIRegulatoryPane : PSEditingPane {
-    UIImageView *_primaryImageView;
-    UIScrollView *_scrollView;
+    UIImageView * _primaryImageView;
+    UIScrollView * _scrollView;
 }
 
 - (void).cxx_destruct;

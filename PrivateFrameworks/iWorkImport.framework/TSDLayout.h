@@ -6,21 +6,17 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } mBaseAlignmentFrameOriginForFixingInterimPosition;
+    }  mBaseAlignmentFrameOriginForFixingInterimPosition;
+    TSDLayoutGeometry * mBaseGeometry;
     struct CGPoint { 
         float x; 
         float y; 
-    } mBaseCapturedAlignmentFrameOriginForInline;
-    TSDLayoutGeometry *mBaseGeometry;
+    }  mCapturedAlignmentFrameOriginForAttached;
     struct CGPoint { 
         float x; 
         float y; 
-    } mCapturedAlignmentFrameOriginForInline;
-    struct CGPoint { 
-        float x; 
-        float y; 
-    } mCapturedInfoGeometryPositionForInline;
-    NSMutableSet *mConnectedLayouts;
+    }  mCapturedInfoGeometryPositionForAttached;
+    NSMutableSet * mConnectedLayouts;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -30,8 +26,8 @@
             float width; 
             float height; 
         } size; 
-    } mDirtyRect;
-    NSObject<TSDInfo> *mInfo;
+    }  mDirtyRect;
+    NSObject<TSDInfo> * mInfo;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -41,34 +37,44 @@
             float width; 
             float height; 
         } size; 
-    } mInitialBoundsForStandardKnobs;
+    }  mInitialBoundsForStandardKnobs;
     struct { 
         unsigned int position : 1; 
         unsigned int size : 1; 
         unsigned int inlineSize : 1; 
-    } mInvalidFlags;
-    int mLayoutState;
+    }  mInvalidFlags;
+    int  mLayoutState;
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  mMaximumInlineFrameSize;
 }
 
 @property (nonatomic, readonly) BOOL canAspectRatioLockBeChangedByUser;
+@property (nonatomic, readonly) BOOL canInspectGeometry;
 @property (nonatomic, readonly) NSSet *connectedLayouts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isDraggable, nonatomic, readonly) BOOL draggable;
 @property (nonatomic, copy) TSDLayoutGeometry *dynamicGeometry;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) NSObject<TSDInfo> *info;
 @property (nonatomic, readonly) BOOL invalidGeometry;
 @property (nonatomic, readonly) BOOL isStrokeBeingManipulated;
 @property (nonatomic, readonly) int layoutState;
+@property (nonatomic) struct CGSize { float x1; float x2; } maximumInlineFrameSize;
 @property (nonatomic, readonly) TSDLayoutGeometry *originalGeometry;
 @property (nonatomic, readonly) BOOL resizeMayChangeAspectRatio;
+@property (getter=isSelectable, nonatomic, readonly) BOOL selectable;
 @property (readonly) Class superclass;
 
+- (struct CGPoint { float x1; float x2; })activityLineUnscaledEndPointForSearchReference:(id)arg1;
 - (void)addConnectedLayout:(id)arg1;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
 - (id)additionalGuides;
 - (id)additionalLayoutsForRepCreation;
 - (struct CGPoint { float x1; float x2; })alignmentFrameOriginForFixingInterimPosition;
+- (BOOL)allowIntersectionOfChildLayout:(id)arg1;
 - (BOOL)allowsConnections;
 - (void)beginDrag;
 - (void)beginDynamicOperation;
@@ -78,11 +84,13 @@
 - (struct CGPoint { float x1; float x2; })calculatePointFromSearchReference:(id)arg1;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canFlip;
+- (BOOL)canInspectGeometry;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
 - (struct CGPoint { float x1; float x2; })capturedInfoPositionForAttachment;
 - (struct CGPoint { float x1; float x2; })centerForConnecting;
 - (struct CGPoint { float x1; float x2; })centerForRotation;
 - (id)childSearchTargets;
+- (struct CGPoint { float x1; float x2; })commentPoleTopPosition;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
@@ -101,9 +109,7 @@
 - (void)endRotate;
 - (void)i_accumulateLayoutsIntoSet:(id)arg1;
 - (id)i_externalWrapPath;
-- (void)i_setBaseCapturedAlignmentFrameOriginForInline;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })i_takeDirtyRect;
-- (BOOL)i_useBaseCapturedAlignmentFrameOriginForInline;
 - (id)i_wrapPath;
 - (id)info;
 - (struct CGPoint { float x1; float x2; })infoGeometryPositionForCurrentAttachedLayoutGeometry;
@@ -132,6 +138,7 @@
 - (int)layoutState;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })layoutTransformInInfoSpace:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1;
 - (struct CGSize { float x1; float x2; })maximumFrameSizeForChild:(id)arg1;
+- (struct CGSize { float x1; float x2; })maximumInlineFrameSize;
 - (struct CGSize { float x1; float x2; })minimumSize;
 - (BOOL)orderedBefore:(id)arg1;
 - (id)originalGeometry;
@@ -140,6 +147,7 @@
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })originalTransformForProvidingGuides;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })originalTransformInRoot;
 - (void)p_invalidateConnectedLayouts;
+- (struct CGSize { float x1; float x2; })p_newMaxInlineFrameSize;
 - (void)p_recursiveInvalidate;
 - (void)p_registerWithLayoutController:(id)arg1;
 - (void)p_unregisterWithLayoutController:(id)arg1;
@@ -153,6 +161,7 @@
 - (id)pureGeometryInParent;
 - (id)pureGeometryInRoot;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })pureTransformInRoot;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForCalculatingActivityLineEndpoint;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForZoomingToSelectionPath:(id)arg1;
@@ -165,9 +174,11 @@
 - (id)rootLayout;
 - (float)scaleForInlineClampingUnrotatedSize:(struct CGSize { float x1; float x2; })arg1 withGeometry:(id)arg2;
 - (id)searchTarget;
+- (BOOL)selectionMustBeEntirelyOnscreenToCountAsVisibleInSelectionPath:(id)arg1;
 - (void)setAdjustedInterimPositionX:(float)arg1;
 - (void)setAdjustedInterimPositionY:(float)arg1;
 - (void)setDynamicGeometry:(id)arg1;
+- (void)setMaximumInlineFrameSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setParent:(id)arg1;
@@ -181,6 +192,7 @@
 - (void)takeSizeFromTracker:(id)arg1;
 - (void)unregisterFromLayoutController;
 - (void)updateChildrenFromInfo;
+- (void)updateMaximumInlineFrameSize;
 - (void)validate;
 - (void)validateFromLastInterimPosition;
 - (float)viewScaleForZoomingToSelectionPath:(id)arg1 targetPointSize:(float)arg2;

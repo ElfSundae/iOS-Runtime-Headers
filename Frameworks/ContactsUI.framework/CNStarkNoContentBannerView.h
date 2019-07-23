@@ -3,8 +3,8 @@
  */
 
 @interface CNStarkNoContentBannerView : UIView {
-    UILabel *_subtitleLabel;
-    UILabel *_titleLabel;
+    UILabel * _subtitleLabel;
+    UILabel * _titleLabel;
 }
 
 @property (retain) UILabel *subtitleLabel;

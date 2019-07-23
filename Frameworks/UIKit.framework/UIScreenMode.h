@@ -3,8 +3,8 @@
  */
 
 @interface UIScreenMode : NSObject {
-    BOOL _mainScreen;
-    id _mode;
+    BOOL  _mainScreen;
+    id  _mode;
 }
 
 @property (getter=_isMainScreen, setter=_setMainScreen:) BOOL _mainScreen;
@@ -16,7 +16,6 @@
 - (void).cxx_destruct;
 - (id)_displayMode;
 - (BOOL)_isMainScreen;
-- (BOOL)_isNTSCOrPAL;
 - (void)_setMainScreen:(BOOL)arg1;
 - (struct CGSize { float x1; float x2; })_sizeWithLevel:(unsigned int)arg1;
 - (id)description;

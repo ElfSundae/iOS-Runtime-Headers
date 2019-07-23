@@ -3,11 +3,11 @@
  */
 
 @interface _HKHorizontalSingleLineSeriesCoordinate : NSObject <HKGraphSeriesBlockCoordinate> {
-    BOOL _groupToPrevious;
-    int _markStyle;
-    id _userInfo;
-    float _xValue;
-    int _yValue;
+    BOOL  _groupToPrevious;
+    int  _markStyle;
+    id  _userInfo;
+    float  _xValue;
+    int  _yValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;

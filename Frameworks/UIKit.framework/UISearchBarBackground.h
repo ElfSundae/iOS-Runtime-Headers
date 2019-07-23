@@ -3,17 +3,17 @@
  */
 
 @interface UISearchBarBackground : _UIBarBackgroundImageView <_UIBarPositioningInternal> {
-    unsigned int _actingAsNavBar;
-    unsigned int _barHasController;
-    int _barPosition;
-    unsigned int _barStyle;
-    UIColor *_barTintColor;
-    unsigned int _barTranslucence;
-    NSMutableDictionary *_customBackgroundImages;
-    NSMutableDictionary *_generatedBackgroundImages;
-    unsigned int _searchBarStyle;
-    unsigned int _usesContiguousBarBackground;
-    unsigned int _usesEmbeddedAppearance;
+    unsigned int  _actingAsNavBar;
+    unsigned int  _barHasController;
+    int  _barPosition;
+    unsigned int  _barStyle;
+    UIColor * _barTintColor;
+    unsigned int  _barTranslucence;
+    NSMutableDictionary * _customBackgroundImages;
+    NSMutableDictionary * _generatedBackgroundImages;
+    unsigned int  _searchBarStyle;
+    unsigned int  _usesContiguousBarBackground;
+    unsigned int  _usesEmbeddedAppearance;
 }
 
 @property (nonatomic, readonly) UIImage *backgroundImage;

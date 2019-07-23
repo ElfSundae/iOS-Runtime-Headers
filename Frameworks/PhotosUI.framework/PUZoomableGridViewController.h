@@ -3,26 +3,26 @@
  */
 
 @interface PUZoomableGridViewController : PUPhotosGridViewController <PLCPLStatusDelegate, PUMagnfiedViewControllerDelegate> {
-    PLCPLStatus *__cplStatus;
-    NSTimer *__cplStatusUpdateTimer;
+    PLCPLStatus * __cplStatus;
+    NSTimer * __cplStatusUpdateTimer;
     struct CGPoint { 
         float x; 
         float y; 
-    } __frozeMagnifierAtPosition;
-    PUGridPinchGestureRecognizer *__gridPinchGestureRecognizer;
-    BOOL __hasAppearedOnce;
-    float __lastUpdateWidth;
-    NSIndexPath *__lastZoomInTransitionAnchorIndexPath;
-    unsigned int __magnifierState;
-    NSArray *__syncProgressAlbums;
-    UITapGestureRecognizer *__tapGestureRecognizer;
-    NSIndexPath *__transitionExplicitAnchorIndexPath;
-    PUGridZoomLevelInfo *__zoomLevelInfo;
-    PUZoomableGridTransition *_currentGridZoomTransitionInfo;
-    PUGridMagnifiedImageViewController *_magnifiedImageViewController;
-    unsigned int _zoomLevel;
-    PUMomentsZoomLevelManager *_zoomLevelManager;
-    PUZoomableGridViewControllerSpec *_zoomableGridSpec;
+    }  __frozeMagnifierAtPosition;
+    PUGridPinchGestureRecognizer * __gridPinchGestureRecognizer;
+    BOOL  __hasAppearedOnce;
+    float  __lastUpdateWidth;
+    NSIndexPath * __lastZoomInTransitionAnchorIndexPath;
+    unsigned int  __magnifierState;
+    NSArray * __syncProgressAlbums;
+    UITapGestureRecognizer * __tapGestureRecognizer;
+    NSIndexPath * __transitionExplicitAnchorIndexPath;
+    PUGridZoomLevelInfo * __zoomLevelInfo;
+    PUZoomableGridTransition * _currentGridZoomTransitionInfo;
+    PUGridMagnifiedImageViewController * _magnifiedImageViewController;
+    unsigned int  _zoomLevel;
+    PUMomentsZoomLevelManager * _zoomLevelManager;
+    PUZoomableGridViewControllerSpec * _zoomableGridSpec;
 }
 
 @property (setter=_setCplStatus:, nonatomic, retain) PLCPLStatus *_cplStatus;
@@ -56,6 +56,7 @@
 - (id)_cplStatusUpdateTimer;
 - (void)_cplStatusUpdateTimerFired:(id)arg1;
 - (BOOL)_disallowNavigationToHigherZoomLevel;
+- (unsigned int)_eventSourceFromZoomLevel:(unsigned int)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameForItemAtIndexPath:(id)arg1;
 - (struct CGPoint { float x1; float x2; })_frozeMagnifierAtPosition;
 - (id)_gridPinchGestureRecognizer;
@@ -107,6 +108,7 @@
 - (struct CGSize { float x1; float x2; })contentSizeForPreheating;
 - (void)cplStatusDidChange:(id)arg1;
 - (id)currentGridZoomTransitionInfo;
+- (unsigned int)dateRangeFormatterPreset;
 - (void)dealloc;
 - (id)description;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
@@ -130,11 +132,13 @@
 - (void)navigateToLowerZoomLevelWithReferenceItemPath:(id)arg1;
 - (id)newGridLayout;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
+- (void)ppt_navigateToPhotosDetailsAnimated:(BOOL)arg1;
 - (void)preheatAssets;
 - (void)prepareForTransitionToZoomableViewController:(id)arg1 anchorItemIndexPath:(id)arg2 anchorShiftsColumns:(BOOL)arg3 animated:(BOOL)arg4 interactive:(BOOL)arg5;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { float x1; float x2; })arg2;
 - (void)processDataSourceChange:(id)arg1;
 - (BOOL)pu_shouldActAsTabRootViewController;
+- (BOOL)px_isSnapBackDestination;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
@@ -143,6 +147,7 @@
 - (void)set_cplStatusUpdateTimer:(id)arg1;
 - (BOOL)shouldPerformAutomaticContentOffsetAdjustment;
 - (BOOL)shouldPerformFullReloadForIncrementalDataSourceChange:(id)arg1;
+- (BOOL)shouldPreventRevealInMomentAction;
 - (void)tearDownMagnifiedImageViewController;
 - (void)uninstallGestureRecognizers;
 - (void)updateInterfaceForIncrementalDataSourceChanges:(id)arg1;

@@ -3,31 +3,33 @@
  */
 
 @interface SKUITextBoxView : UIControl {
-    SKUIColorScheme *_colorScheme;
+    SKUIColorScheme * _colorScheme;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInsets;
-    UILabel *_moreButtonLabel;
-    int _numberOfVisibleLines;
-    float _rating;
-    UIImageView *_ratingImageView;
-    UILabel *_ratingLabel;
-    UILabel *_subtitleLabel;
-    struct __CTFrame { } *_textFrame;
+    }  _contentInsets;
+    UILabel * _moreButtonLabel;
+    int  _numberOfVisibleLines;
+    float  _rating;
+    UIImageView * _ratingImageView;
+    UILabel * _ratingLabel;
+    UILabel * _subtitleLabel;
+    struct __CTFrame { } * _textFrame;
+    BOOL  _textIsNaturallyRTL;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _titleInsets;
-    UILabel *_titleLabel;
-    struct __CTFrame { } *_titleTextFrame;
-    int _truncationStyle;
-    struct __CTLine { } *_truncationToken;
-    NSString *_underlyingText;
+    }  _titleInsets;
+    UILabel * _titleLabel;
+    struct __CTFrame { } * _titleTextFrame;
+    BOOL  _titleTextIsNaturallyRTL;
+    int  _truncationStyle;
+    struct __CTLine { } * _truncationToken;
+    NSString * _underlyingText;
 }
 
 @property (nonatomic, retain) SKUIColorScheme *colorScheme;
@@ -37,6 +39,7 @@
 @property (nonatomic) float rating;
 @property (nonatomic, copy) NSString *ratingText;
 @property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic) BOOL textIsNaturallyRTL;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } titleInsets;
 @property (nonatomic) int truncationStyle;
 
@@ -67,11 +70,13 @@
 - (void)setRatingText:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTextFrameWithText:(id)arg1;
+- (void)setTextIsNaturallyRTL:(BOOL)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setTruncationStyle:(int)arg1;
 - (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 - (id)subtitle;
+- (BOOL)textIsNaturallyRTL;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })titleInsets;
 - (int)truncationStyle;
 

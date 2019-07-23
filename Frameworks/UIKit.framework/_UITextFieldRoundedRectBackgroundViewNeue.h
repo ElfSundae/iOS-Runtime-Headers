@@ -3,11 +3,11 @@
  */
 
 @interface _UITextFieldRoundedRectBackgroundViewNeue : UIImageView {
-    float _cornerRadius;
-    BOOL _disabled;
-    UIColor *_fillColor;
-    float _lineWidth;
-    UIColor *_strokeColor;
+    float  _cornerRadius;
+    BOOL  _disabled;
+    UIColor * _fillColor;
+    float  _lineWidth;
+    UIColor * _strokeColor;
 }
 
 @property (nonatomic) float cornerRadius;

@@ -3,8 +3,8 @@
  */
 
 @interface HKActivityGoalSeries : HKGraphSeries {
-    HKFillStyle *_fillStyle;
-    HKStrokeStyle *_strokeStyle;
+    HKFillStyle * _fillStyle;
+    HKStrokeStyle * _strokeStyle;
 }
 
 - (void).cxx_destruct;

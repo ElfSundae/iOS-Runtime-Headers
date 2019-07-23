@@ -3,22 +3,22 @@
  */
 
 @interface PUSlideshowSettings : PUSettings {
-    BOOL _allowUserInteractivity;
-    OKProducerPreset *_currentPreset;
-    NSString *_currentPresetUniqueIdentifier;
-    float _interactiveTransitionFingerTrackingBoxRadiusDefaultValue;
-    float _interactiveTransitionFingerTrackingBoxRadiusIncrementValue;
-    float _interactiveTransitionFingerTrackingBoxRadiusMaxValue;
-    float _interactiveTransitionFingerTrackingBoxRadiusMinValue;
-    float _interactiveTransitionProgressThresholdDefaultValue;
-    float _interactiveTransitionProgressThresholdIncrementValue;
-    float _interactiveTransitionProgressThresholdMaxValue;
-    float _interactiveTransitionProgressThresholdMinValue;
-    float _interactiveTransitionVelocityThresholdForAlwaysFinishingDefaultValue;
-    float _interactiveTransitionVelocityThresholdForAlwaysFinishingIncrementValue;
-    float _interactiveTransitionVelocityThresholdForAlwaysFinishingMaxValue;
-    float _interactiveTransitionVelocityThresholdForAlwaysFinishingMinValue;
-    BOOL _slideshowSettingsEnableFullscreenSupport;
+    BOOL  _allowUserInteractivity;
+    OKProducerPreset * _currentPreset;
+    NSString * _currentPresetUniqueIdentifier;
+    float  _interactiveTransitionFingerTrackingBoxRadiusDefaultValue;
+    float  _interactiveTransitionFingerTrackingBoxRadiusIncrementValue;
+    float  _interactiveTransitionFingerTrackingBoxRadiusMaxValue;
+    float  _interactiveTransitionFingerTrackingBoxRadiusMinValue;
+    float  _interactiveTransitionProgressThresholdDefaultValue;
+    float  _interactiveTransitionProgressThresholdIncrementValue;
+    float  _interactiveTransitionProgressThresholdMaxValue;
+    float  _interactiveTransitionProgressThresholdMinValue;
+    float  _interactiveTransitionVelocityThresholdForAlwaysFinishingDefaultValue;
+    float  _interactiveTransitionVelocityThresholdForAlwaysFinishingIncrementValue;
+    float  _interactiveTransitionVelocityThresholdForAlwaysFinishingMaxValue;
+    float  _interactiveTransitionVelocityThresholdForAlwaysFinishingMinValue;
+    BOOL  _slideshowSettingsEnableFullscreenSupport;
 }
 
 @property (nonatomic) BOOL allowUserInteractivity;

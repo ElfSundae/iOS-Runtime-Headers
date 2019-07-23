@@ -3,7 +3,7 @@
  */
 
 @interface AKSpeechBubbleAnnotation : AKThoughtBubbleAnnotation {
-    float _pointyBitBaseWidthAngle;
+    float  _pointyBitBaseWidthAngle;
 }
 
 @property float pointyBitBaseWidthAngle;

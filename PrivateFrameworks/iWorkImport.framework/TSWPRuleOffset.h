@@ -3,14 +3,15 @@
  */
 
 @interface TSWPRuleOffset : NSObject <NSCopying> {
-    float _dX;
-    float _dY;
+    float  _dX;
+    float  _dY;
 }
 
 @property (nonatomic, readonly) float dX;
 @property (nonatomic, readonly) float dY;
 
 + (id)ruleOffset;
++ (id)ruleOffsetWithDX:(float)arg1 dY:(float)arg2;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (float)dX;

@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _focusPosition;
-    BOOL _isGeneratingEvents;
+    }  _focusPosition;
+    BOOL  _isGeneratingEvents;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastReportedPosition;
+    }  _lastReportedPosition;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } focusPosition;

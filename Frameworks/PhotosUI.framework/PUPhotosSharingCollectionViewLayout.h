@@ -3,13 +3,13 @@
  */
 
 @interface PUPhotosSharingCollectionViewLayout : PUHorizontalTiledCollectionViewLayout {
-    NSMutableDictionary *_cachedItemSublayouts;
-    unsigned int _sharingBadgesCorner;
+    NSMutableDictionary * _cachedItemSublayouts;
+    unsigned int  _sharingBadgesCorner;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _sharingBadgesOffset;
-    NSIndexPath *_zoomingCellIndexPath;
+    }  _sharingBadgesOffset;
+    NSIndexPath * _zoomingCellIndexPath;
 }
 
 @property (nonatomic) <PUPhotosSharingCollectionViewLayoutDelegate> *delegate;

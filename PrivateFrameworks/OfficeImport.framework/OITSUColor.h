@@ -3,7 +3,7 @@
  */
 
 @interface OITSUColor : NSObject <NSCopying> {
-    struct CGColor { } *mCGColor;
+    struct CGColor { } * mCGColor;
 }
 
 @property (readonly) struct CGColor { }*CGColor;

@@ -3,18 +3,18 @@
  */
 
 @interface NPSDomainAccessorInternal : NSObject <NPSDomainAccessorFilePresenterDelegate> {
-    NSMutableSet *_dirtyKeysForWriting;
-    NSString *_domain;
-    NSURL *_domainURL;
-    NSObject<OS_dispatch_queue> *_externalQueue;
-    NPSDomainAccessorFilePresenter *_filePresenter;
-    BOOL _hasReadFromDisk;
-    NSObject<OS_dispatch_queue> *_internalQueue;
-    NSMutableDictionary *_map;
-    BOOL _nanoSettingsDirectoryExists;
-    NSUUID *_pairingID;
-    NSString *_pairingStorePath;
-    unsigned int _referenceCounter;
+    NSMutableSet * _dirtyKeysForWriting;
+    NSString * _domain;
+    NSURL * _domainURL;
+    NSObject<OS_dispatch_queue> * _externalQueue;
+    NPSDomainAccessorFilePresenter * _filePresenter;
+    BOOL  _hasReadFromDisk;
+    NSObject<OS_dispatch_queue> * _internalQueue;
+    NSMutableDictionary * _map;
+    BOOL  _nanoSettingsDirectoryExists;
+    NSUUID * _pairingID;
+    NSString * _pairingStorePath;
+    unsigned int  _referenceCounter;
 }
 
 @property (nonatomic, retain) NSMutableSet *dirtyKeysForWriting;
@@ -73,7 +73,7 @@
 - (double)doubleForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL*)arg2;
 - (id)externalQueue;
 - (id)filePresenter;
-- (void)filePresenterBecameNonCurrent:(id)arg1;
+- (void)filePresenterDidBecomeNonCurrent:(id)arg1;
 - (float)floatForKey:(id)arg1;
 - (float)floatForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL*)arg2;
 - (BOOL)hasReadFromDisk;

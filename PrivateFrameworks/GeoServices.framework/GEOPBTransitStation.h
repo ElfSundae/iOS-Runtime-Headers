@@ -7,13 +7,13 @@
         unsigned int muid : 1; 
         unsigned int stationIndex : 1; 
         unsigned int structureType : 1; 
-    } _has;
-    GEOLatLng *_location;
-    unsigned long long _muid;
-    NSString *_nameDisplayString;
-    unsigned int _stationIndex;
-    int _structureType;
-    NSMutableArray *_zoomNames;
+    }  _has;
+    GEOLatLng * _location;
+    unsigned long long  _muid;
+    NSString * _nameDisplayString;
+    unsigned int  _stationIndex;
+    int  _structureType;
+    NSMutableArray * _zoomNames;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +32,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSMutableArray *zoomNames;
 
++ (Class)zoomNameType;
+
+- (int)StringAsStructureType:(id)arg1;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (void)clearZoomNames;
@@ -63,6 +66,7 @@
 - (void)setZoomNames:(id)arg1;
 - (unsigned int)stationIndex;
 - (int)structureType;
+- (id)structureTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 - (id)zoomNameAtIndex:(unsigned int)arg1;
 - (id)zoomNames;

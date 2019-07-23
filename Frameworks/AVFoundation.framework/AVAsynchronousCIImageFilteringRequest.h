@@ -3,7 +3,7 @@
  */
 
 @interface AVAsynchronousCIImageFilteringRequest : NSObject <NSCopying> {
-    AVAsynchronousCIImageFilteringRequestInternal *_internal;
+    AVAsynchronousCIImageFilteringRequestInternal * _internal;
 }
 
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } compositionTime;
@@ -17,7 +17,7 @@
 - (void)finalize;
 - (void)finishWithError:(id)arg1;
 - (void)finishWithImage:(id)arg1 context:(id)arg2;
-- (id)initUsingCompositingRequest:(id)arg1 sourceFrame:(struct __CVBuffer { }*)arg2 dstColorSpace:(struct CGColorSpace { }*)arg3 cancellationTest:(id /* block */)arg4 defaultCIContextProvider:(id /* block */)arg5 completionHandler:(id /* block */)arg6;
+- (id)initUsingCompositingRequest:(id)arg1 sourceFrame:(struct __CVBuffer { }*)arg2 cancellationTest:(id /* block */)arg3 defaultCIContextProvider:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (struct CGSize { float x1; float x2; })renderSize;
 - (id)sourceImage;
 

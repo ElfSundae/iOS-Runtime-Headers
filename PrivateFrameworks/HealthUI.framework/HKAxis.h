@@ -3,20 +3,20 @@
  */
 
 @interface HKAxis : NSObject <HKAxisLabelDataSource, NSCopying> {
-    BOOL _automaticallyFitData;
-    HKValueRange *_chartableValueRange;
-    <HKAxisLabelDataSource> *_labelDataSource;
-    int _maxLabels;
-    int _minLabels;
+    BOOL  _automaticallyFitData;
+    HKValueRange * _chartableValueRange;
+    <HKAxisLabelDataSource> * _labelDataSource;
+    int  _maxLabels;
+    int  _minLabels;
     struct HKLinearTransform { 
         float offset; 
         float scale; 
-    } _pointTransform;
-    HKAxisStyle *_preferredStyle;
-    BOOL _requiresScaling;
-    HKAxisStyle *_secondaryStyle;
-    HKCoordinateTransform *_transform;
-    <HKZoomScale> *_zoomScale;
+    }  _pointTransform;
+    HKAxisStyle * _preferredStyle;
+    BOOL  _requiresScaling;
+    HKAxisStyle * _secondaryStyle;
+    HKCoordinateTransform * _transform;
+    <HKZoomScale> * _zoomScale;
 }
 
 @property (nonatomic) BOOL automaticallyFitData;

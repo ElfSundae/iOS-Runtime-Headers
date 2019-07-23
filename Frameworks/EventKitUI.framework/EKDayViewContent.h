@@ -2,24 +2,24 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKDayViewContent : UIView <CUIKSingleDayTimelineLayoutScreenUtils, UIGestureRecognizerDelegate> {
-    BOOL _allowsOccurrenceSelection;
-    NSCalendar *_calendar;
-    BOOL _darkensWeekends;
-    NSMutableArray *_dayStarts;
-    BOOL *_dayWasLaidOut;
-    unsigned int _daysToDisplay;
-    <EKDayViewContentDelegate> *_delegate;
-    EKEvent *_dimmedOccurrence;
-    EKCalendarDate *_endDate;
-    BOOL _eventsFillGrid;
-    float _fixedDayWidth;
-    EKDayViewContentGeometryDelegate *_geometryDelegate;
-    EKDayGridView *_grid;
-    BOOL _hasCustomOccurrenceMargin;
-    BOOL _hasCustomOccurrencePadding;
-    NSMutableArray *_itemsByDay;
-    NSMutableArray *_itemsByDayByEndDate;
+@interface EKDayViewContent : UIView <CUIKSingleDayTimelineLayoutScreenUtils, EKDayOccurrenceViewDelegate, UIGestureRecognizerDelegate> {
+    BOOL  _allowsOccurrenceSelection;
+    NSCalendar * _calendar;
+    BOOL  _darkensWeekends;
+    NSMutableArray * _dayStarts;
+    unsigned int  _daysToDisplay;
+    <EKDayViewContentDelegate> * _delegate;
+    EKEvent * _dimmedOccurrence;
+    EKCalendarDate * _endDate;
+    BOOL  _eventsFillGrid;
+    float  _fixedDayWidth;
+    EKDayViewContentGeometryDelegate * _geometryDelegate;
+    EKDayGridView * _grid;
+    BOOL  _hasCustomOccurrenceMargin;
+    BOOL  _hasCustomOccurrencePadding;
+    NSMutableArray * _itemsByDay;
+    NSMutableArray * _itemsByDayByEndDate;
+    NSMutableArray * _lastLayoutWidthForDay;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,35 +29,35 @@
             float width; 
             float height; 
         } size; 
-    } _latestVisibleRect;
-    BOOL _loadingOccurrences;
-    int _occurrenceBackgroundStyle;
-    UIColor *_occurrenceLocationColor;
+    }  _latestVisibleRect;
+    BOOL  _loadingOccurrences;
+    int  _occurrenceBackgroundStyle;
+    UIColor * _occurrenceLocationColor;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _occurrenceMargin;
+    }  _occurrenceMargin;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _occurrencePadding;
-    UIColor *_occurrenceTextBackgroundColor;
-    UIColor *_occurrenceTimeColor;
-    UIColor *_occurrenceTitleColor;
-    BOOL _offscreenOccurrencePinningEnabled;
-    BOOL _putSelectionOnTop;
-    BOOL _reduceLayoutProcessingForAnimation;
-    UIView *_saturdayDarkeningView;
-    EKEvent *_selectedEvent;
-    EKCalendarDate *_startDate;
-    UIView *_sundayDarkeningView;
-    BOOL _usesSmallText;
-    float *_visiblePinnedStackHeightAbove;
-    float *_visiblePinnedStackHeightBelow;
+    }  _occurrencePadding;
+    UIColor * _occurrenceTextBackgroundColor;
+    UIColor * _occurrenceTimeColor;
+    UIColor * _occurrenceTitleColor;
+    BOOL  _offscreenOccurrencePinningEnabled;
+    BOOL  _putSelectionOnTop;
+    BOOL  _reduceLayoutProcessingForAnimation;
+    UIView * _saturdayDarkeningView;
+    EKEvent * _selectedEvent;
+    EKCalendarDate * _startDate;
+    UIView * _sundayDarkeningView;
+    BOOL  _usesSmallText;
+    float * _visiblePinnedStackHeightAbove;
+    float * _visiblePinnedStackHeightBelow;
 }
 
 @property (nonatomic) BOOL allowsOccurrenceSelection;
@@ -95,7 +95,7 @@
 - (void)_adjustViewsForPinning;
 - (void)_computeDayStartsAndEnds;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
-- (struct _NSRange { unsigned int x1; unsigned int x2; })_dayRangeForEvent:(id)arg1;
+- (struct _NSRange { unsigned int x1; unsigned int x2; })_dayRangeForEvent:(id)arg1 useProposedTime:(BOOL)arg2;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_dayRangeForEventWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_dayStarts;
 - (float)_dayWidth;
@@ -110,7 +110,7 @@
 - (BOOL)containsEvent:(id)arg1;
 - (BOOL)darkensWeekends;
 - (double)dateForPoint:(struct CGPoint { float x1; float x2; })arg1;
-- (void)dayOccurrenceViewClicked:(id)arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2;
+- (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2 wasTapped:(BOOL)arg3;
 - (void)dealloc;
 - (id)delegate;
 - (id)dimmedOccurrence;
@@ -123,6 +123,7 @@
 - (id)grid;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 orientation:(int)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 orientation:(int)arg2 backgroundColor:(id)arg3 opaque:(BOOL)arg4 numberOfDaysToDisplay:(unsigned int)arg5;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })insetsForInterfaceLayout:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (id)lastDisplayedSecond;
 - (void)layoutSubviews;
 - (int)occurrenceBackgroundStyle;

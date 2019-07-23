@@ -3,27 +3,27 @@
  */
 
 @interface SLComposeServiceViewController : UIViewController <UINavigationControllerDelegate, UITextViewDelegate> {
-    UIAlertController *_alertController;
-    NSMutableArray *_attachments;
-    UIViewController *_autoCompletionViewController;
-    BOOL _autoCompletionViewControllerAffectsSheetSize;
-    NSNumber *_charactersRemaining;
-    NSMutableArray *_constraints;
-    SLSheetContentView *_contentView;
-    BOOL _didCallPresentSheet;
-    BOOL _didFirstSheetActionLoad;
-    BOOL _hasPresentedSheet;
-    NSObject<SLSheetViewHostProtocol> *_hostProxy;
-    BOOL _inPostButtonTapped;
-    BOOL _isPresentingActionViewController;
-    BOOL _isShowingLocationDeniedAlert;
-    UIView *_maskView;
-    unsigned long _maxImageAttachmentSize;
-    SLSheetNavigationController *_navigationController;
-    NSString *_placeholder;
-    BOOL _preventSheetPositionChanges;
-    SLSheetPreviewImageSource *_previewImageSource;
-    UIImage *_serviceIconImage;
+    UIAlertController * _alertController;
+    NSMutableArray * _attachments;
+    UIViewController * _autoCompletionViewController;
+    BOOL  _autoCompletionViewControllerAffectsSheetSize;
+    NSNumber * _charactersRemaining;
+    NSMutableArray * _constraints;
+    SLSheetContentView * _contentView;
+    BOOL  _didCallPresentSheet;
+    BOOL  _didFirstSheetActionLoad;
+    BOOL  _hasPresentedSheet;
+    NSObject<SLSheetViewHostProtocol> * _hostProxy;
+    BOOL  _inPostButtonTapped;
+    BOOL  _isPresentingActionViewController;
+    BOOL  _isShowingLocationDeniedAlert;
+    UIView * _maskView;
+    unsigned long  _maxImageAttachmentSize;
+    SLSheetNavigationController * _navigationController;
+    NSString * _placeholder;
+    BOOL  _preventSheetPositionChanges;
+    SLSheetPreviewImageSource * _previewImageSource;
+    UIImage * _serviceIconImage;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,15 +33,15 @@
             float width; 
             float height; 
         } size; 
-    } _sheetFrameStartingRotation;
-    SLSheetRootViewController *_sheetRootViewController;
-    BOOL _suppressKeyboard;
-    BOOL _triggerPresentationAnimationOnKeyboard;
-    unsigned int _unfulfilledItemProviderRepresentations;
-    UIViewController *_viewControllerForTrackingSheetSize;
-    SLSheetMasklayer *_vignetteLayer;
-    BOOL _waitingForAnimateAlongsideTransitionBlock;
-    BOOL _wasPresented;
+    }  _sheetFrameStartingRotation;
+    SLSheetRootViewController * _sheetRootViewController;
+    BOOL  _suppressKeyboard;
+    BOOL  _triggerPresentationAnimationOnKeyboard;
+    unsigned int  _unfulfilledItemProviderRepresentations;
+    UIViewController * _viewControllerForTrackingSheetSize;
+    SLSheetMasklayer * _vignetteLayer;
+    BOOL  _waitingForAnimateAlongsideTransitionBlock;
+    BOOL  _wasPresented;
 }
 
 @property (nonatomic, retain) UIViewController *autoCompletionViewController;

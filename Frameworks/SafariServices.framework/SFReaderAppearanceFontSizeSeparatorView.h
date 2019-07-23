@@ -3,8 +3,8 @@
  */
 
 @interface SFReaderAppearanceFontSizeSeparatorView : UIView {
-    UIView *_backgroundView;
-    UIView *_overlayView;
+    UIView * _backgroundView;
+    UIView * _overlayView;
 }
 
 - (void).cxx_destruct;

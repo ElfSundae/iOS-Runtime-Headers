@@ -3,21 +3,21 @@
  */
 
 @interface CMKShutterButton : UIButton {
-    UIView *__innerView;
-    UIImageView *__outerImageView;
-    UIView *__outerView;
-    UIActivityIndicatorView *__progressActivityIndicatorView;
-    CMKTimelapseShutterRingView *__timelapseOuterView;
-    int _buttonMode;
-    BOOL _pulsing;
-    BOOL _showDisabled;
+    UIView * __innerView;
+    UIImageView * __outerImageView;
+    UIView * __outerView;
+    UIActivityIndicatorView * __progressActivityIndicatorView;
+    CMKTimelapseShutterRingView * __timelapseOuterView;
+    int  _buttonMode;
+    BOOL  _pulsing;
+    BOOL  _showDisabled;
     struct CMKShutterButtonSpec { 
         float outerRingDiameter; 
         float outerRingStrokeWidth; 
         float stopSquareSideLength; 
         float stopSquareCornerRadius; 
-    } _spec;
-    BOOL _spinning;
+    }  _spec;
+    BOOL  _spinning;
 }
 
 @property (nonatomic, readonly) UIView *_innerView;
@@ -28,7 +28,7 @@
 @property (nonatomic) int buttonMode;
 @property (getter=isPulsing, nonatomic) BOOL pulsing;
 @property (nonatomic) BOOL showDisabled;
-@property (nonatomic) struct CMKShutterButtonSpec { float x1; float x2; float x3; float x4; } spec;
+@property (setter=_setSpec:, nonatomic) struct CMKShutterButtonSpec { float x1; float x2; float x3; float x4; } spec;
 @property (getter=isSpinning, nonatomic) BOOL spinning;
 
 + (id)shutterButton;

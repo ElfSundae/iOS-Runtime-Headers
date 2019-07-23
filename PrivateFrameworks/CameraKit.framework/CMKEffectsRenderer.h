@@ -3,26 +3,26 @@
  */
 
 @interface CMKEffectsRenderer : NSObject {
-    id /* block */ __atomicPreviewStartedBlock;
-    BOOL __atomicPreviewStartedNotificationNeeded;
-    BOOL __inBackground;
-    BOOL __previewLayerEnabled;
-    CMKEffectsFullsizeView *__renderEffectsFullsizeView;
-    CMKEffectsGridView *__renderGridView;
-    int _atomicCameraMode;
-    unsigned int _atomicFilterIndex;
-    BOOL _atomicMirrorFilterRendering;
-    CMKVideoPreviewView *_atomicVideoPreviewView;
-    CIContext *_ciContext;
-    <PLCameraEffectsRendererDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    unsigned int _droppedFramesSinceLastReportedFrameDrop;
-    EAGLContext *_eaglContext;
-    BOOL _gridTransitionInFlight;
-    BOOL _gridTransitionIsAnimated;
-    BOOL _isShowingGrid;
-    double _lastReportedFrameDropTime;
-    unsigned int _totalFramesSinceLastReportedFrameDrop;
+    id /* block */  __atomicPreviewStartedBlock;
+    BOOL  __atomicPreviewStartedNotificationNeeded;
+    BOOL  __inBackground;
+    BOOL  __previewLayerEnabled;
+    CMKEffectsFullsizeView * __renderEffectsFullsizeView;
+    CMKEffectsGridView * __renderGridView;
+    int  _atomicCameraMode;
+    unsigned int  _atomicFilterIndex;
+    BOOL  _atomicMirrorFilterRendering;
+    CMKVideoPreviewView * _atomicVideoPreviewView;
+    CIContext * _ciContext;
+    <PLCameraEffectsRendererDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _dispatchQueue;
+    unsigned int  _droppedFramesSinceLastReportedFrameDrop;
+    EAGLContext * _eaglContext;
+    BOOL  _gridTransitionInFlight;
+    BOOL  _gridTransitionIsAnimated;
+    BOOL  _isShowingGrid;
+    double  _lastReportedFrameDropTime;
+    unsigned int  _totalFramesSinceLastReportedFrameDrop;
 }
 
 @property (getter=_isInBackground, setter=_setInBackground:) BOOL _inBackground;

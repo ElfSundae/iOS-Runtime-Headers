@@ -3,11 +3,12 @@
  */
 
 @interface SSMetricsEventReportingSession : NSObject {
-    SSMetricsEventController *_eventController;
-    long long _insertTimestamp;
-    NSURL *_reportingURL;
-    NSMutableArray *_unreportedEventPIDs;
-    NSArray *_unreportedEvents;
+    SSMetricsEventController * _eventController;
+    long long  _insertTimestamp;
+    NSURL * _reportingURL;
+    NSString * _sessionCanaryIdentifier;
+    NSMutableArray * _unreportedEventPIDs;
+    NSArray * _unreportedEvents;
 }
 
 - (id)_unreportedEvents;
@@ -16,6 +17,7 @@
 - (void)dealloc;
 - (id)initWithReportingURL:(id)arg1 insertTimestamp:(long long)arg2 eventController:(id)arg3;
 - (BOOL)markEventsAsReported;
+- (id)sessionCanaryIdentifier;
 - (id)writeEventsToStream:(id)arg1;
 
 @end

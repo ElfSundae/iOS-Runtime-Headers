@@ -10,22 +10,30 @@
         unsigned int resizingMode : 2; 
         unsigned int templateRenderingMode : 3; 
         unsigned int exifOrientation : 4; 
-        unsigned int _reserved : 20; 
-    } _imageProperties;
-    float _scale;
+        unsigned int isAlphaCropped : 1; 
+        unsigned int isFlippable : 1; 
+        unsigned int isTintable : 1; 
+        unsigned int _reserved : 17; 
+    }  _imageProperties;
+    float  _scale;
 }
 
 @property (nonatomic, readonly) struct { float x1; float x2; float x3; float x4; } alignmentEdgeInsets;
 @property (nonatomic, readonly) int blendMode;
+@property (nonatomic, readonly) struct CGImage { }*croppedImage;
+@property (nonatomic, readonly) int displayGamut;
 @property (nonatomic, readonly) struct { float x1; float x2; float x3; float x4; } edgeInsets;
 @property (nonatomic, readonly) int exifOrientation;
 @property (nonatomic, readonly) BOOL hasAlignmentInformation;
 @property (nonatomic, readonly) BOOL hasSliceInformation;
 @property (nonatomic, readonly) struct CGImage { }*image;
 @property (nonatomic, readonly) int imageType;
+@property (nonatomic, readonly) BOOL isAlphaCropped;
+@property (nonatomic, readonly) BOOL isFlippable;
 @property (nonatomic, readonly) BOOL isStructured;
 @property (nonatomic, readonly) BOOL isTemplate;
 @property (nonatomic, readonly) BOOL isVectorBased;
+@property (nonatomic, readonly) int layoutDirection;
 @property (nonatomic, readonly) float opacity;
 @property (nonatomic, readonly) int resizingMode;
 @property (nonatomic, readonly) float scale;
@@ -34,13 +42,15 @@
 
 // Image: /System/Library/PrivateFrameworks/CoreUI.framework/CoreUI
 
-- (void)_cacheRenditionProperties;
+- (BOOL)_cacheRenditionProperties;
 - (struct { float x1; float x2; float x3; float x4; })alignmentEdgeInsets;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })alphaCroppedRect;
 - (id)baseKey;
 - (int)blendMode;
 - (struct CGImage { }*)createImageFromPDFRenditionWithScale:(float)arg1;
+- (struct CGImage { }*)croppedImage;
 - (id)description;
+- (int)displayGamut;
 - (struct { float x1; float x2; float x3; float x4; })edgeInsets;
 - (int)exifOrientation;
 - (int)graphicsClass;
@@ -49,9 +59,12 @@
 - (int)idiom;
 - (struct CGImage { }*)image;
 - (int)imageType;
+- (BOOL)isAlphaCropped;
+- (BOOL)isFlippable;
 - (BOOL)isStructured;
 - (BOOL)isTemplate;
 - (BOOL)isVectorBased;
+- (int)layoutDirection;
 - (int)memoryClass;
 - (float)opacity;
 - (struct CGSize { float x1; float x2; })originalUncroppedSize;

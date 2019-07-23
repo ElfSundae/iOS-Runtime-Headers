@@ -3,7 +3,7 @@
  */
 
 @interface CMAttitude : NSObject <NSCopying, NSSecureCoding> {
-    id _internal;
+    id  _internal;
 }
 
 @property (nonatomic, readonly) double pitch;
@@ -29,12 +29,6 @@
 - (struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; })rotationMatrix;
 - (void)setQuaternion:(struct { double x1; double x2; double x3; double x4; })arg1;
 - (double)yaw;
-
-// Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
-
-- (id)description;
-- (double)fig_angularMagnitude;
-- (id)fig_newAttitudeRelativeTo:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PrototypeTools.framework/PrototypeTools
 

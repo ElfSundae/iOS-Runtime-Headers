@@ -3,14 +3,14 @@
  */
 
 @interface PLComposeRecipientViewController : UIViewController <ABPeoplePickerNavigationControllerDelegate, MFContactsSearchConsumer, UIPopoverControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSNumber *_currentSearchTaskID;
-    <PLComposeRecipientViewControllerDelegate> *_delegate;
+    NSNumber * _currentSearchTaskID;
+    <PLComposeRecipientViewControllerDelegate> * _delegate;
     struct { 
         unsigned int showingPeoplePicker : 1; 
         unsigned int showingSearchResultsTable : 1; 
         unsigned int offsettingForResultsTable : 1; 
         unsigned int wasFirstResponder : 1; 
-    } _flags;
+    }  _flags;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -20,18 +20,18 @@
             float width; 
             float height; 
         } size; 
-    } _keyboardFrame;
-    unsigned int _maxExpandRows;
-    UIPopoverController *_peoplePickerPopoverController;
-    NSArray *_properties;
-    UIScrollView *_recipientContainerView;
-    PLComposeRecipientView *_recipientView;
-    MFContactsSearchManager *_searchManager;
-    NSArray *_searchResults;
-    MFContactsSearchResultsModel *_searchResultsModel;
-    UIPopoverController *_searchResultsPopoverController;
-    UITableView *_searchResultsTable;
-    MFSearchShadowView *_shadowView;
+    }  _keyboardFrame;
+    unsigned int  _maxExpandRows;
+    UIPopoverController * _peoplePickerPopoverController;
+    NSArray * _properties;
+    UIScrollView * _recipientContainerView;
+    PLComposeRecipientView * _recipientView;
+    MFContactsSearchManager * _searchManager;
+    NSArray * _searchResults;
+    MFContactsSearchResultsModel * _searchResultsModel;
+    UIPopoverController * _searchResultsPopoverController;
+    UITableView * _searchResultsTable;
+    MFSearchShadowView * _shadowView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

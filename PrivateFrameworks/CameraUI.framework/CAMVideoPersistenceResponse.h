@@ -8,14 +8,14 @@
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _duration;
+    }  _duration;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _stillDisplayTime;
-    NSString *_stillPersistenceUUID;
+    }  _stillDisplayTime;
+    NSString * _stillPersistenceUUID;
 }
 
 @property (nonatomic, readonly, copy) NSString *burstIdentifier;

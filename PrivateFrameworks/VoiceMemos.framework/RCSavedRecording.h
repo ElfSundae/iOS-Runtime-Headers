@@ -3,11 +3,11 @@
  */
 
 @interface RCSavedRecording : NSManagedObject <UIActivityItemSource> {
-    AVAsset *_avAsset;
-    BOOL _hasPendingChangeAffectingEntityRevision;
-    BOOL _ignoreChangeForEntityRevision;
-    NSString *_path;
-    BOOL _pathWasInvalid;
+    AVAsset * _avAsset;
+    BOOL  _hasPendingChangeAffectingEntityRevision;
+    BOOL  _ignoreChangeForEntityRevision;
+    NSString * _path;
+    BOOL  _pathWasInvalid;
 }
 
 @property (nonatomic, readonly, copy) NSURL *URIRepresentation;

@@ -3,14 +3,14 @@
  */
 
 @interface _UIDatePickerComponent : NSObject {
-    unsigned int _calendarUnit;
-    unsigned int _equivalentUnit;
-    NSString *_formatString;
+    unsigned int  _calendarUnit;
+    unsigned int  _equivalentUnit;
+    NSString * _formatString;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _unitRange;
-    float _width;
+    }  _unitRange;
+    float  _width;
 }
 
 @property (nonatomic, readonly) unsigned int calendarUnit;

@@ -3,17 +3,17 @@
  */
 
 @interface SBFScrollableStaticWallpaperView : SBFStaticWallpaperView <UIScrollViewDelegate> {
-    UIColor *_averageColor;
-    <SBFCancelable> *_colorBoxCancelToken;
-    UIImageView *_gradientView;
-    UIImageView *_imageView;
-    float _minimumZoomScale;
-    float _minimumZoomScaleForParallax;
-    BOOL _parallaxCanBeEnabledAutomatically;
-    <SBFCancelable> *_parallaxCancelToken;
-    SBFLockScreenWallpaperParallaxSettings *_parallaxSettings;
-    UIScrollView *_scrollView;
-    SBFSubject *_scrollViewObserver;
+    UIColor * _averageColor;
+    <SBFCancelable> * _colorBoxCancelToken;
+    UIImageView * _gradientView;
+    UIImageView * _imageView;
+    float  _minimumZoomScale;
+    float  _minimumZoomScaleForParallax;
+    BOOL  _parallaxCanBeEnabledAutomatically;
+    <SBFCancelable> * _parallaxCancelToken;
+    SBFLockScreenWallpaperParallaxSettings * _parallaxSettings;
+    UIScrollView * _scrollView;
+    SBFSubject * _scrollViewObserver;
 }
 
 @property (readonly) UIColor *averageColor;
@@ -22,13 +22,13 @@
 @property (readonly) unsigned int hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_canCacheImages;
++ (BOOL)_canDownscaleSampleImage;
 + (BOOL)_shouldScaleForParallax;
 
 - (void).cxx_destruct;
 - (struct CGPoint { float x1; float x2; })_boundedContentOffsetForOverhang;
-- (void)_cacheImagesIfNeeded;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_cropRect;
-- (id)_displayedSurfaceImage;
 - (struct CGSize { float x1; float x2; })_imageSize;
 - (struct CGPoint { float x1; float x2; })_maximumContentOffsetForOverhang;
 - (struct CGPoint { float x1; float x2; })_minimumContentOffsetForOverhang;
@@ -39,7 +39,6 @@
 - (void)_setupColorBoxObserver;
 - (void)_setupContentView;
 - (void)_setupParallaxObserver;
-- (void)_setupSampleImage:(id)arg1 treated:(BOOL)arg2;
 - (void)_setupScrollView;
 - (void)_setupScrollViewObserver;
 - (float)_throttleDuration;

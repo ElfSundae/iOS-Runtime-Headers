@@ -3,21 +3,21 @@
  */
 
 @interface UIPinchGestureRecognizer : UIGestureRecognizer {
-    BOOL __enableNestedHysteresis;
+    BOOL  __enableNestedHysteresis;
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorSceneReferencePoint;
-    unsigned int _endsOnSingleTouch;
-    float _hysteresis;
-    float _initialTouchDistance;
-    float _initialTouchScale;
-    double _lastTouchTime;
-    unsigned int _loggedPinchStatistic;
-    unsigned int _loggedZoomStatistic;
-    float _previousVelocity;
-    float _scaleThreshold;
-    UITouch *_touches;
+    }  _anchorSceneReferencePoint;
+    unsigned int  _endsOnSingleTouch;
+    float  _hysteresis;
+    float  _initialTouchDistance;
+    float  _initialTouchScale;
+    double  _lastTouchTime;
+    unsigned int  _loggedPinchStatistic;
+    unsigned int  _loggedZoomStatistic;
+    float  _previousVelocity;
+    float  _scaleThreshold;
+    UITouch * _touches;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -25,9 +25,9 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
-    id _transformAnalyzer;
-    float _velocity;
+    }  _transform;
+    id  _transformAnalyzer;
+    float  _velocity;
 }
 
 @property (nonatomic) BOOL _enableNestedHysteresis;

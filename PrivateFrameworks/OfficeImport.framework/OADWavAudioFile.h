@@ -3,8 +3,8 @@
  */
 
 @interface OADWavAudioFile : OADEmbeddedMediaFile {
-    float mDuration;
-    BOOL mHasDuration;
+    float  mDuration;
+    BOOL  mHasDuration;
 }
 
 @property (nonatomic) float duration;

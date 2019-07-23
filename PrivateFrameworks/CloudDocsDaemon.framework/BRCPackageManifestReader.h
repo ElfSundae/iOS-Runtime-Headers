@@ -3,9 +3,9 @@
  */
 
 @interface BRCPackageManifestReader : NSEnumerator {
-    NSError *_error;
-    PBMessageStreamReader *_reader;
-    NSInputStream *_stream;
+    NSError * _error;
+    PBMessageStreamReader * _reader;
+    NSInputStream * _stream;
 }
 
 @property (nonatomic) Class itemClass;

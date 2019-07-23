@@ -3,9 +3,9 @@
  */
 
 @interface UICheckeredPatternView : UIView {
-    UIColor *_checkerColor;
-    UIColor *_patternColor;
-    float _scale;
+    UIColor * _checkerColor;
+    UIColor * _patternColor;
+    float  _scale;
 }
 
 @property (nonatomic, retain) UIColor *checkerColor;

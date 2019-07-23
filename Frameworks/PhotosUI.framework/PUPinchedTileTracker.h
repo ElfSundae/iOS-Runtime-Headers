@@ -3,20 +3,20 @@
  */
 
 @interface PUPinchedTileTracker : PUInteractiveTileTracker {
-    PUVelocityFilter *__angularVelocityFilter;
-    PUVelocityFilter *__horizontalVelocityFilter;
-    PUTileLayoutInfo *__initialLayoutInfo;
-    PUChangeDirectionValueFilter *__pinchGestureRecognizerScaleDirectionValueFilter;
-    float __pinchProgress;
-    PUPinchTracker *__pinchTracker;
-    PUTileLayoutInfo *__targetLayoutInfo;
-    PUVelocityFilter *__verticalVelocityFilter;
+    PUVelocityFilter * __angularVelocityFilter;
+    PUVelocityFilter * __horizontalVelocityFilter;
+    PUTileLayoutInfo * __initialLayoutInfo;
+    PUChangeDirectionValueFilter * __pinchGestureRecognizerScaleDirectionValueFilter;
+    float  __pinchProgress;
+    PUPinchTracker * __pinchTracker;
+    PUTileLayoutInfo * __targetLayoutInfo;
+    PUVelocityFilter * __verticalVelocityFilter;
     struct { 
         BOOL respondsToInitialAspectRatioForTileWithLayoutInfo; 
         BOOL respondsToFinalLayoutInfoForTileWithLayoutInfo; 
-    } _delegateFlags;
-    int _direction;
-    UIPinchGestureRecognizer *_pinchGestureRecognizer;
+    }  _delegateFlags;
+    int  _direction;
+    UIPinchGestureRecognizer * _pinchGestureRecognizer;
 }
 
 @property (setter=_setAngularVelocityFilter:, nonatomic, retain) PUVelocityFilter *_angularVelocityFilter;

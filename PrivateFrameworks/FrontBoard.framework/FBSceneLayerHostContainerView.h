@@ -3,11 +3,11 @@
  */
 
 @interface FBSceneLayerHostContainerView : UIView <FBSceneLayerManagerObserver, _FBSceneGeometryObserver> {
-    <FBSceneLayerHostContainerViewDataSource> *_dataSource;
-    <FBSceneLayerHostContainerViewDelegate> *_delegate;
-    NSMutableArray *_hostViews;
-    NSMutableArray *_hostedLayers;
-    FBScene *_scene;
+    <FBSceneLayerHostContainerViewDataSource> * _dataSource;
+    <FBSceneLayerHostContainerViewDelegate> * _delegate;
+    NSMutableArray * _hostViews;
+    NSMutableArray * _hostedLayers;
+    FBScene * _scene;
 }
 
 @property (nonatomic) <FBSceneLayerHostContainerViewDataSource> *dataSource;

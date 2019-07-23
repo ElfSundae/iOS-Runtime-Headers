@@ -55,6 +55,10 @@
 
 - (void)writeString:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
+- (unsigned int)writeWithCompression:(id)arg1 andUpdateAdler32:(struct adler32_t { unsigned int x1; }*)arg2;
+
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
 - (BOOL)hk_readValue:(void*)arg1 ofSize:(unsigned long)arg2 error:(id*)arg3;
@@ -64,5 +68,9 @@
 
 - (void)ml_lock;
 - (void)ml_unlock;
+
+// Image: /System/Library/PrivateFrameworks/Parsec.framework/Parsec
+
+- (id)prs_mappedData;
 
 @end

@@ -3,9 +3,9 @@
  */
 
 @interface GEOPlaceDataRemoteProxy : NSObject <GEOPlaceDataProxy> {
-    NSObject<OS_dispatch_queue> *_requestQ;
-    NSMapTable *_requestToUUID;
-    NSLock *_requestToUUIDLock;
+    NSObject<OS_dispatch_queue> * _requestQ;
+    NSMapTable * _requestToUUID;
+    NSLock * _requestToUUIDLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,8 +3,8 @@
  */
 
 @interface _UITableViewHeaderFooterViewBackground : UIView {
-    UIView *_opaqueBackgroundView;
-    UIView *_transparentBackgroundView;
+    UIView * _opaqueBackgroundView;
+    UIView * _transparentBackgroundView;
 }
 
 - (void).cxx_destruct;

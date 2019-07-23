@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } mCachedAlignmentFrame;
+    }  mCachedAlignmentFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -22,7 +22,7 @@
             float width; 
             float height; 
         } size; 
-    } mCachedAlignmentFrameInRoot;
+    }  mCachedAlignmentFrameInRoot;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -30,10 +30,10 @@
         float d; 
         float tx; 
         float ty; 
-    } mCachedAlignmentFrameInRootTransformInRoot;
-    TSUBezierPath *mCachedClippedPath;
-    TSDEditableBezierPathSource *mCachedEditableBezierPathSource;
-    TSUBezierPath *mCachedPath;
+    }  mCachedAlignmentFrameInRootTransformInRoot;
+    TSUBezierPath * mCachedClippedPath;
+    TSDEditableBezierPathSource * mCachedEditableBezierPathSource;
+    TSUBezierPath * mCachedPath;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -43,7 +43,7 @@
             float width; 
             float height; 
         } size; 
-    } mCachedPathBounds;
+    }  mCachedPathBounds;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -53,26 +53,26 @@
             float width; 
             float height; 
         } size; 
-    } mCachedPathBoundsWithoutStroke;
-    BOOL mCachedPathIsLineSegment;
-    BOOL mCachedPathIsOpen;
-    TSDPathSource *mCachedPathSource;
-    TSDFill *mDynamicFill;
-    TSDMutableStroke *mDynamicStroke;
-    int mHeadCutSegment;
-    float mHeadCutT;
-    float mHeadLineEndAngle;
+    }  mCachedPathBoundsWithoutStroke;
+    BOOL  mCachedPathIsLineSegment;
+    BOOL  mCachedPathIsOpen;
+    TSDPathSource * mCachedPathSource;
+    TSDFill * mDynamicFill;
+    TSDMutableStroke * mDynamicStroke;
+    int  mHeadCutSegment;
+    float  mHeadCutT;
+    float  mHeadLineEndAngle;
     struct CGPoint { 
         float x; 
         float y; 
-    } mHeadLineEndPoint;
+    }  mHeadLineEndPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } mHeadPoint;
-    TSDInfoGeometry *mInitialInfoGeometry;
-    TSDInfoGeometry *mResizeInfoGeometry;
-    TSDPathSource *mResizePathSource;
+    }  mHeadPoint;
+    TSDInfoGeometry * mInitialInfoGeometry;
+    TSDInfoGeometry * mResizeInfoGeometry;
+    TSDPathSource * mResizePathSource;
     struct { 
         unsigned int path : 1; 
         unsigned int pathBounds : 1; 
@@ -85,19 +85,19 @@
         unsigned int headLineEnd : 1; 
         unsigned int tailLineEnd : 1; 
         unsigned int clippedPath : 1; 
-    } mShapeInvalidFlags;
-    TSDPathSource *mShrunkenPathSource;
-    int mTailCutSegment;
-    float mTailCutT;
-    float mTailLineEndAngle;
+    }  mShapeInvalidFlags;
+    TSDPathSource * mShrunkenPathSource;
+    int  mTailCutSegment;
+    float  mTailCutT;
+    float  mTailLineEndAngle;
     struct CGPoint { 
         float x; 
         float y; 
-    } mTailLineEndPoint;
+    }  mTailLineEndPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } mTailPoint;
+    }  mTailPoint;
 }
 
 @property (nonatomic, retain) TSDFill *dynamicFill;
@@ -122,6 +122,7 @@
 - (void)dynamicStrokeWidthUpdateToValue:(float)arg1;
 - (id)editablePathSource;
 - (id)fill;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frameForCulling;
 - (float)headLineEndAngle;
 - (struct CGPoint { float x1; float x2; })headLineEndPoint;
 - (struct CGPoint { float x1; float x2; })headPoint;
@@ -166,12 +167,15 @@
 - (void)setDynamicFill:(id)arg1;
 - (void)setGeometry:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })shapeFrameWithTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })shapeFrameWithTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1 strokeDrawOptions:(unsigned int)arg2;
 - (id)shapeInfo;
+- (BOOL)shouldAdjustForStrokeWidthForCollabCursor;
 - (BOOL)shouldBeDisplayedInShowMode;
 - (id)smartPathSource;
 - (id)stroke;
 - (id)strokeHeadLineEnd;
 - (id)strokeTailLineEnd;
+- (BOOL)supportsCalloutAttributes;
 - (BOOL)supportsResize;
 - (BOOL)supportsRotation;
 - (float)tailLineEndAngle;

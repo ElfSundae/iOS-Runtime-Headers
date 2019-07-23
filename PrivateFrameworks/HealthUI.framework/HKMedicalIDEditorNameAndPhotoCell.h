@@ -3,9 +3,9 @@
  */
 
 @interface HKMedicalIDEditorNameAndPhotoCell : HKMedicalIDEditorMultilineStringCell {
-    UIButton *_editPhotoButton;
-    UIButton *_editPhotoLabelButton;
-    UIView *_nameBottomSeparator;
+    UIButton * _editPhotoButton;
+    UIButton * _editPhotoLabelButton;
+    UIView * _nameBottomSeparator;
 }
 
 @property (nonatomic, readonly) UIButton *editPhotoButton;
@@ -16,6 +16,7 @@
 + (BOOL)showsLabelAndValue;
 
 - (void).cxx_destruct;
+- (void)_adjustEditPhotoButtonFontSizeIfNecessary;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)editPhotoButton;
 - (id)editPhotoLabelButton;

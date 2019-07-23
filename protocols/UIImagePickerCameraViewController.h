@@ -20,5 +20,6 @@
 - (BOOL)_startVideoCapture;
 - (void)_stopVideoCapture;
 - (void)_takePicture;
+- (id)initWithInitialImagePickerProperties:(NSDictionary *)arg1;
 
 @end

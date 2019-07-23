@@ -3,11 +3,11 @@
  */
 
 @interface MKViewWithHairline : UIView {
-    UIView *_bottomHairline;
-    UIColor *_hairlineColor;
-    float _leftHairlineInset;
-    float _rightHairlineInset;
-    UIView *_topHairline;
+    UIView * _bottomHairline;
+    UIColor * _hairlineColor;
+    float  _leftHairlineInset;
+    float  _rightHairlineInset;
+    UIView * _topHairline;
 }
 
 @property (getter=isBottomHairlineHidden, nonatomic) BOOL bottomHairlineHidden;

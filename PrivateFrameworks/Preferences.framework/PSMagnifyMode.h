@@ -3,15 +3,15 @@
  */
 
 @interface PSMagnifyMode : NSObject <NSCopying> {
-    NSString *_localizedName;
-    NSString *_name;
-    NSArray *_previewHTMLStrings;
-    NSArray *_previewStyleSheets;
+    NSString * _localizedName;
+    NSString * _name;
+    NSArray * _previewHTMLStrings;
+    NSArray * _previewStyleSheets;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    BOOL _zoomed;
+    }  _size;
+    BOOL  _zoomed;
 }
 
 @property (nonatomic, retain) NSString *localizedName;

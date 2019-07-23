@@ -6,7 +6,7 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _beginCenter;
+    }  _beginCenter;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,7 +16,7 @@
             float width; 
             float height; 
         } size; 
-    } _beginFrame;
+    }  _beginFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -26,14 +26,14 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    BOOL _changedAccessoryOnly;
-    BOOL _dueToRotation;
-    float _duration;
+    }  _bounds;
+    BOOL  _changedAccessoryOnly;
+    BOOL  _dueToRotation;
+    float  _duration;
     struct CGPoint { 
         float x; 
         float y; 
-    } _endCenter;
+    }  _endCenter;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -43,10 +43,10 @@
             float width; 
             float height; 
         } size; 
-    } _endFrame;
-    BOOL _forceNotification;
-    unsigned int _options;
-    BOOL _wasCausedRemotely;
+    }  _endFrame;
+    BOOL  _forceNotification;
+    unsigned int  _options;
+    BOOL  _wasCausedRemotely;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } beginCenter;

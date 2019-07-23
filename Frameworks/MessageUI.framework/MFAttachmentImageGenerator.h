@@ -3,13 +3,13 @@
  */
 
 @interface MFAttachmentImageGenerator : UIView {
-    NSString *_displayString;
-    UIImage *_image;
-    float _maxImageHeight;
+    NSString * _displayString;
+    UIImage * _image;
+    float  _maxImageHeight;
     struct CGSize { 
         float width; 
         float height; 
-    } _textSize;
+    }  _textSize;
 }
 
 + (float)defaultHeight;

@@ -3,17 +3,17 @@
  */
 
 @interface MusicLibraryTopBarController : NSObject {
-    BOOL _displayingLocalLibrary;
-    BOOL _showCloudMediaEnabled;
-    UIViewController *_targetViewController;
-    UIView *_topBarContainerView;
+    BOOL  _displayingLocalLibrary;
+    BOOL  _showCloudMediaEnabled;
+    UIViewController * _targetViewController;
+    UIView * _topBarContainerView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _topBarContentInsetAdditions;
-    UIViewController *_topBarViewController;
+    }  _topBarContentInsetAdditions;
+    UIViewController * _topBarViewController;
 }
 
 @property (nonatomic, readonly) UIViewController *targetViewController;

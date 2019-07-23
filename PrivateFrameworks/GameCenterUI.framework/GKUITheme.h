@@ -3,7 +3,7 @@
  */
 
 @interface GKUITheme : NSObject {
-    NSCache *_resourceCache;
+    NSCache * _resourceCache;
 }
 
 @property (nonatomic, readonly) float formSheetCornerRadius;

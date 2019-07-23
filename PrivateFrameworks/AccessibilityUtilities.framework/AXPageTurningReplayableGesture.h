@@ -3,8 +3,8 @@
  */
 
 @interface AXPageTurningReplayableGesture : AXReplayableGesture {
-    BOOL _isLandscape;
-    BOOL _isLeftToRightSwipe;
+    BOOL  _isLandscape;
+    BOOL  _isLeftToRightSwipe;
 }
 
 @property (nonatomic) BOOL isLandscape;

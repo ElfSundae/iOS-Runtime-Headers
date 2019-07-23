@@ -3,14 +3,15 @@
  */
 
 @interface AVFigAssetTrackInspector : AVAssetTrackInspector {
-    NSObject<OS_dispatch_queue> *_completionHandlerQueue;
-    struct OpaqueFigAsset { } *_figAsset;
-    struct OpaqueFigAssetTrack { } *_figAssetTrack;
-    struct OpaqueFigFormatReader { } *_figFormatReader;
-    struct OpaqueFigTrackReader { } *_figTrackReader;
-    NSMutableArray *_loadingBatches;
-    struct OpaqueFigSimpleMutex { } *_loadingMutex;
-    AVWeakReference *_weakReferenceToAsset;
+    NSObject<OS_dispatch_queue> * _completionHandlerQueue;
+    struct OpaqueFigAsset { } * _figAsset;
+    struct OpaqueFigAssetTrack { } * _figAssetTrack;
+    struct OpaqueFigFormatReader { } * _figFormatReader;
+    struct OpaqueFigTrackReader { } * _figTrackReader;
+    NSMutableArray * _loadingBatches;
+    struct OpaqueFigSimpleMutex { } * _loadingMutex;
+    unsigned long  _mediaType;
+    AVWeakReference * _weakReferenceToAsset;
 }
 
 - (void)_addFigNotifications;
@@ -31,6 +32,7 @@
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (void)dealloc;
+- (int)defaultAlternateGroupID;
 - (struct CGSize { float x1; float x2; })dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
@@ -58,6 +60,7 @@
 - (long)playabilityValidationResult;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })preferredTransform;
 - (float)preferredVolume;
+- (int)provisionalAlternateGroupID;
 - (BOOL)requiresFrameReordering;
 - (id)segmentForTrackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)segments;

@@ -3,7 +3,7 @@
  */
 
 @interface UIKBFloatingKeyView : UIKBContainerKeyView {
-    _UIFloatingContentView *_floatingContentView;
+    _UIFloatingContentView * _floatingContentView;
 }
 
 @property (nonatomic, readonly) _UIFloatingContentView *floatingContentView;

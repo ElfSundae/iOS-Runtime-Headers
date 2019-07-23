@@ -3,11 +3,11 @@
  */
 
 @interface UITextMagnifierRanged : UITextMagnifier {
-    int _delayedAnimationType;
-    BOOL _isAnimating;
-    BOOL _isHorizontal;
-    float _magnifierOffsetFromTouch;
-    float _touchOffsetFromMagnificationPoint;
+    int  _delayedAnimationType;
+    BOOL  _isAnimating;
+    BOOL  _isHorizontal;
+    float  _magnifierOffsetFromTouch;
+    float  _touchOffsetFromMagnificationPoint;
 }
 
 @property (nonatomic) BOOL isHorizontal;

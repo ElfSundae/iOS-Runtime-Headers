@@ -3,7 +3,7 @@
  */
 
 @interface CIBitmapContext : CIContext {
-    struct CIBitmapContextPrivate { void *x1; int x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; int x4; } *_bcpriv;
+    struct CIBitmapContextPrivate { void *x1; int x2; struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_3_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_3_1_2; } x3; int x4; } * _bcpriv;
 }
 
 + (id)context;

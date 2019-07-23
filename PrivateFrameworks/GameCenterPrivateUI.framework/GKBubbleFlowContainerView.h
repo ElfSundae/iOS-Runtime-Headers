@@ -12,9 +12,9 @@
             float width; 
             float height; 
         } size; 
-    } _bubbleRestingRects;
-    NSMutableArray *_bubbleSets;
-    int _supportedBubbles;
+    }  _bubbleRestingRects;
+    NSMutableArray * _bubbleSets;
+    int  _supportedBubbles;
 }
 
 @property (nonatomic, retain) NSArray *bubbleSets;

@@ -3,10 +3,10 @@
  */
 
 @interface NEFilterAbsoluteVerdict : NEFilterVerdict <NSCopying, NSSecureCoding> {
-    unsigned long long _inboundPassOffset;
-    unsigned long long _inboundPeekOffset;
-    unsigned long long _outboundPassOffset;
-    unsigned long long _outboundPeekOffset;
+    unsigned long long  _inboundPassOffset;
+    unsigned long long  _inboundPeekOffset;
+    unsigned long long  _outboundPassOffset;
+    unsigned long long  _outboundPeekOffset;
 }
 
 @property unsigned long long inboundPassOffset;

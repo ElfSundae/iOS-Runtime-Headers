@@ -3,11 +3,11 @@
  */
 
 @interface CAMExposureCommand : CAMCaptureCommand {
-    int __exposureMode;
+    int  __exposureMode;
     struct CGPoint { 
         float x; 
         float y; 
-    } __exposurePointOfInterest;
+    }  __exposurePointOfInterest;
 }
 
 @property (nonatomic, readonly) int _exposureMode;

@@ -3,8 +3,8 @@
  */
 
 @interface CMKSlalomIndicatorView : UIView {
-    UILabel *__framerateLabel;
-    int _framesPerSecond;
+    UILabel * __framerateLabel;
+    int  _framesPerSecond;
 }
 
 @property (nonatomic, readonly) UILabel *_framerateLabel;

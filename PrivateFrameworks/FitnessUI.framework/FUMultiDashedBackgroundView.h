@@ -3,15 +3,15 @@
  */
 
 @interface FUMultiDashedBackgroundView : FUChartBackgroundView {
-    BOOL _backgroundIsTransparent;
-    UIImageView *_imageView;
-    UIColor *_lineColor;
-    float _lineWidth;
-    unsigned int _numLines;
-    float _previousWidth;
-    UIColor *_subLineColor;
-    float _sublineInset;
-    unsigned int _sublineInterval;
+    BOOL  _backgroundIsTransparent;
+    UIImageView * _imageView;
+    UIColor * _lineColor;
+    float  _lineWidth;
+    unsigned int  _numLines;
+    float  _previousWidth;
+    UIColor * _subLineColor;
+    float  _sublineInset;
+    unsigned int  _sublineInterval;
 }
 
 @property (nonatomic) BOOL backgroundIsTransparent;

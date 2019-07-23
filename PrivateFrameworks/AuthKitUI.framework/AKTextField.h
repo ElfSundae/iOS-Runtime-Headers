@@ -3,15 +3,15 @@
  */
 
 @interface AKTextField : UIView {
-    UIImageView *_backgroundImageView;
-    int _blurEffectStyle;
-    NSMutableArray *_constraints;
-    UILabel *_entryDescription;
-    UITextField *_entryField;
-    int _rowIdentifier;
-    int _textFieldStyle;
-    BOOL _usesVibrancy;
-    UIVisualEffectView *_visualEffectView;
+    UIImageView * _backgroundImageView;
+    int  _blurEffectStyle;
+    NSMutableArray * _constraints;
+    UILabel * _entryDescription;
+    UITextField * _entryField;
+    int  _rowIdentifier;
+    int  _textFieldStyle;
+    BOOL  _usesVibrancy;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic, retain) UIImageView *backgroundImageView;

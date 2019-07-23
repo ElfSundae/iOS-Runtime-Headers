@@ -3,7 +3,7 @@
  */
 
 @interface UICalloutBarBackground : _UIBackdropView {
-    UIImageView *_blurMaskView;
+    UIImageView * _blurMaskView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,10 +13,10 @@
             float width; 
             float height; 
         } size; 
-    } _highlightRect;
-    _UIBackdropView *_separatorView;
-    UIImageView *_tintMaskView;
-    float m_dividerOffsets;
+    }  _highlightRect;
+    _UIBackdropView * _separatorView;
+    UIImageView * _tintMaskView;
+    float  m_dividerOffsets;
 }
 
 @property (nonatomic, retain) UIImageView *blurMaskView;

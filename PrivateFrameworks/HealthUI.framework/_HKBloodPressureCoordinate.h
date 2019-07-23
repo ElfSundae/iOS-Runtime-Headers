@@ -3,9 +3,9 @@
  */
 
 @interface _HKBloodPressureCoordinate : NSObject <HKGraphSeriesBlockCoordinate> {
-    HKMinMaxCoordinate *_diastolicCoordinate;
-    HKMinMaxCoordinate *_systolicCoordinate;
-    id _userInfo;
+    HKMinMaxCoordinate * _diastolicCoordinate;
+    HKMinMaxCoordinate * _systolicCoordinate;
+    id  _userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;

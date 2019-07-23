@@ -3,10 +3,10 @@
  */
 
 @interface FBDisplayLayoutServiceServer : FBSystemServiceFacility {
-    NSMutableDictionary *_calloutQueuesByQOS;
-    NSMutableDictionary *_defaultQOSClientsByDisplayType;
-    <FBDisplayLayoutServiceServerDelegate> *_delegate;
-    NSMutableDictionary *_utilityQOSClientsByDisplayType;
+    NSMutableDictionary * _calloutQueuesByQOS;
+    NSMutableDictionary * _defaultQOSClientsByDisplayType;
+    <FBDisplayLayoutServiceServerDelegate> * _delegate;
+    NSMutableDictionary * _utilityQOSClientsByDisplayType;
 }
 
 @property (nonatomic) <FBDisplayLayoutServiceServerDelegate> *delegate;

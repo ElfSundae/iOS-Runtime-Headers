@@ -3,7 +3,7 @@
  */
 
 @interface TPPasscodeView : UIView {
-    NSMutableString *_passcodeMutableString;
+    NSMutableString * _passcodeMutableString;
 }
 
 @property (retain) NSMutableString *passcodeMutableString;

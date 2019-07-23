@@ -3,23 +3,23 @@
  */
 
 @interface MFMailDelivery : NSObject {
-    DeliveryAccount *_account;
-    MailAccount *_archiveAccount;
-    NSArray *_charsets;
-    NSDictionary *_compositionSpecification;
-    unsigned long long _conversationFlags;
-    id _delegate;
-    MFMutableMessageHeaders *_headers;
-    NSString *_htmlString;
-    BOOL _isUserRequested;
-    MFMessage *_message;
-    NSArray *_mixedContent;
-    NSArray *_otherStringsAndAttachments;
-    MFPlainTextDocument *_plainTextAlternative;
-    MFDeliveryResult *_result;
-    BOOL _textPartsAreHTML;
-    unsigned int _threaded;
-    unsigned int _useCellDataOnly;
+    DeliveryAccount * _account;
+    MailAccount * _archiveAccount;
+    NSArray * _charsets;
+    NSDictionary * _compositionSpecification;
+    unsigned long long  _conversationFlags;
+    id  _delegate;
+    MFMutableMessageHeaders * _headers;
+    NSString * _htmlString;
+    BOOL  _isUserRequested;
+    MFMessage * _message;
+    NSArray * _mixedContent;
+    NSArray * _otherStringsAndAttachments;
+    MFPlainTextDocument * _plainTextAlternative;
+    MFDeliveryResult * _result;
+    BOOL  _textPartsAreHTML;
+    unsigned int  _threaded;
+    unsigned int  _useCellDataOnly;
 }
 
 @property (nonatomic, retain) NSDictionary *compositionSpecification;

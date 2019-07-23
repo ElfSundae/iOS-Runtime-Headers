@@ -3,10 +3,10 @@
  */
 
 @interface _SFLinkPreviewHeader : UIView <_SFFluidProgressViewDelegate> {
-    NSString *_domain;
-    UILabel *_domainLabel;
-    UIView *_hairline;
-    _SFFluidProgressView *_progressView;
+    NSString * _domain;
+    UILabel * _domainLabel;
+    UIView * _hairline;
+    _SFFluidProgressView * _progressView;
 }
 
 @property (nonatomic, copy) NSString *domain;

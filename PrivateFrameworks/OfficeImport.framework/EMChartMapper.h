@@ -3,27 +3,27 @@
  */
 
 @interface EMChartMapper : CMMapper {
-    CHDAxis *mBaseAxis;
-    CHDChart *mChart;
-    BOOL mHasDateCategory;
-    BOOL mHasPrimaryDateAxis;
-    BOOL mHasSecondaryDateAxis;
-    BOOL mIsHorizontal;
-    BOOL mIsPercentStacked;
-    BOOL mIsStacked;
-    CHDSeries *mMainSeries;
-    CHDChartType *mMainType;
-    unsigned int mPieIndex;
+    CHDAxis * mBaseAxis;
+    CHDChart * mChart;
+    BOOL  mHasDateCategory;
+    BOOL  mHasPrimaryDateAxis;
+    BOOL  mHasSecondaryDateAxis;
+    BOOL  mIsHorizontal;
+    BOOL  mIsPercentStacked;
+    BOOL  mIsStacked;
+    CHDSeries * mMainSeries;
+    CHDChartType * mMainType;
+    unsigned int  mPieIndex;
     struct { 
         BOOL primaryCategoryHasDates; 
         BOOL secondaryCategoryHasDates; 
         BOOL primaryAxisHasDates; 
         BOOL secondaryAxisHasDates; 
-    } mPlotInfos;
-    CHDAxis *mPrimaryAxis;
-    EDResources *mResources;
-    CHDAxis *mSecondaryAxis;
-    CMState *mState;
+    }  mPlotInfos;
+    CHDAxis * mPrimaryAxis;
+    EDResources * mResources;
+    CHDAxis * mSecondaryAxis;
+    CMState * mState;
 }
 
 @property (readonly) CMDrawableMapper *parent;

@@ -3,8 +3,8 @@
  */
 
 @interface HKGraphSeriesSecondaryRenderContext : NSObject {
-    NSMutableArray *_aboveScreenRegions;
-    NSMutableArray *_belowScreenRegions;
+    NSMutableArray * _aboveScreenRegions;
+    NSMutableArray * _belowScreenRegions;
 }
 
 - (void).cxx_destruct;

@@ -3,8 +3,8 @@
  */
 
 @interface GKNotificationBannerWindow : UIWindow {
-    NSObject<OS_dispatch_semaphore> *_bannerSemaphore;
-    GKNotificationBannerViewController *_currentBannerViewController;
+    NSObject<OS_dispatch_semaphore> * _bannerSemaphore;
+    GKNotificationBannerViewController * _currentBannerViewController;
 }
 
 @property (nonatomic, readonly, retain) NSObject<OS_dispatch_semaphore> *bannerSemaphore;

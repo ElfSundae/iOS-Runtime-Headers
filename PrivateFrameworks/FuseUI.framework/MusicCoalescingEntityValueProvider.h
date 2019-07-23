@@ -3,13 +3,13 @@
  */
 
 @interface MusicCoalescingEntityValueProvider : NSObject <MusicEntityValueProviding> {
-    NSSet *_additionalPropertiesToPrefetchSynchronously;
-    <MusicEntityValueProviding> *_baseEntityValueProvider;
-    NSDictionary *_cachedPropertyValuesLoadedAsynchronously;
-    NSDictionary *_cachedPropertyValuesLoadedSynchronously;
-    MusicEntityViewContentDescriptor *_contentDescriptor;
-    NSSet *_propertiesToLoadAsynchronously;
-    NSSet *_propertiesToPrefetchSynchronously;
+    NSSet * _additionalPropertiesToPrefetchSynchronously;
+    <MusicEntityValueProviding> * _baseEntityValueProvider;
+    NSDictionary * _cachedPropertyValuesLoadedAsynchronously;
+    NSDictionary * _cachedPropertyValuesLoadedSynchronously;
+    MusicEntityViewContentDescriptor * _contentDescriptor;
+    NSSet * _propertiesToLoadAsynchronously;
+    NSSet * _propertiesToPrefetchSynchronously;
 }
 
 @property (nonatomic, copy) NSSet *additionalPropertiesToPrefetchSynchronously;

@@ -3,24 +3,24 @@
  */
 
 @interface UIGroupTableViewCellBackground : UIView {
-    int _animationCount;
-    UIView *_bottomSeparatorView;
+    int  _animationCount;
+    UIView * _bottomSeparatorView;
     struct { 
         unsigned int selected : 1; 
-    } _groupBackgroundFlags;
-    int _newSectionLocation;
-    float _sectionBorderWidth;
-    int _sectionLocation;
-    int _selectionStyle;
-    UIColor *_selectionTintColor;
+    }  _groupBackgroundFlags;
+    int  _newSectionLocation;
+    float  _sectionBorderWidth;
+    int  _sectionLocation;
+    int  _selectionStyle;
+    UIColor * _selectionTintColor;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _separatorInset;
-    int _separatorStyle;
-    UIView *_topSeparatorView;
+    }  _separatorInset;
+    int  _separatorStyle;
+    UIView * _topSeparatorView;
 }
 
 @property (nonatomic) float sectionBorderWidth;
@@ -45,14 +45,22 @@
 - (id)_fillColor;
 - (void)_incrementAnimationCount;
 - (void)_layoutSubviews:(BOOL)arg1;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_modernResizableBackgroundImageCapInsets;
+- (BOOL)_modernResizableBackgroundImageEnabled;
+- (struct CGSize { float x1; float x2; })_modernResizableBackgroundImageSize;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_modernResizableContentsCenter;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_modernResizableContentsRect;
 - (float)_pixelDisplayedImageHeight;
 - (id)_roundedRectBezierPathInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 withSectionLocation:(int)arg2 forBorder:(BOOL)arg3 cornerRadiusAdjustment:(float)arg4;
 - (id)_sectionBorderColor;
+- (float)_sectionCornerRadius;
 - (id)_separatorColor;
 - (void)_setSectionLocationAnimationDidStop;
 - (id)_topShadowColor;
 - (id)_topShadowViewWithColor:(id)arg1;
 - (void)_updateSeparatorViews;
+- (BOOL)_useModernResizableBackgroundImage;
+- (BOOL)_useResizableBackgroundImage;
 - (id)backgroundColor;
 - (void)dealloc;
 - (void)displayLayer:(id)arg1;

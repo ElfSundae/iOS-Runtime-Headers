@@ -3,23 +3,23 @@
  */
 
 @interface MusicDownloadProgressButton : UIControl {
-    UIImageView *_addToLibraryOrDownloadImageView;
-    float _currentAnimatedProgress;
-    CADisplayLink *_displayLink;
-    UIImageView *_finishedImageView;
-    float _initialAnimatedProgress;
-    BOOL _isAnimatingProgress;
-    SKUIItemOfferButton *_itemOfferButton;
+    UIImageView * _addToLibraryOrDownloadImageView;
+    float  _currentAnimatedProgress;
+    CADisplayLink * _displayLink;
+    UIImageView * _finishedImageView;
+    float  _initialAnimatedProgress;
+    BOOL  _isAnimatingProgress;
+    SKUIItemOfferButton * _itemOfferButton;
     struct CGSize { 
         float width; 
         float height; 
-    } _lastLayoutSize;
-    float _progress;
-    double _progressAnimationEndTime;
-    double _progressAnimationStartTime;
-    CAMediaTimingFunction *_progressAnimationTimingFunction;
-    int _progressType;
-    int _style;
+    }  _lastLayoutSize;
+    float  _progress;
+    double  _progressAnimationEndTime;
+    double  _progressAnimationStartTime;
+    CAMediaTimingFunction * _progressAnimationTimingFunction;
+    int  _progressType;
+    int  _style;
 }
 
 @property (nonatomic) float progress;

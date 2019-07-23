@@ -3,8 +3,8 @@
  */
 
 @interface CMKExposureBiasTextView : CMKBadgeTextView {
-    NSString *__lastText;
-    float _exposureBias;
+    NSString * __lastText;
+    float  _exposureBias;
 }
 
 @property (nonatomic, retain) NSString *_lastText;

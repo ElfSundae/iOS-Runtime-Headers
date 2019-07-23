@@ -39,6 +39,5 @@
 - (BOOL)shouldUseAuthentication;
 - (BOOL)shouldUseSaveSentForAccount:(id)arg1;
 - (BOOL)supportsOutboxCopy;
-- (BOOL)supportsSoftBankCodePoints;
 
 @end

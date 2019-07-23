@@ -3,12 +3,12 @@
  */
 
 @interface GKImageSource : NSObject {
-    GKThreadsafeCache *_cache;
-    UIImage *_defaultImage;
-    GKImageBrush *_imageBrush;
-    NSString *_name;
-    UIImage *_renderedDefaultImage;
-    BOOL _shouldRenderDefaultImageWithBrush;
+    GKThreadsafeCache * _cache;
+    UIImage * _defaultImage;
+    GKImageBrush * _imageBrush;
+    NSString * _name;
+    UIImage * _renderedDefaultImage;
+    BOOL  _shouldRenderDefaultImageWithBrush;
 }
 
 @property (nonatomic, retain) GKThreadsafeCache *cache;

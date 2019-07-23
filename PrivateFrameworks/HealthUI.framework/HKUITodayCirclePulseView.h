@@ -3,10 +3,10 @@
  */
 
 @interface HKUITodayCirclePulseView : UIView {
-    HKUITodayCirclePulseBackground *_background;
-    UIView *_backgroundContainer;
-    float _circleDiameter;
-    CALayer *_dayLabel;
+    HKUITodayCirclePulseBackground * _background;
+    UIView * _backgroundContainer;
+    float  _circleDiameter;
+    CALayer * _dayLabel;
 }
 
 @property (nonatomic) float circleDiameter;

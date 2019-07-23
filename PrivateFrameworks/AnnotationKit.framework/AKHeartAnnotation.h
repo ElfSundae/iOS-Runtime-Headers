@@ -3,7 +3,7 @@
  */
 
 @interface AKHeartAnnotation : AKRectangularShapeAnnotation <AKFlippableAnnotationProtocol> {
-    BOOL _verticallyFlipped;
+    BOOL  _verticallyFlipped;
 }
 
 @property (readonly, copy) NSString *debugDescription;

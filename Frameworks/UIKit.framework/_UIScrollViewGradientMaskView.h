@@ -3,25 +3,25 @@
  */
 
 @interface _UIScrollViewGradientMaskView : UIView {
-    int _gradientDirection;
+    int  _gradientDirection;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _gradientEndInsets;
+    }  _gradientEndInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _gradientIntensities;
+    }  _gradientIntensities;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _gradientStartInsets;
+    }  _gradientStartInsets;
 }
 
 @property (nonatomic) int gradientDirection;

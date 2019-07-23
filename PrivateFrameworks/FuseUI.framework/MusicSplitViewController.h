@@ -3,25 +3,25 @@
  */
 
 @interface MusicSplitViewController : UIViewController <SKUIProxyScrollViewDelegate> {
-    UIViewController *_detailViewController;
+    UIViewController * _detailViewController;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _detailViewControllerContentInsetAdditions;
-    UIView *_gutterView;
-    BOOL _isHorizontallyCompact;
-    UIViewController *_preservedDetailViewController;
-    UIViewController *_primaryViewController;
+    }  _detailViewControllerContentInsetAdditions;
+    UIView * _gutterView;
+    BOOL  _isHorizontallyCompact;
+    UIViewController * _preservedDetailViewController;
+    UIViewController * _primaryViewController;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _primaryViewControllerContentInsetAdditions;
-    SKUIProxyScrollView *_proxyScrollView;
-    float _staticPrimaryColumnWidth;
+    }  _primaryViewControllerContentInsetAdditions;
+    SKUIProxyScrollView * _proxyScrollView;
+    float  _staticPrimaryColumnWidth;
 }
 
 @property (nonatomic, readonly) UIViewController *_detailViewController;

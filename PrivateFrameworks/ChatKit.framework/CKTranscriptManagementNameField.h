@@ -3,14 +3,14 @@
  */
 
 @interface CKTranscriptManagementNameField : UIView <UITextFieldDelegate> {
-    _UIBackdropView *_backdropView;
-    UIView *_bottomSeparator;
-    <CKTranscriptManagementNameFieldDelegate> *_delegate;
-    BOOL _enabled;
-    UILabel *_fieldLabel;
-    BOOL _isOverlay;
-    UITextField *_textField;
-    UIView *_topSeparator;
+    _UIBackdropView * _backdropView;
+    UIView * _bottomSeparator;
+    <CKTranscriptManagementNameFieldDelegate> * _delegate;
+    BOOL  _enabled;
+    UILabel * _fieldLabel;
+    BOOL  _isOverlay;
+    UITextField * _textField;
+    UIView * _topSeparator;
 }
 
 @property (nonatomic, retain) _UIBackdropView *backdropView;
@@ -29,6 +29,7 @@
 
 + (float)preferredHeight;
 
+- (void).cxx_destruct;
 - (id)backdropView;
 - (id)bottomSeparator;
 - (void)commitGroupName;

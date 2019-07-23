@@ -3,12 +3,12 @@
  */
 
 @interface AKPageControllerForTesting : AKPageController {
-    AKController *_testingController;
-    AKGeometryHelper *_testingGeometryHelper;
-    AKLayerPresentationManager *_testingLayerPresentationManager;
-    UIView *_testingOverlayView;
-    unsigned int _testingPageIndex;
-    AKPageModelController *_testingPageModelController;
+    AKController * _testingController;
+    AKGeometryHelper * _testingGeometryHelper;
+    AKLayerPresentationManager * _testingLayerPresentationManager;
+    UIView * _testingOverlayView;
+    unsigned int  _testingPageIndex;
+    AKPageModelController * _testingPageModelController;
 }
 
 @property (retain) AKController *testingController;

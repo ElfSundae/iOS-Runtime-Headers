@@ -7,12 +7,12 @@
         float x; 
         float y; 
         float z; 
-    } max;
+    }  max;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } min;
+    }  min;
 }
 
 @property (nonatomic) struct SCNVector3 { float x1; float x2; float x3; } max;

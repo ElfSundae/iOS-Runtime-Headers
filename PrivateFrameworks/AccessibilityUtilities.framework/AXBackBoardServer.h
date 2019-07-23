@@ -3,9 +3,9 @@
  */
 
 @interface AXBackBoardServer : AXServer {
-    NSMutableArray *_eventListeners;
-    BOOL _overrideGestureRecognition;
-    NSMutableArray *_zoomAttributeListeners;
+    NSMutableArray * _eventListeners;
+    BOOL  _overrideGestureRecognition;
+    NSMutableArray * _zoomAttributeListeners;
 }
 
 @property (nonatomic) BOOL inPreboardMode;
@@ -36,13 +36,16 @@
 - (void)disableBrightnessFilters;
 - (unsigned int)guidedAccessAvailability;
 - (id)guidedAccessIgnoredRegions;
+- (void)homeClickSwallowedForGuidedAccess;
 - (BOOL)inPreboardMode;
 - (id)init;
 - (BOOL)invertColorsEnabled;
 - (BOOL)isGuidedAccessActive;
 - (BOOL)isGuidedAccessInWorkspace;
 - (BOOL)isGuidedAccessSelfLockedToApp:(id)arg1;
+- (BOOL)isGuidedAccessUnmanagedSelfLocked;
 - (void)jetsamThirdPartyApps;
+- (BOOL)loadGAXBundleForUnmanagedASAM;
 - (id)performGuidedAccessAutomationCommand:(id)arg1 error:(id*)arg2;
 - (void)postEvent:(id)arg1 afterNamedTap:(id)arg2 includeTaps:(id)arg3;
 - (void)postEvent:(id)arg1 systemEvent:(BOOL)arg2;
@@ -51,7 +54,7 @@
 - (void)registerGestureConflictWithZoom:(id)arg1;
 - (void)registerSiriViewServicePID:(int)arg1;
 - (void)registerZoomAttributesChangeHandler:(id /* block */)arg1;
-- (BOOL)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2;
+- (void)requestGuidedAccessSession:(BOOL)arg1 appID:(id)arg2 completion:(id /* block */)arg3;
 - (void)restoreCachedBrightnessFilters;
 - (BOOL)sessionIsLoginSession;
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
@@ -64,11 +67,12 @@
 - (void)setSwitchControlRendersDeviceUnusable:(BOOL)arg1;
 - (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)setZoomInitialFocusRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 fromContext:(unsigned int)arg2;
+- (BOOL)supportsAccessibilityDisplayFilters;
 - (BOOL)supportsAdaptation;
 - (BOOL)supportsBlueLightReduction;
 - (void)toggleGuidedAccess;
+- (BOOL)tripleClickHomeButtonPress;
 - (void)userEventOccurred;
-- (void)wakeUpDeviceIfNecessary;
 - (void)zoomAttributesChanged:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })zoomInitialFocusRectWithQueryingContext:(unsigned int)arg1;
 

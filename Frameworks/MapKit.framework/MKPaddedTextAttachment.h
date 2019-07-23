@@ -3,8 +3,8 @@
  */
 
 @interface MKPaddedTextAttachment : NSTextAttachment {
-    float _leadingPadding;
-    float _trailingPadding;
+    float  _leadingPadding;
+    float  _trailingPadding;
 }
 
 - (id)_contentViewForImage:(id)arg1;

@@ -3,21 +3,21 @@
  */
 
 @interface SKUIScreenshotsViewController : UIViewController <SKUISlideshowViewControllerDataSource, SKUISlideshowViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate> {
-    SKUIClientContext *_clientContext;
-    UICollectionView *_collectionView;
-    SKUIScreenshotDataConsumer *_dataConsumer;
-    <SKUIScreenshotsDelegate> *_delegate;
-    NSOperationQueue *_operationQueue;
-    NSMutableArray *_screenshotImages;
+    SKUIClientContext * _clientContext;
+    UICollectionView * _collectionView;
+    SKUIScreenshotDataConsumer * _dataConsumer;
+    <SKUIScreenshotsDelegate> * _delegate;
+    NSOperationQueue * _operationQueue;
+    NSMutableArray * _screenshotImages;
     struct CGSize { 
         float width; 
         float height; 
-    } _screenshotMaxSize;
-    NSMutableArray *_screenshotRawImages;
-    NSArray *_screenshots;
-    SKUIVideoImageDataConsumer *_trailerConsumer;
-    NSMutableArray *_trailerImages;
-    NSArray *_trailers;
+    }  _screenshotMaxSize;
+    NSMutableArray * _screenshotRawImages;
+    NSArray * _screenshots;
+    SKUIVideoImageDataConsumer * _trailerConsumer;
+    NSMutableArray * _trailerImages;
+    NSArray * _trailers;
 }
 
 @property (nonatomic, readonly) SKUIClientContext *clientContext;
@@ -46,8 +46,9 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setOperationQueue:(id)arg1;
-- (id)slideshowViewController:(id)arg1 imageAtIndex:(int)arg2;
-- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(int)arg2 size:(struct CGSize { float x1; float x2; }*)arg3;
+- (id)slideshowViewController:(id)arg1 dataConsumerAtIndex:(int)arg2;
+- (id)slideshowViewController:(id)arg1 imageURLAtIndex:(int)arg2;
+- (id)slideshowViewController:(id)arg1 placeholderImageAtIndex:(int)arg2;
 - (id)slideshowViewController:(id)arg1 poppedImageViewAtIndex:(int)arg2;
 - (void)slideshowViewController:(id)arg1 scrollToImageAtIndex:(int)arg2;
 - (id)viewForZoomingInScrollView:(id)arg1;

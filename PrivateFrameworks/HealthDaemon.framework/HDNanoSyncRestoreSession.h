@@ -3,14 +3,14 @@
  */
 
 @interface HDNanoSyncRestoreSession : NSObject {
-    NSCalendar *_calendar;
-    NSMutableArray *_completionHandlers;
-    BOOL _finished;
-    HDNanoSyncStore *_nanoSyncStore;
-    long long _sequenceNumber;
-    NSUUID *_sessionUUID;
-    NSDate *_startDate;
-    _HKExpiringCompletionTimer *_timer;
+    NSCalendar * _calendar;
+    NSMutableArray * _completionHandlers;
+    BOOL  _finished;
+    HDNanoSyncStore * _nanoSyncStore;
+    long long  _sequenceNumber;
+    NSUUID * _sessionUUID;
+    NSDate * _startDate;
+    _HKExpiringCompletionTimer * _timer;
 }
 
 @property (nonatomic, readonly) NSCalendar *calendar;

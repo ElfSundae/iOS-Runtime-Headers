@@ -3,8 +3,8 @@
  */
 
 @interface FCRFace : NSObject {
-    NSDictionary *additionalInfo;
-    NSDictionary *expressionFeatures;
+    NSDictionary * additionalInfo;
+    NSDictionary * expressionFeatures;
     struct { 
         struct CGPoint { 
             float x; 
@@ -20,12 +20,12 @@
                 float height; 
             } size; 
         } bounds; 
-    } face;
-    float faceAngle;
-    NSDictionary *faceLandmarkPoints;
-    float faceSize;
-    int faceType;
-    NSData *faceprint;
+    }  face;
+    float  faceAngle;
+    NSDictionary * faceLandmarkPoints;
+    float  faceSize;
+    int  faceType;
+    NSData * faceprint;
     struct { 
         struct CGPoint { 
             float x; 
@@ -41,7 +41,7 @@
                 float height; 
             } size; 
         } bounds; 
-    } leftEye;
+    }  leftEye;
     struct { 
         struct CGPoint { 
             float x; 
@@ -57,7 +57,7 @@
                 float height; 
             } size; 
         } bounds; 
-    } mouth;
+    }  mouth;
     struct { 
         struct CGPoint { 
             float x; 
@@ -73,9 +73,9 @@
                 float height; 
             } size; 
         } bounds; 
-    } rightEye;
-    unsigned int trackDuration;
-    int trackID;
+    }  rightEye;
+    unsigned int  trackDuration;
+    int  trackID;
 }
 
 @property (retain) NSDictionary *additionalInfo;

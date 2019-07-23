@@ -3,26 +3,26 @@
  */
 
 @interface _UIContentUnavailableView : UIView {
-    UIButton *_actionButton;
-    _UIBackdropView *_backdrop;
-    id /* block */ _buttonAction;
-    NSString *_buttonTitle;
-    UIView *_containerView;
-    NSMutableArray *_containerViewContraints;
-    UIView *_fromSnapshot;
+    UIButton * _actionButton;
+    _UIBackdropView * _backdrop;
+    id /* block */  _buttonAction;
+    NSString * _buttonTitle;
+    UIView * _containerView;
+    NSMutableArray * _containerViewContraints;
+    UIView * _fromSnapshot;
     struct CGSize { 
         float width; 
         float height; 
-    } _fromSnapshotSize;
-    NSString *_message;
-    UILabel *_messageLabel;
-    unsigned int _style;
-    NSString *_title;
-    UILabel *_titleLabel;
-    UIView *_toSnapshot;
-    unsigned int _vibrantOptions;
-    NSLayoutConstraint *messageToButtonConstraint;
-    NSLayoutConstraint *titleToMessageConstraint;
+    }  _fromSnapshotSize;
+    NSString * _message;
+    UILabel * _messageLabel;
+    unsigned int  _style;
+    NSString * _title;
+    UILabel * _titleLabel;
+    UIView * _toSnapshot;
+    unsigned int  _vibrantOptions;
+    NSLayoutConstraint * messageToButtonConstraint;
+    NSLayoutConstraint * titleToMessageConstraint;
 }
 
 @property (nonatomic, copy) id /* block */ buttonAction;
@@ -45,11 +45,13 @@
 - (BOOL)_hasVibrantText;
 - (float)_labelAlpha;
 - (float)_labelVerticalSpacing;
+- (void)_rebuildConstraints;
 - (id)_titleFont;
 - (void)_updateViewHierarchy;
 - (id)_vibrantBaseColor;
 - (id /* block */)buttonAction;
 - (id)buttonTitle;
+- (void)cleanupLingeringRotationState;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

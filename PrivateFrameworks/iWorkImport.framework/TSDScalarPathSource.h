@@ -3,14 +3,16 @@
  */
 
 @interface TSDScalarPathSource : TSDPathSource <TSDMixing, TSDSmartPathSource> {
+    BOOL  mIsCurveContinuous;
     struct CGSize { 
         float width; 
         float height; 
-    } mNaturalSize;
-    float mScalar;
-    int mType;
+    }  mNaturalSize;
+    float  mScalar;
+    int  mType;
 }
 
+@property (nonatomic) BOOL isCurveContinuous;
 @property (nonatomic, readonly) float maxScalar;
 @property (nonatomic) struct CGSize { float x1; float x2; } naturalSize;
 @property (nonatomic) float scalar;
@@ -20,7 +22,7 @@
 + (id)pathSourceWithType:(int)arg1 scalar:(float)arg2 naturalSize:(struct CGSize { float x1; float x2; })arg3;
 + (id)rectangleWithNaturalSize:(struct CGSize { float x1; float x2; })arg1;
 + (id)regularPolygonWithScalar:(float)arg1 naturalSize:(struct CGSize { float x1; float x2; })arg2;
-+ (id)roundedRectangleWithScalar:(float)arg1 naturalSize:(struct CGSize { float x1; float x2; })arg2;
++ (id)roundedRectangleWithScalar:(float)arg1 naturalSize:(struct CGSize { float x1; float x2; })arg2 continuousCurve:(BOOL)arg3;
 
 - (id)bezierPathWithoutFlips;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -29,8 +31,9 @@
 - (unsigned int)hash;
 - (id)init;
 - (id)initWithArchive:(const struct PathSourceArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; struct PointPathSourceArchive {} *x5; struct ScalarPathSourceArchive {} *x6; struct BezierPathSourceArchive {} *x7; struct CalloutPathSourceArchive {} *x8; struct ConnectionLinePathSourceArchive {} *x9; struct EditableBezierPathSourceArchive {} *x10; bool x11; bool x12; }*)arg1;
-- (id)initWithType:(int)arg1 scalar:(float)arg2 naturalSize:(struct CGSize { float x1; float x2; })arg3;
+- (id)initWithType:(int)arg1 scalar:(float)arg2 naturalSize:(struct CGSize { float x1; float x2; })arg3 continuousCurve:(BOOL)arg4;
 - (BOOL)isCircular;
+- (BOOL)isCurveContinuous;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRectangular;
 - (float)maxScalar;
@@ -51,6 +54,7 @@
 - (float)scalar;
 - (struct CGSize { float x1; float x2; })scaleFactorForInscribedRectangle;
 - (void)scaleToNaturalSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)setIsCurveContinuous:(BOOL)arg1;
 - (void)setNaturalSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setScalar:(float)arg1;
 - (void)setScalarValue:(id)arg1;

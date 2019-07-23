@@ -3,10 +3,10 @@
  */
 
 @interface CAMStillImagePersistenceResponse : CAMPersistenceResponse <CAMTransientAssetConvertible> {
-    NSString *_burstIdentifier;
-    unsigned int _burstRepresentedCount;
-    BOOL _expectingPairedVideo;
-    NSDictionary *_metadata;
+    NSString * _burstIdentifier;
+    unsigned int  _burstRepresentedCount;
+    BOOL  _expectingPairedVideo;
+    NSDictionary * _metadata;
 }
 
 @property (nonatomic, readonly, copy) NSString *burstIdentifier;

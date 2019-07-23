@@ -3,30 +3,30 @@
  */
 
 @interface CMDeviceMotionInternal : NSObject <NSCopying> {
-    CMAttitude *fAttitude;
-    bool fDoingBiasEstimation;
-    bool fDoingYawCorrection;
+    CMAttitude * fAttitude;
+    bool  fDoingBiasEstimation;
+    bool  fDoingYawCorrection;
     struct { 
         double x; 
         double y; 
         double z; 
-    } fGravity;
+    }  fGravity;
     struct { 
         double x; 
         double y; 
         double z; 
-    } fMagneticField;
-    int fMagneticFieldCalibrationLevel;
+    }  fMagneticField;
+    int  fMagneticFieldCalibrationLevel;
     struct { 
         double x; 
         double y; 
         double z; 
-    } fRotationRate;
+    }  fRotationRate;
     struct { 
         double x; 
         double y; 
         double z; 
-    } fUserAcceleration;
+    }  fUserAcceleration;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

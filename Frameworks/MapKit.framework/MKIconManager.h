@@ -20,8 +20,11 @@
 + (id)imageForStyle:(id)arg1 size:(unsigned int)arg2 forScale:(float)arg3 format:(int)arg4 transparent:(BOOL)arg5 transitMode:(BOOL)arg6;
 + (id)imageForStyle:(id)arg1 size:(unsigned int)arg2 forScale:(float)arg3 format:(int)arg4 transparent:(BOOL)arg5 transitMode:(BOOL)arg6 interactive:(BOOL)arg7;
 + (id)imageForStyle:(id)arg1 size:(unsigned int)arg2 forScale:(float)arg3 format:(int)arg4 transparent:(BOOL)arg5 transitMode:(BOOL)arg6 isCarplay:(BOOL)arg7;
++ (id)imageForTrafficIncidentType:(int)arg1 size:(unsigned int)arg2 forScale:(float)arg3;
 + (struct CGColor { }*)newFillColorForStyleAttributes:(id)arg1 forScale:(float)arg2;
 + (struct CGColor { }*)newGlyphColorForStyleAttributes:(id)arg1 forScale:(float)arg2;
++ (struct CGColor { }*)newHaloColorForStyleAttributes:(id)arg1 forScale:(float)arg2;
++ (void)requestImageForStyleAttributes:(id)arg1 size:(unsigned int)arg2 scale:(float)arg3 completionHandler:(id /* block */)arg4;
 + (void)setDiskCacheURL:(id)arg1;
 + (void)setUseSharedCaches;
 

@@ -3,13 +3,13 @@
  */
 
 @interface _UIViewFittingSizeTargetInfo : NSObject <NSCopying> {
-    BOOL _dummy;
-    float _horizontalPriority;
+    BOOL  _dummy;
+    float  _horizontalPriority;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
-    float _verticalPriority;
+    }  _targetSize;
+    float  _verticalPriority;
 }
 
 @property (getter=isDummy, nonatomic) BOOL dummy;

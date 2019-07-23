@@ -11,8 +11,8 @@
         } elements; 
         void *singleChildKey; 
         struct { /* ? */ } *callbacks; 
-    } _doubleWildcards;
-    unsigned long _options;
+    }  _doubleWildcards;
+    unsigned long  _options;
     struct { 
         union { 
             struct __CFNull {} *empty; 
@@ -21,7 +21,7 @@
         } elements; 
         void *singleChildKey; 
         struct { /* ? */ } *callbacks; 
-    } _wildcardNames;
+    }  _wildcardNames;
     struct { 
         union { 
             struct __CFNull {} *empty; 
@@ -30,7 +30,7 @@
         } elements; 
         void *singleChildKey; 
         struct { /* ? */ } *callbacks; 
-    } _wildcardObjects;
+    }  _wildcardObjects;
 }
 
 @property (readonly) BOOL isEmpty;

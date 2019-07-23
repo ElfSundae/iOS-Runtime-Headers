@@ -3,25 +3,27 @@
  */
 
 @interface UIRefreshControl : UIControl {
-    float _additionalTopInset;
-    BOOL _adjustingInsets;
+    float  _additionalTopInset;
+    BOOL  _adjustingInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _appliedInsets;
-    _UIRefreshControlContentView *_contentView;
-    BOOL _insetsApplied;
-    float _refreshControlHeight;
-    int _refreshControlState;
-    UIScrollView *_scrollView;
-    float _snappingHeight;
-    int _style;
-    float _visibleHeight;
+    }  _appliedInsets;
+    BOOL  _automaticContentOffsetAdjustmentEnabledNeedsReset;
+    BOOL  _automaticContentOffsetAdjustmentEnabledWhenLastIdle;
+    _UIRefreshControlContentView * _contentView;
+    BOOL  _insetsApplied;
+    float  _refreshControlHeight;
+    int  _refreshControlState;
+    UIScrollView * _scrollView;
+    float  _snappingHeight;
+    int  _style;
+    float  _visibleHeight;
 }
 
-@property (getter=_isApplyingInsets, nonatomic, readonly) BOOL _applyingInsets;
+@property (nonatomic, readonly) BOOL _areInsetsBeingApplied;
 @property (nonatomic, readonly) float _refreshControlHeight;
 @property (nonatomic, readonly) float _snappingHeight;
 @property (nonatomic, readonly) float _visibleHeight;
@@ -39,11 +41,13 @@
 - (void)_addInsetHeight:(float)arg1;
 - (void)_addInsets;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_appliedInsets;
+- (BOOL)_areInsetsBeingApplied;
 - (id)_attributedTitle;
 - (BOOL)_canTransitionFromState:(int)arg1 toState:(int)arg2;
 - (id)_contentView;
 - (unsigned int)_controlEventsForActionTriggered;
 - (void)_didScroll;
+- (float)_impactIntensityForVelocity:(float)arg1;
 - (BOOL)_isApplyingInsets;
 - (struct CGPoint { float x1; float x2; })_originForContentOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
@@ -52,6 +56,7 @@
 - (void)_removeInsetHeight:(float)arg1;
 - (void)_removeInsets;
 - (void)_resizeToFitContents;
+- (id)_scrollView;
 - (float)_scrollViewHeight;
 - (void)_setAttributedTitle:(id)arg1;
 - (void)_setRefreshControlState:(int)arg1 notify:(BOOL)arg2;

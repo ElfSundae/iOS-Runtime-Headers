@@ -6,22 +6,22 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _animationPoint;
-    int _autoscrollDirections;
-    UIView *_autoscrollRenderer;
+    }  _animationPoint;
+    int  _autoscrollDirections;
+    UIView * _autoscrollRenderer;
     struct CGPoint { 
         float x; 
         float y; 
-    } _magnificationPoint;
-    UIView *_magnifierRenderer;
-    UIView *_target;
+    }  _magnificationPoint;
+    UIView * _magnifierRenderer;
+    UIView * _target;
     struct CGPoint { 
         float x; 
         float y; 
-    } _terminalPoint;
-    BOOL _terminalPointPlacedCarefully;
-    UIResponder<UITextInput> *_text;
-    UITextMagnifierTimeWeightedPoint *_weightedPoint;
+    }  _terminalPoint;
+    BOOL  _terminalPointPlacedCarefully;
+    UIResponder<UITextInput> * _text;
+    UITextMagnifierTimeWeightedPoint * _weightedPoint;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } animationPoint;

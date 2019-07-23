@@ -3,37 +3,37 @@
  */
 
 @interface _UIPlatterMenuPanningTransformer : NSObject {
-    int _axisLock;
-    <_UIPlatterMenuPanningTransformerDelegate> *_delegate;
-    double _lastAxisLockTime;
+    int  _axisLock;
+    <_UIPlatterMenuPanningTransformerDelegate> * _delegate;
+    double  _lastAxisLockTime;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastDirectionChangeTouchPosition;
+    }  _lastDirectionChangeTouchPosition;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _lastOffset;
+    }  _lastOffset;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastTouchPosition;
+    }  _lastTouchPosition;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastTransformedPoint;
-    float _minimumXVelocityForAxisLock;
-    int _overrideLockAxis;
-    NSDate *_panBeginTime;
+    }  _lastTransformedPoint;
+    float  _minimumXVelocityForAxisLock;
+    int  _overrideLockAxis;
+    NSDate * _panBeginTime;
     struct CGPoint { 
         float x; 
         float y; 
-    } _panBeginTouchPosition;
-    NSDate *_timeForLastDirectionalChange;
+    }  _panBeginTouchPosition;
+    NSDate * _timeForLastDirectionalChange;
     struct CGPoint { 
         float x; 
         float y; 
-    } _transitionZonePosition;
+    }  _transitionZonePosition;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -43,12 +43,12 @@
             float width; 
             float height; 
         } size; 
-    } _transitionZoneRect;
+    }  _transitionZoneRect;
     struct CGSize { 
         float width; 
         float height; 
-    } _transitionZoneSize;
-    _UIPlatterPanningVelocityIntegrator *_velocityIntegrator;
+    }  _transitionZoneSize;
+    _UIVelocityIntegrator * _velocityIntegrator;
 }
 
 @property (nonatomic) int axisLock;
@@ -68,7 +68,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } transitionZoneRect;
 @property (nonatomic) struct CGSize { float x1; float x2; } transitionZoneSize;
 @property (nonatomic, readonly) struct CGVector { float x1; float x2; } velocity;
-@property (nonatomic, retain) _UIPlatterPanningVelocityIntegrator *velocityIntegrator;
+@property (nonatomic, retain) _UIVelocityIntegrator *velocityIntegrator;
 
 + (id)transformerWithAxisTransitionZonePosition:(struct CGPoint { float x1; float x2; })arg1 axisTransitionZoneSize:(struct CGSize { float x1; float x2; })arg2;
 

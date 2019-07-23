@@ -12,10 +12,10 @@
             float width; 
             float height; 
         } size; 
-    } mBoundsForStandardKnobs;
-    TSUBezierPath *mCachedExternalWrapPath;
-    TSUBezierPath *mCachedWrapPath;
-    TSDLayoutGeometry *mDynamicLayoutGeometry;
+    }  mBoundsForStandardKnobs;
+    TSUBezierPath * mCachedExternalWrapPath;
+    TSUBezierPath * mCachedWrapPath;
+    TSDLayoutGeometry * mDynamicLayoutGeometry;
 }
 
 - (id)additionalDependenciesForChildLayout:(id)arg1;
@@ -25,6 +25,7 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })boundsForStandardKnobs;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canFlip;
+- (BOOL)canInspectGeometry;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })clipRect;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeLayoutGeometry;
@@ -49,6 +50,7 @@
 - (void)p_invalidateParentForWrap;
 - (void)processChangedProperty:(int)arg1;
 - (BOOL)providesGuidesForChildLayouts;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForCalculatingActivityLineEndpoint;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (id)reliedOnLayouts;
 - (BOOL)resizeMayChangeAspectRatio;

@@ -3,9 +3,9 @@
  */
 
 @interface PSTextEditingPane : PSEditingPane <UITableViewDataSource, UITableViewDelegate> {
-    PSTextEditingCell *_cell;
-    UITableView *_table;
-    UITextField *_textField;
+    PSTextEditingCell * _cell;
+    UITableView * _table;
+    UITextField * _textField;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,10 +3,10 @@
  */
 
 @interface IKLink : NSObject {
-    float _angle;
-    float _angleInitial;
-    float _length;
-    SKNode *_node;
+    float  _angle;
+    float  _angleInitial;
+    float  _length;
+    SKNode * _node;
     union _GLKVector2 { 
         struct { 
             float x; 
@@ -17,7 +17,7 @@
             float t; 
         } ; 
         float v[2]; 
-    } _position;
+    }  _position;
     union _GLKVector2 { 
         struct { 
             float x; 
@@ -28,7 +28,7 @@
             float t; 
         } ; 
         float v[2]; 
-    } _size;
+    }  _size;
 }
 
 @property (nonatomic, readonly) float angle;

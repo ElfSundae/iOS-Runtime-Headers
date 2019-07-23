@@ -3,26 +3,26 @@
  */
 
 @interface FUScrollWheel : UIView <UIScrollViewDelegate> {
-    UIView *_bottomDividerView;
-    unsigned int _currentIndex;
-    <FUScrollWheelDataSource> *_dataSource;
-    <FUScrollWheelDelegate> *_delegate;
-    UIFont *_font;
-    int _itemTitleAligmnent;
-    BOOL _loaded;
-    UIImageView *_maskLayer;
-    unsigned int _numberOfRows;
+    UIView * _bottomDividerView;
+    unsigned int  _currentIndex;
+    <FUScrollWheelDataSource> * _dataSource;
+    <FUScrollWheelDelegate> * _delegate;
+    UIFont * _font;
+    int  _itemTitleAligmnent;
+    BOOL  _loaded;
+    UIImageView * _maskLayer;
+    unsigned int  _numberOfRows;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _previousRange;
-    NSMutableArray *_reusableLabelsQueue;
-    UIScrollView *_scrollView;
-    float _scrollWheelLabelHeight;
-    float _scrollWheelLabelPageSize;
-    BOOL _shouldRegenerateOpacityMask;
-    UIView *_topDividerView;
-    NSMutableDictionary *_usedLabels;
+    }  _previousRange;
+    NSMutableArray * _reusableLabelsQueue;
+    UIScrollView * _scrollView;
+    float  _scrollWheelLabelHeight;
+    float  _scrollWheelLabelPageSize;
+    BOOL  _shouldRegenerateOpacityMask;
+    UIView * _topDividerView;
+    NSMutableDictionary * _usedLabels;
 }
 
 @property (nonatomic) unsigned int currentIndex;

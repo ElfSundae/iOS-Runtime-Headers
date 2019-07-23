@@ -3,12 +3,12 @@
  */
 
 @interface _UIDynamicCaretInput : UIView {
-    TIHandwritingStrokes *_accumulatedStrokes;
-    struct CGContext { } *_bitmapContext;
-    UIDelayedAction *_committedAction;
-    _UIDynamicCaretDot *_dotView;
-    int _fadeCount;
-    NSTimer *_fadeTimer;
+    TIHandwritingStrokes * _accumulatedStrokes;
+    struct CGContext { } * _bitmapContext;
+    UIDelayedAction * _committedAction;
+    _UIDynamicCaretDot * _dotView;
+    int  _fadeCount;
+    NSTimer * _fadeTimer;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,11 +18,11 @@
             float width; 
             float height; 
         } size; 
-    } _inkedAreaOfBitmapContext;
+    }  _inkedAreaOfBitmapContext;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastViewLoc;
+    }  _lastViewLoc;
 }
 
 @property (nonatomic, retain) TIHandwritingStrokes *accumulatedStrokes;

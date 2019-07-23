@@ -3,22 +3,22 @@
  */
 
 @interface UIPageController : UIViewController {
-    <UIPageControllerDelegate> *_delegate;
-    int _notificationState;
-    UIPageControl *_pageControl;
+    <UIPageControllerDelegate> * _delegate;
+    int  _notificationState;
+    UIPageControl * _pageControl;
     struct { 
         unsigned int delegateViewControllerAtIndex : 1; 
         unsigned int delegateWillBeginPaging : 1; 
         unsigned int delegateDidEndPaging : 1; 
         unsigned int displaysPageControl : 1; 
         unsigned int wraps : 1; 
-    } _pageControllerFlags;
-    int _pageCount;
-    int _pageSpacing;
-    UIScrollView *_scrollView;
-    NSMutableArray *_viewControllers;
-    int _visibleIndex;
-    UIView *_wrapperViews;
+    }  _pageControllerFlags;
+    int  _pageCount;
+    int  _pageSpacing;
+    UIScrollView * _scrollView;
+    NSMutableArray * _viewControllers;
+    int  _visibleIndex;
+    UIView * _wrapperViews;
 }
 
 @property (nonatomic) <UIPageControllerDelegate> *delegate;
@@ -28,8 +28,6 @@
 @property (nonatomic) int visibleIndex;
 @property (nonatomic, readonly, retain) UIViewController *visibleViewController;
 @property (nonatomic) BOOL wraps;
-
-// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 - (void)_adjustScrollViewContentInsets;
 - (BOOL)_allowsAutorotation;
@@ -106,9 +104,5 @@
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(int)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(int)arg1 duration:(double)arg2;
 - (BOOL)wraps;
-
-// Image: /System/Library/PrivateFrameworks/PhotoLibrary.framework/PhotoLibrary
-
-- (id)pl_existingViewControllerAtIndex:(unsigned int)arg1;
 
 @end

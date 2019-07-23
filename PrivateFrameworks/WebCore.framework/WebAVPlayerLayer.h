@@ -5,7 +5,10 @@
 @interface WebAVPlayerLayer : CALayer {
     struct RetainPtr<WebAVPlayerController> { 
         void *m_ptr; 
-    } _avPlayerController;
+    }  _avPlayerController;
+    struct RefPtr<WebCore::WebVideoFullscreenInterfaceAVKit> { 
+        struct WebVideoFullscreenInterfaceAVKit {} *m_ptr; 
+    }  _fullscreenInterface;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,21 +18,22 @@
             float width; 
             float height; 
         } size; 
-    } _modelVideoLayerFrame;
-    NSDictionary *_pixelBufferAttributes;
-    BOOL _readyForDisplay;
+    }  _modelVideoLayerFrame;
+    NSDictionary * _pixelBufferAttributes;
+    BOOL  _readyForDisplay;
     struct CGSize { 
         float width; 
         float height; 
-    } _videoDimensions;
+    }  _videoDimensions;
     struct RetainPtr<NSString> { 
         void *m_ptr; 
-    } _videoGravity;
+    }  _videoGravity;
     struct RetainPtr<CALayer> { 
         void *m_ptr; 
-    } _videoSublayer;
+    }  _videoSublayer;
 }
 
+@property (nonatomic) struct WebVideoFullscreenInterfaceAVKit { int (**x1)(); int (**x2)(); unsigned int x3; struct Ref<WebCore::WebPlaybackSessionInterfaceAVKit> { struct WebPlaybackSessionInterfaceAVKit {} *x_4_1_1; } x4; struct RetainPtr<WebAVPlayerViewControllerDelegate> { void *x_5_1_1; } x5; struct RetainPtr<AVPlayerViewController> { void *x_6_1_1; } x6; struct WebVideoFullscreenModel {} *x7; struct WebVideoFullscreenChangeObserver {} *x8; struct RetainPtr<UIWindow> { void *x_9_1_1; } x9; struct RetainPtr<UIViewController> { void *x_10_1_1; } x10; struct RetainPtr<UIView> { void *x_11_1_1; } x11; struct RetainPtr<UIWindow> { void *x_12_1_1; } x12; struct RetainPtr<WebAVPlayerLayerView> { void *x_13_1_1; } x13; unsigned int x14; struct function<void (bool)>={type=[12C] {} x15; struct __base<void (bool)> {} *x16; }*fullscreenInterface; /* unknown property attribute:  16>}{function<void ()>={type=[12C]}^{__base<void ()>}}}BBBBBBB} */
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } modelVideoLayerFrame;
 @property (nonatomic, copy) NSDictionary *pixelBufferAttributes;
 @property (nonatomic, retain) AVPlayerController *playerController;
@@ -43,13 +47,15 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (struct WebVideoFullscreenInterfaceAVKit { int (**x1)(); int (**x2)(); unsigned int x3; struct Ref<WebCore::WebPlaybackSessionInterfaceAVKit> { struct WebPlaybackSessionInterfaceAVKit {} *x_4_1_1; } x4; struct RetainPtr<WebAVPlayerViewControllerDelegate> { void *x_5_1_1; } x5; struct RetainPtr<AVPlayerViewController> { void *x_6_1_1; } x6; struct WebVideoFullscreenModel {} *x7; struct WebVideoFullscreenChangeObserver {} *x8; struct RetainPtr<UIWindow> { void *x_9_1_1; } x9; struct RetainPtr<UIViewController> { void *x_10_1_1; } x10; struct RetainPtr<UIView> { void *x_11_1_1; } x11; struct RetainPtr<UIWindow> { void *x_12_1_1; } x12; struct RetainPtr<WebAVPlayerLayerView> { void *x_13_1_1; } x13; unsigned int x14; struct function<void (bool)>={type=[12C] {} x15; struct __base<void (bool)> {} *x16; }*)fullscreenInterface;
 - (id)init;
 - (BOOL)isReadyForDisplay;
+- (void)layoutSublayers;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })modelVideoLayerFrame;
 - (id)pixelBufferAttributes;
 - (id)playerController;
 - (void)resolveBounds;
-- (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)setFullscreenInterface:(struct WebVideoFullscreenInterfaceAVKit { int (**x1)(); int (**x2)(); unsigned int x3; struct Ref<WebCore::WebPlaybackSessionInterfaceAVKit> { struct WebPlaybackSessionInterfaceAVKit {} *x_4_1_1; } x4; struct RetainPtr<WebAVPlayerViewControllerDelegate> { void *x_5_1_1; } x5; struct RetainPtr<AVPlayerViewController> { void *x_6_1_1; } x6; struct WebVideoFullscreenModel {} *x7; struct WebVideoFullscreenChangeObserver {} *x8; struct RetainPtr<UIWindow> { void *x_9_1_1; } x9; struct RetainPtr<UIViewController> { void *x_10_1_1; } x10; struct RetainPtr<UIView> { void *x_11_1_1; } x11; struct RetainPtr<UIWindow> { void *x_12_1_1; } x12; struct RetainPtr<WebAVPlayerLayerView> { void *x_13_1_1; } x13; unsigned int x14; struct function<void (bool)>={type=[12C] {} x15; struct __base<void (bool)> {} *x16; }*)arg1;
 - (void)setModelVideoLayerFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setPixelBufferAttributes:(id)arg1;
 - (void)setPlayerController:(id)arg1;

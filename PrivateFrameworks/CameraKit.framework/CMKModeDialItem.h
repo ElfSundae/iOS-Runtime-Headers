@@ -3,10 +3,10 @@
  */
 
 @interface CMKModeDialItem : UIView {
-    CAShapeLayer *__scalableTextLayer;
-    UIFont *_font;
-    BOOL _selected;
-    NSString *_title;
+    CAShapeLayer * __scalableTextLayer;
+    UIFont * _font;
+    BOOL  _selected;
+    NSString * _title;
 }
 
 @property (nonatomic, readonly) NSAttributedString *_attributedTitle;

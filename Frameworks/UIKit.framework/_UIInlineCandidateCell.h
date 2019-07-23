@@ -3,18 +3,18 @@
  */
 
 @interface _UIInlineCandidateCell : UIView {
-    SEL _action;
-    NSString *_candidate;
-    BOOL _dontDrawRightEdge;
-    UIFont *_font;
-    BOOL _highlighted;
-    unsigned int _index;
-    BOOL _lastItem;
+    SEL  _action;
+    NSString * _candidate;
+    BOOL  _dontDrawRightEdge;
+    UIFont * _font;
+    BOOL  _highlighted;
+    unsigned int  _index;
+    BOOL  _lastItem;
     struct CGSize { 
         float width; 
         float height; 
-    } _stringImageSize;
-    id _target;
+    }  _stringImageSize;
+    id  _target;
 }
 
 - (void).cxx_destruct;

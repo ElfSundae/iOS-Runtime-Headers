@@ -3,34 +3,34 @@
  */
 
 @interface RCCaptureOutputWriter : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate> {
-    AVCaptureSession *_AVCaptureSession;
-    int _AVCaptureSessionStartupState;
-    NSURL *_activeOutputFileURL;
-    AVAssetWriter *_assetWriter;
-    <RCCaptureOutputWriterDelegate> *_captureOutputDelegate;
-    NSMutableArray *_delegateBlocks;
-    double _finalizedAssetDuration;
-    BOOL _finalizedAssetEncounteredError;
-    NSURL *_finalizedAssetURL;
-    BOOL _handledAVCaptureSessionFailedToStart;
-    BOOL _handledAVCaptureSessionTerminatedAbnormally;
-    BOOL _isProcessingSamples;
-    unsigned long long _maxRecordedFileSize;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSDate *_recordingCreationDate;
-    NSUUID *_recordingSessionID;
-    AVCaptureAudioDataOutput *_sampleBufferDataOutput;
-    NSObject<OS_dispatch_queue> *_sampleBufferQueue;
-    unsigned int _sampleBuffersWritten;
+    AVCaptureSession * _AVCaptureSession;
+    int  _AVCaptureSessionStartupState;
+    NSURL * _activeOutputFileURL;
+    AVAssetWriter * _assetWriter;
+    <RCCaptureOutputWriterDelegate> * _captureOutputDelegate;
+    NSMutableArray * _delegateBlocks;
+    double  _finalizedAssetDuration;
+    BOOL  _finalizedAssetEncounteredError;
+    NSURL * _finalizedAssetURL;
+    BOOL  _handledAVCaptureSessionFailedToStart;
+    BOOL  _handledAVCaptureSessionTerminatedAbnormally;
+    BOOL  _isProcessingSamples;
+    unsigned long long  _maxRecordedFileSize;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSDate * _recordingCreationDate;
+    NSUUID * _recordingSessionID;
+    AVCaptureAudioDataOutput * _sampleBufferDataOutput;
+    NSObject<OS_dispatch_queue> * _sampleBufferQueue;
+    unsigned int  _sampleBuffersWritten;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _sampleBuffersWrittenDuration;
-    double _storeDemoTimeLimit;
-    BOOL _waitingForAVCaptureSessionDidStart;
-    int _writerState;
+    }  _sampleBuffersWrittenDuration;
+    double  _storeDemoTimeLimit;
+    BOOL  _waitingForAVCaptureSessionDidStart;
+    int  _writerState;
 }
 
 @property (nonatomic, readonly) AVCaptureSession *AVCaptureSession;

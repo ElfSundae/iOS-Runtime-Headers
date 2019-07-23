@@ -3,37 +3,37 @@
  */
 
 @interface PUImageTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PUImageRequesterObserver> {
-    int __assetLoadingStage;
-    NSDate *__assetLoadingStartDate;
-    int __fullsizeImageOrientation;
+    int  __assetLoadingStage;
+    NSDate * __assetLoadingStartDate;
+    int  __fullsizeImageOrientation;
     struct CGSize { 
         float width; 
         float height; 
-    } __fullsizeImageSize;
+    }  __fullsizeImageSize;
     struct CGSize { 
         float width; 
         float height; 
-    } __fullsizeImageUntransformedSize;
-    NSData *__fullsizeJPEGData;
-    PLTiledLayer *__fullsizeTiledLayer;
-    PUImageRequester *__imageRequester;
-    UIImageView *__imageView;
-    BOOL __isDisplayingFullQualityImage;
-    BOOL __needsUpdateFullsizeImageMetadata;
-    BOOL __needsUpdateFullsizeTiledLayer;
-    BOOL __needsUpdateImage;
-    BOOL __needsUpdateImageView;
+    }  __fullsizeImageUntransformedSize;
+    NSData * __fullsizeJPEGData;
+    PLTiledLayer * __fullsizeTiledLayer;
+    PUImageRequester * __imageRequester;
+    UIImageView * __imageView;
+    BOOL  __isDisplayingFullQualityImage;
+    BOOL  __needsUpdateFullsizeImageMetadata;
+    BOOL  __needsUpdateFullsizeTiledLayer;
+    BOOL  __needsUpdateImage;
+    BOOL  __needsUpdateImageView;
     struct CGSize { 
         float width; 
         float height; 
-    } __targetSize;
-    BOOL _animatesImageAppearance;
-    <PUDisplayAsset> *_asset;
-    PUAssetViewModel *_assetViewModel;
-    UIImage *_image;
-    PUMediaProvider *_mediaProvider;
-    UIColor *_placeholderColor;
-    BOOL _shouldUseFullsizeJPEG;
+    }  __targetSize;
+    BOOL  _animatesImageAppearance;
+    <PUDisplayAsset> * _asset;
+    PUAssetViewModel * _assetViewModel;
+    UIImage * _image;
+    PUMediaProvider * _mediaProvider;
+    UIColor * _placeholderColor;
+    BOOL  _shouldUseFullsizeJPEG;
 }
 
 @property (setter=_setAssetLoadingStage:, nonatomic) int _assetLoadingStage;

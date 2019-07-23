@@ -2,8 +2,8 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIKeyboardEmojiSplit : UIKBKeyView <UITableViewDataSource, UITableViewDelegate> {
-    UITableView *_picker;
+@interface UIKeyboardEmojiSplit : UIKeyboardEmojiKeyView <UITableViewDataSource, UITableViewDelegate> {
+    UITableView * _picker;
 }
 
 @property (readonly, copy) NSString *debugDescription;

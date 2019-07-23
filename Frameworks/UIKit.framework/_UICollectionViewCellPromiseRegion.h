@@ -2,9 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UICollectionViewCellPromiseRegion : NSObject <_UIFocusRegion> {
-    UICollectionView *_collectionView;
-    UICollectionViewLayoutAttributes *_layoutAttributes;
+@interface _UICollectionViewCellPromiseRegion : NSObject <_UIFocusPromiseRegionDelegate, _UIFocusRegionContainer, _UILegacyFocusRegion> {
+    UICollectionView * _collectionView;
+    UICollectionViewLayoutAttributes * _layoutAttributes;
 }
 
 @property (nonatomic) UICollectionView *collectionView;
@@ -24,9 +24,12 @@
 - (BOOL)_focusRegionIsEligibleForFocus;
 - (id)_focusRegionItem;
 - (id)_focusRegionView;
+- (id)_fulfillFocusPromiseRegion:(id)arg1;
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (id)collectionView;
 - (id)description;
 - (id)layoutAttributes;

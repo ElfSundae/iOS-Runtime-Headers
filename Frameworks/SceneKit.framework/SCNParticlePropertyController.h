@@ -3,13 +3,13 @@
  */
 
 @interface SCNParticlePropertyController : NSObject <NSCopying, NSSecureCoding> {
-    CAAnimation *_animation;
-    id _c3dAnimation;
-    float _inputBias;
-    int _inputMode;
-    SCNNode *_inputOrigin;
-    NSString *_inputProperty;
-    float _inputScale;
+    CAAnimation * _animation;
+    id  _c3dAnimation;
+    float  _inputBias;
+    int  _inputMode;
+    SCNNode * _inputOrigin;
+    NSString * _inputProperty;
+    float  _inputScale;
 }
 
 @property (nonatomic, retain) CAAnimation *animation;

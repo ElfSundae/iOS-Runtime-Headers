@@ -3,7 +3,7 @@
  */
 
 @interface _MKCalloutAccessoryWrapperView : UIView <_MKCalloutAccessoryView> {
-    UIView<_MKCalloutAccessoryView> *_view;
+    UIView<_MKCalloutAccessoryView> * _view;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,10 +3,10 @@
  */
 
 @interface BRCServerPersistedState : NSObject <NSCopying, NSSecureCoding, PQLBindable> {
-    NSDate *_lastSyncDownDate;
-    long long _nextRank;
-    NSMutableDictionary *_pendingMigrations;
-    BRCServerChangeState *_sharedDatabaseChangeState;
+    NSDate * _lastSyncDownDate;
+    long long  _nextRank;
+    NSMutableDictionary * _pendingMigrations;
+    BRCServerChangeState * _sharedDatabaseChangeState;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,21 +3,21 @@
  */
 
 @interface GKTurnGameCell : GKBaseGameCell {
-    GKLabel *_activeMatchesLabel;
-    NSLayoutConstraint *_iconLeadingConstraint;
+    GKLabel * _activeMatchesLabel;
+    NSLayoutConstraint * _iconLeadingConstraint;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _insets;
-    GKLabel *_localPlayerTurnsLabel;
-    unsigned int _numberOfActiveMatches;
-    unsigned int _numberOfLocalPlayerTurns;
-    NSLayoutConstraint *_statusImageTrailingConstraint;
-    UIImageView *_statusImageView;
-    NSLayoutConstraint *_textContainerTrailingConstraint;
-    GKContiguousContainerView *_textContainerView;
+    }  _insets;
+    GKLabel * _localPlayerTurnsLabel;
+    unsigned int  _numberOfActiveMatches;
+    unsigned int  _numberOfLocalPlayerTurns;
+    NSLayoutConstraint * _statusImageTrailingConstraint;
+    UIImageView * _statusImageView;
+    NSLayoutConstraint * _textContainerTrailingConstraint;
+    GKContiguousContainerView * _textContainerView;
 }
 
 @property (nonatomic, retain) GKLabel *activeMatchesLabel;

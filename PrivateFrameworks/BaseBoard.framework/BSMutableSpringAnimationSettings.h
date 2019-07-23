@@ -10,6 +10,7 @@
 @property (nonatomic) double frameInterval;
 @property (nonatomic) float initialVelocity;
 @property (nonatomic) float mass;
+@property (nonatomic) float speed;
 @property (nonatomic) float stiffness;
 @property (nonatomic, retain) CAMediaTimingFunction *timingFunction;
 
@@ -20,6 +21,7 @@
 - (void)setFrameInterval:(double)arg1;
 - (void)setInitialVelocity:(float)arg1;
 - (void)setMass:(float)arg1;
+- (void)setSpeed:(float)arg1;
 - (void)setStiffness:(float)arg1;
 - (void)setTimingFunction:(id)arg1;
 

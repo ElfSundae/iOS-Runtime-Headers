@@ -27,7 +27,7 @@
                 float __first_; 
             } __p3_; 
         } __table_; 
-    } _piecesConsidered;
+    }  _piecesConsidered;
 }
 
 - (id).cxx_construct;

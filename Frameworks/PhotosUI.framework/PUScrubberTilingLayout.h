@@ -8,38 +8,38 @@
         float left; 
         float bottom; 
         float right; 
-    } _contentPadding;
-    float _currentItemFocusProgress;
-    NSIndexPath *_currentItemIndexPath;
-    float _currentItemTransitionProgress;
-    <PUScrubberTilingLayoutDelegate> *_delegate;
+    }  _contentPadding;
+    float  _currentItemFocusProgress;
+    NSIndexPath * _currentItemIndexPath;
+    float  _currentItemTransitionProgress;
+    <PUScrubberTilingLayoutDelegate> * _delegate;
     struct { 
         BOOL respondsToAspectRatioForItemAtIndexPath; 
         BOOL respondsToExpandedWidthForItemAtIndexPath; 
-    } _delegateFlags;
-    NSIndexPath *_expandedItemIndexPath;
-    float _expandedItemPlayheadProgress;
-    float _expandedItemWidth;
+    }  _delegateFlags;
+    NSIndexPath * _expandedItemIndexPath;
+    float  _expandedItemPlayheadProgress;
+    float  _expandedItemWidth;
     struct CGSize { 
         float width; 
         float height; 
-    } _interItemSpacing;
-    NSMutableDictionary *_layoutInfosByIndexPathByTileKind;
-    float _loupeAmount;
-    NSIndexPath *_loupeIndexPath;
-    NSIndexPath *_loupeNeighborIndexPath;
-    float _loupeTransitionProgress;
-    float _loupeWidth;
-    float _maxAspectRatio;
-    BOOL _onlyShowExpandedItem;
-    NSIndexPath *_overrideLoupeIndexPath;
-    float _playheadVerticalOverhang;
-    float _slitAspectRatio;
+    }  _interItemSpacing;
+    NSMutableDictionary * _layoutInfosByIndexPathByTileKind;
+    float  _loupeAmount;
+    NSIndexPath * _loupeIndexPath;
+    NSIndexPath * _loupeNeighborIndexPath;
+    float  _loupeTransitionProgress;
+    float  _loupeWidth;
+    float  _maxAspectRatio;
+    BOOL  _onlyShowExpandedItem;
+    NSIndexPath * _overrideLoupeIndexPath;
+    float  _playheadVerticalOverhang;
+    float  _slitAspectRatio;
     struct CGSize { 
         float width; 
         float height; 
-    } _slitSize;
-    BOOL _snapToExpandedItem;
+    }  _slitSize;
+    BOOL  _snapToExpandedItem;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } contentPadding;

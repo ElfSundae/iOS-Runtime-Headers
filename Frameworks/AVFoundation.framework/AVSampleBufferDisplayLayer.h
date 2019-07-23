@@ -3,7 +3,7 @@
  */
 
 @interface AVSampleBufferDisplayLayer : CALayer <AVMediaDataRequesterConsumer, AVQueuedSampleBufferRendering, AVQueuedSampleBufferRenderingInternal> {
-    AVSampleBufferDisplayLayerInternal *_sampleBufferDisplayLayerInternal;
+    AVSampleBufferDisplayLayerInternal * _sampleBufferDisplayLayerInternal;
 }
 
 @property (retain) struct OpaqueCMTimebase { }*controlTimebase;

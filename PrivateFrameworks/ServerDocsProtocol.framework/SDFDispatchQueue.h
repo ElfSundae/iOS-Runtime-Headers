@@ -3,8 +3,8 @@
  */
 
 @interface SDFDispatchQueue : NSObject {
-    NSString *_label;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSString * _label;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (readonly, retain) NSObject<OS_dispatch_queue> *queue;

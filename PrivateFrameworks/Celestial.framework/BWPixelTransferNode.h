@@ -3,11 +3,11 @@
  */
 
 @interface BWPixelTransferNode : BWNode {
-    int _cropMode;
-    NSObject<OS_dispatch_semaphore> *_emitSampleBufferSemaphore;
-    BOOL _flipHorizontal;
-    BOOL _flipVertical;
-    BOOL _haveLiveInputCropRect;
+    int  _cropMode;
+    NSObject<OS_dispatch_semaphore> * _emitSampleBufferSemaphore;
+    BOOL  _flipHorizontal;
+    BOOL  _flipVertical;
+    BOOL  _haveLiveInputCropRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,15 +17,15 @@
             float width; 
             float height; 
         } size; 
-    } _inputCropRect;
-    BWPixelBufferPool *_intermediateBufferPool;
+    }  _inputCropRect;
+    BWPixelBufferPool * _intermediateBufferPool;
     struct { 
         int width; 
         int height; 
-    } _intermediatePoolDimensions;
-    int _liveCropMode;
-    BOOL _liveFlipHorizontal;
-    BOOL _liveFlipVertical;
+    }  _intermediatePoolDimensions;
+    int  _liveCropMode;
+    BOOL  _liveFlipHorizontal;
+    BOOL  _liveFlipVertical;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -35,26 +35,30 @@
             float width; 
             float height; 
         } size; 
-    } _liveInputCropRect;
-    BOOL _liveLowSpeed;
-    BOOL _livePassesBuffersThroughWhenPossible;
-    int _liveRotationDegrees;
-    BOOL _liveZeroFillBuffers;
-    BOOL _lowSpeed;
-    BOOL _makeCurrentConfigurationLiveOnNextRenderCallback;
-    struct opaqueCMFormatDescription { } *_outputFormatDescription;
-    unsigned long _outputHeight;
-    unsigned long _outputPixelFormat;
-    unsigned long _outputWidth;
-    BOOL _passesBuffersThroughWhenPossible;
-    int _rotationDegrees;
-    struct OpaqueVTImageRotationSession { } *_rotationSession;
-    BOOL _rotationSessionFlipHorizontal;
-    BOOL _rotationSessionFlipVertical;
-    BOOL _rotationSessionLowSpeed;
-    int _rotationSessionRotationDegrees;
-    BOOL _rotationSessionZeroFillBuffers;
-    struct OpaqueVTPixelTransferSession { } *_transferSession;
+    }  _liveInputCropRect;
+    BOOL  _liveLowSpeed;
+    BOOL  _livePassesBuffersThroughWhenPossible;
+    int  _liveRotationDegrees;
+    BOOL  _liveUpdatesSampleBufferMetadataForIrisVIS;
+    BOOL  _liveZeroFillBuffers;
+    BOOL  _lowSpeed;
+    BOOL  _makeCurrentConfigurationLiveOnNextRenderCallback;
+    int  _outputColorSpaceProperties;
+    struct opaqueCMFormatDescription { } * _outputFormatDescription;
+    unsigned long  _outputHeight;
+    unsigned long  _outputPixelFormat;
+    unsigned long  _outputWidth;
+    BOOL  _passesBuffersThroughWhenPossible;
+    int  _rotationDegrees;
+    struct OpaqueVTImageRotationSession { } * _rotationSession;
+    int  _rotationSessionColorSpaceProperties;
+    BOOL  _rotationSessionFlipHorizontal;
+    BOOL  _rotationSessionFlipVertical;
+    BOOL  _rotationSessionLowSpeed;
+    int  _rotationSessionRotationDegrees;
+    BOOL  _rotationSessionZeroFillBuffers;
+    struct OpaqueVTPixelTransferSession { } * _transferSession;
+    BOOL  _updatesSampleBufferMetadataForIrisVIS;
 }
 
 + (void)initialize;
@@ -84,6 +88,7 @@
 - (void)makeCurrentConfigurationLive;
 - (id)nodeSubType;
 - (id)nodeType;
+- (int)outputColorSpaceProperties;
 - (unsigned long)outputHeight;
 - (unsigned long)outputPixelFormat;
 - (unsigned long)outputWidth;
@@ -97,10 +102,13 @@
 - (void)setFlipVertical:(BOOL)arg1;
 - (void)setInputCropRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setLowSpeed:(BOOL)arg1;
+- (void)setOutputColorSpaceProperties:(int)arg1;
 - (void)setOutputHeight:(unsigned long)arg1;
 - (void)setOutputPixelFormat:(unsigned long)arg1;
 - (void)setOutputWidth:(unsigned long)arg1;
 - (void)setPassesBuffersThroughWhenPossible:(BOOL)arg1;
 - (void)setRotationDegrees:(int)arg1;
+- (void)setUpdatesSampleBufferMetadataForIrisVIS:(BOOL)arg1;
+- (BOOL)updatesSampleBufferMetadataForIrisVIS;
 
 @end

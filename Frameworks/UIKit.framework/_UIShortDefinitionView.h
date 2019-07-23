@@ -3,8 +3,8 @@
  */
 
 @interface _UIShortDefinitionView : UIView {
-    UITextView *_definitionTextView;
-    _UIDefinitionValue *_definitionValue;
+    UITextView * _definitionTextView;
+    _UIDefinitionValue * _definitionValue;
 }
 
 @property (nonatomic, retain) _UIDefinitionValue *definitionValue;

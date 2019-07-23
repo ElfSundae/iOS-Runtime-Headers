@@ -12,17 +12,17 @@
             float width; 
             float height; 
         } size; 
-    } _contentBounds;
+    }  _contentBounds;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
+    }  _contentSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _itemSize;
-    NSCache *_layoutInfoCache;
-    int _numberOfItems;
+    }  _itemSize;
+    NSCache * _layoutInfoCache;
+    int  _numberOfItems;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } contentSize;

@@ -3,7 +3,7 @@
  */
 
 @interface CDDServerResponder : NSObject {
-    CDDebug *_debug;
+    CDDebug * _debug;
 }
 
 @property (readonly) CDDebug *debug;
@@ -12,7 +12,6 @@
 - (id)debug;
 - (id)init;
 - (id)makeStashWithId:(unsigned long long)arg1;
-- (id)messageWithError:(id*)arg1;
 - (BOOL)respondIndicatingProtocolErrorOnConnection:(id)arg1 usingMessage:(id)arg2 withSequenceNumber:(unsigned long long)arg3 protocolErrorNumber:(int)arg4 error:(id*)arg5;
 - (BOOL)respondToAdmissionCheckAndStartedOnConnection:(id)arg1 usingMessage:(id)arg2 withSequenceNumber:(unsigned long long)arg3 admissionGranted:(BOOL)arg4 grantValiditySeconds:(unsigned long long)arg5 admissionCondition:(unsigned long long)arg6 error:(id*)arg7;
 - (BOOL)respondToAdmissionCheckOnConnection:(id)arg1 usingMessage:(id)arg2 withSequenceNumber:(unsigned long long)arg3 admissionGranted:(BOOL)arg4 grantValiditySeconds:(unsigned long long)arg5 admissionCondition:(unsigned long long)arg6 error:(id*)arg7;

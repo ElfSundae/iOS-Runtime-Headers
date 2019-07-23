@@ -3,10 +3,10 @@
  */
 
 @interface PSEditingPane : UIView {
-    id _delegate;
-    unsigned int _requiresKeyboard;
-    PSSpecifier *_specifier;
-    UIViewController *_viewController;
+    id  _delegate;
+    unsigned int  _requiresKeyboard;
+    PSSpecifier * _specifier;
+    UIViewController * _viewController;
 }
 
 @property (nonatomic) UIViewController *viewController;

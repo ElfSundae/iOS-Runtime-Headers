@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } m_canvas;
+    }  m_canvas;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -20,7 +20,7 @@
         float d; 
         float tx; 
         float ty; 
-    } m_canvasTransform;
+    }  m_canvasTransform;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -28,7 +28,7 @@
         float d; 
         float tx; 
         float ty; 
-    } m_combinedTransform;
+    }  m_combinedTransform;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -38,7 +38,7 @@
             float width; 
             float height; 
         } size; 
-    } m_viewBox;
+    }  m_viewBox;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -46,7 +46,7 @@
         float d; 
         float tx; 
         float ty; 
-    } m_viewBoxTransform;
+    }  m_viewBoxTransform;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -54,7 +54,7 @@
         float d; 
         float tx; 
         float ty; 
-    } m_worldToDeviceTransform;
+    }  m_worldToDeviceTransform;
 }
 
 + (int)getROP:(id)arg1;

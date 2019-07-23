@@ -3,8 +3,8 @@
  */
 
 @interface MusicMatchLoadingView : UIView {
-    UIProgressView *_progressView;
-    UILabel *_titleLabel;
+    UIProgressView * _progressView;
+    UILabel * _titleLabel;
 }
 
 @property (nonatomic, readonly) UIProgressView *progressView;

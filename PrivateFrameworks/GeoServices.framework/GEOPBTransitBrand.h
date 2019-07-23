@@ -3,14 +3,14 @@
  */
 
 @interface GEOPBTransitBrand : PBCodable <NSCopying> {
-    unsigned int _brandIndex;
+    unsigned int  _brandIndex;
     struct { 
         unsigned int muid : 1; 
         unsigned int brandIndex : 1; 
-    } _has;
-    unsigned long long _muid;
-    NSString *_nameDisplayString;
-    GEOStyleAttributes *_styleAttributes;
+    }  _has;
+    unsigned long long  _muid;
+    NSString * _nameDisplayString;
+    GEOStyleAttributes * _styleAttributes;
 }
 
 @property (nonatomic) unsigned int brandIndex;

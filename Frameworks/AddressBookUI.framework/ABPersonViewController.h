@@ -3,16 +3,16 @@
  */
 
 @interface ABPersonViewController : UIViewController <AFContextProvider, UIViewControllerRestoration> {
-    ABPersonTableViewActionsDelegate *_actionsDelegate;
-    BOOL _allowsContactBlocking;
-    ABContactViewController *_contactViewController;
-    ABPersonTableViewDataSource *_dataSource;
-    NSTimer *_editAnimationTimer;
-    id _helper;
-    id _internal;
-    BOOL _internal2;
-    <ABPersonViewControllerDelegate> *_personViewDelegate;
-    ABPersonTableViewSharingDelegate *_sharingDelegate;
+    ABPersonTableViewActionsDelegate * _actionsDelegate;
+    BOOL  _allowsContactBlocking;
+    ABContactViewController * _contactViewController;
+    ABPersonTableViewDataSource * _dataSource;
+    NSTimer * _editAnimationTimer;
+    id  _helper;
+    id  _internal;
+    BOOL  _internal2;
+    <ABPersonViewControllerDelegate> * _personViewDelegate;
+    ABPersonTableViewSharingDelegate * _sharingDelegate;
 }
 
 @property (nonatomic, readonly) ABPersonTableViewActionsDelegate *actionsDelegate;

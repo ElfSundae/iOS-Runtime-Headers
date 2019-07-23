@@ -3,16 +3,16 @@
  */
 
 @interface WKAirPlayRoutePicker : UIView <UIPopoverControllerDelegate> {
-    struct RetainPtr<MPAudioVideoRoutingActionSheet> { 
+    struct RetainPtr<MPAVRoutingSheet> { 
         void *m_ptr; 
-    } _actionSheet;
+    }  _actionSheet;
     struct RetainPtr<MPAudioVideoRoutingPopoverController> { 
         void *m_ptr; 
-    } _popoverController;
+    }  _popoverController;
     struct RetainPtr<MPAVRoutingController> { 
         void *m_ptr; 
-    } _routingController;
-    WKContentView *_view;
+    }  _routingController;
+    WKContentView * _view;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,7 +30,7 @@
 - (id)initWithView:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)show:(BOOL)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
-- (void)showAirPlayPickerIPad:(unsigned int)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
-- (void)showAirPlayPickerIPhone:(unsigned int)arg1;
+- (void)showAirPlayPickerIPad:(int)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
+- (void)showAirPlayPickerIPhone:(int)arg1;
 
 @end

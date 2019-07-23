@@ -3,24 +3,28 @@
  */
 
 @interface CAMIrisButton : UIButton {
-    UIImage *__baseImage;
-    NSArray *__enablingAnimationImages;
-    int _irisMode;
+    UIImage * __baseImage;
+    NSArray * __enablingAnimationImages;
+    UIImageView * __padBackgroundView;
+    int  _irisMode;
+    int  _layoutStyle;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _tappableEdgeInsets;
+    }  _tappableEdgeInsets;
 }
 
 @property (nonatomic, readonly) UIImage *_baseImage;
 @property (setter=_setEnablingAnimationImages:, nonatomic, copy) NSArray *_enablingAnimationImages;
+@property (nonatomic, readonly) UIImageView *_padBackgroundView;
 @property (nonatomic) int irisMode;
+@property (nonatomic) int layoutStyle;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } tappableEdgeInsets;
 
 + (double)enablingAnimationDuration;
-+ (id)irisButton;
++ (id)irisButtonWithLayoutStyle:(int)arg1;
 
 - (void).cxx_destruct;
 - (id)_actuallyLoadEnablingAnimationImagesForScale:(float)arg1;
@@ -28,8 +32,10 @@
 - (void)_commonCAMIrisButtonConfiguration;
 - (id)_enablingAnimationImages;
 - (void)_ensureEnablingAnimationImages;
+- (id)_padBackgroundView;
 - (void)_setEnablingAnimationImages:(id)arg1;
 - (BOOL)_shouldLoadEnablingAnimationImages;
+- (void)_updateForLayoutStyle;
 - (void)_updateTintColorForMode:(int)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })alignmentRectInsets;
 - (id)initWithCoder:(id)arg1;
@@ -37,9 +43,12 @@
 - (void)interruptEnablingAnimation;
 - (struct CGSize { float x1; float x2; })intrinsicContentSize;
 - (int)irisMode;
+- (int)layoutStyle;
+- (void)layoutSubviews;
 - (void)performEnablingAnimation;
 - (void)preloadEnablingAnimation;
 - (void)setIrisMode:(int)arg1;
+- (void)setLayoutStyle:(int)arg1;
 - (void)setTappableEdgeInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })tappableEdgeInsets;
 

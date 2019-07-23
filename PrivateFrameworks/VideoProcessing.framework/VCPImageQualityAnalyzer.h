@@ -3,7 +3,7 @@
  */
 
 @interface VCPImageQualityAnalyzer : VCPImageAnalyzer {
-    float _qualityScore;
+    float  _qualityScore;
 }
 
 @property (readonly) float qualityScore;

@@ -3,31 +3,31 @@
  */
 
 @interface AVPlaybackControlsViewController : UIViewController {
-    id _AVSystemControllerCurrentRouteHasVolumeControlDidChangeObserver;
-    BOOL _gotoEndOfSeekableRangesButtonEnabled;
-    AVPlayerControllerTimeResolver *_intervalTimeResolver;
-    NSDictionary *_metadata;
-    BOOL _pictureInPictureButtonEnabled;
-    BOOL _playPauseButtonEnabled;
-    AVPlayerController *_playerController;
-    AVPlayerViewController *_playerViewController;
-    BOOL _playing;
-    AVPlayerControllerTimeResolver *_resolutionTimeResolver;
-    int _scaleButtonType;
-    BOOL _scanBackwardButtonEnabled;
-    BOOL _scanForwardButtonEnabled;
-    BOOL _scrubberEnabled;
-    NSArray *_scrubberLoadedTimeRanges;
-    float _scrubberWidth;
-    BOOL _showsDoneButton;
-    BOOL _showsExitFullScreenButton;
-    BOOL _showsLoadingIndicator;
-    BOOL _showsMediaSelectionButton;
-    BOOL _showsPictureInPictureButton;
-    BOOL _showsScaleButton;
-    BOOL _showsStreamingControls;
-    BOOL _showsVolumeSlider;
-    BOOL _skipBackwardThirtySecondsButtonEnabled;
+    id  _AVSystemControllerCurrentRouteHasVolumeControlDidChangeObserver;
+    BOOL  _gotoEndOfSeekableRangesButtonEnabled;
+    AVPlayerControllerTimeResolver * _intervalTimeResolver;
+    NSDictionary * _metadata;
+    BOOL  _pictureInPictureButtonEnabled;
+    BOOL  _playPauseButtonEnabled;
+    AVPlayerController * _playerController;
+    AVPlayerViewController * _playerViewController;
+    BOOL  _playing;
+    AVPlayerControllerTimeResolver * _resolutionTimeResolver;
+    int  _scaleButtonType;
+    BOOL  _scanBackwardButtonEnabled;
+    BOOL  _scanForwardButtonEnabled;
+    BOOL  _scrubberEnabled;
+    NSArray * _scrubberLoadedTimeRanges;
+    float  _scrubberWidth;
+    BOOL  _showsDoneButton;
+    BOOL  _showsExitFullScreenButton;
+    BOOL  _showsLoadingIndicator;
+    BOOL  _showsMediaSelectionButton;
+    BOOL  _showsPictureInPictureButton;
+    BOOL  _showsScaleButton;
+    BOOL  _showsStreamingControls;
+    BOOL  _showsVolumeSlider;
+    BOOL  _skipBackwardThirtySecondsButtonEnabled;
 }
 
 @property (getter=isGotoEndOfSeekableRangesButtonEnabled, nonatomic) BOOL gotoEndOfSeekableRangesButtonEnabled;

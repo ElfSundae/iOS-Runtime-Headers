@@ -3,16 +3,16 @@
  */
 
 @interface HDCodableAuthorization : PBCodable <NSCopying> {
-    long long _authorizationRequest;
-    long long _authorizationStatus;
+    long long  _authorizationRequest;
+    long long  _authorizationStatus;
     struct { 
         unsigned int authorizationRequest : 1; 
         unsigned int authorizationStatus : 1; 
         unsigned int modificationDate : 1; 
         unsigned int objectType : 1; 
-    } _has;
-    double _modificationDate;
-    long long _objectType;
+    }  _has;
+    double  _modificationDate;
+    long long  _objectType;
 }
 
 @property (nonatomic) long long authorizationRequest;

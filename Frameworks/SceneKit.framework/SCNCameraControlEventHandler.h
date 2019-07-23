@@ -3,71 +3,71 @@
  */
 
 @interface SCNCameraControlEventHandler : SCNEventHandler {
-    unsigned int _allowsTranslation;
-    unsigned int _alternateMode;
+    unsigned int  _allowsTranslation;
+    unsigned int  _alternateMode;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _autoCameraTarget;
-    unsigned int _automaticCameraTargetUpToDate;
-    int _browseMode;
-    float _browseScaleFactor;
+    }  _autoCameraTarget;
+    unsigned int  _automaticCameraTargetUpToDate;
+    int  _browseMode;
+    float  _browseScaleFactor;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _cameraTarget;
-    void_clickOrigin;
-    unsigned int _didEverFocusNode;
-    SCNNode *_freeViewCameraNode;
-    float _friction;
-    unsigned int _gimbalLockMode;
-    unsigned int _hasAutomaticCameraTarget;
-    unsigned int _inertia;
-    unsigned int _inertiaRunning;
+    }  _cameraTarget;
+    void _clickOrigin;
+    unsigned int  _didEverFocusNode;
+    SCNNode * _freeViewCameraNode;
+    float  _friction;
+    unsigned int  _gimbalLockMode;
+    unsigned int  _hasAutomaticCameraTarget;
+    unsigned int  _inertia;
+    unsigned int  _inertiaRunning;
     struct CGPoint { 
         float x; 
         float y; 
-    } _inertiaVelocity;
+    }  _inertiaVelocity;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _initialMatrix;
+    }  _initialMatrix;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _initialMatrixForRoll;
+    }  _initialMatrixForRoll;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialPoint;
-    float _initialZoom;
-    BOOL _isDraggingWithOneFinger;
-    unsigned int _isViewedObjectSphereComputed;
-    int _lastGestureFingerCount;
-    double _lastSimulationTime;
-    float _originalFovX;
-    float _originalFovY;
-    float _originalOrthoScale;
-    UIGestureRecognizer *_panGesture;
-    UIGestureRecognizer *_pinchGesture;
-    unsigned int _pinchShouldMoveCamera;
-    UIGestureRecognizer *_pressGesture;
-    float _roll;
-    UIGestureRecognizer *_rotateGesture;
-    int _stickyAxis;
-    UIGestureRecognizer *_tapGesture;
+    }  _initialPoint;
+    float  _initialZoom;
+    BOOL  _isDraggingWithOneFinger;
+    unsigned int  _isViewedObjectSphereComputed;
+    int  _lastGestureFingerCount;
+    double  _lastSimulationTime;
+    float  _originalFovX;
+    float  _originalFovY;
+    float  _originalOrthoScale;
+    UIGestureRecognizer * _panGesture;
+    UIGestureRecognizer * _pinchGesture;
+    unsigned int  _pinchShouldMoveCamera;
+    UIGestureRecognizer * _pressGesture;
+    float  _roll;
+    UIGestureRecognizer * _rotateGesture;
+    int  _stickyAxis;
+    UIGestureRecognizer * _tapGesture;
     struct CGPoint { 
         float x; 
         float y; 
-    } _totalDragWithInertia;
-    void_upDir;
-    unsigned int _upDirIsSet;
+    }  _totalDragWithInertia;
+    void _upDir;
+    unsigned int  _upDirIsSet;
     struct C3DSphere { 
         /* Warning: Unrecognized filer type: '}' using 'void*' */ void*vector; 
-    } _viewedObjectSphere;
-    float _zoomFactor;
+    }  _viewedObjectSphere;
+    float  _zoomFactor;
 }
 
 @property BOOL allowsTranslation;
@@ -101,6 +101,7 @@
 - (void)_switchToFreeViewCamera;
 - (void)_translateTo:(struct CGPoint { float x1; float x2; })arg1;
 - (float)_translationCoef;
+- (void)activateFreeCamera;
 - (BOOL)allowsTranslation;
 - (BOOL)automaticCameraTarget;
 - (void)beginGesture:(id)arg1;
@@ -115,6 +116,7 @@
 - (BOOL)enableInertia;
 - (void)endDraggingWithVelocity:(struct CGPoint { float x1; float x2; })arg1;
 - (void)focusNode:(id)arg1;
+- (id)freeCamera;
 - (float)friction;
 - (void)frontVector;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -134,6 +136,7 @@
 - (void)setAllowsTranslation:(BOOL)arg1;
 - (void)setAutomaticCameraTarget:(BOOL)arg1;
 - (void)setCameraTarget:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
+- (void)setEnableFreeCamera:(BOOL)arg1;
 - (void)setEnableInertia:(BOOL)arg1;
 - (void)setFriction:(float)arg1;
 - (void)setGimbalLockMode:(BOOL)arg1;

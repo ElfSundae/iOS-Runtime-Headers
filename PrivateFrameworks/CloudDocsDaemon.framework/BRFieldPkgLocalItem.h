@@ -3,22 +3,25 @@
  */
 
 @interface BRFieldPkgLocalItem : PBCodable <NSCopying> {
-    long long _fileID;
-    unsigned int _generationID;
+    long long  _fileID;
+    unsigned int  _generationID;
     struct { 
         unsigned int size : 1; 
         unsigned int generationID : 1; 
-    } _has;
-    BRFieldPkgItem *_item;
-    long long _size;
+    }  _has;
+    BRFieldPkgItem * _item;
+    long long  _size;
+    NSData * _xattrs;
 }
 
 @property (nonatomic) long long fileID;
 @property (nonatomic) unsigned int generationID;
 @property (nonatomic) BOOL hasGenerationID;
 @property (nonatomic) BOOL hasSize;
+@property (nonatomic, readonly) BOOL hasXattrs;
 @property (nonatomic, retain) BRFieldPkgItem *item;
 @property (nonatomic) long long size;
+@property (nonatomic, retain) NSData *xattrs;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -29,6 +32,7 @@
 - (unsigned int)generationID;
 - (BOOL)hasGenerationID;
 - (BOOL)hasSize;
+- (BOOL)hasXattrs;
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)item;
@@ -40,7 +44,9 @@
 - (void)setHasSize:(BOOL)arg1;
 - (void)setItem:(id)arg1;
 - (void)setSize:(long long)arg1;
+- (void)setXattrs:(id)arg1;
 - (long long)size;
 - (void)writeTo:(id)arg1;
+- (id)xattrs;
 
 @end

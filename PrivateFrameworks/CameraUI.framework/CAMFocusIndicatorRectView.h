@@ -3,7 +3,7 @@
  */
 
 @interface CAMFocusIndicatorRectView : UIImageView {
-    int _size;
+    int  _size;
 }
 
 @property (getter=isPulsing, nonatomic, readonly) BOOL pulsing;

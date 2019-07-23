@@ -3,12 +3,12 @@
  */
 
 @interface UIStatusBarWindow : UIWindow {
-    UIStatusBarCorners *_bottomCorners;
-    BOOL _cornersHidden;
-    int _orientation;
-    UIStatusBar *_statusBar;
-    UIStatusBarCorners *_topCorners;
-    float _topCornersOffset;
+    UIStatusBarCorners * _bottomCorners;
+    BOOL  _cornersHidden;
+    int  _orientation;
+    UIStatusBar * _statusBar;
+    UIStatusBarCorners * _topCorners;
+    float  _topCornersOffset;
 }
 
 + (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_convertRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 fromSceneReferenceSpaceToSceneSpaceWithOrientation:(int)arg2;

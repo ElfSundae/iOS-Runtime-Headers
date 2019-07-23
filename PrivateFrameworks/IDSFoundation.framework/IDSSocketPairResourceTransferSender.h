@@ -3,24 +3,24 @@
  */
 
 @interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage {
-    BOOL _compressPayload;
-    BOOL _compressed;
-    BOOL _done;
-    BOOL _expectsPeerResponse;
-    int _fileDescriptor;
-    unsigned int _maxChunkSize;
-    NSString *_messageUUID;
-    NSDictionary *_metadata;
-    unsigned long long _nextByte;
-    NSString *_peerResponseIdentifier;
-    NSDictionary *_resourceAttributes;
-    NSString *_resourcePath;
-    BOOL _resumeResourceTransfers;
-    BOOL _sentFirstMessage;
-    unsigned int _sequenceNumber;
-    unsigned short _streamID;
-    unsigned long long _totalBytes;
-    BOOL _wantsAppAck;
+    BOOL  _compressPayload;
+    BOOL  _compressed;
+    BOOL  _done;
+    BOOL  _expectsPeerResponse;
+    int  _fileDescriptor;
+    unsigned int  _maxChunkSize;
+    NSString * _messageUUID;
+    NSDictionary * _metadata;
+    unsigned long long  _nextByte;
+    NSString * _peerResponseIdentifier;
+    NSDictionary * _resourceAttributes;
+    NSString * _resourcePath;
+    BOOL  _resumeResourceTransfers;
+    BOOL  _sentFirstMessage;
+    unsigned int  _sequenceNumber;
+    unsigned short  _streamID;
+    unsigned long long  _totalBytes;
+    BOOL  _wantsAppAck;
 }
 
 @property (nonatomic, readonly) BOOL isDone;

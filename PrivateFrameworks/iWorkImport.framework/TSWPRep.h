@@ -3,51 +3,53 @@
  */
 
 @interface TSWPRep : TSDContainerRep {
-    TSWPSearchReference *_activeSearchReference;
-    BOOL _caretAnimationDisabled;
-    CALayer *_caretLayer;
-    CALayer *_dragAndDropCaretLayer;
+    TSWPSearchReference * _activeSearchReference;
+    BOOL  _caretAnimationDisabled;
+    BOOL  _caretCancelled;
+    CALayer * _caretLayer;
+    NSTimer * _caretTimer;
+    CALayer * _dragAndDropCaretLayer;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _dragRange;
-    TSWPSelection *_dropSelection;
-    BOOL _findIsShowing;
-    BOOL _hudStateDirty;
-    CALayer *_indentAnimationLayer;
-    BOOL _indentAnimationRunning;
-    int _indentDelta;
-    SEL _indentSelector;
-    id _indentTarget;
-    BOOL _invalidateHUDState;
-    BOOL _isEditing;
-    BOOL _isShowingCommentKnobs;
-    TSWPSelection *_lastSelection;
-    BOOL _markChanged;
-    CAShapeLayer *_markHighlightLayer;
-    unsigned long long _newSelectionFlags;
-    BOOL _repFieldsAreActive;
-    NSArray *_searchReferences;
-    CAShapeLayer *_secondaryHighlightLayer;
-    int _secondaryHighlightPathStyle;
+    }  _dragRange;
+    TSWPSelection * _dropSelection;
+    BOOL  _findIsShowing;
+    CALayer * _floatingCaretLayer;
+    BOOL  _hudStateDirty;
+    CALayer * _indentAnimationLayer;
+    BOOL  _indentAnimationRunning;
+    int  _indentDelta;
+    SEL  _indentSelector;
+    id  _indentTarget;
+    BOOL  _invalidateHUDState;
+    BOOL  _isShowingCommentKnobs;
+    TSWPSelection * _lastSelection;
+    BOOL  _markChanged;
+    CAShapeLayer * _markHighlightLayer;
+    unsigned long long  _newSelectionFlags;
+    BOOL  _repFieldsAreActive;
+    NSArray * _searchReferences;
+    CAShapeLayer * _secondaryHighlightLayer;
+    int  _secondaryHighlightPathStyle;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _secondaryHighlightRange;
-    BOOL _selectionChanged;
-    CAShapeLayer *_selectionHighlightLayer;
-    CAShapeLayer *_selectionLineLayers;
-    CAShapeLayer *_selectionParagraphBorderLayer;
-    CAShapeLayer *_smartFieldHighlightLayer;
-    BOOL _suppressCaret;
-    BOOL _suppressSelectionHighlight;
+    }  _secondaryHighlightRange;
+    BOOL  _selectionChanged;
+    CAShapeLayer * _selectionHighlightLayer;
+    CAShapeLayer * _selectionLineLayers;
+    CAShapeLayer * _selectionParagraphBorderLayer;
+    CAShapeLayer * _smartFieldHighlightLayer;
+    BOOL  _suppressCaret;
+    BOOL  _suppressSelectionHighlight;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _suppressedMisspellingRange;
-    TSWPEditingController *_textEditor;
-    CALayer *_textLayers;
-    BOOL _tornDown;
+    }  _suppressedMisspellingRange;
+    TSWPTextEditor * _textEditor;
+    CALayer * _textLayers;
+    BOOL  _tornDown;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -55,9 +57,9 @@
         float d; 
         float tx; 
         float ty; 
-    } _transformToConvertNaturalToScaledRoot;
-    BOOL _updatingHighlights;
-    BOOL _useKeyboardWhenEditing;
+    }  _transformToConvertNaturalToScaledRoot;
+    BOOL  _updatingHighlights;
+    BOOL  _useKeyboardWhenEditing;
 }
 
 @property (nonatomic, retain) TSWPSearchReference *activeSearchReference;
@@ -65,13 +67,15 @@
 @property (nonatomic) struct _NSRange { unsigned int x1; unsigned int x2; } dragRange;
 @property (nonatomic) TSWPSelection *dropSelection;
 @property (nonatomic) BOOL findIsShowing;
+@property (nonatomic, retain) CALayer *floatingCaretLayer;
 @property (nonatomic, readonly) BOOL isBeingEdited;
-@property (nonatomic, readonly) TSWPLayout *layout;
+@property (nonatomic, copy) TSWPSelection *lastSelection;
+@property (nonatomic, readonly) TSDLayout<TSWPLayoutTarget> *layout;
 @property (nonatomic, retain) NSArray *searchReferences;
 @property (nonatomic, readonly) TSWPSelection *selection;
 @property (nonatomic, readonly) TSWPStorage *storage;
 @property (getter=isSelectionHighlightSuppressed, nonatomic) BOOL suppressSelectionHighlight;
-@property (nonatomic, readonly) TSWPEditingController *textEditor;
+@property (nonatomic, readonly) TSWPTextEditor *textEditor;
 @property (nonatomic, readonly) BOOL textIsVertical;
 @property (nonatomic, readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } transformToConvertNaturalToScaledRoot;
 @property (nonatomic) BOOL useKeyboardWhenEditing;
@@ -87,7 +91,6 @@
 - (unsigned int)charIndexFromPoint:(struct CGPoint { float x1; float x2; })arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 isAtEndOfLine:(BOOL*)arg4 leadingEdge:(BOOL*)arg5;
 - (unsigned int)charIndexFromPoint:(struct CGPoint { float x1; float x2; })arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 isAtEndOfLine:(BOOL*)arg5 leadingEdge:(BOOL*)arg6;
 - (unsigned int)charIndexFromPoint:(struct CGPoint { float x1; float x2; })arg1 allowPastBreak:(BOOL)arg2 isAtEndOfLine:(BOOL*)arg3;
-- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })closestCaretRectForPoint:(struct CGPoint { float x1; float x2; })arg1 inSelection:(BOOL)arg2;
 - (id)closestColumnForPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)columnForCharIndex:(unsigned int)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })columnRectForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
@@ -101,6 +104,7 @@
 - (void)drawRubyInContext:(struct CGContext { }*)arg1 rubyFieldStart:(unsigned int)arg2 rubyGlyphRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg3;
 - (id)dropSelection;
 - (BOOL)findIsShowing;
+- (id)floatingCaretLayer;
 - (unsigned int)fontTraitsForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 includingLabel:(BOOL)arg2;
 - (id)footnoteMarkAttachmentAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)footnoteReferenceAttachmentAtPoint:(struct CGPoint { float x1; float x2; })arg1;
@@ -114,12 +118,16 @@
 - (BOOL)isPointInSelectedArea:(struct CGPoint { float x1; float x2; })arg1;
 - (BOOL)isSelectionHighlightSuppressed;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })labelRectForCharIndex:(unsigned int)arg1;
+- (id)lastSelection;
 - (Class)layerClass;
+- (id)layout;
 - (struct { struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_1_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_1_1_2; } x1; float x2; float x3; float x4; float x5; })lineMetricsAtCharIndex:(unsigned int)arg1;
 - (struct { struct CGRect { struct CGPoint { float x_1_2_1; float x_1_2_2; } x_1_1_1; struct CGSize { float x_2_2_1; float x_2_2_2; } x_1_1_2; } x1; float x2; float x3; float x4; float x5; })lineMetricsAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })naturalBoundsRectForHyperlinkField:(id)arg1;
+- (struct CGPath { }*)newPathForSelection:(id)arg1;
 - (BOOL)p_allowCaretForSelection:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_caretRectForSelection:(id)arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_closestCaretRectForPoint:(struct CGPoint { float x1; float x2; })arg1 inSelection:(BOOL)arg2 allowPastBreak:(BOOL)arg3;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_convertNaturalRectToRotated:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 repAngle:(float)arg2;
 - (void)p_drawTextInLayer:(id)arg1 context:(struct CGContext { }*)arg2 limitSelection:(id)arg3 rubyGlyphRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg4 renderMode:(int)arg5 suppressInvisibles:(BOOL)arg6;
 - (BOOL)p_hasEmptyList;
@@ -127,7 +135,6 @@
 - (id)p_hyperlinkAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_paragraphModeRectangleForColumn:(id)arg1 selection:(id)arg2;
 - (struct CGPoint { float x1; float x2; })p_pinPoint:(struct CGPoint { float x1; float x2; })arg1 toRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
-- (id)p_selectionPathIncludingInfo:(id)arg1 excludingInfo:(id)arg2;
 - (BOOL)p_shouldShowCommentsIncludingHighlights:(BOOL)arg1;
 - (void)p_teardown;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })p_topicDragRectForSelection:(id)arg1;
@@ -148,9 +155,12 @@
 - (void)setDragRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (void)setDropSelection:(id)arg1;
 - (void)setFindIsShowing:(BOOL)arg1;
+- (void)setFloatingCaretLayer:(id)arg1;
+- (void)setLastSelection:(id)arg1;
 - (void)setSearchReferences:(id)arg1;
 - (void)setSuppressSelectionHighlight:(BOOL)arg1;
 - (void)setUseKeyboardWhenEditing:(BOOL)arg1;
+- (BOOL)shouldLayoutTilingLayer:(id)arg1;
 - (id)siblings;
 - (id)smartFieldAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)storage;

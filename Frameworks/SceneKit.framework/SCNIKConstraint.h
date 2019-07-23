@@ -3,13 +3,13 @@
  */
 
 @interface SCNIKConstraint : SCNConstraint {
-    SCNNode *_chainRootNode;
+    SCNNode * _chainRootNode;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _ikTarget;
-    NSMutableDictionary *_jointsPerNode;
+    }  _ikTarget;
+    NSMutableDictionary * _jointsPerNode;
 }
 
 @property (nonatomic, readonly) SCNNode *chainRootNode;

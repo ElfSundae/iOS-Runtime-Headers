@@ -3,17 +3,17 @@
  */
 
 @interface PHVideoRequestOptions : NSObject {
-    int _contentMode;
-    int _deliveryMode;
-    BOOL _networkAccessAllowed;
-    id /* block */ _progressHandler;
-    BOOL _streamingAllowed;
+    int  _contentMode;
+    int  _deliveryMode;
+    BOOL  _networkAccessAllowed;
+    id /* block */  _progressHandler;
+    BOOL  _streamingAllowed;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
-    int _version;
-    BOOL _videoComplementAllowed;
+    }  _targetSize;
+    int  _version;
+    BOOL  _videoComplementAllowed;
 }
 
 @property (nonatomic) int contentMode;

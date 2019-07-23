@@ -3,34 +3,35 @@
  */
 
 @interface UIKeyboardCandidateGridCell : UICollectionViewCell {
-    NSString *_alternativeText;
-    UILabel *_alternativeTextLabel;
-    UILabel *_annotationLabel;
-    NSString *_annotationText;
-    unsigned int _candidateNumber;
-    UILabel *_candidateNumberLabel;
+    NSString * _alternativeText;
+    UILabel * _alternativeTextLabel;
+    UILabel * _annotationLabel;
+    NSString * _annotationText;
+    unsigned int  _candidateNumber;
+    UILabel * _candidateNumberLabel;
     struct CGSize { 
         float width; 
         float height; 
-    } _candidateNumberSize;
-    int _candidatesVisualStyle;
-    float _cellPadding;
-    BOOL _dummy;
-    unsigned int _edges;
-    BOOL _emphasizedAppearance;
-    float _minimumWidth;
-    float _rightPadding;
-    float _rowHeight;
-    BOOL _secondaryCandidateAppearance;
-    BOOL _shouldShowCandidateNumber;
+    }  _candidateNumberSize;
+    int  _candidatesVisualStyle;
+    float  _cellPadding;
+    BOOL  _dummy;
+    unsigned int  _edges;
+    BOOL  _emphasizedAppearance;
+    float  _minimumWidth;
+    BOOL  _needsUpdateLabels;
+    float  _rightPadding;
+    float  _rowHeight;
+    BOOL  _secondaryCandidateAppearance;
+    BOOL  _shouldShowCandidateNumber;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    NSString *_text;
-    int _textAlignment;
-    UILabel *_textLabel;
-    BOOL _usesGroupHeaderAppearance;
+    }  _size;
+    NSString * _text;
+    int  _textAlignment;
+    UILabel * _textLabel;
+    BOOL  _usesGroupHeaderAppearance;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -40,14 +41,14 @@
             float width; 
             float height; 
         } size; 
-    } _visibleBounds;
+    }  _visibleBounds;
     struct { 
         unsigned int idiom : 6; 
         unsigned int landscape : 1; 
         unsigned int split : 1; 
         unsigned int appearance : 8; 
         unsigned int rendering : 16; 
-    } _visualStyling;
+    }  _visualStyling;
 }
 
 @property (nonatomic, copy) NSString *alternativeText;
@@ -64,9 +65,11 @@
 @property (nonatomic) unsigned int edges;
 @property (nonatomic) BOOL emphasizedAppearance;
 @property (nonatomic) float minimumWidth;
+@property (nonatomic) BOOL needsUpdateLabels;
 @property (nonatomic) float rightPadding;
 @property (nonatomic) float rowHeight;
 @property (nonatomic) BOOL secondaryCandidateAppearance;
+@property (nonatomic, retain) id secureContents;
 @property (nonatomic) BOOL shouldShowCandidateNumber;
 @property (nonatomic) struct CGSize { float x1; float x2; } size;
 @property (nonatomic, copy) NSString *text;
@@ -102,11 +105,14 @@
 - (unsigned int)edges;
 - (BOOL)emphasizedAppearance;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)layoutSubviews;
 - (float)minimumWidth;
+- (BOOL)needsUpdateLabels;
 - (void)prepareForReuse;
 - (float)rightPadding;
 - (float)rowHeight;
 - (BOOL)secondaryCandidateAppearance;
+- (id)secureContents;
 - (void)setAlternativeText:(id)arg1;
 - (void)setAlternativeTextLabel:(id)arg1;
 - (void)setAnnotationLabel:(id)arg1;
@@ -121,9 +127,11 @@
 - (void)setEmphasizedAppearance:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setMinimumWidth:(float)arg1;
+- (void)setNeedsUpdateLabels:(BOOL)arg1;
 - (void)setRightPadding:(float)arg1;
 - (void)setRowHeight:(float)arg1;
 - (void)setSecondaryCandidateAppearance:(BOOL)arg1;
+- (void)setSecureContents:(id)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)setShouldShowCandidateNumber:(BOOL)arg1;
 - (void)setSize:(struct CGSize { float x1; float x2; })arg1;

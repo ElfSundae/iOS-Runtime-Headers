@@ -3,10 +3,10 @@
  */
 
 @interface CIKaleidoscope : CIFilter {
-    NSNumber *inputAngle;
-    CIVector *inputCenter;
-    NSNumber *inputCount;
-    CIImage *inputImage;
+    NSNumber * inputAngle;
+    CIVector * inputCenter;
+    NSNumber * inputCount;
+    CIImage * inputImage;
 }
 
 + (id)customAttributes;

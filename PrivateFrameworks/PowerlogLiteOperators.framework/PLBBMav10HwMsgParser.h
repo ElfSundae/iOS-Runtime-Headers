@@ -3,19 +3,19 @@
  */
 
 @interface PLBBMav10HwMsgParser : PLMav7BasebandHardwareMessage {
-    struct { unsigned int x1[5]; } *_appsNew;
-    struct { unsigned int x1; unsigned long long x2; } *_apps_sleepNew;
-    struct { unsigned int x1[12]; } *_mcpm_sleep_vetoNew;
-    struct { unsigned int x1; unsigned long long x2; } *_mpss_sleepNew;
-    struct { unsigned int x1[9]; } *_qdspNew;
-    struct { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; struct { unsigned int x_4_1_1[6]; } x4; } *_rf1x;
-    struct { unsigned int x1; unsigned int x2; unsigned int x3[3]; } *_rfGSM;
-    struct { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; struct { unsigned int x_4_1_1; unsigned int x_4_1_2; } x4; struct { unsigned int x_5_1_1; unsigned int x_5_1_2; } x5; } *_rfHDR;
-    struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned char x5[4]; unsigned int x6[2][16]; unsigned int x7[12]; unsigned int x8[1][4]; unsigned int x9[6]; unsigned int x10[6]; } *_rfLTE;
-    struct { unsigned short x1; unsigned int x2; unsigned int x3; unsigned char x4; unsigned short x5[4][6]; unsigned int x6[4][6]; } *_rfOOS;
-    struct { unsigned int x1; unsigned int x2; unsigned int x3[7]; unsigned int x4[3]; } *_rfTDS;
-    struct { unsigned char x1[4]; unsigned int x2; unsigned int x3; unsigned int x4[2][3]; unsigned int x5[2][4]; unsigned int x6[2]; unsigned int x7[4]; unsigned int x8[4]; unsigned int x9[12]; unsigned int x10; unsigned int x11; unsigned int x12; unsigned long long x13; } *_rfWCDMA;
-    struct { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned long long x4; } *_rpmNew;
+    struct { unsigned int x1[5]; } * _appsNew;
+    struct { unsigned int x1; unsigned long long x2; } * _apps_sleepNew;
+    struct { unsigned int x1[12]; } * _mcpm_sleep_vetoNew;
+    struct { unsigned int x1; unsigned long long x2; } * _mpss_sleepNew;
+    struct { unsigned int x1[9]; } * _qdspNew;
+    struct { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; struct { unsigned int x_4_1_1[6]; } x4; } * _rf1x;
+    struct { unsigned int x1; unsigned int x2; unsigned int x3[3]; } * _rfGSM;
+    struct { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1; unsigned int x_3_1_2; } x3; struct { unsigned int x_4_1_1; unsigned int x_4_1_2; } x4; struct { unsigned int x_5_1_1; unsigned int x_5_1_2; } x5; } * _rfHDR;
+    struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned char x5[4]; unsigned int x6[2][16]; unsigned int x7[12]; unsigned int x8[1][4]; unsigned int x9[6]; unsigned int x10[6]; } * _rfLTE;
+    struct { unsigned short x1; unsigned int x2; unsigned int x3; unsigned char x4; unsigned short x5[4][6]; unsigned int x6[4][6]; } * _rfOOS;
+    struct { unsigned int x1; unsigned int x2; unsigned int x3[7]; unsigned int x4[3]; } * _rfTDS;
+    struct { unsigned char x1[4]; unsigned int x2; unsigned int x3; unsigned int x4[2][3]; unsigned int x5[2][4]; unsigned int x6[2]; unsigned int x7[4]; unsigned int x8[4]; unsigned int x9[12]; unsigned int x10; unsigned int x11; unsigned int x12; unsigned long long x13; } * _rfWCDMA;
+    struct { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned long long x4; } * _rpmNew;
 }
 
 @property (nonatomic) struct { unsigned int x1[5]; }*appsNew;

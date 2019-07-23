@@ -3,8 +3,8 @@
  */
 
 @interface _UIButtonBarButton : UIControl {
-    BOOL _backButton;
-    _UIButtonBarButtonVisualProvider *_visualProvider;
+    BOOL  _backButton;
+    _UIButtonBarButtonVisualProvider * _visualProvider;
 }
 
 @property (getter=isBackButton, nonatomic, readonly) BOOL backButton;

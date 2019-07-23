@@ -3,15 +3,15 @@
  */
 
 @interface AXRemoteElement : NSObject {
-    id _accessibilityContainer;
-    NSMutableSet *_allChildren;
-    unsigned int _contextId;
-    BOOL _deniesDirectAppConnection;
-    unsigned int _machPort;
-    BOOL _onClientSide;
-    <AXRemoteElementChildrenDelegate> *_remoteChildrenDelegate;
-    int _remotePid;
-    NSString *_uuid;
+    id  _accessibilityContainer;
+    NSMutableSet * _allChildren;
+    unsigned int  _contextId;
+    BOOL  _deniesDirectAppConnection;
+    unsigned int  _machPort;
+    BOOL  _onClientSide;
+    <AXRemoteElementChildrenDelegate> * _remoteChildrenDelegate;
+    int  _remotePid;
+    NSString * _uuid;
 }
 
 @property (nonatomic) id accessibilityContainer;

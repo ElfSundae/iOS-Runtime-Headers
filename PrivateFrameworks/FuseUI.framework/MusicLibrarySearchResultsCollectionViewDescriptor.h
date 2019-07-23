@@ -3,9 +3,9 @@
  */
 
 @interface MusicLibrarySearchResultsCollectionViewDescriptor : MusicEntityCollectionViewDescriptor {
-    float _itemPadding;
-    BOOL _itemsFillRow;
-    unsigned int _numberOfItemsPerRow;
+    float  _itemPadding;
+    BOOL  _itemsFillRow;
+    unsigned int  _numberOfItemsPerRow;
 }
 
 @property (nonatomic) float itemPadding;

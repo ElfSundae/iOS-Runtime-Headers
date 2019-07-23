@@ -3,8 +3,8 @@
  */
 
 @interface UITableViewCellDeleteConfirmationControl_Legacy : UIControl {
-    UITableViewCellDeleteConfirmationGestureRecognizer *_deleteConfirmationGesture;
-    BOOL _visible;
+    UITableViewCellDeleteConfirmationGestureRecognizer * _deleteConfirmationGesture;
+    BOOL  _visible;
 }
 
 @property (getter=isVisible, nonatomic) BOOL visible;

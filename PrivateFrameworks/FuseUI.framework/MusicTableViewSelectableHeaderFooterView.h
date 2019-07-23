@@ -3,23 +3,23 @@
  */
 
 @interface MusicTableViewSelectableHeaderFooterView : UITableViewHeaderFooterView {
-    UIView *_bottomHairlineView;
-    int _highlightOrSelectionChangeTransactionsCount;
-    UIView *_highlightOverlayView;
-    BOOL _highlighted;
-    BOOL _lastHighlightOrSelectionChangeWasAnimated;
+    UIView * _bottomHairlineView;
+    int  _highlightOrSelectionChangeTransactionsCount;
+    UIView * _highlightOverlayView;
+    BOOL  _highlighted;
+    BOOL  _lastHighlightOrSelectionChangeWasAnimated;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _musicSeparatorInset;
-    BOOL _selected;
-    UIColor *_selectionTintColor;
-    UIColor *_separatorColor;
-    BOOL _showsBottomSeparator;
-    BOOL _showsTopSeparator;
-    UIView *_topHairlineView;
+    }  _musicSeparatorInset;
+    BOOL  _selected;
+    UIColor * _selectionTintColor;
+    UIColor * _separatorColor;
+    BOOL  _showsBottomSeparator;
+    BOOL  _showsTopSeparator;
+    UIView * _topHairlineView;
 }
 
 @property (getter=isHighlighted, nonatomic) BOOL highlighted;

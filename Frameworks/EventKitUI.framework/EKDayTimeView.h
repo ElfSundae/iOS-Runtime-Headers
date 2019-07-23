@@ -2,29 +2,29 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKDayTimeView : UIView <EKCurrentTimeMarkerViewUpdating> {
-    NSMutableArray *_contentViews;
-    <EKDayTimeViewDelegate> *_delegate;
-    float _designatorSize;
-    double _highlightedHour;
-    float _hourHeight;
-    float _hourHeightScale;
-    float _hourSize;
-    float _hoursToPad;
+@interface EKDayTimeView : EKUIVisualEffectView <EKCurrentTimeMarkerViewUpdating> {
+    NSMutableArray * _contentViews;
+    <EKDayTimeViewDelegate> * _delegate;
+    float  _designatorSize;
+    double  _highlightedHour;
+    float  _hourHeight;
+    float  _hourHeightScale;
+    float  _hourSize;
+    float  _hoursToPad;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _hoursToRender;
-    unsigned int _leftBorder;
-    int _orientation;
-    unsigned int _rightBorder;
-    BOOL _showsTimeMarker;
-    BOOL _showsTimeMarkerExtension;
-    UIColor *_timeColor;
-    EKCurrentTimeMarkerView *_timeMarker;
-    UIView *_timeMarkerExtension;
-    float _timeWidth;
-    BOOL _usesLightText;
+    }  _hoursToRender;
+    unsigned int  _leftBorder;
+    int  _orientation;
+    unsigned int  _rightBorder;
+    BOOL  _showsTimeMarker;
+    BOOL  _showsTimeMarkerExtension;
+    UIColor * _timeColor;
+    EKCurrentTimeMarkerView * _timeMarker;
+    UIView * _timeMarkerExtension;
+    float  _timeWidth;
+    BOOL  _usesLightText;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -47,21 +47,25 @@
 @property (nonatomic) BOOL usesLightText;
 
 + (id)_boldFontForOrientation:(int)arg1;
-+ (void)_calculateWidthForOrientation:(int)arg1;
++ (void)_calculateWidthForOrientation:(int)arg1 excludeCurrentTime:(BOOL)arg2;
 + (float)_dynamicFontSizeForOrientation:(int)arg1;
-+ (float)_hourWidthForOrientation:(int)arg1;
 + (void)_invalidateCachedValues;
 + (void)_invalidateWidth;
++ (id)_noonLocalizedString;
++ (float)_noonLocalizedWidthForOrientation:(int)arg1;
 + (id)_normalFontForOrientation:(int)arg1;
 + (void)_registerForInvalidation;
++ (float)_timeTextWidthForOrientation:(int)arg1;
 + (id)allDayLabelBoldFont;
 + (id)allDayLabelFont;
 + (float)defaultHeightForOrientation:(int)arg1;
 + (float)defaultHeightForOrientation:(int)arg1 withHourScale:(float)arg2;
 + (float)defaultHourScale;
 + (float)designatorSizeForOrientation:(int)arg1;
++ (float)heightOfHourTextForHour:(int)arg1 orientation:(int)arg2;
 + (float)hourHeightForOrientation:(int)arg1;
 + (float)hourSizeForOrientation:(int)arg1;
++ (float)hourWidthForOrientation:(int)arg1;
 + (void)setVerticalPadding:(float)arg1;
 + (float)timeInsetForOrientation:(int)arg1;
 + (float)timeVerticalInsetForOrientation:(int)arg1;
@@ -98,6 +102,7 @@
 - (void)setNeedsDisplay;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setOrientation:(int)arg1;
+- (void)setSemanticContentAttribute:(int)arg1;
 - (void)setShowsLeftBorder:(BOOL)arg1;
 - (void)setShowsRightBorder:(BOOL)arg1;
 - (void)setShowsTimeMarker:(BOOL)arg1;
@@ -109,6 +114,7 @@
 - (BOOL)showsTimeMarker;
 - (BOOL)showsTimeMarkerExtension;
 - (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
+- (void)subTintColorUpdatedToColor:(id)arg1;
 - (id)timeColor;
 - (id)timeMarker;
 - (void)tintColorDidChange;

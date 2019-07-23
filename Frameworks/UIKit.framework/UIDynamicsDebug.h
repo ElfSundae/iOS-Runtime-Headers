@@ -3,22 +3,22 @@
  */
 
 @interface UIDynamicsDebug : NSObject <GLKViewDelegate> {
-    UIDynamicAnimator *_animator;
-    EAGLContext *_ctx;
-    GLKView *_debugView;
-    GLKBaseEffect *_effect;
-    BOOL _enabled;
-    BOOL _showFields;
-    BOOL _showOutlineInterior;
-    BOOL _showPhysics;
-    unsigned int _vertexBuffer;
+    UIDynamicAnimator * _animator;
+    EAGLContext * _ctx;
+    GLKView * _debugView;
+    GLKBaseEffect * _effect;
+    BOOL  _enabled;
+    BOOL  _showFields;
+    BOOL  _showOutlineInterior;
+    BOOL  _showPhysics;
+    unsigned int  _vertexBuffer;
     struct { 
         struct { 
             float x; 
             float y; 
         } position; 
         /* Warning: Unrecognized filer type: '}' using 'void*' */ void*color; 
-    } _vertices;
+    }  _vertices;
 }
 
 @property (nonatomic) UIDynamicAnimator *animator;

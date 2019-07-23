@@ -3,12 +3,15 @@
  */
 
 @interface AVPlayerItemAccessLogEvent : NSObject <NSCopying> {
-    AVPlayerItemAccessLogEventInternal *_playerItemAccessLogEvent;
+    AVPlayerItemAccessLogEventInternal * _playerItemAccessLogEvent;
 }
 
 @property (nonatomic, readonly) NSString *URI;
+@property (nonatomic, readonly) double averageAudioBitrate;
+@property (nonatomic, readonly) double averageVideoBitrate;
 @property (nonatomic, readonly) int downloadOverdue;
 @property (nonatomic, readonly) double durationWatched;
+@property (nonatomic, readonly) double indicatedAverageBitrate;
 @property (nonatomic, readonly) double indicatedBitrate;
 @property (nonatomic, readonly) int mediaRequestsWWAN;
 @property (nonatomic, readonly) long long numberOfBytesTransferred;
@@ -32,6 +35,9 @@
 @property (nonatomic, readonly) double transferDuration;
 
 - (id)URI;
+- (id)_common_init;
+- (double)averageAudioBitrate;
+- (double)averageVideoBitrate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (double)currentObservedBitrate;
 - (void)dealloc;
@@ -39,6 +45,7 @@
 - (double)durationWatched;
 - (int)entryReasonCode;
 - (void)finalize;
+- (double)indicatedAverageBitrate;
 - (double)indicatedBitrate;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

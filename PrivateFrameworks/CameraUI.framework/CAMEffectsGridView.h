@@ -3,16 +3,16 @@
  */
 
 @interface CAMEffectsGridView : CAMGLView {
-    BOOL __atomicBlackAndWhite;
-    BOOL __fetchingGridFilters;
-    NSDictionary *__gridFilters;
-    struct __CVPixelBufferPool { } *_pixelBufferPool;
+    BOOL  __atomicBlackAndWhite;
+    BOOL  __fetchingGridFilters;
+    NSDictionary * __gridFilters;
+    struct __CVPixelBufferPool { } * _pixelBufferPool;
     struct CGSize { 
         float width; 
         float height; 
-    } _pixelBufferPoolSize;
-    struct OpaqueVTPixelTransferSession { } *_pixelTransferSession;
-    BOOL _square;
+    }  _pixelBufferPoolSize;
+    struct OpaqueVTPixelTransferSession { } * _pixelTransferSession;
+    BOOL  _square;
 }
 
 @property (getter=_isAtomicBlackAndWhite, setter=_setAtomicBlackAndWhite:) BOOL _atomicBlackAndWhite;

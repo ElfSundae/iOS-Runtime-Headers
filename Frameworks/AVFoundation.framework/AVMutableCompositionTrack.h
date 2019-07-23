@@ -3,7 +3,7 @@
  */
 
 @interface AVMutableCompositionTrack : AVCompositionTrack {
-    AVMutableCompositionTrackInternal *_mutablePriv;
+    AVMutableCompositionTrackInternal * _mutablePriv;
 }
 
 @property (nonatomic, copy) NSString *extendedLanguageTag;

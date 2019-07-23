@@ -3,11 +3,11 @@
  */
 
 @interface TSDBitmapRenderingQualityImageMapValue : NSObject {
-    struct CGImage { } *mDegradedImageRef;
+    struct CGImage { } * mDegradedImageRef;
     struct CGSize { 
         float width; 
         float height; 
-    } mMaxSize;
+    }  mMaxSize;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } maxSize;

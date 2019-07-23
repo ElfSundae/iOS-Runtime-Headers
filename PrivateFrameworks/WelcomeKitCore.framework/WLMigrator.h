@@ -3,18 +3,18 @@
  */
 
 @interface WLMigrator : NSObject <WLDataMigratorProtocol, WLMigrationWebServiceDelegate> {
-    WLDeviceAuthentication *_auth;
-    NSString *_connectionKey;
-    unsigned int _dataTypes;
-    <WLDataMigrationDelegate> *_delegate;
-    double _lastProgressSentToAndroidDevice;
-    NSMutableArray *_migrators;
-    double _progress;
-    NSLock *_progressLock;
-    NSString *_progressString;
-    WLProgressWebService *_progressWebService;
-    BOOL _shouldSendProgressToDevice;
-    WLSourceDevice *_sourceDevice;
+    WLDeviceAuthentication * _auth;
+    NSString * _connectionKey;
+    unsigned int  _dataTypes;
+    <WLDataMigrationDelegate> * _delegate;
+    double  _lastProgressSentToAndroidDevice;
+    NSMutableArray * _migrators;
+    double  _progress;
+    NSLock * _progressLock;
+    NSString * _progressString;
+    WLProgressWebService * _progressWebService;
+    BOOL  _shouldSendProgressToDevice;
+    WLSourceDevice * _sourceDevice;
 }
 
 @property (nonatomic, readonly) WLDeviceAuthentication *auth;

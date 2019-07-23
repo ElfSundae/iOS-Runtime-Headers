@@ -3,21 +3,21 @@
  */
 
 @interface SUICAudioLevelSmoother : NSObject {
-    float _attackSpeed;
-    float _attackVelocity;
-    float _baseValue;
-    float _decaySpeed;
-    float _decayVelocity;
-    float _exponentMultiplier;
-    int _historyLength;
-    float _maximumPower;
-    float _minimumPower;
-    unsigned int _powerPointer;
-    float _previousLevel;
-    float *_runningPowerLevels;
-    int _samplesSinceLastCleared;
-    BOOL _usesAttackAndDecaySpeed;
-    BOOL _usesExponentialCurve;
+    float  _attackSpeed;
+    float  _attackVelocity;
+    float  _baseValue;
+    float  _decaySpeed;
+    float  _decayVelocity;
+    float  _exponentMultiplier;
+    int  _historyLength;
+    float  _maximumPower;
+    float  _minimumPower;
+    unsigned int  _powerPointer;
+    float  _previousLevel;
+    float * _runningPowerLevels;
+    int  _samplesSinceLastCleared;
+    BOOL  _usesAttackAndDecaySpeed;
+    BOOL  _usesExponentialCurve;
 }
 
 @property (nonatomic) float attackSpeed;

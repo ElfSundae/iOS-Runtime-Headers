@@ -3,13 +3,24 @@
  */
 
 @interface _UITabBarItemAppearanceStorage : _UIBarItemAppearanceStorage {
-    NSValue *titleOffset;
+    UIColor * _badgeColor;
+    NSMutableDictionary * _badgeTextAttributesForState;
+    struct UIOffset { 
+        float horizontal; 
+        float vertical; 
+    }  _titleOffset;
 }
 
-@property (nonatomic, retain) NSValue *titleOffset;
+@property (nonatomic, copy) UIColor *badgeColor;
+@property (nonatomic) struct UIOffset { float x1; float x2; } titleOffset;
 
-- (void)dealloc;
-- (void)setTitleOffset:(id)arg1;
-- (id)titleOffset;
+- (void).cxx_destruct;
+- (id)badgeColor;
+- (id)badgeTextAttributesForState:(unsigned int)arg1;
+- (void)enumerateBadgeTextAttributesWithBlock:(id /* block */)arg1;
+- (void)setBadgeColor:(id)arg1;
+- (void)setBadgeTextAttributes:(id)arg1 forState:(unsigned int)arg2;
+- (void)setTitleOffset:(struct UIOffset { float x1; float x2; })arg1;
+- (struct UIOffset { float x1; float x2; })titleOffset;
 
 @end

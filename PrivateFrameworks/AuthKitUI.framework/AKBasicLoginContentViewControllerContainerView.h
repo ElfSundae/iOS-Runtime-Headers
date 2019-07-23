@@ -3,13 +3,13 @@
  */
 
 @interface AKBasicLoginContentViewControllerContainerView : UIView {
-    NSArray *_activeConstraints;
-    UIImage *_bannerImage;
-    UIImageView *_bannerView;
-    UILabel *_messageLabel;
-    NSString *_messageText;
-    UILabel *_titleLabel;
-    NSString *_titleText;
+    NSArray * _activeConstraints;
+    UIImage * _bannerImage;
+    UIImageView * _bannerView;
+    UILabel * _messageLabel;
+    NSString * _messageText;
+    UILabel * _titleLabel;
+    NSString * _titleText;
 }
 
 @property (nonatomic, retain) NSArray *activeConstraints;

@@ -3,35 +3,33 @@
  */
 
 @interface CAMVideoCaptureResult : NSObject {
-    NSDate *_captureDate;
+    NSDate * _captureDate;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _duration;
-    NSError *_error;
-    BOOL _finalReferenceVideo;
-    NSURL *_localDestinationURL;
-    NSURL *_masterVideoURL;
-    NSArray *_metadata;
-    int _reason;
+    }  _duration;
+    NSError * _error;
+    NSURL * _filteredLocalDestinationURL;
+    NSURL * _localDestinationURL;
+    NSArray * _metadata;
+    int  _reason;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _stillDisplayTime;
-    struct __IOSurface { } *_videoPreviewSurface;
-    float _videoZoomFactor;
+    }  _stillDisplayTime;
+    struct __IOSurface { } * _videoPreviewSurface;
+    float  _videoZoomFactor;
 }
 
 @property (nonatomic, readonly) NSDate *captureDate;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (nonatomic, readonly) NSError *error;
-@property (getter=isFinalReferenceVideo, nonatomic, readonly) BOOL finalReferenceVideo;
+@property (nonatomic, readonly) NSURL *filteredLocalDestinationURL;
 @property (nonatomic, readonly) NSURL *localDestinationURL;
-@property (nonatomic, readonly) NSURL *masterVideoURL;
 @property (nonatomic, readonly, copy) NSArray *metadata;
 @property (nonatomic, readonly) int reason;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } stillDisplayTime;
@@ -43,10 +41,9 @@
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)error;
-- (id)initWithURL:(id)arg1 masterVideoURL:(id)arg2 isFinalReferenceVideo:(BOOL)arg3 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg5 metadata:(id)arg6 videoZoomFactor:(float)arg7 reason:(int)arg8 videoPreviewSurface:(void*)arg9 error:(id)arg10;
-- (BOOL)isFinalReferenceVideo;
+- (id)filteredLocalDestinationURL;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 metadata:(id)arg5 videoZoomFactor:(float)arg6 reason:(int)arg7 videoPreviewSurface:(void*)arg8 error:(id)arg9;
 - (id)localDestinationURL;
-- (id)masterVideoURL;
 - (id)metadata;
 - (int)reason;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })stillDisplayTime;

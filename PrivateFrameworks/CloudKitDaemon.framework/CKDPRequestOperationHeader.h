@@ -3,25 +3,25 @@
  */
 
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying> {
-    NSString *_applicationBundle;
-    unsigned long long _applicationConfigVersion;
-    NSString *_applicationContainer;
-    int _applicationContainerEnvironment;
-    NSString *_applicationVersion;
-    NSData *_clientChangeToken;
-    NSString *_deviceAssignedName;
-    unsigned long long _deviceFlowControlBudget;
-    unsigned long long _deviceFlowControlBudgetCap;
-    NSString *_deviceFlowControlKey;
-    float _deviceFlowControlRegeneration;
-    NSString *_deviceHardwareID;
-    NSString *_deviceHardwareVersion;
-    CKDPIdentifier *_deviceIdentifier;
-    NSString *_deviceLibraryName;
-    NSString *_deviceLibraryVersion;
-    unsigned long long _deviceProtocolVersion;
-    NSString *_deviceSoftwareVersion;
-    unsigned long long _globalConfigVersion;
+    NSString * _applicationBundle;
+    unsigned long long  _applicationConfigVersion;
+    NSString * _applicationContainer;
+    int  _applicationContainerEnvironment;
+    NSString * _applicationVersion;
+    NSData * _clientChangeToken;
+    NSString * _deviceAssignedName;
+    unsigned long long  _deviceFlowControlBudget;
+    unsigned long long  _deviceFlowControlBudgetCap;
+    NSString * _deviceFlowControlKey;
+    float  _deviceFlowControlRegeneration;
+    NSString * _deviceHardwareID;
+    NSString * _deviceHardwareVersion;
+    CKDPIdentifier * _deviceIdentifier;
+    NSString * _deviceLibraryName;
+    NSString * _deviceLibraryVersion;
+    unsigned long long  _deviceProtocolVersion;
+    NSString * _deviceSoftwareVersion;
+    unsigned long long  _globalConfigVersion;
     struct { 
         unsigned int applicationConfigVersion : 1; 
         unsigned int deviceFlowControlBudget : 1; 
@@ -32,13 +32,13 @@
         unsigned int deviceFlowControlRegeneration : 1; 
         unsigned int isolationLevel : 1; 
         unsigned int targetDatabase : 1; 
-    } _has;
-    int _isolationLevel;
-    CKDPLocale *_locale;
-    NSString *_mmcsProtocolVersion;
-    int _targetDatabase;
-    NSString *_userIDContainerID;
-    NSString *_userToken;
+    }  _has;
+    int  _isolationLevel;
+    CKDPLocale * _locale;
+    NSString * _mmcsProtocolVersion;
+    int  _targetDatabase;
+    NSString * _userIDContainerID;
+    NSString * _userToken;
 }
 
 @property (nonatomic, retain) NSString *applicationBundle;
@@ -93,11 +93,17 @@
 @property (nonatomic, retain) NSString *userToken;
 
 - (void).cxx_destruct;
-- (id)_prettyDictionaryRepresentation;
+- (int)StringAsApplicationContainerEnvironment:(id)arg1;
+- (int)StringAsIsolationLevel:(id)arg1;
+- (int)StringAsTargetDatabase:(id)arg1;
+- (id)_applicationContainerEnvironmentCKLogValue;
+- (id)_isolationLevelCKLogValue;
+- (id)_targetDatabaseCKLogValue;
 - (id)applicationBundle;
 - (unsigned long long)applicationConfigVersion;
 - (id)applicationContainer;
 - (int)applicationContainerEnvironment;
+- (id)applicationContainerEnvironmentAsString:(int)arg1;
 - (id)applicationVersion;
 - (id)clientChangeToken;
 - (void)copyTo:(id)arg1;
@@ -145,6 +151,7 @@
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;
 - (int)isolationLevel;
+- (id)isolationLevelAsString:(int)arg1;
 - (id)locale;
 - (void)mergeFrom:(id)arg1;
 - (id)mmcsProtocolVersion;
@@ -184,6 +191,7 @@
 - (void)setUserIDContainerID:(id)arg1;
 - (void)setUserToken:(id)arg1;
 - (int)targetDatabase;
+- (id)targetDatabaseAsString:(int)arg1;
 - (id)userIDContainerID;
 - (id)userToken;
 - (void)writeTo:(id)arg1;

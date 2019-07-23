@@ -3,8 +3,8 @@
  */
 
 @interface UIAutoRotatingWindow : UIApplicationRotationFollowingWindow {
-    int _interfaceOrientation;
-    BOOL _unknownOrientation;
+    int  _interfaceOrientation;
+    BOOL  _unknownOrientation;
 }
 
 + (id)sharedPopoverHostingWindow;

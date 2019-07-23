@@ -3,34 +3,35 @@
  */
 
 @interface PLPhotoEditModel : NSObject <NSCopying> {
-    int _appliedOrientation;
-    BOOL _autoCropped;
-    NSArray *_autoRedEyeCorrections;
-    NSString *_autoSmartColorIdentifier;
-    float _autoSmartColorLevel;
-    NSString *_autoSmartToneIdentifier;
-    float _autoSmartToneLevel;
-    NSString *_autoWhiteBalanceIdentifier;
-    NSDictionary *_autoWhiteBalanceSettings;
-    float _blackPointLevelOffset;
-    float _brightnessLevelOffset;
-    float _bwGrainLevelOffset;
-    float _bwHueLevelOffset;
-    float _bwNeutralGammaLevelOffset;
-    float _bwStrengthLevelOffset;
-    float _bwToneLevelOffset;
-    float _colorCastLevelOffset;
-    float _colorContrastLevelOffset;
-    float _colorVibrancyLevelOffset;
-    float _contrastLevelOffset;
-    int _cropConstraintHeight;
-    int _cropConstraintWidth;
-    NSString *_effectFilterName;
-    int _effectFilterVersion;
-    float _exposureLevelOffset;
-    float _highlightsLevelOffset;
-    NSArray *_legacyAutoEnhanceFilters;
-    BOOL _legacyAutoEnhanceIsOn;
+    int  _appliedOrientation;
+    BOOL  _autoCropped;
+    NSArray * _autoRedEyeCorrections;
+    NSString * _autoSmartColorIdentifier;
+    float  _autoSmartColorLevel;
+    NSString * _autoSmartToneIdentifier;
+    float  _autoSmartToneLevel;
+    NSString * _autoWhiteBalanceIdentifier;
+    NSDictionary * _autoWhiteBalanceSettings;
+    float  _blackPointLevelOffset;
+    float  _brightnessLevelOffset;
+    float  _bwGrainLevelOffset;
+    float  _bwHueLevelOffset;
+    float  _bwNeutralGammaLevelOffset;
+    float  _bwStrengthLevelOffset;
+    float  _bwToneLevelOffset;
+    float  _colorCastLevelOffset;
+    float  _colorContrastLevelOffset;
+    float  _colorVibrancyLevelOffset;
+    float  _contrastLevelOffset;
+    int  _cropConstraintHeight;
+    int  _cropConstraintWidth;
+    NSString * _effectFilterName;
+    int  _effectFilterVersion;
+    float  _exposureLevelOffset;
+    float  _highlightsLevelOffset;
+    NSArray * _legacyAutoEnhanceFilters;
+    BOOL  _legacyAutoEnhanceIsOn;
+    float  _localLightLevelOffset;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -40,36 +41,36 @@
             float width; 
             float height; 
         } size; 
-    } _normalizedCropRect;
-    NSArray *_redEyeCorrections;
-    float _shadowsLevelOffset;
-    BOOL _smartBWEnabled;
-    float _smartBWLevel;
-    NSDictionary *_smartBWStatistics;
-    BOOL _smartColorEnabled;
-    float _smartColorLevel;
-    NSDictionary *_smartColorStatistics;
-    BOOL _smartToneEnabled;
-    float _smartToneLevel;
-    NSDictionary *_smartToneStatistics;
-    float _straightenAngle;
+    }  _normalizedCropRect;
+    NSArray * _redEyeCorrections;
+    float  _shadowsLevelOffset;
+    BOOL  _smartBWEnabled;
+    float  _smartBWLevel;
+    NSDictionary * _smartBWStatistics;
+    BOOL  _smartColorEnabled;
+    float  _smartColorLevel;
+    NSDictionary * _smartColorStatistics;
+    BOOL  _smartToneEnabled;
+    float  _smartToneLevel;
+    NSDictionary * _smartToneStatistics;
+    float  _straightenAngle;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _trimEndTimeOffset;
+    }  _trimEndTimeOffset;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _trimStartTimeOffset;
-    BOOL _whiteBalanceEnabled;
-    float _whiteBalanceFaceI;
-    float _whiteBalanceFaceQ;
-    float _whiteBalanceFaceStrength;
-    float _whiteBalanceFaceWarmth;
+    }  _trimStartTimeOffset;
+    BOOL  _whiteBalanceEnabled;
+    float  _whiteBalanceFaceI;
+    float  _whiteBalanceFaceQ;
+    float  _whiteBalanceFaceStrength;
+    float  _whiteBalanceFaceWarmth;
 }
 
 @property (nonatomic, readonly) int appliedOrientation;
@@ -104,6 +105,7 @@
 @property (nonatomic, readonly) float highlightsLevelOffset;
 @property (nonatomic, readonly, copy) NSArray *legacyAutoEnhanceFilters;
 @property (nonatomic, readonly) BOOL legacyAutoEnhanceIsOn;
+@property (nonatomic, readonly) float localLightLevelOffset;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } normalizedCropRect;
 @property (nonatomic, readonly, copy) NSArray *redEyeCorrections;
 @property (nonatomic, readonly) float shadowsLevelOffset;
@@ -147,6 +149,7 @@
 + (float)referenceContrastLevelOfType:(int)arg1;
 + (float)referenceExposureLevelOfType:(int)arg1;
 + (float)referenceHighlightsLevelOfType:(int)arg1;
++ (float)referenceLocalLightLevelOfType:(int)arg1;
 + (float)referenceShadowsLevelOfType:(int)arg1;
 + (float)referenceSmartBWLevelOfType:(int)arg1;
 + (float)referenceSmartColorLevelOfType:(int)arg1;
@@ -212,6 +215,7 @@
 - (BOOL)isWhiteBalanceEnabled;
 - (id)legacyAutoEnhanceFilters;
 - (BOOL)legacyAutoEnhanceIsOn;
+- (float)localLightLevelOffset;
 - (id)mutableCopy;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })normalizedCropRect;
 - (id)pl_aggregateKeysForPreviousPhotoEditModel:(id)arg1;
@@ -238,6 +242,6 @@
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
-- (BOOL)_pu_hasIrisConflicts;
+- (BOOL)_pu_hasLegacyIrisConflicts;
 
 @end

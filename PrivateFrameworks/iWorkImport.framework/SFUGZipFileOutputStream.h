@@ -3,9 +3,9 @@
  */
 
 @interface SFUGZipFileOutputStream : NSObject <SFUOutputStream> {
-    void *_file;
-    long long _offset;
-    NSString *_path;
+    struct gzFile_s { unsigned int x1; char *x2; long long x3; } * _file;
+    long long  _offset;
+    NSString * _path;
 }
 
 @property (readonly, copy) NSString *debugDescription;

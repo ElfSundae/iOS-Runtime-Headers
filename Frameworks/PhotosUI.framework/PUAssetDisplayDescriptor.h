@@ -3,14 +3,14 @@
  */
 
 @interface PUAssetDisplayDescriptor : NSObject {
-    PUAssetReference *_assetReference;
-    NSDate *_modifiedAfterDate;
+    PUAssetReference * _assetReference;
+    NSDate * _modifiedAfterDate;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _videoSeekTime;
+    }  _videoSeekTime;
 }
 
 @property (nonatomic, readonly) PUAssetReference *assetReference;

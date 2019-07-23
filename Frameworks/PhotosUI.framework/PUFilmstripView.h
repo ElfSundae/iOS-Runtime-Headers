@@ -3,13 +3,13 @@
  */
 
 @interface PUFilmstripView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate> {
-    PUFilmstripDataSource *__dataSource;
-    PUFilmstripMediaProvider *__mediaProvider;
-    PUTilingView *__tilingView;
-    AVAsset *_asset;
-    BOOL _needsUpdateDataSource;
-    BOOL _needsUpdateLayout;
-    UIImage *_placeholderImage;
+    PUFilmstripDataSource * __dataSource;
+    PUFilmstripMediaProvider * __mediaProvider;
+    PUTilingView * __tilingView;
+    AVAsset * _asset;
+    BOOL  _needsUpdateDataSource;
+    BOOL  _needsUpdateLayout;
+    UIImage * _placeholderImage;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _visibleRect;
+    }  _visibleRect;
 }
 
 @property (setter=_setDataSource:, nonatomic, retain) PUFilmstripDataSource *_dataSource;

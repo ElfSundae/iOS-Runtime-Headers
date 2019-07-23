@@ -3,16 +3,16 @@
  */
 
 @interface WLStatistics : NSObject {
-    NSString *_contentType;
-    unsigned long long _downloadByteCount;
-    NSDate *_downloadEndDate;
-    NSDate *_downloadStartDate;
-    unsigned long long _importEndBytesFree;
-    NSDate *_importEndDate;
-    unsigned int _importFailedRecordCount;
-    unsigned int _importRecordCount;
-    unsigned long long _importStartBytesFree;
-    NSDate *_importStartDate;
+    NSString * _contentType;
+    unsigned long long  _downloadByteCount;
+    NSDate * _downloadEndDate;
+    NSDate * _downloadStartDate;
+    unsigned long long  _importEndBytesFree;
+    NSDate * _importEndDate;
+    unsigned int  _importFailedRecordCount;
+    unsigned int  _importRecordCount;
+    unsigned long long  _importStartBytesFree;
+    NSDate * _importStartDate;
 }
 
 @property (nonatomic, readonly) NSString *contentType;

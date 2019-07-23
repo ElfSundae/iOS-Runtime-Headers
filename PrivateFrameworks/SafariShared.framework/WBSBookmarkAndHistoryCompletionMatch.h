@@ -5,7 +5,7 @@
 @interface WBSBookmarkAndHistoryCompletionMatch : WBSURLCompletionMatch {
     struct RefPtr<SafariShared::BookmarkAndHistoryCompletionMatch> { 
         struct BookmarkAndHistoryCompletionMatch {} *m_ptr; 
-    } _match;
+    }  _match;
 }
 
 @property (nonatomic, readonly) <WBSURLCompletionMatchData> *data;

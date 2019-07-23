@@ -3,19 +3,19 @@
  */
 
 @interface UIAutoscroll : NSObject {
-    id _target;
-    BOOL m_active;
-    unsigned int m_count;
-    int m_directions;
-    BOOL m_disabled;
+    id  _target;
+    BOOL  m_active;
+    unsigned int  m_count;
+    int  m_directions;
+    BOOL  m_disabled;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_point;
-    double m_repeatInterval;
-    UIView<UIAutoscrollContainer> *m_scrollContainer;
-    id m_target;
-    NSTimer *m_timer;
+    }  m_point;
+    double  m_repeatInterval;
+    UIView<UIAutoscrollContainer> * m_scrollContainer;
+    id  m_target;
+    NSTimer * m_timer;
 }
 
 @property (nonatomic) BOOL active;

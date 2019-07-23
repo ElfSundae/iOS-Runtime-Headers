@@ -3,14 +3,14 @@
  */
 
 @interface CKPhotoPickerCell : UICollectionViewCell <PHLivePhotoViewDelegate> {
-    <CKPhotoPickerCellDelegate> *_delegate;
-    UIImageView *_imageView;
-    BOOL _isLivePhoto;
-    BOOL _isVideo;
-    CKPhotoTileBadgeView *_livePhotoBadgeView;
-    PHLivePhotoView *_livePhotoView;
-    PLRoundProgressView *_progressView;
-    UIImageView *_videoImageView;
+    <CKPhotoPickerCellDelegate> * _delegate;
+    UIImageView * _imageView;
+    BOOL  _isLivePhoto;
+    BOOL  _isVideo;
+    CKPhotoTileBadgeView * _livePhotoBadgeView;
+    PHLivePhotoView * _livePhotoView;
+    PLRoundProgressView * _progressView;
+    UIImageView * _videoImageView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIImageView *videoImageView;
 
+- (void).cxx_destruct;
 - (void)_badgeToggled:(id*)arg1;
 - (void)dealloc;
 - (id)delegate;

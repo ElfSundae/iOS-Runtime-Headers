@@ -2,8 +2,11 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIPopoverBackgroundView : UIView <UIPopoverBackgroundViewMethods>
+@interface UIPopoverBackgroundView : UIView <UIPopoverBackgroundViewMethods> {
+    BOOL  __chromeHidden;
+}
 
+@property (setter=_setChromeHidden:, nonatomic) BOOL _chromeHidden;
 @property (nonatomic) unsigned int arrowDirection;
 @property (nonatomic) float arrowOffset;
 
@@ -15,9 +18,12 @@
 + (BOOL)wantsDefaultContentAppearance;
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_backgroundContentViewFrame;
+- (BOOL)_chromeHidden;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_contentViewFrame;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_contentViewInsets;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_contentViewInsetsForArrowDirection:(unsigned int)arg1;
+- (BOOL)_needsSeperateBlending;
+- (void)_setChromeHidden:(BOOL)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_shadowInsets;
 - (struct CGSize { float x1; float x2; })_shadowOffset;
 - (float)_shadowOpacity;
@@ -25,6 +31,7 @@
 - (id)_shadowPathForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 arrowDirection:(unsigned int)arg2;
 - (float)_shadowRadius;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_updateChrome;
 - (void)_updateShadow;
 - (BOOL)_wantsDefaultContentAppearance;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;

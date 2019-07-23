@@ -3,7 +3,7 @@
  */
 
 @interface _UIInputViewSetPlacementDragToDismiss : UIInputViewSetPlacementOnScreen <NSSecureCoding> {
-    float _offset;
+    float  _offset;
 }
 
 @property (nonatomic) float offset;
@@ -11,8 +11,10 @@
 + (id)placementWithOffset:(float)arg1;
 + (BOOL)supportsSecureCoding;
 
+- (Class)applicatorClassForKeyboard:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isInteractive;
 - (float)offset;
 - (void)setOffset:(float)arg1;

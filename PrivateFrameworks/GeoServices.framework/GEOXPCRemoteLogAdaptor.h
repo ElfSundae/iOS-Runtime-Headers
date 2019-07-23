@@ -2,17 +2,18 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOXPCRemoteLogAdaptor : GEOBaseLogAdaptor <PBRequesterDelegate> {
-    NSString *_adaptorIdentifier;
-    NSString *_debugRequestName;
-    NSString *_logMessageCacheFilePath;
-    GEOLogMessageCacheManager *_logMessageCacheManager;
-    GEORequester *_logMessageCollectionRequester;
-    NSLock *_logMessageCollectionRequesterLock;
-    NSObject<OS_dispatch_queue> *_logMessageSendQueue;
-    NSURL *_remoteURL;
-    NSLock *_xpcActivityInfoLock;
-    NSString *_xpcActivityName;
+@interface GEOXPCRemoteLogAdaptor : GEOBaseLogAdaptor <GEOPBSessionRequesterDelegate> {
+    NSString * _adaptorIdentifier;
+    NSString * _debugRequestName;
+    NSString * _logMessageCacheFilePath;
+    GEOLogMessageCacheManager * _logMessageCacheManager;
+    BOOL  _logMessageCollectionRequestPending;
+    GEORequester * _logMessageCollectionRequester;
+    NSLock * _logMessageCollectionRequesterLock;
+    NSObject<OS_dispatch_queue> * _logMessageSendQueue;
+    NSURL * _remoteURL;
+    NSLock * _xpcActivityInfoLock;
+    NSString * _xpcActivityName;
 }
 
 @property (readonly) NSString *adaptorIdentifier;
@@ -32,10 +33,11 @@
 - (BOOL)_isLogMessageCollectionRequesterPending;
 - (void)_purgeAndSendLogMessages;
 - (void)_purgeExpiredLogMessagesFromCache;
+- (void)_purgeMapsSuggestionsCacheFile;
 - (void)_queueNextLogMessagesChunkForSending;
 - (void)_registerXPCActivityTimer;
 - (void)_requesterDidCompleteHandler:(id)arg1;
-- (void)_requesterStartSend;
+- (void)_requesterStartSendRequest:(id)arg1;
 - (void)_sendLogMessageRequest:(id)arg1;
 - (void)_sendNextLogMessageChunk;
 - (void)_setupLogMessageCache;

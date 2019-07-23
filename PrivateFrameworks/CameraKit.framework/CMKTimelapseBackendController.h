@@ -3,12 +3,12 @@
  */
 
 @interface CMKTimelapseBackendController : NSObject <CMKNebulaDaemonTimelapseProtocol> {
-    BOOL __capturing;
-    CMKTimelapseState *__currentState;
-    <CMKTimelapseMovieWriterProtocol> *__movieWriter;
-    NSMutableArray *__sessionContexts;
-    NSObject<OS_dispatch_queue> *__workQueue;
-    BOOL __writingMovie;
+    BOOL  __capturing;
+    CMKTimelapseState * __currentState;
+    <CMKTimelapseMovieWriterProtocol> * __movieWriter;
+    NSMutableArray * __sessionContexts;
+    NSObject<OS_dispatch_queue> * __workQueue;
+    BOOL  __writingMovie;
 }
 
 @property (getter=_isCapturing, setter=_setCapturing:, nonatomic) BOOL _capturing;

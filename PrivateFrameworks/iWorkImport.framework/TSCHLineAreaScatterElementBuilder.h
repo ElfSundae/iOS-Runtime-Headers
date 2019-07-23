@@ -3,14 +3,14 @@
  */
 
 @interface TSCHLineAreaScatterElementBuilder : TSCHElementBuilder {
-    NSMutableDictionary *mPathCache;
-    NSObject<OS_dispatch_queue> *mPathCacheQueue;
+    NSMutableDictionary * mPathCache;
+    NSObject<OS_dispatch_queue> * mPathCacheQueue;
 }
 
 - (unsigned int)countOfElementsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementBounds:(struct CGRect {}**)arg4 outNewClipRects:(struct CGRect {}**)arg5 outNewElementPaths:(const struct CGPath {}***)arg6 outSelectionKnobLocations:(id*)arg7;
 - (unsigned int)countOfErrorBarsInSeries:(id)arg1 forGroups:(id)arg2 forAxisID:(id)arg3 forBodyLayout:(id)arg4 outClipRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg5 outNewErrorBarDescriptors:(struct { /* ? */ }**)arg6;
 - (unsigned int)countOfHitCheckRegionsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementPaths:(const struct CGPath {}***)arg4 outSelectionKnobLocations:(id*)arg5;
-- (unsigned int)countOfLabelsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewTransforms:(struct CGAffineTransform {}**)arg4 outNewElementSizes:(struct CGSize {}**)arg5 outNewClipRect:(struct CGRect {}**)arg6 outNewStrings:(id**)arg7;
+- (unsigned int)countOfLabelsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewTransforms:(struct CGAffineTransform {}**)arg4 outNewElementSizes:(struct CGSize {}**)arg5 outNewClipRect:(struct CGRect {}**)arg6 outNewStrings:(id*)arg7;
 - (unsigned int)countOfPointsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize { float x1; float x2; }*)arg4 outClipRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg5 outUnitSymbolPath:(const struct CGPath {}**)arg6 outNewTransformArray:(struct CGAffineTransform {}**)arg7 outNewGroupIndexArray:(unsigned int**)arg8;
 - (float)dataPointDimension:(id)arg1 symbolType:(int)arg2 stroke:(id)arg3;
 - (void)dealloc;

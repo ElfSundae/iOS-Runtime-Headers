@@ -3,9 +3,9 @@
  */
 
 @interface HKDateZoomScale : NSObject <HKZoomScale> {
-    int _previousZoom;
-    float _previousZoomScale;
-    HKValueRange *_valueRange;
+    int  _previousZoom;
+    float  _previousZoomScale;
+    HKValueRange * _valueRange;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,9 +3,9 @@
  */
 
 @interface UIPickerTableView : UITableView <UITableViewDelegate> {
-    NSMutableIndexSet *_checkedRows;
-    float _lastClickedOffset;
-    int _lastSelectedRow;
+    NSMutableIndexSet * _checkedRows;
+    float  _lastClickedOffset;
+    int  _lastSelectedRow;
     struct { 
         unsigned int allowsMultipleSelection : 1; 
         unsigned int scrollingDirection : 2; 
@@ -15,8 +15,9 @@
         unsigned int pickerViewImplementsSelectionBarChanged : 2; 
         unsigned int cancellingAnimation : 1; 
         unsigned int updatingContentInset : 1; 
-    } _pickerTableFlags;
-    NSMutableArray *_referencingCells;
+    }  _pickerTableFlags;
+    BOOL  _playsFeedback;
+    NSMutableArray * _referencingCells;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -26,10 +27,10 @@
             float width; 
             float height; 
         } size; 
-    } _selectionBarRect;
-    int _selectionBarRow;
-    UIColor *_textColor;
-    BOOL _usesModernStyle;
+    }  _selectionBarRect;
+    int  _selectionBarRow;
+    UIColor * _textColor;
+    BOOL  _usesModernStyle;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -39,7 +40,7 @@
             float width; 
             float height; 
         } size; 
-    } _visibleRect;
+    }  _visibleRect;
 }
 
 @property (getter=_textColor, setter=_setTextColor:, nonatomic, retain) UIColor *_textColor;
@@ -48,8 +49,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
 @property (nonatomic) int lastSelectedRow;
+@property (getter=_playsFeedback, setter=_setPlaysFeedback:) BOOL playsFeedback;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } selectionBarRect;
-@property (nonatomic) int selectionBarRow;
+@property (setter=_setSelectionBarRow:, nonatomic) int selectionBarRow;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -61,13 +63,16 @@
 - (void)_notifyContentOffsetChange;
 - (id)_pickerView;
 - (void)_playClickIfNecessary;
+- (BOOL)_playsFeedback;
 - (void)_rectChangedWithNewSize:(struct CGSize { float x1; float x2; })arg1 oldSize:(struct CGSize { float x1; float x2; })arg2;
 - (float)_rotationForCellCenterY:(float)arg1;
 - (BOOL)_scrollRowAtIndexPathToSelectionBar:(id)arg1 animated:(BOOL)arg2;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
+- (void)_scrollViewDidInterruptDecelerating:(id)arg1;
 - (void)_scrollingFinished;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_selectionBarRectForBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)_setContentOffset:(struct CGPoint { float x1; float x2; })arg1 notify:(BOOL)arg2;
+- (void)_setPlaysFeedback:(BOOL)arg1;
 - (void)_setSelectionBarRow:(int)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_setUsesModernStyle:(BOOL)arg1;

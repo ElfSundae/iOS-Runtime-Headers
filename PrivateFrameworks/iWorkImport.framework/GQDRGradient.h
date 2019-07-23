@@ -3,18 +3,18 @@
  */
 
 @interface GQDRGradient : NSObject <GQDNameMappable> {
-    float mAngle;
+    float  mAngle;
     struct CGPoint { 
         float x; 
         float y; 
-    } mEnd;
-    float mOpacity;
+    }  mEnd;
+    float  mOpacity;
     struct CGPoint { 
         float x; 
         float y; 
-    } mStart;
-    struct __CFArray { } *mStops;
-    int mType;
+    }  mStart;
+    struct __CFArray { } * mStops;
+    int  mType;
 }
 
 @property (readonly, copy) NSString *debugDescription;

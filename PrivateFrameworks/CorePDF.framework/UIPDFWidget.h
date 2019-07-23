@@ -3,21 +3,21 @@
  */
 
 @interface UIPDFWidget : UIView {
-    UIPDFDocument *activeDocument;
-    int currentPageCount;
-    NSTimer *heartbeatTimer;
-    UILabel *infoLabel;
-    int queueCount;
+    UIPDFDocument * activeDocument;
+    int  currentPageCount;
+    NSTimer * heartbeatTimer;
+    UILabel * infoLabel;
+    int  queueCount;
     struct { 
         int byteCount; 
         int currentPageCount; 
         int renderJobsCount; 
         bool memWarning; 
-    } queueData;
-    int queueIndex;
-    int renderJobsCount;
-    int totalPageCount;
-    NSMutableSet *trackedPages;
+    }  queueData;
+    int  queueIndex;
+    int  renderJobsCount;
+    int  totalPageCount;
+    NSMutableSet * trackedPages;
 }
 
 - (void)addedPageView:(int)arg1;

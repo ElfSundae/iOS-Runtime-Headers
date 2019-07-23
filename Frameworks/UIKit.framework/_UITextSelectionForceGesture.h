@@ -3,23 +3,23 @@
  */
 
 @interface _UITextSelectionForceGesture : UILongPressGestureRecognizer {
-    BOOL _didLongPress;
-    int _increasingForceState;
-    double _increasingForceTimestamp;
+    BOOL  _didLongPress;
+    int  _increasingForceState;
+    double  _increasingForceTimestamp;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastSceneReferenceLocation;
-    double _lastTouchTime;
+    }  _lastSceneReferenceLocation;
+    double  _lastTouchTime;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastUnadjustedSceneReferenceLocation;
-    UIKBPanGestureVelocitySample *_liftOffSample;
-    int _liftOffState;
-    UIKBPanGestureVelocitySample *_previousVelocitySample;
-    BOOL _shouldFailWithoutForce;
-    BOOL _touchEclipsesVelocity;
+    }  _lastUnadjustedSceneReferenceLocation;
+    UIKBPanGestureVelocitySample * _liftOffSample;
+    int  _liftOffState;
+    UIKBPanGestureVelocitySample * _previousVelocitySample;
+    BOOL  _shouldFailWithoutForce;
+    BOOL  _touchEclipsesVelocity;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,8 +29,8 @@
             float width; 
             float height; 
         } size; 
-    } _velocityRange;
-    UIKBPanGestureVelocitySample *_velocitySample;
+    }  _velocityRange;
+    UIKBPanGestureVelocitySample * _velocitySample;
 }
 
 @property (getter=_liftOffSample, readonly) UIKBPanGestureVelocitySample *_liftOffSample;

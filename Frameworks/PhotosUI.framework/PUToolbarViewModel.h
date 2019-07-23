@@ -3,11 +3,11 @@
  */
 
 @interface PUToolbarViewModel : PUViewModel {
-    UIViewController *__viewController;
-    UIView *_accessoryView;
-    float _accessoryViewTopOutset;
-    float _maximumHeight;
-    NSArray *_toolbarItems;
+    UIViewController * __viewController;
+    UIView * _accessoryView;
+    float  _accessoryViewTopOutset;
+    float  _maximumHeight;
+    NSArray * _toolbarItems;
 }
 
 @property (setter=_setViewController:, nonatomic) UIViewController *_viewController;

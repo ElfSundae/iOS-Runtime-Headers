@@ -3,51 +3,51 @@
  */
 
 @interface MusicMediaProfileSplitMainViewController : UIViewController <MusicClientContextConsuming, MusicContainerScrollViewDelegate, MusicMediaDetailSplitViewController, SKUIScrollingSegmentedControllerDelegate> {
-    MusicProfileAlbumsViewConfiguration *_albumsViewConfiguration;
-    MusicProfileAlbumsViewController *_albumsViewController;
-    NSArray *_allowedSegments;
-    MPMediaItemCollection *_artistEntity;
-    NSDictionary *_availableContentFlags;
-    BOOL _canShowConnectSegment;
-    BOOL _canShowSubscriptionSegments;
-    MusicClientContext *_clientContext;
-    MusicContainerScrollView *_containerScrollView;
+    MusicProfileAlbumsViewConfiguration * _albumsViewConfiguration;
+    MusicProfileAlbumsViewController * _albumsViewController;
+    NSArray * _allowedSegments;
+    MPMediaItemCollection * _artistEntity;
+    NSDictionary * _availableContentFlags;
+    BOOL  _canShowConnectSegment;
+    BOOL  _canShowSubscriptionSegments;
+    MusicClientContext * _clientContext;
+    MusicContainerScrollView * _containerScrollView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _containerScrollViewNormalizedContentOffset;
-    BOOL _didAutomaticallySelectMyMusicSegment;
-    UIScrollView *_focusedContentScrollView;
-    BOOL _hasInitializedContainerScrollViewNormalizedContentOffset;
-    float _headerTransitionProgress;
-    NSString *_initiallySelectedSegmentIdentifier;
-    BOOL _isAdjustingContentSize;
-    BOOL _isHidingVerticalScrollIndicator;
-    NSMutableDictionary *_loadedViewControllersToInsert;
-    MusicMediaDetailTintInformation *_mediaDetailTintInformation;
-    <MusicMediaProfileSplitMainViewControllerDelegate> *_mediaSplitViewControllerDelegate;
+    }  _containerScrollViewNormalizedContentOffset;
+    BOOL  _didAutomaticallySelectMyMusicSegment;
+    UIScrollView * _focusedContentScrollView;
+    BOOL  _hasInitializedContainerScrollViewNormalizedContentOffset;
+    float  _headerTransitionProgress;
+    NSString * _initiallySelectedSegmentIdentifier;
+    BOOL  _isAdjustingContentSize;
+    BOOL  _isHidingVerticalScrollIndicator;
+    NSMutableDictionary * _loadedViewControllersToInsert;
+    MusicMediaDetailTintInformation * _mediaDetailTintInformation;
+    <MusicMediaProfileSplitMainViewControllerDelegate> * _mediaSplitViewControllerDelegate;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _minimumHeightContentInsetAdditions;
-    float _preferredMaximumContentWidth;
-    unsigned int _profileType;
-    SKUIScrollingSegmentedController *_scrollingSegmentedController;
-    NSMutableArray *_segmentIdentifiers;
-    NSMutableSet *_segmentIdentifiersForLoadedViews;
-    UIView *_segmentedControlHairlineView;
+    }  _minimumHeightContentInsetAdditions;
+    float  _preferredMaximumContentWidth;
+    unsigned int  _profileType;
+    SKUIScrollingSegmentedController * _scrollingSegmentedController;
+    NSMutableArray * _segmentIdentifiers;
+    NSMutableSet * _segmentIdentifiersForLoadedViews;
+    UIView * _segmentedControlHairlineView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _segmentedControlScrollViewEdgeInsetAdditions;
-    BOOL _segmentedControlVisible;
-    BOOL _shouldAutomaticallySelectMyMusicSegment;
-    BOOL _shouldShowStoreSegments;
-    BOOL _visuallyInset;
+    }  _segmentedControlScrollViewEdgeInsetAdditions;
+    BOOL  _segmentedControlVisible;
+    BOOL  _shouldAutomaticallySelectMyMusicSegment;
+    BOOL  _shouldShowStoreSegments;
+    BOOL  _visuallyInset;
 }
 
 @property (nonatomic, copy) NSArray *allowedSegments;

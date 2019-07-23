@@ -3,7 +3,7 @@
  */
 
 @interface SCNPhysicsCustomField : SCNPhysicsField {
-    id /* block */ _block;
+    id /* block */  _block;
 }
 
 @property id /* block */ block;

@@ -3,16 +3,16 @@
  */
 
 @interface _UIPrintPreviewPageCell : UICollectionViewCell <UIGestureRecognizerDelegate> {
-    <PageRangeDelegate> *_delegate;
-    UIView *_dimmingView;
-    UIImageView *_imageView;
-    BOOL _inRange;
-    UILongPressGestureRecognizer *_longPressRecognizer;
-    BOOL _menuHiddenByTapInThisCell;
-    BOOL _menuPresented;
-    int _pageIndex;
-    UITapGestureRecognizer *_tapRecognizer;
-    BOOL _thisCellIsPresentingMenu;
+    <PageRangeDelegate> * _delegate;
+    UIView * _dimmingView;
+    UIImageView * _imageView;
+    BOOL  _inRange;
+    UILongPressGestureRecognizer * _longPressRecognizer;
+    BOOL  _menuHiddenByTapInThisCell;
+    BOOL  _menuPresented;
+    int  _pageIndex;
+    UITapGestureRecognizer * _tapRecognizer;
+    BOOL  _thisCellIsPresentingMenu;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +36,7 @@
 - (id)delegate;
 - (id)dimmingView;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)gestureRecognizers;
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)imageView;

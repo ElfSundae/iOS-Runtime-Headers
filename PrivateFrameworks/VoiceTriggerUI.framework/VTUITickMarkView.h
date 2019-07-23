@@ -3,18 +3,18 @@
  */
 
 @interface VTUITickMarkView : UIView {
-    int _animState;
-    id /* block */ _completionBlock;
-    BOOL _completionCalled;
-    NSLock *_completionLock;
-    int _currentFrame;
-    int _currentFrameInterval60thPerSec;
-    CADisplayLink *_displayLink;
-    int _fadeInFrames;
-    int _fadeOutFrames;
-    int _pauseFrames;
-    NSTimer *_safetyTimer;
-    BOOL _shown;
+    int  _animState;
+    id /* block */  _completionBlock;
+    BOOL  _completionCalled;
+    NSLock * _completionLock;
+    int  _currentFrame;
+    int  _currentPreferredFrameRate;
+    CADisplayLink * _displayLink;
+    int  _fadeInFrames;
+    int  _fadeOutFrames;
+    int  _pauseFrames;
+    NSTimer * _safetyTimer;
+    BOOL  _shown;
 }
 
 + (void)initialize;

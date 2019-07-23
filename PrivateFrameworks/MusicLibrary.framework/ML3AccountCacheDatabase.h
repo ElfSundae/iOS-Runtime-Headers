@@ -3,7 +3,9 @@
  */
 
 @interface ML3AccountCacheDatabase : NSObject {
-    ML3DatabaseConnection *_databaseConnection;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    NSMutableDictionary * _appleIdCache;
+    ML3DatabaseConnection * _databaseConnection;
 }
 
 - (void).cxx_destruct;

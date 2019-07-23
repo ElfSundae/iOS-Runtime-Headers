@@ -3,13 +3,13 @@
  */
 
 @interface PTSPicker : UIView <PTSHUDControl, UITableViewDataSource, UITableViewDelegate, _UISettingsKeyPathObserver> {
-    int _alignment;
-    NSArray *_choices;
-    _UISettings *_settings;
-    NSArray *_subviewConstraints;
-    UITableView *_tableView;
-    UILabel *_titleLabel;
-    NSString *_valueKeyPath;
+    int  _alignment;
+    NSArray * _choices;
+    _UISettings * _settings;
+    NSArray * _subviewConstraints;
+    UITableView * _tableView;
+    UILabel * _titleLabel;
+    NSString * _valueKeyPath;
 }
 
 @property (nonatomic) int alignment;

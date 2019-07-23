@@ -3,10 +3,10 @@
  */
 
 @interface GKButtonView : UICollectionReusableView {
-    SEL _action;
-    UIButton *_button;
-    NSMutableArray *_buttonConstraints;
-    GKCollectionViewDataSource *_dataSource;
+    SEL  _action;
+    UIButton * _button;
+    NSMutableArray * _buttonConstraints;
+    GKCollectionViewDataSource * _dataSource;
 }
 
 @property (nonatomic) SEL action;

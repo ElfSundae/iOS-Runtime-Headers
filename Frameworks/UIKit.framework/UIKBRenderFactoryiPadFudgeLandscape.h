@@ -25,6 +25,7 @@
 - (struct CGPoint { float x1; float x2; })iPadFudgeControlKeyOffset;
 - (struct CGPoint { float x1; float x2; })internationalKeyOffset;
 - (float)keyCornerRadius;
+- (id)messagesWriteboardKeyImageName;
 - (float)moreKeyFontSize;
 - (struct CGPoint { float x1; float x2; })moreKeyOffset;
 - (id)returnKeyImageName;

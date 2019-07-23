@@ -3,8 +3,8 @@
  */
 
 @interface UIPrinterSetupPINScrollView : UIScrollView {
-    UIView *_contentView;
-    float _visibleHeight;
+    UIView * _contentView;
+    float  _visibleHeight;
 }
 
 @property (nonatomic, retain) UIView *contentView;

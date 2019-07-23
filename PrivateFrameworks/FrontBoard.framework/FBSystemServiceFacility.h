@@ -3,11 +3,11 @@
  */
 
 @interface FBSystemServiceFacility : NSObject <BSDescriptionProviding, FBProcessObserver, FBSystemServiceServer> {
-    FBServiceClientAuthenticator *_authenticator;
-    NSMutableSet *_clients;
-    NSString *_identifier;
-    BOOL _invalidated;
-    FBSSerialQueue *_queue;
+    FBServiceClientAuthenticator * _authenticator;
+    NSMutableSet * _clients;
+    NSString * _identifier;
+    BOOL  _invalidated;
+    FBSSerialQueue * _queue;
 }
 
 @property (nonatomic, readonly, retain) FBServiceClientAuthenticator *authenticator;

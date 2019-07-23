@@ -3,7 +3,7 @@
  */
 
 @interface FBSDisplayLayout : NSObject <BSDescriptionProviding, BSXPCCoding> {
-    int _backlightLevel;
+    int  _backlightLevel;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,11 +13,11 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    FBSDisplay *_display;
-    unsigned int _displayType;
-    NSMutableArray *_elements;
-    int _interfaceOrientation;
+    }  _bounds;
+    FBSDisplay * _display;
+    unsigned int  _displayType;
+    NSMutableArray * _elements;
+    int  _interfaceOrientation;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -27,7 +27,8 @@
             float width; 
             float height; 
         } size; 
-    } _referenceBounds;
+    }  _referenceBounds;
+    NSDate * _timestamp;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;
@@ -41,6 +42,7 @@
 @property (nonatomic) int interfaceOrientation;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } referenceBounds;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly, retain) NSDate *timestamp;
 
 - (id)_initWithElements:(id)arg1;
 - (void)_sortElements;
@@ -70,5 +72,6 @@
 - (void)setInterfaceOrientation:(int)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (id)timestamp;
 
 @end

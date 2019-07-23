@@ -3,16 +3,16 @@
  */
 
 @interface MusicJSProductNativeViewController : MusicJSNativeViewController <MusicJSProductNativeViewController, SKUIDOMFeature> {
-    <MusicJSProductNativeViewControllerDelegate> *_delegate;
-    NSDictionary *_productEntityValueProviderData;
-    long long _prominentTrackStoreID;
-    IKAppDocument *_relatedContentDocument;
-    NSDictionary *_relatedContentDocumentOptions;
-    IKDOMDocument *_relatedContentJSDocument;
-    NSDictionary *_reportingInformation;
-    IKAppDocument *_shareDocument;
-    NSDictionary *_shareDocumentOptions;
-    NSArray *_tracklistItems;
+    <MusicJSProductNativeViewControllerDelegate> * _delegate;
+    NSDictionary * _productEntityValueProviderData;
+    long long  _prominentTrackStoreID;
+    IKAppDocument * _relatedContentDocument;
+    NSDictionary * _relatedContentDocumentOptions;
+    IKDOMDocument * _relatedContentJSDocument;
+    NSDictionary * _reportingInformation;
+    IKAppDocument * _shareDocument;
+    NSDictionary * _shareDocumentOptions;
+    NSArray * _tracklistItems;
 }
 
 @property (nonatomic, readonly) IKAppContext *appContext;

@@ -3,37 +3,37 @@
  */
 
 @interface PLSlalomRegionEditor : UIControl {
-    <PLSlalomRegionEditorDelegate> *_delegate;
-    BOOL _draggingEnd;
-    BOOL _draggingStart;
-    UIImageView *_endHandleView;
-    float _endValue;
-    BOOL _forceLayout;
-    float _maxValue;
-    float _minValue;
-    unsigned int _regionEditorStyle;
-    UIImageView *_startHandleView;
-    float _startValue;
+    <PLSlalomRegionEditorDelegate> * _delegate;
+    BOOL  _draggingEnd;
+    BOOL  _draggingStart;
+    UIImageView * _endHandleView;
+    float  _endValue;
+    BOOL  _forceLayout;
+    float  _maxValue;
+    float  _minValue;
+    unsigned int  _regionEditorStyle;
+    UIImageView * _startHandleView;
+    float  _startValue;
     struct CGPoint { 
         float x; 
         float y; 
-    } _touchLocationWhenTrackingZoomBegan;
-    float _touchOffset;
-    UIImageView *_trackImageView;
+    }  _touchLocationWhenTrackingZoomBegan;
+    float  _touchOffset;
+    UIImageView * _trackImageView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _trackInsets;
-    UIImageView *_trackSnapshotView;
-    BOOL _trackingZoom;
-    float _trimHandleWidth;
-    BOOL _zoomAnimating;
-    double _zoomDelay;
-    double _zoomMaxValue;
-    double _zoomMinValue;
-    BOOL _zoomed;
+    }  _trackInsets;
+    UIImageView * _trackSnapshotView;
+    BOOL  _trackingZoom;
+    float  _trimHandleWidth;
+    BOOL  _zoomAnimating;
+    double  _zoomDelay;
+    double  _zoomMaxValue;
+    double  _zoomMinValue;
+    BOOL  _zoomed;
 }
 
 @property (nonatomic) <PLSlalomRegionEditorDelegate> *delegate;

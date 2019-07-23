@@ -3,14 +3,14 @@
  */
 
 @interface CNPropertyCell : CNLabeledCell {
-    BOOL _allowsEditing;
-    <CNPropertyCellDelegate> *_delegate;
-    UIResponder *_firstResponderItem;
-    BOOL _forceSuggested;
-    BOOL _ignoreSuggested;
-    float _labelWidth;
-    <CNPresenterDelegate> *_presentingDelegate;
-    id _property;
+    BOOL  _allowsEditing;
+    <CNPropertyCellDelegate> * _delegate;
+    UIResponder * _firstResponderItem;
+    BOOL  _forceSuggested;
+    BOOL  _ignoreSuggested;
+    float  _labelWidth;
+    <CNPresenterDelegate> * _presentingDelegate;
+    id  _property;
 }
 
 @property (nonatomic) BOOL allowsEditing;

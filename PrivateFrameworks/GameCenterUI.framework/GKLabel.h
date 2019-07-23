@@ -3,12 +3,12 @@
  */
 
 @interface GKLabel : UILabel <GKTextStyleReplay> {
-    float _actualFontShrinkageFactor;
-    GKTextStyle *_appliedStyle;
-    GKTextStyle *_baseStyle;
-    BOOL _shouldEnforcePreferredWidth;
-    BOOL _shouldInhibitReplay;
-    BOOL _usingAttributedText;
+    float  _actualFontShrinkageFactor;
+    GKTextStyle * _appliedStyle;
+    GKTextStyle * _baseStyle;
+    BOOL  _shouldEnforcePreferredWidth;
+    BOOL  _shouldInhibitReplay;
+    BOOL  _usingAttributedText;
 }
 
 @property (nonatomic) float actualFontShrinkageFactor;

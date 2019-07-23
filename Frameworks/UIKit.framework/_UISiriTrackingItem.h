@@ -3,18 +3,17 @@
  */
 
 @interface _UISiriTrackingItem : NSObject {
-    UIImageView *_animatedView;
-    id /* block */ _animationCompletionHandler;
-    UIImage *_capturedGlyphImage;
-    BOOL _deleted;
+    UIImageView * _animatedView;
+    UIImage * _capturedGlyphImage;
+    BOOL  _deleted;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _glyphRange;
-    BOOL _isABigReplacement;
-    BOOL _isASmallReplacement;
-    BOOL _isAnIntroduction;
-    float _offscreenXLocation;
+    }  _glyphRange;
+    BOOL  _isABigReplacement;
+    BOOL  _isASmallReplacement;
+    BOOL  _isAnIntroduction;
+    float  _offscreenXLocation;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,16 +23,15 @@
             float width; 
             float height; 
         } size; 
-    } _targetFrame;
-    UIColor *_textColor;
+    }  _targetFrame;
+    UIColor * _textColor;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _textRange;
+    }  _textRange;
 }
 
 @property (nonatomic, retain) UIImageView *animatedView;
-@property (nonatomic, copy) id /* block */ animationCompletionHandler;
 @property (nonatomic, retain) UIImage *capturedGlyphImage;
 @property (nonatomic) struct _NSRange { unsigned int x1; unsigned int x2; } glyphRange;
 @property (nonatomic) BOOL isABigReplacement;
@@ -47,8 +45,6 @@
 - (void).cxx_destruct;
 - (void)animateOut;
 - (id)animatedView;
-- (id /* block */)animationCompletionHandler;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)captureGlyphsInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 containerOrigin:(struct CGPoint { float x1; float x2; })arg2 fromLayoutManager:(id)arg3;
 - (id)capturedGlyphImage;
 - (void)dealloc;
@@ -60,7 +56,6 @@
 - (BOOL)isAnIntroduction;
 - (float)offscreenXLocation;
 - (void)setAnimatedView:(id)arg1;
-- (void)setAnimationCompletionHandler:(id /* block */)arg1;
 - (void)setCapturedGlyphImage:(id)arg1;
 - (void)setGlyphRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (void)setIsABigReplacement:(BOOL)arg1;

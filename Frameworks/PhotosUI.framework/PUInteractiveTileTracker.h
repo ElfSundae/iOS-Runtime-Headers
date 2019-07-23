@@ -3,24 +3,24 @@
  */
 
 @interface PUInteractiveTileTracker : NSObject {
-    int __state;
-    PUTileHider *__tileHider;
+    int  __state;
+    PUTileHider * __tileHider;
     struct PUDisplayVelocity { 
         float x; 
         float y; 
         float scale; 
         float rotation; 
-    } _currentVelocity;
-    <PUInteractiveTileTrackerDelegate> *_delegate;
+    }  _currentVelocity;
+    <PUInteractiveTileTrackerDelegate> * _delegate;
     struct { 
         BOOL respondsToWillStartTrackingTileController; 
         BOOL respondsToDidStopTrackingTileController; 
-    } _delegateFlags;
-    float _progress;
-    BOOL _shouldEnd;
-    BOOL _shouldFinish;
-    PUTilingView *_tilingView;
-    PUTileController *_trackedTileController;
+    }  _delegateFlags;
+    float  _progress;
+    BOOL  _shouldEnd;
+    BOOL  _shouldFinish;
+    PUTilingView * _tilingView;
+    PUTileController * _trackedTileController;
 }
 
 @property (setter=_setState:, nonatomic) int _state;

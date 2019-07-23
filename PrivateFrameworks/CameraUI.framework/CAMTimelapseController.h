@@ -3,24 +3,24 @@
  */
 
 @interface CAMTimelapseController : NSObject <CAMNebulaDaemonTimelapseClientProtocol, CAMStillImageCaptureRequestDelegate, UIAlertViewDelegate> {
-    BOOL __backendRecoveryNeeded;
-    CUCaptureController *__captureController;
-    NSObject<OS_dispatch_source> *__captureTimer;
-    CAMLowDiskSpaceAlertView *__diskSpaceAlert;
-    BOOL __focusAndExposureAdjusted;
-    BOOL __ignoringTimerCallbacksForTearDown;
-    BOOL __ignoringTimerCallbacksWaitingForCaptureResponse;
-    NSCountedSet *__inFlightTimelapseUUIDs;
-    CAMLocationController *__locationController;
-    CAMMotionController *__motionController;
-    CAMNebulaDaemonProxyManager *__nebulaDaemonProxyManager;
-    NSMutableSet *__pendingCompletedStates;
-    CAMPersistenceController *__persistenceController;
-    BOOL __previewStarted;
-    BOOL __shouldUpdateFocusAndExposureWhenContrastDetectionCompletes;
-    CAMTimelapseState *__state;
-    <CAMTimelapseControllerDelegate> *_delegate;
-    CAMFocusResult *_lastFocusResult;
+    BOOL  __backendRecoveryNeeded;
+    CUCaptureController * __captureController;
+    NSObject<OS_dispatch_source> * __captureTimer;
+    CAMLowDiskSpaceAlertView * __diskSpaceAlert;
+    BOOL  __focusAndExposureAdjusted;
+    BOOL  __ignoringTimerCallbacksForTearDown;
+    BOOL  __ignoringTimerCallbacksWaitingForCaptureResponse;
+    NSCountedSet * __inFlightTimelapseUUIDs;
+    CAMLocationController * __locationController;
+    CAMMotionController * __motionController;
+    CAMNebulaDaemonProxyManager * __nebulaDaemonProxyManager;
+    NSMutableSet * __pendingCompletedStates;
+    CAMPersistenceController * __persistenceController;
+    BOOL  __previewStarted;
+    BOOL  __shouldUpdateFocusAndExposureWhenContrastDetectionCompletes;
+    CAMTimelapseState * __state;
+    <CAMTimelapseControllerDelegate> * _delegate;
+    CAMFocusResult * _lastFocusResult;
 }
 
 @property (setter=_setBackendRecoveryNeeded:, nonatomic) BOOL _backendRecoveryNeeded;
@@ -71,7 +71,6 @@
 - (id)_locationController;
 - (id)_motionController;
 - (id)_nebulaDaemonProxyManager;
-- (void)_notifyAGGDForDidStartCapturingWithState:(id)arg1;
 - (void)_notifyAGGDForDidStopCapturingWithState:(id)arg1;
 - (void)_notifyInsufficientDiskSpaceForContinuingCapture;
 - (void)_notifyInsufficientDiskSpaceForStartingCaptureWithNeededBytes:(long long)arg1 availableBytes:(long long)arg2;
@@ -114,9 +113,9 @@
 - (void)restoreConfiguration;
 - (void)setDelegate:(id)arg1;
 - (void)setLastFocusResult:(id)arg1;
-- (void)startCapturingWithCaptureDevice:(int)arg1 captureSession:(unsigned short)arg2;
+- (BOOL)startCapturingWithCaptureDevice:(int)arg1 captureSession:(unsigned short)arg2;
 - (void)stillImageRequestDidCompleteStillImageCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
 - (void)stillImageRequestDidCompleteStillImageLocalPersistence:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
-- (void)stopCapturingWithReasons:(int)arg1;
+- (BOOL)stopCapturingWithReasons:(int)arg1;
 
 @end

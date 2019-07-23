@@ -3,9 +3,9 @@
  */
 
 @interface SGPseudoEventKey : NSObject <SGEntityKey> {
-    NSString *_domain;
-    NSString *_groupId;
-    NSString *_serialized;
+    NSString * _domain;
+    NSString * _groupId;
+    NSString * _serialized;
 }
 
 @property (readonly, copy) NSString *debugDescription;

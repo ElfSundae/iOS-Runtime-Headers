@@ -3,9 +3,9 @@
  */
 
 @interface MKTransitShield : NSObject <GEOTransitShieldDataSource> {
-    NSString *_shieldColorString;
-    NSString *_shieldText;
-    long long _shieldType;
+    NSString * _shieldColorString;
+    NSString * _shieldText;
+    long long  _shieldType;
 }
 
 @property (readonly, copy) NSString *debugDescription;

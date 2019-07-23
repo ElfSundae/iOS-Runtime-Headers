@@ -3,10 +3,10 @@
  */
 
 @interface OADShadowEffect : OADEffect {
-    float mAngle;
-    float mBlurRadius;
-    OADColor *mColor;
-    float mDistance;
+    float  mAngle;
+    float  mBlurRadius;
+    OADColor * mColor;
+    float  mDistance;
 }
 
 - (float)angle;

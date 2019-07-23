@@ -3,10 +3,10 @@
  */
 
 @interface _UIParallaxDimmingView : UIView {
-    UIView *_addingSubview;
-    BOOL _backgroundIsDimmed;
-    UIColor *_dimmingColor;
-    UIImageView *leftEdgeFade;
+    UIView * _addingSubview;
+    BOOL  _backgroundIsDimmed;
+    UIColor * _dimmingColor;
+    UIImageView * leftEdgeFade;
 }
 
 @property (nonatomic, retain) UIView *addingSubview;

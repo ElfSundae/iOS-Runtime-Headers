@@ -3,7 +3,7 @@
  */
 
 @interface PHCachingImageManager : PHImageManager {
-    BOOL _allowsCachingHighQualityImages;
+    BOOL  _allowsCachingHighQualityImages;
 }
 
 @property (nonatomic) BOOL allowsCachingHighQualityImages;
@@ -11,7 +11,6 @@
 - (id)_fireCloudDownloadOfImageForAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize { float x1; float x2; })arg3 completionHandler:(id /* block */)arg4;
 - (id)_highPriorityRequestWaitGroup;
 - (BOOL)allowsCachingHighQualityImages;
-- (id)approximateThumbnailIndexesForAssets:(id)arg1;
 - (BOOL)canAvoidTouchingAssetsWithTargetSize:(struct CGSize { float x1; float x2; })arg1 contentMode:(int)arg2 options:(id)arg3 outBestFormat:(int*)arg4 outBestFormatIsTable:(BOOL*)arg5 outDegradedFormat:(int*)arg6 outDegradedFormatIsTable:(BOOL*)arg7;
 - (id)description;
 - (id)init;

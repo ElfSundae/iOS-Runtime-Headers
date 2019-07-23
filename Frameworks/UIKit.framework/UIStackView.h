@@ -3,14 +3,14 @@
  */
 
 @interface UIStackView : UIView {
-    _UIAlignedLayoutArrangement *_alignmentArrangement;
-    BOOL _didRequestTallestBaselineViewForFirst;
-    BOOL _didRequestTallestBaselineViewForLast;
-    _UIOrderedLayoutArrangement *_distributionArrangement;
-    BOOL _layoutMarginsRelativeArrangement;
-    NSMutableArray *_mutableLayoutArrangements;
-    BOOL _viewForFirstBaselineLayoutDidChange;
-    BOOL _viewForLastBaselineLayoutDidChange;
+    _UIAlignedLayoutArrangement * _alignmentArrangement;
+    BOOL  _didRequestTallestBaselineViewForFirst;
+    BOOL  _didRequestTallestBaselineViewForLast;
+    _UIOrderedLayoutArrangement * _distributionArrangement;
+    BOOL  _layoutMarginsRelativeArrangement;
+    NSMutableArray * _mutableLayoutArrangements;
+    BOOL  _viewForFirstBaselineLayoutDidChange;
+    BOOL  _viewForLastBaselineLayoutDidChange;
 }
 
 @property (nonatomic) int _mk_axis;
@@ -33,8 +33,10 @@
 - (BOOL)_hasLayoutArrangements;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (id)_mutableLayoutArrangements;
+- (float)_proportionalFillLengthForOrderedArrangement:(id)arg1 relevantParentAxis:(int)arg2;
 - (BOOL)_recordBaselineLoweringInfo;
 - (BOOL)_shouldRequestTallestBaselineViewForFirst:(BOOL)arg1;
+- (struct CGSize { float x1; float x2; })_systemLayoutSizeFittingSize:(struct CGSize { float x1; float x2; })arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(BOOL*)arg4;
 - (void)_vendedBaselineViewDidMoveForFirst:(BOOL)arg1;
 - (void)_vendedBaselineViewParametersDidChange;
 - (void)addArrangedSubview:(id)arg1;
@@ -60,6 +62,7 @@
 - (void)setLayoutMarginsRelativeArrangement:(BOOL)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setSpacing:(float)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(BOOL)arg1;
 - (float)spacing;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;

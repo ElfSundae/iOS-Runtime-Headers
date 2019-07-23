@@ -2,8 +2,8 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSSQLRow : NSExternalRefCountedData {
-    _CDSnapshot *_snapshot;
+@interface NSSQLRow : NSPersistentCacheRow {
+    _CDSnapshot * _snapshot;
 }
 
 + (id)allocForSQLEntity:(id)arg1;

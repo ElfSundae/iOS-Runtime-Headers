@@ -3,7 +3,7 @@
  */
 
 @interface FBSceneLayerHostView : UIView {
-    FBSceneLayer *_sceneLayer;
+    FBSceneLayer * _sceneLayer;
 }
 
 @property (nonatomic, readonly, retain) FBSceneLayer *sceneLayer;

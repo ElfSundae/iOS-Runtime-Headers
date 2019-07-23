@@ -3,23 +3,23 @@
  */
 
 @interface _SFNavigationBarURLButton : UIButton <UIGestureRecognizerDelegate> {
-    float _backgroundAlphaFactor;
-    UIImage *_darkBackgroundImage;
-    <_SFNavigationBarURLButtonDelegate> *_delegate;
-    UIImage *_lightBackgroundImage;
-    UIGestureRecognizer *_longPressGestureRecognizer;
-    UIImageView *_overlayImageView;
-    BOOL _showsDarkBackground;
-    UIImageView *_tintImageView;
-    BOOL _usesLightOverlayAndTintAlpha;
+    float  _backgroundAlphaFactor;
+    int  _backgroundStyle;
+    UIImage * _darkBackgroundImage;
+    <_SFNavigationBarURLButtonDelegate> * _delegate;
+    UIImage * _lightBackgroundImage;
+    UIGestureRecognizer * _longPressGestureRecognizer;
+    UIImageView * _overlayImageView;
+    UIImageView * _tintImageView;
+    BOOL  _usesLightOverlayAndTintAlpha;
 }
 
 @property (nonatomic) float backgroundAlphaFactor;
+@property (nonatomic) int backgroundStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_SFNavigationBarURLButtonDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
-@property (nonatomic) BOOL showsDarkBackground;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesLightOverlayAndTintAlpha;
 
@@ -28,6 +28,7 @@
 - (void)_handleLongPress:(id)arg1;
 - (void)_updateBackgroundImageAnimated:(BOOL)arg1;
 - (float)backgroundAlphaFactor;
+- (int)backgroundStyle;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
@@ -39,11 +40,10 @@
 - (id)pasteButtonTitle;
 - (BOOL)pointMostlyInside:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (void)setBackgroundAlphaFactor:(float)arg1;
+- (void)setBackgroundStyle:(int)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
-- (void)setShowsDarkBackground:(BOOL)arg1;
 - (void)setUsesLightOverlayAndTintAlpha:(BOOL)arg1;
-- (BOOL)showsDarkBackground;
 - (BOOL)usesLightOverlayAndTintAlpha;
 
 @end

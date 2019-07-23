@@ -3,13 +3,13 @@
  */
 
 @interface _UISearchPresentationController : UIPresentationController <_UISearchControllerPresenting> {
-    _UISearchPresentationAssistant *_assistant;
+    _UISearchPresentationAssistant * _assistant;
     struct { 
         unsigned int searchBarWasTableHeaderView : 1; 
         unsigned int excisedSearchBarDuringPresentation : 1; 
         unsigned int searchBarWantedAutolayoutBeforeExcision : 1; 
-    } _controllerFlags;
-    NSMapTable *_excisedSearchBarConstraitMap;
+    }  _controllerFlags;
+    NSMapTable * _excisedSearchBarConstraitMap;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,9 +19,9 @@
             float width; 
             float height; 
         } size; 
-    } _finalFrameForContainerView;
-    NSMapTable *_placeholderConstraitMap;
-    UIView *_placeholderView;
+    }  _finalFrameForContainerView;
+    NSMapTable * _placeholderConstraitMap;
+    UIView * _placeholderView;
 }
 
 @property (nonatomic, readonly) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;
@@ -47,6 +47,7 @@
 
 - (id)_constraintCopyOfConstraint:(id)arg1 replaceItem:(id)arg2 withItem:(id)arg3;
 - (void)_exciseSearchBarFromCurrentContext;
+- (void)_layoutPresentationWithSize:(struct CGSize { float x1; float x2; })arg1 transitionCoordinator:(id)arg2;
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
@@ -64,6 +65,7 @@
 - (int)adaptivePresentationStyle;
 - (BOOL)animatorShouldLayoutPresentationViews;
 - (id)backgroundObscuringView;
+- (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;

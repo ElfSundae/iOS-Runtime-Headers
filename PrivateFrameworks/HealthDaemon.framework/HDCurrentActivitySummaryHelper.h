@@ -3,18 +3,18 @@
  */
 
 @interface HDCurrentActivitySummaryHelper : NSObject {
-    NSDate *_dateOverride;
-    BOOL _hasLoadedActivitySummaries;
-    <HDHealthDaemon> *_healthDaemon;
-    NSObject<OS_dispatch_queue> *_observerQueue;
-    NSHashTable *_observers;
-    HDActivitySummaryQueryHelper *_queryHelper;
-    NSObject<OS_dispatch_queue> *_queue;
-    long long _todayIndex;
-    HKActivitySummary *_todaySummary;
-    NSArray *_typesForDataCollection;
-    long long _yesterdayIndex;
-    HKActivitySummary *_yesterdaySummary;
+    NSDate * _dateOverride;
+    BOOL  _hasLoadedActivitySummaries;
+    NSObject<OS_dispatch_queue> * _observerQueue;
+    NSHashTable * _observers;
+    HDProfile * _profile;
+    HDActivitySummaryQueryHelper * _queryHelper;
+    NSObject<OS_dispatch_queue> * _queue;
+    long long  _todayIndex;
+    HKActivitySummary * _todaySummary;
+    NSArray * _typesForDataCollection;
+    long long  _yesterdayIndex;
+    HKActivitySummary * _yesterdaySummary;
 }
 
 @property (readonly) BOOL hasLoadedActivitySummaries;
@@ -39,7 +39,7 @@
 - (id)dateOverride;
 - (void)dealloc;
 - (BOOL)hasLoadedActivitySummaries;
-- (id)initWithHealthDaemon:(id)arg1;
+- (id)initWithProfile:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setDateOverride:(id)arg1;
 - (id)todayActivitySummary;

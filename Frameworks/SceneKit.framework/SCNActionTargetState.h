@@ -7,25 +7,25 @@
         float x; 
         float y; 
         float z; 
-    } euler;
-    float opacity;
+    }  euler;
+    float  opacity;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } position;
+    }  position;
     struct SCNVector4 { 
         float x; 
         float y; 
         float z; 
         float w; 
-    } rotation;
+    }  rotation;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } scale;
-    BOOL usesEuler;
+    }  scale;
+    BOOL  usesEuler;
 }
 
 @property (nonatomic) struct SCNVector3 { float x1; float x2; float x3; } euler;

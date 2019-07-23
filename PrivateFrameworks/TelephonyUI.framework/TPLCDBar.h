@@ -3,7 +3,7 @@
  */
 
 @interface TPLCDBar : UIView {
-    UIImageView *_shadowView;
+    UIImageView * _shadowView;
 }
 
 @property (readonly) UIImageView *shadowView;

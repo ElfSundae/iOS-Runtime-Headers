@@ -3,23 +3,23 @@
  */
 
 @interface CBBlueLightClient : NSObject {
-    BOOL _supported;
-    BrightnessSystemClient *bsc;
+    BOOL  _supported;
+    BrightnessSystemClient * bsc;
     struct { 
         float minCCT; 
         float maxCCT; 
         float midCCT; 
-    } cctRange;
-    id /* block */ clientBlock;
+    }  cctRange;
+    id /* block */  clientBlock;
     struct { 
         float minCCT; 
         float maxCCT; 
         float midCCT; 
-    } defaultCctRange;
-    BOOL notificationActive;
-    BOOL ownsClient;
-    BOOL rangeOverridden;
-    BOOL rangeSet;
+    }  defaultCctRange;
+    BOOL  notificationActive;
+    BOOL  ownsClient;
+    BOOL  rangeOverridden;
+    BOOL  rangeSet;
 }
 
 @property BOOL supported;

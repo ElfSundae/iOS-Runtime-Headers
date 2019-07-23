@@ -12,27 +12,28 @@
             float width; 
             float height; 
         } size; 
-    } mActualScaledClipRect;
-    struct CGColor { } *mBackgroundColor;
-    TSDCanvas *mCanvas;
+    }  mActualScaledClipRect;
+    struct CGColor { } * mBackgroundColor;
+    TSDCanvas * mCanvas;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } mContentInset;
-    BOOL mDistortedToMatch;
-    TSKDocumentRoot *mDocumentRoot;
-    BOOL mDrawingIntoPDF;
-    BOOL mImageMustHaveEvenDimensions;
-    NSArray *mInfos;
-    BOOL mIsPrinting;
+    }  mContentInset;
+    BOOL  mDistortedToMatch;
+    TSKDocumentRoot * mDocumentRoot;
+    BOOL  mDrawingIntoPDF;
+    BOOL  mImageIsRenderingForMovie;
+    BOOL  mImageMustHaveEvenDimensions;
+    NSArray * mInfos;
+    BOOL  mIsPrinting;
     struct CGSize { 
         float width; 
         float height; 
-    } mMaximumScaledImageSize;
-    id /* block */ mPostRenderAction;
-    NSSet *mPreviousRenderDatasNeedingDownload;
+    }  mMaximumScaledImageSize;
+    id /* block */  mPostRenderAction;
+    NSSet * mPreviousRenderDatasNeedingDownload;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -42,8 +43,8 @@
             float width; 
             float height; 
         } size; 
-    } mReusableActualScaledClipRect;
-    struct CGContext { } *mReusableBitmapContext;
+    }  mReusableActualScaledClipRect;
+    struct CGContext { } * mReusableBitmapContext;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -53,7 +54,7 @@
             float width; 
             float height; 
         } size; 
-    } mReusableBounds;
+    }  mReusableBounds;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -63,18 +64,16 @@
             float width; 
             float height; 
         } size; 
-    } mReusableIntegralBounds;
+    }  mReusableIntegralBounds;
     struct CGSize { 
         float width; 
         float height; 
-    } mReusableScaledImageSize;
-    BOOL mReusableShouldUseSRGBColorSpace;
+    }  mReusableScaledImageSize;
     struct CGSize { 
         float width; 
         float height; 
-    } mScaledImageSize;
-    BOOL mShouldReuseBitmapContext;
-    BOOL mShouldUseSRGBColorSpace;
+    }  mScaledImageSize;
+    BOOL  mShouldReuseBitmapContext;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -84,9 +83,9 @@
             float width; 
             float height; 
         } size; 
-    } mUnscaledClipRect;
-    BOOL mUseScaledImageSize;
-    float mViewScale;
+    }  mUnscaledClipRect;
+    BOOL  mUseScaledImageSize;
+    float  mViewScale;
 }
 
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } actualScaledClipRect;
@@ -97,6 +96,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL distortedToMatch;
 @property (readonly) unsigned int hash;
+@property (nonatomic) BOOL imageIsRenderingForMovie;
 @property (nonatomic) BOOL imageMustHaveEvenDimensions;
 @property (nonatomic, retain) NSArray *infos;
 @property (nonatomic) BOOL isPrinting;
@@ -116,6 +116,7 @@
 - (BOOL)distortedToMatch;
 - (id)documentRoot;
 - (BOOL)drawPageInContext:(struct CGContext { }*)arg1 createPage:(BOOL)arg2;
+- (BOOL)imageIsRenderingForMovie;
 - (BOOL)imageMustHaveEvenDimensions;
 - (id)infos;
 - (id)initWithDocumentRoot:(id)arg1;
@@ -133,6 +134,7 @@
 - (void)setBackgroundColor:(struct CGColor { }*)arg1;
 - (void)setContentInset:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setDistortedToMatch:(BOOL)arg1;
+- (void)setImageIsRenderingForMovie:(BOOL)arg1;
 - (void)setImageMustHaveEvenDimensions:(BOOL)arg1;
 - (void)setInfos:(id)arg1;
 - (void)setIsPrinting:(BOOL)arg1;

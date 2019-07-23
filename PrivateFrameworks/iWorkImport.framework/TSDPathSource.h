@@ -3,10 +3,11 @@
  */
 
 @interface TSDPathSource : NSObject <NSCopying, TSDMixing> {
-    BOOL mHorizontalFlip;
-    BOOL mVerticalFlip;
+    BOOL  mHorizontalFlip;
+    BOOL  mVerticalFlip;
 }
 
+@property (getter=isClosed, nonatomic, readonly) BOOL closed;
 @property BOOL hasHorizontalFlip;
 @property BOOL hasVerticalFlip;
 
@@ -18,9 +19,11 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (BOOL)hasHorizontalFlip;
 - (BOOL)hasVerticalFlip;
+- (unsigned int)hash;
 - (id)initWithArchive:(const struct PathSourceArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; struct PointPathSourceArchive {} *x5; struct ScalarPathSourceArchive {} *x6; struct BezierPathSourceArchive {} *x7; struct CalloutPathSourceArchive {} *x8; struct ConnectionLinePathSourceArchive {} *x9; struct EditableBezierPathSourceArchive {} *x10; bool x11; bool x12; }*)arg1;
 - (id)interiorWrapPath;
 - (BOOL)isCircular;
+- (BOOL)isClosed;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRectangular;
 - (BOOL)isRectangularForever;

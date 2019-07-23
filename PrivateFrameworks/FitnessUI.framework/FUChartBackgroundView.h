@@ -8,9 +8,9 @@
         float left; 
         float bottom; 
         float right; 
-    } _lineInsets;
-    NSNumber *_maxValue;
-    NSNumber *_minValue;
+    }  _lineInsets;
+    NSNumber * _maxValue;
+    NSNumber * _minValue;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } lineInsets;

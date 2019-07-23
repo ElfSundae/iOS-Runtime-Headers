@@ -3,41 +3,41 @@
  */
 
 @interface UIKBGeometry : NSObject <NSCoding, NSCopying> {
-    BOOL m_explicitlySpecified;
+    BOOL  m_explicitlySpecified;
     struct { 
         float amount; 
         int unit; 
-    } m_h;
-    BOOL m_isTemplate;
-    NSString *m_name;
+    }  m_h;
+    BOOL  m_isTemplate;
+    NSString * m_name;
     struct { 
         float amount; 
         int unit; 
-    } m_paddingBottom;
+    }  m_paddingBottom;
     struct { 
         float amount; 
         int unit; 
-    } m_paddingLeft;
+    }  m_paddingLeft;
     struct { 
         float amount; 
         int unit; 
-    } m_paddingRight;
+    }  m_paddingRight;
     struct { 
         float amount; 
         int unit; 
-    } m_paddingTop;
+    }  m_paddingTop;
     struct { 
         float amount; 
         int unit; 
-    } m_w;
+    }  m_w;
     struct { 
         float amount; 
         int unit; 
-    } m_x;
+    }  m_x;
     struct { 
         float amount; 
         int unit; 
-    } m_y;
+    }  m_y;
 }
 
 @property (nonatomic) BOOL explicitlySpecified;

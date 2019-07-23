@@ -3,10 +3,10 @@
  */
 
 @interface FBApplicationTerminationAssertion : NSObject {
-    NSString *_bundleID;
-    id _plugInHoldToken;
-    NSString *_reason;
-    unsigned long long _serialNumber;
+    NSString * _bundleID;
+    id  _plugInHoldToken;
+    NSString * _reason;
+    unsigned long long  _serialNumber;
 }
 
 @property (nonatomic, copy) NSString *bundleID;

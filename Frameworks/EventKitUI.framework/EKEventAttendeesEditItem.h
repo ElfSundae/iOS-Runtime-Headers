@@ -3,11 +3,13 @@
  */
 
 @interface EKEventAttendeesEditItem : EKEventEditItem {
-    NSOperationQueue *_availabilityQueue;
-    int _numberOfConflicts;
-    NSString *_searchAccountID;
-    EKParticipant *_selfOrganizer;
+    NSOperationQueue * _availabilityQueue;
+    int  _numberOfConflicts;
+    NSString * _searchAccountID;
+    EKParticipant * _selfOrganizer;
 }
+
++ (id)_noneInviteesLocalizedString;
 
 - (void).cxx_destruct;
 - (id)attendeesWithoutSelfOrganizerAndLocations;

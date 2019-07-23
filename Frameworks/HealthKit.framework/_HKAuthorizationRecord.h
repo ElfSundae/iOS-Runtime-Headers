@@ -3,9 +3,9 @@
  */
 
 @interface _HKAuthorizationRecord : NSObject <NSCopying, NSSecureCoding> {
-    long long _objectAnchor;
-    int _request;
-    int _status;
+    long long  _objectAnchor;
+    int  _request;
+    int  _status;
 }
 
 @property (readonly) long long objectAnchor;

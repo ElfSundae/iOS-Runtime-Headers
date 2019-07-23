@@ -3,14 +3,14 @@
  */
 
 @interface UIWebSelectionAssistant : NSObject <UIGestureRecognizerDelegate, UISelectionInteractionAssistant, _UIKeyboardTextSelectionGestureControllerDelegate> {
-    BOOL _enabled;
-    UILongPressGestureRecognizer *_forcePressGestureRecognizer;
-    UILongPressGestureRecognizer *_longPressGestureRecognizer;
-    UIWebSelectionView *_selectionView;
-    UITapAndAHalfRecognizer *_tapAndAHalfGestureRecognizer;
-    _UIKeyboardTextSelectionController *_textSelectionController;
-    _UIKeyboardBasedNonEditableTextSelectionGestureController *_textSelectionGestureController;
-    UIView *_view;
+    BOOL  _enabled;
+    UILongPressGestureRecognizer * _forcePressGestureRecognizer;
+    UILongPressGestureRecognizer * _longPressGestureRecognizer;
+    UIWebSelectionView * _selectionView;
+    UITapAndAHalfRecognizer * _tapAndAHalfGestureRecognizer;
+    _UIKeyboardTextSelectionController * _textSelectionController;
+    _UIKeyboardBasedNonEditableTextSelectionGestureController * _textSelectionGestureController;
+    UIView * _view;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -73,6 +73,7 @@
 - (id)textSelectionController;
 - (void)updateSelectionRects:(BOOL)arg1;
 - (id)view;
+- (void)willBeginGesture;
 - (void)willRotate:(id)arg1;
 - (void)willStartScrollingOrZoomingPage;
 - (void)willStartScrollingOverflow;

@@ -3,12 +3,12 @@
  */
 
 @interface PUPhotosGlobalFooterBannerView : UIView {
-    ICQBannerView *_bannerView;
-    NSArray *_constraints;
-    <ICQBannerViewDelegate> *_delegate;
-    UIColor *_lineColor;
-    UIView *_separatorLine;
-    float separatorHeight;
+    ICQBannerView * _bannerView;
+    NSArray * _constraints;
+    <ICQBannerViewDelegate> * _delegate;
+    UIColor * _lineColor;
+    UIView * _separatorLine;
+    float  separatorHeight;
 }
 
 @property (nonatomic) <ICQBannerViewDelegate> *delegate;

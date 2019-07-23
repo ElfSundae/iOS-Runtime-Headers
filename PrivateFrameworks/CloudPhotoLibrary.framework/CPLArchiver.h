@@ -3,10 +3,10 @@
  */
 
 @interface CPLArchiver : NSCoder {
-    id _archive;
-    id _archiveCursor;
-    BOOL _forDisplay;
-    id _rootObject;
+    id  _archive;
+    id  _archiveCursor;
+    BOOL  _forDisplay;
+    id  _rootObject;
 }
 
 @property (nonatomic, retain) id archiveCursor;

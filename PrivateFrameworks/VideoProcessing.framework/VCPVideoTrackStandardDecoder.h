@@ -3,10 +3,10 @@
  */
 
 @interface VCPVideoTrackStandardDecoder : VCPVideoTrackDecoder {
-    AVAssetReader *_assetReader;
-    struct opaqueCMSampleBuffer { } *_nextSample;
-    int _status;
-    AVAssetReaderTrackOutput *_trackOutput;
+    AVAssetReader * _assetReader;
+    struct opaqueCMSampleBuffer { } * _nextSample;
+    int  _status;
+    AVAssetReaderTrackOutput * _trackOutput;
 }
 
 - (void).cxx_destruct;

@@ -3,32 +3,168 @@
  */
 
 @interface TPRevealingRingView : UIView {
-    float _alphaInsideRing;
-    float _alphaOutsideRing;
-    int _animationStyle;
-    UIColor *_colorInsideRing;
-    UIColor *_colorOutsideRing;
-    float _cornerRadius;
-    float _defaultRingStrokeWidth;
-    float _gammaBoost;
-    BOOL _gammaBoostInside;
-    BOOL _gammaBoostOuterRing;
-    BOOL _innerGammaAlpha;
-    TPPathView *_innerGammaView;
-    TPPathView *_innerView;
-    BOOL _isCircularRing;
-    float _minimumRevealingScale;
-    TPPathView *_outerGammaView;
-    TPBackgroundRoundedRectView *_outerView;
+    float  _alphaInsideRing;
+    float  _alphaOutsideRing;
+    int  _animationStyle;
+    UIColor * _colorInsideRing;
+    UIColor * _colorOutsideRing;
+    float  _cornerRadius;
+    float  _defaultRingStrokeWidth;
+    float  _gammaBoost;
+    BOOL  _gammaBoostInside;
+    BOOL  _gammaBoostOuterRing;
+    float  _innerGammaAlpha;
+    _TPTemplatedColoredImageView * _innerGammaView;
+    struct { 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } outerPath; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } innerPath; 
+        BOOL isCircle; 
+        BOOL drawsOutsideOuterPath; 
+    }  _innerGammaViewDrawingProperties;
+    _TPTemplatedColoredImageView * _innerView;
+    struct { 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } outerPath; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } innerPath; 
+        BOOL isCircle; 
+        BOOL drawsOutsideOuterPath; 
+    }  _innerViewDrawingProperties;
+    BOOL  _isCircularRing;
+    float  _minimumRevealingScale;
+    _TPTemplatedColoredImageView * _outerGammaView;
+    struct { 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } outerPath; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } innerPath; 
+        BOOL isCircle; 
+        BOOL drawsOutsideOuterPath; 
+    }  _outerGammaViewDrawingProperties;
+    _TPTemplatedColoredImageView * _outerView;
+    struct { 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } outerPath; 
+        struct { 
+            struct CGRect { 
+                struct CGPoint { 
+                    float x; 
+                    float y; 
+                } origin; 
+                struct CGSize { 
+                    float width; 
+                    float height; 
+                } size; 
+            } rect; 
+            float cornerRadius; 
+        } innerPath; 
+        BOOL isCircle; 
+        BOOL drawsOutsideOuterPath; 
+    }  _outerViewDrawingProperties;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _paddingOutsideRing;
-    float _revealAnimationDuration;
-    BOOL _revealed;
-    float _unrevealAnimationDuration;
+    }  _paddingOutsideRing;
+    float  _revealAnimationDuration;
+    BOOL  _revealed;
+    float  _unrevealAnimationDuration;
 }
 
 @property (nonatomic) float alphaInsideRing;
@@ -47,16 +183,17 @@
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } ringSize;
 @property (nonatomic) float unrevealAnimationDuration;
 
++ (id)classIdentifier;
+
 - (void).cxx_destruct;
 - (void)_adjustGammaBoostIfNecessary;
 - (void)_animateForReveal:(BOOL)arg1 withDuration:(float)arg2 delay:(double)arg3;
-- (id)_bezierPathForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 cornerRadius:(float)arg2;
 - (void)_calculateOuter:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1 inner:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg2 newXOffset:(float*)arg3 newYOffset:(float*)arg4 withScale:(float)arg5;
+- (void)_computeInnerGammaViewDrawingPropertiesWithScale:(float)arg1;
+- (void)_computeInnerViewDrawingPropertiesWithScale:(float)arg1;
+- (void)_computeOuterGammaViewDrawingPropertiesWithScale:(float)arg1;
 - (void)_evaluateCircularness;
 - (BOOL)_isSquare:(struct CGSize { float x1; float x2; })arg1;
-- (void)_setInnerCircleScale:(float)arg1;
-- (void)_setInnerGammaScale:(float)arg1;
-- (void)_setOuterGammaScale:(float)arg1;
 - (BOOL)_shouldDrawAsCircle:(struct CGSize { float x1; float x2; })arg1 cornerRadius:(float)arg2;
 - (float)alphaInsideRing;
 - (float)alphaOutsideRing;
@@ -65,6 +202,7 @@
 - (id)colorOutsideRing;
 - (float)cornerRadius;
 - (float)defaultRingStrokeWidth;
+- (id)description;
 - (float)gammaBoost;
 - (BOOL)gammaBoostInside;
 - (BOOL)gammaBoostOuterRing;

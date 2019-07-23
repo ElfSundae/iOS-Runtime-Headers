@@ -3,14 +3,14 @@
  */
 
 @interface _UIGameControllerEvent : UIEvent {
-    unsigned int _activeComponent;
+    unsigned int  _activeComponent;
     struct { 
         unsigned long long senderID; 
         float controllerState[16]; 
         float normalizedLeftStickState[4]; 
         float normalizedRightStickState[4]; 
         float normalizedShoulderButtonState[4]; 
-    } _previousState;
+    }  _previousState;
 }
 
 - (BOOL)_determineInputTypeAndProcess:(struct { unsigned long long x1; float x2[16]; float x3[4]; float x4[4]; float x5[4]; }*)arg1 pressesEvent:(id)arg2 timestamp:(double)arg3;

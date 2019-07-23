@@ -17,6 +17,7 @@
 - (BOOL)idleTimerDisabled;
 - (int)interfaceOrientation;
 - (BOOL)interfaceOrientationChangesDisabled;
+- (BOOL)isStatusBarForegroundTransparent;
 - (int)notificationCenterRevealMode;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })primaryWindowOverlayInsets;
 - (unsigned int)proximityDetectionModes;

@@ -3,7 +3,7 @@
  */
 
 @interface _MKGradientView : UIView {
-    CAGradientLayer *_gradient;
+    CAGradientLayer * _gradient;
 }
 
 @property (copy) NSArray *gradientColors;

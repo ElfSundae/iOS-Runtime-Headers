@@ -3,22 +3,22 @@
  */
 
 @interface NSTextContainer : NSObject <NSCoding, NSTextLayoutOrientationProvider> {
-    NSDictionary *_attributesForExtraLineFragment;
-    float _cacheBoundsMaxY;
-    float _cacheBoundsMinY;
-    struct CGPath { } *_cachedBoundingPath;
-    struct __CFArray { } *_cachedBounds;
-    struct __CFArray { } *_cachedClippingAttributes;
-    NSArray *_exclusionPaths;
-    NSLayoutManager *_layoutManager;
-    int _layoutOrientation;
-    float _lineFragmentPadding;
-    unsigned int _maximumLines;
-    float _minimumWidth;
+    NSDictionary * _attributesForExtraLineFragment;
+    float  _cacheBoundsMaxY;
+    float  _cacheBoundsMinY;
+    struct CGPath { } * _cachedBoundingPath;
+    struct __CFArray { } * _cachedBounds;
+    struct __CFArray { } * _cachedClippingAttributes;
+    NSArray * _exclusionPaths;
+    NSLayoutManager * _layoutManager;
+    int  _layoutOrientation;
+    float  _lineFragmentPadding;
+    unsigned int  _maximumLines;
+    float  _minimumWidth;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
     struct __tcFlags { 
         unsigned int widthTracksTextView : 1; 
         unsigned int heightTracksTextView : 1; 
@@ -26,8 +26,8 @@
         unsigned int lineBreakMode : 4; 
         unsigned int oldAPI : 1; 
         unsigned int _reserved : 8; 
-    } _tcFlags;
-    id _textView;
+    }  _tcFlags;
+    id  _textView;
 }
 
 @property (nonatomic, copy) NSArray *exclusionPaths;

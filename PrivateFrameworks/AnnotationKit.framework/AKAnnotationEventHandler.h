@@ -3,31 +3,31 @@
  */
 
 @interface AKAnnotationEventHandler : NSObject {
-    AKAnnotation *_annotation;
-    BOOL _draggingHorizontalOnly;
-    BOOL _draggingVerticalOnly;
+    AKAnnotation * _annotation;
+    BOOL  _draggingHorizontalOnly;
+    BOOL  _draggingVerticalOnly;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialCenter;
+    }  _initialCenter;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialDraggedPoint;
+    }  _initialDraggedPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialOtherPoint;
-    unsigned int _initiallyDraggedArea;
+    }  _initialOtherPoint;
+    unsigned int  _initiallyDraggedArea;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastPositionInModel;
+    }  _lastPositionInModel;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastPositionInWindow;
-    AKPageController *_pageController;
+    }  _lastPositionInWindow;
+    AKPageController * _pageController;
 }
 
 @property (retain) AKAnnotation *annotation;
@@ -42,6 +42,8 @@
 @property AKPageController *pageController;
 
 + (Class)_handlerClassForPlatformForAnnotation:(id)arg1;
++ (BOOL)allowsDragging;
++ (BOOL)allowsDraggingOfAnnotation:(id)arg1;
 + (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })annotationRectangleForDraggingBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forAnnotation:(id)arg2 onPageController:(id)arg3 withOriginalCenter:(struct CGPoint { float x1; float x2; })arg4;
 + (id)newAnnotationEventHandlerForCurrentPlatformForAnnotation:(id)arg1 withPageController:(id)arg2;
 
@@ -55,6 +57,7 @@
 - (BOOL)draggingVerticalOnly;
 - (BOOL)enterDraggableAreaEventTrackingLoopWithEvent:(id)arg1 orRecognizer:(id)arg2;
 - (void)getInitialDraggedPoint:(struct CGPoint { float x1; float x2; }*)arg1 otherPoint:(struct CGPoint { float x1; float x2; }*)arg2 center:(struct CGPoint { float x1; float x2; }*)arg3 forEvent:(id)arg4 orRecognizer:(id)arg5;
+- (BOOL)handleDownEvent:(id)arg1 orRecognizer:(id)arg2;
 - (struct CGPoint { float x1; float x2; })initialCenter;
 - (struct CGPoint { float x1; float x2; })initialDraggedPoint;
 - (struct CGPoint { float x1; float x2; })initialOtherPoint;

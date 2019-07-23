@@ -3,7 +3,7 @@
  */
 
 @interface UIStoryboardPopoverSegue : UIStoryboardSegue {
-    UIBarButtonItem *_anchorBarButtonItem;
+    UIBarButtonItem * _anchorBarButtonItem;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,11 +13,11 @@
             float width; 
             float height; 
         } size; 
-    } _anchorRect;
-    UIView *_anchorView;
-    NSArray *_passthroughViews;
-    unsigned int _permittedArrowDirections;
-    UIPopoverController *_popoverController;
+    }  _anchorRect;
+    UIView * _anchorView;
+    NSArray * _passthroughViews;
+    unsigned int  _permittedArrowDirections;
+    UIPopoverController * _popoverController;
 }
 
 @property (setter=_setAnchorBarButtonItem:, nonatomic, retain) UIBarButtonItem *_anchorBarButtonItem;

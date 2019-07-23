@@ -3,21 +3,21 @@
  */
 
 @interface MFPPen : NSObject {
-    int mAlignment;
-    MFPBrush *mBrush;
-    float *mCompoundArray;
-    int mCompoundArrayCount;
-    MFPCustomLineCap *mCustomEndCap;
-    MFPCustomLineCap *mCustomStartCap;
-    int mDashCap;
-    float mDashOffset;
-    float *mDashPattern;
-    int mDashPatternCount;
-    int mDashStyle;
-    int mEndCap;
-    int mLineJoin;
-    float mMiterLimit;
-    int mStartCap;
+    int  mAlignment;
+    MFPBrush * mBrush;
+    float * mCompoundArray;
+    int  mCompoundArrayCount;
+    MFPCustomLineCap * mCustomEndCap;
+    MFPCustomLineCap * mCustomStartCap;
+    int  mDashCap;
+    float  mDashOffset;
+    float * mDashPattern;
+    int  mDashPatternCount;
+    int  mDashStyle;
+    int  mEndCap;
+    int  mLineJoin;
+    float  mMiterLimit;
+    int  mStartCap;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -25,8 +25,8 @@
         float d; 
         float tx; 
         float ty; 
-    } mTransform;
-    float mWidth;
+    }  mTransform;
+    float  mWidth;
 }
 
 - (int)alignment;

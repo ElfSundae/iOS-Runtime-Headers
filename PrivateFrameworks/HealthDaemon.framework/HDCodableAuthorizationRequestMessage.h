@@ -3,18 +3,18 @@
  */
 
 @interface HDCodableAuthorizationRequestMessage : PBCodable <NSCopying> {
-    NSString *_appBundleIdentifier;
-    NSData *_requestIdentifier;
+    NSString * _appBundleIdentifier;
+    NSData * _requestIdentifier;
     struct { 
         long long *list; 
         unsigned int count; 
         unsigned int size; 
-    } _typesToReads;
+    }  _typesToReads;
     struct { 
         long long *list; 
         unsigned int count; 
         unsigned int size; 
-    } _typesToWrites;
+    }  _typesToWrites;
 }
 
 @property (nonatomic, retain) NSString *appBundleIdentifier;

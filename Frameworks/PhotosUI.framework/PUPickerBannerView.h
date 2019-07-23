@@ -3,16 +3,16 @@
  */
 
 @interface PUPickerBannerView : UIView {
-    int __alignment;
-    BOOL __animatingStackView;
-    id /* block */ __animationCompletionHandler;
-    UILabel *__label;
-    PUStackView *__stackView;
-    NSArray *_images;
-    UIView *_leftView;
-    UIView *_rightView;
-    unsigned int _style;
-    NSString *_title;
+    int  __alignment;
+    BOOL  __animatingStackView;
+    id /* block */  __animationCompletionHandler;
+    UILabel * __label;
+    PUStackView * __stackView;
+    NSArray * _images;
+    UIView * _leftView;
+    UIView * _rightView;
+    unsigned int  _style;
+    NSString * _title;
 }
 
 @property (setter=_setAlignment:, nonatomic) int _alignment;

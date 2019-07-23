@@ -3,7 +3,7 @@
  */
 
 @interface AVRateBubbleBackdropView : UIImageView {
-    CALayer *_maskLayer;
+    CALayer * _maskLayer;
 }
 
 + (Class)layerClass;

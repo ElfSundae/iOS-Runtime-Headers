@@ -3,7 +3,7 @@
  */
 
 @interface AKFormFeatureDetectorController : NSObject <AKFormFeatureDetectorDelegate> {
-    AKController *_controller;
+    AKController * _controller;
 }
 
 @property AKController *controller;

@@ -3,9 +3,9 @@
  */
 
 @interface SSURLConnectionResponse : NSObject <SSXPCCoding> {
-    NSData *_bodyData;
-    SSMetricsPageEvent *_metricsPageEvent;
-    NSHTTPURLResponse *_urlResponse;
+    NSData * _bodyData;
+    SSMetricsPageEvent * _metricsPageEvent;
+    NSHTTPURLResponse * _urlResponse;
 }
 
 @property (nonatomic, readonly) NSString *MIMEType;
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) SSMetricsPageEvent *metricsPageEvent;
 @property (nonatomic, readonly) NSData *radio_decompressedBodyData;
 @property (nonatomic, readonly) BOOL ssv_isExpiredResponse;
+@property (nonatomic, readonly) NSString *storeCorrelationID;
 @property (nonatomic, readonly) NSString *suggestedFilename;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *textEncodingName;
@@ -42,6 +43,7 @@
 - (void)setMetricsPageEvent:(id)arg1;
 - (BOOL)ssv_isExpiredResponse;
 - (int)statusCode;
+- (id)storeCorrelationID;
 - (id)suggestedFilename;
 - (id)textEncodingName;
 

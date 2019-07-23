@@ -12,8 +12,8 @@
             float width; 
             float height; 
         } size; 
-    } mBox;
-    EDChartSheet *mChartSheet;
+    }  mBox;
+    EDChartSheet * mChartSheet;
 }
 
 - (id)initWithChartSheet:(id)arg1 parent:(id)arg2;

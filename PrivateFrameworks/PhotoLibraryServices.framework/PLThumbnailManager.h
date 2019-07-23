@@ -3,37 +3,46 @@
  */
 
 @interface PLThumbnailManager : NSObject {
-    NSMutableArray *_alreadyFailedAssetObjectIDsForRebuild;
-    NSLock *_fixLock;
-    <PLThumbPersistenceManager> *_lastUsedThumbManager;
-    int _lastUsedThumbManagerFormatID;
-    id _observerToken;
-    NSMutableSet *_previouslyRequestedThumbnailFixOIDs;
-    NSMutableSet *_requestedThumbnailFixAssets;
-    NSMutableDictionary *_thumbManagersByFormat;
-    NSLock *_thumbManagersLock;
-    struct _FigCascadeContext { } *_unicornContextLandscape;
-    struct _FigCascadeContext { } *_unicornContextPortrait;
-    NSLock *_unicornLock;
+    NSMutableArray * _alreadyFailedAssetObjectIDsForRebuild;
+    NSLock * _fixLock;
+    <PLThumbPersistenceManager> * _lastUsedThumbManager;
+    int  _lastUsedThumbManagerFormatID;
+    id  _observerToken;
+    NSMutableSet * _previouslyRequestedThumbnailFixOIDs;
+    NSMutableSet * _requestedThumbnailFixAssets;
+    NSMutableDictionary * _thumbManagersByFormat;
+    NSLock * _thumbManagersLock;
+    struct _FigCascadeContext { } * _unicornContextLandscape;
+    struct _FigCascadeContext { } * _unicornContextPortrait;
+    NSLock * _unicornLock;
 }
 
 @property (nonatomic, retain) id observerToken;
 @property (nonatomic, readonly, retain) NSMutableDictionary *thumbManagersByFormat;
 
 + (id)_allPossibleThumbnailFormatIDs;
++ (id)_allowedForCameraPreviewWellPredicate;
++ (BOOL)_cameraPreviewWellMetadataLoadAndUpdateIfNeeded:(id*)arg1;
++ (id)_cameraPreviewWellMetadataQueue;
++ (BOOL)_compareAsset:(id)arg1 toMetadata:(id)arg2;
 + (int)_configurationThumbnailFormat;
 + (int)_configurationThumbnailVersion;
 + (id)_fastThumbPersistenceManagers;
++ (id)_fetchCameraPreviewWellMetadata;
 + (int*)_imageTableModes;
 + (struct { int x1; int x2; }*)_imageTableSizes;
-+ (void)_removeThumbnailTablesUnsupportedOnly:(BOOL)arg1;
++ (void)_refetchAndSaveCameraPreviewWellImage;
++ (void)_saveCameraPreviewWellImage:(struct CGImage { }*)arg1 assetUUID:(id)arg2;
 + (BOOL)_shouldUseUnicornContext;
 + (id)_slowThumbPersistenceManagers;
 + (id)_supportedTableFormats;
 + (int)_supportedThumbnailFormatIDFromGeneralFormatID:(int)arg1;
 + (BOOL)_thumbnailChangeContainsOnlyTableDeprecationsFromVersion:(int)arg1 toVersion:(int)arg2 fromFormat:(int)arg3 toFormat:(int)arg4;
++ (void)_updateCameraPreviewWellMetadataFromAsset:(id)arg1;
 + (void)addRebuildThumbnailsRequest;
-+ (id)cameraPreviewWellAssetUUID;
++ (BOOL)assetIsAllowedForCameraPreviewWell:(id)arg1;
++ (BOOL)assetIsCameraPreviewWellAsset:(id)arg1;
++ (id)cameraPreviewWellAssetUUIDFromPersistedFile;
 + (id)cameraPreviewWellImageQueue;
 + (BOOL)cameraPreviewWellSupportedOnCurrentDevice;
 + (id)defaultThumbnailManager;
@@ -47,10 +56,11 @@
 + (BOOL)isMissingThumbnailTables;
 + (BOOL)isRebuildingThumbnails;
 + (void)rebuildAllMissingThumbnails;
++ (void)refetchAndSaveCameraPreviewWellImageIfNecessaryForAssetDidSave:(id)arg1;
 + (void)removeObsoleteMetadata;
 + (void)removeRebuildThumbnailsRequest:(const char *)arg1;
++ (void)removeThumbnailTablesUnsupportedOnly:(BOOL)arg1;
 + (void)resetThumbnails;
-+ (void)saveCameraPreviewWellImage:(struct CGImage { }*)arg1 uuid:(id)arg2;
 + (void)saveCameraPreviewWellImageForAsset:(id)arg1;
 + (id)supportedThumbnailFormatIDs;
 + (id)supportedThumbnailFormatIDsForDeviceConfiguration:(id)arg1;

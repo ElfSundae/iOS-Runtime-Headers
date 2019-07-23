@@ -6,10 +6,10 @@
     struct { 
         unsigned int objectType : 1; 
         unsigned int userOrdered : 1; 
-    } _has;
-    long long _objectType;
-    NSData *_sourceUUIDs;
-    BOOL _userOrdered;
+    }  _has;
+    long long  _objectType;
+    NSData * _sourceUUIDs;
+    BOOL  _userOrdered;
 }
 
 @property (nonatomic) BOOL hasObjectType;

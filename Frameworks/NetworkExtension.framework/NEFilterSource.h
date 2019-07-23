@@ -3,27 +3,27 @@
  */
 
 @interface NEFilterSource : NSObject {
-    NSURLRequest *_currentRequest;
-    NSURLResponse *_currentResponse;
-    int _direction;
-    BOOL _expectRemediation;
-    NSUUID *_flowUUID;
-    unsigned long long _lastPendingDataStartIndex;
-    unsigned long long _lastSendDataLength;
-    NSString *_organization;
-    NSURL *_parentURL;
-    unsigned long long _passLength;
-    unsigned long long _peekIndex;
-    NSMutableData *_pendingData;
-    unsigned long long _pendingDataStartIndex;
-    NSObject<OS_dispatch_queue> *_queue;
-    BOOL _registered;
-    NSString *_remediationButtonText;
-    NSString *_remediationURL;
-    unsigned long long _socketIdentifier;
-    int _status;
-    NSURL *_url;
-    NSString *_urlAppendString;
+    NSURLRequest * _currentRequest;
+    NSURLResponse * _currentResponse;
+    int  _direction;
+    BOOL  _expectRemediation;
+    NSUUID * _flowUUID;
+    unsigned long long  _lastPendingDataStartIndex;
+    unsigned long long  _lastSendDataLength;
+    NSString * _organization;
+    NSURL * _parentURL;
+    unsigned long long  _passLength;
+    unsigned long long  _peekIndex;
+    NSMutableData * _pendingData;
+    unsigned long long  _pendingDataStartIndex;
+    NSObject<OS_dispatch_queue> * _queue;
+    BOOL  _registered;
+    NSString * _remediationButtonText;
+    NSString * _remediationURL;
+    unsigned long long  _socketIdentifier;
+    int  _status;
+    NSURL * _url;
+    NSString * _urlAppendString;
 }
 
 @property (retain) NSURLRequest *currentRequest;

@@ -12,8 +12,8 @@
             float width; 
             float height; 
         } size; 
-    } m_bounds;
-    TSUBezierPath *m_path;
+    }  m_bounds;
+    OITSUBezierPath * m_path;
 }
 
 - (void)dealloc;

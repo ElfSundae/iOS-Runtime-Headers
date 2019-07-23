@@ -3,10 +3,10 @@
  */
 
 @interface AXUIElement : NSObject <UIElementProtocol> {
-    struct __AXUIElement { } *_axElement;
-    struct __CFDictionary { } *_cachedAttributes;
-    int _cachedRefCount;
-    BOOL _isValid;
+    struct __AXUIElement { } * _axElement;
+    struct __CFDictionary { } * _cachedAttributes;
+    int  _cachedRefCount;
+    BOOL  _isValid;
 }
 
 @property (nonatomic, readonly) struct __AXUIElement { }*axElement;
@@ -21,6 +21,7 @@
 + (struct __AXUIElement { }*)systemWideAXUIElement;
 + (id)uiApplicationAtCoordinate:(struct CGPoint { float x1; float x2; })arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint { float x1; float x2; })arg1;
++ (id)uiElementAtCoordinate:(struct CGPoint { float x1; float x2; })arg1 forApplication:(struct __AXUIElement { }*)arg2 contextId:(unsigned int)arg3;
 + (id)uiElementAtCoordinate:(struct CGPoint { float x1; float x2; })arg1 hitTestOrientation:(int)arg2;
 + (id)uiElementAtCoordinate:(struct CGPoint { float x1; float x2; })arg1 startWithElement:(id)arg2;
 + (id)uiElementWithAXElement:(struct __AXUIElement { }*)arg1;
@@ -44,6 +45,7 @@
 - (BOOL)boolWithAXAttribute:(int)arg1;
 - (struct __CFDictionary { }*)cachedAttributes;
 - (BOOL)canPerformAXAction:(int)arg1;
+- (struct CGColor { }*)colorWithAXAttribute:(int)arg1;
 - (void)dealloc;
 - (void)disableCache;
 - (void)enableCache:(BOOL)arg1;
@@ -64,6 +66,7 @@
 - (struct CGPath { }*)pathWithAXAttribute:(int)arg1;
 - (BOOL)performAXAction:(int)arg1;
 - (BOOL)performAXAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)performAXAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (int)pid;
 - (struct CGPoint { float x1; float x2; })pointWithAXAttribute:(int)arg1;
 - (id)previousElementsWithCount:(unsigned int)arg1;

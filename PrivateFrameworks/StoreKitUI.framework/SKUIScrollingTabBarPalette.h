@@ -3,15 +3,15 @@
  */
 
 @interface SKUIScrollingTabBarPalette : UIView {
-    BOOL _attached;
-    SKUIScrollingTabBarBackgroundView *_backgroundView;
-    UIView *_contentView;
-    <SKUIScrollingTabBarPaletteDelegate> *_delegate;
-    float _paletteHeight;
-    BOOL _tabBarBackgroundExtendsBehindPalette;
+    BOOL  _attached;
+    SKUIScrollingTabBarBackgroundView * _backgroundView;
+    UIView * _contentView;
+    <SKUIScrollingTabBarPaletteDelegate> * _delegate;
+    float  _paletteHeight;
+    BOOL  _tabBarBackgroundExtendsBehindPalette;
 }
 
-@property (getter=isAttached, nonatomic) BOOL attached;
+@property (getter=isAttached, setter=_setAttached:, nonatomic) BOOL attached;
 @property (getter=_backgroundView, nonatomic, readonly) SKUIScrollingTabBarBackgroundView *backgroundView;
 @property (nonatomic, readonly) UIView *contentView;
 @property (getter=_delegate, setter=_setDelegate:, nonatomic) <SKUIScrollingTabBarPaletteDelegate> *delegate;

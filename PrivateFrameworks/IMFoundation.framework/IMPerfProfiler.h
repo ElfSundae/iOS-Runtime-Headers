@@ -3,7 +3,7 @@
  */
 
 @interface IMPerfProfiler : NSObject {
-    NSMutableArray *_sinks;
+    NSMutableArray * _sinks;
 }
 
 + (id)instance;

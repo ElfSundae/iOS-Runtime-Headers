@@ -3,8 +3,8 @@
  */
 
 @interface _HKActivityCacheIndexFilter : _HKFilter {
-    long long _cacheIndex;
-    unsigned int _operatorType;
+    long long  _cacheIndex;
+    unsigned int  _operatorType;
 }
 
 @property (nonatomic, readonly) long long cacheIndex;
@@ -26,6 +26,6 @@
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
-- (id)predicateWithHealthDaemon:(id)arg1;
+- (id)predicateWithProfile:(id)arg1;
 
 @end

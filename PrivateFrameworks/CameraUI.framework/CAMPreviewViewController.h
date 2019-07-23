@@ -3,33 +3,35 @@
  */
 
 @interface CAMPreviewViewController : UIViewController <CAMEffectsPreviewSampleBufferDelegate, CAMExposureDelegate, CAMFacesDelegate, CAMFocusDelegate, CAMFocusIndicatorViewDelegate, UIGestureRecognizerDelegate> {
-    UITapGestureRecognizer *__aspectRatioToggleDoubleTapGestureRecognizer;
-    CAMBurstIndicatorView *__burstIndicator;
-    float __cachedExposureTargetBias;
-    CUCaptureController *__captureController;
-    BOOL __changingModeOrDevice;
-    CAMFocusIndicatorView *__continuousIndicator;
-    unsigned int __currentFacesCount;
-    int __device;
-    UIPanGestureRecognizer *__exposureBiasPanGestureRecognizer;
-    float __exposureBiasPanStartValue;
-    float __exposureBiasVirtualSliderExponent;
-    float __exposureBiasVirtualSliderPointsForFirstStop;
-    NSDate *__lastExposureBiasModificationTime;
-    CAMExposureResult *__lastExposureResult;
-    NSDate *__lastFocusIndictorStartTime;
-    CAMFocusResult *__lastFocusResult;
-    NSDate *__lastTapToFocusTime;
-    UILongPressGestureRecognizer *__longPressToLockGestureRecognizer;
-    int __mode;
-    CAMMotionController *__motionController;
-    CAMFocusIndicatorView *__pointIndicator;
-    UITapGestureRecognizer *__tapToFocusAndExposeGestureRecognizer;
-    CAMTimelapseController *__timelapseController;
-    BOOL __updateFaceIndicators;
-    BOOL __userLockedFocusAndExposure;
-    <CAMPreviewViewControllerDelegate> *_delegate;
-    CAMEffectsRenderer *_effectsRenderer;
+    UITapGestureRecognizer * __aspectRatioToggleDoubleTapGestureRecognizer;
+    CAMBurstIndicatorView * __burstIndicator;
+    float  __cachedExposureTargetBias;
+    CUCaptureController * __captureController;
+    BOOL  __changingModeOrDevice;
+    CAMFocusIndicatorView * __continuousIndicator;
+    unsigned int  __currentFacesCount;
+    int  __device;
+    UIPanGestureRecognizer * __exposureBiasPanGestureRecognizer;
+    float  __exposureBiasPanStartValue;
+    float  __exposureBiasVirtualSliderExponent;
+    float  __exposureBiasVirtualSliderPointsForFirstStop;
+    NSDate * __lastExposureBiasModificationTime;
+    CAMExposureResult * __lastExposureResult;
+    NSDate * __lastFocusIndictorStartTime;
+    CAMFocusResult * __lastFocusResult;
+    NSDate * __lastTapToFocusTime;
+    UILongPressGestureRecognizer * __longPressToLockGestureRecognizer;
+    int  __mode;
+    CAMMotionController * __motionController;
+    CAMFocusIndicatorView * __pointIndicator;
+    UITapGestureRecognizer * __tapToFocusAndExposeGestureRecognizer;
+    CAMTimelapseController * __timelapseController;
+    BOOL  __updateFaceIndicators;
+    BOOL  __userLockedFocusAndExposure;
+    <CAMPreviewViewControllerDelegate> * _delegate;
+    CAMEffectsRenderer * _effectsRenderer;
+    int  _layoutStyle;
+    BOOL  _showingStandardControls;
 }
 
 @property (nonatomic, readonly) UITapGestureRecognizer *_aspectRatioToggleDoubleTapGestureRecognizer;
@@ -65,7 +67,9 @@
 @property (getter=isExposureLockedByUser, nonatomic, readonly) BOOL exposureLockedByUser;
 @property (getter=isFocusLockedByUser, nonatomic, readonly) BOOL focusLockedByUser;
 @property (readonly) unsigned int hash;
+@property (nonatomic) int layoutStyle;
 @property (nonatomic, readonly) CAMPreviewView *previewView;
+@property (getter=isShowingStandardControls, nonatomic) BOOL showingStandardControls;
 @property (readonly) Class superclass;
 
 + (double)hideIndicatorAnimationDuration;
@@ -158,6 +162,7 @@
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1;
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1 shouldAnimate:(BOOL)arg2;
 - (BOOL)_shouldAllowAspectRatioToggleForMode:(int)arg1;
+- (BOOL)_shouldAllowFaceIndicators;
 - (BOOL)_shouldDisableAspectRatioToggle;
 - (BOOL)_shouldDisableFocusUI;
 - (BOOL)_shouldHideFocusIndicators;
@@ -176,6 +181,7 @@
 - (void)_updateExposureBiasViews;
 - (void)_updateExposureBiasViews:(id)arg1;
 - (BOOL)_updateFaceIndicators;
+- (void)_updateFaceIndicatorsForFaceResults:(id)arg1;
 - (void)_updateFaceIndicatorsWithResults:(id)arg1;
 - (void)_updateGestureRecognizersForOrientation;
 - (void)_updatePreviewViewAspectMode;
@@ -206,17 +212,22 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handleTapAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)initWithCaptureController:(id)arg1 motionController:(id)arg2 timelapseController:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)isExposureLockedByUser;
 - (BOOL)isFocusLockedByUser;
+- (BOOL)isShowingStandardControls;
+- (int)layoutStyle;
 - (void)loadView;
 - (void)notifyDidStopCapture;
 - (void)notifyShutterButtonPressed;
 - (void)notifyWillStartCapturing;
 - (id)previewView;
 - (void)setDelegate:(id)arg1;
+- (void)setLayoutStyle:(int)arg1;
+- (void)setShowingStandardControls:(BOOL)arg1;
 - (void)updateIndicatorVisibilityAnimated:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

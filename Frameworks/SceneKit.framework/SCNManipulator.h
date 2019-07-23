@@ -3,7 +3,7 @@
  */
 
 @interface SCNManipulator : NSObject {
-    unsigned short _action;
+    unsigned short  _action;
     union { 
         struct { 
             unsigned short selectedAxis; 
@@ -27,51 +27,51 @@
                 float s; 
             } originalRotation; 
         } axisRotate; 
-    } _actionData;
-    SCNAuthoringEnvironment *_authoringEnvironment;
-    NSOrderedSet *_cloneSet;
-    BOOL _cloning;
-    BOOL _isMouseDown;
+    }  _actionData;
+    SCNAuthoringEnvironment * _authoringEnvironment;
+    NSOrderedSet * _cloneSet;
+    BOOL  _cloning;
+    BOOL  _isMouseDown;
     struct { 
         /* Warning: Unrecognized filer type: '"' using 'void*' */ void**positions; 
-    } _originalData;
-    unsigned int _originalDataCount;
-    BOOL _readonly;
-    unsigned int _snapToAlignCount;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } *_snapToAlignOnX;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } *_snapToAlignOnY;
-    struct { float x1; struct __C3DNode {} *x2; float x3; } *_snapToAlignOnZ;
-    NSMutableIndexSet *_snapXIndexes;
-    NSMutableIndexSet *_snapYIndexes;
-    NSMutableIndexSet *_snapZIndexes;
-    NSOrderedSet *_targets;
+    }  _originalData;
+    unsigned int  _originalDataCount;
+    BOOL  _readonly;
+    long  _snapToAlignCount;
+    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnX;
+    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnY;
+    struct { float x1; struct __C3DNode {} *x2; float x3; } * _snapToAlignOnZ;
+    NSMutableIndexSet * _snapXIndexes;
+    NSMutableIndexSet * _snapYIndexes;
+    NSMutableIndexSet * _snapZIndexes;
+    NSOrderedSet * _targets;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _worldInitialMatrix;
+    }  _worldInitialMatrix;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _worldMatrix;
-    int _xAlignment;
+    }  _worldMatrix;
+    int  _xAlignment;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _xAxisToZAxisTransform;
+    }  _xAxisToZAxisTransform;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _xyPlaneToXZPlaneTransform;
+    }  _xyPlaneToXZPlaneTransform;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _xyPlaneToYZPlaneTransform;
-    int _yAlignment;
+    }  _xyPlaneToYZPlaneTransform;
+    int  _yAlignment;
     union C3DMatrix4x4 { 
         float components[16]; 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*m[4]; 
-    } _yAxisToZAxisTransform;
-    int _zAlignment;
+    }  _yAxisToZAxisTransform;
+    int  _zAlignment;
 }
 
 @property (readonly) SCNAuthoringEnvironment *authoringEnvironment;

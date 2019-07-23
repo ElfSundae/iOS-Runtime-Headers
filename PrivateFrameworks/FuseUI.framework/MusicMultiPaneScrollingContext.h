@@ -8,35 +8,35 @@
         float left; 
         float bottom; 
         float right; 
-    } _previousContentInsetAdditions;
+    }  _previousContentInsetAdditions;
     struct CGPoint { 
         float x; 
         float y; 
-    } _previousContentOffset;
+    }  _previousContentOffset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _previousContentScrollInsetAdditions;
+    }  _previousContentScrollInsetAdditions;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _previousExternalContentInset;
+    }  _previousExternalContentInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _previousMaximumContentSizeScrollIndicatorInsetAdditions;
-    float _previousMaximumHeaderHeight;
-    float _previousStabilizingBottomAdditions;
-    int _snapDecelerationVeloctiyOverrideState;
-    float _snapDownContentOffset;
-    int _snapState;
-    float _snapUpContentOffset;
+    }  _previousMaximumContentSizeScrollIndicatorInsetAdditions;
+    float  _previousMaximumHeaderHeight;
+    float  _previousStabilizingBottomAdditions;
+    int  _snapDecelerationVeloctiyOverrideState;
+    float  _snapDownContentOffset;
+    int  _snapState;
+    float  _snapUpContentOffset;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } previousContentInsetAdditions;

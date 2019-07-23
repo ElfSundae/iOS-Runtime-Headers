@@ -3,8 +3,8 @@
  */
 
 @interface GEORPDirectionsEvent : PBCodable <NSCopying> {
-    long long _errorCode;
-    NSString *_errorDomain;
+    long long  _errorCode;
+    NSString * _errorDomain;
     struct { 
         unsigned int errorCode : 1; 
         unsigned int occurrenceResponseIndex : 1; 
@@ -12,16 +12,16 @@
         unsigned int switchedToResponseIndex : 1; 
         unsigned int synthesizedStepManeuverType : 1; 
         unsigned int type : 1; 
-    } _has;
-    GEOLatLng *_occurrenceLatLng;
-    unsigned int _occurrenceResponseIndex;
-    NSData *_occurrenceRouteId;
-    unsigned int _occurrenceStepIndex;
-    unsigned int _switchedToResponseIndex;
-    NSData *_switchedToRouteId;
-    NSString *_synthesizedStepInstructions;
-    int _synthesizedStepManeuverType;
-    int _type;
+    }  _has;
+    GEOLatLng * _occurrenceLatLng;
+    unsigned int  _occurrenceResponseIndex;
+    NSData * _occurrenceRouteId;
+    unsigned int  _occurrenceStepIndex;
+    unsigned int  _switchedToResponseIndex;
+    NSData * _switchedToRouteId;
+    NSString * _synthesizedStepInstructions;
+    int  _synthesizedStepManeuverType;
+    int  _type;
 }
 
 @property (nonatomic) long long errorCode;
@@ -47,6 +47,8 @@
 @property (nonatomic) int synthesizedStepManeuverType;
 @property (nonatomic) int type;
 
+- (int)StringAsSynthesizedStepManeuverType:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -94,7 +96,9 @@
 - (id)switchedToRouteId;
 - (id)synthesizedStepInstructions;
 - (int)synthesizedStepManeuverType;
+- (id)synthesizedStepManeuverTypeAsString:(int)arg1;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -3,12 +3,12 @@
  */
 
 @interface CompassAtlas : NSObject {
-    CompassAtlasManifest *_manifest;
+    CompassAtlasManifest * _manifest;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    unsigned int _texName;
+    }  _size;
+    unsigned int  _texName;
 }
 
 - (void).cxx_destruct;

@@ -3,9 +3,9 @@
  */
 
 @interface AKArrowShapeAnnotation : AKArrowAnnotation <AKFilledAnnotationProtocol> {
-    float _arrowHeadLength;
-    float _arrowHeadWidth;
-    float _arrowLineWidth;
+    float  _arrowHeadLength;
+    float  _arrowHeadWidth;
+    float  _arrowLineWidth;
 }
 
 @property float arrowHeadLength;

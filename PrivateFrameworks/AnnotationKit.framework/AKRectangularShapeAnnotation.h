@@ -3,7 +3,7 @@
  */
 
 @interface AKRectangularShapeAnnotation : AKShapeAnnotation <AKRectangularAnnotationProtocol, AKRotatableAnnotationProtocol, AKTextAnnotationProtocol> {
-    NSTextStorage *_annotationText;
+    NSTextStorage * _annotationText;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,9 +13,9 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
-    float _rotationAngle;
-    NSDictionary *_typingAttributes;
+    }  _rectangle;
+    float  _rotationAngle;
+    NSDictionary * _typingAttributes;
 }
 
 @property (retain) NSTextStorage *annotationText;

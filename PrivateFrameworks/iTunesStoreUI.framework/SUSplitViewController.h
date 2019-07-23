@@ -3,17 +3,17 @@
  */
 
 @interface SUSplitViewController : SUViewController {
-    NSURL *_displayedURL;
-    UIViewController *_firstViewController;
-    NSString *_mainTitle;
-    SUGradient *_placeholderGradient;
-    SUPlaceholderViewController *_placeholderViewController;
-    UIViewController *_secondViewController;
-    SUShadow *_splitShadow;
-    SUSplitView *_splitView;
-    SUStructuredPage *_structuredPage;
-    BOOL _usesSharedPlaceholder;
-    BOOL _viewIsReady;
+    NSURL * _displayedURL;
+    UIViewController * _firstViewController;
+    NSString * _mainTitle;
+    SUGradient * _placeholderGradient;
+    SUPlaceholderViewController * _placeholderViewController;
+    UIViewController * _secondViewController;
+    SUShadow * _splitShadow;
+    SUSplitView * _splitView;
+    SUStructuredPage * _structuredPage;
+    BOOL  _usesSharedPlaceholder;
+    BOOL  _viewIsReady;
 }
 
 @property (nonatomic, retain) NSURL *displayedURL;
@@ -53,7 +53,7 @@
 - (id)displayedURL;
 - (id)firstViewController;
 - (id)init;
-- (BOOL)isLoaded;
+- (BOOL)isSkLoaded;
 - (BOOL)isVertical;
 - (int)layoutType;
 - (void)loadView;
@@ -67,10 +67,10 @@
 - (void)setDisplayedURL:(id)arg1;
 - (void)setFirstViewController:(id)arg1;
 - (void)setLayoutType:(int)arg1;
-- (void)setLoading:(BOOL)arg1;
 - (void)setMainTitle:(id)arg1;
 - (void)setMinimumPaneSize:(float)arg1;
 - (void)setSecondViewController:(id)arg1;
+- (void)setSkLoading:(BOOL)arg1;
 - (void)setSplitPosition:(float)arg1;
 - (void)setSplitPositionAndLayoutTypeFromValue:(id)arg1;
 - (void)setSplitShadow:(id)arg1;

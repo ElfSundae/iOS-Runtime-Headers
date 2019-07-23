@@ -3,22 +3,22 @@
  */
 
 @interface FlameGroup : NSObject {
-    float _globalAlpha;
-    BOOL _isAura;
-    BOOL _isDyingOff;
-    void_stateModifiers;
-    /* Warning: Unrecognized filer type: '' using 'void*' */ void**_stateModifiersPtr;
-    float _stateTime;
-    float _transitionPhase;
-    float *_transitionPhasePtr;
-    float _zTime;
+    float  _globalAlpha;
+    BOOL  _isAura;
+    BOOL  _isDyingOff;
+    void _stateModifiers;
+    /* Warning: Unrecognized filer type: ' ' using 'void*' */ void** _stateModifiersPtr;
+    float  _stateTime;
+    float  _transitionPhase;
+    float * _transitionPhasePtr;
+    float  _zTime;
 }
 
 @property (nonatomic) float globalAlpha;
 @property (nonatomic) BOOL isAura;
 @property (nonatomic) BOOL isDyingOff;
 @property (nonatomic) void stateModifiers;
-@property (nonatomic) /* Warning: Unrecognized filer type: '' using 'void*' */ void**stateModifiersPtr;
+@property (nonatomic) /* Warning: Unrecognized filer type: ' ' using 'void*' */ void**stateModifiersPtr;
 @property (nonatomic) float stateTime;
 @property (nonatomic) float transitionPhase;
 @property (nonatomic) float*transitionPhasePtr;

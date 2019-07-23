@@ -3,7 +3,7 @@
  */
 
 @interface AKStarAnnotation : AKPolygonAnnotation {
-    float _innerRadiusFactor;
+    float  _innerRadiusFactor;
 }
 
 @property float innerRadiusFactor;

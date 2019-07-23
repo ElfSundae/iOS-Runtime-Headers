@@ -8,7 +8,6 @@
 @property (nonatomic, retain) NSString *carrierDebuggingAlertVersion;
 @property (nonatomic) int dataPlanActivationPromptCount;
 @property (nonatomic, readonly) NSArray *fakeDuetTriggers;
-@property (getter=isLoggingEnabled, nonatomic, readonly) BOOL loggingEnabled;
 @property (nonatomic, readonly) BOOL showStackshotUIFeedback;
 
 - (void)_bindAndRegisterDefaults;

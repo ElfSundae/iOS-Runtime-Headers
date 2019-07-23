@@ -3,11 +3,11 @@
  */
 
 @interface SZExtractor : NSObject {
-    BOOL _errorOccurred;
-    SZExtractorInternalDelegate *_extractorDelegate;
-    StreamingUnzipper *_inProcessUnzipper;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    NSXPCConnection *_unzipServiceConnection;
+    BOOL  _errorOccurred;
+    SZExtractorInternalDelegate * _extractorDelegate;
+    StreamingUnzipper * _inProcessUnzipper;
+    NSObject<OS_dispatch_queue> * _serialQueue;
+    NSXPCConnection * _unzipServiceConnection;
 }
 
 @property (nonatomic) <SZExtractorDelegate> *delegate;

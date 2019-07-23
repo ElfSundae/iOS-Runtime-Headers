@@ -3,26 +3,26 @@
  */
 
 @interface CAMVideoCaptureResponse : CAMCaptureResponse <CAMTransientAssetConvertible> {
-    NSDate *_captureDate;
+    NSDate * _captureDate;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _duration;
-    UIImage *_imageWellImage;
-    NSURL *_localPersistenceURL;
-    NSString *_persistenceUUID;
-    UIImage *_previewImage;
-    int _reason;
+    }  _duration;
+    UIImage * _imageWellImage;
+    NSURL * _localPersistenceURL;
+    NSString * _persistenceUUID;
+    UIImage * _previewImage;
+    int  _reason;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _stillDisplayTime;
-    NSString *_stillPersistenceUUID;
-    float _videoZoomFactor;
+    }  _stillDisplayTime;
+    NSString * _stillPersistenceUUID;
+    float  _videoZoomFactor;
 }
 
 @property (nonatomic, readonly, copy) NSString *burstIdentifier;

@@ -3,7 +3,7 @@
  */
 
 @interface SBFWallpaperDefaults : NSObject {
-    SBWallpaperDefaults *_defaultsStore;
+    SBWallpaperDefaults * _defaultsStore;
 }
 
 @property (nonatomic, readonly) SBWallpaperDefaults *defaultsStore;

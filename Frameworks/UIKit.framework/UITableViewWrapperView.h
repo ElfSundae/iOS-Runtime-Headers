@@ -3,7 +3,7 @@
  */
 
 @interface UITableViewWrapperView : UIScrollView {
-    NSMutableArray *_stuckToBackViews;
+    NSMutableArray * _stuckToBackViews;
 }
 
 @property (nonatomic, readonly) NSArray *stuckToBackViews;

@@ -3,17 +3,17 @@
  */
 
 @interface GKShowMoreView : UICollectionReusableView {
-    UICollectionView *_collectionView;
-    NSLayoutConstraint *_horizontalContraint;
-    GKLabel *_label;
-    BOOL _loading;
-    int _numberToShow;
-    int _sectionIndex;
-    SEL _showMoreAction;
-    BOOL _showShowAll;
-    UIActivityIndicatorView *_spinner;
-    float _textAlignmentOffset;
-    NSLayoutConstraint *_verticalContraint;
+    UICollectionView * _collectionView;
+    NSLayoutConstraint * _horizontalContraint;
+    GKLabel * _label;
+    BOOL  _loading;
+    int  _numberToShow;
+    int  _sectionIndex;
+    SEL  _showMoreAction;
+    BOOL  _showShowAll;
+    UIActivityIndicatorView * _spinner;
+    float  _textAlignmentOffset;
+    NSLayoutConstraint * _verticalContraint;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;

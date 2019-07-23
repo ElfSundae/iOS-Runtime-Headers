@@ -3,16 +3,16 @@
  */
 
 @interface NLArcView : UIView {
-    NLArcMaskLayer *_arcMaskLayer;
-    NLArcLayer *_baseRing;
-    CALayer *_coloredDotIndicatorLayer;
-    CAGradientLayer *_gradientLayer;
-    CALayer *_iconLayer;
-    float _indicatorPercentage;
-    float _radius;
-    BOOL _shouldDrawIndicator;
-    BOOL _shouldShowIcon;
-    CALayer *_whiteDotIndicatorLayer;
+    NLArcMaskLayer * _arcMaskLayer;
+    NLArcLayer * _baseRing;
+    CALayer * _coloredDotIndicatorLayer;
+    CAGradientLayer * _gradientLayer;
+    CALayer * _iconLayer;
+    float  _indicatorPercentage;
+    float  _radius;
+    BOOL  _shouldDrawIndicator;
+    BOOL  _shouldShowIcon;
+    CALayer * _whiteDotIndicatorLayer;
 }
 
 @property (nonatomic) float arcStart;

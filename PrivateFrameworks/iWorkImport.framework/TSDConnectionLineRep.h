@@ -3,7 +3,7 @@
  */
 
 @interface TSDConnectionLineRep : TSDShapeRep {
-    TSDPathSource *mLastPathSource;
+    TSDPathSource * mLastPathSource;
 }
 
 - (id)connectionLineLayout;

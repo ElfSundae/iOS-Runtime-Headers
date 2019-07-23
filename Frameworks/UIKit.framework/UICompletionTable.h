@@ -3,7 +3,7 @@
  */
 
 @interface UICompletionTable : UIView <UITableViewDataSource, UITableViewDelegate> {
-    UICompletionTablePrivate *_private;
+    UICompletionTablePrivate * _private;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } contentInset;

@@ -3,19 +3,19 @@
  */
 
 @interface GEOPBTransitAccessPoint : PBCodable <NSCopying> {
-    unsigned int _accessPointIndex;
-    NSString *_entranceNameDisplayString;
-    NSMutableArray *_entranceZoomNames;
-    NSString *_exitNameDisplayString;
-    NSMutableArray *_exitZoomNames;
+    unsigned int  _accessPointIndex;
+    NSString * _entranceNameDisplayString;
+    NSMutableArray * _entranceZoomNames;
+    NSString * _exitNameDisplayString;
+    NSMutableArray * _exitZoomNames;
     struct { 
         unsigned int muid : 1; 
         unsigned int accessPointIndex : 1; 
         unsigned int stationIndex : 1; 
-    } _has;
-    GEOLatLng *_location;
-    unsigned long long _muid;
-    unsigned int _stationIndex;
+    }  _has;
+    GEOLatLng * _location;
+    unsigned long long  _muid;
+    unsigned int  _stationIndex;
 }
 
 @property (nonatomic) unsigned int accessPointIndex;
@@ -32,6 +32,9 @@
 @property (nonatomic, retain) GEOLatLng *location;
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic) unsigned int stationIndex;
+
++ (Class)entranceZoomNameType;
++ (Class)exitZoomNameType;
 
 - (unsigned int)accessPointIndex;
 - (void)addEntranceZoomName:(id)arg1;

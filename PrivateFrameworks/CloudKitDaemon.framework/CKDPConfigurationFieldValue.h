@@ -3,20 +3,20 @@
  */
 
 @interface CKDPConfigurationFieldValue : PBCodable <NSCopying> {
-    BOOL _boolValue;
-    NSData *_bytesValue;
-    double _doubleValue;
-    NSMutableArray *_fieldValues;
+    BOOL  _boolValue;
+    NSData * _bytesValue;
+    double  _doubleValue;
+    NSMutableArray * _fieldValues;
     struct { 
         unsigned int doubleValue : 1; 
         unsigned int longValue : 1; 
         unsigned int type : 1; 
         unsigned int boolValue : 1; 
-    } _has;
-    NSMutableArray *_listValues;
-    long long _longValue;
-    NSString *_stringValue;
-    int _type;
+    }  _has;
+    NSMutableArray * _listValues;
+    long long  _longValue;
+    NSString * _stringValue;
+    int  _type;
 }
 
 @property (nonatomic) BOOL boolValue;
@@ -34,7 +34,11 @@
 @property (nonatomic, retain) NSString *stringValue;
 @property (nonatomic) int type;
 
++ (Class)fieldValuesType;
++ (Class)listValuesType;
+
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (void)addFieldValues:(id)arg1;
 - (void)addListValues:(id)arg1;
 - (BOOL)boolValue;
@@ -77,6 +81,7 @@
 - (void)setType:(int)arg1;
 - (id)stringValue;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

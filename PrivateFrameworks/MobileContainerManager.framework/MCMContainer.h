@@ -3,11 +3,11 @@
  */
 
 @interface MCMContainer : NSObject {
-    int _containerClass;
-    NSString *_identifier;
-    struct container_object { } *_thisContainer;
-    unsigned int _userId;
-    NSUUID *_uuid;
+    int  _containerClass;
+    NSString * _identifier;
+    struct container_object { } * _thisContainer;
+    unsigned int  _userId;
+    NSUUID * _uuid;
 }
 
 @property (nonatomic, readonly) int containerClass;

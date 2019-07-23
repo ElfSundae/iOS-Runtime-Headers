@@ -3,17 +3,17 @@
  */
 
 @interface UIKBEdgeEffect : NSObject <UIKBRenderEffect> {
-    NSString *_colorName;
-    unsigned int _edges;
-    UIKBGradient *_gradient;
+    NSString * _colorName;
+    unsigned int  _edges;
+    UIKBGradient * _gradient;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _insets;
-    float _opacity;
-    float _weight;
+    }  _insets;
+    float  _opacity;
+    float  _weight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) SEL renderSelector;
 @property (nonatomic, readonly) BOOL renderUnder;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) BOOL usesRGBColors;
 @property (nonatomic) float weight;
 
 + (id)effectWithColor:(id)arg1 edges:(unsigned int)arg2 inset:(float)arg3 weight:(float)arg4;
@@ -50,6 +51,7 @@
 - (void)setInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setOpacity:(float)arg1;
 - (void)setWeight:(float)arg1;
+- (BOOL)usesRGBColors;
 - (float)weight;
 
 @end

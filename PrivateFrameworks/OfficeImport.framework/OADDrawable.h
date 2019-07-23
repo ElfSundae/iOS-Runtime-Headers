@@ -3,12 +3,12 @@
  */
 
 @interface OADDrawable : NSObject {
-    unsigned long mAltId;
-    <OADClient> *mClientData;
-    OADDrawableProperties *mDrawableProperties;
-    BOOL mHidden;
-    unsigned long mId;
-    OADDrawable<OADDrawableContainer> *mParent;
+    unsigned long  mAltId;
+    <OADClient> * mClientData;
+    OADDrawableProperties * mDrawableProperties;
+    BOOL  mHidden;
+    unsigned long  mId;
+    OADDrawable<OADDrawableContainer> * mParent;
 }
 
 + (unsigned long)generateOADDrawableId:(id)arg1;

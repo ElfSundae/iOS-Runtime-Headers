@@ -3,7 +3,7 @@
  */
 
 @interface EKEditItemViewController : UIViewController <EKEditItemViewControllerProtocol> {
-    <EKEditItemViewControllerDelegate> *_editDelegate;
+    <EKEditItemViewControllerDelegate> * _editDelegate;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,12 +13,12 @@
             float width; 
             float height; 
         } size; 
-    } _initialFrame;
-    BOOL _modal;
-    EKUIRecurrenceAlertController *_recurrenceAlertController;
-    BOOL _showsDoneButton;
-    <EKStyleProvider> *_styleProvider;
-    unsigned int _subitem;
+    }  _initialFrame;
+    BOOL  _modal;
+    EKUIRecurrenceAlertController * _recurrenceAlertController;
+    BOOL  _showsDoneButton;
+    <EKStyleProvider> * _styleProvider;
+    unsigned int  _subitem;
 }
 
 @property (nonatomic) <EKEditItemViewControllerDelegate> *editDelegate;
@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL presentModally;
 @property (nonatomic) BOOL showsDoneButton;
 @property (nonatomic) unsigned int subitem;
+@property (nonatomic) BOOL useCustomBackButton;
 
 - (void).cxx_destruct;
 - (void)_saveAndDismissWithForce:(BOOL)arg1;

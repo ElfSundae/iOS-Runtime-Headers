@@ -3,12 +3,12 @@
  */
 
 @interface EKCalendarItemEditItem : NSObject <EKEditItemViewControllerDelegate> {
-    EKCalendarItem *_calendarItem;
-    <EKCalendarItemEditItemDelegate> *_delegate;
-    UIResponder *_selectedResponder;
-    EKEventStore *_store;
-    <EKStyleProvider> *_styleProvider;
-    UIViewController<EKEditItemViewControllerProtocol> *_viewController;
+    EKCalendarItem * _calendarItem;
+    <EKCalendarItemEditItemDelegate> * _delegate;
+    UIResponder * _selectedResponder;
+    EKEventStore * _store;
+    <EKStyleProvider> * _styleProvider;
+    UIViewController<EKEditItemViewControllerProtocol> * _viewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +49,7 @@
 - (BOOL)forceRefreshLocationItemOnSave;
 - (BOOL)forceRefreshStartAndEndDatesOnSave;
 - (BOOL)forceTableReloadOnSave;
+- (id)headerTitle;
 - (id)injectableViewControllerWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forSubitemAtIndex:(unsigned int)arg2;
 - (BOOL)isInline;
 - (void)notifyDidEndEditing;
@@ -69,7 +70,6 @@
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 - (BOOL)shouldPinKeyboard;
 - (id)styleProvider;
-- (id)titleForHeader;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned int)arg1;
 - (id)viewForActionSheet;
 

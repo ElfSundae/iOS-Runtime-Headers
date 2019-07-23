@@ -3,8 +3,8 @@
  */
 
 @interface BitmapHandView : UIView <HandView> {
-    NSArray *_partViews;
-    NSArray *_partViewsMaintainingOrientation;
+    NSArray * _partViews;
+    NSArray * _partViewsMaintainingOrientation;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,7 +3,7 @@
  */
 
 @interface AVVideoCompositionInstruction : NSObject <AVVideoCompositionInstruction, NSCopying, NSMutableCopying, NSSecureCoding> {
-    AVVideoCompositionInstructionInternal *_instruction;
+    AVVideoCompositionInstructionInternal * _instruction;
 }
 
 @property (nonatomic, readonly, retain) struct CGColor { }*backgroundColor;

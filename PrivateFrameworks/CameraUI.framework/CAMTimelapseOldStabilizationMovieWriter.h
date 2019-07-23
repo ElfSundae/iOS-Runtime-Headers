@@ -3,20 +3,20 @@
  */
 
 @interface CAMTimelapseOldStabilizationMovieWriter : NSObject <AVOfflineVideoStabilizerDataProvider, CAMTimelapseMovieWriterProtocol> {
-    id /* block */ __completion;
-    struct __CVBuffer { } *__firstSourceFrame;
-    NSArray *__frameFilePaths;
-    int __framesPerSecond;
-    int __framesWrittenCount;
-    NSObject<OS_dispatch_queue> *__movieWritingQueue;
-    AVAssetWriterInputPixelBufferAdaptor *__pixelBufferAdaptor;
-    int __sourceFramesReadCount;
-    AVOfflineVideoStabilizer *__stabilizer;
-    struct opaqueCMFormatDescription { } *__videoFormatDescription;
-    AVAssetWriterInput *__videoInput;
-    NSArray *__visMetadataFilePaths;
-    AVAssetWriter *__writer;
-    BOOL _suspended;
+    id /* block */  __completion;
+    struct __CVBuffer { } * __firstSourceFrame;
+    NSArray * __frameFilePaths;
+    int  __framesPerSecond;
+    int  __framesWrittenCount;
+    NSObject<OS_dispatch_queue> * __movieWritingQueue;
+    AVAssetWriterInputPixelBufferAdaptor * __pixelBufferAdaptor;
+    int  __sourceFramesReadCount;
+    AVOfflineVideoStabilizer * __stabilizer;
+    struct opaqueCMFormatDescription { } * __videoFormatDescription;
+    AVAssetWriterInput * __videoInput;
+    NSArray * __visMetadataFilePaths;
+    AVAssetWriter * __writer;
+    BOOL  _suspended;
 }
 
 @property (nonatomic, readonly, copy) id /* block */ _completion;

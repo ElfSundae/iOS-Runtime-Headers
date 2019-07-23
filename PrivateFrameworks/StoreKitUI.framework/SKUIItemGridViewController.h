@@ -3,22 +3,21 @@
  */
 
 @interface SKUIItemGridViewController : UIViewController <SKUIItemCollectionDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
-    SKUIItemArtworkContext *_artworkContext;
-    SKUIClientContext *_clientContext;
-    UICollectionView *_collectionView;
-    <SKUIItemGridDelegate> *_delegate;
-    NSMutableIndexSet *_hiddenIconIndexSet;
+    SKUIClientContext * _clientContext;
+    UICollectionView * _collectionView;
+    <SKUIItemGridDelegate> * _delegate;
+    NSMutableIndexSet * _hiddenIconIndexSet;
     struct CGSize { 
         float width; 
         float height; 
-    } _imageBoundingSize;
-    SKUIItemCollectionController *_itemCollectionController;
-    NSMutableArray *_items;
-    NSOperationQueue *_operationQueue;
-    UIImage *_placeholderImage;
-    float _rowHeight;
-    NSMutableIndexSet *_selectedItemIndexSet;
-    SKUIUber *_uber;
+    }  _imageBoundingSize;
+    SKUIItemCollectionController * _itemCollectionController;
+    NSMutableArray * _items;
+    NSOperationQueue * _operationQueue;
+    UIImage * _placeholderImage;
+    float  _rowHeight;
+    NSMutableIndexSet * _selectedItemIndexSet;
+    SKUIUber * _uber;
 }
 
 @property (nonatomic, retain) SKUIItemArtworkContext *artworkContext;
@@ -38,8 +37,8 @@
 
 - (void).cxx_destruct;
 - (id)_collectionView;
+- (id)_collectionViewLayout;
 - (id)_itemCollectionController;
-- (int)_numberOfColumnsForOrientation:(int)arg1;
 - (void)_reloadLayout;
 - (id)artworkContext;
 - (id)clientContext;
@@ -47,6 +46,7 @@
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (int)collectionView:(id)arg1 numberOfItemsInSection:(int)arg2;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (struct CGPoint { float x1; float x2; })contentOffset;
 - (void)dealloc;
 - (id)delegate;
@@ -77,11 +77,11 @@
 - (void)setItems:(id)arg1;
 - (void)setOperationQueue:(id)arg1;
 - (void)setUber:(id)arg1;
-- (BOOL)shouldCacheAheadWhenIdleForItemCollectionController:(id)arg1;
 - (unsigned int)supportedInterfaceOrientations;
 - (id)uber;
 - (void)unhideIcons;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })visibleItemRangeForItemCollectionController:(id)arg1;
 

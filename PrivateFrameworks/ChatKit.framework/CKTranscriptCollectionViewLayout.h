@@ -3,24 +3,32 @@
  */
 
 @interface CKTranscriptCollectionViewLayout : UICollectionViewLayout {
-    float _anchorYPosition;
+    float  _anchorYPosition;
+    NSArray * _associatedLayoutAttributes;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
-    CADisplayLink *_displayLink;
-    BOOL _easingUp;
-    BOOL _hasLoadMore;
-    BOOL _holdingBoundsInvalidation;
-    BOOL _isResting;
-    NSArray *_layoutAttributes;
-    double _prevTimestamp;
-    BOOL _shouldDisplayLinkInvalidateLayout;
+    }  _contentSize;
+    NSArray * _decorationLayoutAttributes;
+    CADisplayLink * _displayLink;
+    BOOL  _easingUp;
+    NSMutableDictionary * _finalParentVerticalOffsets;
+    BOOL  _hasLoadMore;
+    BOOL  _holdingBoundsInvalidation;
+    NSIndexSet * _indicesOfChatItemsToBeInsertedWithoutFading;
+    NSIndexSet * _indicesOfChatItemsToBeRemovedWithoutFading;
+    NSMutableDictionary * _initialParentLayoutAttributes;
+    NSMutableIndexSet * _insertedAssociatedLayoutAttributes;
+    BOOL  _isResting;
+    NSArray * _layoutAttributes;
+    NSArray * _oldAssociatedLayoutAttributes;
+    double  _prevTimestamp;
+    BOOL  _shouldDisplayLinkInvalidateLayout;
     struct CGPoint { 
         float x; 
         float y; 
-    } _targetContentOffset;
-    BOOL _useInitialLayoutAttributesForRotation;
+    }  _targetContentOffset;
+    BOOL  _useInitialLayoutAttributesForRotation;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -30,17 +38,23 @@
             float width; 
             float height; 
         } size; 
-    } _visibleBounds;
+    }  _visibleBounds;
 }
 
 @property (nonatomic) float anchorYPosition;
+@property (nonatomic, copy) NSArray *associatedLayoutAttributes;
 @property (nonatomic) struct CGSize { float x1; float x2; } contentSize;
+@property (nonatomic, copy) NSArray *decorationLayoutAttributes;
 @property (nonatomic, retain) CADisplayLink *displayLink;
 @property (nonatomic) BOOL easingUp;
 @property (nonatomic) BOOL hasLoadMore;
 @property (getter=isHoldingBoundsInvalidation, nonatomic) BOOL holdingBoundsInvalidation;
+@property (nonatomic, retain) NSIndexSet *indicesOfChatItemsToBeInsertedWithoutFading;
+@property (nonatomic, retain) NSIndexSet *indicesOfChatItemsToBeRemovedWithoutFading;
+@property (nonatomic, retain) NSMutableIndexSet *insertedAssociatedLayoutAttributes;
 @property (nonatomic) BOOL isResting;
 @property (nonatomic, copy) NSArray *layoutAttributes;
+@property (nonatomic, copy) NSArray *oldAssociatedLayoutAttributes;
 @property (nonatomic) double prevTimestamp;
 @property (nonatomic) BOOL shouldDisplayLinkInvalidateLayout;
 @property (nonatomic) struct CGPoint { float x1; float x2; } targetContentOffset;
@@ -48,19 +62,28 @@
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } visibleBounds;
 
 + (Class)layoutAttributesClass;
++ (int)translateLayoutIndexToEffectIndex:(int)arg1;
 
+- (void).cxx_destruct;
 - (float)anchorYPosition;
+- (id)associatedLayoutAttributes;
 - (float)bezierPointForPercentage:(float)arg1 anchor1:(float)arg2 anchor2:(float)arg3 control1:(float)arg4 control2:(float)arg5;
+- (void)clearParentInitialIndexesAndFinalOffsets;
 - (struct CGSize { float x1; float x2; })collectionViewContentSize;
 - (struct CGSize { float x1; float x2; })contentSize;
 - (void)dealloc;
+- (id)decorationLayoutAttributes;
 - (id)displayLink;
 - (void)displayLinkFired:(id)arg1;
 - (BOOL)easingUp;
+- (int)effectIndexForDecorationViewAtIndex:(int)arg1;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (BOOL)hasLoadMore;
+- (id)indicesOfChatItemsToBeInsertedWithoutFading;
+- (id)indicesOfChatItemsToBeRemovedWithoutFading;
 - (id)init;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
+- (id)insertedAssociatedLayoutAttributes;
 - (void)invalidateDisplayLink;
 - (BOOL)isHoldingBoundsInvalidation;
 - (BOOL)isResting;
@@ -69,28 +92,39 @@
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
-- (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)oldAssociatedLayoutAttributes;
 - (void)prepareLayout;
 - (void)prepareLayoutForRotisserieScrolling;
 - (double)prevTimestamp;
 - (void)reduceMotionSettingChanged;
 - (void)reloadData;
 - (void)setAnchorYPosition:(float)arg1;
+- (void)setAssociatedLayoutAttributes:(id)arg1;
 - (void)setContentSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)setDecorationLayoutAttributes:(id)arg1;
 - (void)setDisplayLink:(id)arg1;
 - (void)setEasingUp:(BOOL)arg1;
 - (void)setHasLoadMore:(BOOL)arg1;
 - (void)setHoldingBoundsInvalidation:(BOOL)arg1;
+- (void)setIndicesOfChatItemsToBeInsertedWithoutFading:(id)arg1;
+- (void)setIndicesOfChatItemsToBeRemovedWithoutFading:(id)arg1;
+- (void)setInitialIndex:(unsigned int)arg1 forParentOfAssociatedItemInsertedAtIndex:(unsigned int)arg2;
+- (void)setInsertedAssociatedLayoutAttributes:(id)arg1;
 - (void)setIsResting:(BOOL)arg1;
 - (void)setLayoutAttributes:(id)arg1;
+- (void)setOldAssociatedLayoutAttributes:(id)arg1;
 - (void)setPrevTimestamp:(double)arg1;
 - (void)setShouldDisplayLinkInvalidateLayout:(BOOL)arg1;
 - (void)setTargetContentOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setUseInitialLayoutAttributesForRotation:(BOOL)arg1;
+- (void)setVerticalOffset:(float)arg1 forParentOfAssociatedItemDeletedAtIndex:(unsigned int)arg2;
 - (void)setVisibleBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)shouldDisplayLinkInvalidateLayout;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (struct CGPoint { float x1; float x2; })targetContentOffset;
+- (void)updateAssociatedLayoutAttributesIfNecessary;
+- (void)updateAttributesForAnchorYChangeWithAttributes:(id)arg1;
+- (void)updateAttributesForTargetContentOffsetChangeWithAttributes:(id)arg1;
 - (void)updateContentSize;
 - (void)updateFrames;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })visibleBounds;

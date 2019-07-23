@@ -3,17 +3,17 @@
  */
 
 @interface VCPVideoTrackSyncDecoder : VCPVideoTrackDecoder {
-    AVAssetReader *_assetReader;
-    BOOL _cancelDecode;
-    long _decodeError;
-    BOOL _decodeFinished;
-    int _decodedFrames;
-    NSObject<OS_dispatch_group> *_group;
-    NSObject<OS_dispatch_semaphore> *_inputSemaphore;
-    long _launchOnce;
-    int _outputFrameIdx;
-    NSObject<OS_dispatch_semaphore> *_outputSemaphore;
-    struct opaqueCMSampleBuffer {} *_sampleBuffer;
+    AVAssetReader * _assetReader;
+    BOOL  _cancelDecode;
+    long  _decodeError;
+    BOOL  _decodeFinished;
+    int  _decodedFrames;
+    NSObject<OS_dispatch_group> * _group;
+    NSObject<OS_dispatch_semaphore> * _inputSemaphore;
+    long  _launchOnce;
+    int  _outputFrameIdx;
+    NSObject<OS_dispatch_semaphore> * _outputSemaphore;
+    struct opaqueCMSampleBuffer {} * _sampleBuffer;
     struct { 
         struct { 
             long long value; 
@@ -27,8 +27,8 @@
             unsigned int flags; 
             long long epoch; 
         } duration; 
-    } _timerange;
-    AVAssetReaderSampleReferenceOutput *_trackReader;
+    }  _timerange;
+    AVAssetReaderSampleReferenceOutput * _trackReader;
 }
 
 - (void).cxx_destruct;

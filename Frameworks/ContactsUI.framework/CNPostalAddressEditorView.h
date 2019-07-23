@@ -3,13 +3,13 @@
  */
 
 @interface CNPostalAddressEditorView : UIControl <ABText, CNCountryPickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate> {
-    CNMutablePostalAddress *_address;
-    NSDictionary *_addressFormats;
-    NSArray *_cellsLayout;
-    <CNPresenterDelegate> *_delegate;
-    CNPostalAddressEditorTableView *_tableView;
-    NSMutableDictionary *_textFields;
-    NSDictionary *_valueTextAttributes;
+    CNMutablePostalAddress * _address;
+    NSDictionary * _addressFormats;
+    NSArray * _cellsLayout;
+    <CNPresenterDelegate> * _delegate;
+    CNPostalAddressEditorTableView * _tableView;
+    NSMutableDictionary * _textFields;
+    NSDictionary * _valueTextAttributes;
 }
 
 @property (nonatomic, copy) NSString *ab_text;

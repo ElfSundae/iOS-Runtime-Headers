@@ -2,22 +2,27 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIDictationMeterView : UIButton {
-    CALayer *_animatingLayer;
-    UIImageView *_background;
-    int _cachedViewMode;
-    CADisplayLink *_displayLink;
-    NSTimer *_fillTimer;
-    CALayer *_micImageLayer;
-    NSMutableArray *_micListeningImages;
-    UIImageView *_overlay;
-    int _phase;
-    unsigned int _powerPointer;
-    float _releaseLevel;
-    double _releaseStart;
-    float _runningPowerLevels;
-    int _state;
+@interface UIDictationMeterView : UIButton <CAAnimationDelegate> {
+    CALayer * _animatingLayer;
+    UIImageView * _background;
+    int  _cachedViewMode;
+    CADisplayLink * _displayLink;
+    NSTimer * _fillTimer;
+    CALayer * _micImageLayer;
+    NSMutableArray * _micListeningImages;
+    UIImageView * _overlay;
+    int  _phase;
+    unsigned int  _powerPointer;
+    float  _releaseLevel;
+    double  _releaseStart;
+    float  _runningPowerLevels;
+    int  _state;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
+@property (readonly) Class superclass;
 
 - (float)_adjustedDuration:(float)arg1;
 - (double)_animationInterval;

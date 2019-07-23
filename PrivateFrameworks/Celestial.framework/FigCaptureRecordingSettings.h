@@ -2,18 +2,18 @@
    Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
  */
 
-@interface FigCaptureRecordingSettings : NSObject <NSCoding, NSCopying> {
+@interface FigCaptureRecordingSettings : NSObject <NSCopying, NSSecureCoding> {
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _maxDuration;
-    long long _maxFileSize;
-    long long _minFreeDiskSpaceLimit;
-    NSString *_outputFileType;
-    NSURL *_outputURL;
-    long long _settingsID;
+    }  _maxDuration;
+    long long  _maxFileSize;
+    long long  _minFreeDiskSpaceLimit;
+    NSString * _outputFileType;
+    NSURL * _outputURL;
+    long long  _settingsID;
 }
 
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } maxDuration;
@@ -22,6 +22,8 @@
 @property (nonatomic, copy) NSString *outputFileType;
 @property (nonatomic, copy) NSURL *outputURL;
 @property (nonatomic) long long settingsID;
+
++ (BOOL)supportsSecureCoding;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;

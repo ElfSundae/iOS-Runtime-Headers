@@ -3,10 +3,10 @@
  */
 
 @interface NEFilterNewFlowVerdict : NEFilterVerdict <NSCopying, NSSecureCoding> {
-    BOOL _filterInbound;
-    BOOL _filterOutbound;
-    unsigned long long _peekInboundBytes;
-    unsigned long long _peekOutboundBytes;
+    BOOL  _filterInbound;
+    BOOL  _filterOutbound;
+    unsigned long long  _peekInboundBytes;
+    unsigned long long  _peekOutboundBytes;
 }
 
 @property BOOL filterInbound;

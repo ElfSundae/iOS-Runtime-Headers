@@ -6,8 +6,8 @@
     struct { 
         int index; 
         int zoom; 
-    } _blockPath;
-    NSArray *_coordinates;
+    }  _blockPath;
+    NSArray * _coordinates;
 }
 
 - (void).cxx_destruct;

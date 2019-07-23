@@ -3,18 +3,18 @@
  */
 
 @interface VKTransitLineMarker : NSObject <GEOTransitArtworkDataSource, GEOTransitShieldDataSource, MKTransitLineMarker> {
-    unsigned long long _featureID;
-    NSString *_labelLocale;
-    NSString *_labelText;
+    unsigned long long  _featureID;
+    NSString * _labelLocale;
+    NSString * _labelText;
     struct { 
         struct Matrix<float, 4, 1> { 
             float _e[4]; 
         } transitLineColor; 
-    } _shieldColor;
-    NSString *_shieldLocale;
-    NSString *_shieldText;
-    long long _shieldType;
-    void *_transitLinkID;
+    }  _shieldColor;
+    NSString * _shieldLocale;
+    NSString * _shieldText;
+    long long  _shieldType;
+    void * _transitLinkID;
 }
 
 @property (nonatomic, readonly) NSString *accessibilityText;
@@ -26,6 +26,7 @@
 @property (nonatomic, readonly) BOOL hasRoutingIncidentBadge;
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) <GEOTransitIconDataSource> *iconDataSource;
+@property (nonatomic, readonly) <GEOTransitShieldDataSource> *iconFallbackShieldDataSource;
 @property (nonatomic, readonly) NSString *labelLocale;
 @property (nonatomic, readonly) NSString *labelText;
 @property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{?={Matrix<float' */ struct  shieldColor; /* unknown property attribute:  1>=[4f]}} */
@@ -63,6 +64,7 @@
 - (int)artworkUseType;
 - (BOOL)hasRoutingIncidentBadge;
 - (id)iconDataSource;
+- (id)iconFallbackShieldDataSource;
 - (id)shieldColorString;
 - (id)shieldDataSource;
 

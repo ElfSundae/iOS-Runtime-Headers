@@ -67,8 +67,6 @@
 + (id)unsettableProperties;
 + (void)updateAllBookmarkableStoreBookmarkMetadataIdentifiersOnConnection:(id)arg1;
 
-- (void)_createVideoSnapshotAtTime:(double)arg1 withCompletionBlock:(id /* block */)arg2;
-- (id)_screenshotArtworkDataStoredAsItemArtwork;
 - (id)absoluteFilePath;
 - (id)artworkTokenAtPlaybackTime:(double)arg1;
 - (id)chapterTOC;

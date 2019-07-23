@@ -3,27 +3,31 @@
  */
 
 @interface GEOPDPlaceRefinementParameters : PBCodable <NSCopying> {
-    int _addressGeocodeAccuracyHint;
-    GEOStructuredAddress *_addressHint;
-    NSMutableArray *_formattedAddressLineHints;
+    int  _addressGeocodeAccuracyHint;
+    GEOStructuredAddress * _addressHint;
+    NSData * _addressObjectHint;
+    NSMutableArray * _formattedAddressLineHints;
     struct { 
         unsigned int muid : 1; 
         unsigned int addressGeocodeAccuracyHint : 1; 
         unsigned int placeTypeHint : 1; 
         unsigned int resultProviderId : 1; 
-    } _has;
-    GEOLatLng *_locationHint;
-    unsigned long long _muid;
-    NSString *_placeNameHint;
-    int _placeTypeHint;
-    int _resultProviderId;
+    }  _has;
+    GEOLatLng * _locationHint;
+    unsigned long long  _muid;
+    NSString * _placeNameHint;
+    int  _placeTypeHint;
+    int  _resultProviderId;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) int addressGeocodeAccuracyHint;
 @property (nonatomic, retain) GEOStructuredAddress *addressHint;
+@property (nonatomic, retain) NSData *addressObjectHint;
 @property (nonatomic, retain) NSMutableArray *formattedAddressLineHints;
 @property (nonatomic) BOOL hasAddressGeocodeAccuracyHint;
 @property (nonatomic, readonly) BOOL hasAddressHint;
+@property (nonatomic, readonly) BOOL hasAddressObjectHint;
 @property (nonatomic, readonly) BOOL hasLocationHint;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic, readonly) BOOL hasPlaceNameHint;
@@ -34,13 +38,20 @@
 @property (nonatomic, retain) NSString *placeNameHint;
 @property (nonatomic) int placeTypeHint;
 @property (nonatomic) int resultProviderId;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (Class)formattedAddressLineHintType;
+
+- (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
+- (int)StringAsPlaceTypeHint:(id)arg1;
 - (BOOL)_hasRequiredFields;
 - (unsigned int)_routeHypothesisPlaceRefinementParametersHash;
 - (BOOL)_routeHypothesisPlaceRefinementParametersIsEqual:(id)arg1;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (int)addressGeocodeAccuracyHint;
+- (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (id)addressHint;
+- (id)addressObjectHint;
 - (void)clearFormattedAddressLineHints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -52,6 +63,7 @@
 - (unsigned int)formattedAddressLineHintsCount;
 - (BOOL)hasAddressGeocodeAccuracyHint;
 - (BOOL)hasAddressHint;
+- (BOOL)hasAddressObjectHint;
 - (BOOL)hasLocationHint;
 - (BOOL)hasMuid;
 - (BOOL)hasPlaceNameHint;
@@ -67,10 +79,12 @@
 - (unsigned long long)muid;
 - (id)placeNameHint;
 - (int)placeTypeHint;
+- (id)placeTypeHintAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)resultProviderId;
 - (void)setAddressGeocodeAccuracyHint:(int)arg1;
 - (void)setAddressHint:(id)arg1;
+- (void)setAddressObjectHint:(id)arg1;
 - (void)setFormattedAddressLineHints:(id)arg1;
 - (void)setHasAddressGeocodeAccuracyHint:(BOOL)arg1;
 - (void)setHasMuid:(BOOL)arg1;
@@ -81,6 +95,7 @@
 - (void)setPlaceNameHint:(id)arg1;
 - (void)setPlaceTypeHint:(int)arg1;
 - (void)setResultProviderId:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

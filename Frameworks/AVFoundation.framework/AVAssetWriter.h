@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetWriter : NSObject <AVKeyPathDependencyHost, AVWeakObservable> {
-    AVAssetWriterInternal *_internal;
+    AVAssetWriterInternal * _internal;
 }
 
 @property (nonatomic, readonly) NSArray *availableMediaTypes;

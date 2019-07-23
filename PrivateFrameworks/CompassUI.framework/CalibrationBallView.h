@@ -3,10 +3,10 @@
  */
 
 @interface CalibrationBallView : UIView {
-    float _ballRadius;
-    UIView *_ballView;
-    float _currentAngle;
-    float _trackRadius;
+    float  _ballRadius;
+    UIView * _ballView;
+    float  _currentAngle;
+    float  _trackRadius;
 }
 
 @property (nonatomic) float ballRadius;

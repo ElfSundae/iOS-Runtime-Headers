@@ -3,32 +3,31 @@
  */
 
 @interface IMSPIMessage : NSObject {
-    NSAttributedString *_attributedText;
-    NSArray *_chatGUIDs;
-    NSArray *_chatGuids;
-    NSDate *_date;
-    NSDate *_dateRead;
-    NSString *_displayName;
-    NSString *_groupID;
-    NSString *_guid;
-    BOOL _isAudioMessage;
-    BOOL _isOutgoing;
-    BOOL _isRead;
-    NSDate *_lastReadDate;
-    long long _messageID;
-    NSArray *_recipients;
-    IMSPIHandle *_sender;
-    NSString *_subject;
-    NSString *_text;
-    NSURL *_url;
+    NSAttributedString * _attributedText;
+    NSArray * _chatGuids;
+    NSDate * _date;
+    NSDate * _dateRead;
+    NSString * _displayName;
+    NSString * _effect;
+    NSString * _groupID;
+    NSString * _guid;
+    BOOL  _isAudioMessage;
+    BOOL  _isOutgoing;
+    BOOL  _isRead;
+    NSDate * _lastReadDate;
+    long long  _messageID;
+    NSArray * _recipients;
+    IMSPIHandle * _sender;
+    NSString * _subject;
+    NSString * _text;
 }
 
 @property (retain) NSAttributedString *attributedText;
-@property (retain) NSArray *chatGUIDs;
-@property (readonly, retain) NSArray *chatGuids;
+@property (retain) NSArray *chatGuids;
 @property (retain) NSDate *date;
 @property (retain) NSDate *dateRead;
 @property (retain) NSString *displayName;
+@property (retain) NSString *effect;
 @property (retain) NSString *groupID;
 @property (retain) NSString *guid;
 @property BOOL isAudioMessage;
@@ -40,16 +39,17 @@
 @property (retain) IMSPIHandle *sender;
 @property (retain) NSString *subject;
 @property (retain) NSString *text;
-@property (retain) NSURL *url;
+@property (readonly) NSURL *url;
 
+- (void).cxx_destruct;
 - (id)attributedText;
-- (id)chatGUIDs;
 - (id)chatGuids;
 - (id)date;
 - (id)dateRead;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
+- (id)effect;
 - (id)groupID;
 - (id)guid;
 - (BOOL)isAudioMessage;
@@ -60,10 +60,11 @@
 - (id)recipients;
 - (id)sender;
 - (void)setAttributedText:(id)arg1;
-- (void)setChatGUIDs:(id)arg1;
+- (void)setChatGuids:(id)arg1;
 - (void)setDate:(id)arg1;
 - (void)setDateRead:(id)arg1;
 - (void)setDisplayName:(id)arg1;
+- (void)setEffect:(id)arg1;
 - (void)setGroupID:(id)arg1;
 - (void)setGuid:(id)arg1;
 - (void)setIsAudioMessage:(BOOL)arg1;
@@ -75,7 +76,6 @@
 - (void)setSender:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setText:(id)arg1;
-- (void)setUrl:(id)arg1;
 - (id)subject;
 - (id)text;
 - (id)url;

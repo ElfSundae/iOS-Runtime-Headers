@@ -3,20 +3,20 @@
  */
 
 @interface SKUIStoreIdentifier : NSObject <NSCopying> {
-    int _identiferType;
-    NSNumber *_itemIdentifier;
-    NSString *_podcastFeedURLIdentifier;
+    NSString * _bundleIdentifier;
+    NSNumber * _itemIdentifier;
+    NSString * _podcastFeedURLIdentifier;
 }
 
-@property (nonatomic, readonly) int identiferType;
+@property (nonatomic, retain) NSString *bundleIdentifier;
 @property (nonatomic, readonly) NSNumber *itemIdentifier;
 @property (nonatomic, retain) NSString *podcastFeedURLIdentifier;
 
 - (void).cxx_destruct;
+- (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (unsigned int)hash;
-- (int)identiferType;
 - (id)initWithLongLong:(long long)arg1;
 - (id)initWithNumber:(id)arg1;
 - (id)initWithPodcastFeedURL:(id)arg1;
@@ -25,6 +25,7 @@
 - (long long)longLongValue;
 - (id)numberValue;
 - (id)podcastFeedURLIdentifier;
+- (void)setBundleIdentifier:(id)arg1;
 - (void)setPodcastFeedURLIdentifier:(id)arg1;
 - (id)stringValue;
 

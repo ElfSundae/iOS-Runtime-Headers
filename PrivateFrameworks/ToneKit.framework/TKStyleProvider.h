@@ -3,13 +3,11 @@
  */
 
 @interface TKStyleProvider : NSObject <TKVibrationRecorderStyleProvider> {
-    NSBundle *_bundle;
-    NSMutableDictionary *_cachedStyleProperties;
-    UIScreen *_screen;
+    NSBundle * _bundle;
+    NSMutableDictionary * _cachedStyleProperties;
+    UIScreen * _screen;
 }
 
-@property (setter=_setBundle:, nonatomic, retain) NSBundle *_bundle;
-@property (setter=_setCachedStyleProperties:, nonatomic, retain) NSMutableDictionary *_cachedStyleProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) double defaultAnimationDuration;
 @property (readonly, copy) NSString *description;
@@ -41,16 +39,14 @@
 @property (nonatomic, readonly) float vibrationRecorderRippleRingLineWidth;
 @property (nonatomic, readonly) UIColor *vibrationRecorderRippleViewBackgroundColor;
 
+- (void).cxx_destruct;
 - (id)_bundle;
 - (id)_cachedImageForPropertyWithSelector:(SEL)arg1 size:(struct CGSize { float x1; float x2; })arg2 opaque:(BOOL)arg3 withDrawingBlock:(id /* block */)arg4;
 - (id)_cachedImageWithName:(id)arg1 forPropertyWithSelector:(SEL)arg2;
 - (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2 size:(struct CGSize { float x1; float x2; })arg3 opaque:(BOOL)arg4 withDrawingBlock:(id /* block */)arg5;
 - (id)_cachedStyleObjectForPropertyWithSelector:(SEL)arg1;
-- (id)_cachedStyleProperties;
 - (void)_didReceiveMemoryWarning:(id)arg1;
-- (void)_setBundle:(id)arg1;
 - (void)_setCachedStyleObject:(id)arg1 forPropertyWithSelector:(SEL)arg2;
-- (void)_setCachedStyleProperties:(id)arg1;
 - (void)dealloc;
 - (double)defaultAnimationDuration;
 - (id)init;

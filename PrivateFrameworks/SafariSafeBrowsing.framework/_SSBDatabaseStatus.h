@@ -11,7 +11,7 @@
                 struct Database {} *__first_; 
             } __end_cap_; 
         } m_databases; 
-    } _databaseStatus;
+    }  _databaseStatus;
 }
 
 @property (nonatomic, readonly) unsigned int databaseCount;

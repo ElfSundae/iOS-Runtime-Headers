@@ -3,9 +3,9 @@
  */
 
 @interface PULoadingIndicatorTileViewController : PUTileViewController {
-    PUProgressIndicatorView *__indicatorView;
-    BOOL __shouldShowIndeterminateActivityIndicator;
-    PUAssetViewModel *_assetViewModel;
+    PUProgressIndicatorView * __indicatorView;
+    BOOL  __shouldShowIndeterminateActivityIndicator;
+    PUAssetViewModel * _assetViewModel;
 }
 
 @property (setter=_setIndicatorView:, nonatomic, retain) PUProgressIndicatorView *_indicatorView;

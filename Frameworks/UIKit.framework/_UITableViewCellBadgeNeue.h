@@ -3,8 +3,8 @@
  */
 
 @interface _UITableViewCellBadgeNeue : UIView {
-    UILabel *_badgeTextLabel;
-    BOOL _selected;
+    UILabel * _badgeTextLabel;
+    BOOL  _selected;
 }
 
 @property (nonatomic, retain) UILabel *badgeTextLabel;

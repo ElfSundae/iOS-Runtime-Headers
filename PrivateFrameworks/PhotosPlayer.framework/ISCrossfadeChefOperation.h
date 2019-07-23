@@ -3,17 +3,18 @@
  */
 
 @interface ISCrossfadeChefOperation : NSOperation {
-    double _crossfadeDuration;
-    unsigned int _numberOfFrames;
-    int _photoEXIFOrientation;
-    id /* block */ _resultHandler;
-    double _sourceStartTime;
-    id _stillPhoto;
+    double  _crossfadeDuration;
+    unsigned int  _numberOfFrames;
+    int  _photoEXIFOrientation;
+    id /* block */  _resultHandler;
+    double  _sourceStartTime;
+    id  _stillPhoto;
     struct CGSize { 
         float width; 
         float height; 
-    } _targetSize;
-    AVAsset *_videoAsset;
+    }  _targetSize;
+    AVAsset * _videoAsset;
+    AVVideoComposition * _videoComposition;
 }
 
 @property (nonatomic, readonly) double crossfadeDuration;
@@ -24,10 +25,11 @@
 @property (nonatomic, retain) id stillPhoto;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } targetSize;
 @property (nonatomic, readonly) AVAsset *videoAsset;
+@property (nonatomic, readonly, copy) AVVideoComposition *videoComposition;
 
 - (void).cxx_destruct;
 - (double)crossfadeDuration;
-- (id)initWithVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage { }*)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 numberOfFrames:(unsigned int)arg6 targetSize:(struct CGSize { float x1; float x2; })arg7 resultHandler:(id /* block */)arg8;
+- (id)initWithVideoAsset:(id)arg1 sourceStartTime:(double)arg2 stillPhoto:(struct CGImage { }*)arg3 photoEXIFOrientation:(int)arg4 crossfadeDuration:(double)arg5 numberOfFrames:(unsigned int)arg6 targetSize:(struct CGSize { float x1; float x2; })arg7 videoComposition:(id)arg8 resultHandler:(id /* block */)arg9;
 - (unsigned int)numberOfFrames;
 - (int)photoEXIFOrientation;
 - (id /* block */)resultHandler;
@@ -36,5 +38,6 @@
 - (id)stillPhoto;
 - (struct CGSize { float x1; float x2; })targetSize;
 - (id)videoAsset;
+- (id)videoComposition;
 
 @end

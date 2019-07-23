@@ -3,20 +3,19 @@
  */
 
 @interface CoreIRLearningSessionProvider : CoreIRLearningSession {
-    unsigned long long _captureDoneTicks;
-    NSObject<OS_dispatch_source> *_captureDoneTimer;
-    NSObject<OS_dispatch_source> *_captureIdleTimer;
-    NSObject<OS_dispatch_source> *_captureNoSignalTimer;
-    unsigned long long _captureStartTicks;
-    int _captureState;
-    unsigned long long _capturedCommands;
-    unsigned long _capturedCount;
-    unsigned char _capturedProtocolID;
-    unsigned char _capturedProtocolOptions;
-    unsigned long long _capturedTicks;
-    unsigned int _currentCommand;
-    NSMutableArray *_mappings;
-    NSObject<OS_dispatch_queue> *_queue;
+    unsigned long long  _captureDoneTicks;
+    NSObject<OS_dispatch_source> * _captureDoneTimer;
+    NSObject<OS_dispatch_source> * _captureIdleTimer;
+    NSObject<OS_dispatch_source> * _captureNoSignalTimer;
+    unsigned long long  _captureStartTicks;
+    int  _captureState;
+    unsigned long long  _capturedCommands;
+    unsigned long  _capturedCount;
+    unsigned char  _capturedProtocolID;
+    unsigned char  _capturedProtocolOptions;
+    unsigned int  _currentCommand;
+    NSMutableArray * _mappings;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly) unsigned int currentCommand;

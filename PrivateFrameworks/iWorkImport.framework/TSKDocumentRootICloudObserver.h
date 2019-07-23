@@ -3,11 +3,11 @@
  */
 
 @interface TSKDocumentRootICloudObserver : NSObject {
-    id /* block */ _block;
-    long long _identifer;
-    long long _identifier;
-    NSOperationQueue *_operationQueue;
-    BOOL _suspendedCollaboration;
+    id /* block */  _block;
+    long long  _identifer;
+    long long  _identifier;
+    NSOperationQueue * _operationQueue;
+    BOOL  _suspendedCollaboration;
 }
 
 @property (nonatomic, readonly) long long identifer;

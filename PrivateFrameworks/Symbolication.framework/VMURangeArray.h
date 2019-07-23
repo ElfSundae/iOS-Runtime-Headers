@@ -3,10 +3,10 @@
  */
 
 @interface VMURangeArray : NSObject <NSCopying> {
-    unsigned int _count;
-    unsigned int _max;
-    struct _VMURange { unsigned long long x1; unsigned long long x2; } *_ranges;
-    BOOL _sorted;
+    unsigned int  _count;
+    unsigned int  _max;
+    struct _VMURange { unsigned long long x1; unsigned long long x2; } * _ranges;
+    BOOL  _sorted;
 }
 
 - (void)addRange:(struct _VMURange { unsigned long long x1; unsigned long long x2; })arg1;

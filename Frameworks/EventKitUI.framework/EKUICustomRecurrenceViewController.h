@@ -3,28 +3,28 @@
  */
 
 @interface EKUICustomRecurrenceViewController : UIViewController <EKRecurrenceChooserControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate> {
-    int _cachedFrequency;
-    int _cachedInterval;
-    EKRecurrenceRule *_cachedRecurrenceRule;
-    id /* block */ _completionBlock;
-    EKRecurrenceChooserController *_currentChooser;
-    UIPickerView *_frequencyPickerView;
-    UITableViewCell *_frequencySummaryCell;
-    EKUICustomRecurrenceIntervalViewController *_intervalPickerViewController;
-    UITableViewCell *_intervalSummaryCell;
-    EKRecurrenceMonthlyChooserController *_monthlyChooser;
-    BOOL _prohibitsYearlyRecurrenceInterval;
-    NSString *_recurrenceSummaryString;
-    BOOL _showingFrequencyPicker;
-    BOOL _showingIntervalPicker;
-    NSDate *_startDate;
-    UITableView *_tableView;
-    NSTimeZone *_timeZone;
-    BOOL _useClearBackground;
-    EKRecurrenceWeekdayChooserController *_weeklyChooser;
-    UISwitch *_yearOrdinalSwitch;
-    EKRecurrenceMonthChooserController *_yearlyChooser;
-    EKRecurrenceOrdinalChooserController *_yearlyOrdinalChooser;
+    int  _cachedFrequency;
+    int  _cachedInterval;
+    EKRecurrenceRule * _cachedRecurrenceRule;
+    id /* block */  _completionBlock;
+    EKRecurrenceChooserController * _currentChooser;
+    UIPickerView * _frequencyPickerView;
+    UITableViewCell * _frequencySummaryCell;
+    EKUICustomRecurrenceIntervalViewController * _intervalPickerViewController;
+    UITableViewCell * _intervalSummaryCell;
+    EKRecurrenceMonthlyChooserController * _monthlyChooser;
+    BOOL  _prohibitsYearlyRecurrenceInterval;
+    NSString * _recurrenceSummaryString;
+    BOOL  _showingFrequencyPicker;
+    BOOL  _showingIntervalPicker;
+    NSDate * _startDate;
+    UITableView * _tableView;
+    NSTimeZone * _timeZone;
+    BOOL  _useClearBackground;
+    EKRecurrenceWeekdayChooserController * _weeklyChooser;
+    UISwitch * _yearOrdinalSwitch;
+    EKRecurrenceMonthChooserController * _yearlyChooser;
+    EKRecurrenceOrdinalChooserController * _yearlyOrdinalChooser;
 }
 
 @property (copy) id /* block */ completionBlock;

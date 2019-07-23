@@ -3,11 +3,11 @@
  */
 
 @interface PSSoftwareUpdateTableView : UITableView {
-    UIActivityIndicatorView *_checkingForUpdateSpinner;
-    UILabel *_checkingStatusLabel;
-    NSString *_currentVersion;
-    int _state;
-    UILabel *_subtitleLabel;
+    UIActivityIndicatorView * _checkingForUpdateSpinner;
+    UILabel * _checkingStatusLabel;
+    NSString * _currentVersion;
+    int  _state;
+    UILabel * _subtitleLabel;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *checkingForUpdateSpinner;

@@ -3,23 +3,23 @@
  */
 
 @interface RadioModel : NSObject <NSFetchedResultsControllerDelegate> {
-    NSObject<OS_dispatch_queue> *_accessSerialQueue;
-    NSOperationQueue *_backgroundCleanupQueue;
-    BKSProcessAssertion *_backgroundProcessAssertion;
-    int _backgroundTaskCount;
-    NSObject<OS_dispatch_source> *_backgroundTaskInvalidateTimerSource;
-    NSManagedObjectContext *_context;
-    BOOL _isBackgroundModel;
-    NSManagedObjectModel *_model;
-    int _modelChangedToken;
-    BOOL _modelChangedTokenIsValid;
-    int _modelDeletedToken;
-    BOOL _modelDeletedTokenIsValid;
-    NSFetchRequest *_stationFetchRequest;
-    NSFetchedResultsController *_stationFetchedResultsController;
-    NSMapTable *_stationToSkipControllerMapTable;
-    NSPersistentStoreCoordinator *_storeCoordinator;
-    int _transactionCount;
+    NSObject<OS_dispatch_queue> * _accessSerialQueue;
+    NSOperationQueue * _backgroundCleanupQueue;
+    BKSProcessAssertion * _backgroundProcessAssertion;
+    int  _backgroundTaskCount;
+    NSObject<OS_dispatch_source> * _backgroundTaskInvalidateTimerSource;
+    NSManagedObjectContext * _context;
+    BOOL  _isBackgroundModel;
+    NSManagedObjectModel * _model;
+    int  _modelChangedToken;
+    BOOL  _modelChangedTokenIsValid;
+    int  _modelDeletedToken;
+    BOOL  _modelDeletedTokenIsValid;
+    NSFetchRequest * _stationFetchRequest;
+    NSFetchedResultsController * _stationFetchedResultsController;
+    NSMapTable * _stationToSkipControllerMapTable;
+    NSPersistentStoreCoordinator * _storeCoordinator;
+    int  _transactionCount;
 }
 
 @property (nonatomic, readonly) NSArray *allStations;

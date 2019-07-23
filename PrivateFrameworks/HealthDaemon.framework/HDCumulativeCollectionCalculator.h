@@ -15,8 +15,8 @@
                 unsigned long __first_; 
             } __pair3_; 
         } __tree_; 
-    } _bySource;
-    long long _currentAligned;
+    }  _bySource;
+    long long  _currentAligned;
     struct map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double> > > { 
         struct __tree<std::__1::__value_type<long long, double>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, double>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, double> > > { 
             struct __tree_node<std::__1::__value_type<long long, double>, void *> {} *__begin_node_; 
@@ -29,13 +29,13 @@
                 unsigned long __first_; 
             } __pair3_; 
         } __tree_; 
-    } _currentInterval;
-    unsigned int _dataCount;
-    NSMutableArray *_futureBuckets;
-    NSMutableArray *_futureCounts;
-    NSMutableArray *_futureIntervals;
-    BOOL _lastBucket;
-    HDLastIntervalInfo *_lastIntervalInfo;
+    }  _currentInterval;
+    unsigned int  _dataCount;
+    NSMutableArray * _futureBuckets;
+    NSMutableArray * _futureCounts;
+    NSMutableArray * _futureIntervals;
+    BOOL  _lastBucket;
+    HDLastIntervalInfo * _lastIntervalInfo;
     struct map<long long, double, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, double> > > { 
         struct __tree<std::__1::__value_type<long long, double>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, double>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, double> > > { 
             struct __tree_node<std::__1::__value_type<long long, double>, void *> {} *__begin_node_; 
@@ -48,10 +48,10 @@
                 unsigned long __first_; 
             } __pair3_; 
         } __tree_; 
-    } _lastIntervalSources;
-    unsigned int _mergeStrategy;
-    double _mergedSum;
-    NSArray *_orderedSourceIds;
+    }  _lastIntervalSources;
+    unsigned int  _mergeStrategy;
+    double  _mergedSum;
+    NSArray * _orderedSourceIds;
 }
 
 @property (nonatomic) long long currentAligned;
@@ -98,6 +98,7 @@
 - (void)setLastBucket:(BOOL)arg1;
 - (void)setMergeStrategy:(unsigned int)arg1;
 - (void)setOrderedSourceIds:(id)arg1;
+- (id)sourceIDsForCurrentBucket;
 - (id)sumsBySource;
 
 @end

@@ -6,8 +6,8 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _fixedSize;
-    UIView *_mirroredView;
+    }  _fixedSize;
+    UIView * _mirroredView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

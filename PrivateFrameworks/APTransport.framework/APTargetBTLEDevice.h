@@ -3,16 +3,16 @@
  */
 
 @interface APTargetBTLEDevice : NSObject {
-    NSUUID *_deviceID;
-    BOOL _isSoloCapable;
-    unsigned long long _lastBeaconTicks;
+    NSUUID * _deviceID;
+    BOOL  _isSoloCapable;
+    unsigned long long  _lastBeaconTicks;
     struct { 
         unsigned char flags; 
         unsigned char config; 
         unsigned char ipv4[4]; 
-    } _lastData;
-    int _lastRSSI;
-    BOOL _supportsMediaControlPort;
+    }  _lastData;
+    int  _lastRSSI;
+    BOOL  _supportsMediaControlPort;
 }
 
 @property (nonatomic, retain) NSUUID *deviceID;

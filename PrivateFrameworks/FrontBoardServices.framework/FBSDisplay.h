@@ -3,11 +3,11 @@
  */
 
 @interface FBSDisplay : NSObject <BSDescriptionProviding, BSXPCCoding, NSCopying, NSSecureCoding> {
-    CADisplay *_caDisplay;
-    unsigned int _displayID;
-    BOOL _external;
-    float _orientation;
-    int _pid;
+    CADisplay * _caDisplay;
+    unsigned int  _displayID;
+    BOOL  _external;
+    float  _orientation;
+    int  _pid;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,12 +17,12 @@
             float width; 
             float height; 
         } size; 
-    } _referenceBounds;
-    float _scale;
-    unsigned int _seed;
-    int _tags;
-    unsigned int _type;
-    NSString *_uniqueID;
+    }  _referenceBounds;
+    float  _scale;
+    unsigned int  _seed;
+    int  _tags;
+    unsigned int  _type;
+    NSString * _uniqueID;
 }
 
 @property (nonatomic, readonly, retain) CADisplay *caDisplay;
@@ -72,7 +72,6 @@
 - (BOOL)isMainDisplay;
 - (BOOL)isMusicOnlyDisplay;
 - (BOOL)isRestrictedAirPlayDisplay;
-- (BOOL)isWatchOnlyDisplay;
 - (BOOL)isiPodOnlyDisplay;
 - (float)orientation;
 - (int)pid;

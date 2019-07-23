@@ -5,7 +5,6 @@
 
 @optional
 
-- (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 controlsVisibilityChanged:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)pictureInPictureViewController:(PGPictureInPictureViewController *)arg1 updateHostedWindowSize:(struct CGSize { float x1; float x2; })arg2 animationType:(int)arg3 initialSpringVelocity:(float)arg4;
 - (void)pictureInPictureViewControllerActionButtonTapped:(PGPictureInPictureViewController *)arg1;
 - (void)pictureInPictureViewControllerCancelButtonTapped:(PGPictureInPictureViewController *)arg1;

@@ -3,9 +3,9 @@
  */
 
 @interface PLSubmissions : NSObject {
-    PLSQLiteConnection *_connection;
-    PLStorageOperator *_storageOperator;
-    PLTimer *_watchdog;
+    PLSQLiteConnection * _connection;
+    PLStorageOperator * _storageOperator;
+    PLTimer * _watchdog;
 }
 
 @property (retain) PLSQLiteConnection *connection;

@@ -3,16 +3,15 @@
  */
 
 @interface TKLabelContainerView : UIView {
-    UILabel *_label;
+    UILabel * _label;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _labelPaddingInsets;
+    }  _labelPaddingInsets;
 }
 
-@property (setter=_setLabel:, nonatomic, retain) UILabel *_label;
 @property (nonatomic, retain) UIFont *labelFont;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } labelPaddingInsets;
 @property (nonatomic, retain) UIColor *labelShadowColor;
@@ -20,9 +19,7 @@
 @property (nonatomic, copy) NSString *labelText;
 @property (nonatomic, retain) UIColor *labelTextColor;
 
-- (id)_label;
-- (void)_setLabel:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)labelFont;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })labelPaddingInsets;

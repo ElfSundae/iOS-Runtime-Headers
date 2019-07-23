@@ -3,20 +3,22 @@
  */
 
 @interface SYOutgoingBatchSyncSession : SYSession {
-    NSMutableIndexSet *_ackedBatchIndices;
-    unsigned long long _activity;
-    unsigned long long _batchIndex;
-    BOOL _canRestart;
-    BOOL _canRollback;
-    BOOL _cancelled;
-    _SYCountedSemaphore *_changeConcurrencySemaphore;
-    NSObject<OS_dispatch_queue> *_changeFetcherQueue;
-    BOOL _errorIsLocal;
-    BOOL _hasSentEnd;
-    NSObject<OS_dispatch_source> *_sessionTimer;
-    int _state;
-    NSObject<OS_dispatch_source> *_stateUpdateSource;
-    _SYMessageTimerTable *_timers;
+    NSMutableIndexSet * _ackedBatchIndices;
+    unsigned long long  _batchIndex;
+    BOOL  _canRestart;
+    BOOL  _canRollback;
+    BOOL  _cancelled;
+    _SYCountedSemaphore * _changeConcurrencySemaphore;
+    NSObject<OS_dispatch_queue> * _changeFetcherQueue;
+    NSObject<OS_os_activity> * _changeWaitActivity;
+    BOOL  _errorIsLocal;
+    BOOL  _hasSentEnd;
+    NSObject<OS_os_activity> * _sessionActivity;
+    double  _sessionStartTime;
+    NSObject<OS_dispatch_source> * _sessionTimer;
+    int  _state;
+    NSObject<OS_dispatch_source> * _stateUpdateSource;
+    _SYMessageTimerTable * _timers;
 }
 
 - (void).cxx_destruct;
@@ -41,11 +43,12 @@
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)isResetSync;
 - (BOOL)isSending;
 - (unsigned int)protocolVersion;
+- (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
 - (void)setState:(int)arg1;

@@ -3,15 +3,15 @@
  */
 
 @interface UICollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewFocusDelegate_Legacy, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Deprecated, _UIKeyboardAutoRespondingScrollViewController> {
-    UICollectionView *_collectionView;
+    UICollectionView * _collectionView;
     struct { 
         unsigned int clearsSelectionOnViewWillAppear : 1; 
         unsigned int useLayoutToLayoutNavigationTransitions : 1; 
         unsigned int installsStandardReorderingGesture : 1; 
-    } _collectionViewControllerFlags;
-    UIAutoRespondingScrollViewControllerKeyboardSupport *_keyboardSupport;
-    UICollectionViewLayout *_layout;
-    UILongPressGestureRecognizer *_reorderingGesture;
+    }  _collectionViewControllerFlags;
+    UIAutoRespondingScrollViewControllerKeyboardSupport * _keyboardSupport;
+    UICollectionViewLayout * _layout;
+    UILongPressGestureRecognizer * _reorderingGesture;
 }
 
 @property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
@@ -62,6 +62,7 @@
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { float x1; float x2; })arg2;
 - (void)setClearsSelectionOnViewWillAppear:(BOOL)arg1;
 - (void)setCollectionView:(id)arg1;
+- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setInstallsStandardGestureForInteractiveMovement:(BOOL)arg1;
 - (void)setUseLayoutToLayoutNavigationTransitions:(BOOL)arg1;
 - (void)setView:(id)arg1;

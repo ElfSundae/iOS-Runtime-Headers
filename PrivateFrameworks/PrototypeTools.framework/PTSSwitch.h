@@ -3,15 +3,15 @@
  */
 
 @interface PTSSwitch : UIView <PTSHUDControl, _UISettingsKeyPathObserver> {
-    SEL _action;
-    int _alignment;
-    float _height;
-    _UISettings *_settings;
-    NSArray *_subviewConstraints;
-    UISwitch *_switchControl;
-    id _target;
-    UILabel *_titleLabel;
-    NSString *_valueKeyPath;
+    SEL  _action;
+    int  _alignment;
+    float  _height;
+    _UISettings * _settings;
+    NSArray * _subviewConstraints;
+    UISwitch * _switchControl;
+    id  _target;
+    UILabel * _titleLabel;
+    NSString * _valueKeyPath;
 }
 
 @property (nonatomic) SEL action;

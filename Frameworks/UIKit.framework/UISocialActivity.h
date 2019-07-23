@@ -3,8 +3,8 @@
  */
 
 @interface UISocialActivity : UIApplicationExtensionActivity {
-    NSString *_builtinActivityType;
-    SLComposeViewController *_socialComposeViewController;
+    NSString * _builtinActivityType;
+    SLComposeViewController * _socialComposeViewController;
 }
 
 @property (nonatomic, copy) NSString *builtinActivityType;

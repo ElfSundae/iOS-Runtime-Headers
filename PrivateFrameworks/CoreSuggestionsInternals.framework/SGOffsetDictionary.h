@@ -3,12 +3,12 @@
  */
 
 @interface SGOffsetDictionary : NSObject {
-    struct { unsigned long long x1; unsigned short x2; BOOL x3[3]; } *_carrierEntries;
-    unsigned short _count;
-    struct { unsigned long long x1; unsigned short x2; BOOL x3[3]; } *_mruCarrierEntry;
-    unsigned long long _payloadOffset;
-    unsigned int _sizeFactor;
-    unsigned long long _totalPayloadSize;
+    struct { unsigned long long x1; unsigned short x2; BOOL x3[3]; } * _carrierEntries;
+    unsigned short  _count;
+    struct { unsigned long long x1; unsigned short x2; BOOL x3[3]; } * _mruCarrierEntry;
+    unsigned long long  _payloadOffset;
+    unsigned int  _sizeFactor;
+    unsigned long long  _totalPayloadSize;
 }
 
 - (struct { unsigned long long x1; unsigned short x2; BOOL x3[3]; }*)carrierEntryForKey:(const char *)arg1;

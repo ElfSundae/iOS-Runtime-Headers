@@ -3,11 +3,11 @@
  */
 
 @interface CMFreeFormShapeBuilder : CMLineShapeBuilder {
-    OADPath *_path;
+    OADPath * _path;
     struct CGSize { 
         float width; 
         float height; 
-    } _space;
+    }  _space;
 }
 
 - (struct CGPoint { float x1; float x2; })_renderPathElement:(id)arg1 withTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg2 inPath:(struct CGPath { }*)arg3;

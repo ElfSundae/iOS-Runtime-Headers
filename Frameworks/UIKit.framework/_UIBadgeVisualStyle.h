@@ -5,21 +5,12 @@
 @interface _UIBadgeVisualStyle : NSObject
 
 @property (nonatomic, readonly) BOOL allowsDrawingOutsideTabBar;
-@property (nonatomic, readonly) float blinkImagePadding;
-@property (nonatomic, readonly) float blinkLeftBadgePadding;
-@property (nonatomic, readonly) float blinkMaxBadgeWidth;
-@property (nonatomic, readonly) float blinkMinBadgeWidth;
-@property (nonatomic, readonly) float blinkRate;
-@property (nonatomic, readonly) float blinkRightBadgePadding;
-@property (nonatomic, readonly) float blinkShadowHeight;
-@property (nonatomic, readonly) float blinkSingleBadgeWidth;
 @property (nonatomic, readonly) float edgePadding;
 @property (nonatomic, readonly) UIFont *font;
 @property (nonatomic, readonly) float fontSize;
 @property (nonatomic, readonly) float horizontalAnimatedInset;
 @property (nonatomic, readonly) float horizontalBorderedInset;
 @property (nonatomic, readonly) float horizontalInset;
-@property (nonatomic, readonly) float imagePadding;
 @property (nonatomic, readonly) float maxWidth;
 @property (nonatomic, readonly) float minWidth;
 @property (nonatomic, readonly) float shadowHeight;
@@ -30,21 +21,12 @@
 @property (nonatomic, readonly) float verticalInset;
 
 - (BOOL)allowsDrawingOutsideTabBar;
-- (float)blinkImagePadding;
-- (float)blinkLeftBadgePadding;
-- (float)blinkMaxBadgeWidth;
-- (float)blinkMinBadgeWidth;
-- (float)blinkRate;
-- (float)blinkRightBadgePadding;
-- (float)blinkShadowHeight;
-- (float)blinkSingleBadgeWidth;
 - (float)edgePadding;
 - (id)font;
 - (float)fontSize;
 - (float)horizontalAnimatedInset;
 - (float)horizontalBorderedInset;
 - (float)horizontalInset;
-- (float)imagePadding;
 - (float)maxWidth;
 - (float)minWidth;
 - (float)shadowHeight;

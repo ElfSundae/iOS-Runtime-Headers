@@ -3,7 +3,7 @@
  */
 
 @interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UIScreenEdgePanRecognizerDelegate> {
-    _UIScreenEdgePanRecognizer *_recognizer;
+    _UIScreenEdgePanRecognizer * _recognizer;
 }
 
 @property (readonly, copy) NSString *debugDescription;

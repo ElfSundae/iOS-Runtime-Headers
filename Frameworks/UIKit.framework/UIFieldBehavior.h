@@ -3,11 +3,11 @@
  */
 
 @interface UIFieldBehavior : UIDynamicBehavior {
-    PKPhysicsField *_field;
+    PKPhysicsField * _field;
     struct { 
         unsigned int fieldIsKindOfNoiseField : 1; 
-    } _fieldFlags;
-    UIRegion *_region;
+    }  _fieldFlags;
+    UIRegion * _region;
 }
 
 @property (nonatomic, readonly) PKPhysicsField *_field;
@@ -35,7 +35,7 @@
 + (id)vortexField;
 
 - (void).cxx_destruct;
-- (void)_addItem:(id)arg1;
+- (void)_addFieldItem:(id)arg1;
 - (void)_associate;
 - (void)_changedParameter;
 - (void)_dissociate;

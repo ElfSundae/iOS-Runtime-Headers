@@ -20,7 +20,6 @@
 + (void)hideDimmingViewAnimated:(BOOL)arg1;
 + (BOOL)hideTopMostAlertAnimated:(BOOL)arg1;
 + (void)initialize;
-+ (void)noteOrientationChangingTo:(int)arg1;
 + (void)noteOrientationChangingTo:(int)arg1 animated:(BOOL)arg2;
 + (void)removeFromStack:(id)arg1;
 + (void)reorientAlertWindowTo:(int)arg1 animated:(BOOL)arg2 keyboard:(id)arg3;

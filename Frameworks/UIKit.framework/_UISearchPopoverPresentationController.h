@@ -3,7 +3,7 @@
  */
 
 @interface _UISearchPopoverPresentationController : UIPopoverPresentationController <_UISearchControllerPresenting> {
-    _UISearchPresentationAssistant *_assistant;
+    _UISearchPresentationAssistant * _assistant;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,7 +13,7 @@
             float width; 
             float height; 
         } size; 
-    } finalFrameForContainerView;
+    }  finalFrameForContainerView;
 }
 
 @property (nonatomic, readonly) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;

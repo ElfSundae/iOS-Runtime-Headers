@@ -3,27 +3,28 @@
  */
 
 @interface MFMessage : NSObject <NSCopying> {
-    NSArray *_bcc;
-    NSString *_cachedMessageIDHeader;
-    unsigned int _calculatedAttachmentInfo;
-    NSArray *_cc;
-    NSString *_contentType;
-    long long _conversationID;
-    unsigned int _dateReceivedInterval;
-    unsigned int _dateSentInterval;
-    NSString *_externalID;
-    unsigned long long _generationNumber;
-    long long _messageIDHeaderHash;
-    NSURL *_messageURL;
-    unsigned short _numberOfAttachments;
-    MFMimePart *_parentPart;
-    unsigned long _preferredEncoding;
-    NSArray *_sender;
-    NSString *_senderAddressComment;
-    MFMessageStore *_store;
-    NSString *_subject;
-    NSString *_summary;
-    NSArray *_to;
+    NSArray * _bcc;
+    NSString * _cachedMessageIDHeader;
+    unsigned int  _calculatedAttachmentInfo;
+    NSArray * _cc;
+    NSString * _contentType;
+    long long  _conversationID;
+    unsigned int  _dateReceivedInterval;
+    unsigned int  _dateSentInterval;
+    NSString * _externalID;
+    unsigned long long  _generationNumber;
+    long long  _listIDHash;
+    long long  _messageIDHeaderHash;
+    NSURL * _messageURL;
+    unsigned short  _numberOfAttachments;
+    MFMimePart * _parentPart;
+    unsigned long  _preferredEncoding;
+    NSArray * _sender;
+    NSString * _senderAddressComment;
+    MFMessageStore * _store;
+    NSString * _subject;
+    NSString * _summary;
+    NSArray * _to;
 }
 
 @property (nonatomic, retain) MFMimePart *parentPart;
@@ -82,6 +83,7 @@
 - (id)init;
 - (BOOL)isLibraryMessage;
 - (BOOL)isMessageContentsLocallyAvailable;
+- (long long)listIDHash;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (id)messageBody;
 - (id)messageBodyIfAvailable;
@@ -119,6 +121,7 @@
 - (void)setDateSentTimeIntervalSince1970:(double)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setGenerationNumber:(unsigned long long)arg1;
+- (void)setListIDHash:(long long)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setMessageIDHash:(long long)arg1;
 - (void)setMessageIDHeader:(id)arg1;

@@ -3,13 +3,15 @@
  */
 
 @interface IDSMessageContext : NSObject {
-    id _boostContext;
-    NSMutableDictionary *_dict;
+    id  _boostContext;
+    NSMutableDictionary * _dict;
+    NSObject<OS_dispatch_queue> * _ivarQueue;
 }
 
 @property (nonatomic, retain) id boostContext;
 @property (nonatomic) long long broadcastID;
 @property (nonatomic) NSNumber *broadcastTime;
+@property (nonatomic) long long connectionType;
 @property (nonatomic) BOOL expectsPeerResponse;
 @property (nonatomic, copy) NSString *fromID;
 @property (nonatomic, copy) NSString *incomingResponseIdentifier;
@@ -28,13 +30,13 @@
 - (id)boostContext;
 - (long long)broadcastID;
 - (id)broadcastTime;
+- (long long)connectionType;
 - (void)dealloc;
 - (BOOL)expectsPeerResponse;
 - (id)fromID;
-- (id)idsGuard_objectForKey:(id)arg1;
-- (void)idsGuard_setObject:(id)arg1 forKey:(id)arg2;
 - (id)incomingResponseIdentifier;
 - (id)initWithDictionary:(id)arg1 boostContext:(id)arg2;
+- (id)objectForKey:(id)arg1;
 - (id)originalCommand;
 - (id)originalDestinationDevice;
 - (id)outgoingResponseIdentifier;
@@ -43,9 +45,11 @@
 - (void)setBoostContext:(id)arg1;
 - (void)setBroadcastID:(long long)arg1;
 - (void)setBroadcastTime:(id)arg1;
+- (void)setConnectionType:(long long)arg1;
 - (void)setExpectsPeerResponse:(BOOL)arg1;
 - (void)setFromID:(id)arg1;
 - (void)setIncomingResponseIdentifier:(id)arg1;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setOriginalCommand:(id)arg1;
 - (void)setOriginalDestinationDevice:(id)arg1;
 - (void)setOutgoingResponseIdentifier:(id)arg1;
@@ -60,13 +64,6 @@
 - (BOOL)wantsAppAck;
 - (BOOL)wantsManualAck;
 
-// Image: /System/Library/PrivateFrameworks/CompanionSync.framework/CompanionSync
-
-+ (void)load;
-
-- (id)objectForKey:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-
 // Image: /System/Library/PrivateFrameworks/NanoLeash.framework/NanoLeash
 
 - (id)nfmDescription;
@@ -78,5 +75,9 @@
 // Image: /System/Library/PrivateFrameworks/PBBridgeSupport.framework/PBBridgeSupport
 
 - (id)pbDescription;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
+
+- (id)pkDescription;
 
 @end

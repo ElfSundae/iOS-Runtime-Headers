@@ -3,26 +3,26 @@
  */
 
 @interface PUTilingViewSpeedometer : NSObject {
-    CADisplayLink *__displayLink;
-    PUTilingLayout *__lastTilingLayout;
-    PUTilingView *__lastTilingView;
-    double __lastTime;
+    CADisplayLink * __displayLink;
+    PUTilingLayout * __lastTilingLayout;
+    PUTilingView * __lastTilingView;
+    double  __lastTime;
     struct CGPoint { 
         float x; 
         float y; 
-    } __lastVisibleOrigin;
-    NSTimer *__timeoutTimer;
-    <PUTilingViewSpeedometerDelegate> *_delegate;
+    }  __lastVisibleOrigin;
+    NSTimer * __timeoutTimer;
+    <PUTilingViewSpeedometerDelegate> * _delegate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _scrollSpeed;
+    }  _scrollSpeed;
     struct CGPoint { 
         float x; 
         float y; 
-    } _smoothScrollSpeed;
-    PUValueFilter *_xSmoothingFilter;
-    PUValueFilter *_ySmoothingFilter;
+    }  _smoothScrollSpeed;
+    PUValueFilter * _xSmoothingFilter;
+    PUValueFilter * _ySmoothingFilter;
 }
 
 @property (setter=_setDisplayLink:, nonatomic, retain) CADisplayLink *_displayLink;
@@ -34,8 +34,8 @@
 @property (nonatomic, readonly) PUValueFilter *_xSmoothingFilter;
 @property (nonatomic, readonly) PUValueFilter *_ySmoothingFilter;
 @property (nonatomic) <PUTilingViewSpeedometerDelegate> *delegate;
-@property (nonatomic) struct CGPoint { float x1; float x2; } scrollSpeed;
-@property (nonatomic) struct CGPoint { float x1; float x2; } smoothScrollSpeed;
+@property (setter=_setScrollSpeed:, nonatomic) struct CGPoint { float x1; float x2; } scrollSpeed;
+@property (setter=_setSmoothScrollSpeed:, nonatomic) struct CGPoint { float x1; float x2; } smoothScrollSpeed;
 
 - (void).cxx_destruct;
 - (id)_displayLink;

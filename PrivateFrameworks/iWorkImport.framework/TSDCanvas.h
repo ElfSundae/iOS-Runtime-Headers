@@ -3,47 +3,52 @@
  */
 
 @interface TSDCanvas : NSObject {
-    NSSet *mAllReps;
-    BOOL mAllowsFontSubpixelQuantization;
-    struct CGColor { } *mBackgroundColor;
-    TSDInteractiveCanvasController *mCanvasController;
-    BOOL mClipToCanvas;
+    NSSet * mAllReps;
+    BOOL  mAllowsFontSubpixelQuantization;
+    struct CGColor { } * mBackgroundColor;
+    NSMutableArray * mBlocksToPerform;
+    NSObject<OS_dispatch_queue> * mBlocksToPerformAccessQueue;
+    TSDInteractiveCanvasController * mCanvasController;
+    BOOL  mClipToCanvas;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } mContentInset;
-    float mContentsScale;
-    <TSDCanvasDelegate> *mDelegate;
-    BOOL mIgnoringClickThrough;
-    BOOL mInLayout;
-    NSArray *mInfos;
+    }  mContentInset;
+    float  mContentsScale;
+    <TSDCanvasDelegate> * mDelegate;
+    BOOL  mIgnoringClickThrough;
+    BOOL  mInLayout;
+    NSArray * mInfos;
     struct { 
         unsigned int layout : 1; 
         unsigned int reps : 1; 
         unsigned int visibleBounds : 1; 
         unsigned int layers : 1; 
-    } mInvalidFlags;
-    BOOL mIsTemporaryForLayout;
-    TSDLayoutController *mLayoutController;
-    NSArray *mPreviouslyVisibleLayouts;
-    struct __CFDictionary { } *mRepsByLayout;
-    BOOL mSuppressesShadowsAndReflections;
-    NSArray *mTopLevelReps;
+    }  mInvalidFlags;
+    BOOL  mIsTemporaryForLayout;
+    TSDLayoutController * mLayoutController;
+    NSArray * mPreviouslyVisibleLayouts;
+    struct __CFDictionary { } * mRepsByLayout;
+    BOOL  mSuppressesShadowsAndReflections;
+    NSArray * mTopLevelReps;
     struct CGSize { 
         float width; 
         float height; 
-    } mUnscaledSize;
-    float mViewScale;
+    }  mUnscaledSize;
+    float  mViewScale;
+    BOOL  mWideGamut;
 }
 
 @property (nonatomic, readonly) TSKAccessController *accessController;
 @property (nonatomic) BOOL allowsFontSubpixelQuantization;
 @property (nonatomic) struct CGColor { }*backgroundColor;
 @property (nonatomic, readonly) TSDInteractiveCanvasController *canvasController;
+@property (nonatomic, readonly) BOOL canvasIsWideGamut;
 @property (nonatomic, readonly) TSKChangeNotifier *changeNotifier;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } contentInset;
+@property (nonatomic, readonly) float contentsScale;
 @property (nonatomic) <TSDCanvasDelegate> *delegate;
 @property (nonatomic, readonly) TSKDocumentRoot *documentRoot;
 @property (nonatomic, copy) NSArray *infosToDisplay;
@@ -62,6 +67,7 @@
 - (BOOL)allowsFontSubpixelQuantization;
 - (struct CGColor { }*)backgroundColor;
 - (id)canvasController;
+- (BOOL)canvasIsWideGamut;
 - (id)changeNotifier;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })contentInset;
 - (float)contentsScale;
@@ -78,19 +84,20 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })i_approximateScaledFrameOfEditingMenuAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })i_clipRectForCreatingRepsFromLayouts;
 - (void)i_clipsImagesToBounds:(BOOL)arg1;
-- (struct CGContext { }*)i_createContextToDrawImageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 withTargetIntegralSize:(struct CGSize { float x1; float x2; })arg2 returningBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg3 integralBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg4 forceSRGB:(BOOL)arg5;
+- (struct CGContext { }*)i_createContextToDrawImageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 withTargetIntegralSize:(struct CGSize { float x1; float x2; })arg2 returningBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg3 integralBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg4;
 - (void)i_drawBackgroundInContext:(struct CGContext { }*)arg1;
 - (void)i_drawBackgroundInContext:(struct CGContext { }*)arg1 bounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)i_drawRepsInContext:(struct CGContext { }*)arg1;
 - (void)i_drawRepsInContext:(struct CGContext { }*)arg1 distort:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg2;
 - (struct CGImage { }*)i_image;
-- (struct CGImage { }*)i_imageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forceSRGB:(BOOL)arg2;
-- (struct CGImage { }*)i_imageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 withTargetIntegralSize:(struct CGSize { float x1; float x2; })arg2 distortedToMatch:(BOOL)arg3 forceSRGB:(BOOL)arg4;
+- (struct CGImage { }*)i_imageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (struct CGImage { }*)i_imageInScaledRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 withTargetIntegralSize:(struct CGSize { float x1; float x2; })arg2 distortedToMatch:(BOOL)arg3;
 - (BOOL)i_needsLayout;
 - (struct CGImage { }*)i_newImageInContext:(struct CGContext { }*)arg1 bounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 integralBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 distortedToMatch:(BOOL)arg4;
 - (void)i_performBlockWhileIgnoringClickThrough:(id /* block */)arg1;
 - (void)i_registerRep:(id)arg1;
 - (void)i_setCanvasController:(id)arg1;
+- (void)i_setCanvasIsWideGamut:(BOOL)arg1;
 - (void)i_setContentsScale:(float)arg1;
 - (void)i_setInfosToDisplay:(id)arg1 updatingLayoutController:(BOOL)arg2;
 - (BOOL)i_shouldIgnoreClickThrough;
@@ -120,6 +127,7 @@
 - (void)p_removeAllReps;
 - (BOOL)p_shouldRep:(id)arg1 countAsClosestSmallRepForSizeLimit:(float)arg2;
 - (BOOL)p_updateRepsFromLayouts;
+- (void)performBlockAfterLayoutIfNecessary:(id /* block */)arg1;
 - (void)recreateAllLayoutsAndReps;
 - (id)repForLayout:(id)arg1;
 - (Class)rootLayoutClass;

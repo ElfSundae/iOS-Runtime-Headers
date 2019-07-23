@@ -3,31 +3,31 @@
  */
 
 @interface MusicVerticalScrollingContainerViewController : UIViewController <MusicClientContextConsuming, MusicVerticalScrollingContainerCollectionViewCellDelegate, MusicVerticalScrollingContainerCollectionViewDelegate, MusicVerticalScrollingContainerItemContextDelegate, SKUIProxyScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
-    MusicClientContext *_clientContext;
-    MusicVerticalScrollingContainerCollectionView *_containerCollectionView;
-    BOOL _contentOffsetHasAdjustedForTuck;
-    <MusicVerticalScrollingContainerViewControllerDelegate> *_delegate;
+    MusicClientContext * _clientContext;
+    MusicVerticalScrollingContainerCollectionView * _containerCollectionView;
+    BOOL  _contentOffsetHasAdjustedForTuck;
+    <MusicVerticalScrollingContainerViewControllerDelegate> * _delegate;
     struct { 
         unsigned int contentOffsetProxyingPolicyForItem : 1; 
         unsigned int didLayoutSubviews : 1; 
         unsigned int didScroll : 1; 
         unsigned int contentSizeDidChange : 1; 
         unsigned int willEndDraggingWithVelocity : 1; 
-    } _delegateRespondsToSelector;
-    BOOL _isPerformingLayout;
-    NSMapTable *_itemToItemContext;
-    int _keyboardDismissMode;
-    unsigned int _numberOfRunningAnimatedInvalidations;
-    SKUIProxyScrollView *_proxyScrollView;
+    }  _delegateRespondsToSelector;
+    BOOL  _isPerformingLayout;
+    NSMapTable * _itemToItemContext;
+    int  _keyboardDismissMode;
+    unsigned int  _numberOfRunningAnimatedInvalidations;
+    SKUIProxyScrollView * _proxyScrollView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _proxyScrollViewContentInsetAdditions;
-    BOOL _shouldTuckTopVerticalScrollingContainerItem;
-    BOOL _shouldUpdateLayoutOfVisibleCollectionViewCellsUponCompletingAnimatedInvalidations;
-    NSArray *_verticalScrollingContainerItems;
+    }  _proxyScrollViewContentInsetAdditions;
+    BOOL  _shouldTuckTopVerticalScrollingContainerItem;
+    BOOL  _shouldUpdateLayoutOfVisibleCollectionViewCellsUponCompletingAnimatedInvalidations;
+    NSArray * _verticalScrollingContainerItems;
 }
 
 @property (nonatomic, retain) SKUIClientContext *clientContext;

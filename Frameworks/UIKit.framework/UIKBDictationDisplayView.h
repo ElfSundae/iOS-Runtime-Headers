@@ -3,7 +3,7 @@
  */
 
 @interface UIKBDictationDisplayView : UIKBKeyView {
-    UIDictationView *_dictationView;
+    UIDictationView * _dictationView;
 }
 
 @property (nonatomic, retain) UIDictationView *dictationView;

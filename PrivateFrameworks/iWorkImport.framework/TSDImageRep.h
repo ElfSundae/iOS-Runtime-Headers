@@ -10,10 +10,11 @@
         float d; 
         float tx; 
         float ty; 
-    } mBaseMaskLayoutTransform;
-    CALayer *mContentsLayer;
-    BOOL mDirectlyManagesLayerContent;
-    BOOL mFrameInUnscaledCanvasIsValid;
+    }  mBaseMaskLayoutTransform;
+    BOOL  mCachedIsEquation;
+    CALayer * mContentsLayer;
+    BOOL  mDirectlyManagesLayerContent;
+    BOOL  mFrameInUnscaledCanvasIsValid;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -23,14 +24,15 @@
             float width; 
             float height; 
         } size; 
-    } mFrameInUnscaledCanvasRelativeToSuper;
-    NSCache *mHitTestCache;
-    long mHitTestCacheOnce;
-    CAShapeLayer *mIAMaskLayer;
-    BOOL mInInstantAlphaMode;
-    struct CGImage { } *mInstantAlphaImage;
-    TSDInstantAlphaTracker *mInstantAlphaTracker;
-    TSDLayoutGeometry *mLastImageGeometryInRoot;
+    }  mFrameInUnscaledCanvasRelativeToSuper;
+    NSCache * mHitTestCache;
+    long  mHitTestCacheOnce;
+    CAShapeLayer * mIAMaskLayer;
+    BOOL  mInInstantAlphaMode;
+    struct CGImage { } * mInstantAlphaImage;
+    TSDInstantAlphaTracker * mInstantAlphaTracker;
+    BOOL  mIsEquation;
+    TSDLayoutGeometry * mLastImageGeometryInRoot;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -38,8 +40,8 @@
         float d; 
         float tx; 
         float ty; 
-    } mLastLayoutToImageTransform;
-    TSDLayoutGeometry *mLastMaskGeometryInRoot;
+    }  mLastLayoutToImageTransform;
+    TSDLayoutGeometry * mLastMaskGeometryInRoot;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -47,25 +49,26 @@
         float d; 
         float tx; 
         float ty; 
-    } mLastPictureFrameLayerTransform;
-    NSRecursiveLock *mLayerUpdateAndSizingStateLock;
-    CAShapeLayer *mMaskPathLayer;
-    CAShapeLayer *mMaskSublayer;
-    BOOL mShowImageHighlight;
-    struct CGImage { } *mSizedImage;
-    NSObject<OS_dispatch_queue> *mSizedImageAccessQueue;
-    BOOL mSizedImageHasAdjustmentsBakedIn;
-    BOOL mSizedImageHasMaskBakedIn;
-    struct CGPath { } *mSizedImageMaskPath;
-    int mSizedImageOrientation;
+    }  mLastPictureFrameLayerTransform;
+    NSRecursiveLock * mLayerUpdateAndSizingStateLock;
+    CAShapeLayer * mMaskPathLayer;
+    CAShapeLayer * mMaskSublayer;
+    BOOL  mShowImageHighlight;
+    struct CGImage { } * mSizedImage;
+    NSObject<OS_dispatch_queue> * mSizedImageAccessQueue;
+    BOOL  mSizedImageHasAdjustmentsBakedIn;
+    BOOL  mSizedImageHasMaskBakedIn;
+    BOOL  mSizedImageIsWide;
+    struct CGPath { } * mSizedImageMaskPath;
+    int  mSizedImageOrientation;
     struct CGSize { 
         float width; 
         float height; 
-    } mSizedImageSize;
-    TSDImageRepSizingState *mSizingState;
-    BOOL mSizingStateReady;
-    NSMutableArray *mUpdateFromLayoutBlocks;
-    NSObject<OS_dispatch_semaphore> *mUpdateFromLayoutBlocksLock;
+    }  mSizedImageSize;
+    TSDImageRepSizingState * mSizingState;
+    BOOL  mSizingStateReady;
+    NSMutableArray * mUpdateFromLayoutBlocks;
+    NSObject<OS_dispatch_semaphore> * mUpdateFromLayoutBlocksLock;
 }
 
 + (float)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
@@ -75,7 +78,7 @@
 - (BOOL)canDrawShadowInOneStepWithChildren:(BOOL)arg1;
 - (void)dealloc;
 - (id)downloadProgressPlaceholderImage;
-- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
+- (void)drawInContextWithoutEffects:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned int)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
 - (void)drawInLayerContext:(struct CGContext { }*)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })frameInUnscaledCanvas;
 - (id)imageInfo;
@@ -85,7 +88,7 @@
 - (BOOL)isDataCurrentlyDownloading;
 - (id)maskInfo;
 - (id)maskLayout;
-- (void)p_drawInContext:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 withStroke:(BOOL)arg3 withOpacity:(float)arg4 withMask:(BOOL)arg5 withIAMask:(BOOL)arg6 forLayer:(BOOL)arg7 forShadow:(BOOL)arg8 forHitTest:(BOOL)arg9;
+- (void)p_drawInContext:(struct CGContext { }*)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned int)arg3 withOpacity:(float)arg4 withMask:(BOOL)arg5 withIAMask:(BOOL)arg6 forLayer:(BOOL)arg7 forShadow:(BOOL)arg8 forHitTest:(BOOL)arg9;
 - (BOOL)p_drawsInOneStep;
 - (id)p_imageData;
 - (id)p_imageProvider;
@@ -93,7 +96,7 @@
 - (id)p_validatedBitmapImageProvider;
 - (id)p_validatedImageProvider;
 - (id)p_validatedThumbnailImageProvider;
-- (void)setTextureAttributes:(id)arg1;
+- (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (BOOL)shouldShowCheckerboard;
 - (id)textureForContext:(id)arg1;
 - (void)willBeRemoved;

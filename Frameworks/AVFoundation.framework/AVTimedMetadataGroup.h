@@ -3,7 +3,7 @@
  */
 
 @interface AVTimedMetadataGroup : AVMetadataGroup <NSCopying, NSMutableCopying> {
-    AVTimedMetadataGroupInternal *_priv;
+    AVTimedMetadataGroupInternal * _priv;
 }
 
 @property (nonatomic, readonly, copy) NSArray *items;

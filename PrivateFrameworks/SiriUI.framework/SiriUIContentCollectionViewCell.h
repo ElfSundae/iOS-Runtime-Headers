@@ -6,38 +6,37 @@
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _accessoryOffset;
-    UIView *_accessoryView;
+    }  _accessoryOffset;
+    UIView * _accessoryView;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _chevronOffset;
-    UIImageView *_chevronView;
-    BOOL _hasChevron;
-    BOOL _hasSetUpSubviewConstraints;
-    BOOL _hasSetupStaticSubviewConstraints;
-    SiriUIKeyline *_keyline;
-    int _keylineType;
-    NSMutableArray *_subviewConstraints;
+    }  _chevronOffset;
+    UIImageView * _chevronView;
+    BOOL  _hasChevron;
+    BOOL  _hasSetUpSubviewConstraints;
+    BOOL  _hasSetupStaticSubviewConstraints;
+    SiriUIKeyline * _keyline;
+    int  _keylineType;
+    NSMutableArray * _subviewConstraints;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _textAndAccessoryInsets;
-    UILabel *_textLabel;
+    }  _textAndAccessoryInsets;
+    UILabel * _textLabel;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _textOffset;
-    int _verticalAlignment;
-    NSLayoutConstraint *leftChevronWidthConstraint;
-    NSLayoutConstraint *rightChevronWidthConstraint;
+    }  _textOffset;
+    int  _verticalAlignment;
+    NSLayoutConstraint * leftChevronWidthConstraint;
+    NSLayoutConstraint * rightChevronWidthConstraint;
 }
 
 @property (nonatomic) struct UIOffset { float x1; float x2; } accessoryOffset;
 @property (nonatomic, retain) UIView *accessoryView;
-@property (nonatomic, readonly) float chevronLeadingMargin;
 @property (nonatomic) struct UIOffset { float x1; float x2; } chevronOffset;
 @property (nonatomic, readonly) float chevronTrailingMargin;
 @property (nonatomic) BOOL hasChevron;
@@ -55,7 +54,6 @@
 - (void)_updateSubviewConstraints;
 - (struct UIOffset { float x1; float x2; })accessoryOffset;
 - (id)accessoryView;
-- (float)chevronLeadingMargin;
 - (struct UIOffset { float x1; float x2; })chevronOffset;
 - (float)chevronTrailingMargin;
 - (BOOL)hasChevron;

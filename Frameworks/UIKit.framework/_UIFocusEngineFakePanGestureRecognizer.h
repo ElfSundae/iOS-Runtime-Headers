@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _digitizerLocation;
-    int _state;
+    }  _digitizerLocation;
+    int  _state;
     struct CGPoint { 
         float x; 
         float y; 
-    } _velocity;
+    }  _velocity;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } digitizerLocation;

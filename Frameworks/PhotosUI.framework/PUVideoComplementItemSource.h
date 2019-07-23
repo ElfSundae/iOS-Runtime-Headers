@@ -3,8 +3,8 @@
  */
 
 @interface PUVideoComplementItemSource : NSObject <UIActivityItemSource> {
-    NSURL *_bundleURL;
-    PFVideoComplement *_videoComplement;
+    NSURL * _bundleURL;
+    PFVideoComplement * _videoComplement;
 }
 
 @property (readonly, copy) NSString *debugDescription;

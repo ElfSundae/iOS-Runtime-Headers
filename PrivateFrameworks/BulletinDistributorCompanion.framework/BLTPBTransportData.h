@@ -7,12 +7,12 @@
         unsigned int sequenceNumber : 1; 
         unsigned int sessionState : 1; 
         unsigned int isInitialSequenceNumber : 1; 
-    } _has;
-    BOOL _isInitialSequenceNumber;
-    NSData *_md5;
-    unsigned long long _sequenceNumber;
-    NSData *_sessionIdentifier;
-    unsigned int _sessionState;
+    }  _has;
+    BOOL  _isInitialSequenceNumber;
+    NSData * _md5;
+    unsigned long long  _sequenceNumber;
+    NSData * _sessionIdentifier;
+    unsigned int  _sessionState;
 }
 
 @property (nonatomic) BOOL hasIsInitialSequenceNumber;

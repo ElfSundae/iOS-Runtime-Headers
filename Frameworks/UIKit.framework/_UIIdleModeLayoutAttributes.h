@@ -3,11 +3,11 @@
  */
 
 @interface _UIIdleModeLayoutAttributes : NSObject {
-    float _alphaOffset;
+    float  _alphaOffset;
     struct CGPoint { 
         float x; 
         float y; 
-    } _centerOffset;
+    }  _centerOffset;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -15,8 +15,8 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
-    BOOL _wantsDimmingOverlay;
+    }  _transform;
+    BOOL  _wantsDimmingOverlay;
 }
 
 @property (nonatomic) float alphaOffset;

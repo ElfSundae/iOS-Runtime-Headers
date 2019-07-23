@@ -3,7 +3,7 @@
  */
 
 @interface AVItemAccessLogEvent : NSObject <NSCopying> {
-    AVItemAccessLogEventInternal *_playerItemAccessLogEvent;
+    AVItemAccessLogEventInternal * _playerItemAccessLogEvent;
 }
 
 @property (nonatomic, readonly) NSString *URI;
@@ -22,6 +22,8 @@
 @property (nonatomic, readonly) NSString *serverAddress;
 
 - (id)URI;
+- (double)averageAudioBitrate;
+- (double)averageVideoBitrate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (double)durationWatched;

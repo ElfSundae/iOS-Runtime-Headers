@@ -3,19 +3,19 @@
  */
 
 @interface MusicLibrarySearchResultsViewController : MusicLibraryBrowseHeterogenousCollectionViewController {
-    MusicEntityCollectionViewDescriptor *_collectionViewDescriptor;
-    BOOL _hasPreviousReceivedSearchTerm;
-    MusicEntityValueContext *_itemEntityValueContext;
-    NSMutableDictionary *_layoutMetricsForSection;
-    <MusicLibrarySearchResultsViewControllerDelegate> *_searchResultsDelegate;
-    MusicLibrarySearchResultsEntityProviderConfiguration *_searchResultsEntityProviderConfiguration;
-    NSString *_searchTerm;
-    MusicSectionEntityValueContext *_sectionEntityValueContext;
-    BOOL _showsAllSectionResults;
+    MusicEntityCollectionViewDescriptor * _collectionViewDescriptor;
+    BOOL  _hasPreviousReceivedSearchTerm;
+    MusicEntityValueContext * _itemEntityValueContext;
+    NSMutableDictionary * _layoutMetricsForSection;
+    <MusicLibrarySearchResultsViewControllerDelegate> * _searchResultsDelegate;
+    MusicLibrarySearchResultsEntityProviderConfiguration * _searchResultsEntityProviderConfiguration;
+    NSString * _searchTerm;
+    MusicSectionEntityValueContext * _sectionEntityValueContext;
+    BOOL  _showsAllSectionResults;
     struct CGSize { 
         float width; 
         float height; 
-    } _sizeForLayoutMetrics;
+    }  _sizeForLayoutMetrics;
 }
 
 @property (nonatomic, readonly) BOOL hasResults;

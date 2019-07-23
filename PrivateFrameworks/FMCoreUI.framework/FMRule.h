@@ -3,9 +3,9 @@
  */
 
 @interface FMRule : UIView {
-    UIColor *_color;
-    UIImageView *_imageView;
-    BOOL _leading;
+    UIColor * _color;
+    UIImageView * _imageView;
+    BOOL  _leading;
 }
 
 @property (nonatomic, retain) UIColor *color;

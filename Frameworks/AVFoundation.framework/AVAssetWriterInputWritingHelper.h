@@ -3,12 +3,12 @@
  */
 
 @interface AVAssetWriterInputWritingHelper : AVAssetWriterInputHelper <AVAssetWriterInputMediaDataRequesterDelegate, AVKeyPathDependencyHost, AVWeakObservable> {
-    AVFigAssetWriterTrack *_assetWriterTrack;
-    AVAssetWriterInputPassDescription *_currentPassDescription;
-    AVKeyPathDependencyManager *_keyPathDependencyManager;
-    AVAssetWriterInputMediaDataRequester *_mediaDataRequester;
-    BOOL _observingSelf;
-    struct __CVPixelBufferPool { } *_pixelBufferPool;
+    AVFigAssetWriterTrack * _assetWriterTrack;
+    AVAssetWriterInputPassDescription * _currentPassDescription;
+    AVKeyPathDependencyManager * _keyPathDependencyManager;
+    AVAssetWriterInputMediaDataRequester * _mediaDataRequester;
+    BOOL  _observingSelf;
+    struct __CVPixelBufferPool { } * _pixelBufferPool;
 }
 
 @property (getter=_assetWriterTrack, nonatomic, readonly) AVFigAssetWriterTrack *assetWriterTrack;
@@ -46,7 +46,6 @@
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(id /* block */)arg2;
 - (void)setCurrentPassDescription:(id)arg1;
 - (int)status;
-- (int)trackID;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(int)arg1;
 
 @end

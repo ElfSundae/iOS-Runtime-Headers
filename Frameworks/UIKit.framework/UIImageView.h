@@ -3,19 +3,20 @@
  */
 
 @interface UIImageView : UIView {
-    BOOL __animatesContents;
-    BOOL _adjustsImageWhenAncestorFocused;
+    BOOL  __animatesContents;
+    BOOL  _adjustsImageWhenAncestorFocused;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _cachedEdgeInsetsForEffects;
-    BOOL _edgeInsetsForEffectsAreValid;
-    UILayoutGuide *_focusedFrameGuide;
-    UITraitCollection *_lastResolvedTraitCollection;
-    id _storage;
-    BOOL _templateSettingsAreInvalid;
+    }  _cachedEdgeInsetsForEffects;
+    BOOL  _edgeInsetsForEffectsAreValid;
+    UILayoutGuide * _focusedFrameGuide;
+    int  _lastResolvedLayoutDirectionTrait;
+    UITraitCollection * _lastResolvedTraitCollection;
+    id  _storage;
+    BOOL  _templateSettingsAreInvalid;
 }
 
 @property (setter=_setAnimatesContents:, nonatomic) BOOL _animatesContents;
@@ -28,6 +29,7 @@
 @property (setter=_setTemplateImageRenderingEffects:, nonatomic) unsigned int _templateImageRenderingEffects;
 @property (nonatomic, readonly) BOOL _templateSettingsAreInvalid;
 @property (nonatomic) BOOL adjustsImageWhenAncestorFocused;
+@property (getter=isAnimating, nonatomic, readonly) BOOL animating;
 @property (nonatomic) double animationDuration;
 @property (nonatomic, copy) NSArray *animationImages;
 @property (nonatomic) int animationRepeatCount;
@@ -42,11 +44,15 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
++ (BOOL)_canReuseIOSurface:(struct __IOSurface { }*)arg1 forRenderingCIImageWithIOSurfaceProperties:(id)arg2;
++ (id)_surfacePropertiesForRenderingCIImageWithSize:(struct CGSize { float x1; float x2; })arg1 pixelFormat:(unsigned long)arg2 bytesPerElement:(unsigned int)arg3;
+
 - (void).cxx_destruct;
 - (id)_activeImage;
 - (id)_adaptiveImageForImage:(id)arg1 assignedImage:(id)arg2 currentImage:(id)arg3 hasAdapted:(BOOL*)arg4;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_animatesContents;
+- (id)_applyImageEffectsToCIImage:(id)arg1 effectiveTintColor:(id)arg2;
 - (void)_applySettingsForLegibilityStyle:(int)arg1;
 - (id)_cachedPretiledImageForImage:(id)arg1;
 - (BOOL)_canDrawContent;
@@ -54,6 +60,7 @@
 - (id)_checkImageForAdaptation:(id)arg1 hasAdapted:(BOOL*)arg2;
 - (void)_clearPretiledImageCacheForImage:(id)arg1;
 - (void)_configureForLayeredImage:(id)arg1;
+- (id)_currentAnimationKeyframeImage;
 - (id)_currentHighlightedImage;
 - (id)_currentImage;
 - (id)_decompressingImageForType:(unsigned int)arg1;
@@ -65,6 +72,7 @@
 - (BOOL)_edgeInsetsForEffectsAreValid;
 - (id)_effectiveTintColorWithImage:(id)arg1;
 - (id)_generateBackdropMaskImage;
+- (BOOL)_getDrawModeCompositeOperation:(int*)arg1 color:(id*)arg2 andAlpha:(float*)arg3;
 - (struct CGSize { float x1; float x2; })_intrinsicSizeWithinSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)_invalidateTemplateSettings;
 - (id)_layeredImageContainer;
@@ -92,6 +100,7 @@
 - (BOOL)_templateSettingsAreInvalid;
 - (void)_templateSettingsDidChange;
 - (void)_updateImageViewForOldImage:(id)arg1 newImage:(id)arg2;
+- (void)_updateLayerContentsForCIImageBackedImage:(id)arg1;
 - (void)_updateLayeredImageIsFocusedWithFocusedView:(id)arg1 focusAnimationCoordinator:(id)arg2;
 - (void)_updateMasking;
 - (void)_updatePretiledImageCacheForImage:(id)arg1;
@@ -146,14 +155,22 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)useBlockyMagnificationInClassic;
 
-// Image: /System/Library/Frameworks/PassKit.framework/PassKit
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_extractPlayOverlayBackgroundImageFromCenter:(struct CGPoint { float x1; float x2; })arg1 asynchronously:(BOOL)arg2 handler:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (void)ic_enableLetterpressIfSupported;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })alignmentRect;
 - (struct CGSize { float x1; float x2; })alignmentSize;
 - (void)setAlignmentRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 
-// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+// Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
 
-- (id)pu_extractPlayOverlayBackgroundImageFromCenter:(struct CGPoint { float x1; float x2; })arg1 asynchronously:(BOOL)arg2 handler:(id /* block */)arg3;
+- (void)nc_applyVibrantStyling:(id)arg1;
 
 @end

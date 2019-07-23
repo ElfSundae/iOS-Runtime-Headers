@@ -3,17 +3,18 @@
  */
 
 @interface _UIActivityGroupActivityCell : UICollectionViewCell {
-    UIImageView *_highlightedImageView;
-    UIImageView *_imageView;
-    UILabel *_titleLabel;
+    UIImageView * _highlightedImageView;
+    UIImageView * _imageView;
+    _UIActivityGroupActivityCellTitleLabel * _titleLabel;
 }
 
 @property (nonatomic, retain) UIImageView *highlightedImageView;
 @property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) _UIActivityGroupActivityCellTitleLabel *titleLabel;
+
++ (struct CGSize { float x1; float x2; })preferredSizeForTitleLabelText:(id)arg1 screenScale:(float)arg2;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)draggingView;
 - (id)highlightedImageView;
 - (id)imageView;
@@ -25,6 +26,7 @@
 - (void)setHighlightedImageView:(id)arg1;
 - (void)setImageView:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
+- (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 - (id)titleLabel;
 - (void)updateHighlightedImageViewIfNeeded;
 

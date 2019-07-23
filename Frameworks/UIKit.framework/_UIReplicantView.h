@@ -3,13 +3,13 @@
  */
 
 @interface _UIReplicantView : UIView {
-    _UIReplicantContentView *_contentView;
-    UIScreen *_screen;
-    _UISlotIdWrapper *_slotIdWrapper;
+    _UIReplicantContentView * _contentView;
+    UIScreen * _screen;
+    _UISlotIdWrapper * _slotIdWrapper;
     struct CGSize { 
         float width; 
         float height; 
-    } _snapshotSize;
+    }  _snapshotSize;
 }
 
 + (id)_pendingSnapshotOfTarget:(id)arg1 snapshotBlock:(id /* block */)arg2;

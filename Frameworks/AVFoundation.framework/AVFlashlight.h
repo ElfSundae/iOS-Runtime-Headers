@@ -3,7 +3,7 @@
  */
 
 @interface AVFlashlight : NSObject {
-    AVFlashlightInternal *_internal;
+    AVFlashlightInternal * _internal;
 }
 
 @property (getter=isAvailable, nonatomic, readonly) BOOL available;

@@ -3,20 +3,22 @@
  */
 
 @interface SKUIModalDocumentController : NSObject <AAUIFamilySetupDelegate, SKComposeReviewDelegate, SKUIGiftViewControllerDelegate, SKUIModalDocumentController, SKUIOverlayContainerDelegate, UIPopoverControllerDelegate, UIPopoverPresentationControllerDelegate> {
-    SKUIClientContext *_clientContext;
-    NSMutableArray *_composeReviewViewControllers;
-    <SKUIModalDocumentDataSource> *_dataSource;
-    <SKUIModalDocumentDelegate> *_delegate;
-    NSMutableArray *_giftViewControllers;
-    <SKUIModalSourceViewProvider> *_modalSourceViewProvider;
-    <UINavigationControllerDelegate> *_navigationControllerDelegate;
-    UINavigationController *_overlayNavigationController;
-    SKUIOverlayContainerViewController *_overlayViewController;
-    UIPopoverController *_popoverController;
-    UIViewController *_rootViewController;
-    NSMutableArray *_stackItems;
+    SKUIClientContext * _clientContext;
+    NSMutableArray * _composeReviewViewControllers;
+    <SKUIModalDocumentDataSource> * _dataSource;
+    <SKUIModalDocumentDelegate> * _delegate;
+    NSMutableArray * _giftViewControllers;
+    <SKUIModalSourceViewProvider> * _modalSourceViewProvider;
+    <UINavigationControllerDelegate> * _navigationControllerDelegate;
+    UINavigationController * _overlayNavigationController;
+    SKUIOverlayContainerViewController * _overlayViewController;
+    UIPopoverController * _popoverController;
+    UIViewController * _rootViewController;
+    NSMutableArray * _stackItems;
 }
 
+@property (nonatomic, readonly) UINavigationController *_overlayNavigationController;
+@property (nonatomic, readonly) SKUIOverlayContainerViewController *_overlayViewController;
 @property (nonatomic, retain) SKUIClientContext *clientContext;
 @property (nonatomic) <SKUIModalDocumentDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,7 +37,9 @@
 - (void)_garbageCollectActivityViewController:(id)arg1;
 - (id)_imageForImageViewElement:(id)arg1;
 - (void)_overlayControllerBackstopAction:(id)arg1;
+- (id)_overlayNavigationController;
 - (id)_overlayStackItems;
+- (id)_overlayViewController;
 - (void)_popDocument:(BOOL)arg1 completion:(id /* block */)arg2;
 - (void)_popDocumentSkippingUserInterfaceUpdates;
 - (void)_popOverlayStackItem:(id)arg1 animated:(BOOL)arg2 completion:(id /* block */)arg3;
@@ -65,6 +69,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)documents;
+- (void)ensureOverlayNavigationControllerStackConsistencyForNavigationController:(id)arg1;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2;
 - (void)giftViewController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (id)init;

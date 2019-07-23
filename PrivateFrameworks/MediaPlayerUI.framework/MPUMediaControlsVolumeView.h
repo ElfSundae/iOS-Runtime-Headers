@@ -3,14 +3,14 @@
  */
 
 @interface MPUMediaControlsVolumeView : UIView <MPVolumeControllerDelegate> {
-    UISlider *_slider;
-    int _style;
-    double _timeStoppedTracking;
-    NSTimer *_volumeCommitTimer;
-    MPVolumeController *_volumeController;
-    NSTimer *_warningBlinkTimer;
-    BOOL _warningIndicatorBlinking;
-    UIView *_warningView;
+    UISlider * _slider;
+    int  _style;
+    double  _timeStoppedTracking;
+    NSTimer * _volumeCommitTimer;
+    MPVolumeController * _volumeController;
+    NSTimer * _warningBlinkTimer;
+    BOOL  _warningIndicatorBlinking;
+    UIView * _warningView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +26,14 @@
 - (void)_beginVolumeCommitTimer;
 - (void)_blinkWarningView;
 - (void)_commitCurrentVolumeValue;
+- (void)_configureVolumeSliderView:(id)arg1;
 - (id)_createVolumeSliderView;
 - (void)_layoutVolumeWarningView;
 - (void)_removeVolumeSliderInertia;
 - (BOOL)_shouldStartBlinkingVolumeWarningIndicator;
 - (void)_stopBlinkingWarningView;
 - (void)_stopVolumeCommitTimer;
+- (id)_trackImageWithAlternateStyle:(BOOL)arg1 rounded:(BOOL)arg2;
 - (void)_volumeSliderBeganChanging:(id)arg1;
 - (BOOL)_volumeSliderDynamicsEnabled;
 - (void)_volumeSliderStoppedChanging:(id)arg1;

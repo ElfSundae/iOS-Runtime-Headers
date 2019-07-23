@@ -3,9 +3,9 @@
  */
 
 @interface HKBarSeries : HKGraphSeries {
-    HKFillStyle *_fillStyle;
-    HKStrokeStyle *_selectedStrokeStyle;
-    HKStrokeStyle *_unselectedStrokeStyle;
+    HKFillStyle * _fillStyle;
+    HKStrokeStyle * _selectedStrokeStyle;
+    HKStrokeStyle * _unselectedStrokeStyle;
 }
 
 @property (nonatomic, retain) HKFillStyle *fillStyle;

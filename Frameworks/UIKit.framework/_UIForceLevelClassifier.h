@@ -3,13 +3,13 @@
  */
 
 @interface _UIForceLevelClassifier : NSObject <NSObserver> {
-    NSMutableDictionary *_cachedProgressObservables;
-    int _currentForceLevel;
-    float _currentTouchForceMultiplier;
-    <_UIForceLevelClassifierDelegate> *_delegate;
-    NSArray *_delegateObservations;
-    NSObservationSource *_progressTouchForceObservable;
-    BOOL _respectsSystemGestureTouchFiltering;
+    NSMutableDictionary * _cachedProgressObservables;
+    int  _currentForceLevel;
+    float  _currentTouchForceMultiplier;
+    <_UIForceLevelClassifierDelegate> * _delegate;
+    NSArray * _delegateObservations;
+    NSObservationSource * _progressTouchForceObservable;
+    BOOL  _respectsSystemGestureTouchFiltering;
 }
 
 @property (nonatomic, readonly) int currentForceLevel;

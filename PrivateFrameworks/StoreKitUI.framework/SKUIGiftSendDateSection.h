@@ -3,17 +3,17 @@
  */
 
 @interface SKUIGiftSendDateSection : SKUIGiftTableViewSection {
-    NSString *_dateString;
-    SKUIItem *_giftItem;
+    NSString * _dateString;
+    SKUIItem * _giftItem;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _headerInsets;
-    SKUIGiftTableSectionHeaderView *_headerView;
-    NSDate *_sendDate;
-    int _sendDateStyle;
+    }  _headerInsets;
+    SKUIGiftTableSectionHeaderView * _headerView;
+    NSDate * _sendDate;
+    int  _sendDateStyle;
 }
 
 @property (nonatomic, retain) SKUIItem *giftItem;
@@ -22,6 +22,7 @@
 @property (nonatomic) int sendDateStyle;
 
 - (void).cxx_destruct;
+- (void)_createFormattedDateString:(BOOL)arg1;
 - (id)_headerView;
 - (id)giftItem;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })headerInsets;
@@ -35,5 +36,6 @@
 - (void)setSendDate:(id)arg1;
 - (void)setSendDateStyle:(int)arg1;
 - (id)tableViewCellForTableView:(id)arg1 indexPath:(id)arg2;
+- (void)updateCell:(id)arg1 forTransitionToSize:(struct CGSize { float x1; float x2; })arg2;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface CMKCameraViewController : UIViewController {
-    CMKCameraView *_cameraView;
+    CMKCameraView * _cameraView;
 }
 
 - (void).cxx_destruct;

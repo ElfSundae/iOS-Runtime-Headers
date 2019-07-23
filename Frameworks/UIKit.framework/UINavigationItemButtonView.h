@@ -3,15 +3,15 @@
  */
 
 @interface UINavigationItemButtonView : UINavigationItemView <UIGestureRecognizerDelegate> {
-    unsigned int _abbreviatedTitleIndex;
-    UIColor *_accessibilityBackgroundTintColor;
-    _UIBarButtonItemAppearanceStorage *_appearanceStorage;
-    UIImageView *_backgroundImageView;
-    BOOL _customBackgroundImageChangedToOrFromNil;
-    UIImageView *_imageView;
-    BOOL _pressed;
-    int _style;
-    BOOL _wantsBlendModeForAccessibilityBackgrounds;
+    unsigned int  _abbreviatedTitleIndex;
+    UIColor * _accessibilityBackgroundTintColor;
+    _UIBarButtonItemAppearanceStorage * _appearanceStorage;
+    UIImageView * _backgroundImageView;
+    BOOL  _customBackgroundImageChangedToOrFromNil;
+    UIImageView * _imageView;
+    BOOL  _pressed;
+    int  _style;
+    BOOL  _wantsBlendModeForAccessibilityBackgrounds;
 }
 
 @property (setter=_setAbbreviatedTitleIndex:, nonatomic) unsigned int _abbreviatedTitleIndex;
@@ -57,7 +57,6 @@
 - (void)_focusedViewWillChange:(id)arg1;
 - (void)_installBackSelectGestureRecognizer;
 - (void)_resetRenderingModesForAccessibilityBackgrounds;
-- (id)_scriptingInfo;
 - (void)_setAbbreviatedTitleIndex:(unsigned int)arg1;
 - (void)_setAccessibilityBackgroundTintColor:(id)arg1;
 - (void)_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned int)arg2 barMetrics:(int)arg3;

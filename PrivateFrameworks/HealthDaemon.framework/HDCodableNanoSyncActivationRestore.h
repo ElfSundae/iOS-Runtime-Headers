@@ -3,15 +3,15 @@
  */
 
 @interface HDCodableNanoSyncActivationRestore : PBCodable <HDNanoSyncDescription, HDNanoSyncPersistentUserInfoCopying, NSCopying> {
-    NSString *_defaultSourceBundleIdentifier;
+    NSString * _defaultSourceBundleIdentifier;
     struct { 
         unsigned int sequenceNumber : 1; 
         unsigned int statusCode : 1; 
-    } _has;
-    NSData *_restoreIdentifier;
-    NSMutableArray *_restores;
-    long long _sequenceNumber;
-    int _statusCode;
+    }  _has;
+    NSData * _restoreIdentifier;
+    NSMutableArray * _restores;
+    long long  _sequenceNumber;
+    int  _statusCode;
 }
 
 @property (readonly, copy) NSString *debugDescription;

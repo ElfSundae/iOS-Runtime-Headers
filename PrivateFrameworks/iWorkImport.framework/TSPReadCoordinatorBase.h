@@ -3,47 +3,48 @@
  */
 
 @interface TSPReadCoordinatorBase : NSObject <TSPLazyReferenceDelegate, TSPReaderDelegate> {
-    NSObject<OS_dispatch_queue> *_externalReferenceQueue;
-    struct hash_map<long long, TSP::ExternalReferenceInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ExternalReferenceInfo> > > { 
-        struct __hash_table<std::__1::pair<long long, TSP::ExternalReferenceInfo>, __gnu_cxx::__hash_map_hasher<std::__1::pair<long long, TSP::ExternalReferenceInfo>, TSP::ObjectIdentifierHash, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<long long, TSP::ExternalReferenceInfo>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::pair<long long, TSP::ExternalReferenceInfo> > > { 
-            struct unique_ptr<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *> > > { 
-                struct __compressed_pair<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *> > > { 
-                    struct __hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> {} **__first_; 
-                    struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *> > { 
-                        struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *> > { 
+    NSObject<OS_dispatch_queue> * _externalReferenceQueue;
+    struct unordered_map<long long, TSP::ExternalReferenceInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ExternalReferenceInfo> > > { 
+        struct __hash_table<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, TSP::ObjectIdentifierHash, true>, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, std::__1::equal_to<long long>, true>, std::__1::allocator<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo> > > { 
+            struct unique_ptr<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *> > > { 
+                struct __compressed_pair<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *> > > { 
+                    struct __hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> {} **__first_; 
+                    struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *> > { 
+                        struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *> > { 
                             unsigned long __first_; 
                         } __data_; 
                     } __second_; 
                 } __ptr_; 
             } __bucket_list_; 
-            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> > > { 
-                struct __hash_node_base<std::__1::__hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> *> { 
-                    struct __hash_node<std::__1::pair<long long, TSP::ExternalReferenceInfo>, void *> {} *__next_; 
+            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> > > { 
+                struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> *> { 
+                    struct __hash_node<std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, void *> {} *__next_; 
                 } __first_; 
             } __p1_; 
-            struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<long long, TSP::ExternalReferenceInfo>, TSP::ObjectIdentifierHash, true> > { 
+            struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long long, std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, TSP::ObjectIdentifierHash, true> > { 
                 unsigned long __first_; 
             } __p2_; 
-            struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<long long, TSP::ExternalReferenceInfo>, std::__1::equal_to<long long>, true> > { 
+            struct __compressed_pair<float, std::__1::__unordered_map_equal<long long, std::__1::__hash_value_type<long long, TSP::ExternalReferenceInfo>, std::__1::equal_to<long long>, true> > { 
                 float __first_; 
             } __p3_; 
         } __table_; 
-    } _externalReferences;
-    NSHashTable *_lazyReferenceCopies;
-    NSMutableArray *_lazyReferenceObserverBlocks;
-    NSObject<OS_dispatch_queue> *_lazyReferenceQueue;
-    NSHashTable *_lazyReferences;
+    }  _externalReferences;
+    NSHashTable * _lazyReferenceCopies;
+    NSMutableArray * _lazyReferenceObserverBlocks;
+    NSObject<OS_dispatch_queue> * _lazyReferenceQueue;
+    NSHashTable * _lazyReferences;
     struct vector<TSP::RepeatedExternalReferenceCompletionInfo, std::__1::allocator<TSP::RepeatedExternalReferenceCompletionInfo> > { 
         struct RepeatedExternalReferenceCompletionInfo {} *__begin_; 
         struct RepeatedExternalReferenceCompletionInfo {} *__end_; 
         struct __compressed_pair<TSP::RepeatedExternalReferenceCompletionInfo *, std::__1::allocator<TSP::RepeatedExternalReferenceCompletionInfo> > { 
             struct RepeatedExternalReferenceCompletionInfo {} *__first_; 
         } __end_cap_; 
-    } _repeatedExternalReferences;
-    BOOL _success;
+    }  _repeatedExternalReferences;
+    BOOL  _success;
 }
 
 @property (nonatomic, readonly) NSUUID *baseObjectUUID;
+@property (nonatomic, readonly) BOOL canRetainObjectReferencedByWeakLazyReference;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long fileFormatVersion;
@@ -51,9 +52,9 @@
 @property (readonly) unsigned int hash;
 @property (nonatomic, readonly) BOOL isCrossAppPaste;
 @property (nonatomic, readonly) BOOL isCrossDocumentPaste;
-@property (nonatomic, readonly) BOOL isFromCopy;
 @property (nonatomic, readonly) BOOL isReadingFromDocument;
 @property (nonatomic, readonly) unsigned char packageIdentifier;
+@property (nonatomic, readonly) int sourceType;
 @property (nonatomic, readonly) BOOL success;
 @property (readonly) Class superclass;
 
@@ -61,6 +62,7 @@
 - (void).cxx_destruct;
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2 forLazyReference:(id)arg3;
 - (id)baseObjectUUID;
+- (BOOL)canRetainObjectReferencedByWeakLazyReference;
 - (id)context;
 - (id)contextForReader:(id)arg1;
 - (void)didReferenceExternalObject:(id)arg1 withIdentifier:(long long)arg2;
@@ -85,6 +87,7 @@
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
 - (BOOL)resolveExternalReferences;
 - (void)setLazyReferencesDelegateToObjectContext;
+- (int)sourceType;
 - (BOOL)success;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(BOOL)arg2;
 

@@ -3,9 +3,9 @@
  */
 
 @interface UIKeyboardCandidateInlineFloatingView : UIView <UIKeyboardCandidateGridCollectionViewControllerDelegate, UIKeyboardCandidateList, UIKeyboardCandidateListDelegate> {
-    <UIKeyboardCandidateListDelegate> *_candidateListDelegate;
-    TIKeyboardCandidateResultSet *_candidateSet;
-    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
+    <UIKeyboardCandidateListDelegate> * _candidateListDelegate;
+    TIKeyboardCandidateResultSet * _candidateSet;
+    UIKeyboardCandidateGridCollectionViewController * _collectionViewController;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,10 +15,10 @@
             float width; 
             float height; 
         } size; 
-    } _inlineRect;
-    NSString *_inlineText;
-    float _maxX;
-    int _position;
+    }  _inlineRect;
+    NSString * _inlineText;
+    float  _maxX;
+    int  _position;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,10 +28,9 @@
             float width; 
             float height; 
         } size; 
-    } _previousCollapsedFrame;
-    BOOL _reducedWidth;
-    BOOL _showHiddenCandidatesOnly;
-    UIKeyboardCandidateSortControl *_sortSelectionBar;
+    }  _previousCollapsedFrame;
+    BOOL  _reducedWidth;
+    UIKeyboardCandidateSortControl * _sortSelectionBar;
 }
 
 @property (nonatomic) <UIKeyboardCandidateListDelegate> *candidateListDelegate;
@@ -46,7 +45,6 @@
 @property (nonatomic) int position;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } previousCollapsedFrame;
 @property (getter=isReducedWidth, nonatomic, readonly) BOOL reducedWidth;
-@property (nonatomic) BOOL showHiddenCandidatesOnly;
 @property (nonatomic, readonly) UIKeyboardCandidateSortControl *sortSelectionBar;
 @property (readonly) Class superclass;
 
@@ -64,6 +62,7 @@
 - (id)candidates;
 - (void)candidatesDidChange;
 - (id)collectionViewController;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })convertFromInputDelegateRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)currentCandidate;
 - (unsigned int)currentIndex;
 - (void)dealloc;
@@ -79,7 +78,6 @@
 - (id)inlineText;
 - (BOOL)isAcceptableFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 afterScrollBy:(float)arg2;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (BOOL)isReducedWidth;
 - (id)keyboardBehaviors;
 - (void)layout;
@@ -88,25 +86,20 @@
 - (BOOL)padInlineFloatingViewIsExpanded:(id)arg1;
 - (int)position;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })previousCollapsedFrame;
-- (void)revealHiddenCandidates;
 - (unsigned int)selectedSortIndex;
 - (void)setCandidateListDelegate:(id)arg1;
 - (void)setCandidateSet:(id)arg1;
-- (void)setCandidateSet:(id)arg1 showHiddenCandidatesOnly:(BOOL)arg2;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 maxX:(float)arg4 layout:(BOOL)arg5;
 - (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 maxX:(float)arg5 layout:(BOOL)arg6;
-- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 maxX:(float)arg5 layout:(BOOL)arg6 showHiddenCandidatesOnly:(BOOL)arg7;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setInlineRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setInlineText:(id)arg1;
 - (void)setMaxX:(float)arg1;
 - (void)setPosition:(int)arg1;
 - (void)setPreviousCollapsedFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (void)setShowHiddenCandidatesOnly:(BOOL)arg1;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned int)arg1;
-- (BOOL)showHiddenCandidatesOnly;
 - (void)showNextCandidate;
 - (void)showNextPage;
 - (void)showNextRow;

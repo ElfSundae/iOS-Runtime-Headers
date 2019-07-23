@@ -3,16 +3,16 @@
  */
 
 @interface WUIWeatherConditionBackgroundView : UIView {
-    int _activeIndex;
-    WUIDynamicWeatherBackground *_background;
-    NSArray *_cities;
-    NSObject<OS_dispatch_source> *_crossfadeEffectTimer;
-    WUIDynamicWeatherBackgroundInteractiveTransaction *_crossfadeTransaction;
-    BOOL _hidesConditions;
-    UIImageView *_introductionImageView;
-    WUIWeatherCondition *_leftCondition;
-    WUIWeatherCondition *_rightCondition;
-    float _scrollOffset;
+    int  _activeIndex;
+    WUIDynamicWeatherBackground * _background;
+    NSArray * _cities;
+    NSObject<OS_dispatch_source> * _crossfadeEffectTimer;
+    WUIDynamicWeatherBackgroundInteractiveTransaction * _crossfadeTransaction;
+    BOOL  _hidesConditions;
+    UIImageView * _introductionImageView;
+    WUIWeatherCondition * _leftCondition;
+    WUIWeatherCondition * _rightCondition;
+    float  _scrollOffset;
 }
 
 @property (nonatomic, readonly) WUIDynamicWeatherBackground *background;

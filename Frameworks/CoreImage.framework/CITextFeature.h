@@ -6,11 +6,11 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } bottomLeft;
+    }  bottomLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } bottomRight;
+    }  bottomRight;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -20,21 +20,23 @@
             float width; 
             float height; 
         } size; 
-    } bounds;
-    NSArray *subFeatures;
+    }  bounds;
+    NSString * messageString;
+    NSArray * subFeatures;
     struct CGPoint { 
         float x; 
         float y; 
-    } topLeft;
+    }  topLeft;
     struct CGPoint { 
         float x; 
         float y; 
-    } topRight;
+    }  topRight;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } bottomLeft;
 @property (readonly) struct CGPoint { float x1; float x2; } bottomRight;
 @property (readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;
+@property (readonly) NSString *messageString;
 @property (readonly) NSArray *subFeatures;
 @property (readonly) struct CGPoint { float x1; float x2; } topLeft;
 @property (readonly) struct CGPoint { float x1; float x2; } topRight;
@@ -43,7 +45,8 @@
 - (struct CGPoint { float x1; float x2; })bottomRight;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })bounds;
 - (void)dealloc;
-- (id)initWithBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 topLeft:(struct CGPoint { float x1; float x2; })arg2 topRight:(struct CGPoint { float x1; float x2; })arg3 bottomLeft:(struct CGPoint { float x1; float x2; })arg4 bottomRight:(struct CGPoint { float x1; float x2; })arg5 subFeatures:(id)arg6;
+- (id)initWithBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 topLeft:(struct CGPoint { float x1; float x2; })arg2 topRight:(struct CGPoint { float x1; float x2; })arg3 bottomLeft:(struct CGPoint { float x1; float x2; })arg4 bottomRight:(struct CGPoint { float x1; float x2; })arg5 subFeatures:(id)arg6 messageString:(id)arg7;
+- (id)messageString;
 - (id)subFeatures;
 - (struct CGPoint { float x1; float x2; })topLeft;
 - (struct CGPoint { float x1; float x2; })topRight;

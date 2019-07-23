@@ -3,17 +3,17 @@
  */
 
 @interface _MKPlacePhotoView : UIScrollView <UIScrollViewDelegate> {
-    UIActivityIndicatorView *_activity;
-    UILabel *_descriptionLabel;
-    BOOL _hasLoadedFullPhoto;
-    UIImageView *_imageView;
-    BOOL _isZoomed;
-    UILabel *_licenseLabel;
-    <GEOMapItemPhoto> *_photo;
-    NSTimer *_tapTimer;
-    NSURLSessionTask *_task;
-    UIImage *_thumbnail;
-    MKPlacePhotosView *_viewer;
+    UIActivityIndicatorView * _activity;
+    UILabel * _descriptionLabel;
+    BOOL  _hasLoadedFullPhoto;
+    UIImageView * _imageView;
+    BOOL  _isZoomed;
+    UILabel * _licenseLabel;
+    <GEOMapItemPhoto> * _photo;
+    NSTimer * _tapTimer;
+    NSURLSessionTask * _task;
+    UIImage * _thumbnail;
+    MKPlacePhotosView * _viewer;
 }
 
 @property (readonly, copy) NSString *debugDescription;

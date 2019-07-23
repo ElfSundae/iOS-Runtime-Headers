@@ -3,12 +3,7 @@
  */
 
 @interface VKRoadLabelPickingResult : NSObject {
-    float _closestApproach;
-    struct CGVector { 
-        float dx; 
-        float dy; 
-    } _direction;
-    VKLabelFeatureMarker *_labelFeatureMarker;
+    VKLabelFeatureMarker * _labelFeatureMarker;
 }
 
 @property (nonatomic, readonly) float closestApproach;
@@ -20,7 +15,7 @@
 - (void)dealloc;
 - (id)description;
 - (struct CGVector { float x1; float x2; })direction;
-- (id)initWithFeature:(id)arg1 closestApproach:(float)arg2 direction:(struct CGVector { float x1; float x2; })arg3;
+- (id)initWithLabelFeatureMarkerPtr:(const struct shared_ptr<md::LabelFeatureMarker> { }*)arg1;
 - (id)labelFeatureMarker;
 - (id)name;
 

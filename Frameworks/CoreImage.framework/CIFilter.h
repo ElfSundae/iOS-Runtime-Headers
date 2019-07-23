@@ -3,12 +3,14 @@
  */
 
 @interface CIFilter : NSObject <NSCopying, NSSecureCoding> {
-    void *_priv;
+    BOOL  _enabled;
+    void * _priv;
 }
 
 @property (nonatomic, readonly) NSDictionary *attributes;
+@property (getter=isEnabled) BOOL enabled;
 @property (nonatomic, readonly) NSArray *inputKeys;
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) CIImage *outputImage;
 @property (nonatomic, readonly) NSArray *outputKeys;
 
@@ -24,6 +26,7 @@
 + (id)filterArrayFromSerializedXMP:(id)arg1 inputImageExtent:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 error:(id*)arg3;
 + (id)filterNamesInCategories:(id)arg1;
 + (id)filterNamesInCategory:(id)arg1;
++ (id)filterWithCVPixelBuffer:(struct __CVBuffer { }*)arg1 properties:(id)arg2 options:(id)arg3;
 + (id)filterWithImageData:(id)arg1 options:(id)arg2;
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)filterWithName:(id)arg1;
@@ -62,12 +65,15 @@
 - (unsigned int)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)inputKeys;
+- (BOOL)isEnabled;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)name;
 - (id)outputImage;
 - (id)outputKeys;
 - (void)setDefaults;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setIdentity;
+- (void)setName:(id)arg1;
 - (void)setOption:(id)arg1 forKey:(id)arg2;
 - (void)setUserInfo:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

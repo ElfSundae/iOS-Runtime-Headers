@@ -3,25 +3,25 @@
  */
 
 @interface GKTurnParticipantCell : GKBasePlayerCell {
-    GKLabel *_bottomLabel;
-    UIButton *_detailButton;
-    NSLayoutConstraint *_detailButtonConstraint;
-    SEL _detailPressedAction;
-    NSLayoutConstraint *_iconLeadingConstraint;
+    GKLabel * _bottomLabel;
+    UIButton * _detailButton;
+    NSLayoutConstraint * _detailButtonConstraint;
+    SEL  _detailPressedAction;
+    NSLayoutConstraint * _iconLeadingConstraint;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _insets;
-    BOOL _isDetail;
-    GKTurnBasedMatch *_match;
-    GKTurnBasedParticipant *_participant;
-    NSLayoutConstraint *_statusImageTrailingConstraint;
-    UIImageView *_statusImageView;
-    NSLayoutConstraint *_textContainerTrailingConstraint;
-    GKContiguousContainerView *_textContainerView;
-    GKLabel *_topLabel;
+    }  _insets;
+    BOOL  _isDetail;
+    GKTurnBasedMatch * _match;
+    GKTurnBasedParticipant * _participant;
+    NSLayoutConstraint * _statusImageTrailingConstraint;
+    UIImageView * _statusImageView;
+    NSLayoutConstraint * _textContainerTrailingConstraint;
+    GKContiguousContainerView * _textContainerView;
+    GKLabel * _topLabel;
 }
 
 @property (nonatomic, retain) GKLabel *bottomLabel;

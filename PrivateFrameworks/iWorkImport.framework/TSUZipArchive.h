@@ -3,9 +3,9 @@
  */
 
 @interface TSUZipArchive : NSObject {
-    NSMutableSet *_entries;
-    NSMutableDictionary *_entriesMap;
-    unsigned int _options;
+    NSMutableSet * _entries;
+    NSMutableDictionary * _entriesMap;
+    unsigned int  _options;
 }
 
 @property (nonatomic, readonly) unsigned long long archiveLength;
@@ -23,6 +23,7 @@
 - (id)initWithOptions:(unsigned int)arg1;
 - (BOOL)isValid;
 - (id)newArchiveReadChannel;
+- (id)normalizeEntryName:(id)arg1;
 - (void)readArchiveWithQueue:(id)arg1 completion:(id /* block */)arg2;
 - (void)readCentralDirectoryData:(id)arg1 entryCount:(unsigned int)arg2 completion:(id /* block */)arg3;
 - (void)readCentralDirectoryWithEntryCount:(unsigned int)arg1 offset:(long long)arg2 size:(unsigned long)arg3 channel:(id)arg4 completion:(id /* block */)arg5;

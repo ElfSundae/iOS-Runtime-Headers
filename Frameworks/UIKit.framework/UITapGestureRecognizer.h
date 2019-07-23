@@ -3,13 +3,13 @@
  */
 
 @interface UITapGestureRecognizer : UIGestureRecognizer <UITapRecognizerDelegate> {
-    int _buttonType;
-    unsigned int _delaysRecognitionForGreaterTapCounts;
-    UITapRecognizer *_imp;
+    int  _buttonType;
+    unsigned int  _delaysRecognitionForGreaterTapCounts;
+    UITapRecognizer * _imp;
     struct CGPoint { 
         float x; 
         float y; 
-    } _locationInView;
+    }  _locationInView;
 }
 
 @property (setter=_setButtonType:, nonatomic) int _buttonType;
@@ -42,7 +42,6 @@
 - (void)_setDelaysRecognitionForGreaterTapCounts:(BOOL)arg1;
 - (BOOL)_shouldFailInResponseToPresses:(id)arg1 withEvent:(id)arg2;
 - (BOOL)_shouldReceivePress:(id)arg1;
-- (BOOL)_shouldRequireFailureOfGestureRecognizer:(id)arg1;
 - (float)_touchSloppinessFactor;
 - (float)allowableMovement;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
@@ -71,6 +70,7 @@
 - (void)setMaximumTapDuration:(double)arg1;
 - (void)setNumberOfTapsRequired:(unsigned int)arg1;
 - (void)setNumberOfTouchesRequired:(unsigned int)arg1;
+- (BOOL)shouldRequireFailureOfGestureRecognizer:(id)arg1;
 - (BOOL)tapIsPossibleForTapRecognizer:(id)arg1;
 - (void)tapRecognizerFailedToRecognizeTap:(id)arg1;
 - (void)tapRecognizerRecognizedTap:(id)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface PUFullMomentsZoomLevelInfo : PUGridZoomLevelInfo <PUPhotosSectionHeaderViewDelegate, PUSectionedGridLayoutDelegate> {
-    PUGridZoomLevelInfo *_transitionOtherLevelInfo;
+    PUGridZoomLevelInfo * _transitionOtherLevelInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +23,7 @@
 - (id)diagnosticsProviderForVisualSection:(int)arg1;
 - (void)didFinishZoomLevelTransition;
 - (id)displayTitle;
+- (void)getPhotosDataSource:(id*)arg1 displayTitleInfo:(id*)arg2 forDetailsForVisualSection:(int)arg3;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
 - (id)newCollectionViewLayout;
 - (void)prepareForTransitionFromZoomLevelInfo:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;

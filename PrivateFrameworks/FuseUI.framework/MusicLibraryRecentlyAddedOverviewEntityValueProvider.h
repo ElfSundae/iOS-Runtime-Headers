@@ -3,10 +3,10 @@
  */
 
 @interface MusicLibraryRecentlyAddedOverviewEntityValueProvider : NSObject <MusicEntityValueProviding> {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    BOOL _hasValidItemCount;
-    unsigned int _itemCount;
-    MPMediaQuery *_query;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    BOOL  _hasValidItemCount;
+    unsigned int  _itemCount;
+    MPMediaQuery * _query;
 }
 
 @property (readonly, copy) NSString *debugDescription;

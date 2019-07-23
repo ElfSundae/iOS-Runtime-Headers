@@ -3,7 +3,7 @@
  */
 
 @interface HKFillStyle : NSObject <NSCopying> {
-    UIImage *_cachedImage;
+    UIImage * _cachedImage;
 }
 
 - (void).cxx_destruct;

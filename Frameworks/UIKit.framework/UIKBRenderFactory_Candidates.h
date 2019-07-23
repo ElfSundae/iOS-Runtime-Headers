@@ -3,7 +3,7 @@
  */
 
 @interface UIKBRenderFactory_Candidates : UIKBRenderFactory {
-    BOOL _shouldUseKeyboardBackground;
+    BOOL  _shouldUseKeyboardBackground;
 }
 
 @property (nonatomic) BOOL shouldUseKeyboardBackground;
@@ -12,7 +12,7 @@
 - (id)controlKeyDividerColorName;
 - (id)controlKeyForegroundColorName;
 - (id)defaultKeyDividerColorName;
-- (id)initWithRenderConfig:(id)arg1;
+- (id)initWithRenderingContext:(id)arg1;
 - (int)lightHighQualityEnabledBlendForm;
 - (void)setShouldUseKeyboardBackground:(BOOL)arg1;
 - (BOOL)shouldUseKeyboardBackground;

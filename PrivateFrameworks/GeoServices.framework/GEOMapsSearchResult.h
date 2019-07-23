@@ -3,11 +3,11 @@
  */
 
 @interface GEOMapsSearchResult : PBCodable <NSCopying> {
-    GEOAddress *_address;
+    GEOAddress * _address;
     struct { 
         unsigned int muid : 1; 
-    } _has;
-    unsigned long long _muid;
+    }  _has;
+    unsigned long long  _muid;
 }
 
 @property (nonatomic, retain) GEOAddress *address;

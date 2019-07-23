@@ -3,10 +3,10 @@
  */
 
 @interface UIPageViewController : UIViewController <UIGestureRecognizerDelegate, _UIQueuingScrollViewDataSource, _UIQueuingScrollViewDelegate> {
-    NSMutableDictionary *_cachedViewControllersForCurl;
-    NSMutableArray *_cachedViewControllersForScroll;
-    <UIPageViewControllerDataSource> *_dataSource;
-    <UIPageViewControllerDelegate> *_delegate;
+    NSMutableDictionary * _cachedViewControllersForCurl;
+    NSMutableArray * _cachedViewControllersForScroll;
+    <UIPageViewControllerDataSource> * _dataSource;
+    <UIPageViewControllerDelegate> * _delegate;
     struct { 
         unsigned int delegateWantsTransitionWillBegin : 1; 
         unsigned int delegateWantsTransitionCompleted : 1; 
@@ -18,48 +18,50 @@
         unsigned int dataSourceSuppliesAfterViewController : 1; 
         unsigned int dataSourceSuppliesPageCount : 1; 
         unsigned int dataSourceSuppliesPageNumber : 1; 
-    } _delegateFlags;
-    int _disableAutorotationCount;
-    BOOL _doubleSided;
+    }  _delegateFlags;
+    int  _disableAutorotationCount;
+    BOOL  _doubleSided;
     struct CGSize { 
         float width; 
         float height; 
-    } _effectiveTapRegionBreadths;
+    }  _effectiveTapRegionBreadths;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _effectiveTapRegionInsets;
-    UITapGestureRecognizer *_forwardTapGestureRecognizer;
-    NSDictionary *_incomingAndOutgoingViewControllersForManualTransition;
-    BOOL _interfaceRotating;
-    int _lastKnownNavigationDirection;
-    int _navigationOrientation;
-    BOOL _pageControlRequiresValidation;
-    _UIPageCurl *_pageCurl;
-    float _pageSpacing;
-    UIPanGestureRecognizer *_panGestureRecognizer;
-    UITapGestureRecognizer *_reverseTapGestureRecognizer;
-    NSMutableArray *_rotationSnapshotViews;
-    int _spineLocation;
-    int _spineLocationPriorToInterfaceRotation;
-    BOOL _stashingViewControllersForRotation;
-    UITapGestureRecognizer *_tapGestureRecognizer;
+    }  _effectiveTapRegionInsets;
+    UITapGestureRecognizer * _forwardTapGestureRecognizer;
+    NSDictionary * _incomingAndOutgoingViewControllersForManualTransition;
+    BOOL  _interfaceRotating;
+    int  _lastKnownNavigationDirection;
+    int  _navigationOrientation;
+    BOOL  _pageControlRequiresValidation;
+    _UIPageCurl * _pageCurl;
+    float  _pageSpacing;
+    UIPanGestureRecognizer * _panGestureRecognizer;
+    UITapGestureRecognizer * _reverseTapGestureRecognizer;
+    NSMutableArray * _rotationSnapshotViews;
+    int  _spineLocation;
+    int  _spineLocationPriorToInterfaceRotation;
+    BOOL  _stashingViewControllersForRotation;
+    UITapGestureRecognizer * _tapGestureRecognizer;
     struct CGSize { 
         float width; 
         float height; 
-    } _tapRegionBreadths;
+    }  _tapRegionBreadths;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _tapRegionInsets;
-    struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } *_tapRegions;
-    int _transitionStyle;
-    NSArray *_viewControllers;
-    NSArray *_viewControllersStashedForRotation;
+    }  _tapRegionInsets;
+    struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } * _tapRegions;
+    int  _transitionStyle;
+    <UIPageViewControllerDataSource> * _unsafeUnretainedDataSource;
+    <UIPageViewControllerDelegate> * _unsafeUnretainedDelegate;
+    NSArray * _viewControllers;
+    NSArray * _viewControllersStashedForRotation;
 }
 
 @property (nonatomic, readonly) _UIPageViewControllerContentView *_contentView;
@@ -71,6 +73,7 @@
 @property (nonatomic, readonly) int _transitionStyle;
 @property (setter=_setViewControllers:, nonatomic, retain) NSArray *_viewControllers;
 @property (setter=_setViewControllersStashedForRotation:, nonatomic, retain) NSArray *_viewControllersStashedForRotation;
+@property (nonatomic) BOOL accessibilityScreenChangeOnScroll;
 @property (nonatomic) <UIPageViewControllerDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UIPageViewControllerDelegate> *delegate;
@@ -83,6 +86,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) int transitionStyle;
 @property (nonatomic, readonly) NSArray *viewControllers;
+
+// Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)_incomingViewControllerKeys;
 + (BOOL)_isNavigationOrientation:(int)arg1 supportedForTransitionStyle:(int)arg2;
@@ -109,6 +114,7 @@
 - (struct CGSize { float x1; float x2; })_contentSizeForSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)_contentView;
 - (void)_contentViewFrameOrBoundsDidChange;
+- (id)_deepestUnambiguousResponder;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_disabledScrollingRegion;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL*)arg2;
 - (struct CGSize { float x1; float x2; })_effectiveTapRegionBreadths;
@@ -121,6 +127,7 @@
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handleReverseTapGesture:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
+- (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (id)_incomingViewControllersForGestureDrivenCurlInDirection:(int)arg1;
 - (void)_invalidateEffectiveTapRegions;
 - (void)_invalidatePageCurl;
@@ -150,7 +157,7 @@
 - (void)_setViewControllersStashedForRotation:(id)arg1;
 - (BOOL)_shouldBeginNavigationInDirection:(int*)arg1 inResponseToPanGestureRecognizer:(id)arg2;
 - (BOOL)_shouldCompleteManualCurlWithSuggestedVelocity:(float*)arg1;
-- (BOOL)_shouldFlipInRTL;
+- (BOOL)_shouldFlipInRightToLeft;
 - (BOOL)_shouldNavigateInDirection:(int*)arg1 inResponseToTapGestureRecognizer:(id)arg2;
 - (BOOL)_shouldNavigateInDirection:(int*)arg1 inResponseToVelocity:(float*)arg2 ofGestureRecognizedByPanGestureRecognizer:(id)arg3;
 - (BOOL)_shouldPersistViewWhenCoding;
@@ -211,5 +218,10 @@
 - (void)viewWillUnload;
 - (void)willAnimateRotationToInterfaceOrientation:(int)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(int)arg1 duration:(double)arg2;
+
+// Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
+
+- (BOOL)accessibilityScreenChangeOnScroll;
+- (void)setAccessibilityScreenChangeOnScroll:(BOOL)arg1;
 
 @end

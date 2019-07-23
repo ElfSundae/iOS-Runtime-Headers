@@ -3,24 +3,24 @@
  */
 
 @interface PUSwipeDownSettings : PUSettings {
-    float _downGestureToleranceAngle;
-    int _downMotionType;
-    float _downResistanceDistance;
-    int _horizontalMotionType;
-    float _horizontalResistanceDistance;
-    float _rotationHorizontalMotionFactor;
-    float _rotationHorizontalMotionHysteresisDistance;
-    float _rotationMaximumAngle;
-    BOOL _rotationOnHorizontalMotion;
-    BOOL _rotationOnVerticalMotion;
-    float _rotationVerticalMotionAngle;
-    float _rotationVerticalMotionResistanceDistance;
-    float _scaleDownDistance;
-    float _scaleDownFactor;
-    float _transitionDistance;
-    float _upGestureToleranceAngle;
-    int _upMotionType;
-    float _upResistanceDistance;
+    float  _downGestureToleranceAngle;
+    int  _downMotionType;
+    float  _downResistanceDistance;
+    int  _horizontalMotionType;
+    float  _horizontalResistanceDistance;
+    float  _rotationHorizontalMotionFactor;
+    float  _rotationHorizontalMotionHysteresisDistance;
+    float  _rotationMaximumAngle;
+    BOOL  _rotationOnHorizontalMotion;
+    BOOL  _rotationOnVerticalMotion;
+    float  _rotationVerticalMotionAngle;
+    float  _rotationVerticalMotionResistanceDistance;
+    float  _scaleDownDistance;
+    float  _scaleDownFactor;
+    float  _transitionDistance;
+    float  _upGestureToleranceAngle;
+    int  _upMotionType;
+    float  _upResistanceDistance;
 }
 
 @property (nonatomic) float downGestureToleranceAngle;

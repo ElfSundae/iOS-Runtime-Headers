@@ -6,11 +6,11 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _previousStickPosition;
+    }  _previousStickPosition;
     struct CGPoint { 
         float x; 
         float y; 
-    } _stickPosition;
+    }  _stickPosition;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } previousStickPosition;

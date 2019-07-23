@@ -3,17 +3,17 @@
  */
 
 @interface SCNAudioSource : NSObject <NSCopying, NSSecureCoding> {
-    AVAudioPCMBuffer *_audioBuffer;
-    AVAudioFile *_audioFile;
-    NSString *_audioName;
-    NSURL *_audioURL;
-    BOOL _loaded;
-    BOOL _loops;
-    BOOL _shouldStream;
-    BOOL positional;
-    float rate;
-    float reverbBlend;
-    float volume;
+    AVAudioPCMBuffer * _audioBuffer;
+    AVAudioFile * _audioFile;
+    NSString * _audioName;
+    NSURL * _audioURL;
+    BOOL  _loaded;
+    BOOL  _loops;
+    BOOL  _shouldStream;
+    BOOL  positional;
+    float  rate;
+    float  reverbBlend;
+    float  volume;
 }
 
 @property (nonatomic) BOOL loops;

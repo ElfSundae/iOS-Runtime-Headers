@@ -3,10 +3,10 @@
  */
 
 @interface _ISPlayerItemChefOperation : NSOperation {
-    AVAsset *_asset;
-    BOOL _includeAudio;
-    BOOL _includeVideo;
-    id /* block */ _resultHandler;
+    AVAsset * _asset;
+    BOOL  _includeAudio;
+    BOOL  _includeVideo;
+    id /* block */  _resultHandler;
     struct { 
         struct { 
             long long value; 
@@ -20,7 +20,7 @@
             unsigned int flags; 
             long long epoch; 
         } duration; 
-    } _trimmedTimeRange;
+    }  _trimmedTimeRange;
 }
 
 @property (nonatomic, readonly) AVAsset *asset;

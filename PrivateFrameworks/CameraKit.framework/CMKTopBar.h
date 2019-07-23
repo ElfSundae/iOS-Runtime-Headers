@@ -3,28 +3,28 @@
  */
 
 @interface CMKTopBar : UIView <CMKExpandableMenuButtonDelegate> {
-    CMKHDRButton *_HDRButton;
-    BOOL __HDRButtonExpanded;
-    NSMutableArray *__allowedControls;
-    UIView *__backgroundView;
-    CMKExpandableMenuButton *__expandedMenuButton;
+    CMKHDRButton * _HDRButton;
+    BOOL  __HDRButtonExpanded;
+    NSMutableArray * __allowedControls;
+    UIView * __backgroundView;
+    CMKExpandableMenuButton * __expandedMenuButton;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } __expandedMenuButtonTappableInsets;
-    BOOL __flashButtonExpanded;
-    UIView *__flipButtonTopLayoutSpacer;
-    BOOL __timerButtonExpanded;
-    int _backgroundStyle;
-    <CMKTopBarDelegate> *_delegate;
-    CMKElapsedTimeView *_elapsedTimeView;
-    CMKFlashButton *_flashButton;
-    CMKFlipButton *_flipButton;
-    int _orientation;
-    int _style;
-    CMKTimerButton *_timerButton;
+    }  __expandedMenuButtonTappableInsets;
+    BOOL  __flashButtonExpanded;
+    UIView * __flipButtonTopLayoutSpacer;
+    BOOL  __timerButtonExpanded;
+    int  _backgroundStyle;
+    <CMKTopBarDelegate> * _delegate;
+    CMKElapsedTimeView * _elapsedTimeView;
+    CMKFlashButton * _flashButton;
+    CMKFlipButton * _flipButton;
+    int  _orientation;
+    int  _style;
+    CMKTimerButton * _timerButton;
 }
 
 @property (nonatomic, retain) CMKHDRButton *HDRButton;

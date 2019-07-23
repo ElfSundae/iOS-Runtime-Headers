@@ -8,22 +8,22 @@
         float left; 
         float bottom; 
         float right; 
-    } _avatarMargins;
+    }  _avatarMargins;
     struct CGSize { 
         float width; 
         float height; 
-    } _avatarSize;
-    UIColor *_backgroundColor;
-    CNContactFormatter *_contactFormatter;
-    NSObject<CNContactDataSource> *_dataSource;
-    <CNContactGridViewControllerDelegate> *_delegate;
-    CNContactGridViewLayout *_gridLayout;
-    NSArray *_inlineActionsCategories;
-    BOOL _inlineActionsEnabled;
-    int _monogrammerStyle;
-    NSDictionary *_nameTextAttributes;
-    int _numberOfColumns;
-    NSMutableDictionary *_preloadedActionsManagers;
+    }  _avatarSize;
+    UIColor * _backgroundColor;
+    CNContactFormatter * _contactFormatter;
+    NSObject<CNContactDataSource> * _dataSource;
+    <CNContactGridViewControllerDelegate> * _delegate;
+    CNContactGridViewLayout * _gridLayout;
+    NSArray * _inlineActionsCategories;
+    BOOL  _inlineActionsEnabled;
+    int  _monogrammerStyle;
+    NSDictionary * _nameTextAttributes;
+    int  _numberOfColumns;
+    NSMutableDictionary * _preloadedActionsManagers;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } avatarMargins;

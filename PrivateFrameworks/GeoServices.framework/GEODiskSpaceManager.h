@@ -3,8 +3,9 @@
  */
 
 @interface GEODiskSpaceManager : NSObject {
-    NSMutableDictionary *_freeableClaims;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableDictionary * _freeableClaims;
+    NSLock * _lock;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 + (id)sharedManager;

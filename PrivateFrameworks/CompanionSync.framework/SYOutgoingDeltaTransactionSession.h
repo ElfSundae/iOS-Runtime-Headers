@@ -3,15 +3,16 @@
  */
 
 @interface SYOutgoingDeltaTransactionSession : SYSession {
-    unsigned long long _activity;
-    BOOL _canRestart;
-    BOOL _canRollback;
-    BOOL _cancelled;
-    _SYCountedSemaphore *_changeConcurrencySemaphore;
-    NSObject<OS_dispatch_queue> *_changeFetcherQueue;
-    int _state;
-    NSObject<OS_dispatch_source> *_stateUpdateSource;
-    _SYMessageTimerTable *_timers;
+    BOOL  _canRestart;
+    BOOL  _canRollback;
+    BOOL  _cancelled;
+    _SYCountedSemaphore * _changeConcurrencySemaphore;
+    NSObject<OS_dispatch_queue> * _changeFetcherQueue;
+    NSObject<OS_os_activity> * _changeWaitActivity;
+    NSObject<OS_os_activity> * _sessionActivity;
+    int  _state;
+    NSObject<OS_dispatch_source> * _stateUpdateSource;
+    _SYMessageTimerTable * _timers;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +30,7 @@
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
-- (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (id)initWithService:(id)arg1;
 - (BOOL)isResetSync;
 - (BOOL)isSending;

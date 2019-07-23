@@ -3,14 +3,14 @@
  */
 
 @interface UIKBCadenceMonitor : NSObject <_UIKBRTRecognizerAveragingRuleProtocol> {
-    float _cadence;
-    float _confidence;
-    double _gapAvg;
-    BOOL _isUserTyping;
-    double _prevTouchDown;
-    int _touchCount;
-    UIDelayedAction *_touchLogTimer;
-    float _typingAvg;
+    float  _cadence;
+    float  _confidence;
+    double  _gapAvg;
+    BOOL  _isUserTyping;
+    double  _prevTouchDown;
+    int  _touchCount;
+    UIDelayedAction * _touchLogTimer;
+    float  _typingAvg;
 }
 
 @property (nonatomic) float cadence;

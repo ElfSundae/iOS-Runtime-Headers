@@ -3,7 +3,7 @@
  */
 
 @interface CUIPSDLayerGroupRef : CUIPSDLayerBaseRef {
-    _CUIPSDSublayerInfo *_sublayerInfo;
+    _CUIPSDSublayerInfo * _sublayerInfo;
 }
 
 - (BOOL)_isGroupType:(unsigned int)arg1;

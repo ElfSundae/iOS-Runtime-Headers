@@ -3,7 +3,7 @@
  */
 
 @interface _UIStackedImageSingleNamedLayerImage : NSObject <UINamedLayerImage> {
-    UIImage *_imageObj;
+    UIImage * _imageObj;
 }
 
 @property (nonatomic, readonly) int blendMode;

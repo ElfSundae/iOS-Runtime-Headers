@@ -3,7 +3,7 @@
  */
 
 @interface FBSSceneSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying> {
-    BOOL _backgrounded;
+    BOOL  _backgrounded;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,15 +13,15 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSSet *_ignoreOcclusionReasons;
-    int _interfaceOrientation;
-    float _level;
-    BOOL _occluded;
-    BOOL _occludedHasBeenCalculated;
-    NSArray *_occlusions;
-    BSSettings *_otherSettings;
-    BSSettings *_transientLocalSettings;
+    }  _frame;
+    NSSet * _ignoreOcclusionReasons;
+    int  _interfaceOrientation;
+    float  _level;
+    BOOL  _occluded;
+    BOOL  _occludedHasBeenCalculated;
+    NSArray * _occlusions;
+    BSSettings * _otherSettings;
+    BSSettings * _transientLocalSettings;
 }
 
 @property (getter=isBackgrounded, nonatomic, readonly) BOOL backgrounded;
@@ -72,6 +72,7 @@
 
 // Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
 
+- (id)fb_fallbackSpecification;
 - (BOOL)isEffectivelyBackgrounded;
 
 @end

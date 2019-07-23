@@ -3,17 +3,17 @@
  */
 
 @interface NSLineFragmentRenderingContext : NSObject {
-    struct CGSize { float x1; float x2; } *_advancements;
-    CUICatalog *_catalog;
-    float _elasticWidth;
+    struct CGSize { float x1; float x2; } * _advancements;
+    CUICatalog * _catalog;
+    float  _elasticWidth;
     struct { 
         unsigned int _isRTL : 1; 
         unsigned int _vAdvance : 1; 
         unsigned int _flipped : 1; 
         unsigned int _usesSimpleTextEffects : 1; 
         unsigned int _reserved : 28; 
-    } _flags;
-    unsigned short *_glyphs;
+    }  _flags;
+    unsigned short * _glyphs;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -23,18 +23,22 @@
             float width; 
             float height; 
         } size; 
-    } _imageBounds;
-    float _leftControlWidth;
-    float _leftSideDelta;
-    float _lineWidth;
-    long _numRuns;
-    float _rightControlWidth;
-    void *_runs;
-    CUIStyleEffectConfiguration *_styleEffects;
+    }  _imageBounds;
+    float  _leftControlWidth;
+    float  _leftSideDelta;
+    float  _lineWidth;
+    long  _numRuns;
+    int  _resolvedAlignment;
+    int  _resolvedDirection;
+    float  _rightControlWidth;
+    void * _runs;
+    CUIStyleEffectConfiguration * _styleEffects;
 }
 
 @property (nonatomic, retain) CUICatalog *cuiCatalog;
 @property (nonatomic, retain) CUIStyleEffectConfiguration *cuiStyleEffects;
+@property int resolvedBaseWritingDirection;
+@property int resolvedTextAlignment;
 @property (getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:, nonatomic) BOOL usesSimpleTextEffects;
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
@@ -56,8 +60,12 @@
 - (BOOL)isRTL;
 - (float)lineFragmentWidth;
 - (oneway void)release;
+- (int)resolvedBaseWritingDirection;
+- (int)resolvedTextAlignment;
 - (void)setCuiCatalog:(id)arg1;
 - (void)setCuiStyleEffects:(id)arg1;
+- (void)setResolvedBaseWritingDirection:(int)arg1;
+- (void)setResolvedTextAlignment:(int)arg1;
 - (struct CGSize { float x1; float x2; })sizeWithBehavior:(int)arg1 usesFontLeading:(BOOL)arg2 baselineDelta:(float*)arg3;
 
 @end

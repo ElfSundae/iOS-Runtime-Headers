@@ -6,23 +6,23 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _controlPoint;
-    BOOL _cornerLine;
-    int _endEndpointType;
+    }  _controlPoint;
+    BOOL  _cornerLine;
+    int  _endEndpointType;
     struct CGPoint { 
         float x; 
         float y; 
-    } _endLocation;
+    }  _endLocation;
     struct CGPoint { 
         float x; 
         float y; 
-    } _midpointLocation;
-    NSArray *_pathPoints;
-    int _startEndpointType;
+    }  _midpointLocation;
+    NSArray * _pathPoints;
+    int  _startEndpointType;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startLocation;
+    }  _startLocation;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } controlPoint;

@@ -3,21 +3,21 @@
  */
 
 @interface CMKExpandableMenuButton : UIControl {
-    UIView *__headerView;
-    NSIndexSet *__hiddenIndexesWhileCollapsed;
-    NSMutableIndexSet *__highlightedIndexesWhileCollapsed;
-    NSMutableArray *__menuItems;
-    <CMKExpandableMenuButtonDelegate> *_expandableMenuDelegate;
-    BOOL _expanded;
-    int _expansionOrientation;
-    int _orientation;
-    int _selectedIndex;
+    UIView * __headerView;
+    NSIndexSet * __hiddenIndexesWhileCollapsed;
+    NSMutableIndexSet * __highlightedIndexesWhileCollapsed;
+    NSMutableArray * __menuItems;
+    <CMKExpandableMenuButtonDelegate> * _expandableMenuDelegate;
+    BOOL  _expanded;
+    int  _expansionOrientation;
+    int  _orientation;
+    int  _selectedIndex;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _tappableEdgeInsets;
+    }  _tappableEdgeInsets;
 }
 
 @property (nonatomic, readonly) UIView *_headerView;

@@ -3,12 +3,13 @@
  */
 
 @interface GEOPlaceDataLocalProxy : NSObject <GEOPlaceDataProxy> {
-    GEOPlaceDataCacheRegister *_cacheRegister;
-    NSMapTable *_pendingRequests;
-    NSLock *_pendingRequestsLock;
-    GEOPhoneNumberMUIDMapper *_phoneNumberMapper;
-    NSMutableOrderedSet *_placeHashes;
-    NSMutableSet *_requestsInProgress;
+    NSObject<OS_dispatch_queue> * _accessSerialQueue;
+    GEOPlaceDataCacheRegister * _cacheRegister;
+    NSMapTable * _pendingRequests;
+    GEOPhoneNumberMUIDMapper * _phoneNumberMapper;
+    NSMutableOrderedSet * _placeHashes;
+    NSMutableArray * _requestHandlersPending;
+    NSMutableSet * _requestsInProgress;
 }
 
 @property (readonly, copy) NSString *debugDescription;

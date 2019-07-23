@@ -3,14 +3,14 @@
  */
 
 @interface SKPlaySound : SKAction {
-    NSString *_fileName;
-    NSString *_filePath;
-    struct SKCPlaySound { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; int x14; float x15; float x16; float x17; float x18; id x19; BOOL x20; } *_mycaction;
+    NSString * _fileName;
+    NSString * _filePath;
+    struct SKCPlaySound { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; int x14; float x15; float x16; float x17; float x18; id x19; BOOL x20; } * _mycaction;
     struct CGPoint { 
         float x; 
         float y; 
-    } _position;
-    SKSoundSource *_soundSource;
+    }  _position;
+    SKSoundSource * _soundSource;
 }
 
 + (id)_audioURLWithName:(id)arg1 bundle:(id)arg2;

@@ -3,12 +3,12 @@
  */
 
 @interface SiriUIStarsView : UIView {
-    int _maxNumberOfStars;
-    double _maxRating;
-    double _rating;
-    BOOL _snapsToHalfStar;
-    UIImage *_starsImage;
-    int _style;
+    int  _maxNumberOfStars;
+    double  _maxRating;
+    double  _rating;
+    BOOL  _snapsToHalfStar;
+    UIImage * _starsImage;
+    int  _style;
 }
 
 @property (nonatomic) int maxNumberOfStars;

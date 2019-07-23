@@ -3,21 +3,21 @@
  */
 
 @interface IDSSocketPairResourceTransferReceiver : NSObject {
-    BOOL _compressed;
-    BOOL _done;
-    BOOL _expectsPeerResponse;
-    int _fileDescriptor;
-    BOOL _isResuming;
-    NSString *_messageUUID;
-    NSDictionary *_metadata;
-    NSString *_peerResponseIdentifier;
-    NSString *_resourcePath;
-    BOOL _resumeResourceTransfers;
-    unsigned int _sequenceNumber;
-    unsigned short _streamID;
-    unsigned long long _totalBytesExpected;
-    unsigned long long _totalBytesReceived;
-    BOOL _wantsAppAck;
+    BOOL  _compressed;
+    BOOL  _done;
+    BOOL  _expectsPeerResponse;
+    int  _fileDescriptor;
+    BOOL  _isResuming;
+    NSString * _messageUUID;
+    NSDictionary * _metadata;
+    NSString * _peerResponseIdentifier;
+    NSString * _resourcePath;
+    BOOL  _resumeResourceTransfers;
+    unsigned int  _sequenceNumber;
+    unsigned short  _streamID;
+    unsigned long long  _totalBytesExpected;
+    unsigned long long  _totalBytesReceived;
+    BOOL  _wantsAppAck;
 }
 
 @property (nonatomic, readonly) unsigned long long totalBytesReceived;

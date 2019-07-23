@@ -3,17 +3,17 @@
  */
 
 @interface MFPColorAdjust : NSObject {
-    struct MFPColorMatrix { float x1[5][5]; } *mColorMatrix;
-    int mColorMatrixFlags;
-    BOOL mEnabled;
-    float mGamma;
-    struct MFPColorMatrix { float x1[5][5]; } *mGrayMatrix;
-    NSDictionary *mRecolorMap;
-    float mThreshold;
+    struct MFPColorMatrix { float x1[5][5]; } * mColorMatrix;
+    int  mColorMatrixFlags;
+    BOOL  mEnabled;
+    float  mGamma;
+    struct MFPColorMatrix { float x1[5][5]; } * mGrayMatrix;
+    NSDictionary * mRecolorMap;
+    float  mThreshold;
     struct { 
         OITSUColor *mLow; 
         OITSUColor *mHigh; 
-    } mTransparentRange;
+    }  mTransparentRange;
 }
 
 - (struct MFPColorMatrix { float x1[5][5]; }*)colorMatrix;

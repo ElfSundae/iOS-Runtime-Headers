@@ -3,12 +3,12 @@
  */
 
 @interface BSDescriptionBuilder : NSObject {
-    int _activeComponent;
-    NSString *_activePrefix;
-    NSMutableString *_description;
-    <NSObject> *_object;
-    NSMutableString *_proem;
-    BOOL _useDebugDescription;
+    int  _activeComponent;
+    NSString * _activePrefix;
+    NSMutableString * _description;
+    <NSObject> * _object;
+    NSMutableString * _proem;
+    BOOL  _useDebugDescription;
 }
 
 @property (nonatomic) int activeComponent;
@@ -25,21 +25,25 @@
 - (id)_activeComponentString;
 - (int)activeComponent;
 - (id)activeMultilinePrefix;
-- (id)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
-- (id)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(id /* block */)arg5;
-- (id)appendArraySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
-- (id)appendArraySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3 objectTransformer:(id /* block */)arg4;
-- (id)appendBodySectionWithName:(id)arg1 multilinePrefix:(id)arg2 block:(id /* block */)arg3;
+- (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
+- (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(id /* block */)arg5;
+- (void)appendArraySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
+- (void)appendArraySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3 objectTransformer:(id /* block */)arg4;
+- (void)appendBodySectionWithName:(id)arg1 multilinePrefix:(id)arg2 block:(id /* block */)arg3;
 - (id)appendBool:(BOOL)arg1 withName:(id)arg2;
+- (id)appendBool:(BOOL)arg1 withName:(id)arg2 ifEqualTo:(BOOL)arg3;
 - (id)appendCString:(const char *)arg1 withName:(id)arg2;
 - (id)appendClass:(Class)arg1 withName:(id)arg2;
-- (id)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
-- (id)appendDictionarySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
+- (void)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
+- (void)appendDictionarySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(id /* block */)arg5;
+- (void)appendDictionarySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
+- (id)appendDouble:(double)arg1 withName:(id)arg2 decimalPrecision:(unsigned int)arg3;
 - (id)appendFlag:(int)arg1 withName:(id)arg2;
 - (id)appendFlag:(int)arg1 withName:(id)arg2 skipIfNotSet:(BOOL)arg3;
 - (id)appendFloat:(float)arg1 withName:(id)arg2;
 - (id)appendFloat:(float)arg1 withName:(id)arg2 decimalPrecision:(unsigned int)arg3;
 - (id)appendFormat:(id)arg1;
+- (id)appendInt64:(long long)arg1 withName:(id)arg2;
 - (id)appendInt:(int)arg1 withName:(id)arg2;
 - (id)appendInteger:(int)arg1 withName:(id)arg2;
 - (id)appendKey:(id)arg1;
@@ -55,7 +59,11 @@
 - (id)appendSelector:(SEL)arg1 withName:(id)arg2;
 - (id)appendSize:(struct CGSize { float x1; float x2; })arg1 withName:(id)arg2;
 - (id)appendString:(id)arg1;
+- (void)appendString:(id)arg1 withName:(id)arg2;
+- (void)appendString:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
 - (id)appendSuper;
+- (id)appendTimeInterval:(double)arg1 withName:(id)arg2 decomposeUnits:(BOOL)arg3;
+- (id)appendUInt64:(unsigned long long)arg1 withName:(id)arg2;
 - (id)appendUnsignedInt:(unsigned int)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned int)arg1 withName:(id)arg2;
 - (id)build;

@@ -3,9 +3,9 @@
  */
 
 @interface IKFourTuple : NSObject <NSCopying> {
-    NSString *_namedStyle;
-    int _specifiedValueCount;
-    float _values;
+    NSString * _namedStyle;
+    int  _specifiedValueCount;
+    float  _values;
 }
 
 @property (nonatomic, readonly) struct IKCornerRadii { float x1; float x2; float x3; float x4; } cornerRadiiValue;

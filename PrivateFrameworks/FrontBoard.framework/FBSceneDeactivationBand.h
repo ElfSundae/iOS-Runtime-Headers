@@ -3,8 +3,8 @@
  */
 
 @interface FBSceneDeactivationBand : NSObject <BSDescriptionProviding> {
-    NSHashTable *_assertions;
-    float _level;
+    NSHashTable * _assertions;
+    float  _level;
 }
 
 @property (nonatomic, readonly) unsigned int assertionCount;

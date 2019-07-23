@@ -3,11 +3,11 @@
  */
 
 @interface HDTimeRange : NSObject <NSCopying> {
-    double _categoryValue;
-    BOOL _deleted;
-    double _end;
-    long long _sourceId;
-    double _start;
+    double  _categoryValue;
+    BOOL  _deleted;
+    double  _end;
+    long long  _sourceId;
+    double  _start;
 }
 
 @property (nonatomic) double categoryValue;

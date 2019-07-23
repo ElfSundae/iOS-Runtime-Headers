@@ -3,7 +3,7 @@
  */
 
 @interface _UIButtonBarStackView : UIStackView {
-    _UIButtonBar *_buttonBar;
+    _UIButtonBar * _buttonBar;
 }
 
 + (Class)layerClass;

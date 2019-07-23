@@ -2,7 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings>
+@interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings> {
+    BOOL  _statusBarForegroundTransparent;
+}
 
 @property (nonatomic) int backgroundStyle;
 @property (nonatomic) int compatibilityMode;
@@ -23,6 +25,7 @@
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } primaryWindowOverlayInsets;
 @property (nonatomic) unsigned int proximityDetectionModes;
 @property (nonatomic) unsigned int statusBarContextID;
+@property (getter=isStatusBarForegroundTransparent, nonatomic) BOOL statusBarForegroundTransparent;
 @property (nonatomic) BOOL statusBarHidden;
 @property (nonatomic) int statusBarStyle;
 @property (readonly) Class superclass;
@@ -42,6 +45,7 @@
 - (BOOL)idleTimerDisabled;
 - (int)interfaceOrientation;
 - (BOOL)interfaceOrientationChangesDisabled;
+- (BOOL)isStatusBarForegroundTransparent;
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForSetting:(unsigned int)arg1;
 - (int)notificationCenterRevealMode;
@@ -63,6 +67,7 @@
 - (void)setPrimaryWindowOverlayInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setProximityDetectionModes:(unsigned int)arg1;
 - (void)setStatusBarContextID:(unsigned int)arg1;
+- (void)setStatusBarForegroundTransparent:(BOOL)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1;
 - (void)setStatusBarStyle:(int)arg1;
 - (void)setSupportedInterfaceOrientations:(unsigned int)arg1;

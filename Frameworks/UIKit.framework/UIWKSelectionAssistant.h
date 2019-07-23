@@ -3,10 +3,10 @@
  */
 
 @interface UIWKSelectionAssistant : UIWebSelectionAssistant {
-    _UITextServiceSession *_definitionSession;
-    _UITextServiceSession *_learnSession;
-    _UITextServiceSession *_lookupSession;
-    _UITextServiceSession *_shareSession;
+    _UITextServiceSession * _definitionSession;
+    _UITextServiceSession * _learnSession;
+    _UITextServiceSession * _lookupSession;
+    _UITextServiceSession * _shareSession;
 }
 
 @property (nonatomic, readonly) UILongPressGestureRecognizer *selectionLongPressRecognizer;
@@ -18,6 +18,7 @@
 - (void)initializeSelectionView;
 - (id)interactionView;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
+- (void)lookup:(id)arg1 withRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3;
 - (void)selectionChanged;
 - (void)selectionChangedWithGestureAt:(struct CGPoint { float x1; float x2; })arg1 withGesture:(int)arg2 withState:(int)arg3;
 - (void)selectionChangedWithGestureAt:(struct CGPoint { float x1; float x2; })arg1 withGesture:(int)arg2 withState:(int)arg3 withFlags:(int)arg4;
@@ -31,6 +32,5 @@
 - (void)showSelectionCommands;
 - (void)showShareSheetFor:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)showTextServiceFor:(id)arg1 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
-- (void)willBeginGesture;
 
 @end

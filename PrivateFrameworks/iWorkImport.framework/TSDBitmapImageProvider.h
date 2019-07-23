@@ -3,21 +3,30 @@
  */
 
 @interface TSDBitmapImageProvider : TSDImageProvider {
-    long mCheckIfValidToken;
-    unsigned int mDPI;
-    struct CGImage { } *mHalfSizeImage;
-    struct CGImage { } *mImage;
-    NSObject<OS_dispatch_semaphore> *mImageLock;
-    struct CGImageSource { } *mImageSource;
-    BOOL mIsOpaque;
-    BOOL mIsValid;
+    long  mCheckIfValidToken;
+    unsigned int  mDPI;
+    struct CGImage { } * mHalfSizeImage;
+    struct CGImage { } * mImage;
+    unsigned int  mImageGamut;
+    NSObject<OS_dispatch_semaphore> * mImageLock;
+    struct CGImageSource { } * mImageSource;
+    BOOL  mIsOpaque;
+    BOOL  mIsValid;
     struct CGSize { 
         float width; 
         float height; 
-    } mNaturalSize;
-    int mOrientation;
-    struct CGImage { } *mQuarterSizeImage;
+    }  mNaturalSize;
+    int  mOrientation;
+    struct CGImage { } * mQuarterSizeImage;
+    unsigned int  mValidationStatus;
 }
+
+@property (nonatomic, readonly) struct CGImageSource { }*CGImageSource;
+@property (nonatomic, readonly) struct CGSize { float x1; float x2; } dpiAdjustedFillSize;
+@property (nonatomic, readonly) unsigned int imageDPI;
+@property (nonatomic, readonly) BOOL isOpaque;
+@property (nonatomic, readonly) int orientation;
+@property (nonatomic, readonly) unsigned int validationStatus;
 
 + (struct CGImage { }*)CGImageForImageData:(id)arg1;
 + (id)TSUImageForImageData:(id)arg1;
@@ -30,7 +39,7 @@
 
 - (struct CGImage { }*)CGImageForNaturalSize;
 - (struct CGImage { }*)CGImageForSize:(struct CGSize { float x1; float x2; })arg1 inContext:(struct CGContext { }*)arg2 orLayer:(id)arg3;
-- (struct CGImage { }*)CGImageForSize:(struct CGSize { float x1; float x2; })arg1 lowQuality:(BOOL)arg2;
+- (struct CGImage { }*)CGImageResampledToSize:(struct CGSize { float x1; float x2; })arg1 lowQuality:(BOOL)arg2;
 - (struct CGImageSource { }*)CGImageSource;
 - (void)dealloc;
 - (struct CGSize { float x1; float x2; })dpiAdjustedFillSize;
@@ -40,6 +49,7 @@
 - (BOOL)hasFlushableContent;
 - (void)i_commonInit;
 - (unsigned int)imageDPI;
+- (unsigned int)imageGamut;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
 - (struct CGSize { float x1; float x2; })naturalSize;
@@ -54,5 +64,6 @@
 - (struct CGImage { }*)p_newImageFromSource:(struct CGImageSource { }*)arg1;
 - (struct CGImageSource { }*)p_newImageOfSize:(struct CGSize { float x1; float x2; })arg1 andWriteToCacheWithSuffix:(id)arg2;
 - (struct CGImage { }*)p_resampledImageOfSizeType:(int)arg1;
+- (unsigned int)validationStatus;
 
 @end

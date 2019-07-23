@@ -3,12 +3,12 @@
  */
 
 @interface PUSearchButtonItem : UIBarButtonItem {
-    PUSearchButtonItemCustomView *_customView;
-    UINavigationItem *_navigationItem;
-    BOOL _nudgesSearchIcon;
-    UISearchBar *_searchBar;
-    <UISearchBarDelegate> *_searchBarDelegate;
-    UIView *_searchIcon;
+    PUSearchButtonItemCustomView * _customView;
+    UINavigationItem * _navigationItem;
+    BOOL  _nudgesSearchIcon;
+    UISearchBar * _searchBar;
+    <UISearchBarDelegate> * _searchBarDelegate;
+    UIView * _searchIcon;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,9 +18,9 @@
             float width; 
             float height; 
         } size; 
-    } _searchIconDefaultBounds;
-    BOOL _showingSearchBar;
-    BOOL _wantsShowingSearchBar;
+    }  _searchIconDefaultBounds;
+    BOOL  _showingSearchBar;
+    BOOL  _wantsShowingSearchBar;
 }
 
 @property (nonatomic) float maxSearchBarWidth;

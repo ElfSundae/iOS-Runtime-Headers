@@ -3,12 +3,14 @@
  */
 
 @interface CIImage : NSObject <NSCopying, NSSecureCoding> {
-    void *_priv;
+    void * _priv;
 }
 
+@property (nonatomic, readonly) struct CGImage { }*CGImage;
 @property (readonly) struct CGColorSpace { }*colorSpace;
 @property (readonly) CIFilterShape *definition;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } extent;
+@property (nonatomic, readonly) struct __CVBuffer { }*pixelBuffer;
 @property (readonly) NSDictionary *properties;
 @property (readonly) NSURL *url;
 
@@ -48,8 +50,10 @@
 + (id)nullImage;
 + (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 + (id)smartToneAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
++ (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
 + (BOOL)supportsSecureCoding;
 
+- (struct CGImage { }*)CGImage;
 - (id)TIFFRepresentation;
 - (id)_autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 context:(id)arg3 options:(id)arg4;
 - (id)_dictForFeature:(id)arg1 scale:(float)arg2 imageHeight:(float)arg3;
@@ -69,7 +73,11 @@
 - (id)_initWithImageProvider:(id /* block */)arg1 width:(unsigned long)arg2 height:(unsigned long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace { }*)arg5 surfaceCache:(bool)arg6 options:(id)arg7;
 - (id)_initWithInternalRepresentation:(void*)arg1;
 - (void*)_internalRepresentation;
+- (struct CGImage { }*)_originalCGImage;
+- (struct __CVBuffer { }*)_originalCVPixelBuffer;
 - (id)_scaleImageToMaxDimension:(unsigned int)arg1;
+- (void)_setOriginalCGImage:(struct CGImage { }*)arg1;
+- (void)_setOriginalCVPixelBuffer:(struct __CVBuffer { }*)arg1;
 - (id)autoAdjustmentFilters;
 - (id)autoAdjustmentFiltersWithImageProperties:(id)arg1 options:(id)arg2;
 - (id)autoAdjustmentFiltersWithOptions:(id)arg1;
@@ -91,13 +99,23 @@
 - (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 rgbRows:(id)arg3 inputRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 rotateCropRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg5;
 - (void)getAutocropRect:(id)arg1 rotateXfrm:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg2 inputImageRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 clipRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg4;
 - (id)imageByApplyingFilter:(id)arg1 withInputParameters:(id)arg2;
+- (id)imageByApplyingGaussianBlurWithSigma:(double)arg1;
 - (id)imageByApplyingOrientation:(int)arg1;
 - (id)imageByApplyingTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1;
+- (id)imageByApplyingTransform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1 highQualityDownsample:(BOOL)arg2;
 - (id)imageByClampingToExtent;
+- (id)imageByClampingToRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (id)imageByColorMatchingColorSpaceToWorkingSpace:(struct CGColorSpace { }*)arg1;
+- (id)imageByColorMatchingWorkingSpaceToColorSpace:(struct CGColorSpace { }*)arg1;
 - (id)imageByCompositingOverImage:(id)arg1;
 - (id)imageByCroppingToRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (id)imageByPremultiplyingAlpha;
+- (id)imageBySettingAlphaOneInExtent:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (id)imageBySettingProperties:(id)arg1;
+- (id)imageByTaggingWithColorSpace:(struct CGColorSpace { }*)arg1;
+- (id)imageByUnpremultiplyingAlpha;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })imageTransformForOrientation:(int)arg1;
-- (id)imageWithExtent:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 processorDescription:(id)arg2 inputFormat:(int)arg3 outputFormat:(int)arg4 roiCallback:(id /* block */)arg5 processor:(id /* block */)arg6 options:(id)arg7;
+- (id)imageWithExtent:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 processorDescription:(id)arg2 argumentDigest:(unsigned long long)arg3 inputFormat:(int)arg4 outputFormat:(int)arg5 options:(id)arg6 roiCallback:(id /* block */)arg7 processor:(id /* block */)arg8;
 - (id)init;
 - (id)initWithArrayOfImages:(id)arg1 selector:(id /* block */)arg2;
 - (id)initWithBitmapData:(id)arg1 bytesPerRow:(unsigned long)arg2 size:(struct CGSize { float x1; float x2; })arg3 format:(int)arg4 colorSpace:(struct CGColorSpace { }*)arg5;
@@ -130,6 +148,10 @@
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize { float x1; float x2; })arg2 flipped:(BOOL)arg3 options:(id)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize { float x1; float x2; })arg2 options:(id)arg3;
 - (BOOL)isOpaque;
+- (id)localLightStatistics;
+- (id)localLightStatisticsNoProxy;
+- (id)localLightStatisticsWithProxy:(BOOL)arg1;
+- (struct __CVBuffer { }*)pixelBuffer;
 - (void)printTree;
 - (id)properties;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })regionOfInterestForImage:(id)arg1 inRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
@@ -141,6 +163,7 @@
 - (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 - (id)smartColorStatistics;
 - (id)smartToneAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
+- (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
 - (id)smartToneStatistics;
 - (id)url;
 - (id)userInfo;

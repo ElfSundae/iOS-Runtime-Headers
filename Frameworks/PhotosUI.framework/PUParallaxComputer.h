@@ -3,9 +3,9 @@
  */
 
 @interface PUParallaxComputer : NSObject {
-    int _axis;
-    int _model;
-    float _parallaxFactor;
+    int  _axis;
+    int  _model;
+    float  _parallaxFactor;
 }
 
 @property (nonatomic) int axis;

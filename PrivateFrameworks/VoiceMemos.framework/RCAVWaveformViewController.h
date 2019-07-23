@@ -3,32 +3,32 @@
  */
 
 @interface RCAVWaveformViewController : UIViewController <RCCaptureSessionObserver, RCGLWaveformViewDelegate, RCPreviewControllerObserver> {
-    RCAVState *_AVState;
-    RCUIConfiguration *_UIConfiguration;
-    RCCompositionController *_activeCaptureCompositionController;
-    RCCaptureSession *_activeCaptureSession;
-    RCPreviewController *_activePreviewController;
-    BOOL _autocenterCurrentTimeIndicatorAlways;
-    int _batchUpdatingDisplayableTimesCount;
-    BOOL _clipsTimeMarkersToDuration;
-    double _currentTime;
-    BOOL _currentTimeTracksCapturedEndPoint;
-    double _defaultVisibleDuration;
-    <RCAVWaveformViewControllerDelegate> *_delegate;
-    double _duration;
+    RCAVState * _AVState;
+    RCUIConfiguration * _UIConfiguration;
+    RCCompositionController * _activeCaptureCompositionController;
+    RCCaptureSession * _activeCaptureSession;
+    RCPreviewController * _activePreviewController;
+    BOOL  _autocenterCurrentTimeIndicatorAlways;
+    int  _batchUpdatingDisplayableTimesCount;
+    BOOL  _clipsTimeMarkersToDuration;
+    double  _currentTime;
+    BOOL  _currentTimeTracksCapturedEndPoint;
+    double  _defaultVisibleDuration;
+    <RCAVWaveformViewControllerDelegate> * _delegate;
+    double  _duration;
     struct { 
         double beginTime; 
         double endTime; 
-    } _highlightTimeRange;
-    RCLayoutMetrics *_layoutMetrics;
-    double _maximumSelectionDuration;
-    BOOL _needsUpdateDisplayableTime;
-    double _nextPreviewStartTime;
-    BOOL _selectionOverlayVisible;
-    BOOL _showingSelectionOverlayEnabled;
-    BOOL _userInteractionEnabled;
-    RCWaveformDataSource *_waveformDataSource;
-    RCGLWaveformViewController *_waveformViewController;
+    }  _highlightTimeRange;
+    RCLayoutMetrics * _layoutMetrics;
+    double  _maximumSelectionDuration;
+    BOOL  _needsUpdateDisplayableTime;
+    double  _nextPreviewStartTime;
+    BOOL  _selectionOverlayVisible;
+    BOOL  _showingSelectionOverlayEnabled;
+    BOOL  _userInteractionEnabled;
+    RCWaveformDataSource * _waveformDataSource;
+    RCGLWaveformViewController * _waveformViewController;
 }
 
 @property (nonatomic, readonly) RCAVState *AVState;

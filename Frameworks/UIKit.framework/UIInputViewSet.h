@@ -3,11 +3,11 @@
  */
 
 @interface UIInputViewSet : NSObject {
-    UIInputViewController *_accessoryViewController;
-    UIResponder *_accessoryViewNextResponder;
-    UIInputViewController *_assistantViewController;
-    UIView *_inputAccessoryView;
-    UIView *_inputAssistantView;
+    UIInputViewController * _accessoryViewController;
+    UIResponder * _accessoryViewNextResponder;
+    UIInputViewController * _assistantViewController;
+    UIView * _inputAccessoryView;
+    UIView * _inputAssistantView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,16 +17,16 @@
             float width; 
             float height; 
         } size; 
-    } _inputAssistantViewBounds;
-    UIView *_inputView;
-    UIInputViewController *_inputViewController;
-    BOOL _isCustomInputView;
-    BOOL _isNullInputView;
-    BOOL _isRemoteKeyboard;
-    BOOL _isSplit;
-    UIResponder *_restorableResponder;
-    BOOL _restoreUsingBecomeFirstResponder;
-    float _splitHeightDelta;
+    }  _inputAssistantViewBounds;
+    UIView * _inputView;
+    UIInputViewController * _inputViewController;
+    BOOL  _isCustomInputView;
+    BOOL  _isNullInputView;
+    BOOL  _isRemoteKeyboard;
+    BOOL  _isSplit;
+    UIResponder * _restorableResponder;
+    BOOL  _restoreUsingBecomeFirstResponder;
+    float  _splitHeightDelta;
 }
 
 @property (nonatomic, readonly) BOOL _inputViewIsSplit;
@@ -90,6 +90,7 @@
 - (void)dealloc;
 - (id)description;
 - (BOOL)inSyncWithOrientation:(int)arg1 forKeyboard:(id)arg2;
+- (void)inheritNullState:(id)arg1;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3 isKeyboard:(BOOL)arg4;
 - (id)inputAccessoryView;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })inputAccessoryViewBounds;

@@ -3,20 +3,20 @@
  */
 
 @interface _PHAssetCreationRequestValidator : PHValidator {
-    PHAssetCreationRequest *_assetCreationRequest;
+    PHAssetCreationRequest * _assetCreationRequest;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _validatedImageDisplayTime;
-    NSString *_validatedPairingIdentifier;
+    }  _validatedImageDisplayTime;
+    NSString * _validatedPairingIdentifier;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _validatedVideoDuration;
+    }  _validatedVideoDuration;
 }
 
 @property (nonatomic, readonly) PHAssetCreationRequest *assetCreationRequest;

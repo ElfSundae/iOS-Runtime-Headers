@@ -3,15 +3,15 @@
  */
 
 @interface PLEntry : NSObject <NSCopying> {
-    NSMutableDictionary *_dictionary;
-    NSDate *_entryDate;
-    NSDictionary *_entryDefinition;
-    long long _entryID;
-    NSString *_entryKey;
-    BOOL _existsInDB;
-    BOOL _isErrorEntry;
-    NSObject<OS_dispatch_semaphore> *_sem;
-    BOOL _writeToDB;
+    NSMutableDictionary * _dictionary;
+    NSDate * _entryDate;
+    NSDictionary * _entryDefinition;
+    long long  _entryID;
+    NSString * _entryKey;
+    BOOL  _existsInDB;
+    BOOL  _isErrorEntry;
+    NSObject<OS_dispatch_semaphore> * _sem;
+    BOOL  _writeToDB;
 }
 
 @property (readonly) NSArray *arrayKeys;

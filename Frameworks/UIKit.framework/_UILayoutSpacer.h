@@ -3,9 +3,9 @@
  */
 
 @interface _UILayoutSpacer : UILayoutGuide <UILayoutSupport> {
-    BOOL _compatibilityGuideAllowsArchivingAsSubview;
-    NSArray *_constraintsToRemoveAtRuntime;
-    BOOL _horizontal;
+    BOOL  _compatibilityGuideAllowsArchivingAsSubview;
+    NSArray * _constraintsToRemoveAtRuntime;
+    BOOL  _horizontal;
 }
 
 @property (setter=_setArchivedIdentifier:, nonatomic, copy) NSString *_archivedIdentifier;
@@ -24,7 +24,6 @@
 + (id)_horizontalLayoutSpacer;
 + (id)_verticalLayoutSpacer;
 
-- (void).cxx_destruct;
 - (id)_archivedIdentifier;
 - (BOOL)_compatibilityGuideAllowsArchivingAsSubview;
 - (id)_constraintsToRemoveAtRuntime;
@@ -35,6 +34,7 @@
 - (void)_setConstraintsToRemoveAtRuntime:(id)arg1;
 - (void)_setHorizontal:(BOOL)arg1;
 - (void)_setUpCounterDimensionConstraint;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (float)length;

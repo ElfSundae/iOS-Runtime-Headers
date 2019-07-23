@@ -3,9 +3,9 @@
  */
 
 @interface _MRTextInputTraitsProtobuf : PBCodable <NSCopying> {
-    int _autocapitalizationType;
-    BOOL _autocorrection;
-    BOOL _enablesReturnKeyAutomatically;
+    int  _autocapitalizationType;
+    BOOL  _autocorrection;
+    BOOL  _enablesReturnKeyAutomatically;
     struct { 
         unsigned int validTextRangeLength : 1; 
         unsigned int validTextRangeLocation : 1; 
@@ -16,18 +16,18 @@
         unsigned int enablesReturnKeyAutomatically : 1; 
         unsigned int secureTextEntry : 1; 
         unsigned int spellchecking : 1; 
-    } _has;
-    int _keyboardType;
+    }  _has;
+    int  _keyboardType;
     struct { 
         unsigned long long *list; 
         unsigned int count; 
         unsigned int size; 
-    } _pINEntrySeparatorIndexes;
-    int _returnKeyType;
-    BOOL _secureTextEntry;
-    BOOL _spellchecking;
-    unsigned long long _validTextRangeLength;
-    unsigned long long _validTextRangeLocation;
+    }  _pINEntrySeparatorIndexes;
+    int  _returnKeyType;
+    BOOL  _secureTextEntry;
+    BOOL  _spellchecking;
+    unsigned long long  _validTextRangeLength;
+    unsigned long long  _validTextRangeLocation;
 }
 
 @property (nonatomic) int autocapitalizationType;
@@ -51,8 +51,12 @@
 @property (nonatomic) unsigned long long validTextRangeLength;
 @property (nonatomic) unsigned long long validTextRangeLocation;
 
+- (int)StringAsAutocapitalizationType:(id)arg1;
+- (int)StringAsKeyboardType:(id)arg1;
+- (int)StringAsReturnKeyType:(id)arg1;
 - (void)addPINEntrySeparatorIndexes:(unsigned long long)arg1;
 - (int)autocapitalizationType;
+- (id)autocapitalizationTypeAsString:(int)arg1;
 - (BOOL)autocorrection;
 - (void)clearPINEntrySeparatorIndexes;
 - (void)copyTo:(id)arg1;
@@ -73,12 +77,14 @@
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;
 - (int)keyboardType;
+- (id)keyboardTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long*)pINEntrySeparatorIndexes;
 - (unsigned long long)pINEntrySeparatorIndexesAtIndex:(unsigned int)arg1;
 - (unsigned int)pINEntrySeparatorIndexesCount;
 - (BOOL)readFrom:(id)arg1;
 - (int)returnKeyType;
+- (id)returnKeyTypeAsString:(int)arg1;
 - (BOOL)secureTextEntry;
 - (void)setAutocapitalizationType:(int)arg1;
 - (void)setAutocorrection:(BOOL)arg1;

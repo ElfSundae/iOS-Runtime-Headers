@@ -2,12 +2,12 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIKeyboardCandidateRowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIKeyboardCandidateList> {
-    <UIKeyboardCandidateListDelegate> *_candidateListDelegate;
-    TIKeyboardCandidateResultSet *_candidateSet;
-    Class _cellClass;
-    <UIKeyboardCandidateRowViewControllerDelegate> *_delegate;
-    BOOL _showsHiddenCandidates;
+@interface UIKeyboardCandidateRowViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIKeyboardCandidateBarLayoutDelegate, UIKeyboardCandidateList> {
+    <UIKeyboardCandidateListDelegate> * _candidateListDelegate;
+    TIKeyboardCandidateResultSet * _candidateSet;
+    Class  _cellClass;
+    <UIKeyboardCandidateRowViewControllerDelegate> * _delegate;
+    BOOL  _showsHiddenCandidates;
 }
 
 @property (nonatomic) <UIKeyboardCandidateListDelegate> *candidateListDelegate;
@@ -41,11 +41,11 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)currentCandidate;
 - (unsigned int)currentIndex;
+- (void)dealloc;
 - (id)delegate;
 - (BOOL)hasCandidates;
 - (id)initWithCellClass:(Class)arg1;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (id)keyboardBehaviors;
 - (void)loadView;
 - (int)numberOfSectionsInCollectionView:(id)arg1;

@@ -3,22 +3,22 @@
  */
 
 @interface RCChronologicalAnnotationView : UIView {
-    RCUIConfiguration *_UIConfiguration;
-    UIColor *_backgroundDebugColor;
-    double _contentDuration;
-    int _lastHourComponentsUsedForMajorTickUpdate;
-    float _majorTickMinimumSpacing;
-    double _majorTickTimeUnit;
+    RCUIConfiguration * _UIConfiguration;
+    UIColor * _backgroundDebugColor;
+    double  _contentDuration;
+    int  _lastHourComponentsUsedForMajorTickUpdate;
+    float  _majorTickMinimumSpacing;
+    double  _majorTickTimeUnit;
     struct { 
         double beginTime; 
         double endTime; 
-    } _markerClippingRange;
-    unsigned int _maximumMajorUnitsInVisibleDuration;
-    UIFont *_timeLabelFont;
+    }  _markerClippingRange;
+    unsigned int  _maximumMajorUnitsInVisibleDuration;
+    UIFont * _timeLabelFont;
     struct { 
         double beginTime; 
         double endTime; 
-    } _visibleTimeRange;
+    }  _visibleTimeRange;
 }
 
 @property (nonatomic, copy) RCUIConfiguration *UIConfiguration;

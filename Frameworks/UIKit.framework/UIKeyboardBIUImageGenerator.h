@@ -3,13 +3,13 @@
  */
 
 @interface UIKeyboardBIUImageGenerator : NSObject {
-    UIImage *_biuBoldImage;
-    UIImage *_biuItalicImage;
-    UIImage *_biuUnderlineImage;
-    NSMutableDictionary *_imageCache;
-    UIColor *_normalColor;
-    UIColor *_tintColor;
-    BOOL _useButtonShapes;
+    UIImage * _biuBoldImage;
+    UIImage * _biuItalicImage;
+    UIImage * _biuUnderlineImage;
+    NSMutableDictionary * _imageCache;
+    UIColor * _normalColor;
+    UIColor * _tintColor;
+    BOOL  _useButtonShapes;
 }
 
 @property (nonatomic, retain) UIColor *normalColor;

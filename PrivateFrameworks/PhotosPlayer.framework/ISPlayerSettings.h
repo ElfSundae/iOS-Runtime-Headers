@@ -3,32 +3,40 @@
  */
 
 @interface ISPlayerSettings : ISSettings {
-    BOOL _allowCrossfadeContent;
-    BOOL _allowFrameBlending;
-    BOOL _allowPlayerReuse;
-    BOOL _allowVideoPreRoll;
-    BOOL _assumeCroppedVideo;
-    float _audioRampDuration;
-    double _crossfadeDuration;
-    float _crossfadeTargetBlur;
-    float _forceScrubMaximumInteractiveRate;
-    float _forceScrubMaximumPressure;
-    float _forceScrubMinRateChange;
-    float _forceScrubMinimumPressure;
-    float _forceScrubMinimumRate;
-    float _forceScrubRewindFactor;
-    float _forceScrubSettleRateAddition;
-    double _forceTouchTimeoutInterval;
-    float _forceTouchTimeoutMinimumProgress;
-    double _maxPreCrossfadeDuration;
-    double _nonForcePreCrossfadeDuration;
-    BOOL _shouldPauseOnSettle;
-    BOOL _useDedicatedQueues;
-    BOOL _variableIntro;
+    BOOL  _allowCrossfadeContent;
+    BOOL  _allowFrameBlending;
+    BOOL  _allowHintBeforeReadyToPlay;
+    BOOL  _allowPlayerReuse;
+    BOOL  _allowVideoPreRoll;
+    BOOL  _assumeCroppedVideo;
+    float  _audioRampDuration;
+    double  _crossfadeDuration;
+    float  _crossfadeTargetBlur;
+    float  _forceScrubMaximumInteractiveRate;
+    float  _forceScrubMaximumPressure;
+    float  _forceScrubMinRateChange;
+    float  _forceScrubMinimumPressure;
+    float  _forceScrubMinimumRate;
+    float  _forceScrubRewindFactor;
+    double  _forceTouchTimeoutInterval;
+    float  _forceTouchTimeoutMinimumProgress;
+    int  _maxCrossfadeItemLoadAttempts;
+    double  _maxPreCrossfadeDuration;
+    double  _nonForcePreCrossfadeDuration;
+    BOOL  _playDuringHint;
+    BOOL  _playIsSticky;
+    BOOL  _predrawCrossfadeFrames;
+    BOOL  _prerollBeforePlaying;
+    BOOL  _shouldPauseOnSettle;
+    BOOL  _showStateOverlay;
+    BOOL  _useASTCCompression;
+    BOOL  _useDedicatedQueues;
+    BOOL  _variableIntro;
 }
 
 @property (nonatomic) BOOL allowCrossfadeContent;
 @property (nonatomic) BOOL allowFrameBlending;
+@property (nonatomic) BOOL allowHintBeforeReadyToPlay;
 @property (nonatomic) BOOL allowPlayerReuse;
 @property (nonatomic) BOOL allowVideoPreRoll;
 @property (nonatomic) BOOL assumeCroppedVideo;
@@ -41,12 +49,18 @@
 @property (nonatomic) float forceScrubMinimumPressure;
 @property (nonatomic) float forceScrubMinimumRate;
 @property (nonatomic) float forceScrubRewindFactor;
-@property (nonatomic) float forceScrubSettleRateAddition;
 @property (nonatomic) double forceTouchTimeoutInterval;
 @property (nonatomic) float forceTouchTimeoutMinimumProgress;
+@property (nonatomic) int maxCrossfadeItemLoadAttempts;
 @property (nonatomic) double maxPreCrossfadeDuration;
 @property (nonatomic) double nonForcePreCrossfadeDuration;
+@property (nonatomic) BOOL playDuringHint;
+@property (nonatomic) BOOL playIsSticky;
+@property (nonatomic) BOOL predrawCrossfadeFrames;
+@property (nonatomic) BOOL prerollBeforePlaying;
 @property (nonatomic) BOOL shouldPauseOnSettle;
+@property (nonatomic) BOOL showStateOverlay;
+@property (nonatomic) BOOL useASTCCompression;
 @property (nonatomic) BOOL useDedicatedQueues;
 @property (nonatomic) BOOL variableIntro;
 
@@ -55,6 +69,7 @@
 
 - (BOOL)allowCrossfadeContent;
 - (BOOL)allowFrameBlending;
+- (BOOL)allowHintBeforeReadyToPlay;
 - (BOOL)allowPlayerReuse;
 - (BOOL)allowVideoPreRoll;
 - (BOOL)assumeCroppedVideo;
@@ -67,13 +82,18 @@
 - (float)forceScrubMinimumPressure;
 - (float)forceScrubMinimumRate;
 - (float)forceScrubRewindFactor;
-- (float)forceScrubSettleRateAddition;
 - (double)forceTouchTimeoutInterval;
 - (float)forceTouchTimeoutMinimumProgress;
+- (int)maxCrossfadeItemLoadAttempts;
 - (double)maxPreCrossfadeDuration;
 - (double)nonForcePreCrossfadeDuration;
+- (BOOL)playDuringHint;
+- (BOOL)playIsSticky;
+- (BOOL)predrawCrossfadeFrames;
+- (BOOL)prerollBeforePlaying;
 - (void)setAllowCrossfadeContent:(BOOL)arg1;
 - (void)setAllowFrameBlending:(BOOL)arg1;
+- (void)setAllowHintBeforeReadyToPlay:(BOOL)arg1;
 - (void)setAllowPlayerReuse:(BOOL)arg1;
 - (void)setAllowVideoPreRoll:(BOOL)arg1;
 - (void)setAssumeCroppedVideo:(BOOL)arg1;
@@ -87,15 +107,23 @@
 - (void)setForceScrubMinimumPressure:(float)arg1;
 - (void)setForceScrubMinimumRate:(float)arg1;
 - (void)setForceScrubRewindFactor:(float)arg1;
-- (void)setForceScrubSettleRateAddition:(float)arg1;
 - (void)setForceTouchTimeoutInterval:(double)arg1;
 - (void)setForceTouchTimeoutMinimumProgress:(float)arg1;
+- (void)setMaxCrossfadeItemLoadAttempts:(int)arg1;
 - (void)setMaxPreCrossfadeDuration:(double)arg1;
 - (void)setNonForcePreCrossfadeDuration:(double)arg1;
+- (void)setPlayDuringHint:(BOOL)arg1;
+- (void)setPlayIsSticky:(BOOL)arg1;
+- (void)setPredrawCrossfadeFrames:(BOOL)arg1;
+- (void)setPrerollBeforePlaying:(BOOL)arg1;
 - (void)setShouldPauseOnSettle:(BOOL)arg1;
+- (void)setShowStateOverlay:(BOOL)arg1;
+- (void)setUseASTCCompression:(BOOL)arg1;
 - (void)setUseDedicatedQueues:(BOOL)arg1;
 - (void)setVariableIntro:(BOOL)arg1;
 - (BOOL)shouldPauseOnSettle;
+- (BOOL)showStateOverlay;
+- (BOOL)useASTCCompression;
 - (BOOL)useDedicatedQueues;
 - (BOOL)variableIntro;
 

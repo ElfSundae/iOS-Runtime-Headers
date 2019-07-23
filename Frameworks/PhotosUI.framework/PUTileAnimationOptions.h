@@ -3,21 +3,21 @@
  */
 
 @interface PUTileAnimationOptions : NSObject {
-    id /* block */ _customViewAnimatorBlock;
-    double _delay;
-    double _duration;
+    id /* block */  _customViewAnimatorBlock;
+    double  _delay;
+    double  _duration;
     struct PUDisplayVelocity { 
         float x; 
         float y; 
         float scale; 
         float rotation; 
-    } _initialVelocity;
-    int _kind;
-    float _springDampingRatio;
-    float _springMass;
-    int _springNumberOfOscillations;
-    float _springStiffness;
-    BOOL _synchronizedWithTransition;
+    }  _initialVelocity;
+    int  _kind;
+    float  _springDampingRatio;
+    float  _springMass;
+    int  _springNumberOfOscillations;
+    float  _springStiffness;
+    BOOL  _synchronizedWithTransition;
 }
 
 @property (nonatomic, copy) id /* block */ customViewAnimatorBlock;

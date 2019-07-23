@@ -3,11 +3,11 @@
  */
 
 @interface RCWaveformSegment : NSObject <NSCoding> {
-    NSData *_averagePowerLevelData;
+    NSData * _averagePowerLevelData;
     struct { 
         double beginTime; 
         double endTime; 
-    } _timeRange;
+    }  _timeRange;
 }
 
 @property (nonatomic, readonly) const float*averagePowerLevels;

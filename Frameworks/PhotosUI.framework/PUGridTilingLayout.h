@@ -6,12 +6,12 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _interItemSpacing;
+    }  _interItemSpacing;
     struct CGSize { 
         float width; 
         float height; 
-    } _itemSize;
-    int _numberOfColumns;
+    }  _itemSize;
+    int  _numberOfColumns;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } interItemSpacing;

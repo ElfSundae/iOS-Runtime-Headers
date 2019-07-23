@@ -3,11 +3,11 @@
  */
 
 @interface CNAvatarCardAlertController : CNAvatarCardController <CNQuickActionsManagerDelegate, UIAlertControllerSystemProvidedPresentationDelegate, UIGestureRecognizerDelegate> {
-    NSArray *_actions;
-    CNQuickActionsManager *_actionsManager;
-    UIAlertController *_alertController;
-    BOOL _expanded;
-    UIView *_sourceView;
+    NSArray * _actions;
+    CNQuickActionsManager * _actionsManager;
+    UIAlertController * _alertController;
+    BOOL  _expanded;
+    UIView * _sourceView;
 }
 
 @property (nonatomic, retain) NSArray *actions;

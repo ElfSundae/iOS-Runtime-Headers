@@ -3,19 +3,19 @@
  */
 
 @interface PUViewControllerTransition : NSObject <UIViewControllerAnimatedTransitioning> {
-    double _duration;
-    BOOL _interactive;
-    float _interactiveProgress;
-    UIPercentDrivenInteractiveTransition *_interactiveTransition;
-    BOOL _startedInteractively;
-    <UIViewControllerContextTransitioning> *_transitionContext;
+    double  _duration;
+    BOOL  _interactive;
+    float  _interactiveProgress;
+    UIPercentDrivenInteractiveTransition * _interactiveTransition;
+    BOOL  _startedInteractively;
+    <UIViewControllerContextTransitioning> * _transitionContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
 @property (readonly) unsigned int hash;
-@property (getter=isInteractive, nonatomic) BOOL interactive;
+@property (getter=isInteractive, setter=_setInteractive:, nonatomic) BOOL interactive;
 @property (setter=_setInteractiveProgress:, nonatomic) float interactiveProgress;
 @property (nonatomic) BOOL startedInteractively;
 @property (readonly) Class superclass;

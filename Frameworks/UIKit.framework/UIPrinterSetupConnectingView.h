@@ -3,9 +3,9 @@
  */
 
 @interface UIPrinterSetupConnectingView : UIView {
-    UIActivityIndicatorView *_activityIndicator;
-    UILabel *_label;
-    double _presentationTime;
+    UIActivityIndicatorView * _activityIndicator;
+    UILabel * _label;
+    double  _presentationTime;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;

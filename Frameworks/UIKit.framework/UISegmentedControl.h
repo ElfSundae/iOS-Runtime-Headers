@@ -3,14 +3,14 @@
  */
 
 @interface UISegmentedControl : UIControl <NSCoding, _UIBasicAnimationFactory> {
-    BOOL __hasTranslucentOptionsBackground;
-    id _appearanceStorage;
-    UIView *_backgroundBarView;
-    int _barStyle;
-    float _enabledAlpha;
-    UISegment *_focusedSegment;
-    int _highlightedSegment;
-    UIView *_removedSegment;
+    BOOL  __hasTranslucentOptionsBackground;
+    id  _appearanceStorage;
+    UIView * _backgroundBarView;
+    int  _barStyle;
+    float  _enabledAlpha;
+    UISegment * _focusedSegment;
+    int  _highlightedSegment;
+    UIView * _removedSegment;
     struct { 
         unsigned int style : 3; 
         unsigned int size : 2; 
@@ -24,9 +24,9 @@
         unsigned int useProportionalWidthSegments : 1; 
         unsigned int translucentBackground : 1; 
         unsigned int appearanceNeedsUpdate : 1; 
-    } _segmentedControlFlags;
-    NSMutableArray *_segments;
-    int _selectedSegment;
+    }  _segmentedControlFlags;
+    NSMutableArray * _segments;
+    int  _selectedSegment;
 }
 
 @property (setter=_setTranslucentOptionsBackground:, nonatomic) BOOL _hasTranslucentOptionsBackground;
@@ -49,6 +49,13 @@
 + (float)_lineWidthForTraitCollection:(id)arg1;
 + (id)_modernBackgroundSelected:(BOOL)arg1 highlighted:(BOOL)arg2 traitCollection:(id)arg3;
 + (id)_modernDividerImageForTraitCollection:(id)arg1;
++ (id)_tvDefaultTextColorDisabledSelected;
++ (id)_tvDefaultTextColorDisabledUserInterfaceStyleDark;
++ (id)_tvDefaultTextColorDisabledUserInterfaceStyleLight;
++ (id)_tvDefaultTextColorFocused;
++ (id)_tvDefaultTextColorNormalUserInterfaceStyleDark;
++ (id)_tvDefaultTextColorNormalUserInterfaceStyleLight;
++ (id)_tvDefaultTextColorSelected;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (float)defaultHeight;
 + (float)defaultHeightForStyle:(int)arg1;
@@ -70,6 +77,7 @@
 - (id)_createAndAddSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (id)_createSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (void)_emitValueChanged;
 - (id)_firstEnabledSegment;
 - (BOOL)_hasEnabledSegment;
 - (BOOL)_hasTranslucentOptionsBackground;
@@ -110,6 +118,8 @@
 - (BOOL)_shouldSelectSegmentAtIndex:(int)arg1;
 - (void)_tapSegmentAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)_tintColorArchivingKey;
+- (id)_uiktest_labelsWithState:(unsigned int)arg1;
+- (id)_uiktest_segmentAtIndex:(unsigned int)arg1;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned int)arg1;
 - (void)_updateOptionsBackground;
 - (void)_updateTitleTextAttributes;
@@ -158,7 +168,6 @@
 - (void)removeSegment:(unsigned int)arg1 animated:(BOOL)arg2;
 - (void)removeSegmentAtIndex:(unsigned int)arg1 animated:(BOOL)arg2;
 - (id)removedSegment;
-- (id)scriptingInfoWithChildren;
 - (int)segmentControlStyle;
 - (int)segmentedControlStyle;
 - (void)selectSegment:(int)arg1;
@@ -213,6 +222,14 @@
 - (float)widthForSegment:(unsigned int)arg1;
 - (float)widthForSegmentAtIndex:(unsigned int)arg1;
 - (void)willUpdateFocusToView:(id)arg1;
+
+// Image: /System/Library/Frameworks/MapKit.framework/MapKit
+
+- (int)_mapkit_numberOfSegments;
+- (void)_mapkit_removeAllSegments;
+- (int)_mapkit_selectedSegmentIndex;
+- (void)_mapkit_setSelectedSegmentIndex:(int)arg1;
+- (void)_mapkit_setTitle:(id)arg1 forSegmentAtIndex:(int)arg2 insertIfNeeded:(BOOL)arg3;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

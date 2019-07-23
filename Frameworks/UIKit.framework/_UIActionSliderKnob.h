@@ -3,7 +3,7 @@
  */
 
 @interface _UIActionSliderKnob : UIView {
-    UIColor *_knobColor;
+    UIColor * _knobColor;
 }
 
 @property (nonatomic, retain) UIColor *knobColor;

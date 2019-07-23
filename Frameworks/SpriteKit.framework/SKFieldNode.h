@@ -3,12 +3,12 @@
  */
 
 @interface SKFieldNode : SKNode {
-    float _animationSpeed;
-    BOOL _exclusive;
-    PKPhysicsField *_field;
-    SKRegion *_region;
-    float _smoothness;
-    SKTexture *_texture;
+    float  _animationSpeed;
+    BOOL  _exclusive;
+    PKPhysicsField * _field;
+    SKRegion * _region;
+    float  _smoothness;
+    SKTexture * _texture;
 }
 
 @property (nonatomic) float animationSpeed;

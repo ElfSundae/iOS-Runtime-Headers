@@ -3,7 +3,7 @@
  */
 
 @interface CNSuggestedContactIdentifierPredicate : CNPredicate <CNSuggestedContactPredicate> {
-    unsigned long long _suggestionIdentifier;
+    unsigned long long  _suggestionIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -12,8 +12,12 @@
 @property (readonly) unsigned long long suggestionIdentifier;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
+
 - (BOOL)cn_supportsNativeSorting;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSuggestionIdentifier:(unsigned long long)arg1;
 - (id)sgContactMatchesWithSortOrder:(int)arg1 mutableObjects:(BOOL)arg2 service:(id)arg3 error:(id*)arg4;
 - (unsigned long long)suggestionIdentifier;

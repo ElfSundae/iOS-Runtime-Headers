@@ -3,16 +3,16 @@
  */
 
 @interface PHVideoScrubberView : UIView <PUVideoScrubberControllerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
-    PUFilmstripView *__filmStripView;
-    BOOL __needsUpdateFilmStripView;
-    BOOL __needsUpdateVideoScrubberController;
-    PUPlayheadView *__playheadView;
-    UIScrollView *__scrollView;
-    PUVideoScrubberController *__videoScrubberController;
-    double _estimatedDuration;
-    UIImage *_placeholderThumbnail;
-    AVPlayer *_player;
-    unsigned int _previousPlayState;
+    PUFilmstripView * __filmStripView;
+    BOOL  __needsUpdateFilmStripView;
+    BOOL  __needsUpdateVideoScrubberController;
+    PUPlayheadView * __playheadView;
+    UIScrollView * __scrollView;
+    PUVideoScrubberController * __videoScrubberController;
+    double  _estimatedDuration;
+    UIImage * _placeholderThumbnail;
+    AVPlayer * _player;
+    unsigned int  _previousPlayState;
 }
 
 @property (setter=_setFilmStripView:, nonatomic, retain) PUFilmstripView *_filmStripView;

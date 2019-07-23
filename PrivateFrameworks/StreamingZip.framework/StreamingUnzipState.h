@@ -3,23 +3,23 @@
  */
 
 @interface StreamingUnzipState : NSObject {
-    unsigned long long _bytesHashedInChunk;
+    unsigned long long  _bytesHashedInChunk;
     struct { 
         char *dst_ptr; 
         unsigned int dst_size; 
         char *src_ptr; 
         unsigned int src_size; 
         void *state; 
-    } _cmpState;
-    unsigned long _currentCRC32;
-    unsigned short _currentLFMode;
-    struct { unsigned char x1[4]; struct { unsigned short x_2_1_1; } x2; struct { unsigned short x_3_1_1; } x3; struct { unsigned short x_4_1_1; } x4; union { struct { struct { unsigned short x_1_3_1; } x_1_2_1; struct { unsigned short x_2_3_1; } x_1_2_2; } x_5_1_1; struct { unsigned int x_2_2_1; } x_5_1_2; } x5; struct { unsigned int x_6_1_1; } x6; struct { unsigned int x_7_1_1; } x7; struct { unsigned int x_8_1_1; } x8; struct { unsigned short x_9_1_1; } x9; struct { unsigned short x_10_1_1; } x10; unsigned char x11[0]; } *_currentLFRecord;
-    unsigned long _currentLFRecordAllocationSize;
-    BOOL _currentLFRequiresDataDescriptor;
-    unsigned long long _currentOffset;
-    int _currentOutputFD;
-    struct { unsigned char x1[4]; union { struct { struct { unsigned int x_1_3_1; } x_1_2_1; struct { unsigned long long x_2_3_1; } x_1_2_2; struct { unsigned long long x_3_3_1; } x_1_2_3; } x_2_1_1; struct { struct { unsigned int x_1_3_1; } x_2_2_1; struct { unsigned int x_2_3_1; } x_2_2_2; struct { unsigned int x_3_3_1; } x_2_2_3; } x_2_1_2; } x2; } *_dataDescriptor;
-    BOOL _denyInvalidSymlinks;
+    }  _cmpState;
+    unsigned long  _currentCRC32;
+    unsigned short  _currentLFMode;
+    struct { unsigned char x1[4]; struct { unsigned short x_2_1_1; } x2; struct { unsigned short x_3_1_1; } x3; struct { unsigned short x_4_1_1; } x4; union { struct { struct { unsigned short x_1_3_1; } x_1_2_1; struct { unsigned short x_2_3_1; } x_1_2_2; } x_5_1_1; struct { unsigned int x_2_2_1; } x_5_1_2; } x5; struct { unsigned int x_6_1_1; } x6; struct { unsigned int x_7_1_1; } x7; struct { unsigned int x_8_1_1; } x8; struct { unsigned short x_9_1_1; } x9; struct { unsigned short x_10_1_1; } x10; unsigned char x11[0]; } * _currentLFRecord;
+    unsigned long  _currentLFRecordAllocationSize;
+    BOOL  _currentLFRequiresDataDescriptor;
+    unsigned long long  _currentOffset;
+    int  _currentOutputFD;
+    struct { unsigned char x1[4]; union { struct { struct { unsigned int x_1_3_1; } x_1_2_1; struct { unsigned long long x_2_3_1; } x_1_2_2; struct { unsigned long long x_3_3_1; } x_1_2_3; } x_2_1_1; struct { struct { unsigned int x_1_3_1; } x_2_2_1; struct { unsigned int x_2_3_1; } x_2_2_2; struct { unsigned int x_3_3_1; } x_2_2_3; } x_2_1_2; } x2; } * _dataDescriptor;
+    BOOL  _denyInvalidSymlinks;
     struct { 
         int hashType; 
         union { 
@@ -81,23 +81,23 @@
                 unsigned long long wbuf[16]; 
             } sha512; 
         } context; 
-    } _hashContext;
-    unsigned long long _hashedChunkSize;
-    NSArray *_hashes;
-    NSMutableData *_inMemoryFileData;
-    NSString *_lastChunkPartialHash;
-    unsigned long long _lastResumptionSavedOffset;
-    unsigned long long _recordsProcessed;
-    BOOL _storeCurrentFileInMemory;
-    NSDictionary *_streamInfoDict;
-    unsigned char _streamState;
-    unsigned long long _thisStageBytesComplete;
-    unsigned long long _totalFileSizeWritten;
-    unsigned long long _totalRecordCount;
-    unsigned long long _totalUncompressedBytes;
-    unsigned long long _uncompressedBytesOutput;
-    NSMutableData *_unsureData;
-    NSString *_unzipPath;
+    }  _hashContext;
+    unsigned long long  _hashedChunkSize;
+    NSArray * _hashes;
+    NSMutableData * _inMemoryFileData;
+    NSString * _lastChunkPartialHash;
+    unsigned long long  _lastResumptionSavedOffset;
+    unsigned long long  _recordsProcessed;
+    BOOL  _storeCurrentFileInMemory;
+    NSDictionary * _streamInfoDict;
+    unsigned char  _streamState;
+    unsigned long long  _thisStageBytesComplete;
+    unsigned long long  _totalFileSizeWritten;
+    unsigned long long  _totalRecordCount;
+    unsigned long long  _totalUncompressedBytes;
+    unsigned long long  _uncompressedBytesOutput;
+    NSMutableData * _unsureData;
+    NSString * _unzipPath;
 }
 
 @property (nonatomic, readonly) unsigned long long bytesHashedInChunk;
@@ -111,7 +111,7 @@
 @property (nonatomic) int currentOutputFD;
 @property (nonatomic) struct { unsigned char x1[4]; union { struct { struct { unsigned int x_1_3_1; } x_1_2_1; struct { unsigned long long x_2_3_1; } x_1_2_2; struct { unsigned long long x_3_3_1; } x_1_2_3; } x_2_1_1; struct { struct { unsigned int x_1_3_1; } x_2_2_1; struct { unsigned int x_2_3_1; } x_2_2_2; struct { unsigned int x_3_3_1; } x_2_2_3; } x_2_1_2; } x2; }*dataDescriptor;
 @property (nonatomic) BOOL denyInvalidSymlinks;
-@property (nonatomic, readonly) struct { int x1; union { struct CC_MD5state_st { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; unsigned int x_1_2_6; unsigned int x_1_2_7[16]; int x_1_2_8; } x_2_1_1; struct CC_SHA1state_st { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8[16]; int x_2_2_9; } x_2_1_2; struct CC_MD2state_st { int x_3_2_1; unsigned char x_3_2_2[16]; unsigned int x_3_2_3[16]; unsigned int x_3_2_4[16]; } x_2_1_3; struct CC_MD4state_st { unsigned int x_4_2_1; unsigned int x_4_2_2; unsigned int x_4_2_3; unsigned int x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; unsigned int x_4_2_7[16]; unsigned int x_4_2_8; } x_2_1_4; struct CC_SHA256state_st { unsigned int x_5_2_1[2]; unsigned int x_5_2_2[8]; unsigned int x_5_2_3[16]; } x_2_1_5; struct CC_SHA256state_st { unsigned int x_6_2_1[2]; unsigned int x_6_2_2[8]; unsigned int x_6_2_3[16]; } x_2_1_6; struct CC_SHA512state_st { unsigned long long x_7_2_1[2]; unsigned long long x_7_2_2[8]; unsigned long long x_7_2_3[16]; } x_2_1_7; struct CC_SHA512state_st { unsigned long long x_8_2_1[2]; unsigned long long x_8_2_2[8]; unsigned long long x_8_2_3[16]; } x_2_1_8; } x2; } hashContext;
+@property (nonatomic, readonly) struct { int x1; union { struct CC_MD5state_st { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; unsigned int x_1_2_6; unsigned int x_1_2_7[16]; int x_1_2_8; } x_2_1_1; struct CC_SHA1state_st { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8[16]; int x_2_2_9; } x_2_1_2; struct CC_MD2state_st { int x_3_2_1; unsigned char x_3_2_2[16]; unsigned int x_3_2_3[16]; unsigned int x_3_2_4[16]; } x_2_1_3; struct CC_MD4state_st { unsigned int x_4_2_1; unsigned int x_4_2_2; unsigned int x_4_2_3; unsigned int x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; unsigned int x_4_2_7[16]; unsigned int x_4_2_8; } x_2_1_4; struct CC_SHA256state_st { unsigned int x_5_2_1[2]; unsigned int x_5_2_2[8]; unsigned int x_5_2_3[16]; } x_2_1_5; struct CC_SHA256state_st { unsigned int x_6_2_1[2]; unsigned int x_6_2_2[8]; unsigned int x_6_2_3[16]; } x_2_1_6; struct CC_SHA512state_st { unsigned long long x_7_2_1[2]; unsigned long long x_7_2_2[8]; unsigned long long x_7_2_3[16]; } x_2_1_7; } x2; } hashContext;
 @property (nonatomic, readonly) unsigned long long hashedChunkSize;
 @property (nonatomic, retain) NSMutableData *inMemoryFileData;
 @property (nonatomic, retain) NSString *lastChunkPartialHash;
@@ -147,7 +147,7 @@
 - (void)dealloc;
 - (BOOL)denyInvalidSymlinks;
 - (id)finishStream;
-- (struct { int x1; union { struct CC_MD5state_st { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; unsigned int x_1_2_6; unsigned int x_1_2_7[16]; int x_1_2_8; } x_2_1_1; struct CC_SHA1state_st { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8[16]; int x_2_2_9; } x_2_1_2; struct CC_MD2state_st { int x_3_2_1; unsigned char x_3_2_2[16]; unsigned int x_3_2_3[16]; unsigned int x_3_2_4[16]; } x_2_1_3; struct CC_MD4state_st { unsigned int x_4_2_1; unsigned int x_4_2_2; unsigned int x_4_2_3; unsigned int x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; unsigned int x_4_2_7[16]; unsigned int x_4_2_8; } x_2_1_4; struct CC_SHA256state_st { unsigned int x_5_2_1[2]; unsigned int x_5_2_2[8]; unsigned int x_5_2_3[16]; } x_2_1_5; struct CC_SHA256state_st { unsigned int x_6_2_1[2]; unsigned int x_6_2_2[8]; unsigned int x_6_2_3[16]; } x_2_1_6; struct CC_SHA512state_st { unsigned long long x_7_2_1[2]; unsigned long long x_7_2_2[8]; unsigned long long x_7_2_3[16]; } x_2_1_7; struct CC_SHA512state_st { unsigned long long x_8_2_1[2]; unsigned long long x_8_2_2[8]; unsigned long long x_8_2_3[16]; } x_2_1_8; } x2; })hashContext;
+- (struct { int x1; union { struct CC_MD5state_st { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; unsigned int x_1_2_6; unsigned int x_1_2_7[16]; int x_1_2_8; } x_2_1_1; struct CC_SHA1state_st { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8[16]; int x_2_2_9; } x_2_1_2; struct CC_MD2state_st { int x_3_2_1; unsigned char x_3_2_2[16]; unsigned int x_3_2_3[16]; unsigned int x_3_2_4[16]; } x_2_1_3; struct CC_MD4state_st { unsigned int x_4_2_1; unsigned int x_4_2_2; unsigned int x_4_2_3; unsigned int x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; unsigned int x_4_2_7[16]; unsigned int x_4_2_8; } x_2_1_4; struct CC_SHA256state_st { unsigned int x_5_2_1[2]; unsigned int x_5_2_2[8]; unsigned int x_5_2_3[16]; } x_2_1_5; struct CC_SHA256state_st { unsigned int x_6_2_1[2]; unsigned int x_6_2_2[8]; unsigned int x_6_2_3[16]; } x_2_1_6; struct CC_SHA512state_st { unsigned long long x_7_2_1[2]; unsigned long long x_7_2_2[8]; unsigned long long x_7_2_3[16]; } x_2_1_7; } x2; })hashContext;
 - (unsigned long long)hashedChunkSize;
 - (id)inMemoryFileData;
 - (id)init;

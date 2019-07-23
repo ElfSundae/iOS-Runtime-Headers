@@ -3,10 +3,10 @@
  */
 
 @interface MPAbstractNetworkArtworkDataSource : NSObject <MPArtworkDataSource, NSURLSessionDataDelegate> {
-    NSURLSession *_URLSession;
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSCache *_artworkRepresentationCache;
-    NSMapTable *_catalogTaskMap;
+    NSURLSession * _URLSession;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    NSCache * _artworkRepresentationCache;
+    NSMapTable * _catalogTaskMap;
 }
 
 @property (nonatomic, retain) NSURLSession *URLSession;
@@ -34,9 +34,11 @@
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize { float x1; float x2; })arg2;
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
 - (id)catalogTaskMap;
+- (id)existingArtworkEffectResultForEffectType:(int)arg1 catalog:(id)arg2 options:(id)arg3;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
 - (id)init;
 - (BOOL)isRepresentation:(id)arg1 bestRepresentationForArtworkCatalog:(id)arg2;
+- (void)loadArtworkEffectResultForEffectType:(int)arg1 catalog:(id)arg2 options:(id)arg3 systemEffectHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize { float x1; float x2; })arg2;
 - (void)setAccessQueue:(id)arg1;

@@ -6,18 +6,18 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } mBy;
+    }  mBy;
     struct CGPoint { 
         float x; 
         float y; 
-    } mFrom;
-    BOOL mHasBy;
-    BOOL mHasFrom;
-    BOOL mHasTo;
+    }  mFrom;
+    BOOL  mHasBy;
+    BOOL  mHasFrom;
+    BOOL  mHasTo;
     struct CGPoint { 
         float x; 
         float y; 
-    } mTo;
+    }  mTo;
 }
 
 - (struct CGPoint { float x1; float x2; })by;

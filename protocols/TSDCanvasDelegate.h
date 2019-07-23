@@ -20,6 +20,7 @@
 - (Class)canvasRootLayoutClass;
 - (void)canvasWillLayout:(TSDCanvas *)arg1;
 - (void)canvasWillUpdateRepsFromLayouts:(TSDCanvas *)arg1;
+- (BOOL)imageIsRenderingForMovie;
 - (NSSet *)infosToHideForCanvas:(TSDCanvas *)arg1;
 - (BOOL)isCanvasDrawingIntoPDF:(TSDCanvas *)arg1;
 - (BOOL)isCanvasInteractive;

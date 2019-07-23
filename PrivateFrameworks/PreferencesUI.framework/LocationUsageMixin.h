@@ -3,12 +3,12 @@
  */
 
 @interface LocationUsageMixin : NSObject {
-    unsigned int _authLevel;
-    UILabel *_authLevelLabel;
-    PSTableCell *_cell;
-    int _usage;
-    UIImageView *_usageIndicator;
-    float horizontalOffset;
+    unsigned int  _authLevel;
+    UILabel * _authLevelLabel;
+    PSTableCell * _cell;
+    int  _usage;
+    UIImageView * _usageIndicator;
+    float  horizontalOffset;
 }
 
 @property (nonatomic) unsigned int authLevel;
@@ -21,8 +21,7 @@
 - (unsigned int)authLevel;
 - (float)horizontalOffset;
 - (id)iconNameForUsage:(int)arg1;
-- (id)initWithTableCell:(id)arg1;
-- (void)layoutUsageIndicator;
+- (id)initWithTableCell:(id)arg1 withHorizontalOffset:(float)arg2;
 - (void)setAuthLevel:(unsigned int)arg1;
 - (void)setHorizontalOffset:(float)arg1;
 - (void)setUsage:(int)arg1;

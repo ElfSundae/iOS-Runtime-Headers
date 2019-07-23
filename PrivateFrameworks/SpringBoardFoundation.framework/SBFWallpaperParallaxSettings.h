@@ -3,9 +3,9 @@
  */
 
 @interface SBFWallpaperParallaxSettings : SBFParallaxSettings {
-    float _overhangX;
-    float _overhangY;
-    float _perspectiveTransform;
+    float  _overhangX;
+    float  _overhangY;
+    float  _perspectiveTransform;
 }
 
 @property float overhangX;
@@ -20,6 +20,8 @@
 + (struct CGSize { float x1; float x2; })bestWallpaperSizeForWallpaperSize:(struct CGSize { float x1; float x2; })arg1 deviceType:(int)arg2 parallaxFactor:(float)arg3 portrait:(BOOL)arg4;
 + (struct CGSize { float x1; float x2; })minimumWallpaperSizeForCurrentDevice;
 + (struct CGSize { float x1; float x2; })minimumWallpaperSizeForWallpaperSize:(struct CGSize { float x1; float x2; })arg1 deviceType:(int)arg2;
++ (float)minimumZoomScaleForCurrentDeviceForWallpaperSize:(struct CGSize { float x1; float x2; })arg1 parallaxFactor:(float)arg2;
++ (float)minimumZoomScaleForWallpaperSize:(struct CGSize { float x1; float x2; })arg1 parallaxFactor:(float)arg2 deviceType:(int)arg3;
 + (struct CGSize { float x1; float x2; })overhangSizeForCurrentDevice;
 + (struct CGSize { float x1; float x2; })overhangSizeForDeviceType:(int)arg1;
 + (id)settingsControllerModule;

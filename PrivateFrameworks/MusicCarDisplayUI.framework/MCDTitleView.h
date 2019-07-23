@@ -3,11 +3,11 @@
  */
 
 @interface MCDTitleView : UIView {
-    UIImageView *_explicitImageView;
-    NSLayoutConstraint *_explicitImageViewWidthConstraint;
-    BOOL _explicitTrack;
-    UILabel *_titleLabel;
-    NSLayoutConstraint *_titlePaddingConstraint;
+    UIImageView * _explicitImageView;
+    NSLayoutConstraint * _explicitImageViewWidthConstraint;
+    BOOL  _explicitTrack;
+    UILabel * _titleLabel;
+    NSLayoutConstraint * _titlePaddingConstraint;
 }
 
 @property (getter=isExplicitTrack, nonatomic) BOOL explicitTrack;

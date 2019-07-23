@@ -3,17 +3,17 @@
  */
 
 @interface _MRAudioBufferProtobuf : PBCodable <NSCopying> {
-    NSData *_contents;
-    _MRAudioFormatSettingsProtobuf *_formatSettings;
+    NSData * _contents;
+    _MRAudioFormatSettingsProtobuf * _formatSettings;
     struct { 
         unsigned int maximumPacketSize : 1; 
         unsigned int packetCapacity : 1; 
         unsigned int packetCount : 1; 
-    } _has;
-    long long _maximumPacketSize;
-    long long _packetCapacity;
-    long long _packetCount;
-    NSMutableArray *_packetDescriptions;
+    }  _has;
+    long long  _maximumPacketSize;
+    long long  _packetCapacity;
+    long long  _packetCount;
+    NSMutableArray * _packetDescriptions;
 }
 
 @property (nonatomic, retain) NSData *contents;
@@ -27,6 +27,8 @@
 @property (nonatomic) long long packetCapacity;
 @property (nonatomic) long long packetCount;
 @property (nonatomic, retain) NSMutableArray *packetDescriptions;
+
++ (Class)packetDescriptionsType;
 
 - (void)addPacketDescriptions:(id)arg1;
 - (void)clearPacketDescriptions;

@@ -3,11 +3,11 @@
  */
 
 @interface VTUIPagedLabel : UIView {
-    UIView *_instructionContainerLeft;
-    UIView *_instructionContainerRight;
-    UILabel *_instructionLabelLeft;
-    UILabel *_instructionLabelRight;
-    UIScrollView *_scrollView;
+    UIView * _instructionContainerLeft;
+    UIView * _instructionContainerRight;
+    UILabel * _instructionLabelLeft;
+    UILabel * _instructionLabelRight;
+    UIScrollView * _scrollView;
 }
 
 - (void).cxx_destruct;

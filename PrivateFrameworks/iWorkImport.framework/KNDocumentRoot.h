@@ -3,12 +3,12 @@
  */
 
 @interface KNDocumentRoot : TSADocumentRoot <TSKModel, TSTResolverContainerNameProvider> {
-    BOOL _isShowcastAllowed;
-    BOOL mIsObservingRecording;
-    KNRecordingSyncMaintainer *mRecordingSyncMaintainer;
-    KNShow *mShow;
-    KNSlidePreviewManager *mSlidePreviewManager;
-    KNThumbnailManager *mThumbnailManager;
+    BOOL  _isShowcastAllowed;
+    BOOL  mIsObservingRecording;
+    KNRecordingSyncMaintainer * mRecordingSyncMaintainer;
+    KNShow * mShow;
+    KNSlidePreviewManager * mSlidePreviewManager;
+    KNThumbnailManager * mThumbnailManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;

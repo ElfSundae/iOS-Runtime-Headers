@@ -3,13 +3,13 @@
  */
 
 @interface SKAction : NSObject <NSCoding, NSCopying> {
-    struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; int x14; float x15; float x16; float x17; float x18; } *_caction;
+    struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; int x14; float x15; float x16; float x17; float x18; } * _caction;
 }
 
 @property (nonatomic) double duration;
 @property (nonatomic) BOOL finished;
 @property (nonatomic) float speed;
-@property (nonatomic) id /* block */ timingFunction;
+@property (nonatomic, copy) id /* block */ timingFunction;
 @property (nonatomic) int timingMode;
 
 + (id)actionNamed:(id)arg1;
@@ -21,6 +21,8 @@
 + (id)animateWithNormalTextures:(id)arg1 timePerFrame:(double)arg2 resize:(BOOL)arg3 restore:(BOOL)arg4;
 + (id)animateWithTextures:(id)arg1 timePerFrame:(double)arg2;
 + (id)animateWithTextures:(id)arg1 timePerFrame:(double)arg2 resize:(BOOL)arg3 restore:(BOOL)arg4;
++ (id)animateWithWarps:(id)arg1 times:(id)arg2;
++ (id)animateWithWarps:(id)arg1 times:(id)arg2 restore:(BOOL)arg3;
 + (id)applyAngularImpulse:(float)arg1 duration:(double)arg2;
 + (id)applyForce:(struct CGVector { float x1; float x2; })arg1 atPoint:(struct CGPoint { float x1; float x2; })arg2 duration:(double)arg3;
 + (id)applyForce:(struct CGVector { float x1; float x2; })arg1 duration:(double)arg2;
@@ -92,6 +94,7 @@
 + (id)runBlock:(id /* block */)arg1 queue:(id)arg2;
 + (id)scaleBy:(float)arg1 duration:(double)arg2;
 + (id)scaleTo:(float)arg1 duration:(double)arg2;
++ (id)scaleToSize:(struct CGSize { float x1; float x2; })arg1 duration:(double)arg2;
 + (id)scaleXBy:(float)arg1 y:(float)arg2 duration:(double)arg3;
 + (id)scaleXTo:(float)arg1 duration:(double)arg2;
 + (id)scaleXTo:(float)arg1 y:(float)arg2 duration:(double)arg3;
@@ -112,6 +115,7 @@
 + (id)unhide;
 + (id)waitForDuration:(double)arg1;
 + (id)waitForDuration:(double)arg1 withRange:(double)arg2;
++ (id)warpTo:(id)arg1 duration:(double)arg2;
 
 - (struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; int x14; float x15; float x16; float x17; float x18; }*)caction;
 - (void)commonInit;

@@ -3,26 +3,24 @@
  */
 
 @interface MFLibraryMessage : MFMailMessage {
-    unsigned long long _conversationFlags;
-    id /* block */ _deallocationHandler;
-    unsigned int _libraryID;
-    unsigned int _mailboxID;
-    NSString *_messageID;
-    NSMutableDictionary *_metadata;
-    NSMutableSet *_metadataChangedKeys;
-    MFLock *_metadataLock;
-    unsigned int _originalMailboxID;
-    NSString *_remoteID;
-    unsigned int _size;
-    unsigned long _uid;
-    unsigned long long _uniqueRemoteId;
+    unsigned long long  _conversationFlags;
+    unsigned int  _libraryID;
+    unsigned int  _mailboxID;
+    NSString * _messageID;
+    NSMutableDictionary * _metadata;
+    NSMutableSet * _metadataChangedKeys;
+    MFLock * _metadataLock;
+    unsigned int  _originalMailboxID;
+    NSString * _remoteID;
+    unsigned int  _size;
+    unsigned long  _uid;
+    unsigned long long  _uniqueRemoteId;
 }
-
-@property (nonatomic, copy) id /* block */ deallocationHandler;
 
 + (id)messageWithLibraryID:(unsigned int)arg1;
 
 - (id)_attachmentStorageLocation;
+- (void)_forceLoadOfMessageSummaryFromProtectedStore;
 - (void)_initializeMetadata;
 - (void)_updateUID;
 - (id)account;
@@ -35,7 +33,6 @@
 - (id)dataConsumerForMimePart:(id)arg1;
 - (id)dataPathForMimePart:(id)arg1;
 - (void)dealloc;
-- (id /* block */)deallocationHandler;
 - (id)description;
 - (BOOL)hasTemporaryUid;
 - (unsigned int)hash;
@@ -46,6 +43,7 @@
 - (BOOL)isPartial;
 - (id)library;
 - (unsigned int)libraryID;
+- (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (id)mailbox;
 - (unsigned int)mailboxID;
 - (id)mailboxName;
@@ -66,11 +64,9 @@
 - (id)preferredEmailAddressToReplyWith;
 - (id)remoteID;
 - (void)setConversationFlags:(unsigned long long)arg1;
-- (void)setDeallocationHandler:(id /* block */)arg1;
 - (void)setFlags:(unsigned long long)arg1;
 - (void)setHasTemporaryUid:(BOOL)arg1;
 - (void)setIsPartial:(BOOL)arg1;
-- (void)setLibraryID:(unsigned int)arg1;
 - (void)setMailboxID:(unsigned int)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setMessageFlags:(unsigned long long)arg1;

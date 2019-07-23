@@ -3,18 +3,18 @@
  */
 
 @interface CPMLSchema : NSObject {
-    NSMutableArray *_categoricalDataList;
-    NSMutableArray *_indexColumnList;
-    NSMutableArray *_matchReplaceValue;
-    NSMutableArray *_replaceMissingValue;
-    NSMutableArray *attribute;
-    NSMutableArray *availableOptions;
-    NSMutableArray *nsRemapTable;
-    NSMutableArray *schema;
-    NSMutableArray *schemaHDef;
-    NSMutableString *schemaHeader;
-    NSMutableString *schemaHeaderWithType;
-    int yColumnPosition;
+    NSMutableArray * _categoricalDataList;
+    NSMutableArray * _indexColumnList;
+    NSMutableArray * _matchReplaceValue;
+    NSMutableArray * _replaceMissingValue;
+    NSMutableArray * attribute;
+    NSMutableArray * availableOptions;
+    NSMutableArray * nsRemapTable;
+    NSMutableArray * schema;
+    NSMutableArray * schemaHDef;
+    NSMutableString * schemaHeader;
+    NSMutableString * schemaHeaderWithType;
+    int  yColumnPosition;
 }
 
 @property (nonatomic, readonly) NSMutableArray *attribute;

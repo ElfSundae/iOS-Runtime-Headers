@@ -3,14 +3,24 @@
  */
 
 @interface _UISizeTrackingView : UIView <_UIRemoteViewFocusProxy, _UIScrollToTopView> {
-    BOOL _hasIntrinsicContentSize;
+    struct CGRect { 
+        struct CGPoint { 
+            float x; 
+            float y; 
+        } origin; 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+    }  _formerTextEffectsContentFrame;
+    BOOL  _hasIntrinsicContentSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _intrinsicContentSize;
-    _UIRemoteViewController *_remoteViewController;
-    id _textEffectsOperatorProxy;
-    id _viewControllerOperatorProxy;
+    }  _intrinsicContentSize;
+    _UIRemoteViewController * _remoteViewController;
+    id  _textEffectsOperatorProxy;
+    id  _viewControllerOperatorProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,9 +38,11 @@
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (int)_interfaceOrientationForScene:(id)arg1;
 - (struct CGSize { float x1; float x2; })_intrinsicSizeWithinSize:(struct CGSize { float x1; float x2; })arg1;
+- (BOOL)_needsTextEffectsUpdateToFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint { float x1; float x2; })arg1 resultHandler:(id /* block */)arg2;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(int)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)_updateTextEffectsGeometriesImmediately;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isScrollEnabled;

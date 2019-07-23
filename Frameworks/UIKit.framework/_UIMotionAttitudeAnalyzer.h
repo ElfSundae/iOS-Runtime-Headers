@@ -32,21 +32,21 @@
             float w; 
         } ; 
         float q[4]; 
-    } _absoluteQuaternion;
-    UIWindow *_diagnosticsWindow;
-    float _distanceMultiplier;
-    BOOL _hasHistory;
-    BOOL _hasReferenceQuaternion;
-    UIView *_horizontalLockIndicator;
-    UILabel *_idleIndicator;
-    float _idleLeeway;
+    }  _absoluteQuaternion;
+    UIWindow * _diagnosticsWindow;
+    float  _distanceMultiplier;
+    BOOL  _hasHistory;
+    BOOL  _hasReferenceQuaternion;
+    UIView * _horizontalLockIndicator;
+    UILabel * _idleIndicator;
+    float  _idleLeeway;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _idleStartOffset;
-    double _idleStartTime;
-    BOOL _isApplyingHysteresis;
-    float _jumpThreshold;
+    }  _idleStartOffset;
+    double  _idleStartTime;
+    BOOL  _isApplyingHysteresis;
+    float  _jumpThreshold;
     union _GLKQuaternion { 
         struct { 
             union _GLKVector3 { 
@@ -76,14 +76,14 @@
             float w; 
         } ; 
         float q[4]; 
-    } _lastAppliedRelativeQuaternion;
+    }  _lastAppliedRelativeQuaternion;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _lastAppliedViewerOffset;
-    double _lastUpdate;
-    float _lockStrength;
-    float _lockValue;
+    }  _lastAppliedViewerOffset;
+    double  _lastUpdate;
+    float  _lockStrength;
+    float  _lockValue;
     union _GLKQuaternion { 
         struct { 
             union _GLKVector3 { 
@@ -113,8 +113,8 @@
             float w; 
         } ; 
         float q[4]; 
-    } _referenceQuaternion;
-    float _referenceShiftSpeed;
+    }  _referenceQuaternion;
+    float  _referenceShiftSpeed;
     union _GLKQuaternion { 
         struct { 
             union _GLKVector3 { 
@@ -144,10 +144,10 @@
             float w; 
         } ; 
         float q[4]; 
-    } _relativeQuaternionOnHysteresisEntry;
-    float _secondsBeforeIdle;
-    float _smoothingDegree;
-    UIView *_verticalLockIndicator;
+    }  _relativeQuaternionOnHysteresisEntry;
+    float  _secondsBeforeIdle;
+    float  _smoothingDegree;
+    UIView * _verticalLockIndicator;
 }
 
 @property (readonly, copy) NSString *debugDescription;

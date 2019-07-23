@@ -3,12 +3,12 @@
  */
 
 @interface SKOrientationConstraint : SKConstraint {
-    SKNode *_node;
-    SKRange *_offset;
+    SKNode * _node;
+    SKRange * _offset;
     struct CGPoint { 
         float x; 
         float y; 
-    } _point;
+    }  _point;
 }
 
 @property SKNode *node;

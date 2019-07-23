@@ -3,10 +3,10 @@
  */
 
 @interface UITextViewPrintFormatter : UIViewPrintFormatter {
-    NSArray *_pageData;
+    NSArray * _pageData;
     struct { 
         unsigned int initializedUsedRects : 1; 
-    } _textViewPrintFormatterFlags;
+    }  _textViewPrintFormatterFlags;
 }
 
 - (void).cxx_destruct;

@@ -12,12 +12,12 @@
             float width; 
             float height; 
         } size; 
-    } _endRect;
-    BOOL _isEditable;
-    BOOL _isNone;
-    BOOL _isRange;
-    unsigned int _selectedTextLength;
-    NSArray *_selectionRects;
+    }  _endRect;
+    BOOL  _isEditable;
+    BOOL  _isNone;
+    BOOL  _isRange;
+    unsigned int  _selectedTextLength;
+    NSArray * _selectionRects;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -27,7 +27,7 @@
             float width; 
             float height; 
         } size; 
-    } _startRect;
+    }  _startRect;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } endRect;

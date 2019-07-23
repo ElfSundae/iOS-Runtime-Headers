@@ -3,31 +3,31 @@
  */
 
 @interface SKPhysicsBody : NSObject <NSCoding, NSCopying> {
-    BOOL _affectedByGravity;
-    BOOL _allowsRotation;
-    float _angularDamping;
-    float _angularVelocity;
-    float _area;
-    unsigned int _categoryBitMask;
-    float _charge;
-    unsigned int _collisionBitMask;
-    unsigned int _contactTestBitMask;
-    float _density;
-    BOOL _dynamic;
-    unsigned int _fieldBitMask;
-    float _friction;
-    NSArray *_joints;
-    float _linearDamping;
-    float _mass;
-    SKNode *_node;
-    BOOL _pinned;
-    BOOL _resting;
-    float _restitution;
-    BOOL _usesPreciseCollisionDetection;
+    BOOL  _affectedByGravity;
+    BOOL  _allowsRotation;
+    float  _angularDamping;
+    float  _angularVelocity;
+    float  _area;
+    unsigned int  _categoryBitMask;
+    float  _charge;
+    unsigned int  _collisionBitMask;
+    unsigned int  _contactTestBitMask;
+    float  _density;
+    BOOL  _dynamic;
+    unsigned int  _fieldBitMask;
+    float  _friction;
+    NSArray * _joints;
+    float  _linearDamping;
+    float  _mass;
+    SKNode * _node;
+    BOOL  _pinned;
+    BOOL  _resting;
+    float  _restitution;
+    BOOL  _usesPreciseCollisionDetection;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _velocity;
+    }  _velocity;
 }
 
 @property (nonatomic) BOOL affectedByGravity;

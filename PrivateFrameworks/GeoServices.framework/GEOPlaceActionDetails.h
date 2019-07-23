@@ -3,9 +3,10 @@
  */
 
 @interface GEOPlaceActionDetails : PBCodable <NSCopying> {
-    NSString *_actionUrl;
-    unsigned long long _animationID;
-    unsigned long long _businessID;
+    NSString * _actionUrl;
+    unsigned long long  _animationID;
+    unsigned long long  _businessID;
+    NSString * _destinationApp;
     struct { 
         unsigned int animationID : 1; 
         unsigned int businessID : 1; 
@@ -14,26 +15,30 @@
         unsigned int targetID : 1; 
         unsigned int localSearchProviderID : 1; 
         unsigned int resultIndex : 1; 
-    } _has;
-    int _localSearchProviderID;
-    NSString *_photoId;
-    long long _placeID;
-    int _resultIndex;
-    double _searchResponseRelativeTimestamp;
-    unsigned long long _targetID;
-    GEOTransitPlaceCard *_transitPlaceCard;
+    }  _has;
+    int  _localSearchProviderID;
+    NSString * _photoId;
+    long long  _placeID;
+    int  _resultIndex;
+    NSString * _richProviderId;
+    double  _searchResponseRelativeTimestamp;
+    unsigned long long  _targetID;
+    GEOTransitPlaceCard * _transitPlaceCard;
 }
 
 @property (nonatomic, retain) NSString *actionUrl;
 @property (nonatomic) unsigned long long animationID;
 @property (nonatomic) unsigned long long businessID;
+@property (nonatomic, retain) NSString *destinationApp;
 @property (nonatomic, readonly) BOOL hasActionUrl;
 @property (nonatomic) BOOL hasAnimationID;
 @property (nonatomic) BOOL hasBusinessID;
+@property (nonatomic, readonly) BOOL hasDestinationApp;
 @property (nonatomic) BOOL hasLocalSearchProviderID;
 @property (nonatomic, readonly) BOOL hasPhotoId;
 @property (nonatomic) BOOL hasPlaceID;
 @property (nonatomic) BOOL hasResultIndex;
+@property (nonatomic, readonly) BOOL hasRichProviderId;
 @property (nonatomic) BOOL hasSearchResponseRelativeTimestamp;
 @property (nonatomic) BOOL hasTargetID;
 @property (nonatomic, readonly) BOOL hasTransitPlaceCard;
@@ -41,6 +46,7 @@
 @property (nonatomic, retain) NSString *photoId;
 @property (nonatomic) long long placeID;
 @property (nonatomic) int resultIndex;
+@property (nonatomic, retain) NSString *richProviderId;
 @property (nonatomic) double searchResponseRelativeTimestamp;
 @property (nonatomic) unsigned long long targetID;
 @property (nonatomic, retain) GEOTransitPlaceCard *transitPlaceCard;
@@ -57,14 +63,17 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)destinationApp;
 - (id)dictionaryRepresentation;
 - (BOOL)hasActionUrl;
 - (BOOL)hasAnimationID;
 - (BOOL)hasBusinessID;
+- (BOOL)hasDestinationApp;
 - (BOOL)hasLocalSearchProviderID;
 - (BOOL)hasPhotoId;
 - (BOOL)hasPlaceID;
 - (BOOL)hasResultIndex;
+- (BOOL)hasRichProviderId;
 - (BOOL)hasSearchResponseRelativeTimestamp;
 - (BOOL)hasTargetID;
 - (BOOL)hasTransitPlaceCard;
@@ -79,10 +88,12 @@
 - (long long)placeID;
 - (BOOL)readFrom:(id)arg1;
 - (int)resultIndex;
+- (id)richProviderId;
 - (double)searchResponseRelativeTimestamp;
 - (void)setActionUrl:(id)arg1;
 - (void)setAnimationID:(unsigned long long)arg1;
 - (void)setBusinessID:(unsigned long long)arg1;
+- (void)setDestinationApp:(id)arg1;
 - (void)setHasAnimationID:(BOOL)arg1;
 - (void)setHasBusinessID:(BOOL)arg1;
 - (void)setHasLocalSearchProviderID:(BOOL)arg1;
@@ -94,6 +105,7 @@
 - (void)setPhotoId:(id)arg1;
 - (void)setPlaceID:(long long)arg1;
 - (void)setResultIndex:(int)arg1;
+- (void)setRichProviderId:(id)arg1;
 - (void)setSearchResponseRelativeTimestamp:(double)arg1;
 - (void)setTargetID:(unsigned long long)arg1;
 - (void)setTransitPlaceCard:(id)arg1;

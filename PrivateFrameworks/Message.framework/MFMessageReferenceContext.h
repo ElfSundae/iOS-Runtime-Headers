@@ -3,24 +3,24 @@
  */
 
 @interface MFMessageReferenceContext : NSObject {
-    NSString *_bcc;
-    NSArray *_bccList;
-    NSString *_cc;
-    NSArray *_ccList;
-    unsigned long long *_conversationFlagsRef;
-    long long _conversationIDHash;
-    double _dateSentInterval;
-    unsigned int _libraryID;
-    int _mailboxID;
-    MFMailMessage *_message;
-    long long _messageIDHash;
-    NSMutableDictionary *_messageIDsBySubject;
-    MFSparseMutable64IndexSet *_references;
-    NSString *_sender;
-    NSArray *_senderList;
-    NSString *_subject;
-    NSString *_to;
-    NSArray *_toList;
+    NSString * _bcc;
+    NSArray * _bccList;
+    NSString * _cc;
+    NSArray * _ccList;
+    unsigned long long * _conversationFlagsRef;
+    long long  _conversationIDHash;
+    double  _dateSentInterval;
+    unsigned int  _libraryID;
+    int  _mailboxID;
+    MFMailMessage * _message;
+    long long  _messageIDHash;
+    NSMutableDictionary * _messageIDsBySubject;
+    MFSparseMutable64IndexSet * _references;
+    NSString * _sender;
+    NSArray * _senderList;
+    NSString * _subject;
+    NSString * _to;
+    NSArray * _toList;
 }
 
 @property (nonatomic, copy) NSString *bcc;

@@ -3,10 +3,10 @@
  */
 
 @interface _MRRegisterGameControllerResponseMessageProtobuf : PBCodable <NSCopying> {
-    unsigned long long _controllerID;
+    unsigned long long  _controllerID;
     struct { 
         unsigned int controllerID : 1; 
-    } _has;
+    }  _has;
 }
 
 @property (nonatomic) unsigned long long controllerID;

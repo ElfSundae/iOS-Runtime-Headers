@@ -3,7 +3,7 @@
  */
 
 @interface PSDetailController : PSViewController {
-    PSEditingPane *_pane;
+    PSEditingPane * _pane;
 }
 
 @property (nonatomic) PSEditingPane *pane;

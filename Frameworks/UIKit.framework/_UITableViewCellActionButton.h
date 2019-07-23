@@ -3,9 +3,9 @@
  */
 
 @interface _UITableViewCellActionButton : UIButton {
-    UITableViewRowAction *_action;
-    UIVisualEffect *_backgroundEffect;
-    unsigned int _style;
+    UITableViewRowAction * _action;
+    UIVisualEffect * _backgroundEffect;
+    unsigned int  _style;
 }
 
 @property (nonatomic, retain) UITableViewRowAction *action;

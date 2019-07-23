@@ -3,10 +3,10 @@
  */
 
 @interface UIPrinterPickerController : NSObject {
-    id /* block */ _completionHandler;
-    <UIPrinterPickerControllerDelegate> *_delegate;
-    UIPrinter *_selectedPrinter;
-    id _state;
+    id /* block */  _completionHandler;
+    <UIPrinterPickerControllerDelegate> * _delegate;
+    UIPrinter * _selectedPrinter;
+    id  _state;
 }
 
 @property (nonatomic) <UIPrinterPickerControllerDelegate> *delegate;

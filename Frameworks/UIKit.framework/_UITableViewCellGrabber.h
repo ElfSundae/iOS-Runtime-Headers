@@ -3,11 +3,11 @@
  */
 
 @interface _UITableViewCellGrabber : UIControl {
-    UITableViewCell *_cell;
+    UITableViewCell * _cell;
     struct CGPoint { 
         float x; 
         float y; 
-    } _downPoint;
+    }  _downPoint;
 }
 
 + (id)grabberImage;

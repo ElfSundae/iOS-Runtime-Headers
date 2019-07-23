@@ -3,8 +3,8 @@
  */
 
 @interface _UIAlertControllerTextFieldViewCollectionCell : UICollectionViewCell {
-    UITapGestureRecognizer *_selectButtonGesture;
-    _UIAlertControllerTextFieldView *_textField;
+    UITapGestureRecognizer * _selectButtonGesture;
+    _UIAlertControllerTextFieldView * _textField;
 }
 
 @property (nonatomic, readonly) _UIAlertControllerTextFieldView *textField;

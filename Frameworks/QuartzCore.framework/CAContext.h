@@ -6,6 +6,7 @@
 
 @property BOOL colorMatchUntaggedContent;
 @property struct CGColorSpace { }*colorSpace;
+@property (copy) NSString *contentsFormat;
 @property (readonly) unsigned int contextId;
 @property (retain) CALayer *layer;
 @property float level;
@@ -24,6 +25,7 @@
 
 - (unsigned int)createFencePort;
 - (unsigned int)createImageSlot:(struct CGSize { float x1; float x2; })arg1 hasAlpha:(BOOL)arg2;
+- (unsigned int)createImageSlot:(struct CGSize { float x1; float x2; })arg1 hasAlpha:(BOOL)arg2 extendedColors:(BOOL)arg3;
 - (unsigned int)createSlot;
 - (void)deleteSlot:(unsigned int)arg1;
 - (void)invalidate;

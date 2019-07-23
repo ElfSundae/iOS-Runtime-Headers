@@ -3,10 +3,10 @@
  */
 
 @interface EKStats : NSObject {
-    NSMutableDictionary *_distributionOperations;
-    int _domain;
-    NSMutableDictionary *_scalarOperations;
-    unsigned int _significantDigits;
+    NSMutableDictionary * _distributionOperations;
+    int  _domain;
+    NSMutableDictionary * _scalarOperations;
+    unsigned int  _significantDigits;
 }
 
 + (void)addToScalar:(id)arg1 value:(long long)arg2 domain:(int)arg3;

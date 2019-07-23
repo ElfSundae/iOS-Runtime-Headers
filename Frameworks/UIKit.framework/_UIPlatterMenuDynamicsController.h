@@ -3,34 +3,36 @@
  */
 
 @interface _UIPlatterMenuDynamicsController : NSObject <_UIPlatterMenuPanningTransformerDelegate> {
-    UIDynamicAnimator *_animator;
-    UIView *_containerView;
-    <_UIPlatterMenuDynamicsControllerDelegate> *_delegate;
-    int _didPresentCount;
-    UIAttachmentBehavior *_gestureAttachmentBehavior;
+    UIDynamicAnimator * _animator;
+    UIView * _containerView;
+    <_UIPlatterMenuDynamicsControllerDelegate> * _delegate;
+    int  _didPresentCount;
+    UIAttachmentBehavior * _gestureAttachmentBehavior;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialTouchPoint;
-    BOOL _isCurrentlyUnderDirectManipulation;
-    float _leadingSwipeEdgeMultiplier;
-    _UIPlatterMenuSnapBehavior *_menuDismissedSnapBehavior;
-    UIDynamicItemBehavior *_menuItemBehavior;
-    _UIPlatterMenuSnapBehavior *_menuPresentedSnapBehavior;
-    UIAttachmentBehavior *_menuVerticalLockAttachment;
-    UIView *_menuView;
-    UIDynamicItemBehavior *_noRotationBehavior;
-    _UIDynamicItemObservingBehavior *_observingBehavior;
-    _UIPlatterMenuPanningTransformer *_panningLockTransformer;
-    NSArray *_platterFollowingViewBehaviors;
-    UIDynamicItemBehavior *_platterItemBehavior;
-    UIAttachmentBehavior *_platterMenuAttachmentBehavior;
-    UICollisionBehavior *_platterMenuCollisionBounds;
-    UIAttachmentBehavior *_platterMenuSlidingAttachmentBehavior;
-    _UIPlatterMenuSnapBehavior *_platterSnapBehavior;
-    UIView *_platterView;
-    int _state;
-    float _trailingSwipeEdgeMultiplier;
+    }  _initialTouchPoint;
+    BOOL  _isCurrentlyUnderDirectManipulation;
+    BOOL  _leadingSwipeActionViewSelected;
+    float  _leadingSwipeEdgeMultiplier;
+    _UIPlatterMenuSnapBehavior * _menuDismissedSnapBehavior;
+    UIDynamicItemBehavior * _menuItemBehavior;
+    _UIPlatterMenuSnapBehavior * _menuPresentedSnapBehavior;
+    UIAttachmentBehavior * _menuVerticalLockAttachment;
+    UIView * _menuView;
+    UIDynamicItemBehavior * _noRotationBehavior;
+    _UIDynamicItemObservingBehavior * _observingBehavior;
+    _UIPlatterMenuPanningTransformer * _panningLockTransformer;
+    UIDynamicItemBehavior * _platterItemBehavior;
+    UIAttachmentBehavior * _platterMenuAttachmentBehavior;
+    UICollisionBehavior * _platterMenuCollisionBounds;
+    UIAttachmentBehavior * _platterMenuSlidingAttachmentBehavior;
+    _UIPlatterMenuSnapBehavior * _platterSnapBehavior;
+    UIView * _platterView;
+    int  _state;
+    _UIFeedbackStatesBehavior * _swipeFeedbackBehavior;
+    BOOL  _trailingSwipeActionViewSelected;
+    float  _trailingSwipeEdgeMultiplier;
 }
 
 @property (nonatomic, retain) UIDynamicAnimator *animator;
@@ -45,6 +47,7 @@
 @property (readonly) unsigned int hash;
 @property (nonatomic) struct CGPoint { float x1; float x2; } initialTouchPoint;
 @property (nonatomic) BOOL isCurrentlyUnderDirectManipulation;
+@property (nonatomic) BOOL leadingSwipeActionViewSelected;
 @property (nonatomic) float leadingSwipeEdgeMultiplier;
 @property (nonatomic, retain) _UIPlatterMenuSnapBehavior *menuDismissedSnapBehavior;
 @property (nonatomic, retain) UIDynamicItemBehavior *menuItemBehavior;
@@ -54,7 +57,6 @@
 @property (nonatomic, retain) UIDynamicItemBehavior *noRotationBehavior;
 @property (nonatomic, retain) _UIDynamicItemObservingBehavior *observingBehavior;
 @property (nonatomic, retain) _UIPlatterMenuPanningTransformer *panningLockTransformer;
-@property (nonatomic, retain) NSArray *platterFollowingViewBehaviors;
 @property (nonatomic, retain) UIDynamicItemBehavior *platterItemBehavior;
 @property (nonatomic, retain) UIAttachmentBehavior *platterMenuAttachmentBehavior;
 @property (nonatomic, retain) UICollisionBehavior *platterMenuCollisionBounds;
@@ -63,13 +65,18 @@
 @property (nonatomic) UIView *platterView;
 @property (nonatomic) int state;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) _UIFeedbackStatesBehavior *swipeFeedbackBehavior;
+@property (nonatomic) BOOL trailingSwipeActionViewSelected;
 @property (nonatomic) float trailingSwipeEdgeMultiplier;
 
 - (void).cxx_destruct;
-- (void)_addPlatterFollowingView:(id)arg1;
+- (void)_activateFeedbackIfNeeded;
 - (void)_animateToPlatterPresentedWithVelocity:(struct CGVector { float x1; float x2; })arg1;
 - (void)_beginInYLockedStatePresented;
 - (void)_configureAnimator;
+- (void)_configureFeedbackBehavior;
+- (void)_deactivateFeedbackIfNeeded;
+- (void)_fireConfirmFeedbackIfNeededForInitialSelectionState:(BOOL)arg1 finalSelectionState:(BOOL)arg2;
 - (BOOL)_isPlatterInYLockedPosition;
 - (void)_positionSwipeActionViewsForCurrentPlatterViewPosition;
 - (int)_stateForPosition:(struct CGPoint { float x1; float x2; })arg1 offset:(struct CGVector { float x1; float x2; })arg2 velocity:(struct CGVector { float x1; float x2; })arg3;
@@ -97,6 +104,7 @@
 - (BOOL)isMenuPresented;
 - (BOOL)isMenuPresenting;
 - (BOOL)isSelectingSwipeAction;
+- (BOOL)leadingSwipeActionViewSelected;
 - (float)leadingSwipeEdgeMultiplier;
 - (void)lockIntoYAxis;
 - (struct CGPoint { float x1; float x2; })menuCenter;
@@ -116,7 +124,6 @@
 - (void)performActionsAndEnterState:(int)arg1;
 - (void)performActionsAndEnterState:(int)arg1 velocity:(struct CGVector { float x1; float x2; })arg2 underDirectManipulation:(BOOL)arg3;
 - (struct CGPoint { float x1; float x2; })platterCenter;
-- (id)platterFollowingViewBehaviors;
 - (id)platterItemBehavior;
 - (id)platterMenuAttachmentBehavior;
 - (id)platterMenuCollisionBounds;
@@ -132,6 +139,7 @@
 - (void)setGestureAttachmentBehavior:(id)arg1;
 - (void)setInitialTouchPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)setIsCurrentlyUnderDirectManipulation:(BOOL)arg1;
+- (void)setLeadingSwipeActionViewSelected:(BOOL)arg1;
 - (void)setLeadingSwipeEdgeMultiplier:(float)arg1;
 - (void)setMenuDismissedSnapBehavior:(id)arg1;
 - (void)setMenuItemBehavior:(id)arg1;
@@ -141,7 +149,6 @@
 - (void)setNoRotationBehavior:(id)arg1;
 - (void)setObservingBehavior:(id)arg1;
 - (void)setPanningLockTransformer:(id)arg1;
-- (void)setPlatterFollowingViewBehaviors:(id)arg1;
 - (void)setPlatterItemBehavior:(id)arg1;
 - (void)setPlatterMenuAttachmentBehavior:(id)arg1;
 - (void)setPlatterMenuCollisionBounds:(id)arg1;
@@ -149,10 +156,14 @@
 - (void)setPlatterSnapBehavior:(id)arg1;
 - (void)setPlatterView:(id)arg1;
 - (void)setState:(int)arg1;
+- (void)setSwipeFeedbackBehavior:(id)arg1;
+- (void)setTrailingSwipeActionViewSelected:(BOOL)arg1;
 - (void)setTrailingSwipeEdgeMultiplier:(float)arg1;
 - (int)state;
 - (void)stopObservingBehavior;
+- (id)swipeFeedbackBehavior;
 - (void)toggleAnimatorDebugState;
+- (BOOL)trailingSwipeActionViewSelected;
 - (float)trailingSwipeEdgeMultiplier;
 
 @end

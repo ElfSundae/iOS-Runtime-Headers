@@ -3,7 +3,7 @@
  */
 
 @interface GKLinearCongruentialRandomSource : GKRandomSource {
-    unsigned long long _seed;
+    unsigned long long  _seed;
 }
 
 @property (nonatomic) unsigned long long seed;

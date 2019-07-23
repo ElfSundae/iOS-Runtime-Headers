@@ -3,10 +3,12 @@
  */
 
 @interface UIDefaultKeyboardInput : UIView <UIKeyboardInput, UITextInputPrivate> {
-    UITextInputTraits *m_traits;
+    UITextInputTraits * m_traits;
 }
 
 @property (nonatomic, copy) NSIndexSet *PINEntrySeparatorIndexes;
+@property (nonatomic) int _textInputSource;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -18,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
@@ -25,9 +28,16 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) int forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
+@property (nonatomic, retain) UIInputContextHistory *inputContextHistory;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
+@property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic, retain) UIColor *insertionPointColor;
 @property (nonatomic) unsigned int insertionPointWidth;
 @property (nonatomic, readonly) UITextInteractionAssistant *interactionAssistant;
@@ -53,8 +63,11 @@
 @property (nonatomic) int spellCheckingType;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
+@property (nonatomic, copy) NSString *textContentType;
+@property (nonatomic, readonly) <UITextInputSuggestionDelegate> *textInputSuggestionDelegate;
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) int textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet { }*textTrimmingSet;
@@ -85,6 +98,7 @@
 - (void)extendCurrentSelection:(int)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })firstRectForRange:(id)arg1;
 - (id)fontForCaretSelection;
+- (BOOL)forceDisableDictation;
 - (BOOL)forceEnableDictation;
 - (void)forwardInvocation:(id)arg1;
 - (BOOL)hasContent;
@@ -125,6 +139,7 @@
 - (void)setAcceptsEmoji:(BOOL)arg1;
 - (void)setBaseWritingDirection:(int)arg1 forRange:(id)arg2;
 - (void)setBecomesEditableWithGestures:(BOOL)arg1;
+- (void)setForceDisableDictation:(BOOL)arg1;
 - (void)setForceEnableDictation:(BOOL)arg1;
 - (void)setInputDelegate:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;

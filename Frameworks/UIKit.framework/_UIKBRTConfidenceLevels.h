@@ -3,8 +3,8 @@
  */
 
 @interface _UIKBRTConfidenceLevels : NSObject {
-    float _restConfidence;
-    float _touchConfidence;
+    float  _restConfidence;
+    float  _touchConfidence;
 }
 
 @property (nonatomic) float restConfidence;

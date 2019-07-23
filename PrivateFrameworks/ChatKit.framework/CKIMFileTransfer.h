@@ -3,24 +3,29 @@
  */
 
 @interface CKIMFileTransfer : NSObject <CKFileTransfer> {
-    unsigned long long _currentBytes;
-    NSError *_error;
-    BOOL _fileDataReady;
-    NSURL *_fileURL;
-    BOOL _fileURLFinalized;
-    NSString *_filename;
-    NSString *_guid;
-    IMMessage *_imMessage;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    NSURL *_linkFileURL;
-    int _mediaObjectCount;
-    BOOL _restoring;
-    unsigned long long _totalBytes;
-    NSDictionary *_transcoderUserInfo;
-    int _transferState;
+    NSDictionary * _attributionInfo;
+    unsigned long long  _currentBytes;
+    NSError * _error;
+    BOOL  _fileDataReady;
+    NSURL * _fileURL;
+    BOOL  _fileURLFinalized;
+    NSString * _filename;
+    NSString * _guid;
+    BOOL  _hideAttachment;
+    IMMessage * _imMessage;
+    BOOL  _isSticker;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
+    NSURL * _linkFileURL;
+    int  _mediaObjectCount;
+    BOOL  _restoring;
+    NSDictionary * _stickerUserInfo;
+    unsigned long long  _totalBytes;
+    NSDictionary * _transcoderUserInfo;
+    int  _transferState;
 }
 
 @property (nonatomic, retain) IMMessage *IMMessage;
+@property (nonatomic, copy) NSDictionary *attributionInfo;
 @property (nonatomic, readonly) unsigned long long currentBytes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,15 +38,20 @@
 @property (nonatomic, readonly, copy) NSString *filename;
 @property (nonatomic, readonly, copy) NSString *guid;
 @property (readonly) unsigned int hash;
+@property (nonatomic, readonly) BOOL hideAttachment;
+@property (nonatomic, readonly) BOOL isSticker;
 @property (nonatomic, copy) NSURL *linkFileURL;
 @property (getter=isRestoring, nonatomic, readonly) BOOL restoring;
+@property (nonatomic, readonly, copy) NSDictionary *stickerUserInfo;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long totalBytes;
 @property (nonatomic, readonly, copy) NSDictionary *transcoderUserInfo;
 @property (nonatomic) int transferState;
 
+- (void).cxx_destruct;
 - (id)IMMessage;
 - (void)attachmentRestored:(id)arg1;
+- (id)attributionInfo;
 - (unsigned long long)currentBytes;
 - (void)dealloc;
 - (id)description;
@@ -50,22 +60,27 @@
 - (id)fileURL;
 - (id)filename;
 - (id)guid;
+- (BOOL)hideAttachment;
 - (id)imFileTransferCenter;
-- (id)initWithFileURL:(id)arg1 transcoderUserInfo:(id)arg2;
+- (id)initWithFileURL:(id)arg1 transcoderUserInfo:(id)arg2 attributionInfo:(id)arg3 hideAttachment:(BOOL)arg4;
+- (id)initWithStickerFileURL:(id)arg1 transferUserInfo:(id)arg2 attributionInfo:(id)arg3;
 - (id)initWithTransferGUID:(id)arg1 imMessage:(id)arg2;
 - (BOOL)isDownloadable;
 - (BOOL)isDownloading;
 - (BOOL)isFileDataReady;
 - (BOOL)isFileURLFinalized;
 - (BOOL)isRestoring;
+- (BOOL)isSticker;
 - (id)linkFileURL;
 - (id)linkFileURLWithFilename:(id)arg1;
 - (void)mediaObjectAdded;
 - (void)mediaObjectRemoved;
 - (id)notificationCenter;
+- (void)setAttributionInfo:(id)arg1;
 - (void)setIMMessage:(id)arg1;
 - (void)setLinkFileURL:(id)arg1;
 - (void)setTransferState:(int)arg1;
+- (id)stickerUserInfo;
 - (id)syncController;
 - (unsigned long long)totalBytes;
 - (id)transcoderUserInfo;

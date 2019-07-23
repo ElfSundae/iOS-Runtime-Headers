@@ -3,11 +3,9 @@
  */
 
 @interface MDLCheckerboardTexture : MDLTexture {
-    struct CGColor { } *_cgColor1;
-    struct CGColor { } *_cgColor2;
-    void_color1;
-    void_color2;
-    int _divisions;
+    struct CGColor { } * _color1;
+    struct CGColor { } * _color2;
+    int  _divisions;
 }
 
 @property (nonatomic) struct CGColor { }*color1;

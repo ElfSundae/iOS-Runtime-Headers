@@ -3,24 +3,27 @@
  */
 
 @interface ISWrappedAVPlayer : NSObject {
-    NSObject<OS_dispatch_queue> *_avPlayerQueue;
-    <ISWrappedAVPlayerDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSObject<OS_dispatch_queue> *_ivarQueue;
-    AVPlayerItem *_ivarQueue_currentItem;
-    NSError *_ivarQueue_error;
+    NSObject<OS_dispatch_queue> * _avPlayerQueue;
+    <ISWrappedAVPlayerDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _delegateQueue;
+    NSObject<OS_dispatch_queue> * _ivarQueue;
+    void * _ivarQueueIdentifier;
+    AVPlayerItem * _ivarQueue_currentItem;
+    NSError * _ivarQueue_error;
+    NSError * _ivarQueue_itemError;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _ivarQueue_itemForwardPlaybackEndTime;
-    int _ivarQueue_itemStatus;
-    float _ivarQueue_rate;
-    int _ivarQueue_status;
-    float _ivarQueue_volume;
-    NSMutableDictionary *_observersByID;
-    AVPlayer *_playerQueue_avPlayer;
+    }  _ivarQueue_itemForwardPlaybackEndTime;
+    int  _ivarQueue_itemStatus;
+    float  _ivarQueue_rate;
+    int  _ivarQueue_status;
+    float  _ivarQueue_volume;
+    NSMutableDictionary * _observersByID;
+    void * _playerQueueIdentifier;
+    AVPlayer * _playerQueue_avPlayer;
 }
 
 @property <ISWrappedAVPlayerDelegate> *delegate;
@@ -47,6 +50,7 @@
 - (void)attachToPlayerLayerIfNeeded:(id)arg1;
 - (void)cancelPendingPrerolls;
 - (id)currentItem;
+- (id)currentItemError;
 - (int)currentItemStatus;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })currentTime;
 - (void)dealloc;
@@ -64,7 +68,10 @@
 - (void)replaceCurrentItemWithPlayerItem:(id)arg1 thenCall:(id /* block */)arg2;
 - (void)seekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 toleranceBefore:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 toleranceAfter:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 completionHandler:(id /* block */)arg4;
 - (void)setAllowsExternalPlayback:(BOOL)arg1;
+- (void)setAudioSession:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDimensionsOfReservedVideoMemory:(struct CGSize { float x1; float x2; })arg1;
+- (void)setItemBlendsVideoFrames:(BOOL)arg1;
 - (void)setItemForwardEndPlaybackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 atHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;

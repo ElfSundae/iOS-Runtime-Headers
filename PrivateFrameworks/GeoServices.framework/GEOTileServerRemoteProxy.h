@@ -3,13 +3,13 @@
  */
 
 @interface GEOTileServerRemoteProxy : GEOTileServerProxy {
-    NSHashTable *_cancellingConnections;
-    NSLock *_cancellingConnectionsLock;
-    NSObject<OS_xpc_object> *_conn;
-    NSLock *_connLock;
-    NSObject<OS_dispatch_queue> *_connQueue;
-    unsigned long long _handleCounter;
-    int _suspendCount;
+    NSHashTable * _cancellingConnections;
+    NSLock * _cancellingConnectionsLock;
+    NSObject<OS_xpc_object> * _conn;
+    NSLock * _connLock;
+    NSObject<OS_dispatch_queue> * _connQueue;
+    unsigned long long  _handleCounter;
+    int  _suspendCount;
 }
 
 - (void)_handleEditionUpgrade:(id)arg1;

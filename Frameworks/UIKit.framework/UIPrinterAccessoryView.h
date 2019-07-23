@@ -3,10 +3,10 @@
  */
 
 @interface UIPrinterAccessoryView : UIView {
-    <UIPrinterAccessoryViewDelegate> *_delegate;
-    UIButton *_infoButton;
-    int _printerState;
-    UIView *_statusView;
+    <UIPrinterAccessoryViewDelegate> * _delegate;
+    UIButton * _infoButton;
+    int  _printerState;
+    UIView * _statusView;
 }
 
 @property (nonatomic) <UIPrinterAccessoryViewDelegate> *delegate;

@@ -2,27 +2,30 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKAnnotationContainerView : UIView <MKAnnotationCalloutControllerDelegate> {
-    BOOL _addingSubview;
-    MKAnnotationView *_annotationViewToSelect;
-    NSMutableArray *_annotationViews;
-    float _annotationViewsRotationRadians;
-    NSMutableArray *_awaitingDropPins;
-    MKAnnotationCalloutController *_calloutController;
-    BOOL _clickedOnAnnotationView;
-    <MKAnnotationContainerViewDelegate> *_delegate;
-    BOOL _didDragAnnotationView;
-    MKAnnotationView *_draggingAnnotationView;
+@interface MKAnnotationContainerView : UIView <MKAnnotationCalloutControllerDelegate, _MKPinAnnotationViewDelegate> {
+    BOOL  _addingSubview;
+    MKAnnotationView * _annotationViewToSelect;
+    NSMutableArray * _annotationViews;
+    float  _annotationViewsRotationRadians;
+    NSMutableArray * _awaitingDropPins;
+    _MKBalloonAnnotationCalloutController * _balloonCalloutController;
+    MKAnnotationCalloutController * _calloutController;
+    BOOL  _clickedOnAnnotationView;
+    <MKAnnotationContainerViewDelegate> * _delegate;
+    BOOL  _didDragAnnotationView;
+    MKAnnotationView * _draggingAnnotationView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _draggingAnnotationViewCenter;
+    }  _draggingAnnotationViewCenter;
     struct { 
         unsigned char timePeriod; 
         unsigned char overlayType; 
         unsigned char applicationState; 
-    } _mapDisplayStyle;
-    float _mapPitchRadians;
+        unsigned char searchResultsType; 
+        BOOL mapHasLabels; 
+    }  _mapDisplayStyle;
+    float  _mapPitchRadians;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -30,23 +33,23 @@
         float d; 
         float tx; 
         float ty; 
-    } _mapTransform;
-    unsigned int _mapType;
+    }  _mapTransform;
+    unsigned int  _mapType;
     struct CGPoint { 
         float x; 
         float y; 
-    } _mouseDownPoint;
-    MKAnnotationView *_selectedAnnotationView;
-    BOOL _suppressCallout;
-    MKAnnotationView *_userLocationView;
-    NSMutableSet *_viewsToAnimate;
+    }  _mouseDownPoint;
+    MKAnnotationView * _selectedAnnotationView;
+    BOOL  _suppressCallout;
+    MKAnnotationView * _userLocationView;
+    NSMutableSet * _viewsToAnimate;
 }
 
 @property (nonatomic) BOOL allowsPopoverWhenNotInWindow;
 @property (nonatomic, readonly) NSMutableArray *annotationViews;
 @property (nonatomic, readonly) MKPinAnnotationView *bubblePin;
 @property (nonatomic, readonly) MKAnnotationView *calloutAnnotationView;
-@property (nonatomic, readonly) struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; id x5; } currentComparisonContext;
+@property (nonatomic, readonly) struct { int x1; struct CLLocationCoordinate2D { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; id x5; } currentComparisonContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MKAnnotationContainerViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -74,14 +77,15 @@
 - (void)_updateAnnotationView:(id)arg1;
 - (void)_updateAnnotationViewPerspective;
 - (void)_updateOrientationOfViews:(id)arg1;
-- (void)_updateOrientationOfViews:(id)arg1 relative:(id)arg2 projectionView:(struct UIView { Class x1; }*)arg3;
-- (void)_updateOrientationOfViewsCorrect:(id)arg1 relative:(id)arg2 projectionView:(struct UIView { Class x1; }*)arg3;
-- (void)_updateOrientationOfViewsFast:(id)arg1 relative:(id)arg2 projectionView:(struct UIView { Class x1; }*)arg3;
+- (void)_updateOrientationOfViews:(id)arg1 relative:(id)arg2 projectionView:(id)arg3;
+- (void)_updateOrientationOfViewsCorrect:(id)arg1 relative:(id)arg2 projectionView:(id)arg3;
+- (void)_updateOrientationOfViewsFast:(id)arg1 relative:(id)arg2 projectionView:(id)arg3;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_visibleCenteringRect;
-- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_visibleCenteringRectInView:(struct UIView { Class x1; }*)arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_visibleCenteringRectInView:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_visibleRect;
 - (void)_willRemoveInternalAnnotationView:(id)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })accessoryPadding;
+- (id)activeCalloutController;
 - (void)addAnnotationView:(id)arg1 allowAnimation:(BOOL)arg2;
 - (void)addSubview:(id)arg1;
 - (BOOL)allowsPopoverWhenNotInWindow;
@@ -93,19 +97,20 @@
 - (id)calloutAnnotationView;
 - (BOOL)calloutContainsPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (void)calloutController:(id)arg1 annotationView:(id)arg2 calloutAccessoryControlTapped:(id)arg3;
-- (void)calloutController:(id)arg1 scrollToRevealCalloutWithOffset:(struct CGPoint { float x1; float x2; })arg2 annotationCoordinate:(struct { double x1; double x2; })arg3 completionHandler:(id /* block */)arg4;
+- (void)calloutController:(id)arg1 calloutPrimaryActionTriggeredForAnnotationView:(id)arg2;
+- (void)calloutController:(id)arg1 scrollToRevealCalloutWithOffset:(struct CGPoint { float x1; float x2; })arg2 annotationCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg3 completionHandler:(id /* block */)arg4;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })calloutController:(id)arg1 visibleCenteringRectInAnnotationView:(id)arg2;
 - (void)calloutControllerDidFinishMapsTransitionExpanding:(id)arg1;
 - (void)calloutDidAppearForAnnotationView:(id)arg1 inCalloutController:(id)arg2;
-- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct { double x1; double x2; })arg1 toPointToView:(struct UIView { Class x1; }*)arg2;
-- (struct { double x1; double x2; })coordinateForAnnotationView:(id)arg1;
-- (struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; id x5; })currentComparisonContext;
+- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 toPointToView:(id)arg2;
+- (struct CLLocationCoordinate2D { double x1; double x2; })coordinateForAnnotationView:(id)arg1;
+- (struct { int x1; struct CLLocationCoordinate2D { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; id x5; })currentComparisonContext;
 - (void)dealloc;
 - (id)delegate;
 - (void)deselectAnnotationView:(id)arg1 animated:(BOOL)arg2;
 - (struct CGPoint { float x1; float x2; })draggingAnnotationViewDropPoint;
 - (struct CGPoint { float x1; float x2; })draggingAnnotationViewDropPointForPoint:(struct CGPoint { float x1; float x2; })arg1;
-- (void)draggingTouchMovedToPoint:(struct CGPoint { float x1; float x2; })arg1;
+- (void)draggingTouchMovedToPoint:(struct CGPoint { float x1; float x2; })arg1 edgeInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
 - (void)dropPinsIfNeeded;
 - (void)finishAddingAnnotationViews;
 - (BOOL)hasDroppingPins;
@@ -115,7 +120,7 @@
 - (BOOL)isCalloutExpanded;
 - (unsigned int)mapType;
 - (void)pinDidDrop:(id)arg1 animated:(BOOL)arg2;
-- (struct CGPoint { float x1; float x2; })pointForCoordinate:(struct { double x1; double x2; })arg1;
+- (struct CGPoint { float x1; float x2; })pointForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 - (id)popoverController;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })popoverTargetRectForSelectedAnnotationInView:(id)arg1;
 - (void)removeAnnotationView:(id)arg1;
@@ -124,7 +129,7 @@
 - (void)setAllowsPopoverWhenNotInWindow:(BOOL)arg1;
 - (void)setAnnotationViewsRotationRadians:(float)arg1 animation:(id)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; })arg1;
+- (void)setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; BOOL x5; })arg1;
 - (void)setMapPitchRadians:(float)arg1;
 - (void)setMapType:(unsigned int)arg1;
 - (void)setSuppressCallout:(BOOL)arg1;

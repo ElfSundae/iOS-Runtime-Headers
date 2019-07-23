@@ -3,18 +3,20 @@
  */
 
 @interface PUReviewScrubber : UIToolbar <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
-    UIImageView *__arrowImageView;
-    _UIBackdropView *__backdropView;
-    UICollectionView *__collectionView;
-    PUHorizontalCollectionViewLayout *__collectionViewLayout;
-    BOOL __ignoreScrollViewDidScrollUpdate;
-    unsigned int __numberOfPhotos;
-    BOOL __performingInteractiveUpdate;
-    UIImageView *__shadowView;
-    UITapGestureRecognizer *__tapGestureRecognizer;
-    <PUReviewScrubberDataSource> *_dataSource;
-    <PUReviewScrubberDelegate> *_scrubberDelegate;
-    int _selectedIndex;
+    UIImageView * __arrowImageView;
+    _UIBackdropView * __backdropView;
+    UICollectionView * __collectionView;
+    PUHorizontalCollectionViewLayout * __collectionViewLayout;
+    BOOL  __ignoreScrollViewDidScrollUpdate;
+    _UIFeedbackImpactBehavior * __impactFeedbackBehavior;
+    NSIndexPath * __indexPathForPreviousFeedbackQuery;
+    unsigned int  __numberOfPhotos;
+    BOOL  __performingInteractiveUpdate;
+    UIImageView * __shadowView;
+    UITapGestureRecognizer * __tapGestureRecognizer;
+    <PUReviewScrubberDataSource> * _dataSource;
+    <PUReviewScrubberDelegate> * _scrubberDelegate;
+    int  _selectedIndex;
 }
 
 @property (nonatomic, readonly) UIImageView *_arrowImageView;
@@ -22,6 +24,8 @@
 @property (nonatomic, readonly) UICollectionView *_collectionView;
 @property (nonatomic, readonly) PUHorizontalCollectionViewLayout *_collectionViewLayout;
 @property (nonatomic, readonly) BOOL _ignoreScrollViewDidScrollUpdate;
+@property (nonatomic, readonly) _UIFeedbackImpactBehavior *_impactFeedbackBehavior;
+@property (setter=_setIndexPathForPreviousFeedbackQuery:, nonatomic, retain) NSIndexPath *_indexPathForPreviousFeedbackQuery;
 @property (nonatomic, readonly) unsigned int _numberOfPhotos;
 @property (nonatomic, readonly) BOOL _performingInteractiveUpdate;
 @property (nonatomic, readonly) UIImageView *_shadowView;
@@ -37,18 +41,24 @@
 - (void).cxx_destruct;
 - (id)_arrowImageView;
 - (id)_backdropView;
+- (void)_beginFeedbackInteraction;
 - (id)_collectionView;
 - (id)_collectionViewLayout;
 - (void)_commonPUReviewScrubberInitialization;
+- (void)_endFeedbackInteraction;
 - (void)_handleTapAtIndexPath:(id)arg1;
 - (void)_handleTapOnReviewScrubber:(id)arg1;
 - (BOOL)_ignoreScrollViewDidScrollUpdate;
+- (id)_impactFeedbackBehavior;
 - (int)_indexOfCellAtContentOffset:(struct CGPoint { float x1; float x2; })arg1 ofScrollView:(id)arg2;
+- (id)_indexPathForPreviousFeedbackQuery;
 - (id)_indexPathInCollectionView:(id)arg1 closestToPoint:(struct CGPoint { float x1; float x2; })arg2 excludingIndexPath:(id)arg3;
 - (void)_notifyDelegateOfScrub;
 - (void)_notifyDelegateOfSelection;
 - (unsigned int)_numberOfPhotos;
 - (BOOL)_performingInteractiveUpdate;
+- (void)_playFeedbackIfNeeded;
+- (void)_setIndexPathForPreviousFeedbackQuery:(id)arg1;
 - (id)_shadowView;
 - (id)_tapGestureRecognizer;
 - (void)_updateContentOffsetForSelectedIndexAnimated:(BOOL)arg1;
@@ -69,7 +79,10 @@
 - (void)reloadData;
 - (void)reloadIndex:(unsigned int)arg1 animated:(BOOL)arg2;
 - (void)reloadSelectedIndexAnimated:(BOOL)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { float x1; float x2; })arg2 targetContentOffset:(inout struct CGPoint { float x1; float x2; }*)arg3;
 - (id)scrubberDelegate;
 - (int)selectedIndex;

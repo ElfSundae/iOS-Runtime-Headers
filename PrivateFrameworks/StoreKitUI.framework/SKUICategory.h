@@ -3,16 +3,16 @@
  */
 
 @interface SKUICategory : NSObject {
-    SKUIArtworkList *_artworkList;
-    long long _categoryIdentifier;
-    NSArray *_children;
-    NSString *_name;
-    NSString *_parentLabel;
-    NSURL *_url;
+    <SKUIArtworkProviding> * _artworkProvider;
+    long long  _categoryIdentifier;
+    NSArray * _children;
+    NSString * _name;
+    NSString * _parentLabel;
+    NSURL * _url;
 }
 
 @property (nonatomic, readonly) NSURL *URL;
-@property (nonatomic, readonly) SKUIArtworkList *artworkList;
+@property (nonatomic, readonly) <SKUIArtworkProviding> *artworkProvider;
 @property (nonatomic, readonly) long long categoryIdentifier;
 @property (nonatomic, readonly) NSArray *children;
 @property (nonatomic, readonly) NSString *name;
@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)URL;
-- (id)artworkList;
+- (id)artworkProvider;
 - (long long)categoryIdentifier;
 - (id)children;
 - (BOOL)containsURL:(id)arg1;

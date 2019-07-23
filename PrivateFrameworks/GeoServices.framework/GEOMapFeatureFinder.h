@@ -6,12 +6,12 @@
     struct { 
         double latitude; 
         double longitude; 
-    } _coordinate;
-    BOOL _ignoreUnnamedFeatures;
-    id /* block */ _pointHandler;
-    id /* block */ _polygonHandler;
-    id /* block */ _roadHandler;
-    GEOMapTileFinder *_tileFinder;
+    }  _coordinate;
+    BOOL  _ignoreUnnamedFeatures;
+    id /* block */  _pointHandler;
+    id /* block */  _polygonHandler;
+    id /* block */  _roadHandler;
+    GEOMapTileFinder * _tileFinder;
 }
 
 @property (nonatomic) BOOL ignoreUnnamedFeatures;

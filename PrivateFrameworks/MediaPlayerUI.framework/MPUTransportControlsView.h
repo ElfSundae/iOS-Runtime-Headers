@@ -3,25 +3,26 @@
  */
 
 @interface MPUTransportControlsView : UIView {
-    NSArray *_availableTransportControls;
-    NSMutableDictionary *_classByReuseIdentifier;
-    <MPUTransportControlsViewDataSource> *_dataSource;
-    <MPUTransportControlsViewDelegate> *_delegate;
+    NSArray * _availableTransportControls;
+    NSMutableDictionary * _classByReuseIdentifier;
+    <MPUTransportControlsViewDataSource> * _dataSource;
+    <MPUTransportControlsViewDelegate> * _delegate;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _insetsForExpandingButtons;
-    <MPUTransportControlsViewLayoutDelegate> *_layoutDelegate;
-    unsigned int _minimumNumberOfTransportButtonsForLayout;
-    NSMutableDictionary *_recycledButtonsByReuseIdentifier;
-    NSMapTable *_reuseIdentifierByButton;
-    NSMutableArray *_sortedVisibleControlsWithBlanks;
-    BOOL _sortedVisibleControlsWithBlanksNeedsReload;
-    NSMutableSet *_typesOfControlsToReload;
-    BOOL _usesLegacyLayoutHeuristics;
-    NSMutableDictionary *_visibleButtonByControlType;
+    }  _insetsForExpandingButtons;
+    <MPUTransportControlsViewLayoutDelegate> * _layoutDelegate;
+    unsigned int  _minimumNumberOfTransportButtonsForLayout;
+    NSMutableDictionary * _recycledButtonsByReuseIdentifier;
+    NSMapTable * _reuseIdentifierByButton;
+    BOOL  _sortByGroup;
+    NSMutableArray * _sortedVisibleControlsWithBlanks;
+    BOOL  _sortedVisibleControlsWithBlanksNeedsReload;
+    NSMutableSet * _typesOfControlsToReload;
+    BOOL  _usesLegacyLayoutHeuristics;
+    NSMutableDictionary * _visibleButtonByControlType;
 }
 
 @property (nonatomic, copy) NSArray *availableTransportControls;
@@ -30,6 +31,7 @@
 @property (getter=_insetsForExpandingButtons, setter=_setInsetsForExpandingButtons:, nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } insetsForExpandingButtons;
 @property (nonatomic) <MPUTransportControlsViewLayoutDelegate> *layoutDelegate;
 @property (nonatomic) unsigned int minimumNumberOfTransportButtonsForLayout;
+@property (nonatomic) BOOL sortByGroup;
 @property (getter=_usesLegacyLayoutHeuristics, setter=_setUsesLegacyLayoutHeuristics:, nonatomic) BOOL usesLegacyLayoutHeuristics;
 
 + (id)defaultTransportControls;
@@ -73,6 +75,8 @@
 - (void)setDelegate:(id)arg1;
 - (void)setLayoutDelegate:(id)arg1;
 - (void)setMinimumNumberOfTransportButtonsForLayout:(unsigned int)arg1;
+- (void)setSortByGroup:(BOOL)arg1;
 - (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
+- (BOOL)sortByGroup;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface AVAssetTrack : NSObject <AVAsynchronousKeyValueLoading, NSCopying> {
-    AVAssetTrackInternal *_track;
+    AVAssetTrackInternal * _track;
 }
 
 @property (nonatomic, readonly) AVAsset *asset;
@@ -42,6 +42,7 @@
 - (id)commonMetadata;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (int)defaultAlternateGroupID;
 - (id)description;
 - (struct CGSize { float x1; float x2; })dimensions;
 - (float)estimatedDataRate;
@@ -76,6 +77,7 @@
 - (long)playabilityValidationResult;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })preferredTransform;
 - (float)preferredVolume;
+- (int)provisionalAlternateGroupID;
 - (BOOL)requiresFrameReordering;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })samplePresentationTimeForTrackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)segmentForTrackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
@@ -88,8 +90,8 @@
 
 // Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
 
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })endTime;
-- (int)orientation;
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })startTime;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })vcp_endTime;
+- (int)vcp_orientation;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })vcp_startTime;
 
 @end

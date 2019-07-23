@@ -3,13 +3,13 @@
  */
 
 @interface HKLineSeriesPresentationStyle : NSObject {
-    HKFillStyle *_fillStyle;
-    UIImage *_lineEndCap;
-    UIImage *_pointMarkerImage;
-    BOOL _shouldApplyRollingAverage;
-    float _sineWaveSmoothingFactor;
-    HKStrokeStyle *_strokeStyle;
-    int _waveForm;
+    HKFillStyle * _fillStyle;
+    UIImage * _lineEndCap;
+    UIImage * _pointMarkerImage;
+    BOOL  _shouldApplyRollingAverage;
+    float  _sineWaveSmoothingFactor;
+    HKStrokeStyle * _strokeStyle;
+    int  _waveForm;
 }
 
 @property (nonatomic, retain) HKFillStyle *fillStyle;

@@ -99,10 +99,10 @@
         } gateway; 
         unsigned int ifindex; 
         unsigned int flags; 
-    } _descriptor;
-    NSData *_destination;
-    NSData *_gateway;
-    NSData *_mask;
+    }  _descriptor;
+    NSData * _destination;
+    NSData * _gateway;
+    NSData * _mask;
 }
 
 @property (retain) NSData *destination;

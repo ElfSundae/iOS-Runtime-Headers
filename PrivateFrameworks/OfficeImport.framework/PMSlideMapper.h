@@ -12,8 +12,8 @@
             float width; 
             float height; 
         } size; 
-    } mRect;
-    PDSlide *mSlide;
+    }  mRect;
+    PDSlide * mSlide;
 }
 
 - (id)defaultTheme;

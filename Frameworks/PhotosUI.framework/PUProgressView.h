@@ -3,8 +3,8 @@
  */
 
 @interface PUProgressView : UIView {
-    UIActivityIndicatorView *_spinner;
-    int _style;
+    UIActivityIndicatorView * _spinner;
+    int  _style;
 }
 
 @property (readonly) int style;

@@ -3,11 +3,11 @@
  */
 
 @interface _UIPreviewQuickActionView : UIView {
-    UIImageView *_backgroundViewImage;
-    UIImageView *_imageView;
-    UILabel *_label;
-    UIPreviewAction *_quickAction;
-    BOOL _selected;
+    UIImageView * _backgroundViewImage;
+    UIImageView * _imageView;
+    UILabel * _label;
+    UIPreviewAction * _quickAction;
+    BOOL  _selected;
 }
 
 @property (nonatomic) UIImageView *backgroundViewImage;

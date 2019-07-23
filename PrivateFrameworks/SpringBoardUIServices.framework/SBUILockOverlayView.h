@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/SpringBoardUIServices
  */
 
-@interface SBUILockOverlayView : SBInteractionPassThroughView {
-    UIButton *_actionButton;
-    <SBUILockOverlayViewDelegate> *_delegate;
-    _UILegibilitySettings *_legibilitySettings;
-    unsigned int _style;
-    UILabel *_subtitleLabel;
-    UIResizableView *_textContainerView;
-    UILabel *_titleLabel;
-    SBLockOverlayStylePropertiesFactory *_underlayPropertiesFactory;
+@interface SBUILockOverlayView : SBFTouchPassThroughView {
+    UIButton * _actionButton;
+    <SBUILockOverlayViewDelegate> * _delegate;
+    _UILegibilitySettings * _legibilitySettings;
+    unsigned int  _style;
+    UILabel * _subtitleLabel;
+    UIResizableView * _textContainerView;
+    UILabel * _titleLabel;
+    SBLockOverlayStylePropertiesFactory * _underlayPropertiesFactory;
 }
 
 @property (nonatomic, readonly) UIButton *actionButton;

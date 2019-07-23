@@ -3,19 +3,19 @@
  */
 
 @interface PLCropOverlayWallpaperBottomBar : UIView {
-    _UIBackdropView *_backdropView;
-    PLWallpaperButton *_doCancelButton;
-    PLWallpaperButton *_doSetBothScreenButton;
-    PLWallpaperButton *_doSetButton;
-    PLWallpaperButton *_doSetHomeScreenButton;
-    PLWallpaperButton *_doSetLockScreenButton;
-    float _maxToggleWidth;
-    PLWallpaperButton *_motionToggle;
-    BOOL _motionToggleHidden;
-    UIView *_separatorLine;
-    BOOL _shouldOnlyShowHomeScreenButton;
-    BOOL _shouldOnlyShowLockScreenButton;
-    _UILegibilityLabel *_titleLabel;
+    _UIBackdropView * _backdropView;
+    PLWallpaperButton * _doCancelButton;
+    PLWallpaperButton * _doSetBothScreenButton;
+    PLWallpaperButton * _doSetButton;
+    PLWallpaperButton * _doSetHomeScreenButton;
+    PLWallpaperButton * _doSetLockScreenButton;
+    float  _maxToggleWidth;
+    PLWallpaperButton * _motionToggle;
+    BOOL  _motionToggleHidden;
+    UIView * _separatorLine;
+    BOOL  _shouldOnlyShowHomeScreenButton;
+    BOOL  _shouldOnlyShowLockScreenButton;
+    _UILegibilityLabel * _titleLabel;
 }
 
 @property (nonatomic, retain) _UIBackdropView *backdropView;

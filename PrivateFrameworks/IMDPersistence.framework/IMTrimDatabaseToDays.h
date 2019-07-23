@@ -3,7 +3,7 @@
  */
 
 @interface IMTrimDatabaseToDays : IMAbstractDatabaseTrimmer {
-    long long _newerThanDays;
+    long long  _newerThanDays;
 }
 
 @property (nonatomic, readonly) long long newerThanDays;

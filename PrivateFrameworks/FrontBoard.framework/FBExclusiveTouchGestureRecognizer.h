@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _accumulatedMovement;
-    BOOL _achievedMaximumAbsoluteAccumulatedMovement;
+    }  _accumulatedMovement;
+    BOOL  _achievedMaximumAbsoluteAccumulatedMovement;
     struct CGPoint { 
         float x; 
         float y; 
-    } _maximumAbsoluteAccumulatedMovement;
+    }  _maximumAbsoluteAccumulatedMovement;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } accumulatedMovement;

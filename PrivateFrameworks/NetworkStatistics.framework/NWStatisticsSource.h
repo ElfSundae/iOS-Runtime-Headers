@@ -3,12 +3,12 @@
  */
 
 @interface NWStatisticsSource : NSObject {
-    NSDictionary *_counts;
-    <NWStatisticsSourceDelegate> *_delegate;
-    unsigned int _filter;
-    BOOL _hasCounts;
-    BOOL _hasDescriptor;
-    BOOL _hasNewKernelInfo;
+    NSDictionary * _counts;
+    <NWStatisticsSourceDelegate> * _delegate;
+    unsigned int  _filter;
+    BOOL  _hasCounts;
+    BOOL  _hasDescriptor;
+    BOOL  _hasNewKernelInfo;
     struct nstat_counts { 
         unsigned long long nstat_rxpackets; 
         unsigned long long nstat_rxbytes; 
@@ -28,13 +28,13 @@
         unsigned long long nstat_wifi_txbytes; 
         unsigned long long nstat_wired_rxbytes; 
         unsigned long long nstat_wired_txbytes; 
-    } _last_counts;
-    NWStatisticsManager *_manager;
-    unsigned int _reference;
-    BOOL _removed;
-    BOOL _removing;
-    unsigned long long _rxWiFiBytes;
-    unsigned long long _txWiFiBytes;
+    }  _last_counts;
+    NWStatisticsManager * _manager;
+    unsigned long long  _reference;
+    BOOL  _removed;
+    BOOL  _removing;
+    unsigned long long  _rxWiFiBytes;
+    unsigned long long  _txWiFiBytes;
 }
 
 @property (readonly) const struct nstat_counts { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*_nstat_counts;
@@ -46,7 +46,7 @@
 @property BOOL hasDescriptor;
 @property BOOL hasNewKernelInfo;
 @property (readonly) NWStatisticsManager *manager;
-@property unsigned int reference;
+@property unsigned long long reference;
 @property (getter=isRemoved) BOOL removed;
 @property BOOL removing;
 @property (readonly) double rttAverage;
@@ -66,7 +66,7 @@
 @property (readonly) unsigned long long txWiFiBytes;
 @property (readonly) unsigned long long txWiredBytes;
 
-+ (id)createSourceForProvider:(unsigned int)arg1 srcRef:(unsigned int)arg2 manager:(id)arg3;
++ (id)createSourceForProvider:(unsigned int)arg1 srcRef:(unsigned long long)arg2 manager:(id)arg3;
 
 - (void).cxx_destruct;
 - (BOOL)_handleDescriptor:(void*)arg1 length:(unsigned long)arg2;
@@ -84,12 +84,13 @@
 - (BOOL)hasDescriptor;
 - (BOOL)hasNewKernelInfo;
 - (id)init;
-- (id)initWithManager:(id)arg1 source:(unsigned int)arg2;
+- (id)initWithManager:(id)arg1 source:(unsigned long long)arg2;
 - (BOOL)isRemoved;
 - (id)manager;
 - (void)queryCounts;
 - (void)queryDescription;
-- (unsigned int)reference;
+- (void)queryUpdate;
+- (unsigned long long)reference;
 - (BOOL)removing;
 - (double)rttAverage;
 - (double)rttMinimum;
@@ -106,7 +107,7 @@
 - (void)setHasCounts:(BOOL)arg1;
 - (void)setHasDescriptor:(BOOL)arg1;
 - (void)setHasNewKernelInfo:(BOOL)arg1;
-- (void)setReference:(unsigned int)arg1;
+- (void)setReference:(unsigned long long)arg1;
 - (void)setRemoved:(BOOL)arg1;
 - (void)setRemoving:(BOOL)arg1;
 - (unsigned long long)txBytes;

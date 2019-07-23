@@ -3,27 +3,27 @@
  */
 
 @interface UITextSelectionView : UIView {
-    BOOL m_activated;
-    BOOL m_activeCaret;
-    BOOL m_caretAnimating;
-    BOOL m_caretBlinks;
-    BOOL m_caretShowingNow;
-    NSTimer *m_caretTimer;
-    UIView *m_caretView;
-    BOOL m_deferSelectionCommands;
-    BOOL m_delayShowingCommands;
-    BOOL m_dictationReplacementsMode;
-    UIView *m_floatingCaretView;
-    BOOL m_forceRangeView;
-    UITextInteractionAssistant *m_interactionAssistant;
-    BOOL m_isSuspended;
-    struct __CFRunLoopObserver { } *m_observer;
-    UITextRangeView *m_rangeView;
-    NSArray *m_replacements;
-    UITextSelection *m_selection;
-    int m_showingCommandsCounter;
-    BOOL m_visible;
-    BOOL m_wasShowingCommands;
+    BOOL  m_activated;
+    BOOL  m_activeCaret;
+    BOOL  m_caretAnimating;
+    BOOL  m_caretBlinks;
+    BOOL  m_caretShowingNow;
+    NSTimer * m_caretTimer;
+    UIView * m_caretView;
+    BOOL  m_deferSelectionCommands;
+    BOOL  m_delayShowingCommands;
+    BOOL  m_dictationReplacementsMode;
+    UIView * m_floatingCaretView;
+    BOOL  m_forceRangeView;
+    UITextInteractionAssistant * m_interactionAssistant;
+    BOOL  m_isSuspended;
+    struct __CFRunLoopObserver { } * m_observer;
+    UITextRangeView * m_rangeView;
+    NSArray * m_replacements;
+    UITextSelection * m_selection;
+    int  m_showingCommandsCounter;
+    BOOL  m_visible;
+    BOOL  m_wasShowingCommands;
 }
 
 @property (nonatomic) BOOL caretBlinks;
@@ -104,7 +104,9 @@
 - (void)selectionChanged;
 - (BOOL)selectionCommandsShowing;
 - (void)selectionDidScroll:(id)arg1;
+- (void)selectionDidTranslateForReachability:(id)arg1;
 - (void)selectionWillScroll:(id)arg1;
+- (void)selectionWillTranslateForReachability:(id)arg1;
 - (void)setCaretBlinks:(BOOL)arg1;
 - (void)setForceRangeView:(BOOL)arg1;
 - (void)setReplacements:(id)arg1;

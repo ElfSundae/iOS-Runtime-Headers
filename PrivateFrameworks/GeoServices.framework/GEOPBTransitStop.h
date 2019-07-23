@@ -3,19 +3,19 @@
  */
 
 @interface GEOPBTransitStop : PBCodable <GEOTransitNamedItem, NSCopying> {
-    unsigned int _hallIndex;
+    unsigned int  _hallIndex;
     struct { 
         unsigned int muid : 1; 
         unsigned int hallIndex : 1; 
         unsigned int stopIndex : 1; 
-    } _has;
-    GEOLatLng *_latLng;
-    unsigned long long _muid;
-    NSString *_nameDisplayString;
-    unsigned int _stopIndex;
-    GEOStyleAttributes *_styleAttributes;
-    NSString *_timezone;
-    NSMutableArray *_zoomNames;
+    }  _has;
+    GEOLatLng * _latLng;
+    unsigned long long  _muid;
+    NSString * _nameDisplayString;
+    unsigned int  _stopIndex;
+    GEOStyleAttributes * _styleAttributes;
+    NSString * _timezone;
+    NSMutableArray * _zoomNames;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +37,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *timezone;
 @property (nonatomic, retain) NSMutableArray *zoomNames;
+
++ (Class)zoomNameType;
 
 - (void)addZoomName:(id)arg1;
 - (id)bestName;

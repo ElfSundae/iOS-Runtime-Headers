@@ -3,28 +3,28 @@
  */
 
 @interface UIWindowController : NSObject {
-    BOOL __interactiveTransition;
+    BOOL  __interactiveTransition;
     struct CGPoint { 
         float x; 
         float y; 
-    } _beginOriginForToView;
-    int _currentTransition;
-    SEL _didEndSelector;
+    }  _beginOriginForToView;
+    int  _currentTransition;
+    SEL  _didEndSelector;
     struct CGPoint { 
         float x; 
         float y; 
-    } _endOriginForToView;
-    UIViewController *_fromViewController;
-    <UIViewControllerInteractiveTransitioning> *_interactionController;
-    BOOL _needsDidAppear;
-    BOOL _needsDidDisappear;
-    BOOL _presenting;
-    id _target;
-    int _toModalStyle;
-    UIViewController *_toViewController;
-    <UIViewControllerAnimatedTransitioning> *_transitionController;
-    UITransitionView *_transitionView;
-    UIWindow *_window;
+    }  _endOriginForToView;
+    UIViewController * _fromViewController;
+    <UIViewControllerInteractiveTransitioning> * _interactionController;
+    BOOL  _needsDidAppear;
+    BOOL  _needsDidDisappear;
+    BOOL  _presenting;
+    id  _target;
+    int  _toModalStyle;
+    UIViewController * _toViewController;
+    <UIViewControllerAnimatedTransitioning> * _transitionController;
+    UITransitionView * _transitionView;
+    UIWindow * _window;
 }
 
 @property (setter=_setInteractionController:, nonatomic, retain) <UIViewControllerInteractiveTransitioning> *_interactionController;

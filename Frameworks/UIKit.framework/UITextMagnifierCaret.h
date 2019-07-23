@@ -3,11 +3,13 @@
  */
 
 @interface UITextMagnifierCaret : UITextMagnifier {
+    int  _delayedAnimationType;
+    BOOL  _isAnimating;
     struct CGPoint { 
         float x; 
         float y; 
-    } _offset;
-    float _yOffset;
+    }  _offset;
+    float  _yOffset;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } offset;

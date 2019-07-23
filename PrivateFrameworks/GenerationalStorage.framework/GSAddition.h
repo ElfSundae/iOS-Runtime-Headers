@@ -3,18 +3,19 @@
  */
 
 @interface GSAddition : NSObject {
-    NSString *_displayName;
-    NSString *_namespace;
-    unsigned long long _options;
-    NSString *_originalName;
-    NSNumber *_size;
-    NSObject<GSAdditionStoring><GSAdditionStoringPrivate> *_storage;
-    NSURL *_url;
-    NSDictionary *_userInfo;
+    NSString * _displayName;
+    NSString * _namespace;
+    unsigned long long  _options;
+    NSString * _originalName;
+    NSNumber * _size;
+    NSObject<GSAdditionStoring><GSAdditionStoringPrivate> * _storage;
+    NSURL * _url;
+    NSDictionary * _userInfo;
 }
 
 @property (nonatomic, readonly) NSString *br_lastEditorDeviceName;
 @property (nonatomic, readonly) NSString *br_lastEditorName;
+@property (nonatomic, readonly) NSPersonNameComponents *br_lastEditorNameComponents;
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, readonly) BOOL isSavedConflict;
 @property (nonatomic, readonly) NSString *name;
@@ -68,13 +69,14 @@
 - (BOOL)_br_markResolvedWithError:(id*)arg1;
 - (id)br_lastEditorDeviceName;
 - (id)br_lastEditorName;
+- (id)br_lastEditorNameComponents;
 - (BOOL)br_markResolvedWithError:(id*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
 
 + (id)additionURLForName:(id)arg1 storagePrefix:(id)arg2 inConflictNamespace:(BOOL)arg3;
-+ (BOOL)brc_parseAdditionFilename:(id)arg1 mangledContainerID:(id*)arg2 itemID:(id*)arg3 etag:(id*)arg4;
++ (BOOL)brc_parseAdditionFilename:(id)arg1 mangledContainerID:(id*)arg2 itemID:(id*)arg3 etag:(id*)arg4 session:(id)arg5;
 
-- (BOOL)brc_parseMangledContainerID:(id*)arg1 itemID:(id*)arg2 etag:(id*)arg3;
+- (BOOL)brc_parseMangledContainerID:(id*)arg1 itemID:(id*)arg2 etag:(id*)arg3 session:(id)arg4;
 
 @end

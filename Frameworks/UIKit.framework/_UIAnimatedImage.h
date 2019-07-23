@@ -3,8 +3,8 @@
  */
 
 @interface _UIAnimatedImage : UIImage {
-    double _duration;
-    NSArray *_images;
+    double  _duration;
+    NSArray * _images;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -22,6 +22,7 @@
 - (id)_selectedTabBarItemImageWithTintColor:(id)arg1 metrics:(int)arg2 style:(int)arg3 forScreenScale:(float)arg4;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)_setAlwaysStretches:(BOOL)arg1;
+- (struct CGSize { float x1; float x2; })_sizeWithHairlineThickening:(BOOL)arg1 renderingEffects:(unsigned int)arg2 forTraitCollection:(id)arg3;
 - (id)_unselectedTabBarItemImageWithTintColor:(id)arg1 metrics:(int)arg2 style:(int)arg3 forScreenScale:(float)arg4;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })alignmentRectInsets;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })capInsets;

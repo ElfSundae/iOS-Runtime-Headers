@@ -3,17 +3,17 @@
  */
 
 @interface SYCompressingOutputStream : NSOutputStream <NSStreamDelegate, SYCompressionBufferOptimization, SYOutputCompressor, SYStreamEventHandlerBlocks, SYStreamProgress, SYStreamThroughputCounter, _SYStreamRunLoopSourceHandler> {
-    unsigned long long _byteCount;
-    _SYZlibStreamInternal *_internal;
-    int _level;
-    id /* block */ _onBytesAvailable;
-    id /* block */ _onClose;
-    id /* block */ _onEndOfFile;
-    id /* block */ _onError;
-    id /* block */ _onOpenComplete;
-    id /* block */ _onSpaceAvailable;
-    NSProgress *_progress;
-    NSOutputStream *_stream;
+    unsigned long long  _byteCount;
+    _SYZlibStreamInternal * _internal;
+    int  _level;
+    id /* block */  _onBytesAvailable;
+    id /* block */  _onClose;
+    id /* block */  _onEndOfFile;
+    id /* block */  _onError;
+    id /* block */  _onOpenComplete;
+    id /* block */  _onSpaceAvailable;
+    NSProgress * _progress;
+    NSOutputStream * _stream;
 }
 
 @property (nonatomic, readonly) unsigned long long bytesThroughput;

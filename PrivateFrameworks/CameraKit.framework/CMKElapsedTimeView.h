@@ -3,10 +3,10 @@
  */
 
 @interface CMKElapsedTimeView : UIView {
-    UIImageView *__recordingImageView;
-    NSDate *__startTime;
-    UILabel *__timeLabel;
-    NSTimer *__updateTimer;
+    UIImageView * __recordingImageView;
+    NSDate * __startTime;
+    UILabel * __timeLabel;
+    NSTimer * __updateTimer;
 }
 
 @property (nonatomic, readonly) UIImageView *_recordingImageView;

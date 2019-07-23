@@ -3,10 +3,10 @@
  */
 
 @interface CDBudget : NSObject {
-    unsigned long long _integerId;
-    NSString *_name;
-    CDSession *_session;
-    int _type;
+    unsigned long long  _integerId;
+    NSString * _name;
+    CDSession * _session;
+    int  _type;
 }
 
 @property (readonly) unsigned long long integerId;

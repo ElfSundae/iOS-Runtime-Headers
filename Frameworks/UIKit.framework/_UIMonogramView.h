@@ -3,9 +3,9 @@
  */
 
 @interface _UIMonogramView : UIView {
-    UILabel *_label;
-    NSString *_monogram;
-    NSString *_name;
+    UILabel * _label;
+    NSString * _monogram;
+    NSString * _name;
 }
 
 @property (nonatomic, retain) UILabel *label;

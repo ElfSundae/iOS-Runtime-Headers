@@ -3,22 +3,22 @@
  */
 
 @interface HKUIInteractiveChartDateLabelSlider : UIView {
-    HKDateIntervalCache *_dateIntervalCache;
-    NSMutableArray *_dateLabels;
+    HKDateIntervalCache * _dateIntervalCache;
+    NSMutableArray * _dateLabels;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _dateRangeInsets;
-    int _granularity;
-    UIColor *_labelColor;
-    UIFont *_labelFont;
-    NSDate *_leftDate;
-    BOOL _needsLabelUpdate;
-    NSDate *_rightDate;
-    float _roughGlyphWidth;
-    int _textAlignment;
+    }  _dateRangeInsets;
+    int  _granularity;
+    UIColor * _labelColor;
+    UIFont * _labelFont;
+    NSDate * _leftDate;
+    BOOL  _needsLabelUpdate;
+    NSDate * _rightDate;
+    float  _roughGlyphWidth;
+    int  _textAlignment;
 }
 
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } dateRangeInsets;

@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } mPoint;
+    }  mPoint;
     struct CGSize { 
         float width; 
         float height; 
-    } mSize;
-    int mType;
+    }  mSize;
+    int  mType;
 }
 
 - (struct CGPath { }*)createBezierPath;

@@ -6,9 +6,12 @@
     struct CGSize { 
         float width; 
         float height; 
-    } mNaturalSize;
-    struct CGPDFDocument { } *mPDFDocument;
+    }  mNaturalSize;
+    struct CGPDFDocument { } * mPDFDocument;
 }
+
+@property (nonatomic, readonly) struct CGPDFDocument { }*CGPDFDocument;
+@property (nonatomic, readonly) int pageAngle;
 
 - (struct CGPDFDocument { }*)CGPDFDocument;
 - (void)dealloc;

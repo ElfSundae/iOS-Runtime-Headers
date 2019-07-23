@@ -3,18 +3,18 @@
  */
 
 @interface PLAvalanche : NSObject <PLAssetChangeObserver, PLAssetContainer> {
-    PLManagedAsset *__aNewPick;
-    PLManagedAsset *__anOldPick;
-    NSMutableIndexSet *__autoPickIndexes;
-    id /* block */ __completionHandler;
-    NSIndexSet *__originalAutoPickIndexes;
-    unsigned int __originalStackIndex;
-    NSIndexSet *__originalUserFavoriteIndexes;
-    unsigned int __stackIndex;
-    NSMutableIndexSet *__userFavoriteIndexes;
-    NSOrderedSet *_assets;
-    PLPhotoLibrary *_photoLibrary;
-    NSString *_uuid;
+    PLManagedAsset * __aNewPick;
+    PLManagedAsset * __anOldPick;
+    NSMutableIndexSet * __autoPickIndexes;
+    id /* block */  __completionHandler;
+    NSIndexSet * __originalAutoPickIndexes;
+    unsigned int  __originalStackIndex;
+    NSIndexSet * __originalUserFavoriteIndexes;
+    unsigned int  __stackIndex;
+    NSMutableIndexSet * __userFavoriteIndexes;
+    NSOrderedSet * _assets;
+    PLPhotoLibrary * _photoLibrary;
+    NSString * _uuid;
 }
 
 @property (setter=_setANewPick:, nonatomic, retain) PLManagedAsset *_aNewPick;

@@ -3,10 +3,10 @@
  */
 
 @interface _MFLibrarySearchableIndexClientState : NSObject {
-    NSString *_systemBuildVersion;
-    long long _transaction;
-    NSDate *_transactionDate;
-    NSNumber *_transactionValue;
+    NSString * _systemBuildVersion;
+    long long  _transaction;
+    NSDate * _transactionDate;
+    NSNumber * _transactionValue;
 }
 
 @property (nonatomic, copy) NSString *systemBuildVersion;

@@ -2,74 +2,78 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAVItem : NSObject <MPAVMetadataItem, MusicEntityValueProviding, RURadioItemIdentifier> {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    unsigned int _advancedDuringPlayback;
-    NSString *_aggregateDictionaryItemIdentifier;
-    long long _albumStoreID;
-    BOOL _allowsAirPlayFromCloud;
-    BOOL _allowsExternalPlayback;
-    MPAlternateTracks *_alternateTracks;
-    NSArray *_artworkTimeMarkers;
-    AVAsset *_asset;
-    NSError *_assetError;
-    NSObject<OS_dispatch_queue> *_assetQueue;
-    AVPlayerItem *_avPlayerItem;
-    NSArray *_buyOffers;
-    double _cachedDuration;
-    double _cachedPlayableDuration;
-    NSArray *_cachedSeekableTimeRanges;
-    BOOL _canReusePlayerItem;
-    NSArray *_chapterTimeMarkers;
-    NSArray *_closedCaptionTimeMarkers;
-    NSString *_copyrightText;
-    float _currentPlaybackRate;
-    float _defaultPlaybackRate;
-    BOOL _didAttemptToLoadAsset;
-    MPQueueFeeder *_feeder;
-    unsigned int _handledFinishTime;
-    BOOL _hasLoadedPlaybackMode;
-    unsigned int _hasPlayedThisSession;
-    BOOL _hasPostedNaturalSizeChange;
-    BOOL _hasRegisteredForCaptionsAppearanceChanged;
-    BOOL _hasValidPlayerItemDuration;
-    unsigned int _indexInQueueFeeder;
-    BOOL _isAssetLoaded;
-    unsigned int _isStreamable;
-    int _likedState;
-    BOOL _likedStateEnabled;
-    BOOL _limitReadAhead;
-    float _loudnessInfoVolumeNormalization;
-    unsigned int _lyricsAvailable;
-    MPMediaItem *_mediaItem;
-    int _playbackMode;
-    MPAVController *_player;
+@interface MPAVItem : NSObject <MPAVMetadataItem, MPCRadioItemIdentifier, MusicEntityValueProviding> {
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    unsigned int  _advancedDuringPlayback;
+    NSString * _aggregateDictionaryItemIdentifier;
+    long long  _albumStoreID;
+    BOOL  _allowsAirPlayFromCloud;
+    BOOL  _allowsExternalPlayback;
+    MPAlternateTracks * _alternateTracks;
+    NSArray * _artworkTimeMarkers;
+    AVAsset * _asset;
+    NSError * _assetError;
+    NSObject<OS_dispatch_queue> * _assetQueue;
+    AVPlayerItem * _avPlayerItem;
+    NSArray * _buyOffers;
+    double  _cachedDuration;
+    double  _cachedPlayableDuration;
+    NSArray * _cachedSeekableTimeRanges;
+    BOOL  _canReusePlayerItem;
+    NSArray * _chapterTimeMarkers;
+    NSArray * _closedCaptionTimeMarkers;
+    NSString * _copyrightText;
+    float  _currentPlaybackRate;
+    float  _defaultPlaybackRate;
+    BOOL  _didAttemptToLoadAsset;
+    MPQueueFeeder * _feeder;
+    unsigned int  _handledFinishTime;
+    BOOL  _hasLoadedPlaybackMode;
+    unsigned int  _hasPlayedThisSession;
+    BOOL  _hasPostedNaturalSizeChange;
+    BOOL  _hasRegisteredForCaptionsAppearanceChanged;
+    BOOL  _hasValidPlayerItemDuration;
+    unsigned int  _indexInQueueFeeder;
+    BOOL  _isAssetLoaded;
+    unsigned int  _isStreamable;
+    int  _likedState;
+    BOOL  _likedStateEnabled;
+    BOOL  _limitReadAhead;
+    float  _loudnessInfoVolumeNormalization;
+    unsigned int  _lyricsAvailable;
+    MPMediaItem * _mediaItem;
+    MPModelObject * _modelObject;
+    MPModelSong * _modelSong;
+    int  _playbackMode;
+    MPAVController * _player;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _playerItemDuration;
-    <MPAVItemPlaylistIdentifier> *_playlistIdentifier;
-    <MPAVItemQueueIdentifier> *_queueIdentifier;
-    double _seekableTimeRangesCacheTime;
-    float _soundCheckVolumeNormalization;
-    long long _storeItemInt64ID;
-    long long _storeSubscriptionAdamID;
-    BOOL _supportsLikedState;
-    unsigned int _timeMarkersNeedLoading;
-    unsigned int _type;
-    NSArray *_urlTimeMarkers;
-    unsigned int _userChangedItemsDuringPlayback;
-    unsigned int _wasCountedAsSkipped;
-    unsigned int _watchingAttributes;
+    }  _playerItemDuration;
+    <MPAVItemPlaylistIdentifier> * _playlistIdentifier;
+    BOOL  _prefersHLS;
+    <MPAVItemQueueIdentifier> * _queueIdentifier;
+    double  _seekableTimeRangesCacheTime;
+    BOOL  _shouldUseStreamingRedownload;
+    float  _soundCheckVolumeNormalization;
+    long long  _storeItemInt64ID;
+    long long  _storeSubscriptionAdamID;
+    BOOL  _supportsLikedState;
+    unsigned int  _timeMarkersNeedLoading;
+    int  _type;
+    NSArray * _urlTimeMarkers;
+    unsigned int  _userChangedItemsDuringPlayback;
+    unsigned int  _wasCountedAsSkipped;
+    unsigned int  _watchingAttributes;
 }
 
+@property (nonatomic, readonly) MPCContentItemIdentifierCollection *MPC_contentItemIdentifierCollection;
 @property (nonatomic, readonly) MPUContentItemIdentifierCollection *MPU_contentItemIdentifierCollection;
 @property (getter=_currentPlaybackRate, setter=_setCurrentPlaybackRate:, nonatomic) float _currentPlaybackRate;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } _playerItemDurationIfAvailable;
 @property (nonatomic, readonly) AVPlayerItemAccessLog *accessLog;
-@property (nonatomic, readonly) RURadioAdTrack *adTrack;
 @property (nonatomic, readonly, copy) NSString *aggregateDictionaryItemIdentifier;
 @property (nonatomic, readonly) NSString *album;
 @property (nonatomic, readonly) NSString *albumArtist;
@@ -134,14 +138,14 @@
 @property (nonatomic, readonly) NSString *lyrics;
 @property (nonatomic, readonly) NSString *mainTitle;
 @property (nonatomic, readonly, retain) MPMediaItem *mediaItem;
-@property (nonatomic, readonly, copy) NSString *mpuReporting_externalID;
-@property (nonatomic, readonly) BOOL mpuReporting_isValidReportingItem;
-@property (nonatomic, readonly) unsigned int mpuReporting_itemType;
-@property (nonatomic, readonly, copy) NSData *mpuReporting_jingleTimedMetadata;
-@property (nonatomic, readonly) BOOL mpuReporting_shouldReportPlayEventsToStore;
-@property (nonatomic, readonly) BOOL mpuReporting_shouldUseRelativeTimePositions;
-@property (nonatomic, readonly, copy) NSString *mpuReporting_storeItemID;
-@property (nonatomic, readonly, copy) NSData *mpuReporting_trackInfo;
+@property (nonatomic, readonly) MPModelObject *modelObject;
+@property (nonatomic, readonly) MPModelSong *modelSong;
+@property (nonatomic, readonly) BOOL mpcReporting_isValidReportingItem;
+@property (nonatomic, readonly) unsigned int mpcReporting_itemType;
+@property (nonatomic, readonly, copy) NSData *mpcReporting_jingleTimedMetadata;
+@property (nonatomic, readonly) BOOL mpcReporting_shouldReportPlayEventsToStore;
+@property (nonatomic, readonly) BOOL mpcReporting_shouldUseRelativeTimePositions;
+@property (nonatomic, readonly, copy) NSData *mpcReporting_trackInfo;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } naturalSize;
 @property (nonatomic, readonly) unsigned long long persistentID;
 @property (nonatomic, readonly) double playableDuration;
@@ -152,10 +156,12 @@
 @property (nonatomic, retain) AVPlayerItem *playerItem;
 @property (nonatomic, retain) <MPAVItemPlaylistIdentifier> *playlistIdentifier;
 @property (nonatomic, readonly) NSURL *podcastURL;
+@property (setter=_setPrefersHLS:, nonatomic) BOOL prefersHLS;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } presentationSize;
 @property (nonatomic, retain) <MPAVItemQueueIdentifier> *queueIdentifier;
 @property (nonatomic, readonly) RadioTrack *radioTrack;
 @property (nonatomic, retain) MPAlternateTextTrack *selectedAlternateTextTrack;
+@property (setter=_setShouldUseStreamingRedownload:, nonatomic) BOOL shouldUseStreamingRedownload;
 @property (nonatomic) float soundCheckVolumeNormalization;
 @property (nonatomic, readonly) int status;
 @property (nonatomic, readonly) MPStoreDownload *storeDownload;
@@ -175,7 +181,7 @@
 @property (nonatomic, readonly) double timeOfSeekableEnd;
 @property (nonatomic, readonly) double timeOfSeekableStart;
 @property (nonatomic, readonly) NSArray *timedMetadataIfAvailable;
-@property (nonatomic, readonly) unsigned int type;
+@property (nonatomic, readonly) int type;
 @property (nonatomic, retain) NSArray *urlTimeMarkers;
 @property (nonatomic, readonly) BOOL useEmbeddedChapterData;
 @property (nonatomic) BOOL userAdvancedDuringPlayback;
@@ -188,8 +194,8 @@
 
 + (id)URLFromPath:(id)arg1;
 + (void)applyVolumeNormalizationForQueuedItems:(id)arg1;
-+ (unsigned int)defaultScaleMode;
-+ (void)setDefaultScaleMode:(unsigned int)arg1;
++ (int)defaultScaleMode;
++ (void)setDefaultScaleMode:(int)arg1;
 
 - (void).cxx_destruct;
 - (void)_applicationDidBecomeActive:(id)arg1;
@@ -221,6 +227,8 @@
 - (void)_setCurrentPlaybackRate:(float)arg1;
 - (void)_setListeningForCaptionsAppearanceSettingsChanged:(BOOL)arg1;
 - (void)_setNeedsPersistedLikedStateUpdate;
+- (void)_setPrefersHLS:(BOOL)arg1;
+- (void)_setShouldUseStreamingRedownload:(BOOL)arg1;
 - (id)_timeMarkerFromMarkers:(id)arg1 forTime:(double)arg2;
 - (void)_updateSoundCheckVolumeNormalizationForPlayerItem;
 - (void)_willBecomeActivePlayerItem;
@@ -294,7 +302,7 @@
 - (BOOL)isLikedStateEnabled;
 - (BOOL)isStreamable;
 - (BOOL)isStreamingLowQualityAsset;
-- (BOOL)isSupportedDefaultPlaybackSpeed:(unsigned int)arg1;
+- (BOOL)isSupportedDefaultPlaybackSpeed:(int)arg1;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
 - (int)likedState;
 - (BOOL)limitReadAhead;
@@ -306,6 +314,8 @@
 - (id)lyrics;
 - (id)mainTitle;
 - (id)mediaItem;
+- (id)modelObject;
+- (id)modelSong;
 - (struct CGSize { float x1; float x2; })naturalSize;
 - (void)notePlaybackFinishedByHittingEnd;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
@@ -320,6 +330,7 @@
 - (id)playerItem;
 - (id)playlistIdentifier;
 - (id)podcastURL;
+- (BOOL)prefersHLS;
 - (void)prepareForRate:(float)arg1 completionHandler:(id /* block */)arg2;
 - (struct CGSize { float x1; float x2; })presentationSize;
 - (id)queueIdentifier;
@@ -331,6 +342,7 @@
 - (float)scanIntervalForLevel:(unsigned int)arg1 paused:(BOOL)arg2;
 - (id)selectedAlternateTextTrack;
 - (void)setAlternateAudioTrackID:(int)arg1;
+- (void)setAlternateAudioTrackLocale:(id)arg1;
 - (void)setArtworkTimeMarkers:(id)arg1;
 - (void)setAssetError:(id)arg1;
 - (void)setChapterTimeMarkers:(id)arg1;
@@ -362,6 +374,7 @@
 - (void)setUserSkippedPlayback:(BOOL)arg1;
 - (void)setupEQPresetWithDefaultPreset:(int)arg1;
 - (void)setupPlaybackInfo;
+- (BOOL)shouldUseStreamingRedownload;
 - (float)soundCheckVolumeNormalization;
 - (int)status;
 - (id)storeDownload;
@@ -379,7 +392,7 @@
 - (double)timeOfSeekableStart;
 - (id)timedMetadataIfAvailable;
 - (id)titlesForTime:(double)arg1;
-- (unsigned int)type;
+- (int)type;
 - (id)url;
 - (id)urlTimeMarkerForTime:(double)arg1;
 - (id)urlTimeMarkers;
@@ -404,19 +417,11 @@
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
 - (id)MPU_contentItemIdentifierCollection;
-- (id)mpuReporting_externalID;
-- (BOOL)mpuReporting_isValidReportingItem;
-- (unsigned int)mpuReporting_itemType;
-- (id)mpuReporting_jingleTimedMetadata;
-- (BOOL)mpuReporting_shouldReportPlayEventsToStore;
-- (BOOL)mpuReporting_shouldUseRelativeTimePositions;
-- (id)mpuReporting_storeItemID;
-- (id)mpuReporting_trackInfo;
 
-// Image: /System/Library/PrivateFrameworks/RadioUI.framework/RadioUI
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
+- (id)MPC_contentItemIdentifierCollection;
 - (id)_plistKeyForMPMediaItemProperty:(id)arg1;
-- (id)adTrack;
 - (void)addDerivedStationForArtist:(BOOL)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)albumBuyButtonText;
 - (int)albumBuyButtonType;
@@ -424,6 +429,12 @@
 - (id)audioClip;
 - (id)effectiveArtworkCollection;
 - (BOOL)isRadioItem;
+- (BOOL)mpcReporting_isValidReportingItem;
+- (unsigned int)mpcReporting_itemType;
+- (id)mpcReporting_jingleTimedMetadata;
+- (BOOL)mpcReporting_shouldReportPlayEventsToStore;
+- (BOOL)mpcReporting_shouldUseRelativeTimePositions;
+- (id)mpcReporting_trackInfo;
 - (id)radioIdentifier;
 - (id)radioTrack;
 - (id)streamTrack;

@@ -6,19 +6,19 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } p1;
+    }  p1;
     struct CGPoint { 
         float x; 
         float y; 
-    } p2;
+    }  p2;
     struct CGPoint { 
         float x; 
         float y; 
-    } p3;
+    }  p3;
     struct CGPoint { 
         float x; 
         float y; 
-    } p4;
+    }  p4;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -3,9 +3,9 @@
  */
 
 @interface PBBridgeReportCodeView : UIView {
-    NSTimer *_animationTimer;
-    int _frameIndex;
-    NSMutableArray *_frames;
+    NSTimer * _animationTimer;
+    int  _frameIndex;
+    NSMutableArray * _frames;
 }
 
 @property (nonatomic, retain) NSTimer *animationTimer;

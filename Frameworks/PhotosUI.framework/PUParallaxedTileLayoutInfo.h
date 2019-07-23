@@ -6,7 +6,7 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _parallaxOffset;
+    }  _parallaxOffset;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } parallaxOffset;

@@ -3,42 +3,45 @@
  */
 
 @interface _UITextContainerView : UIView <NSUITextViewCommonMethods> {
-    unsigned int _invalidationSeqNo;
-    NSDictionary *_linkTextAttributes;
+    <_UITextContainerViewDelegate> * _delegate;
+    unsigned int  _invalidationSeqNo;
+    NSDictionary * _linkTextAttributes;
     struct CGSize { 
         float width; 
         float height; 
-    } _maxSize;
+    }  _maxSize;
     struct CGSize { 
         float width; 
         float height; 
-    } _minSize;
+    }  _minSize;
     struct { 
         unsigned int textContainerOriginInvalid : 1; 
         unsigned int verticalLayout : 2; 
         unsigned int horizontallyResizable : 1; 
         unsigned int verticallyResizable : 1; 
-    } _tcvFlags;
-    NSTextContainer *_textContainer;
+        unsigned int freezeTextContainerSize : 1; 
+    }  _tcvFlags;
+    NSTextContainer * _textContainer;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _textContainerInset;
+    }  _textContainerInset;
     struct CGPoint { 
         float x; 
         float y; 
-    } _textContainerOrigin;
+    }  _textContainerOrigin;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <_UITextContainerViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (getter=_freezeTextContainerSize, setter=_setFreezeTextContainerSize:, nonatomic) BOOL freezeTextContainerSize;
 @property (readonly) unsigned int hash;
 @property (getter=isHorizontallyResizable, nonatomic) BOOL horizontallyResizable;
 @property (nonatomic, readonly) NSLayoutManager *layoutManager;
 @property (nonatomic, readonly) int layoutOrientation;
-@property (nonatomic, copy) NSDictionary *linkTextAttributes;
 @property (nonatomic) struct _NSRange { unsigned int x1; unsigned int x2; } markedRange;
 @property (nonatomic) struct CGSize { float x1; float x2; } maxSize;
 @property (nonatomic) struct CGSize { float x1; float x2; } minSize;
@@ -58,19 +61,23 @@
 - (void)_ensureLayoutCompleteToEndOfCharacterRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1;
 - (void)_ensureMinAndMaxSizesConsistentWithBounds;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_extendedGlyphRangeForRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 maxGlyphIndex:(unsigned int)arg2 drawingToScreen:(BOOL)arg3;
+- (BOOL)_freezeTextContainerSize;
 - (void)_setFrameOrBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 oldRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 settingAction:(id /* block */)arg3;
+- (void)_setFreezeTextContainerSize:(BOOL)arg1;
 - (void)_sizeToConstrainedContainerUsedRect;
 - (void)dealloc;
 - (id)delegate;
 - (id)description;
 - (void)drawRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 textContainer:(id)arg2;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 textContainer:(id)arg2 delegate:(id)arg3;
 - (void)invalidateTextContainerOrigin;
 - (BOOL)isHorizontallyResizable;
 - (BOOL)isVerticallyResizable;
 - (id)layoutManager;
+- (id)layoutManager:(id)arg1 effectiveCUICatalogForTextEffect:(id)arg2;
 - (int)layoutOrientation;
+- (id)linkAttributesForLink:(id)arg1 forCharacterAtIndex:(unsigned int)arg2;
 - (id)linkTextAttributes;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })markedRange;
 - (struct CGSize { float x1; float x2; })maxSize;
@@ -81,7 +88,6 @@
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setHorizontallyResizable:(BOOL)arg1;
 - (void)setLayoutOrientation:(int)arg1;
-- (void)setLinkTextAttributes:(id)arg1;
 - (void)setMaxSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setMinSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 avoidAdditionalLayout:(BOOL)arg2;

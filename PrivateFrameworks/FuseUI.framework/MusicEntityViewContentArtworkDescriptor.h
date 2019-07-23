@@ -3,38 +3,38 @@
  */
 
 @interface MusicEntityViewContentArtworkDescriptor : NSObject <NSCopying> {
-    NSSet *_artworkAdditionalPropertiesToPrefetch;
-    NSString *_artworkAllowsUserInteractionProperty;
-    float _artworkAspectRatio;
-    UIColor *_artworkBackgoundColor;
-    UIColor *_artworkBorderColor;
-    int _artworkContentMode;
+    NSSet * _artworkAdditionalPropertiesToPrefetch;
+    NSString * _artworkAllowsUserInteractionProperty;
+    float  _artworkAspectRatio;
+    UIColor * _artworkBackgoundColor;
+    UIColor * _artworkBorderColor;
+    int  _artworkContentMode;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _artworkEdgeInsets;
-    UIColor *_artworkHighlightedBackgoundColor;
-    int _artworkPlaceholderStyle;
-    NSString *_artworkProperty;
+    }  _artworkEdgeInsets;
+    UIColor * _artworkHighlightedBackgoundColor;
+    int  _artworkPlaceholderStyle;
+    NSString * _artworkProperty;
     struct CGSize { 
         float width; 
         float height; 
-    } _artworkSize;
-    MPULayoutInterpolator *_artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator;
-    NSMutableDictionary *_cachedArtworkPlaceholderImages;
-    float _displayScale;
-    BOOL _hasValidLastUsedArtworkEdgeInsets;
+    }  _artworkSize;
+    MPULayoutInterpolator * _artworkTrailingEdgeInsetFromLeadingLayoutInsetLayoutInterpolator;
+    NSMutableDictionary * _cachedArtworkPlaceholderImages;
+    float  _displayScale;
+    BOOL  _hasValidLastUsedArtworkEdgeInsets;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _lastUsedArtworkEdgeInsets;
-    MusicArtworkPlaceholderKey *_lastUsedArtworkPlaceholderKey;
-    float _lastUsedContainerViewLeadingLayoutInset;
-    NSString *_wantsToHideBorderProperty;
+    }  _lastUsedArtworkEdgeInsets;
+    MusicArtworkPlaceholderKey * _lastUsedArtworkPlaceholderKey;
+    float  _lastUsedContainerViewLeadingLayoutInset;
+    NSString * _wantsToHideBorderProperty;
 }
 
 @property (nonatomic, copy) NSSet *artworkAdditionalPropertiesToPrefetch;

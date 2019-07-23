@@ -12,6 +12,8 @@
 - (float)conversationListMinimumWidthForHiddenContactImage;
 - (unsigned int)defaultConversationViewingMessageCount;
 - (struct CGSize { float x1; float x2; })documentIconSize;
+- (float)entryViewMaxHandWritingPluginShelfHeight;
+- (id)fullscreenPickerActionLayoutAxisPrioritiesForWidth:(float)arg1;
 - (BOOL)lowClearanceInLandscape;
 - (float)maxPrimaryColumnWidthForInterfaceOrientation:(int)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })minTranscriptMarginInsets;
@@ -22,10 +24,10 @@
 - (BOOL)presentForwardingUIModally;
 - (BOOL)presentsFullscreenInViewService;
 - (BOOL)presentsQuickLookController;
-- (BOOL)presentsReaderController;
 - (double)resumeToConversationListTimeInterval;
 - (BOOL)shouldAlignRecipientGlyphsWithMargins;
 - (BOOL)shouldOnlyResumeToConversationListAfterTimeout;
+- (BOOL)shouldPopoverSuggestionsBanner;
 - (BOOL)shouldRefreshAlternateAddressesSheet;
 - (BOOL)shouldShowDisclosureChevronInRecipientAtoms;
 - (BOOL)shouldSuppressRotationInNewCompose;

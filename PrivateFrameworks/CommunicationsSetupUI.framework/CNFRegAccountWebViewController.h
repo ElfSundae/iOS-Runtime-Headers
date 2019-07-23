@@ -3,9 +3,9 @@
  */
 
 @interface CNFRegAccountWebViewController : CNFRegServerWebViewController {
-    NSTimer *_bagLoadTimer;
-    BOOL _failedBagLoad;
-    BOOL _listeningForBagLoad;
+    NSTimer * _bagLoadTimer;
+    BOOL  _failedBagLoad;
+    BOOL  _listeningForBagLoad;
 }
 
 @property (nonatomic) BOOL failedBagLoad;

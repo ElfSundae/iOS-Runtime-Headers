@@ -3,23 +3,33 @@
  */
 
 @interface PUTileLayoutInfo : NSObject <NSCopying> {
-    float _alpha;
+    float  _alpha;
     struct CGPoint { 
         float x; 
         float y; 
-    } _center;
-    <PUTilingCoordinateSystem> *_coordinateSystem;
+    }  _center;
+    struct CGRect { 
+        struct CGPoint { 
+            float x; 
+            float y; 
+        } origin; 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+    }  _contentsRect;
+    <PUTilingCoordinateSystem> * _coordinateSystem;
     struct { 
         float left; 
         float right; 
         float top; 
         float bottom; 
-    } _expandedRectInsets;
+    }  _expandedRectInsets;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    PUTileIdentifier *_tileIdentifier;
+    }  _size;
+    PUTileIdentifier * _tileIdentifier;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -27,22 +37,23 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
-    float _zPosition;
+    }  _transform;
+    float  _zPosition;
 }
 
-@property (nonatomic) float alpha;
-@property (nonatomic) struct CGPoint { float x1; float x2; } center;
-@property (nonatomic, retain) <PUTilingCoordinateSystem> *coordinateSystem;
+@property (setter=_setAlpha:, nonatomic) float alpha;
+@property (setter=_setCenter:, nonatomic) struct CGPoint { float x1; float x2; } center;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } contentsRect;
+@property (setter=_setCoordinateSystem:, nonatomic, retain) <PUTilingCoordinateSystem> *coordinateSystem;
 @property (nonatomic, readonly) NSString *dataSourceIdentifier;
 @property (nonatomic) struct { float x1; float x2; float x3; float x4; } expandedRectInsets;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } frame;
 @property (nonatomic, readonly) NSIndexPath *indexPath;
-@property (nonatomic) struct CGSize { float x1; float x2; } size;
-@property (nonatomic, retain) PUTileIdentifier *tileIdentifier;
+@property (setter=_setSize:, nonatomic) struct CGSize { float x1; float x2; } size;
+@property (setter=_setTileIdentifier:, nonatomic, retain) PUTileIdentifier *tileIdentifier;
 @property (nonatomic, readonly) NSString *tileKind;
-@property (nonatomic) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } transform;
-@property (nonatomic) float zPosition;
+@property (setter=_setTransform:, nonatomic) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } transform;
+@property (setter=_setZPosition:, nonatomic) float zPosition;
 
 - (void).cxx_destruct;
 - (void)_setAlpha:(float)arg1;
@@ -55,6 +66,7 @@
 - (float)alpha;
 - (struct CGPoint { float x1; float x2; })center;
 - (id)clone;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })contentsRect;
 - (id)coordinateSystem;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })cropInsets;
@@ -65,6 +77,7 @@
 - (unsigned int)hash;
 - (id)indexPath;
 - (id)init;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint { float x1; float x2; })arg2 size:(struct CGSize { float x1; float x2; })arg3 alpha:(float)arg4 transform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg5 zPosition:(float)arg6 contentsRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg7 coordinateSystem:(id)arg8;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint { float x1; float x2; })arg2 size:(struct CGSize { float x1; float x2; })arg3 alpha:(float)arg4 transform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg5 zPosition:(float)arg6 coordinateSystem:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGeometryEqualToLayoutInfo:(id)arg1;

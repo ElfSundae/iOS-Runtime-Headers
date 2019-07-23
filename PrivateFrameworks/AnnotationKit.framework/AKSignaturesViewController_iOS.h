@@ -3,18 +3,18 @@
  */
 
 @interface AKSignaturesViewController_iOS : UIViewController <AKSignatureCreationControllerDelegate, UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate> {
-    BOOL _allowsEdits;
-    AKController *_controller;
-    <AKSignaturesViewControllerDelegate> *_delegate;
-    NSArray *_editingLeftBarItems;
-    NSArray *_leftBarItems;
-    UINavigationBar *_navBar;
-    BOOL _presentedInAlert;
-    NSArray *_rightBarItems;
-    BOOL _showAddEditButtonRow;
-    BOOL _showsNavigationBar;
-    UIColor *_tableBackgroundColor;
-    UITableView *_tableView;
+    BOOL  _allowsEdits;
+    AKController * _controller;
+    <AKSignaturesViewControllerDelegate> * _delegate;
+    NSArray * _editingLeftBarItems;
+    NSArray * _leftBarItems;
+    UINavigationBar * _navBar;
+    BOOL  _presentedInAlert;
+    NSArray * _rightBarItems;
+    BOOL  _showAddEditButtonRow;
+    BOOL  _showsNavigationBar;
+    UIColor * _tableBackgroundColor;
+    UITableView * _tableView;
 }
 
 @property (nonatomic) BOOL allowsEdits;

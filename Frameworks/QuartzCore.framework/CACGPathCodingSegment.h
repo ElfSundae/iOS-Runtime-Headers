@@ -6,8 +6,8 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _points;
-    int _type;
+    }  _points;
+    int  _type;
 }
 
 - (void)addToCGPath:(struct CGPath { }*)arg1;

@@ -3,10 +3,10 @@
  */
 
 @interface ISPlayerItemChef : NSObject {
-    int __currentRequestID;
-    NSObject<OS_dispatch_queue> *__isolationQueue;
-    NSOperationQueue *__operationQueue;
-    NSMutableDictionary *__operationsByRequestID;
+    int  __currentRequestID;
+    NSObject<OS_dispatch_queue> * __isolationQueue;
+    NSOperationQueue * __operationQueue;
+    NSMutableDictionary * __operationsByRequestID;
 }
 
 @property (setter=_setCurrentRequestID:, nonatomic) int _currentRequestID;

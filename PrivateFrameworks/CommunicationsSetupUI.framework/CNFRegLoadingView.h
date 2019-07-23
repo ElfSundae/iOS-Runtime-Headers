@@ -3,8 +3,8 @@
  */
 
 @interface CNFRegLoadingView : UIView {
-    UILabel *_label;
-    UIActivityIndicatorView *_spinner;
+    UILabel * _label;
+    UIActivityIndicatorView * _spinner;
 }
 
 @property (nonatomic, copy) NSString *message;

@@ -3,11 +3,11 @@
  */
 
 @interface UIViewAnimation : NSObject {
-    BOOL _animateFromCurrentPosition;
-    int _curve;
-    BOOL _editing;
-    float _endAlpha;
-    float _endFraction;
+    BOOL  _animateFromCurrentPosition;
+    int  _curve;
+    BOOL  _editing;
+    float  _endAlpha;
+    float  _endFraction;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -17,16 +17,16 @@
             float width; 
             float height; 
         } size; 
-    } _endRect;
-    NSIndexPath *_indexPath;
-    BOOL _shouldAllowGroupOpacityAfterAnimation;
-    BOOL _shouldAnimateShadow;
-    BOOL _shouldClipToBoundsAfterAnimation;
-    BOOL _shouldDeleteAfterAnimation;
-    BOOL _shouldResetGroupOpacityAfterAnimation;
-    float _startFraction;
-    UIView *_view;
-    int _viewType;
+    }  _endRect;
+    NSIndexPath * _indexPath;
+    BOOL  _shouldAllowGroupOpacityAfterAnimation;
+    BOOL  _shouldAnimateShadow;
+    BOOL  _shouldClipToBoundsAfterAnimation;
+    BOOL  _shouldDeleteAfterAnimation;
+    BOOL  _shouldResetGroupOpacityAfterAnimation;
+    float  _startFraction;
+    UIView * _view;
+    int  _viewType;
 }
 
 @property (nonatomic, readonly) BOOL animateFromCurrentPosition;

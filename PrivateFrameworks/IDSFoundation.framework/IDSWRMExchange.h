@@ -3,18 +3,22 @@
  */
 
 @interface IDSWRMExchange : NSObject {
-    unsigned long long _activeLinkType;
-    unsigned short _connectCount;
-    NSObject<OS_xpc_object> *_connection;
-    id /* block */ _delegateBlock;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
-    IDSWRMMetricContainer *_metrics;
-    NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _recommendedLinkType;
-    BOOL _registered;
-    unsigned long long _reportInterval;
-    BOOL _shouldSendReport;
-    BOOL _subscribed;
+    unsigned long long  _activeLinkType;
+    unsigned long long  _activeRecommendationType;
+    unsigned short  _connectCount;
+    NSObject<OS_xpc_object> * _connection;
+    id /* block */  _delegateBlock;
+    NSObject<OS_dispatch_queue> * _delegateQueue;
+    BOOL  _isPaired;
+    int  _isPairedNotifyToken;
+    IDSWRMMetricContainer * _metrics;
+    unsigned long long  _nearbyOverWiFi;
+    NSObject<OS_dispatch_queue> * _queue;
+    unsigned long long  _recommendedLinkType;
+    BOOL  _registered;
+    unsigned long long  _reportInterval;
+    BOOL  _shouldSendReport;
+    BOOL  _subscribed;
 }
 
 + (id)sharedInstance;
@@ -48,12 +52,13 @@
 - (void)_updateLocalMetric:(id)arg1;
 - (void)dealloc;
 - (void)handleActiveLinkChange:(unsigned long long)arg1;
+- (void)handleNetworkStateChangeUpdate:(BOOL)arg1 nearby:(BOOL)arg2;
 - (id)init;
 - (BOOL)isBTRecommended;
 - (BOOL)isWiFiRecommended;
 - (unsigned long long)recommendedLinkType;
 - (void)submitMetric:(id)arg1;
-- (void)subscribeForRecommendation:(id)arg1 block:(id /* block */)arg2;
+- (void)subscribeForRecommendation:(id)arg1 recommendationType:(unsigned long long)arg2 block:(id /* block */)arg3;
 - (void)unsubscribeForRecommendation;
 
 @end

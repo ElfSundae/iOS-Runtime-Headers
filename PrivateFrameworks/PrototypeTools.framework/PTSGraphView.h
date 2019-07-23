@@ -3,12 +3,12 @@
  */
 
 @interface PTSGraphView : PT2DGraphView <PTSHUDControl, _UISettingsKeyPathObserver> {
-    int _alignment;
-    _UISettings *_settings;
-    _UISettingsGroup *_settingsGroup;
-    NSString *_valueKeyPath;
-    NSString *_xAxisValueKeyPath;
-    NSString *_yAxisValueKeyPath;
+    int  _alignment;
+    _UISettings * _settings;
+    _UISettingsGroup * _settingsGroup;
+    NSString * _valueKeyPath;
+    NSString * _xAxisValueKeyPath;
+    NSString * _yAxisValueKeyPath;
 }
 
 @property (nonatomic) int alignment;

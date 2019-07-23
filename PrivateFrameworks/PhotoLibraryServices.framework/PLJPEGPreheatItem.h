@@ -3,17 +3,17 @@
  */
 
 @interface PLJPEGPreheatItem : PLPreheatItem {
-    UIImage *_cachedImage;
-    BOOL _cachedImageCancelled;
-    unsigned int _cancelled;
-    BOOL _dataIsLoading;
-    unsigned int _hasCachedImage;
-    NSString *_imagePath;
-    unsigned int _loadingOptions;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_group> *_requestGroup;
-    unsigned long _requestID;
-    NSObject<OS_dispatch_group> *_waitGroup;
+    UIImage * _cachedImage;
+    BOOL  _cachedImageCancelled;
+    unsigned int  _cancelled;
+    BOOL  _dataIsLoading;
+    unsigned int  _hasCachedImage;
+    NSString * _imagePath;
+    unsigned int  _loadingOptions;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSObject<OS_dispatch_group> * _requestGroup;
+    unsigned long  _requestID;
+    NSObject<OS_dispatch_group> * _waitGroup;
 }
 
 @property (setter=_setHasCachedImage:) BOOL _hasCachedImage;

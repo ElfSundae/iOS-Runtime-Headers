@@ -3,9 +3,10 @@
  */
 
 @interface _MRCommandOptionsProtobuf : PBCodable <NSCopying> {
-    NSString *_contextID;
-    NSString *_destinationAppDisplayID;
-    BOOL _externalPlayerCommand;
+    NSString * _contentItemID;
+    NSString * _contextID;
+    NSString * _destinationAppDisplayID;
+    BOOL  _externalPlayerCommand;
     struct { 
         unsigned int playbackPosition : 1; 
         unsigned int radioStationID : 1; 
@@ -22,31 +23,33 @@
         unsigned int requestDefermentToPlaybackQueuePosition : 1; 
         unsigned int shouldBeginRadioPlayback : 1; 
         unsigned int shouldOverrideManuallyCuratedQueue : 1; 
-    } _has;
-    NSString *_mediaType;
-    BOOL _negative;
-    double _playbackPosition;
-    int _playbackQueueInsertionPosition;
-    float _playbackRate;
-    NSString *_radioStationHash;
-    long long _radioStationID;
-    float _rating;
-    int _repeatMode;
-    BOOL _requestDefermentToPlaybackQueuePosition;
-    unsigned int _sendOptions;
-    BOOL _shouldBeginRadioPlayback;
-    BOOL _shouldOverrideManuallyCuratedQueue;
-    int _shuffleMode;
-    float _skipInterval;
-    NSString *_sourceID;
-    NSString *_stationURL;
-    NSData *_systemAppPlaybackQueueData;
-    unsigned long long _trackID;
+    }  _has;
+    NSString * _mediaType;
+    BOOL  _negative;
+    double  _playbackPosition;
+    int  _playbackQueueInsertionPosition;
+    float  _playbackRate;
+    NSString * _radioStationHash;
+    long long  _radioStationID;
+    float  _rating;
+    int  _repeatMode;
+    BOOL  _requestDefermentToPlaybackQueuePosition;
+    unsigned int  _sendOptions;
+    BOOL  _shouldBeginRadioPlayback;
+    BOOL  _shouldOverrideManuallyCuratedQueue;
+    int  _shuffleMode;
+    float  _skipInterval;
+    NSString * _sourceID;
+    NSString * _stationURL;
+    NSData * _systemAppPlaybackQueueData;
+    unsigned long long  _trackID;
 }
 
+@property (nonatomic, retain) NSString *contentItemID;
 @property (nonatomic, retain) NSString *contextID;
 @property (nonatomic, retain) NSString *destinationAppDisplayID;
 @property (nonatomic) BOOL externalPlayerCommand;
+@property (nonatomic, readonly) BOOL hasContentItemID;
 @property (nonatomic, readonly) BOOL hasContextID;
 @property (nonatomic, readonly) BOOL hasDestinationAppDisplayID;
 @property (nonatomic) BOOL hasExternalPlayerCommand;
@@ -89,6 +92,9 @@
 @property (nonatomic, retain) NSData *systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID;
 
+- (int)StringAsRepeatMode:(id)arg1;
+- (int)StringAsShuffleMode:(id)arg1;
+- (id)contentItemID;
 - (id)contextID;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -97,6 +103,7 @@
 - (id)destinationAppDisplayID;
 - (id)dictionaryRepresentation;
 - (BOOL)externalPlayerCommand;
+- (BOOL)hasContentItemID;
 - (BOOL)hasContextID;
 - (BOOL)hasDestinationAppDisplayID;
 - (BOOL)hasExternalPlayerCommand;
@@ -132,8 +139,10 @@
 - (float)rating;
 - (BOOL)readFrom:(id)arg1;
 - (int)repeatMode;
+- (id)repeatModeAsString:(int)arg1;
 - (BOOL)requestDefermentToPlaybackQueuePosition;
 - (unsigned int)sendOptions;
+- (void)setContentItemID:(id)arg1;
 - (void)setContextID:(id)arg1;
 - (void)setDestinationAppDisplayID:(id)arg1;
 - (void)setExternalPlayerCommand:(BOOL)arg1;
@@ -174,6 +183,7 @@
 - (BOOL)shouldBeginRadioPlayback;
 - (BOOL)shouldOverrideManuallyCuratedQueue;
 - (int)shuffleMode;
+- (id)shuffleModeAsString:(int)arg1;
 - (float)skipInterval;
 - (id)sourceID;
 - (id)stationURL;

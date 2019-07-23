@@ -3,10 +3,10 @@
  */
 
 @interface VCPLightVideoAnalyzer : NSObject {
-    AVAsset *_avAsset;
-    NSArray *_metaTracks;
-    unsigned int _requestedAnalyses;
-    NSMutableDictionary *_results;
+    AVAsset * _avAsset;
+    NSArray * _metaTracks;
+    unsigned int  _requestedAnalyses;
+    NSMutableDictionary * _results;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -14,7 +14,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
+    }  _transform;
 }
 
 - (void).cxx_destruct;

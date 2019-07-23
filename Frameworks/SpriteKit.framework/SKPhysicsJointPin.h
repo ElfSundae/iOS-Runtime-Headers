@@ -6,12 +6,12 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchor;
-    float _frictionTorque;
-    float _lowerAngleLimit;
-    float _rotationSpeed;
-    BOOL _shouldEnableLimits;
-    float _upperAngleLimit;
+    }  _anchor;
+    float  _frictionTorque;
+    float  _lowerAngleLimit;
+    float  _rotationSpeed;
+    BOOL  _shouldEnableLimits;
+    float  _upperAngleLimit;
 }
 
 @property (readonly) struct CGPoint { float x1; float x2; } anchor;

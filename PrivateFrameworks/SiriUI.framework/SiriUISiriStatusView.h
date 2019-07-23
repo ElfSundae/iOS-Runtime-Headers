@@ -3,21 +3,21 @@
  */
 
 @interface SiriUISiriStatusView : UIView <SUICFlamesViewDelegate, SiriUISiriStatusViewProtocol, UIGestureRecognizerDelegate> {
-    <SiriUISiriStatusViewAnimationDelegate> *_animationDelegate;
-    UIButton *_button;
-    SiriUIConfiguration *_configuration;
-    int _deferredFlamesViewState;
-    <SiriUISiriStatusViewDelegate> *_delegate;
-    float _disabledMicOpacity;
-    UIView *_flamesContainerView;
-    SUICFlamesView *_flamesView;
-    BOOL _flamesViewDeferred;
-    float _flamesViewWidth;
-    double _lastStateChangeTime;
-    UILongPressGestureRecognizer *_longPressRecognizer;
-    UIImageView *_micGlyphImageView;
-    int _mode;
-    UIScreen *_screen;
+    <SiriUISiriStatusViewAnimationDelegate> * _animationDelegate;
+    UIButton * _button;
+    SiriUIConfiguration * _configuration;
+    int  _deferredFlamesViewState;
+    <SiriUISiriStatusViewDelegate> * _delegate;
+    float  _disabledMicOpacity;
+    UIView * _flamesContainerView;
+    SUICFlamesView * _flamesView;
+    BOOL  _flamesViewDeferred;
+    float  _flamesViewWidth;
+    double  _lastStateChangeTime;
+    UILongPressGestureRecognizer * _longPressRecognizer;
+    UIImageView * _micGlyphImageView;
+    int  _mode;
+    UIScreen * _screen;
 }
 
 @property (nonatomic) <SiriUISiriStatusViewAnimationDelegate> *animationDelegate;

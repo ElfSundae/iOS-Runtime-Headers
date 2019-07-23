@@ -8,9 +8,9 @@
         float left; 
         float bottom; 
         float right; 
-    } _contentInsets;
-    BOOL _contentInsetsValid;
-    _UILabelContentLayer *_contentLayer;
+    }  _contentInsets;
+    BOOL  _contentInsetsValid;
+    _UILabelContentLayer * _contentLayer;
 }
 
 - (void).cxx_destruct;
@@ -22,7 +22,9 @@
 - (void)invalidateContentInsets;
 - (void)layoutSublayers;
 - (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)setContentsFormat:(id)arg1;
 - (void)setContentsGravity:(id)arg1;
+- (void)setContentsMultiplyColor:(struct CGColor { }*)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setMasksToBounds:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

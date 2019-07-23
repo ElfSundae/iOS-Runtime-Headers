@@ -3,13 +3,13 @@
  */
 
 @interface MFComposeHeaderView : UIView {
-    id _delegate;
-    UIView *_highlightBackgroundView;
-    float _labelIndentation;
-    MFHeaderLabelView *_labelView;
-    NSString *_navTitle;
-    UIView *_separator;
-    BOOL _showsHighlightWhenTouched;
+    id  _delegate;
+    UIView * _highlightBackgroundView;
+    float  _labelIndentation;
+    MFHeaderLabelView * _labelView;
+    NSString * _navTitle;
+    UIView * _separator;
+    BOOL  _showsHighlightWhenTouched;
 }
 
 @property (nonatomic, copy) NSString *label;

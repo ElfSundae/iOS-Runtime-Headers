@@ -3,30 +3,30 @@
  */
 
 @interface GQHLassoState : GQHState {
-    struct __CFString { } *mCssUri;
-    unsigned int mCurrentDrawableZOrder;
-    struct __CFString { } *mCurrentSheetFilename;
-    struct __CFString { } *mCurrentSheetUri;
-    struct __CFDictionary { } *mDrawableUidToCssZOrderClassMap;
-    char *mFirstWorkspaceName;
-    GQHXML *mIndex;
-    bool mIsProgressiveMode;
+    struct __CFString { } * mCssUri;
+    unsigned int  mCurrentDrawableZOrder;
+    struct __CFString { } * mCurrentSheetFilename;
+    struct __CFString { } * mCurrentSheetUri;
+    struct __CFDictionary { } * mDrawableUidToCssZOrderClassMap;
+    char * mFirstWorkspaceName;
+    GQHXML * mIndex;
+    bool  mIsProgressiveMode;
     struct CGPoint { 
         float x; 
         float y; 
-    } mMaxCanvasPoint;
-    GQHXML *mNavigation;
-    int mSheetCount;
-    struct __CFString { } *mSheetCssFilename;
-    struct __CFString { } *mSheetCssLastFilename;
-    struct __CFArray { } *mSheetCssLastUriList;
-    struct __CFArray { } *mSheetCssUriList;
-    struct __CFArray { } *mSheetFilenameList;
-    struct __CFString { } *mSheetOneCss;
-    struct __CFString { } *mSheetOneLastCSS;
-    struct __CFArray { } *mSheetUriList;
-    int mTableCount;
-    unsigned int mZOrderedDrawableCount;
+    }  mMaxCanvasPoint;
+    GQHXML * mNavigation;
+    int  mSheetCount;
+    struct __CFString { } * mSheetCssFilename;
+    struct __CFString { } * mSheetCssLastFilename;
+    struct __CFArray { } * mSheetCssLastUriList;
+    struct __CFArray { } * mSheetCssUriList;
+    struct __CFArray { } * mSheetFilenameList;
+    struct __CFString { } * mSheetOneCss;
+    struct __CFString { } * mSheetOneLastCSS;
+    struct __CFArray { } * mSheetUriList;
+    int  mTableCount;
+    unsigned int  mZOrderedDrawableCount;
 }
 
 - (void)addCachedStyle:(struct __CFString { }*)arg1;

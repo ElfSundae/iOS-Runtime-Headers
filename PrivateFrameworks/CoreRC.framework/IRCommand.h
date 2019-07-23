@@ -3,12 +3,12 @@
  */
 
 @interface IRCommand : NSObject <NSCopying, NSSecureCoding> {
-    BOOL _isRepeat;
-    unsigned long long _payload;
-    IRProtocol *_protocol;
-    unsigned long long *_sequence;
-    unsigned int _sequenceCount;
-    unsigned long long _timestamp;
+    BOOL  _isRepeat;
+    unsigned long long  _payload;
+    IRProtocol * _protocol;
+    unsigned long long * _sequence;
+    unsigned int  _sequenceCount;
+    unsigned long long  _timestamp;
 }
 
 @property (nonatomic, readonly) BOOL isRepeat;
@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) unsigned int sequenceCount;
 @property (nonatomic) unsigned long long timestamp;
 
++ (id)commandWithProtocol:(id)arg1 payload:(unsigned long long)arg2 repeat:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

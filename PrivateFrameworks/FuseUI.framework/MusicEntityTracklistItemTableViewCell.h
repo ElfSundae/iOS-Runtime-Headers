@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
  */
 
-@interface MusicEntityTracklistItemTableViewCell : UITableViewCell <MusicEntityContentDescriptorViewConfiguring, MusicEntityTracklistItemViewDelegate, MusicEntityViewDownloadInformationObserving, MusicEntityViewPlaybackStatusObserving> {
-    BOOL _entityDisabled;
-    float _leadingTextColumnWidth;
-    MusicEntityTracklistItemView *_tracklistItemView;
+@interface MusicEntityTracklistItemTableViewCell : UITableViewCell <MusicEntityContentDescriptorViewConfiguring, MusicEntityTracklistItemViewDelegate> {
+    BOOL  _entityDisabled;
+    float  _leadingTextColumnWidth;
+    MusicEntityTracklistItemView * _tracklistItemView;
 }
 
 @property (nonatomic, retain) MusicEntityViewContentDescriptor *contentDescriptor;
@@ -30,12 +30,10 @@
 - (float)leadingTextColumnWidth;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setContentDescriptor:(id)arg1;
-- (void)setDownloadInformation:(struct MusicEntityDownloadInformation { int x1; float x2; })arg1;
 - (void)setEntityDisabled:(BOOL)arg1;
 - (void)setEntityValueProvider:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLeadingTextColumnWidth:(float)arg1;
-- (void)setPlaybackStatus:(id)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)tracklistItemView:(id)arg1 didSelectPlayButtonAction:(unsigned int)arg2;
 - (void)tracklistItemViewDidSelectContextualActionsButton:(id)arg1;

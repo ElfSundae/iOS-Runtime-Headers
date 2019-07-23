@@ -3,12 +3,12 @@
  */
 
 @interface MKDebugLocationConsole : UILabel {
-    NSString *_customText;
-    UIColor *_customTextColor;
-    BOOL _customTextEnabled;
-    unsigned int _pageIndex;
-    MKMapView *_parentMapView;
-    NSTimer *_updateTimer;
+    NSString * _customText;
+    UIColor * _customTextColor;
+    BOOL  _customTextEnabled;
+    unsigned int  _pageIndex;
+    MKMapView * _parentMapView;
+    NSTimer * _updateTimer;
 }
 
 @property (nonatomic) BOOL customTextEnabled;

@@ -3,17 +3,17 @@
  */
 
 @interface CMKFocusView : UIView {
-    double _animationStartTime;
-    CAKeyframeAnimation *_boundsAnimation;
-    UIColor *_color;
-    CAKeyframeAnimation *_contentsAnimation;
-    BOOL _fadeOutStarted;
-    BOOL _fadingOut;
-    NSArray *_images;
-    double _lastFadeOutTime;
-    double _lastInteractionTime;
-    BOOL _shouldFadeOut;
-    int _suspendCount;
+    double  _animationStartTime;
+    CAKeyframeAnimation * _boundsAnimation;
+    UIColor * _color;
+    CAKeyframeAnimation * _contentsAnimation;
+    BOOL  _fadeOutStarted;
+    BOOL  _fadingOut;
+    NSArray * _images;
+    double  _lastFadeOutTime;
+    double  _lastInteractionTime;
+    BOOL  _shouldFadeOut;
+    int  _suspendCount;
 }
 
 @property (nonatomic, retain) UIColor *color;

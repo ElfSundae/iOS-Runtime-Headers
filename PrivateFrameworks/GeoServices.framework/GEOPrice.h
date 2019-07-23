@@ -3,11 +3,11 @@
  */
 
 @interface GEOPrice : PBCodable <GEOServerFormatTokenPriceValue, NSCopying> {
-    float _amount;
-    NSString *_currencyCode;
+    float  _amount;
+    NSString * _currencyCode;
     struct { 
         unsigned int amount : 1; 
-    } _has;
+    }  _has;
 }
 
 @property (nonatomic) float amount;

@@ -3,10 +3,10 @@
  */
 
 @interface FBSystemServiceServer : BSBaseXPCServer <FBSystemServiceServer> {
-    NSMutableSet *_completedMilestones;
-    NSMutableDictionary *_facilitiesByIdentifier;
-    NSMutableSet *_pendingConnects;
-    NSMutableDictionary *_suspendedFacilitiesByIdentifier;
+    NSMutableSet * _completedMilestones;
+    NSMutableDictionary * _facilitiesByIdentifier;
+    NSMutableSet * _pendingConnects;
+    NSMutableDictionary * _suspendedFacilitiesByIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;

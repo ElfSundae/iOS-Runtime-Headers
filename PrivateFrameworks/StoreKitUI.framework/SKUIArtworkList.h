@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
  */
 
-@interface SKUIArtworkList : NSObject <NSCopying, SKUICacheCoding> {
-    NSMutableArray *_artworks;
+@interface SKUIArtworkList : NSObject <SKUIArtworkProviding> {
+    NSMutableArray * _artworks;
 }
 
 @property (getter=_lookupArray, nonatomic, readonly) NSArray *_lookupArray;
@@ -16,6 +16,9 @@
 @property (nonatomic, readonly) SKUIArtwork *smallestArtwork;
 @property (readonly) Class superclass;
 
++ (id)artworkForSize:(int)arg1 artworkDictionaries:(id)arg2;
++ (BOOL)canHandleArtworkFormat:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)_lookupArray;
 - (id)artworkForSize:(int)arg1;
@@ -27,12 +30,14 @@
 - (id)cacheRepresentation;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (BOOL)hasArtwork;
 - (unsigned int)hash;
 - (id)initWithArtworkListArray:(id)arg1;
 - (id)initWithCacheRepresentation:(id)arg1;
 - (id)initWithLookupArray:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)largestArtwork;
+- (id)preferredExactArtworkForSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setArtworks:(id)arg1;
 - (id)smallestArtwork;
 

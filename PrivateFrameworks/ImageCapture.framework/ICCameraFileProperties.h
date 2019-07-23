@@ -3,27 +3,31 @@
  */
 
 @interface ICCameraFileProperties : NSObject {
-    BOOL _burstFavorite;
-    BOOL _burstPicked;
-    NSString *_burstUUID;
-    double _duration;
-    BOOL _fetchingMetadata;
-    int _fetchingMetadataLock;
-    BOOL _fetchingThumbnail;
-    int _fetchingThumbnailLock;
-    long long _fileSize;
-    BOOL _hasMetadata;
-    BOOL _hasOverriddenOrientation;
-    BOOL _hasThumbnail;
-    BOOL _highFramerate;
-    NSMutableDictionary *_metadata;
-    NSMutableDictionary *_metadata_hidden;
-    unsigned int _orientation;
-    struct CGImage { } *_originalThumbnail;
-    BOOL _raw;
-    NSMutableArray *_sidecarFiles;
-    struct CGImage { } *_thumbnail;
-    BOOL _timeLapse;
+    BOOL  _burstFavorite;
+    BOOL  _burstPicked;
+    NSString * _burstUUID;
+    double  _duration;
+    BOOL  _fetchingMetadata;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _fetchingMetadataLock;
+    BOOL  _fetchingThumbnail;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _fetchingThumbnailLock;
+    long long  _fileSize;
+    BOOL  _hasMetadata;
+    BOOL  _hasOverriddenOrientation;
+    BOOL  _hasThumbnail;
+    BOOL  _highFramerate;
+    NSMutableDictionary * _metadata;
+    NSMutableDictionary * _metadata_hidden;
+    unsigned int  _orientation;
+    struct CGImage { } * _originalThumbnail;
+    BOOL  _raw;
+    NSMutableArray * _sidecarFiles;
+    struct CGImage { } * _thumbnail;
+    BOOL  _timeLapse;
 }
 
 @property BOOL burstFavorite;
@@ -59,6 +63,7 @@
 - (BOOL)hasOverriddenOrientation;
 - (BOOL)hasThumbnail;
 - (BOOL)highFramerate;
+- (id)init;
 - (BOOL)isRaw;
 - (id)metadata;
 - (id)metadata_hidden;

@@ -3,7 +3,7 @@
  */
 
 @interface WDAAnchor : NSObject {
-    BOOL mAllowOverlap;
+    BOOL  mAllowOverlap;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,19 +13,19 @@
             float width; 
             float height; 
         } size; 
-    } mBounds;
-    int mHorizontalPosition;
-    int mRelativeHorizontalPosition;
-    int mRelativeVerticalPosition;
-    NSArray *mTextWrapPoints;
-    int mTextWrappingMode;
-    int mTextWrappingModeType;
-    int mVerticalPosition;
-    double mWrapDistanceBottom;
-    double mWrapDistanceLeft;
-    double mWrapDistanceRight;
-    double mWrapDistanceTop;
-    long mZIndex;
+    }  mBounds;
+    int  mHorizontalPosition;
+    int  mRelativeHorizontalPosition;
+    int  mRelativeVerticalPosition;
+    NSArray * mTextWrapPoints;
+    int  mTextWrappingMode;
+    int  mTextWrappingModeType;
+    int  mVerticalPosition;
+    double  mWrapDistanceBottom;
+    double  mWrapDistanceLeft;
+    double  mWrapDistanceRight;
+    double  mWrapDistanceTop;
+    long  mZIndex;
 }
 
 @property (nonatomic) BOOL allowOverlap;

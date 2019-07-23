@@ -3,7 +3,7 @@
  */
 
 @interface UIDigitizerTapGestureRecognizer : UIGestureRecognizer <_UIDigitizerGestureRecognizerImpDelegate> {
-    _UIDigitizerGestureRecognizerImp *_imp;
+    _UIDigitizerGestureRecognizerImp * _imp;
 }
 
 @property (readonly, copy) NSString *debugDescription;

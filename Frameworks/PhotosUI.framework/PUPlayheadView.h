@@ -3,8 +3,8 @@
  */
 
 @interface PUPlayheadView : UIView {
-    UIView *_line;
-    BOOL _tintColorForPlayhead;
+    UIView * _line;
+    BOOL  _tintColorForPlayhead;
 }
 
 - (void).cxx_destruct;

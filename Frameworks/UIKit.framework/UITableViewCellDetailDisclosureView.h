@@ -3,8 +3,8 @@
  */
 
 @interface UITableViewCellDetailDisclosureView : UIControl {
-    UIImageView *_disclosureView;
-    UIButton *_infoButton;
+    UIImageView * _disclosureView;
+    UIButton * _infoButton;
 }
 
 - (void).cxx_destruct;

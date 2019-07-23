@@ -3,13 +3,13 @@
  */
 
 @interface CNAvatarCardPresentationController : UIPresentationController {
-    unsigned int _alignmentEdge;
-    float _alignmentY;
-    UIVisualEffectView *_backgroundView;
-    UIView *_cardView;
-    UIView *_contentView;
-    UIView *_dimmingView;
-    <CNCardTransitioning> *_originalTransitioning;
+    unsigned int  _alignmentEdge;
+    float  _alignmentY;
+    UIVisualEffectView * _backgroundView;
+    UIView * _cardView;
+    UIView * _contentView;
+    UIView * _dimmingView;
+    <CNCardTransitioning> * _originalTransitioning;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _sourceRect;
+    }  _sourceRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,12 +29,12 @@
             float width; 
             float height; 
         } size; 
-    } _sourceTargetRect;
-    UIView *_sourceView;
-    UIViewController *_sourceViewController;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    CNAvatarCardTransition *_transition;
-    UIVisualEffectView *_vibrancyView;
+    }  _sourceTargetRect;
+    UIView * _sourceView;
+    UIViewController * _sourceViewController;
+    UITapGestureRecognizer * _tapGestureRecognizer;
+    CNAvatarCardTransition * _transition;
+    UIVisualEffectView * _vibrancyView;
 }
 
 @property (nonatomic) unsigned int alignmentEdge;

@@ -6,7 +6,7 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _baselinePoint;
+    }  _baselinePoint;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,9 +16,9 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    UIImage *_image;
-    id _line;
+    }  _bounds;
+    UIImage * _image;
+    id  _line;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,7 +28,7 @@
             float width; 
             float height; 
         } size; 
-    } _typeBounds;
+    }  _typeBounds;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } baselinePoint;

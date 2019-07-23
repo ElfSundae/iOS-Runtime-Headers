@@ -3,17 +3,17 @@
  */
 
 @interface UIPushBehavior : UIDynamicBehavior {
-    BOOL _active;
-    float _angle;
+    BOOL  _active;
+    float  _angle;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _forceVector;
-    int _i;
-    float _magnitude;
-    int _mode;
-    NSMutableDictionary *_targetPoints;
-    double _timeInterval;
+    }  _forceVector;
+    int  _i;
+    float  _magnitude;
+    int  _mode;
+    NSMutableDictionary * _targetPoints;
+    double  _timeInterval;
 }
 
 @property (nonatomic) BOOL active;

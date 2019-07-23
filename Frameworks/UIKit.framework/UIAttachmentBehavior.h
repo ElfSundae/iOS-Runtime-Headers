@@ -3,34 +3,34 @@
  */
 
 @interface UIAttachmentBehavior : UIDynamicBehavior {
-    PKExtendedPhysicsBody *_anchorBody;
+    PKExtendedPhysicsBody * _anchorBody;
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorPoint;
+    }  _anchorPoint;
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorPointA;
+    }  _anchorPointA;
     struct CGPoint { 
         float x; 
         float y; 
-    } _anchorPointB;
-    int _attachedBehaviorType;
+    }  _anchorPointB;
+    int  _attachedBehaviorType;
     struct { 
         float minimum; 
         float maximum; 
-    } _attachmentRange;
-    unsigned int _attachmentType;
+    }  _attachmentRange;
+    unsigned int  _attachmentType;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _axis;
-    float _damping;
-    float _frequency;
-    float _frictionTorque;
-    PKPhysicsJoint *_joint;
-    float _length;
+    }  _axis;
+    float  _damping;
+    float  _frequency;
+    float  _frictionTorque;
+    PKPhysicsJoint * _joint;
+    float  _length;
     struct { 
         unsigned int dampingSet : 1; 
         unsigned int frequencySet : 1; 
@@ -38,8 +38,8 @@
         unsigned int rangeSet : 1; 
         unsigned int frictionTorqueSet : 1; 
         unsigned int isRevolute : 1; 
-    } _stateFlags;
-    int _type;
+    }  _stateFlags;
+    int  _type;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } anchorPoint;

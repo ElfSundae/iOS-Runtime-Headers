@@ -3,7 +3,11 @@
  */
 
 @interface MPMediaItemArtwork : NSObject {
-    UIImage *_image;
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  _bounds;
+    id /* block */  _requestHandler;
 }
 
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;
@@ -14,6 +18,7 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })imageCropRect;
 - (id)imageWithSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)init;
+- (id)initWithBoundsSize:(struct CGSize { float x1; float x2; })arg1 requestHandler:(id /* block */)arg2;
 - (id)initWithImage:(id)arg1;
 
 @end

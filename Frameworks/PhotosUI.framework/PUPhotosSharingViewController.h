@@ -2,16 +2,17 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUPhotosSharingViewController : UIViewController <PHAssetCollectionDataSource, PLDismissableViewController, PUActivityViewControllerDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotoLibraryUIChangeObserver, PUPhotoViewContentHelperDelegate, PUPhotosSharingCollectionViewLayoutDelegate, PUPhotosSharingTransitionViewController, PUScrollViewSpeedometerDelegate, PUTransitionViewAnimatorDelegate, UIActivityViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
-    PHCachingImageManager *__cachingImageManager;
-    PUActivityViewController *__embeddedActivityViewController;
-    PHAsset *__lastKnownReferenceAsset;
-    NSIndexPath *__lastKnownReferenceIndexPath;
-    PUTransitionViewAnimator *__photoZoomAnimator;
-    PUPhotosZoomingSharingGridCell *__photoZoomCell;
-    PUPhotoPinchGestureRecognizer *__photoZoomPinchGestureRecognizer;
-    id /* block */ __pptOnDidEndScrollingBlock;
-    NSMutableSet *__preheatedAssets;
+@interface PUPhotosSharingViewController : UIViewController <PHAssetCollectionDataSource, PLDismissableViewController, PUActivityViewControllerDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotoViewContentHelperDelegate, PUPhotosSharingCollectionViewLayoutDelegate, PUPhotosSharingTransitionViewController, PUScrollViewSpeedometerDelegate, PUTransitionViewAnimatorDelegate, PXPhotoLibraryUIChangeObserver, UIActivityViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
+    PXAssetBadgeManager * __badgeManager;
+    PHCachingImageManager * __cachingImageManager;
+    PUActivityViewController * __embeddedActivityViewController;
+    PHAsset * __lastKnownReferenceAsset;
+    NSIndexPath * __lastKnownReferenceIndexPath;
+    PUTransitionViewAnimator * __photoZoomAnimator;
+    PUPhotosZoomingSharingGridCell * __photoZoomCell;
+    PUPhotoPinchGestureRecognizer * __photoZoomPinchGestureRecognizer;
+    id /* block */  __pptOnDidEndScrollingBlock;
+    NSMutableSet * __preheatedAssets;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -21,42 +22,44 @@
             float width; 
             float height; 
         } size; 
-    } __previousPreheatRect;
-    UICollectionViewLayout *__transitionLayout;
-    PUActivityViewController *__unembeddedActivityViewController;
-    BOOL __viewInSyncWithModel;
-    struct __CFString { } *_aggregateKey;
-    NSMutableDictionary *_assetItemsByAssetIdentifier;
-    PUOneUpAssetTransitionInfo *_assetTransitionInfo;
-    float _cachedEmbeddedActivityViewHeight;
-    UIBarButtonItem *_cancelButton;
-    BOOL _defaultIrisEnabled;
-    <PUPhotosSharingViewControllerDelegate> *_delegate;
-    BOOL _didAttemptShareViaAirDrop;
-    UIBarButtonItem *_doneButton;
-    UIView *_embeddedActivityView;
-    NSArray *_excludedActivityTypes;
-    NSPredicate *_filterPredicate;
-    NSIndexPath *_inFlightReferenceIndexPath;
-    BOOL _inFlightRotation;
-    NSMapTable *_indexPathsByOptionView;
-    BOOL _lockScreenCamera;
-    UICollectionView *_mainCollectionView;
-    PUPhotosSharingCollectionViewLayout *_mainCollectionViewLayout;
-    UIBarButtonItem *_nextButton;
-    PHFetchResult *_photoCollectionsFetchResult;
-    PUPhotoSelectionManager *_photoSelectionManager;
-    PUPhotosSharingTransitionContext *_photosSharingTransitionContext;
-    <PUPresentingPhotoBrowserController> *_presentingPhotoBrowserController;
-    NSMutableDictionary *_resultsForAssetCollection;
-    BOOL _shouldPlayVitalityHintAfterViewDidAppear;
-    BOOL _shouldScrollToSelection;
-    PUPhotosSharingViewControllerSpec *_spec;
-    PUScrollViewSpeedometer *_speedometer;
-    UITapGestureRecognizer *_tapGestureRecognizer;
+    }  __previousPreheatRect;
+    UICollectionViewLayout * __transitionLayout;
+    PUActivityViewController * __unembeddedActivityViewController;
+    BOOL  __viewInSyncWithModel;
+    struct __CFString { } * _aggregateKey;
+    BOOL  _allowAirPlayActivity;
+    NSMutableDictionary * _assetItemsByAssetIdentifier;
+    PUOneUpAssetTransitionInfo * _assetTransitionInfo;
+    float  _cachedEmbeddedActivityViewHeight;
+    UIBarButtonItem * _cancelButton;
+    BOOL  _defaultIrisEnabled;
+    <PUPhotosSharingViewControllerDelegate> * _delegate;
+    BOOL  _didAttemptShareViaAirDrop;
+    UIBarButtonItem * _doneButton;
+    UIView * _embeddedActivityView;
+    NSArray * _excludedActivityTypes;
+    NSPredicate * _filterPredicate;
+    NSIndexPath * _inFlightReferenceIndexPath;
+    BOOL  _inFlightRotation;
+    NSMapTable * _indexPathsByOptionView;
+    BOOL  _lockScreenCamera;
+    UICollectionView * _mainCollectionView;
+    PUPhotosSharingCollectionViewLayout * _mainCollectionViewLayout;
+    UIBarButtonItem * _nextButton;
+    PHPerson * _person;
+    PHFetchResult * _photoCollectionsFetchResult;
+    PUPhotoSelectionManager * _photoSelectionManager;
+    PUPhotosSharingTransitionContext * _photosSharingTransitionContext;
+    NSMutableDictionary * _resultsForAssetCollection;
+    BOOL  _shouldPlayVitalityHintAfterViewDidAppear;
+    BOOL  _shouldScrollToSelection;
+    PUPhotosSharingViewControllerSpec * _spec;
+    PUScrollViewSpeedometer * _speedometer;
+    UITapGestureRecognizer * _tapGestureRecognizer;
 }
 
 @property (nonatomic, readonly) PUActivityViewController *_activityViewController;
+@property (nonatomic, readonly) PXAssetBadgeManager *_badgeManager;
 @property (nonatomic, readonly) PHCachingImageManager *_cachingImageManager;
 @property (setter=_setEmbeddedActivityViewController:, nonatomic, retain) PUActivityViewController *_embeddedActivityViewController;
 @property (setter=_setLastKnownReferenceAsset:, nonatomic, retain) PHAsset *_lastKnownReferenceAsset;
@@ -71,6 +74,7 @@
 @property (setter=_setUnembeddedActivityViewController:, nonatomic, retain) PUActivityViewController *_unembeddedActivityViewController;
 @property (getter=_isViewInSyncWithModel, setter=_setViewInSyncWithModel:, nonatomic) BOOL _viewInSyncWithModel;
 @property (nonatomic, retain) struct __CFString { }*aggregateKey;
+@property (nonatomic) BOOL allowAirPlayActivity;
 @property (nonatomic, readonly) PHFetchResult *assetCollectionsFetchResult;
 @property (nonatomic, retain) PUOneUpAssetTransitionInfo *assetTransitionInfo;
 @property (nonatomic, readonly) PHAsset *currentAsset;
@@ -85,10 +89,10 @@
 @property (getter=isLockScreenCamera, nonatomic) BOOL lockScreenCamera;
 @property (setter=_setMainCollectionView:, nonatomic, retain) UICollectionView *mainCollectionView;
 @property (setter=_setMainCollectionViewLayout:, nonatomic, retain) PUPhotosSharingCollectionViewLayout *mainCollectionViewLayout;
+@property (nonatomic, retain) PHPerson *person;
 @property (nonatomic, readonly) PHFetchResult *photoCollectionsFetchResult;
 @property (nonatomic, retain) PUPhotoSelectionManager *photoSelectionManager;
 @property (nonatomic, retain) PUPhotosSharingTransitionContext *photosSharingTransitionContext;
-@property (nonatomic, retain) <PUPresentingPhotoBrowserController> *presentingPhotoBrowserController;
 @property (nonatomic, retain) PUPhotosSharingViewControllerSpec *spec;
 @property (readonly) Class superclass;
 
@@ -98,6 +102,7 @@
 - (void)_activityViewControllerDidDismissWithActivityType:(id)arg1 didComplete:(BOOL)arg2;
 - (void)_addActivityAssetItem:(id)arg1;
 - (id)_assetAtIndexPath:(id)arg1;
+- (id)_badgeManager;
 - (void)_beginZoomingForCellAtIndexPath:(id)arg1;
 - (id)_cachingImageManager;
 - (void)_cancel:(id)arg1;
@@ -184,6 +189,7 @@
 - (BOOL)activityViewControllerShouldCancelAfterPreparationCanceled:(id)arg1;
 - (void)activityViewControllerWillStartAirdropTransfer:(id)arg1;
 - (struct __CFString { }*)aggregateKey;
+- (BOOL)allowAirPlayActivity;
 - (id)assetCollectionsFetchResult;
 - (id)assetTransitionInfo;
 - (id)assetsInAssetCollection:(id)arg1;
@@ -218,6 +224,7 @@
 - (int)numberOfSectionsInCollectionView:(id)arg1;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(id /* block */)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })oneUpAssetTransitionAssetFinalFrame:(id)arg1;
+- (id)person;
 - (id)photoCollectionsFetchResult;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (id)photoSelectionManager;
@@ -227,8 +234,7 @@
 - (BOOL)ppt_scrollToAssetAtRelativeIndex:(int)arg1 completion:(id /* block */)arg2;
 - (id)ppt_scrollView;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
-- (id)presentingPhotoBrowserController;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -237,16 +243,17 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { float x1; float x2; })arg2 targetContentOffset:(inout struct CGPoint { float x1; float x2; }*)arg3;
 - (void)setAggregateKey:(struct __CFString { }*)arg1;
+- (void)setAllowAirPlayActivity:(BOOL)arg1;
 - (void)setAssetTransitionInfo:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setExcludedActivityTypes:(id)arg1;
 - (void)setLockScreenCamera:(BOOL)arg1;
 - (void)setOneUpPhotosSharingTransitionContext:(id)arg1;
 - (void)setOneUpPhotosSharingTransitionInfo:(id)arg1;
+- (void)setPerson:(id)arg1;
 - (void)setPhotoSelectionManager:(id)arg1;
 - (void)setPhotosSharingTransitionContext:(id)arg1;
 - (void)setPhotosSharingTransitionLayout:(id)arg1 animated:(BOOL)arg2;
-- (void)setPresentingPhotoBrowserController:(id)arg1;
 - (void)setSpec:(id)arg1;
 - (id)spec;
 - (id)transitionCollectionView;

@@ -3,8 +3,8 @@
  */
 
 @interface CNAvatarCardActionsView : UIView <CNQuickActionsManagerDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSArray *_actionCategories;
-    NSArray *_actions;
+    NSArray * _actionCategories;
+    NSArray * _actions;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,22 +14,23 @@
             float width; 
             float height; 
         } size; 
-    } _actionsImageFrame;
-    CNQuickActionsManager *_actionsManager;
-    BOOL _actionsReversed;
-    BOOL _bypassActionValidation;
-    NSArray *_contacts;
-    <CNAvatarCardActionsViewDelegate> *_delegate;
-    BOOL _dismissesBeforePerforming;
-    BOOL _expanded;
-    NSIndexPath *_highlightedIndexPath;
+    }  _actionsImageFrame;
+    CNQuickActionsManager * _actionsManager;
+    BOOL  _actionsReversed;
+    BOOL  _bypassActionValidation;
+    NSArray * _contacts;
+    <CNAvatarCardActionsViewDelegate> * _delegate;
+    BOOL  _dismissesBeforePerforming;
+    BOOL  _expanded;
+    NSIndexPath * _highlightedIndexPath;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialLocation;
-    UIGestureRecognizer *_rolloverGestureRecognizer;
-    UIGestureRecognizer *_selectionGestureRecognizer;
-    CNAvatarCardActionsTableView *_tableView;
+    }  _initialLocation;
+    _UIFeedbackRetargetBehavior * _retargetBehavior;
+    UIGestureRecognizer * _rolloverGestureRecognizer;
+    UIGestureRecognizer * _selectionGestureRecognizer;
+    CNAvatarCardActionsTableView * _tableView;
 }
 
 @property (nonatomic, copy) NSArray *actionCategories;
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) NSIndexPath *highlightedIndexPath;
 @property (nonatomic) struct CGPoint { float x1; float x2; } initialLocation;
 @property (getter=isPerformingAction, nonatomic, readonly) BOOL performingAction;
+@property (nonatomic, retain) _UIFeedbackRetargetBehavior *retargetBehavior;
 @property (nonatomic, retain) UIGestureRecognizer *rolloverGestureRecognizer;
 @property (nonatomic, retain) UIGestureRecognizer *selectionGestureRecognizer;
 @property (readonly) Class superclass;
@@ -65,6 +67,7 @@
 - (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)_indexPathForGestureRecognizer:(id)arg1;
 - (void)_performActionAtIndexPath:(id)arg1;
+- (void)_setHighlightedIndexPath:(id)arg1 isChange:(BOOL)arg2;
 - (void)_startTrackingRolloverOnCellAtIndexPath:(id)arg1 withGestureRecognizer:(id)arg2;
 - (void)_stopTrackingRolloverOnCellAtIndexPath:(id)arg1 withGestureRecognizer:(id)arg2;
 - (void)_updateActionsWithBlock:(id /* block */)arg1;
@@ -95,6 +98,7 @@
 - (void)reloadDataWithBlock:(id /* block */)arg1;
 - (void)reset;
 - (void)resetWithBlock:(id /* block */)arg1;
+- (id)retargetBehavior;
 - (id)rolloverGestureRecognizer;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
@@ -112,6 +116,7 @@
 - (void)setExpanded:(BOOL)arg1;
 - (void)setHighlightedIndexPath:(id)arg1;
 - (void)setInitialLocation:(struct CGPoint { float x1; float x2; })arg1;
+- (void)setRetargetBehavior:(id)arg1;
 - (void)setRolloverGestureRecognizer:(id)arg1;
 - (void)setSelectionGestureRecognizer:(id)arg1;
 - (void)setTableView:(id)arg1;
@@ -123,5 +128,6 @@
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)updateRollover:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -3,16 +3,16 @@
  */
 
 @interface MPMediaLibraryDataProviderML3 : NSObject <MPMediaLibraryDataProviderPrivate> {
-    <MPArtworkDataSource> *_artworkDataSource;
-    unsigned int _backgroundTask;
-    unsigned int _backgroundTaskCount;
-    NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
-    MPMediaEntityCache *_entityCache;
-    BOOL _hasScheduledEventPosting;
-    ML3MusicLibrary *_library;
-    int _refreshState;
-    NSOperationQueue *_setValuesWidthLimitedQueue;
-    NSString *_uniqueIdentifier;
+    <MPArtworkDataSource> * _artworkDataSource;
+    unsigned int  _backgroundTask;
+    unsigned int  _backgroundTaskCount;
+    NSObject<OS_dispatch_queue> * _backgroundTaskQueue;
+    MPMediaEntityCache * _entityCache;
+    BOOL  _hasScheduledEventPosting;
+    ML3MusicLibrary * _library;
+    int  _refreshState;
+    NSOperationQueue * _setValuesWidthLimitedQueue;
+    NSString * _uniqueIdentifier;
 }
 
 @property (nonatomic, readonly) <MPArtworkDataSource> *artworkDataSource;
@@ -136,14 +136,17 @@
 - (void)populateLocationPropertiesOfItemWithIdentifier:(long long)arg1 withPath:(id)arg2 assetProtectionType:(int)arg3;
 - (id)preferredAudioLanguages;
 - (id)preferredSubtitleLanguages;
+- (BOOL)recordPlayEventForAlbumPersistentID:(long long)arg1;
+- (BOOL)recordPlayEventForPlaylistPersistentID:(long long)arg1;
 - (void)removeAllItemsInPlaylistWithIdentifier:(long long)arg1;
 - (void)removeFirstItemFromPlaylistWithIdentifier:(long long)arg1;
-- (void)removeItemsWithIdentifiers:(id)arg1 atFilteredIndexes:(id)arg2 inPlaylistWithIdentifier:(long long)arg3 completionBlock:(id /* block */)arg4;
+- (void)removeItemsAtIndexes:(id)arg1 inPlaylistWithIdentifier:(long long)arg2 completionBlock:(id /* block */)arg3;
 - (BOOL)removeItemsWithIdentifiers:(long long*)arg1 count:(unsigned int)arg2;
 - (BOOL)removePlaylistWithIdentifier:(long long)arg1;
 - (void)sdk_addItemWithOpaqueID:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)sdk_addItemWithOpaqueIdentifier:(id)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(id /* block */)arg3;
 - (long long)sdk_addPlaylistWithValuesForProperties:(id)arg1;
+- (void)setItemsWithIdentifiers:(id)arg1 forPlaylistWithIdentifier:(long long)arg2 completionBlock:(id /* block */)arg3;
 - (void)setLibrary:(id)arg1;
 - (void)setLibraryContainerFilterPredicatesWithCloudFilteringType:(int)arg1 additionalFilterPredicates:(id)arg2;
 - (void)setLibraryEntityFilterPredicatesWithCloudFilteringType:(int)arg1 additionalFilterPredicates:(id)arg2;

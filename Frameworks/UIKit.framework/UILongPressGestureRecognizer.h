@@ -3,35 +3,35 @@
  */
 
 @interface UILongPressGestureRecognizer : UIGestureRecognizer <UITapRecognizerDelegate> {
-    NSMutableSet *_activeTouches;
-    float _allowableMovement;
-    unsigned int _allowsDynamicTouchesList;
-    int _buttonType;
-    unsigned int _cancelPastAllowableMovement;
-    float _currentImpulse;
-    UIHeldAction *_enoughTimeElapsed;
-    unsigned int _gotEnoughTaps;
-    unsigned int _gotTooMany;
-    unsigned int _gotTouchEnd;
-    UITapRecognizer *_imp;
-    int _impulseObservations;
+    NSMutableSet * _activeTouches;
+    float  _allowableMovement;
+    unsigned int  _allowsDynamicTouchesList;
+    int  _buttonType;
+    unsigned int  _cancelPastAllowableMovement;
+    float  _currentImpulse;
+    UIHeldAction * _enoughTimeElapsed;
+    unsigned int  _gotEnoughTaps;
+    unsigned int  _gotTooMany;
+    unsigned int  _gotTouchEnd;
+    UITapRecognizer * _imp;
+    int  _impulseObservations;
     struct CGPoint { 
         float x; 
         float y; 
-    } _lastCentroidScreen;
-    float _lastForce;
-    double _lastForceTimestamp;
-    double _minimumPressDuration;
-    unsigned int _numberOfTouchesRequired;
-    BOOL _requiresQuietImpulse;
-    BOOL _requiresQuietImpulseForCurrentTouchSequence;
+    }  _lastCentroidScreen;
+    float  _lastForce;
+    double  _lastForceTimestamp;
+    double  _minimumPressDuration;
+    unsigned int  _numberOfTouchesRequired;
+    BOOL  _requiresQuietImpulse;
+    BOOL  _requiresQuietImpulseForCurrentTouchSequence;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startPointScreen;
-    UIDelayedAction *_tooMuchTimeElapsed;
-    NSObservation *_touchForceObservation;
-    NSArray *_touches;
+    }  _startPointScreen;
+    UIDelayedAction * _tooMuchTimeElapsed;
+    NSObservation * _touchForceObservation;
+    NSArray * _touches;
 }
 
 @property (setter=_setButtonType:, nonatomic) int _buttonType;

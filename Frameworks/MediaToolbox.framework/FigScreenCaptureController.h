@@ -3,18 +3,18 @@
  */
 
 @interface FigScreenCaptureController : NSObject {
-    <FigScreenCaptureFrameHandlerDelegate> *_delegateWeak;
+    <FigScreenCaptureFrameHandlerDelegate> * _delegateWeak;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _minIntervalBetweenFrames;
-    struct OpaqueFigVirtualDisplaySession { } *_session;
+    }  _minIntervalBetweenFrames;
+    struct OpaqueFigVirtualDisplaySession { } * _session;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
+    }  _size;
 }
 
 @property (nonatomic) <FigScreenCaptureFrameHandlerDelegate> *delegate;

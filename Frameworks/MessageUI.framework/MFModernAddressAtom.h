@@ -3,19 +3,21 @@
  */
 
 @interface MFModernAddressAtom : UIControl <MFModernAtomViewResembling> {
-    void *_addressBook;
-    unsigned int _addressIsPhoneNumber;
-    MFModernAtomView *_atomView;
-    <MFModernAddressAtomDelegate> *_delegate;
-    NSString *_displayString;
-    NSString *_fullAddress;
-    int _identifier;
-    unsigned int _isDisplayStringFromAddressBook;
-    unsigned int _maxWidth;
-    void *_person;
-    unsigned int _updatedABPerson;
+    void * _addressBook;
+    NSString * _addressIdentifier;
+    unsigned int  _addressIsPhoneNumber;
+    MFModernAtomView * _atomView;
+    <MFModernAddressAtomDelegate> * _delegate;
+    NSString * _displayString;
+    NSString * _fullAddress;
+    int  _identifier;
+    unsigned int  _isDisplayStringFromAddressBook;
+    unsigned int  _maxWidth;
+    void * _person;
+    unsigned int  _updatedABPerson;
 }
 
+@property (nonatomic, readonly) NSString *addressIdentifier;
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } baselinePoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,7 +42,9 @@
 - (void)_updateABPerson;
 - (void)_updateDisplayStringIncludingABPerson:(BOOL)arg1;
 - (void)addressBookDidChange:(id)arg1;
+- (id)addressIdentifier;
 - (struct CGPoint { float x1; float x2; })baselinePoint;
+- (id)contactWithKeysToFetch:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)displayString;
@@ -58,6 +62,7 @@
 - (void)setAddress:(id)arg1;
 - (void)setAtomFont:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setIsPrimaryAddressAtom:(BOOL)arg1;
@@ -67,5 +72,6 @@
 - (void)setScale:(float)arg1;
 - (struct CGSize { float x1; float x2; })sizeThatFits:(struct CGSize { float x1; float x2; })arg1;
 - (id)unmodifiedAddressString;
+- (id)viewForLastBaselineLayout;
 
 @end

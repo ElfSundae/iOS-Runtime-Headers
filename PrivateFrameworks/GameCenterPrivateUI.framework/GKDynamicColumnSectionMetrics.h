@@ -3,8 +3,8 @@
  */
 
 @interface GKDynamicColumnSectionMetrics : GKSectionMetrics {
-    unsigned int _columnsInLandscape;
-    unsigned int _columnsInPortrait;
+    unsigned int  _columnsInLandscape;
+    unsigned int  _columnsInPortrait;
 }
 
 @property (nonatomic) unsigned int columnsInLandscape;

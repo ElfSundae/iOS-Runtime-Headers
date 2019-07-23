@@ -3,13 +3,13 @@
  */
 
 @interface VCPExifAnalyzer : NSObject {
-    NSDictionary *_properties;
-    unsigned int _requestedAnalyses;
-    NSMutableDictionary *_results;
+    NSDictionary * _properties;
+    unsigned int  _requestedAnalyses;
+    NSMutableDictionary * _results;
 }
 
 - (void).cxx_destruct;
-- (long)addFaceResults:(struct __CFDictionary { }*)arg1 flags:(unsigned int*)arg2;
+- (long)addFaceResults:(id)arg1 flags:(unsigned int*)arg2;
 - (long)analyzeAsset:(unsigned int*)arg1 results:(id*)arg2;
 - (id)initWithProperties:(id)arg1 forAnalysisTypes:(unsigned int)arg2;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })transformUprightAboutTopLeft:(unsigned int)arg1;

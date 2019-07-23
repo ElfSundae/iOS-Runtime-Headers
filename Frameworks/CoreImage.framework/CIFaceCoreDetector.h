@@ -3,14 +3,14 @@
  */
 
 @interface CIFaceCoreDetector : CIDetector {
-    bool _tracking;
-    CIContext *context;
-    FCRFaceDetector *faceCoreDetector;
-    NSMutableDictionary *featureOptions;
+    bool  _tracking;
+    CIContext * context;
+    FCRFaceDetector * faceCoreDetector;
+    NSMutableDictionary * featureOptions;
 }
 
 @property (nonatomic, retain) CIContext *context;
-@property FCRFaceDetector *faceCoreDetector;
+@property (retain) FCRFaceDetector *faceCoreDetector;
 
 - (id)adjustedImageFromImage:(id)arg1 orientation:(int)arg2 inverseCTM:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; }*)arg3;
 - (id)context;

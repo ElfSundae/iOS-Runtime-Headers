@@ -3,9 +3,9 @@
  */
 
 @interface MKRoute : NSObject {
-    GEOComposedRoute *_geoComposedRoute;
-    MKRoutePolyline *_polyline;
-    NSArray *_steps;
+    GEOComposedRoute * _geoComposedRoute;
+    MKRoutePolyline * _polyline;
+    NSArray * _steps;
 }
 
 @property (nonatomic, readonly) NSArray *advisoryNotices;

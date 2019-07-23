@@ -3,8 +3,8 @@
  */
 
 @interface PUJoiningMediaProvider : PUMediaProvider {
-    NSMapTable *__mediaProviderByClass;
-    NSMutableArray *__mediaProviderPredicateRecords;
+    NSMapTable * __mediaProviderByClass;
+    NSMutableArray * __mediaProviderPredicateRecords;
 }
 
 @property (nonatomic, readonly) NSMapTable *_mediaProviderByClass;

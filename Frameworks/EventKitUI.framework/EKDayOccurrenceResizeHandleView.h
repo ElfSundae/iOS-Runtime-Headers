@@ -3,9 +3,9 @@
  */
 
 @interface EKDayOccurrenceResizeHandleView : UIView {
-    UIColor *_baseColor;
-    EKDayOccurrenceView *_occurrenceView;
-    float _radius;
+    UIColor * _baseColor;
+    EKDayOccurrenceView * _occurrenceView;
+    float  _radius;
 }
 
 @property (nonatomic, retain) UIColor *baseColor;

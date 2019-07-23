@@ -3,7 +3,7 @@
  */
 
 @interface PSTextViewPane : PSEditingPane {
-    UITextView *_textView;
+    UITextView * _textView;
 }
 
 - (void).cxx_destruct;

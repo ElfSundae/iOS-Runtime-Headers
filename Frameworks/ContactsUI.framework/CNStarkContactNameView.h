@@ -3,8 +3,8 @@
  */
 
 @interface CNStarkContactNameView : UIView {
-    UILabel *_nameLabel;
-    UIImageView *_photoImageView;
+    UILabel * _nameLabel;
+    UIImageView * _photoImageView;
 }
 
 @property (nonatomic, retain) UILabel *nameLabel;

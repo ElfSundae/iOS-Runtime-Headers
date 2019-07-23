@@ -3,26 +3,26 @@
  */
 
 @interface PUPinchTracker : NSObject {
-    BOOL _allowTrackingOutside;
-    BOOL _didSetInitialPinchValues;
+    BOOL  _allowTrackingOutside;
+    BOOL  _didSetInitialPinchValues;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialCenter;
-    float _initialPinchAngle;
+    }  _initialCenter;
+    float  _initialPinchAngle;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialPinchCenter;
-    float _initialPinchDistance;
+    }  _initialPinchCenter;
+    float  _initialPinchDistance;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialPinchOrigin;
+    }  _initialPinchOrigin;
     struct CGSize { 
         float width; 
         float height; 
-    } _initialSize;
+    }  _initialSize;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -30,7 +30,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _initialTransform;
+    }  _initialTransform;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -38,10 +38,10 @@
         float d; 
         float tx; 
         float ty; 
-    } _initialTransformInverse;
-    PUValueFilter *_pinchRotationValueFilter;
-    float _rotationHysteresisDegrees;
-    id /* block */ _updateHandler;
+    }  _initialTransformInverse;
+    PUValueFilter * _pinchRotationValueFilter;
+    float  _rotationHysteresisDegrees;
+    id /* block */  _updateHandler;
 }
 
 @property (nonatomic) BOOL allowTrackingOutside;

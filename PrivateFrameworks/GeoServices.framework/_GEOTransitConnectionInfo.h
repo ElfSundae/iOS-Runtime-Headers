@@ -3,8 +3,8 @@
  */
 
 @interface _GEOTransitConnectionInfo : NSObject <GEOTransitConnectionInfo> {
-    GEOPDTransitConnection *_connection;
-    int _providerID;
+    GEOPDTransitConnection * _connection;
+    int  _providerID;
 }
 
 @property (readonly, copy) NSString *debugDescription;

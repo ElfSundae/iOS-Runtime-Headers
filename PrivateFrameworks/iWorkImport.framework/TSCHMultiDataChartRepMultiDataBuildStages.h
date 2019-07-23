@@ -3,14 +3,14 @@
  */
 
 @interface TSCHMultiDataChartRepMultiDataBuildStages : NSObject <TSCHUnretainedParent> {
-    unsigned int mCurrentStage;
-    float mDuration;
-    TSCHMultiDataChartRep *mRep;
+    unsigned int  mCurrentStage;
+    float  mDuration;
+    TSCHMultiDataChartRep * mRep;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } mStages;
-    float mTotalDuration;
+    }  mStages;
+    float  mTotalDuration;
 }
 
 @property (nonatomic, readonly) unsigned int currentStage;

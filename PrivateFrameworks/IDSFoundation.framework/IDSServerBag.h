@@ -3,24 +3,24 @@
  */
 
 @interface IDSServerBag : NSObject {
-    BOOL _allowSelfSignedCertificates;
-    BOOL _allowUnsignedBags;
-    NSString *_apsEnvironmentName;
-    NSDictionary *_bag;
-    NSObject<OS_dispatch_queue> *_bagQueue;
-    NSURL *_bagURL;
-    NSNumber *_cacheTime;
-    NSDictionary *_cachedBag;
-    NSString *_cachedHash;
-    NSString *_cachedURLString;
-    NSData *_certData;
-    IMConnectionMonitor *_connectionMonitor;
-    unsigned long long _hasPairedDeviceState;
-    NSDate *_loadDate;
-    IDSRemoteURLConnection *_remoteURLConnection;
-    int _token;
-    int _trustStatus;
-    NSMutableURLRequest *_urlRequest;
+    BOOL  _allowSelfSignedCertificates;
+    BOOL  _allowUnsignedBags;
+    NSString * _apsEnvironmentName;
+    NSDictionary * _bag;
+    NSObject<OS_dispatch_queue> * _bagQueue;
+    NSURL * _bagURL;
+    NSNumber * _cacheTime;
+    NSDictionary * _cachedBag;
+    NSString * _cachedHash;
+    NSString * _cachedURLString;
+    NSData * _certData;
+    IMConnectionMonitor * _connectionMonitor;
+    unsigned long long  _hasPairedDeviceState;
+    NSDate * _loadDate;
+    IDSRemoteURLConnection * _remoteURLConnection;
+    int  _token;
+    int  _trustStatus;
+    NSMutableURLRequest * _urlRequest;
 }
 
 @property (setter=_setBag:, retain) NSDictionary *_bag;

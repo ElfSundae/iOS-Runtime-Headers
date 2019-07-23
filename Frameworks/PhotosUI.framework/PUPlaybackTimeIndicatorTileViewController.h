@@ -3,16 +3,16 @@
  */
 
 @interface PUPlaybackTimeIndicatorTileViewController : PUTileViewController <PUBrowsingVideoPlayerChangeObserver, PUBrowsingVideoPlayerTimeObserver, PUBrowsingViewModelChangeObserver> {
-    NSDate *__forcedIndicatorVisibilityEndDate;
-    int __indicatorFormat;
-    BOOL __isIndicatorVisible;
-    PUPlaybackTimeLabel *__label;
-    <PUPlaybackTimeIndicatorTileViewControllerDelegate> *_delegate;
+    NSDate * __forcedIndicatorVisibilityEndDate;
+    int  __indicatorFormat;
+    BOOL  __isIndicatorVisible;
+    PUPlaybackTimeLabel * __label;
+    <PUPlaybackTimeIndicatorTileViewControllerDelegate> * _delegate;
     struct { 
         BOOL respondsToCanFlashIndicator; 
-    } _delegateFlags;
-    PUBrowsingVideoPlayer *_videoPlayer;
-    PUBrowsingViewModel *_viewModel;
+    }  _delegateFlags;
+    PUBrowsingVideoPlayer * _videoPlayer;
+    PUBrowsingViewModel * _viewModel;
 }
 
 @property (setter=_setForcedIndicatorVisibilityEndDate:, nonatomic, retain) NSDate *_forcedIndicatorVisibilityEndDate;

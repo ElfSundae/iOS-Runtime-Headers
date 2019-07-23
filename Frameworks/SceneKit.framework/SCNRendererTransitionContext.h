@@ -3,13 +3,13 @@
  */
 
 @interface SCNRendererTransitionContext : NSObject {
-    SCNNode *_outgoingPointOfView;
-    SCNScene *_outgoingScene;
-    SCNOffscreenRenderer *_renderers;
-    SKTransition *_transition;
-    struct __C3DFXPass { } *_transitionPass;
-    double _transitionStartTime;
-    id /* block */ completionHandler;
+    SCNNode * _outgoingPointOfView;
+    SCNScene * _outgoingScene;
+    SCNOffscreenRenderer * _renderers;
+    SKTransition * _transition;
+    struct __C3DFXPass { } * _transitionPass;
+    double  _transitionStartTime;
+    id /* block */  completionHandler;
 }
 
 @property (nonatomic, retain) SCNNode *outgoingPointOfView;

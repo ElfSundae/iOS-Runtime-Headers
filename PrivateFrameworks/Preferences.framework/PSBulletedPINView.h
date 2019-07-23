@@ -3,7 +3,7 @@
  */
 
 @interface PSBulletedPINView : PINView <PSPasscodeFieldDelegate> {
-    PSPasscodeField *_passcodeField;
+    PSPasscodeField * _passcodeField;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +24,7 @@
 - (void)layoutSubviews;
 - (void)passcodeField:(id)arg1 enteredPasscode:(id)arg2;
 - (BOOL)resignFirstResponder;
+- (void)setBlocked:(BOOL)arg1;
 - (void)setStringValue:(id)arg1;
 - (id)stringValue;
 

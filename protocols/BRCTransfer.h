@@ -9,11 +9,13 @@
 - (NSString *)etag;
 - (BRCItemID *)itemID;
 - (BRCProgress *)progress;
+- (BOOL)progressPublished;
 - (CKRecord *)record;
 - (CKRecordID *)recordID;
 - (CKRecord *)secondaryRecord;
 - (CKRecordID *)secondaryRecordID;
 - (void)setDoneSize:(unsigned long long)arg1;
+- (void)setProgressPublished:(BOOL)arg1;
 - (void)setRecord:(CKRecord *)arg1;
 - (void)setSecondaryRecord:(CKRecord *)arg1;
 - (NSString *)stageID;

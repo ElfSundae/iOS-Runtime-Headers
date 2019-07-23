@@ -3,8 +3,8 @@
  */
 
 @interface CKScrollViewController : CKViewController {
-    float _bottomInsetPadding;
-    BOOL _keyboardInteractionCancelled;
+    float  _bottomInsetPadding;
+    BOOL  _keyboardInteractionCancelled;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,12 +14,13 @@
             float width; 
             float height; 
         } size; 
-    } _keyboardScreenFrame;
-    BOOL _keyboardVisible;
-    UIScrollView *_scrollView;
-    BOOL _topInsetIncludesPalette;
-    float _topInsetPadding;
-    IMScheduledUpdater *_updater;
+    }  _keyboardScreenFrame;
+    BOOL  _keyboardVisible;
+    float  _minimumBottomInset;
+    UIScrollView * _scrollView;
+    BOOL  _topInsetIncludesPalette;
+    float  _topInsetPadding;
+    IMScheduledUpdater * _updater;
 }
 
 @property (nonatomic, readonly) float bottomInsetPadding;
@@ -29,11 +30,13 @@
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } keyboardScreenFrame;
 @property (getter=isKeyboardUndocked, nonatomic, readonly) BOOL keyboardUndocked;
 @property (getter=isKeyboardVisible, nonatomic) BOOL keyboardVisible;
+@property (nonatomic, readonly) float minimumBottomInset;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly) BOOL topInsetIncludesPalette;
 @property (nonatomic, readonly) float topInsetPadding;
 @property (nonatomic, retain) IMScheduledUpdater *updater;
 
+- (void).cxx_destruct;
 - (float)_bottomRotatingFooterHeight;
 - (void)_changedStatusBarFrame:(id)arg1;
 - (void)_entryViewWillRotate:(id)arg1;
@@ -49,6 +52,7 @@
 - (void)endHoldingScrollGeometryUpdatesForAllKeys;
 - (void)endHoldingScrollGeometryUpdatesForKey:(id)arg1;
 - (id)init;
+- (BOOL)isHoldingScrollGeometryUpdates;
 - (BOOL)isKeyboardOnscreenWithoutAccessoryView;
 - (BOOL)isKeyboardUndocked;
 - (BOOL)isKeyboardVisible;
@@ -60,6 +64,7 @@
 - (void)keyboardVisibilityWillChange;
 - (void)keyboardWillHideViaGesture;
 - (void)keyboardWillShowOrHide:(id)arg1;
+- (float)minimumBottomInset;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })navigationBarInsets;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })navigationBarInsetsWithoutPalette;
 - (id)scrollView;

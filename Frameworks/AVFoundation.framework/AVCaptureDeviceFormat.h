@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureDeviceFormat : NSObject {
-    AVCaptureDeviceFormatInternal *_internal;
+    AVCaptureDeviceFormatInternal * _internal;
 }
 
 @property (nonatomic, readonly) int autoFocusSystem;
@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSString *mediaType;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } minExposureDuration;
 @property (nonatomic, readonly) float minISO;
+@property (nonatomic, readonly) NSArray *supportedColorSpaces;
 @property (getter=isVideoBinned, nonatomic, readonly) BOOL videoBinned;
 @property (nonatomic, readonly) float videoFieldOfView;
 @property (getter=isVideoHDRSupported, nonatomic, readonly) BOOL videoHDRSupported;
@@ -43,12 +44,14 @@
 - (BOOL)isExperimental;
 - (BOOL)isHighResPhotoFormat;
 - (BOOL)isIrisSupported;
+- (BOOL)isIrisVideoStabilizationSupported;
 - (BOOL)isPhotoFormat;
 - (BOOL)isSISSupported;
 - (BOOL)isVideoBinned;
 - (BOOL)isVideoHDRSupported;
 - (BOOL)isVideoStabilizationModeSupported:(int)arg1;
 - (BOOL)isVideoStabilizationSupported;
+- (BOOL)isWideColorSupported;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })lowestSupportedVideoFrameDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })maxExposureDuration;
 - (float)maxISO;
@@ -60,7 +63,9 @@
 - (struct { int x1; int x2; })previewDimensions;
 - (int)rawBitDepth;
 - (struct { int x1; int x2; })sensorDimensions;
+- (id)supportedColorSpaces;
 - (int)supportedFormatsArrayIndex;
+- (unsigned long)supportedRawPixelFormat;
 - (int)supportedStabilizationMethod;
 - (BOOL)supportsDynamicCrop;
 - (BOOL)supportsHighProfileH264;

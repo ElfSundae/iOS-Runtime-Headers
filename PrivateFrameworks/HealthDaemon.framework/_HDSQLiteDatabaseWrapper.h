@@ -3,10 +3,10 @@
  */
 
 @interface _HDSQLiteDatabaseWrapper : NSObject {
-    HDSQLiteDatabase *_database;
-    unsigned int _generation;
-    unsigned long long _threadID;
-    int _type;
+    HDSQLiteDatabase * _database;
+    unsigned int  _generation;
+    unsigned long long  _threadID;
+    int  _type;
 }
 
 @property (nonatomic, readonly) HDSQLiteDatabase *database;

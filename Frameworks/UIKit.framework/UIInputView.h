@@ -3,34 +3,34 @@
  */
 
 @interface UIInputView : UIView <UISplittableInputView> {
-    BOOL _allowsSelfSizing;
-    float _contentRatio;
-    BOOL _disableSplitSupport;
-    float _gapWidth;
-    BOOL _isTransitioning;
+    BOOL  _allowsSelfSizing;
+    float  _contentRatio;
+    BOOL  _disableSplitSupport;
+    float  _gapWidth;
+    BOOL  _isTransitioning;
     struct CGSize { 
         float width; 
         float height; 
-    } _leftContentSize;
-    _UIInputViewContent *_leftContentView;
-    float _leftOffset;
-    UIImage *_mergedImage;
-    NSMutableDictionary *_mergedSliceMap;
-    UIKBRenderConfig *_renderConfig;
+    }  _leftContentSize;
+    _UIInputViewContent * _leftContentView;
+    float  _leftOffset;
+    UIImage * _mergedImage;
+    NSMutableDictionary * _mergedSliceMap;
+    UIKBRenderConfig * _renderConfig;
     struct CGSize { 
         float width; 
         float height; 
-    } _rightContentSize;
-    _UIInputViewContent *_rightContentView;
-    UIImage *_splitImage;
-    NSMutableDictionary *_splitSliceMap;
-    int _style;
-    BOOL _suppressBackgroundStyling;
-    float _transitionGap;
-    CALayer *_transitionLayer;
-    float _transitionLeftOffset;
-    float _transitionRatio;
-    NSArray *_visibleLayers;
+    }  _rightContentSize;
+    _UIInputViewContent * _rightContentView;
+    UIImage * _splitImage;
+    NSMutableDictionary * _splitSliceMap;
+    int  _style;
+    BOOL  _suppressBackgroundStyling;
+    float  _transitionGap;
+    CALayer * _transitionLayer;
+    float  _transitionLeftOffset;
+    float  _transitionRatio;
+    NSArray * _visibleLayers;
 }
 
 @property (nonatomic, retain) UIImage *_mergedImage;

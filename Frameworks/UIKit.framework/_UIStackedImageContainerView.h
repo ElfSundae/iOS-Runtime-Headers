@@ -3,11 +3,11 @@
  */
 
 @interface _UIStackedImageContainerView : UIView {
-    _UIStackedImageConfiguration *_config;
-    NSObject<UINamedLayerStack> *_constructedStackImage;
-    BOOL _installsMotionEffectsWhenFocused;
-    UIImage *_stackImage;
-    UIMotionEffectGroup *_stackMotionEffects;
+    _UIStackedImageConfiguration * _config;
+    NSObject<UINamedLayerStack> * _constructedStackImage;
+    BOOL  _installsMotionEffectsWhenFocused;
+    UIImage * _stackImage;
+    UIMotionEffectGroup * _stackMotionEffects;
 }
 
 @property (nonatomic, copy) _UIStackedImageConfiguration *config;

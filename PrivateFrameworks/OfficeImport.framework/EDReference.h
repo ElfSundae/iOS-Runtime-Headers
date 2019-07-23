@@ -8,7 +8,7 @@
         int firstColumn; 
         int lastRow; 
         int lastColumn; 
-    } mAreaReference;
+    }  mAreaReference;
 }
 
 + (id)reference;

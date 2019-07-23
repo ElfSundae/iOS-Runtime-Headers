@@ -3,23 +3,23 @@
  */
 
 @interface PDPresentation : OCDDocument {
-    NSMutableArray *mBulletBlips;
-    NSMutableArray *mCommentAuthors;
-    BOOL mIsAutoPlay;
-    BOOL mIsCommentsVisible;
-    BOOL mIsKiosk;
-    BOOL mIsLooping;
-    NSMutableArray *mNotesMasters;
+    NSMutableArray * mBulletBlips;
+    NSMutableArray * mCommentAuthors;
+    BOOL  mIsAutoPlay;
+    BOOL  mIsCommentsVisible;
+    BOOL  mIsKiosk;
+    BOOL  mIsLooping;
+    NSMutableArray * mNotesMasters;
     struct CGSize { 
         float width; 
         float height; 
-    } mNotesSize;
-    NSMutableArray *mSlideMasters;
+    }  mNotesSize;
+    NSMutableArray * mSlideMasters;
     struct CGSize { 
         float width; 
         float height; 
-    } mSlideSize;
-    NSMutableArray *mSlides;
+    }  mSlideSize;
+    NSMutableArray * mSlides;
 }
 
 - (unsigned long)addBulletBlip:(id)arg1;

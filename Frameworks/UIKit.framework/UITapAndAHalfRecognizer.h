@@ -3,17 +3,17 @@
  */
 
 @interface UITapAndAHalfRecognizer : UIGestureRecognizer {
-    NSMutableSet *_activeTouches;
-    float _allowableMovement;
-    int _currentNumberOfTaps;
-    double _minimumFinalPressDuration;
-    int _numberOfFullTaps;
+    NSMutableSet * _activeTouches;
+    float  _allowableMovement;
+    int  _currentNumberOfTaps;
+    double  _minimumFinalPressDuration;
+    int  _numberOfFullTaps;
     struct CGPoint { 
         float x; 
         float y; 
-    } _startPoint;
-    UIDelayedAction *_tapTimer;
-    UITouch *_touch;
+    }  _startPoint;
+    UIDelayedAction * _tapTimer;
+    UITouch * _touch;
 }
 
 @property (nonatomic) float allowableMovement;

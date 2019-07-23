@@ -3,11 +3,11 @@
  */
 
 @interface CAMTorchPattern : NSObject {
-    CAAnimationGroup *__animationGroup;
-    double __lastUpdateTime;
-    int __type;
-    double _startTime;
-    float _torchLevel;
+    CAAnimationGroup * __animationGroup;
+    double  __lastUpdateTime;
+    int  __type;
+    double  _startTime;
+    float  _torchLevel;
 }
 
 @property (nonatomic, readonly) CAAnimationGroup *_animationGroup;

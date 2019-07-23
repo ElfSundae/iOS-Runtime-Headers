@@ -3,18 +3,20 @@
  */
 
 @interface BRCURLToItemLookup : NSObject <NSSecureCoding> {
-    BRCRelativePath *__relpath;
-    unsigned long long _byIDDiffs;
-    BRCLocalItem *_byIDLocalItem;
-    BRCServerItem *_byIDServerItem;
-    unsigned long long _byPathDiffs;
-    BRCLocalItem *_byPathLocalItem;
-    BRCServerItem *_byPathServerItem;
-    unsigned long long _faultedDiffs;
-    BRCDocumentItem *_faultedLocalItem;
-    BRCRelativePath *_faultedRelpath;
-    BRCServerItem *_faultedServerItem;
-    NSString *_filename;
+    BRCRelativePath * __relpath;
+    BOOL  _allowAppLibraryRoot;
+    unsigned long long  _byIDDiffs;
+    BRCLocalItem * _byIDLocalItem;
+    BRCServerItem * _byIDServerItem;
+    unsigned long long  _byPathDiffs;
+    BRCLocalItem * _byPathLocalItem;
+    BRCServerItem * _byPathServerItem;
+    BRCPQLConnection * _db;
+    unsigned long long  _faultedDiffs;
+    BRCDocumentItem * _faultedLocalItem;
+    BRCRelativePath * _faultedRelpath;
+    BRCServerItem * _faultedServerItem;
+    NSString * _filename;
     union { 
         struct { 
             unsigned int parentItemID : 1; 
@@ -25,19 +27,19 @@
             unsigned int reservedMatch : 1; 
         } ; 
         unsigned int value; 
-    } _hasFetched;
-    BRCItemID *_parentItemID;
-    BRCRelativePath *_parentRelpath;
-    BRCLocalItem *_reservedLocalItem;
-    BRCServerItem *_reservedServerItem;
-    BRCAccountSession *_session;
-    NSURL *_url;
+    }  _hasFetched;
+    BRCItemID * _parentItemID;
+    NSString * _parentPath;
+    BRCRelativePath * _parentRelpath;
+    BRCLocalItem * _reservedLocalItem;
+    BRCServerItem * _reservedServerItem;
+    BRCAccountSession * _session;
+    NSURL * _url;
 }
 
 @property (nonatomic, readonly) unsigned long long byIDDiffs;
 @property (nonatomic, readonly) BRCLocalItem *byIDLocalItem;
 @property (nonatomic, readonly) struct { id x1; id x2; unsigned long long x3; } byIDMatch;
-@property (nonatomic, readonly) BRCRelativePath *byIDRelpath;
 @property (nonatomic, readonly) BRCServerItem *byIDServerItem;
 @property (nonatomic, readonly) unsigned long long byPathDiffs;
 @property (nonatomic, readonly) BRCLocalItem *byPathLocalItem;
@@ -45,6 +47,7 @@
 @property (nonatomic, readonly) BRCRelativePath *byPathRelpath;
 @property (nonatomic, readonly) BRCServerItem *byPathServerItem;
 @property (nonatomic, readonly) BRCDocumentItem *bySharedEnclosureDocItem;
+@property (nonatomic, readonly) BRCPQLConnection *db;
 @property (nonatomic, readonly) unsigned long long faultedDiffs;
 @property (nonatomic, readonly) BRCDocumentItem *faultedLocalItem;
 @property (nonatomic, readonly) struct { id x1; id x2; unsigned long long x3; } faultedMatch;
@@ -52,8 +55,10 @@
 @property (nonatomic, readonly) BRCServerItem *faultedServerItem;
 @property (nonatomic, readonly) NSString *filename;
 @property (nonatomic, readonly) BRCItemID *parentItemID;
+@property (nonatomic, readonly) NSString *parentPath;
 @property (nonatomic, readonly) BRCRelativePath *parentRelpath;
 @property (nonatomic, readonly) unsigned short pathType;
+@property (nonatomic, readonly) BRCRelativePath *relpath;
 @property (nonatomic, readonly) BRCLocalItem *reservedLocalItem;
 @property (nonatomic, readonly) struct { id x1; id x2; unsigned long long x3; } reservedMatch;
 @property (nonatomic, readonly) BRCServerItem *reservedServerItem;
@@ -63,7 +68,6 @@
 
 - (void).cxx_destruct;
 - (BOOL)_bounceBouncesHiddenByFault:(id)arg1;
-- (BOOL)_bouncePathMatch:(const struct { id x1; id x2; unsigned long long x3; }*)arg1 toApplyServerItem:(id)arg2;
 - (BOOL)_canUpdatePathMatch:(const struct { id x1; id x2; unsigned long long x3; }*)arg1 hasAdditionsToApply:(BOOL)arg2;
 - (void)_clearNamespace:(unsigned char)arg1;
 - (void)_fetchFaultedPathMatch;
@@ -71,16 +75,12 @@
 - (void)_fetchPathMatch;
 - (void)_fetchRelPath;
 - (void)_fetchReservedPathMatch;
-- (id)_generateGentleBounceForPathMatch:(const struct { id x1; id x2; unsigned long long x3; }*)arg1 dirfd:(int)arg2;
-- (BOOL)_isPathMatchIdle:(const struct { id x1; id x2; unsigned long long x3; }*)arg1;
 - (void)_moveMissingItemAsideInNamespace:(unsigned char)arg1;
 - (struct { id x1; id x2; unsigned long long x3; })_pathMatchInNamespace:(unsigned char)arg1;
-- (id)_relpath;
 - (BOOL)_removeDirectory:(id)arg1 atPath:(id)arg2 error:(id*)arg3;
 - (unsigned long long)byIDDiffs;
 - (id)byIDLocalItem;
 - (struct { id x1; id x2; unsigned long long x3; })byIDMatch;
-- (id)byIDRelpath;
 - (id)byIDServerItem;
 - (unsigned long long)byPathDiffs;
 - (id)byPathLocalItem;
@@ -93,6 +93,7 @@
 - (void)clearFaultedItem;
 - (void)clearReservedItem;
 - (void)closePaths;
+- (id)db;
 - (id)description;
 - (void)didApplyChangesAtPath:(id)arg1 filename:(id)arg2 li:(id)arg3 si:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
@@ -104,18 +105,23 @@
 - (id)filename;
 - (void)handleReservedPathMatchesIfNeeded;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 root:(id)arg2;
+- (id)initWithURL:(id)arg1 allowAppLibraryRoot:(BOOL)arg2 session:(id)arg3;
+- (id)initWithURL:(id)arg1 allowAppLibraryRoot:(BOOL)arg2 session:(id)arg3 db:(id)arg4;
+- (id)initWithURL:(id)arg1 session:(id)arg2;
 - (void)markPathMatchLostIfLocationDoesntMatch:(struct { id x1; id x2; unsigned long long x3; }*)arg1;
 - (void)matchLookupItemsWithDisk;
 - (id)parentItemID;
+- (id)parentPath;
 - (id)parentRelpath;
 - (unsigned short)pathType;
 - (void)refreshByIDDiffs;
 - (void)refreshByPathDiffs;
 - (void)refreshFaultedDiffs;
+- (id)relpath;
 - (id)reservedLocalItem;
 - (struct { id x1; id x2; unsigned long long x3; })reservedMatch;
 - (id)reservedServerItem;
+- (BOOL)resolveAndKeepOpenWithError:(id*)arg1;
 - (BOOL)resolveParentAndKeepOpenMustExist:(BOOL)arg1 errcode:(int*)arg2;
 - (BOOL)tryToDeleteItemInNamespace:(unsigned char)arg1;
 - (void)tryToUpdateItemInNamespace:(unsigned char)arg1 withDstLookup:(id)arg2;

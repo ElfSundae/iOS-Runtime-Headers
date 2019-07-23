@@ -3,26 +3,26 @@
  */
 
 @interface UIAlertView : UIView {
-    BOOL __currentlyRunningModal;
-    NSMutableArray *_actions;
-    UIAlertController *_alertController;
-    BOOL _alertControllerShouldDismiss;
-    int _alertViewStyle;
-    int _cancelIndex;
-    id _context;
-    int _defaultButtonIndex;
-    id _delegate;
-    BOOL _dismissingAlertController;
-    UIViewController *_externalViewControllerForPresentation;
-    int _firstOtherButtonIndex;
-    BOOL _handlingAlertActionShouldDismiss;
-    BOOL _hasPreparedAlertActions;
-    BOOL _isPresented;
-    NSString *_message;
-    _UIAlertControllerShimPresenter *_presenter;
-    UIAlertView *_retainedSelf;
-    BOOL _runsModal;
-    NSString *_subtitle;
+    BOOL  __currentlyRunningModal;
+    NSMutableArray * _actions;
+    UIAlertController * _alertController;
+    BOOL  _alertControllerShouldDismiss;
+    int  _alertViewStyle;
+    int  _cancelIndex;
+    id  _context;
+    int  _defaultButtonIndex;
+    id  _delegate;
+    BOOL  _dismissingAlertController;
+    UIViewController * _externalViewControllerForPresentation;
+    int  _firstOtherButtonIndex;
+    BOOL  _handlingAlertActionShouldDismiss;
+    BOOL  _hasPreparedAlertActions;
+    BOOL  _isPresented;
+    NSString * _message;
+    _UIAlertControllerShimPresenter * _presenter;
+    UIAlertView * _retainedSelf;
+    BOOL  _runsModal;
+    NSString * _subtitle;
 }
 
 @property (setter=_setCurrentlyRunningModal:, nonatomic) BOOL _currentlyRunningModal;
@@ -82,8 +82,6 @@
 - (id)_preparedAlertActionAtIndex:(unsigned int)arg1;
 - (void)_presentSheetFromView:(id)arg1 above:(BOOL)arg2;
 - (void)_presentSheetStartingFromYCoordinate:(double)arg1;
-- (id)_representedModalItem;
-- (id)_representedModalItemView;
 - (void)_setAccessoryView:(id)arg1;
 - (void)_setAccessoryViewController:(id)arg1;
 - (void)_setCurrentlyRunningModal:(BOOL)arg1;
@@ -197,8 +195,8 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })titleRect;
 - (id)window;
 
-// Image: /System/Library/PrivateFrameworks/MediaPlayerUI.framework/MediaPlayerUI
+// Image: /System/Library/PrivateFrameworks/Swift/libswiftUIKit.dylib
 
-- (void)showWithCompletionHandler:(id /* block */)arg1;
+- (id)initWithTitle:(id)arg1 message:(id)arg2 delegate:(id)arg3 cancelButtonTitle:(id)arg4;
 
 @end

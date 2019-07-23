@@ -3,14 +3,14 @@
  */
 
 @interface _NSXPCDistantObject : NSObject <NSSecureCoding, NSXPCProxyCreating> {
-    NSXPCConnection *_connection;
-    BOOL _exported;
-    unsigned long long _generationCount;
-    struct __CFDictionary { } *_knownSelectors;
-    BOOL _noImportance;
-    unsigned long long _proxyNumber;
-    NSXPCInterface *_remoteInterface;
-    int _selectorLock;
+    NSXPCConnection * _connection;
+    BOOL  _exported;
+    unsigned long long  _generationCount;
+    struct __CFDictionary { } * _knownSelectors;
+    BOOL  _noImportance;
+    unsigned long long  _proxyNumber;
+    NSXPCInterface * _remoteInterface;
+    int  _selectorLock;
 }
 
 @property (retain) NSXPCConnection *_connection;
@@ -36,7 +36,6 @@
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

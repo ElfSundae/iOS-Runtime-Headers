@@ -3,10 +3,10 @@
  */
 
 @interface UIKeyboardAutomatic : UIKeyboard {
-    BOOL caretBlinks;
-    BOOL receivedCandidatesInCurrentInputMode;
-    BOOL showsCandidateBar;
-    BOOL showsCandidateInline;
+    BOOL  caretBlinks;
+    BOOL  receivedCandidatesInCurrentInputMode;
+    BOOL  showsCandidateBar;
+    BOOL  showsCandidateInline;
 }
 
 @property (nonatomic) BOOL caretBlinks;

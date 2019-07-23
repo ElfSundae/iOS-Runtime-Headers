@@ -12,7 +12,7 @@
             float z; 
         } center; 
         int _seenFrom; 
-    } _obstacle;
+    }  _obstacle;
 }
 
 @property (nonatomic) void position;

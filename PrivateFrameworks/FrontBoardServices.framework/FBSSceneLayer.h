@@ -3,13 +3,13 @@
  */
 
 @interface FBSSceneLayer : NSObject <BSXPCCoding> {
-    int _alignment;
-    CAContext *_context;
-    <FBSSceneLayerDelegate> *_delegate;
-    unsigned int _identifier;
-    float _level;
-    FBSScene *_scene;
-    BOOL _shouldObserveUpdates;
+    int  _alignment;
+    CAContext * _context;
+    <FBSSceneLayerDelegate> * _delegate;
+    unsigned int  _identifier;
+    float  _level;
+    FBSScene * _scene;
+    BOOL  _shouldObserveUpdates;
 }
 
 @property (nonatomic) int alignment;

@@ -3,15 +3,15 @@
  */
 
 @interface SSDownloadPolicyRule : NSObject <NSCoding, NSCopying, SSXPCCoding> {
-    NSSet *_applicationStates;
-    float _batteryLevel;
-    int _cellularDataStates;
-    long long _downloadSizeLimit;
-    NSSet *_networkTypes;
-    int _powerStates;
-    int _registrationStates;
-    int _timeLimitStates;
-    NSSet *_userDefaultStates;
+    NSSet * _applicationStates;
+    float  _batteryLevel;
+    int  _cellularDataStates;
+    long long  _downloadSizeLimit;
+    NSSet * _networkTypes;
+    int  _powerStates;
+    int  _registrationStates;
+    int  _timeLimitStates;
+    NSSet * _userDefaultStates;
 }
 
 @property (nonatomic, copy) NSSet *applicationStates;

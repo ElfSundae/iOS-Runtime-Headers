@@ -3,10 +3,10 @@
  */
 
 @interface IMAVController : NSObject {
-    BOOL _blockIncomingInvitationsDuringCall;
-    BOOL _blockMultipleIncomingInvitations;
-    BOOL _blockOutgoingInvitationsDuringCall;
-    NSMutableArray *_delegates;
+    BOOL  _blockIncomingInvitationsDuringCall;
+    BOOL  _blockMultipleIncomingInvitations;
+    BOOL  _blockOutgoingInvitationsDuringCall;
+    NSMutableArray * _delegates;
 }
 
 @property (nonatomic, retain) NSMutableArray *_delegates;
@@ -42,7 +42,8 @@
 - (BOOL)blockOutgoingInvitationsDuringCall;
 - (BOOL)cameraCapable;
 - (BOOL)cameraConnected;
-- (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4;
+- (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4 reason:(id)arg5;
+- (void)dealloc;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 conferenceID:(id)arg4;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 forAccount:(id)arg4 conferenceID:(id)arg5;
 - (id)delegate;

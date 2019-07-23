@@ -3,7 +3,7 @@
  */
 
 @interface EDGradientFill : EDFill {
-    double mDegree;
+    double  mDegree;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,9 +13,9 @@
             float width; 
             float height; 
         } size; 
-    } mFocusRect;
-    NSMutableDictionary *mStops;
-    int mType;
+    }  mFocusRect;
+    NSMutableDictionary * mStops;
+    int  mType;
 }
 
 + (id)gradientWithType:(int)arg1 degree:(double)arg2 focusRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 stops:(id)arg4 resources:(id)arg5;

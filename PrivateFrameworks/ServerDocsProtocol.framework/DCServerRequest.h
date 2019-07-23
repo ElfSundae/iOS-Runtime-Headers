@@ -3,15 +3,15 @@
  */
 
 @interface DCServerRequest : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionDownloadDelegate> {
-    DCConnectivityTracker *_connectivityTracker;
-    NSHTTPURLResponse *_httpResponse;
-    NSMutableURLRequest *_request;
-    NSMutableData *_responseData;
-    id /* block */ _responseHandler;
-    DCService *_service;
-    NSURLSession *_session;
-    NSOperationQueue *_sessionQueue;
-    BOOL _usingBackgroundSession;
+    DCConnectivityTracker * _connectivityTracker;
+    NSHTTPURLResponse * _httpResponse;
+    NSMutableURLRequest * _request;
+    NSMutableData * _responseData;
+    id /* block */  _responseHandler;
+    DCService * _service;
+    NSURLSession * _session;
+    NSOperationQueue * _sessionQueue;
+    BOOL  _usingBackgroundSession;
 }
 
 @property (nonatomic, readonly) HTTPSASLClientSessionManager *HTTPSASLClientSessionManager;

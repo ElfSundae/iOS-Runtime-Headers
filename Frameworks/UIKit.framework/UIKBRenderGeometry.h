@@ -3,12 +3,12 @@
  */
 
 @interface UIKBRenderGeometry : NSObject <NSCopying> {
-    int _concaveCorner;
+    int  _concaveCorner;
     struct CGSize { 
         float width; 
         float height; 
-    } _concaveCornerOffset;
-    BOOL _detachedVariants;
+    }  _concaveCornerOffset;
+    BOOL  _detachedVariants;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,8 +18,8 @@
             float width; 
             float height; 
         } size; 
-    } _displayFrame;
-    int _flickDirection;
+    }  _displayFrame;
+    int  _flickDirection;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,7 +29,7 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
+    }  _frame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -39,16 +39,16 @@
             float width; 
             float height; 
         } size; 
-    } _paddedFrame;
-    int _popupBias;
+    }  _paddedFrame;
+    int  _popupBias;
     struct CGPoint { 
         float x; 
         float y; 
-    } _popupSource;
-    int _roundRectCorners;
-    float _roundRectRadius;
-    NSValue *_splitLeftRect;
-    NSValue *_splitRightRect;
+    }  _popupSource;
+    int  _roundRectCorners;
+    float  _roundRectRadius;
+    NSValue * _splitLeftRect;
+    NSValue * _splitRightRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -58,8 +58,8 @@
             float width; 
             float height; 
         } size; 
-    } _symbolFrame;
-    BOOL _tallPopup;
+    }  _symbolFrame;
+    BOOL  _tallPopup;
 }
 
 @property (nonatomic) int concaveCorner;

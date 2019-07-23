@@ -3,17 +3,17 @@
  */
 
 @interface EKUIYearMonthView : UIView {
-    NSCalendar *_calendar;
-    EKCalendarDate *_calendarDate;
-    int _daysInWeek;
-    EKCalendarDate *_endCalendarDate;
-    int _firstDayIndex;
-    NSSet *_firstOfOverlayMonthIndices;
-    NSSet *_firstOfOverlayYearIndices;
-    NSString *_monthString;
-    EKUIOverlayCalendarSignificantDatesProvider *_overlaySignificantDatesProvider;
-    float _smallestUsedFontSize;
-    int _todayIndex;
+    NSCalendar * _calendar;
+    EKCalendarDate * _calendarDate;
+    int  _daysInWeek;
+    EKCalendarDate * _endCalendarDate;
+    int  _firstDayIndex;
+    NSSet * _firstOfOverlayMonthIndices;
+    NSSet * _firstOfOverlayYearIndices;
+    NSString * _monthString;
+    EKUIOverlayCalendarSignificantDatesProvider * _overlaySignificantDatesProvider;
+    float  _smallestUsedFontSize;
+    int  _todayIndex;
 }
 
 @property (nonatomic, readonly) NSCalendar *calendar;

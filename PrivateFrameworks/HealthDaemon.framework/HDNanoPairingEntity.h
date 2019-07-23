@@ -3,14 +3,14 @@
  */
 
 @interface HDNanoPairingEntity : HDHealthEntity {
-    NSString *_defaultSourceBundleIdentifier;
-    NSString *_deviceIdentifier;
-    HDNanoPairingEntity *_entity;
-    NSUUID *_healthUUID;
-    NSUUID *_nanoRegistryUUID;
-    NSUUID *_persistentUUID;
-    BOOL _restoreComplete;
-    long long _syncProvenance;
+    NSString * _defaultSourceBundleIdentifier;
+    NSString * _deviceIdentifier;
+    HDNanoPairingEntity * _entity;
+    NSUUID * _healthUUID;
+    NSUUID * _nanoRegistryUUID;
+    NSUUID * _persistentUUID;
+    BOOL  _restoreComplete;
+    long long  _syncProvenance;
 }
 
 @property (nonatomic, copy) NSString *defaultSourceBundleIdentifier;
@@ -22,10 +22,11 @@
 @property (getter=isRestoreComplete, nonatomic) BOOL restoreComplete;
 @property (nonatomic) long long syncProvenance;
 
-+ (id)_nanoPairingEntityWithPredicate:(id)arg1 database:(id)arg2;
++ (id)_nanoPairingEntitiesWithPredicate:(id)arg1 database:(id)arg2 error:(id*)arg3;
 + (id)_predicateWithRegistryUUID:(id)arg1;
 + (id)columnsDefinition;
 + (id)databaseTable;
++ (BOOL)enumeratePairingsForStoreIdentifier:(long long)arg1 database:(id)arg2 error:(id*)arg3 handler:(id /* block */)arg4;
 + (id)nanoPairingEntityWithRegistryUUID:(id)arg1 healthDatabase:(id)arg2 error:(id*)arg3;
 + (int)protectionClass;
 + (id)sourceEntityForRegistryUUID:(id)arg1 healthDatabase:(id)arg2 error:(id*)arg3;

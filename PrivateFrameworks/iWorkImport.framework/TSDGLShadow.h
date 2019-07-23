@@ -4,7 +4,6 @@
 
 @interface TSDGLShadow : NSObject
 
-+ (id)renderQueue;
 + (id)sharedContext;
 
 - (void)createOffscreenRenderBuffer:(struct CGSize { float x1; float x2; })arg1 framebuffer:(id)arg2 requiresDepth:(BOOL)arg3 colorRenderBuffer:(unsigned int*)arg4 depthRenderBuffer:(unsigned int*)arg5;

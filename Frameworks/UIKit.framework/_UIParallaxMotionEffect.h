@@ -3,14 +3,14 @@
  */
 
 @interface _UIParallaxMotionEffect : UIMotionEffect {
-    UIMotionEffectGroup *_group;
-    UIInterpolatingMotionEffect *_horizontalSlideEffect;
+    UIMotionEffectGroup * _group;
+    UIInterpolatingMotionEffect * _horizontalSlideEffect;
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _slideMagnitude;
-    _UITiltMotionEffect *_tiltEffect;
-    UIInterpolatingMotionEffect *_verticalSlideEffect;
+    }  _slideMagnitude;
+    _UITiltMotionEffect * _tiltEffect;
+    UIInterpolatingMotionEffect * _verticalSlideEffect;
 }
 
 @property (nonatomic) float horizontalSlideAccelerationBoostFactor;

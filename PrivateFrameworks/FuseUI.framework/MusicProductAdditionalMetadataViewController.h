@@ -3,10 +3,10 @@
  */
 
 @interface MusicProductAdditionalMetadataViewController : UIViewController <MusicProductDescriptionTableViewCellDelegate, MusicProductMetadataTableViewCellDelegate, MusicTableViewDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSIndexSet *_allowedMetadataItems;
-    UIColor *_customSelectionTintColor;
-    UIColor *_defaultSelectionTintColor;
-    <MusicProductAdditionalMetadataViewControllerDelegate> *_delegate;
+    NSIndexSet * _allowedMetadataItems;
+    UIColor * _customSelectionTintColor;
+    UIColor * _defaultSelectionTintColor;
+    <MusicProductAdditionalMetadataViewControllerDelegate> * _delegate;
     struct { 
         unsigned int didSelectAddSongsButton : 1; 
         unsigned int didUpdateProductDescription : 1; 
@@ -15,19 +15,19 @@
         unsigned int didFinishContentHeightAnimation : 1; 
         unsigned int willBeginContentHeightAnimation : 1; 
         unsigned int shouldDeferContentHeightAnimationUpdates : 1; 
-    } _delegateRespondsToSelector;
-    MusicMediaDetailTintInformation *_detailTintInformation;
-    NSMutableIndexSet *_metadataItems;
-    MusicProductDescription *_productDescription;
-    int _productDescriptionMaximumLengthForTextInput;
-    MusicProductDescriptionTableViewCell *_productDescriptionTableViewCell;
-    int _productDescriptionTextStyle;
-    NSString *_publicSwitchDescription;
-    BOOL _publicSwitchOn;
-    MusicTableView *_tableView;
-    BOOL _trailingSeparatorInsetFollowsLayoutInsets;
-    NSString *_visibleSwitchDescription;
-    BOOL _visibleSwitchOn;
+    }  _delegateRespondsToSelector;
+    MusicMediaDetailTintInformation * _detailTintInformation;
+    NSMutableIndexSet * _metadataItems;
+    MusicProductDescription * _productDescription;
+    int  _productDescriptionMaximumLengthForTextInput;
+    MusicProductDescriptionTableViewCell * _productDescriptionTableViewCell;
+    int  _productDescriptionTextStyle;
+    NSString * _publicSwitchDescription;
+    BOOL  _publicSwitchOn;
+    MusicTableView * _tableView;
+    BOOL  _trailingSeparatorInsetFollowsLayoutInsets;
+    NSString * _visibleSwitchDescription;
+    BOOL  _visibleSwitchOn;
 }
 
 @property (nonatomic, copy) NSIndexSet *allowedMetadataItems;

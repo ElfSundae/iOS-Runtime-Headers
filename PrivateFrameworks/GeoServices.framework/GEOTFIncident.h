@@ -3,20 +3,20 @@
  */
 
 @interface GEOTFIncident : PBCodable <NSCopying> {
-    unsigned int _alertCCode;
-    BOOL _blocked;
-    int _color;
-    NSString *_crossStreet;
-    float _delay;
-    unsigned long long _durationMin;
-    double _endOffset;
-    BOOL _endTimeReliable;
+    unsigned int  _alertCCode;
+    BOOL  _blocked;
+    int  _color;
+    NSString * _crossStreet;
+    float  _delay;
+    unsigned long long  _durationMin;
+    double  _endOffset;
+    BOOL  _endTimeReliable;
     struct { 
         long long *list; 
         unsigned int count; 
         unsigned int size; 
-    } _geoids;
-    BOOL _hardBlocked;
+    }  _geoids;
+    BOOL  _hardBlocked;
     struct { 
         unsigned int durationMin : 1; 
         unsigned int endOffset : 1; 
@@ -41,26 +41,27 @@
         unsigned int hardBlocked : 1; 
         unsigned int hidden : 1; 
         unsigned int navigationAlert : 1; 
-    } _has;
-    BOOL _hidden;
-    NSString *_incidentId;
-    NSMutableArray *_infos;
-    unsigned int _laneClosureCount;
-    int _laneClosureType;
-    double _latitude;
-    double _longitude;
-    unsigned int _maxZoomLevel;
-    unsigned int _minZoomLevel;
-    BOOL _navigationAlert;
-    int _significance;
-    float _speed;
-    double _startOffset;
-    long long _startTime;
-    NSString *_street;
-    int _trafficTrend;
-    int _type;
-    long long _updateTime;
-    NSData *_zilch;
+    }  _has;
+    BOOL  _hidden;
+    NSString * _incidentId;
+    NSMutableArray * _infos;
+    unsigned int  _laneClosureCount;
+    int  _laneClosureType;
+    double  _latitude;
+    double  _longitude;
+    unsigned int  _maxZoomLevel;
+    unsigned int  _minZoomLevel;
+    BOOL  _navigationAlert;
+    NSData * _openlr;
+    int  _significance;
+    float  _speed;
+    double  _startOffset;
+    long long  _startTime;
+    NSString * _street;
+    int  _trafficTrend;
+    int  _type;
+    long long  _updateTime;
+    NSData * _zilch;
 }
 
 @property (nonatomic) unsigned int alertCCode;
@@ -92,6 +93,7 @@
 @property (nonatomic) BOOL hasMaxZoomLevel;
 @property (nonatomic) BOOL hasMinZoomLevel;
 @property (nonatomic) BOOL hasNavigationAlert;
+@property (nonatomic, readonly) BOOL hasOpenlr;
 @property (nonatomic) BOOL hasSignificance;
 @property (nonatomic) BOOL hasSpeed;
 @property (nonatomic) BOOL hasStartOffset;
@@ -111,6 +113,7 @@
 @property (nonatomic) unsigned int maxZoomLevel;
 @property (nonatomic) unsigned int minZoomLevel;
 @property (nonatomic) BOOL navigationAlert;
+@property (nonatomic, retain) NSData *openlr;
 @property (nonatomic) int significance;
 @property (nonatomic) float speed;
 @property (nonatomic) double startOffset;
@@ -121,6 +124,13 @@
 @property (nonatomic) long long updateTime;
 @property (nonatomic, retain) NSData *zilch;
 
++ (Class)infoType;
+
+- (int)StringAsColor:(id)arg1;
+- (int)StringAsLaneClosureType:(id)arg1;
+- (int)StringAsSignificance:(id)arg1;
+- (int)StringAsTrafficTrend:(id)arg1;
+- (int)StringAsType:(id)arg1;
 - (void)addGeoid:(long long)arg1;
 - (void)addInfo:(id)arg1;
 - (unsigned int)alertCCode;
@@ -128,6 +138,7 @@
 - (void)clearGeoids;
 - (void)clearInfos;
 - (int)color;
+- (id)colorAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)crossStreet;
@@ -160,6 +171,7 @@
 - (BOOL)hasMaxZoomLevel;
 - (BOOL)hasMinZoomLevel;
 - (BOOL)hasNavigationAlert;
+- (BOOL)hasOpenlr;
 - (BOOL)hasSignificance;
 - (BOOL)hasSpeed;
 - (BOOL)hasStartOffset;
@@ -178,12 +190,14 @@
 - (BOOL)isEqual:(id)arg1;
 - (unsigned int)laneClosureCount;
 - (int)laneClosureType;
+- (id)laneClosureTypeAsString:(int)arg1;
 - (double)latitude;
 - (double)longitude;
 - (unsigned int)maxZoomLevel;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minZoomLevel;
 - (BOOL)navigationAlert;
+- (id)openlr;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAlertCCode:(unsigned int)arg1;
 - (void)setBlocked:(BOOL)arg1;
@@ -228,6 +242,7 @@
 - (void)setMaxZoomLevel:(unsigned int)arg1;
 - (void)setMinZoomLevel:(unsigned int)arg1;
 - (void)setNavigationAlert:(BOOL)arg1;
+- (void)setOpenlr:(id)arg1;
 - (void)setSignificance:(int)arg1;
 - (void)setSpeed:(float)arg1;
 - (void)setStartOffset:(double)arg1;
@@ -238,12 +253,15 @@
 - (void)setUpdateTime:(long long)arg1;
 - (void)setZilch:(id)arg1;
 - (int)significance;
+- (id)significanceAsString:(int)arg1;
 - (float)speed;
 - (double)startOffset;
 - (long long)startTime;
 - (id)street;
 - (int)trafficTrend;
+- (id)trafficTrendAsString:(int)arg1;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (long long)updateTime;
 - (void)writeTo:(id)arg1;
 - (id)zilch;

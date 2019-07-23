@@ -22,7 +22,6 @@
 - (id)gridSpec;
 - (int)largeNumberOfSubjectsForLikes;
 - (struct CGSize { float x1; float x2; })minimumVideoTileSize;
-- (id)photoBrowserSpec;
 - (id)photosPickerSpec;
 - (id)popoverFeedViewControllerSpec;
 - (int)promptStyle;

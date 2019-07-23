@@ -3,33 +3,33 @@
  */
 
 @interface UICollectionViewData : NSObject {
-    NSMutableArray *_clonedCellAttributes;
-    NSMutableArray *_clonedDecorationAttributes;
-    NSMutableArray *_clonedSupplementaryAttributes;
-    UICollectionView *_collectionView;
+    NSMutableArray * _clonedCellAttributes;
+    NSMutableArray * _clonedDecorationAttributes;
+    NSMutableArray * _clonedSupplementaryAttributes;
+    UICollectionView * _collectionView;
     struct { 
         unsigned int contentSizeIsValid : 1; 
         unsigned int itemCountsAreValid : 1; 
         unsigned int layoutIsPrepared : 1; 
         unsigned int layoutLocked : 1; 
-    } _collectionViewDataFlags;
+    }  _collectionViewDataFlags;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
-    NSMutableDictionary *_decorationLayoutAttributes;
-    NSMutableIndexSet *_globalIndexesOfItemsAwaitingValidation;
-    id *_globalItems;
-    NSMutableDictionary *_invalidatedDecorationIndexPaths;
-    NSMutableDictionary *_invalidatedSupplementaryIndexPaths;
-    int _lastResultForNumberOfItemsBeforeSection;
-    int _lastSectionTestedForNumberOfItemsBeforeSection;
-    UICollectionViewLayout *_layout;
-    int _numItems;
-    int _numSections;
-    NSMapTable *_screenPageMap;
-    int *_sectionItemCounts;
-    NSMutableDictionary *_supplementaryLayoutAttributes;
+    }  _contentSize;
+    NSMutableDictionary * _decorationLayoutAttributes;
+    NSMutableIndexSet * _globalIndexesOfItemsAwaitingValidation;
+    id * _globalItems;
+    NSMutableDictionary * _invalidatedDecorationIndexPaths;
+    NSMutableDictionary * _invalidatedSupplementaryIndexPaths;
+    int  _lastResultForNumberOfItemsBeforeSection;
+    int  _lastSectionTestedForNumberOfItemsBeforeSection;
+    UICollectionViewLayout * _layout;
+    int  _numItems;
+    int  _numSections;
+    NSMapTable * _screenPageMap;
+    int * _sectionItemCounts;
+    NSMutableDictionary * _supplementaryLayoutAttributes;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -39,7 +39,7 @@
             float width; 
             float height; 
         } size; 
-    } _validLayoutRect;
+    }  _validLayoutRect;
 }
 
 @property (nonatomic, readonly) NSArray *clonedCellAttributes;
@@ -74,6 +74,7 @@
 - (void)invalidateDecorationIndexPaths:(id)arg1;
 - (void)invalidateItemsAtIndexPaths:(id)arg1;
 - (void)invalidateSupplementaryIndexPaths:(id)arg1;
+- (BOOL)isGlobalIndexValid:(int)arg1;
 - (BOOL)isLayoutLocked;
 - (id)knownDecorationElementKinds;
 - (id)knownSupplementaryElementKinds;

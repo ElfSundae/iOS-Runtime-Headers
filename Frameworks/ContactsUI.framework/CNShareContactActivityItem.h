@@ -3,7 +3,7 @@
  */
 
 @interface CNShareContactActivityItem : NSObject <UIActivityItemSource, UIActivityItemSourceAttachment> {
-    CNContact *_contact;
+    CNContact * _contact;
 }
 
 @property (nonatomic, retain) CNContact *contact;

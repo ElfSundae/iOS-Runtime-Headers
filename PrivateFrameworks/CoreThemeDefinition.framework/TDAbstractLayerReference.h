@@ -12,7 +12,7 @@
             float width; 
             float height; 
         } size; 
-    } _frameRect;
+    }  _frameRect;
 }
 
 @property (nonatomic, retain) NSNumber *blendMode;

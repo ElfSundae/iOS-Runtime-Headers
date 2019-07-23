@@ -3,11 +3,11 @@
  */
 
 @interface _UIViewControllerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator> {
-    NSMutableArray *__alongsideAnimationViews;
-    NSMutableArray *__alongsideAnimations;
-    NSMutableArray *__alongsideCompletions;
-    NSMutableArray *__interactiveChangeHandlers;
-    _UIViewControllerTransitionContext *__mainContext;
+    NSMutableArray * __alongsideAnimationViews;
+    NSMutableArray * __alongsideAnimations;
+    NSMutableArray * __alongsideCompletions;
+    NSMutableArray * __interactiveChangeHandlers;
+    _UIViewControllerTransitionContext * __mainContext;
 }
 
 @property (setter=_setAlongsideAnimationViews:, nonatomic, retain) NSMutableArray *_alongsideAnimationViews;
@@ -15,10 +15,22 @@
 @property (setter=_setAlongsideCompletions:, nonatomic, retain) NSMutableArray *_alongsideCompletions;
 @property (setter=_setInteractiveChangeHandlers:, nonatomic, retain) NSMutableArray *_interactiveChangeHandlers;
 @property (setter=_setMainContext:, nonatomic) _UIViewControllerTransitionContext *_mainContext;
+@property (getter=isAnimated, nonatomic, readonly) BOOL animated;
+@property (getter=isCancelled, nonatomic, readonly) BOOL cancelled;
+@property (nonatomic, readonly) int completionCurve;
+@property (nonatomic, readonly) float completionVelocity;
+@property (nonatomic, readonly) UIView *containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
+@property (nonatomic, readonly) BOOL initiallyInteractive;
+@property (getter=isInteractive, nonatomic, readonly) BOOL interactive;
+@property (nonatomic, readonly) BOOL isInterruptible;
+@property (nonatomic, readonly) float percentComplete;
+@property (nonatomic, readonly) int presentationStyle;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } targetTransform;
+@property (nonatomic, readonly) double transitionDuration;
 
 - (void).cxx_destruct;
 - (id)_alongsideAnimationViews;
@@ -42,14 +54,15 @@
 - (int)completionCurve;
 - (float)completionVelocity;
 - (id)containerView;
-- (void)handlerToInvokeOnInteractivityChanges:(id /* block */)arg1;
 - (id)initWithMainContext:(id)arg1;
 - (BOOL)initiallyInteractive;
 - (BOOL)isAnimated;
 - (BOOL)isCancelled;
 - (BOOL)isCompleting;
 - (BOOL)isInteractive;
+- (BOOL)isInterruptible;
 - (BOOL)isRotating;
+- (void)notifyWhenInteractionChangesUsingBlock:(id /* block */)arg1;
 - (void)notifyWhenInteractionEndsUsingBlock:(id /* block */)arg1;
 - (float)percentComplete;
 - (int)presentationStyle;

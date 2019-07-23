@@ -3,7 +3,7 @@
  */
 
 @interface _VKScaledFallbackShieldArtwork : VKShieldArtwork {
-    VKShieldArtwork *_artwork;
+    VKShieldArtwork * _artwork;
 }
 
 - (void)dealloc;

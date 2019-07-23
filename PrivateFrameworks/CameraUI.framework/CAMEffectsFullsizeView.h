@@ -3,9 +3,9 @@
  */
 
 @interface CAMEffectsFullsizeView : CAMGLView {
-    int _filterType;
-    CIFilter *_selectedFilter;
-    int _selectedFilterType;
+    int  _filterType;
+    CIFilter * _selectedFilter;
+    int  _selectedFilterType;
 }
 
 @property int filterType;

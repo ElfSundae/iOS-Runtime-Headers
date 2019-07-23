@@ -3,10 +3,10 @@
  */
 
 @interface WeatherView : UIView <CityUpdateObserver> {
-    City *_city;
-    BOOL _showWind;
-    BOOL _showingDay;
-    UIView *_windView;
+    City * _city;
+    BOOL  _showWind;
+    BOOL  _showingDay;
+    UIView * _windView;
 }
 
 @property (setter=showCity:, nonatomic, retain) City *city;

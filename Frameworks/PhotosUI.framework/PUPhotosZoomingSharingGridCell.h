@@ -3,7 +3,7 @@
  */
 
 @interface PUPhotosZoomingSharingGridCell : PUPhotosSharingGridCell {
-    unsigned int _badgesLayoutAnchor;
+    unsigned int  _badgesLayoutAnchor;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,17 +13,17 @@
             float width; 
             float height; 
         } size; 
-    } _defaultBounds;
-    UIView *_optionView;
+    }  _defaultBounds;
+    UIView * _optionView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _optionViewDefaultCenter;
-    UIView *_selectionView;
+    }  _optionViewDefaultCenter;
+    UIView * _selectionView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _selectionViewDefaultCenter;
+    }  _selectionViewDefaultCenter;
 }
 
 - (void).cxx_destruct;

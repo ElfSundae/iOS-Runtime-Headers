@@ -2,15 +2,18 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIResponder : NSObject <UITextInputAdditions, UITextInput_Internal, _UIStateRestorationContinuation, _UITouchable> {
-    BOOL _hasAlternateNextResponder;
-    BOOL _hasInputAssistantItem;
+@interface UIResponder : NSObject <UIResponderStandardEditActions, UITextInputAdditions, UITextInput_Internal, _UIStateRestorationContinuation, _UITouchable> {
+    BOOL  _hasInputAssistantItem;
+    BOOL  _hasOverrideClient;
+    BOOL  _hasOverrideHost;
 }
 
 @property (getter=_proxyTextInput, nonatomic, readonly) UIResponder<UITextInput> *__content;
 @property (nonatomic, readonly) UIResponder *_editingDelegate;
 @property (nonatomic, readonly) UIResponder *_responderForEditing;
 @property (nonatomic, readonly) UIView<UITextInputPrivate> *_textSelectingContainer;
+@property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+@property (nonatomic, readonly) BOOL canResignFirstResponder;
 @property (getter=_caretRect, nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } caretRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,7 +25,9 @@
 @property (nonatomic, readonly) UITextInputAssistantItem *inputAssistantItem;
 @property (nonatomic, readonly) UIView *inputView;
 @property (nonatomic, readonly) UIInputViewController *inputViewController;
+@property (nonatomic, readonly) BOOL isFirstResponder;
 @property (nonatomic, readonly) NSArray *keyCommands;
+@property (nonatomic, readonly) UIResponder *nextResponder;
 @property (nonatomic, copy) NSString *restorationIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *textInputContextIdentifier;
@@ -51,14 +56,17 @@
 - (BOOL)_canBecomeFirstResponder;
 - (BOOL)_canBecomeFirstResponderWhenPossible;
 - (BOOL)_canChangeFirstResponder:(id)arg1 toResponder:(id)arg2;
+- (BOOL)_canResignIfContainsFirstResponder;
 - (BOOL)_canShowTextServices;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_caretRect;
 - (unsigned long)_characterAfterCaretSelection;
 - (unsigned long)_characterBeforeCaretSelection;
 - (unsigned long)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned long)_characterInRelationToPosition:(id)arg1 amount:(int)arg2;
 - (unsigned long)_characterInRelationToRangedSelection:(int)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (void)_clearBecomeFirstResponderWhenCapable;
+- (void)_clearOverrideHost;
 - (void)_clearOverrideNextResponder;
 - (void)_clearRestorableResponderStatus;
 - (void)_completeForwardingTouches:(id)arg1 phase:(int)arg2 event:(id)arg3;
@@ -68,6 +76,8 @@
 - (void)_controlTouchBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchMoved:(id)arg1 withEvent:(id)arg2;
+- (id)_currentOverrideClient;
+- (id)_currentOverrideHost;
 - (id)_deepestUnambiguousResponder;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
@@ -129,6 +139,7 @@
 - (void)_nonDestructivelyResignFirstResponder;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_nsrangeForTextRange:(id)arg1;
 - (int)_opposingDirectionFromDirection:(int)arg1;
+- (id)_overrideHost;
 - (void)_overrideInputAccessoryViewNextResponderWithResponder:(id)arg1;
 - (void)_overrideInputViewNextResponderWithResponder:(id)arg1;
 - (BOOL)_ownsInputAccessoryView;
@@ -168,6 +179,7 @@
 - (void)_selectAll;
 - (id)_selectableText;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedNSRange;
+- (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedRangeWithinMarkedText;
 - (int)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;
@@ -181,6 +193,7 @@
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_setSelectionRangeWithHistory:(id)arg1;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(BOOL)arg3;
+- (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 type:(int)arg3 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(int)arg2 fromRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 inView:(id)arg4;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
 - (void)_tagAsRestorableResponder;
@@ -242,6 +255,7 @@
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (id)textInputContextIdentifier;
 - (id)textInputMode;
+- (id)textInputSuggestionDelegate;
 - (id)textInputView;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -264,14 +278,16 @@
 
 - (void)findFirstResponder:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
+- (BOOL)_ntk_becomeFirstResponder;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
+- (id)_SKUIView;
+
 // Image: /System/Library/PrivateFrameworks/ToneKit.framework/ToneKit
 
 - (id)tk_firstViewControllerInResponderChain;
-
-// Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
-
-+ (id)tswp_currentFirstResponder;
-
-- (void)tswp_findFirstResponder:(id)arg1;
 
 @end

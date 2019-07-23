@@ -62,7 +62,6 @@
 - (id)display;
 - (id)elevation;
 - (id)emptyCells;
-- (void)finalize;
 - (id)font;
 - (id)fontFamily;
 - (id)fontSize;

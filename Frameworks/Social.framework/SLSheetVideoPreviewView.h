@@ -3,9 +3,9 @@
  */
 
 @interface SLSheetVideoPreviewView : SLSheetImagePreviewView {
-    UILabel *_durationLabel;
-    UIView *_infoBar;
-    UIImageView *_videoGlyphView;
+    UILabel * _durationLabel;
+    UIView * _infoBar;
+    UIImageView * _videoGlyphView;
 }
 
 - (void).cxx_destruct;

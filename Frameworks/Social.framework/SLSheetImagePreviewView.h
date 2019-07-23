@@ -3,9 +3,9 @@
  */
 
 @interface SLSheetImagePreviewView : UIView {
-    UIImage *_image;
-    UIImageView *_imageView;
-    NSArray *_principalAttachments;
+    UIImage * _image;
+    UIImageView * _imageView;
+    NSArray * _principalAttachments;
 }
 
 @property (nonatomic, retain) UIImage *image;

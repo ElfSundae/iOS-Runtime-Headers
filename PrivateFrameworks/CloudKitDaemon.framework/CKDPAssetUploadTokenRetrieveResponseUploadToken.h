@@ -3,12 +3,12 @@
  */
 
 @interface CKDPAssetUploadTokenRetrieveResponseUploadToken : PBCodable <NSCopying> {
-    CKDPAsset *_asset;
+    CKDPAsset * _asset;
     struct { 
         unsigned int tokenExpiration : 1; 
-    } _has;
-    NSString *_token;
-    long long _tokenExpiration;
+    }  _has;
+    NSString * _token;
+    long long  _tokenExpiration;
 }
 
 @property (nonatomic, retain) CKDPAsset *asset;

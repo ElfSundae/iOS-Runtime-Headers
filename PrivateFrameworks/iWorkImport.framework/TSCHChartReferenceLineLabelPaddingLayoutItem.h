@@ -3,7 +3,7 @@
  */
 
 @interface TSCHChartReferenceLineLabelPaddingLayoutItem : TSCHChartLayoutItem {
-    TSCHChartAxisID *mAxisID;
+    TSCHChartAxisID * mAxisID;
 }
 
 @property (nonatomic, retain) TSCHChartAxisID *axisID;

@@ -3,9 +3,8 @@
  */
 
 @interface MKCustomSeparatorTableViewCell : MKTableViewCell {
-    float _leftSeparatorInset;
-    float _rightSeparatorInset;
-    BOOL _separatorHidden;
+    float  _leftSeparatorInset;
+    float  _rightSeparatorInset;
 }
 
 @property (nonatomic) float leadingSeparatorInset;

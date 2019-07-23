@@ -3,8 +3,8 @@
  */
 
 @interface DevicePINSetupController : PSSetupController {
-    BOOL _allowOptionsButton;
-    BOOL _success;
+    BOOL  _allowOptionsButton;
+    BOOL  _success;
 }
 
 @property (nonatomic) BOOL allowOptionsButton;

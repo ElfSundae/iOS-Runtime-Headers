@@ -3,15 +3,15 @@
  */
 
 @interface CAMFocusResult : NSObject {
-    BOOL _contrastBasedFocusDidEnd;
-    BOOL _contrastBasedFocusDidStart;
-    BOOL _deviceSupportsFocus;
-    int _focusMode;
-    BOOL _performingContrastDetection;
+    BOOL  _contrastBasedFocusDidEnd;
+    BOOL  _contrastBasedFocusDidStart;
+    BOOL  _deviceSupportsFocus;
+    int  _focusMode;
+    BOOL  _performingContrastDetection;
     struct CGPoint { 
         float x; 
         float y; 
-    } _pointOfInterest;
+    }  _pointOfInterest;
 }
 
 @property (nonatomic, readonly) BOOL contrastBasedFocusDidEnd;

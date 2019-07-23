@@ -3,9 +3,9 @@
  */
 
 @interface CNContactHeaderEditView : CNContactHeaderView <CNPropertyGroupItemDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSArray *_editingGroups;
-    UITableView *_editingTable;
-    <CNPropertyCellDelegate> *_namePropertyDelegate;
+    NSArray * _editingGroups;
+    UITableView * _editingTable;
+    <CNPropertyCellDelegate> * _namePropertyDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;

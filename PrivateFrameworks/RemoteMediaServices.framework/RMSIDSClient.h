@@ -3,11 +3,11 @@
  */
 
 @interface RMSIDSClient : NSObject <IDSServiceDelegate> {
-    BOOL _companionAvailable;
-    NSObject<OS_dispatch_queue> *_idsDispatchQueue;
-    NSObject<OS_dispatch_queue> *_idsOutgoingQueue;
-    IDSService *_idsService;
-    NSMutableDictionary *_messageRecords;
+    BOOL  _companionAvailable;
+    NSObject<OS_dispatch_queue> * _idsDispatchQueue;
+    NSObject<OS_dispatch_queue> * _idsOutgoingQueue;
+    IDSService * _idsService;
+    NSMutableDictionary * _messageRecords;
 }
 
 @property (getter=isCompanionAvailable, nonatomic) BOOL companionAvailable;

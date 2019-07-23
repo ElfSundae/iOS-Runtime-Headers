@@ -3,21 +3,21 @@
  */
 
 @interface WBSFluidProgressState : NSObject {
-    float _animationDuration;
-    int _fluidProgressAnimationPhase;
-    int _fluidProgressType;
-    BOOL _hasCanceledLoad;
-    BOOL _hasCommittedLoad;
-    BOOL _hasCompletedLoad;
-    double _lastTimeProgressValueWasUpdated;
-    float _linearFunctionB;
-    float _linearFunctionM;
-    NSString *_loadURL;
-    float _minProgressPosition;
-    float _previousDestinationPosition;
-    BOOL _shouldAnimateUsingInitialPosition;
-    double _startTimeForFluidProgress;
-    float _webKitProgressValue;
+    float  _animationDuration;
+    int  _fluidProgressAnimationPhase;
+    int  _fluidProgressType;
+    BOOL  _hasCanceledLoad;
+    BOOL  _hasCommittedLoad;
+    BOOL  _hasCompletedLoad;
+    double  _lastTimeProgressValueWasUpdated;
+    float  _linearFunctionB;
+    float  _linearFunctionM;
+    NSString * _loadURL;
+    float  _minProgressPosition;
+    float  _previousDestinationPosition;
+    BOOL  _shouldAnimateUsingInitialPosition;
+    double  _startTimeForFluidProgress;
+    float  _webKitProgressValue;
 }
 
 @property (nonatomic) int fluidProgressAnimationPhase;

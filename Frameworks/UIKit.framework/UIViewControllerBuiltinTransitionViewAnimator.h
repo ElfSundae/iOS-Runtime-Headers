@@ -3,12 +3,12 @@
  */
 
 @interface UIViewControllerBuiltinTransitionViewAnimator : NSObject <UIViewControllerAnimatedTransitioning> {
-    id _delegate;
-    UIView *_fromView;
-    BOOL _removeFromView;
-    UIView *_toView;
-    int _transition;
-    <UIViewControllerContextTransitioning> *_transitionContext;
+    id  _delegate;
+    UIView * _fromView;
+    BOOL  _removeFromView;
+    UIView * _toView;
+    int  _transition;
+    <UIViewControllerContextTransitioning> * _transitionContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;

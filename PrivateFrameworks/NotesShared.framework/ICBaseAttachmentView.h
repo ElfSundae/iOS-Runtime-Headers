@@ -3,13 +3,13 @@
  */
 
 @interface ICBaseAttachmentView : UIView {
-    ICAttachment *_attachment;
+    ICAttachment * _attachment;
     struct CGSize { 
         float width; 
         float height; 
-    } _attachmentContentSize;
-    BOOL _selected;
-    ICTextAttachment *_textAttachment;
+    }  _attachmentContentSize;
+    BOOL  _selected;
+    ICTextAttachment * _textAttachment;
 }
 
 @property (nonatomic) ICAttachment *attachment;
@@ -24,6 +24,7 @@
 - (void)attachmentDidLoad:(id)arg1;
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)attachmentWillBeDeleted:(id)arg1;
+- (BOOL)cancelDidScrollIntoVisibleRange;
 - (void)contentSizeCategoryDidChange;
 - (void)dealloc;
 - (void)didChangeAttachment;

@@ -3,43 +3,43 @@
  */
 
 @interface GEORPProblemContext : PBCodable <NSCopying> {
-    NSMutableArray *_autocompleteSuggestionLists;
-    NSMutableArray *_auxiliaryControls;
-    double _creationDate;
-    GEOABExperimentResponse *_currentAbAssignmentResponse;
-    GEORPCurrentEnvironmentManifestURLs *_currentEnvironmentManifestUrls;
-    int _deviceGmtOffset;
-    NSMutableArray *_directionsRequests;
-    NSMutableArray *_directionsResponses;
-    NSMutableArray *_directionsWaypointPlaceInfos;
+    NSMutableArray * _autocompleteSuggestionLists;
+    NSMutableArray * _auxiliaryControls;
+    double  _creationDate;
+    GEOABAssignmentResponse * _currentAbAssignmentResponse;
+    GEORPCurrentEnvironmentManifestURLs * _currentEnvironmentManifestUrls;
+    int  _deviceGmtOffset;
+    NSMutableArray * _directionsRequests;
+    NSMutableArray * _directionsResponses;
+    NSMutableArray * _directionsWaypointPlaceInfos;
     struct { 
         unsigned int sessionId : 1; 
         unsigned int creationDate : 1; 
         unsigned int originatingAuxiliaryControlIndex : 1; 
         unsigned int deviceGmtOffset : 1; 
         unsigned int pinType : 1; 
-    } _has;
-    NSString *_lastSearchString;
-    NSString *_lastUserTypedSearchString;
-    GEORPMapLocation *_mapLocation;
-    GEOPlace *_originalPlace;
-    unsigned long long _originatingAuxiliaryControlIndex;
-    int _pinType;
-    GEOPDPlace *_place;
-    GEORPPlaceInfo *_placeInfo;
-    struct { 
+    }  _has;
+    NSString * _lastSearchString;
+    NSString * _lastUserTypedSearchString;
+    GEORPMapLocation * _mapLocation;
+    GEOPlace * _originalPlace;
+    unsigned long long  _originatingAuxiliaryControlIndex;
+    int  _pinType;
+    GEOPDPlace * _place;
+    GEORPPlaceInfo * _placeInfo;
+    struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
-    } _sessionId;
-    NSString *_tileStateLog;
-    GEORPTransitLineTileInfo *_transitLineTileInfo;
-    NSMutableArray *_visibleTileSets;
+    }  _sessionId;
+    NSString * _tileStateLog;
+    GEORPTransitLineTileInfo * _transitLineTileInfo;
+    NSMutableArray * _visibleTileSets;
 }
 
 @property (nonatomic, retain) NSMutableArray *autocompleteSuggestionLists;
 @property (nonatomic, retain) NSMutableArray *auxiliaryControls;
 @property (nonatomic) double creationDate;
-@property (nonatomic, retain) GEOABExperimentResponse *currentAbAssignmentResponse;
+@property (nonatomic, retain) GEOABAssignmentResponse *currentAbAssignmentResponse;
 @property (nonatomic, retain) GEORPCurrentEnvironmentManifestURLs *currentEnvironmentManifestUrls;
 @property (nonatomic) int deviceGmtOffset;
 @property (nonatomic, retain) NSMutableArray *directionsRequests;
@@ -68,11 +68,19 @@
 @property (nonatomic) int pinType;
 @property (nonatomic, retain) GEOPDPlace *place;
 @property (nonatomic, retain) GEORPPlaceInfo *placeInfo;
-@property (nonatomic) struct { unsigned long long x1; unsigned long long x2; } sessionId;
+@property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
 @property (nonatomic, retain) NSString *tileStateLog;
 @property (nonatomic, retain) GEORPTransitLineTileInfo *transitLineTileInfo;
 @property (nonatomic, retain) NSMutableArray *visibleTileSets;
 
++ (Class)autocompleteSuggestionListType;
++ (Class)auxiliaryControlType;
++ (Class)directionsRequestType;
++ (Class)directionsResponseType;
++ (Class)directionsWaypointPlaceInfoType;
++ (Class)visibleTileSetType;
+
+- (int)StringAsPinType:(id)arg1;
 - (void)addAutocompleteSuggestionList:(id)arg1;
 - (void)addAuxiliaryControl:(id)arg1;
 - (void)addDirectionsRequest:(id)arg1;
@@ -133,10 +141,11 @@
 - (id)originalPlace;
 - (unsigned long long)originatingAuxiliaryControlIndex;
 - (int)pinType;
+- (id)pinTypeAsString:(int)arg1;
 - (id)place;
 - (id)placeInfo;
 - (BOOL)readFrom:(id)arg1;
-- (struct { unsigned long long x1; unsigned long long x2; })sessionId;
+- (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionId;
 - (void)setAutocompleteSuggestionLists:(id)arg1;
 - (void)setAuxiliaryControls:(id)arg1;
 - (void)setCreationDate:(double)arg1;
@@ -159,7 +168,7 @@
 - (void)setPinType:(int)arg1;
 - (void)setPlace:(id)arg1;
 - (void)setPlaceInfo:(id)arg1;
-- (void)setSessionId:(struct { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setSessionId:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setTileStateLog:(id)arg1;
 - (void)setTransitLineTileInfo:(id)arg1;
 - (void)setVisibleTileSets:(id)arg1;

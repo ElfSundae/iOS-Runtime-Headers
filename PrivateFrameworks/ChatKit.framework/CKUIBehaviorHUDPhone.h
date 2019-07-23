@@ -4,20 +4,11 @@
 
 @interface CKUIBehaviorHUDPhone : CKUIBehaviorPhone
 
-- (id)blue_sendButtonColor;
-- (id)entryFieldAudioRecordingBaloonColor;
-- (id)entryFieldBackgroundColor;
-- (id)entryFieldButtonColor;
-- (id)entryFieldCoverBorderColor;
-- (id)entryFieldCoverFillColor;
-- (float)entryFieldDividerHeight;
 - (BOOL)entryFieldShouldUseBackdropView;
-- (id)entryFieldTextColor;
-- (id)green_sendButtonColor;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })entryViewHorizontalCoverInsets;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })entryViewVerticalCoverInsets;
 - (BOOL)joystickUsesWindow;
-- (int)keyboardAppearance;
-- (BOOL)shouldNotShowSendButton;
-- (id)siri_sendButtonColor;
+- (id)theme;
 - (BOOL)usesActionMenu;
 
 @end

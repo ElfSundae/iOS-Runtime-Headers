@@ -3,8 +3,8 @@
  */
 
 @interface CKContactMediaObject : CKCardMediaObject {
-    ABVCardRecord *_vCard;
-    UIImage *_vCardImage;
+    ABVCardRecord * _vCard;
+    UIImage * _vCardImage;
 }
 
 @property (nonatomic, retain) ABVCardRecord *vCard;
@@ -14,9 +14,9 @@
 + (id)attachmentSummary:(unsigned int)arg1;
 + (id)fallbackFilenamePrefix;
 
+- (void).cxx_destruct;
 - (struct CGSize { float x1; float x2; })bbSize;
 - (Class)coloredBalloonViewClass;
-- (void)dealloc;
 - (id)generateThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
 - (id)icon;
 - (int)mediaType;

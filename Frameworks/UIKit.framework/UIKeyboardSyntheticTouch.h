@@ -3,17 +3,17 @@
  */
 
 @interface UIKeyboardSyntheticTouch : NSObject {
-    unsigned char _pathIdentity;
-    unsigned char _pathIndex;
-    float _pathMajorRadius;
+    unsigned char  _pathIdentity;
+    unsigned char  _pathIndex;
+    float  _pathMajorRadius;
     struct CGPoint { 
         float x; 
         float y; 
-    } locationInWindow;
-    int phase;
-    unsigned int tapCount;
-    double timestamp;
-    UIWindow *window;
+    }  locationInWindow;
+    int  phase;
+    unsigned int  tapCount;
+    double  timestamp;
+    UIWindow * window;
 }
 
 @property (nonatomic, readonly) unsigned char _pathIdentity;
@@ -31,6 +31,7 @@
 - (unsigned char)_pathIndex;
 - (float)_pathMajorRadius;
 - (void)_setLocationInWindow:(struct CGPoint { float x1; float x2; })arg1 resetPrevious:(BOOL)arg2;
+- (void)dealloc;
 - (struct CGPoint { float x1; float x2; })getLocationInWindow;
 - (id)initWithPoint:(struct CGPoint { float x1; float x2; })arg1 timestamp:(double)arg2 window:(id)arg3;
 - (struct CGPoint { float x1; float x2; })locationInView:(id)arg1;

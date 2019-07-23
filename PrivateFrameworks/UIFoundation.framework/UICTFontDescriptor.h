@@ -11,7 +11,6 @@
 - (unsigned long)_cfTypeID;
 - (BOOL)allowsWeakReference;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)finalize;
 - (id)fontAttributes;
 - (id)fontDescriptorByAddingAttributes:(id)arg1;
 - (unsigned int)hash;

@@ -3,31 +3,31 @@
  */
 
 @interface VKRouteContext : NSObject {
-    NSString *_accessPointEntryName;
-    NSString *_accessPointExitName;
-    int _currentLegIndex;
-    int _currentStepIndex;
-    BOOL _hasContextChangedForLabels;
-    BOOL _hasContextChangedForRouteLine;
-    int _inspectedLegIndex;
-    int _inspectedStepIndex;
-    NSHashTable *_labelObservers;
-    NSString *_locale;
+    NSString * _accessPointEntryName;
+    NSString * _accessPointExitName;
+    int  _currentLegIndex;
+    int  _currentStepIndex;
+    BOOL  _hasContextChangedForLabels;
+    BOOL  _hasContextChangedForRouteLine;
+    int  _inspectedLegIndex;
+    int  _inspectedStepIndex;
+    NSHashTable * _labelObservers;
+    NSString * _locale;
     struct { 
         double latitude; 
         double longitude; 
-    } _puckLocation;
-    float _puckRadius;
-    unsigned long long _puckSnappedStopID;
-    GEOComposedRoute *_route;
-    NSHashTable *_routeLineObservers;
+    }  _puckLocation;
+    float  _puckRadius;
+    unsigned long long  _puckSnappedStopID;
+    GEOComposedRoute * _route;
+    NSHashTable * _routeLineObservers;
     struct PolylineCoordinate { 
         unsigned int index; 
         float offset; 
-    } _routeOffset;
-    BOOL _snappingToTransitLines;
-    unsigned char _useType;
-    unsigned char useType;
+    }  _routeOffset;
+    BOOL  _snappingToTransitLines;
+    unsigned char  _useType;
+    unsigned char  useType;
 }
 
 @property (nonatomic, retain) NSString *accessPointEntryName;

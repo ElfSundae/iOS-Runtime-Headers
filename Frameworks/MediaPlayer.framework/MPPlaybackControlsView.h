@@ -2,38 +2,38 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPPlaybackControlsView : UIView <MPDetailSliderDelegate> {
-    UIActivityIndicatorView *_activityIndicator;
-    <MPPlaybackControlsDelegate> *_delegate;
-    unsigned int _detailScrubbing;
-    unsigned long long _disabledParts;
-    unsigned int _fastForwardAndRewindButtonDisabled;
-    MPButton *_fastFowardButton;
-    UIView *_fastFowardButtonBezel;
-    MPButton *_geniusButton;
-    unsigned int _geniusButtonDisabled;
-    MPAVItem *_item;
-    MPButton *_mailButton;
-    unsigned int _mailButtonDisabled;
-    unsigned int _mailButtonHidden;
-    MPTimeMarker *_markerForProgressControlDuration;
-    unsigned int _needsUpdateButtonVisibility;
-    MPButton *_playbackSpeedButton;
-    unsigned int _playbackSpeedButtonDisabled;
-    MPAVController *_player;
-    MPDetailSlider *_progressControl;
-    double _progressOffset;
-    MPButton *_repeatButton;
-    MPButton *_rewindButton;
-    UIView *_rewindButtonBezel;
-    CABasicAnimation *_rewindOpacityAnimation;
-    float _seekedToValue;
-    MPButton *_shuffleButton;
-    double _tickInterval;
-    UILabel *_trackInfoLabel;
-    unsigned int _useMediaDetailSlider;
-    unsigned long long _visibleParts;
-    unsigned int _wantsTick;
+@interface MPPlaybackControlsView : UIView <CAAnimationDelegate, MPDetailSliderDelegate> {
+    UIActivityIndicatorView * _activityIndicator;
+    <MPPlaybackControlsDelegate> * _delegate;
+    unsigned int  _detailScrubbing;
+    unsigned long long  _disabledParts;
+    unsigned int  _fastForwardAndRewindButtonDisabled;
+    MPButton * _fastFowardButton;
+    UIView * _fastFowardButtonBezel;
+    MPButton * _geniusButton;
+    unsigned int  _geniusButtonDisabled;
+    MPAVItem * _item;
+    MPButton * _mailButton;
+    unsigned int  _mailButtonDisabled;
+    unsigned int  _mailButtonHidden;
+    MPTimeMarker * _markerForProgressControlDuration;
+    unsigned int  _needsUpdateButtonVisibility;
+    MPButton * _playbackSpeedButton;
+    unsigned int  _playbackSpeedButtonDisabled;
+    MPAVController * _player;
+    MPDetailSlider * _progressControl;
+    double  _progressOffset;
+    MPButton * _repeatButton;
+    MPButton * _rewindButton;
+    UIView * _rewindButtonBezel;
+    CABasicAnimation * _rewindOpacityAnimation;
+    float  _seekedToValue;
+    MPButton * _shuffleButton;
+    double  _tickInterval;
+    UILabel * _trackInfoLabel;
+    unsigned int  _useMediaDetailSlider;
+    unsigned long long  _visibleParts;
+    unsigned int  _wantsTick;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -49,11 +49,11 @@
 @property (nonatomic, readonly) UIImage *mailButtonImage;
 @property (nonatomic, retain) MPAVController *player;
 @property (nonatomic, readonly) UIImage *repeatButtonImage;
-@property (nonatomic, readonly) unsigned int repeatType;
+@property (nonatomic, readonly) int repeatType;
 @property (nonatomic, readonly) BOOL shouldOverrideProgressTimeLabelStyle;
 @property (nonatomic, readonly) UIImage *shuffleButtonImage;
 @property (nonatomic, readonly) BOOL shuffleIsOn;
-@property (nonatomic, readonly) unsigned int shuffleType;
+@property (nonatomic, readonly) int shuffleType;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long visibleParts;
 
@@ -105,8 +105,8 @@
 - (unsigned long long)disabledParts;
 - (unsigned long long)displayablePartsInPartMask:(unsigned long long)arg1;
 - (id)geniusButtonImageForControlState:(unsigned int)arg1;
-- (void)handleChangeToRepeatType:(unsigned int)arg1;
-- (void)handleChangeToShuffleType:(unsigned int)arg1;
+- (void)handleChangeToRepeatType:(int)arg1;
+- (void)handleChangeToShuffleType:(int)arg1;
 - (BOOL)hideGeniusButton;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (BOOL)isScrubbing;
@@ -118,8 +118,8 @@
 - (id)newButtonForPart:(unsigned long long)arg1;
 - (id)newProgressIndicator;
 - (id)newTrackInfoLabel;
-- (id)playbackSpeedButtonImageForPlaybackSpeed:(unsigned int)arg1;
-- (id)playbackSpeedTitleForPlaybackSpeed:(unsigned int)arg1;
+- (id)playbackSpeedButtonImageForPlaybackSpeed:(int)arg1;
+- (id)playbackSpeedTitleForPlaybackSpeed:(int)arg1;
 - (id)player;
 - (BOOL)pointInside:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (BOOL)progressBarClipsToChapterDuration;
@@ -128,7 +128,7 @@
 - (void)reloadControls;
 - (void)reloadView;
 - (id)repeatButtonImage;
-- (unsigned int)repeatType;
+- (int)repeatType;
 - (void)resetDetailSlider:(id)arg1;
 - (void)setCurrentTime:(double)arg1;
 - (void)setDelegate:(id)arg1;
@@ -139,7 +139,7 @@
 - (BOOL)shouldOverrideProgressTimeLabelStyle;
 - (id)shuffleButtonImage;
 - (BOOL)shuffleIsOn;
-- (unsigned int)shuffleType;
+- (int)shuffleType;
 - (void)startTicking;
 - (void)stopTicking;
 - (void)unregisterForPlayerNotifications;

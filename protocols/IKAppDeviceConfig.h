@@ -13,4 +13,8 @@
 - (NSString *)systemLanguage;
 - (NSTimeZone *)timeZone;
 
+@optional
+
+- (NSString *)bundleIdentifier;
+
 @end

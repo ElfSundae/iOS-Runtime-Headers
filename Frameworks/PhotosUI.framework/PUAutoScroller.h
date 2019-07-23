@@ -3,21 +3,21 @@
  */
 
 @interface PUAutoScroller : NSObject {
-    float _autoScrollerInset;
-    float _autoScrollerMaximumSpeed;
-    double _autoScrollerTimerInterval;
-    <PUAutoScrollerDelegate> *_delegate;
+    float  _autoScrollerInset;
+    float  _autoScrollerMaximumSpeed;
+    double  _autoScrollerTimerInterval;
+    <PUAutoScrollerDelegate> * _delegate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _distanceFromCenterFrame;
-    UIScrollView *_scrollView;
+    }  _distanceFromCenterFrame;
+    UIScrollView * _scrollView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _speed;
-    NSTimer *_timer;
-    int _updateTrigger;
+    }  _speed;
+    NSTimer * _timer;
+    int  _updateTrigger;
 }
 
 @property (nonatomic) float autoScrollerInset;

@@ -3,9 +3,9 @@
  */
 
 @interface PSUITimeZonePane : PSEditingPane <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
-    NSArray *_cities;
-    UITableView *_completionTable;
-    UISearchBar *_searchBar;
+    NSArray * _cities;
+    UITableView * _completionTable;
+    UISearchBar * _searchBar;
 }
 
 @property (readonly, copy) NSString *debugDescription;

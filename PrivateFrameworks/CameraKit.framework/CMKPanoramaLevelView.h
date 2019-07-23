@@ -3,7 +3,7 @@
  */
 
 @interface CMKPanoramaLevelView : UIView {
-    UIView *_lineView;
+    UIView * _lineView;
 }
 
 - (void).cxx_destruct;

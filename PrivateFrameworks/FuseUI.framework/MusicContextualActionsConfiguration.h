@@ -3,24 +3,24 @@
  */
 
 @interface MusicContextualActionsConfiguration : NSObject <MusicClientContextConsuming> {
-    BOOL _allowsAddToPlaylistActions;
-    BOOL _allowsCreateGeniusPlaylist;
-    BOOL _allowsLibraryAddRemoveActions;
-    BOOL _allowsLibraryKeepLocalActions;
-    BOOL _allowsShareActions;
-    BOOL _allowsShowGeniusPlaylistDetail;
-    BOOL _allowsShowInStoreActions;
-    BOOL _allowsStartRadioActions;
-    BOOL _allowsUpNextActions;
-    MusicClientContext *_clientContext;
-    NSArray *_customJSActionTitles;
-    id /* block */ _didDismissHandler;
-    MusicEntityValueContext *_entityValueContext;
-    NSDictionary *_extraInfo;
-    BOOL _includesPostActionForDefaultContainer;
-    <MusicEntityProviding> *_libraryAddRemoveOverrideItemEntityProvider;
-    int _preferredAlertControllerStyle;
-    MusicViewControllerPresenter *_presenter;
+    BOOL  _allowsAddToPlaylistActions;
+    BOOL  _allowsCreateGeniusPlaylist;
+    BOOL  _allowsLibraryAddRemoveActions;
+    BOOL  _allowsLibraryKeepLocalActions;
+    BOOL  _allowsShareActions;
+    BOOL  _allowsShowGeniusPlaylistDetail;
+    BOOL  _allowsShowInStoreActions;
+    BOOL  _allowsStartRadioActions;
+    BOOL  _allowsUpNextActions;
+    MusicClientContext * _clientContext;
+    NSArray * _customJSActionTitles;
+    id /* block */  _didDismissHandler;
+    MusicEntityValueContext * _entityValueContext;
+    NSDictionary * _extraInfo;
+    BOOL  _includesPostActionForDefaultContainer;
+    <MusicEntityProviding> * _libraryAddRemoveOverrideItemEntityProvider;
+    int  _preferredAlertControllerStyle;
+    MusicViewControllerPresenter * _presenter;
 }
 
 @property (nonatomic) BOOL allowsAddToPlaylistActions;

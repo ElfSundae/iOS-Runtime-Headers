@@ -3,8 +3,8 @@
  */
 
 @interface _WBUPasswordAlertActionView : UIView {
-    UILabel *_detailLabel;
-    UILabel *_titleLabel;
+    UILabel * _detailLabel;
+    UILabel * _titleLabel;
 }
 
 @property (nonatomic, readonly) UILabel *detailLabel;

@@ -3,43 +3,48 @@
  */
 
 @interface BWNodeOutput : NSObject {
-    long long _configurationID;
-    <BWNodeOutputConsumer> *_consumer;
-    BOOL _consumerIsANodeConnection;
-    BOOL _discardsSampleData;
-    BOOL _dropsSampleBuffersWithUnexpectedPTS;
-    BWFormat *_format;
-    BWFormatRequirements *_formatRequirements;
-    int _indexOfInputWhichDrivesThisOutput;
+    long long  _configurationID;
+    <BWNodeOutputConsumer> * _consumer;
+    BOOL  _consumerIsANodeConnection;
+    BOOL  _discardsSampleData;
+    BOOL  _dropsSampleBuffersWithUnexpectedPTS;
+    BWFormat * _format;
+    BWFormatRequirements * _formatRequirements;
+    int  _indexOfInputWhichDrivesThisOutput;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _lastEmittedPTS;
+    }  _lastEmittedPTS;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _lastValidPTS;
-    long long _liveConfigurationID;
-    BWFormat *_liveFormat;
-    BWPixelBufferPool *_livePixelBufferPool;
-    unsigned long _livePixelBufferPoolSize;
-    float _maxSampleDataOutputRate;
-    unsigned long _mediaType;
-    BOOL _mediaTypeIsVideo;
-    NSString *_name;
-    BWNode *_node;
-    unsigned int _numberOfBuffersDropped;
-    unsigned int _numberOfBuffersEmitted;
-    unsigned long _owningNodeRetainedBufferCount;
-    int _passthroughMode;
-    unsigned long _preparedBufferPoolSize;
-    BWPixelBufferPool *_preparedPixelBufferPool;
-    BOOL _providesPixelBufferPool;
-    unsigned long _retainedBufferCount;
+    }  _lastValidPTS;
+    long long  _liveConfigurationID;
+    BWFormat * _liveFormat;
+    BWPixelBufferPool * _livePixelBufferPool;
+    unsigned long  _livePixelBufferPoolSize;
+    float  _maxSampleDataOutputRate;
+    unsigned long  _mediaType;
+    BOOL  _mediaTypeIsVideo;
+    NSString * _name;
+    BWNode * _node;
+    unsigned int  _numberOfBuffersDropped;
+    unsigned int  _numberOfBuffersEmitted;
+    unsigned long  _owningNodeRetainedBufferCount;
+    int  _passthroughMode;
+    NSMutableArray * _poolPreallocationCompletionHandlers;
+    BOOL  _poolPreallocationDone;
+    struct OpaqueFigSimpleMutex { } * _poolPreallocationMutex;
+    BOOL  _prefetchesPixelBufferPool;
+    unsigned long  _preparedBufferPoolSize;
+    BWPixelBufferPool * _preparedPixelBufferPool;
+    BOOL  _providesPixelBufferPool;
+    BOOL  _receivedEOD;
+    unsigned long  _retainedBufferCount;
 }
 
 @property (nonatomic) BOOL buffersOriginateUpstream;
@@ -62,6 +67,7 @@
 @property (nonatomic, readonly) unsigned int numberOfBuffersEmitted;
 @property (nonatomic) unsigned long owningNodeRetainedBufferCount;
 @property (nonatomic) int passthroughMode;
+@property (nonatomic) BOOL prefetchesPixelBufferPool;
 @property (nonatomic, readonly) BWPixelBufferPool *preparedPixelBufferPool;
 @property (nonatomic) BOOL providesPixelBufferPool;
 @property (nonatomic) unsigned long retainedBufferCount;
@@ -70,6 +76,7 @@
 + (void)initialize;
 
 - (id)_poolName;
+- (void)addPoolPreallocationCompletionHandler:(id /* block */)arg1;
 - (BOOL)buffersOriginateUpstream;
 - (long long)configurationID;
 - (id)connection;
@@ -82,6 +89,7 @@
 - (void)emitIrisReferenceMovieRequestWithInfo:(id)arg1;
 - (void)emitNodeError:(id)arg1;
 - (void)emitSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (void)emitStillImageReferenceFrameBracketedCaptureSequenceNumberMessageWithSequenceNumber:(int)arg1;
 - (id)format;
 - (id)formatRequirements;
 - (int)indexOfInputWhichDrivesThisOutput;
@@ -100,6 +108,7 @@
 - (unsigned int)numberOfBuffersEmitted;
 - (unsigned long)owningNodeRetainedBufferCount;
 - (int)passthroughMode;
+- (BOOL)prefetchesPixelBufferPool;
 - (void)prepareForConfiguredFormatToBecomeLive;
 - (id)preparedPixelBufferPool;
 - (BOOL)providesPixelBufferPool;
@@ -118,6 +127,7 @@
 - (void)setNodePreparedPixelBufferPool:(id)arg1;
 - (void)setOwningNodeRetainedBufferCount:(unsigned long)arg1;
 - (void)setPassthroughMode:(int)arg1;
+- (void)setPrefetchesPixelBufferPool:(BOOL)arg1;
 - (void)setPreparedSharedPixelBufferPool:(id)arg1;
 - (void)setProvidesPixelBufferPool:(BOOL)arg1;
 - (void)setRetainedBufferCount:(unsigned long)arg1;

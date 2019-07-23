@@ -6,47 +6,55 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _contentOffsetAdjustment;
+    }  _contentOffsetAdjustment;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSizeAdjustment;
-    NSMutableDictionary *_invalidatedDecorationIndexPaths;
-    NSMutableSet *_invalidatedItemIndexPaths;
-    NSMutableDictionary *_invalidatedSupplementaryIndexPaths;
+    }  _contentSizeAdjustment;
+    BOOL  _initiatedFromReloadData;
+    NSMutableDictionary * _invalidatedDecorationIndexPaths;
+    NSMutableSet * _invalidatedItemIndexPaths;
+    NSMutableDictionary * _invalidatedSupplementaryIndexPaths;
     struct { 
         unsigned int invalidateDataSource : 1; 
         unsigned int invalidateEverything : 1; 
-    } _invalidationContextFlags;
-    NSArray *_previousIndexPathsForReorderedItems;
+    }  _invalidationContextFlags;
+    NSArray * _previousIndexPathsForReorderedItems;
     struct CGPoint { 
         float x; 
         float y; 
-    } _reorderingTarget;
-    NSArray *_targetIndexPathsForReorderedItems;
-    NSArray *_updateItems;
+    }  _reorderingTarget;
+    BOOL  _retainExistingSizingInfoForEstimates;
+    NSArray * _targetIndexPathsForReorderedItems;
+    NSArray * _updateItems;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } contentOffsetAdjustment;
 @property (nonatomic) struct CGSize { float x1; float x2; } contentSizeAdjustment;
-@property (nonatomic) struct CGPoint { float x1; float x2; } interactiveMovementTarget;
-@property (nonatomic) BOOL invalidateDataSourceCounts;
-@property (nonatomic) BOOL invalidateEverything;
+@property (getter=_initiatedFromReloadData, setter=_setInitiatedFromReloadData:, nonatomic) BOOL initiatedFromReloadData;
+@property (setter=_setInteractiveMovementTarget:, nonatomic) struct CGPoint { float x1; float x2; } interactiveMovementTarget;
+@property (setter=_setInvalidateDataSourceCounts:, nonatomic) BOOL invalidateDataSourceCounts;
+@property (setter=_setInvalidateEverything:, nonatomic) BOOL invalidateEverything;
 @property (nonatomic, readonly) NSDictionary *invalidatedDecorationIndexPaths;
 @property (nonatomic, readonly) NSArray *invalidatedItemIndexPaths;
 @property (nonatomic, readonly) NSDictionary *invalidatedSupplementaryIndexPaths;
-@property (nonatomic, copy) NSArray *previousIndexPathsForInteractivelyMovingItems;
-@property (nonatomic, copy) NSArray *targetIndexPathsForInteractivelyMovingItems;
+@property (setter=_setPreviousIndexPathsForInteractivelyMovingItems:, nonatomic, copy) NSArray *previousIndexPathsForInteractivelyMovingItems;
+@property (getter=_retainExistingSizingInfoForEstimates, setter=_setRetainExistingSizingInfoForEstimates:, nonatomic) BOOL retainExistingSizingInfoForEstimates;
+@property (setter=_setTargetIndexPathsForInteractivelyMovingItems:, nonatomic, copy) NSArray *targetIndexPathsForInteractivelyMovingItems;
 @property (getter=_updateItems, setter=_setUpdateItems:, nonatomic, retain) NSArray *updateItems;
 
 - (void).cxx_destruct;
+- (BOOL)_initiatedFromReloadData;
 - (void)_invalidateSupplementaryElementsOfKind:(id)arg1 atIndexPaths:(id)arg2;
 - (id)_invalidatedSupplementaryViews;
+- (BOOL)_retainExistingSizingInfoForEstimates;
+- (void)_setInitiatedFromReloadData:(BOOL)arg1;
 - (void)_setInteractiveMovementTarget:(struct CGPoint { float x1; float x2; })arg1;
 - (void)_setInvalidateDataSourceCounts:(BOOL)arg1;
 - (void)_setInvalidateEverything:(BOOL)arg1;
 - (void)_setInvalidatedSupplementaryViews:(id)arg1;
 - (void)_setPreviousIndexPathsForInteractivelyMovingItems:(id)arg1;
+- (void)_setRetainExistingSizingInfoForEstimates:(BOOL)arg1;
 - (void)_setTargetIndexPathsForInteractivelyMovingItems:(id)arg1;
 - (void)_setUpdateItems:(id)arg1;
 - (id)_updateItems;

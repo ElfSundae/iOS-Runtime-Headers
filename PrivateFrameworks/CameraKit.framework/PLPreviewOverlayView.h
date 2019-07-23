@@ -3,7 +3,7 @@
  */
 
 @interface PLPreviewOverlayView : UIView {
-    CMKCameraView *cameraView;
+    CMKCameraView * cameraView;
 }
 
 @property (nonatomic) CMKCameraView *cameraView;

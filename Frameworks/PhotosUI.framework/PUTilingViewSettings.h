@@ -3,24 +3,24 @@
  */
 
 @interface PUTilingViewSettings : PUSettings {
-    BOOL _allowPaging;
-    BOOL _allowPreheating;
-    BOOL _allowTileReuse;
-    BOOL _allowsEdgeAntialiasing;
-    float _animationDragCoefficient;
-    BOOL _carryOverVelocities;
-    double _defaultAnimationDuration;
-    float _interactiveTransitionBackgroundDimming;
-    BOOL _rotateDisappearingTiles;
-    BOOL _showVisibleRects;
-    double _springAnimationDuration;
-    BOOL _tintTiles;
-    float _transitionChromeDelay;
-    double _transitionDuration;
-    int _transitionProgressBehavior;
-    BOOL _useOvershootingSpringAnimations;
-    BOOL _useSpringAnimations;
-    BOOL _useSystemSpringAnimations;
+    BOOL  _allowPaging;
+    BOOL  _allowPreheating;
+    BOOL  _allowTileReuse;
+    BOOL  _allowsEdgeAntialiasing;
+    float  _animationDragCoefficient;
+    BOOL  _carryOverVelocities;
+    double  _defaultAnimationDuration;
+    float  _interactiveTransitionBackgroundDimming;
+    BOOL  _rotateDisappearingTiles;
+    BOOL  _showVisibleRects;
+    double  _springAnimationDuration;
+    BOOL  _tintTiles;
+    float  _transitionChromeDelay;
+    double  _transitionDuration;
+    int  _transitionProgressBehavior;
+    BOOL  _useOvershootingSpringAnimations;
+    BOOL  _useSpringAnimations;
+    BOOL  _useSystemSpringAnimations;
 }
 
 @property (nonatomic) BOOL allowPaging;

@@ -3,9 +3,9 @@
  */
 
 @interface TSDBitmapRenderingQualityInfo : NSObject {
-    float mCanvasScale;
-    NSMutableDictionary *mImageMap;
-    int mQuality;
+    float  mCanvasScale;
+    NSMutableDictionary * mImageMap;
+    int  mQuality;
 }
 
 @property (nonatomic, readonly) float canvasScale;

@@ -3,7 +3,7 @@
  */
 
 @interface WBSSQLiteRow : NSObject {
-    struct sqlite3_stmt { } *_handle;
+    struct sqlite3_stmt { } * _handle;
 }
 
 - (BOOL)_isNullAtIndex:(unsigned int)arg1;

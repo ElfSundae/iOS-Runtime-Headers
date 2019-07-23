@@ -3,13 +3,12 @@
  */
 
 @interface ADPrerollTopBar : UIView {
-    <ADPrerollTopBarDelegate> *_delegate;
-    ADPrerollButton *_doneButton;
-    BOOL _isFullscreen;
-    BOOL _layoutForExpandedSize;
-    ADProgressView *_progressView;
-    ADPrerollButton *_scaleToFillButton;
-    UIStatusBar *_statusBar;
+    <ADPrerollTopBarDelegate> * _delegate;
+    ADPrerollButton * _doneButton;
+    BOOL  _isFullscreen;
+    BOOL  _layoutForExpandedSize;
+    ADProgressView * _progressView;
+    UIStatusBar * _statusBar;
 }
 
 @property (nonatomic) <ADPrerollTopBarDelegate> *delegate;
@@ -17,7 +16,6 @@
 @property (nonatomic) BOOL isFullscreen;
 @property (nonatomic) BOOL layoutForExpandedSize;
 @property (nonatomic, retain) ADProgressView *progressView;
-@property (nonatomic, retain) ADPrerollButton *scaleToFillButton;
 @property (nonatomic, retain) UIStatusBar *statusBar;
 
 - (void)_doneButtonTapped:(id)arg1;
@@ -32,14 +30,12 @@
 - (void)layoutSubviews;
 - (id)progressView;
 - (float)requiredHeight;
-- (id)scaleToFillButton;
 - (void)setDelegate:(id)arg1;
 - (void)setDoneButton:(id)arg1;
 - (void)setElapsedTime:(double)arg1 totalTime:(double)arg2;
 - (void)setIsFullscreen:(BOOL)arg1;
 - (void)setLayoutForExpandedSize:(BOOL)arg1;
 - (void)setProgressView:(id)arg1;
-- (void)setScaleToFillButton:(id)arg1;
 - (void)setStatusBar:(id)arg1;
 - (id)statusBar;
 

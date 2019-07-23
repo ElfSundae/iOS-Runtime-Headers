@@ -3,7 +3,7 @@
  */
 
 @interface PSCarrierRejectCodePane : PSEditingPane {
-    UILabel *_rejectMessage;
+    UILabel * _rejectMessage;
 }
 
 - (void).cxx_destruct;

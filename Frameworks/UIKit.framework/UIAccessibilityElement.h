@@ -3,14 +3,23 @@
  */
 
 @interface UIAccessibilityElement : NSObject <UIAccessibilityIdentification> {
-    id _accessibilityContainer;
-    NSString *accessibilityIdentifier;
+    struct CGRect { 
+        struct CGPoint { 
+            float x; 
+            float y; 
+        } origin; 
+        struct CGSize { 
+            float width; 
+            float height; 
+        } size; 
+    }  _accessibilityFrameInContainerSpace;
 }
 
 @property (nonatomic) id accessibilityContainer;
 @property (nonatomic, retain) NSArray *accessibilityContainerElements;
 @property (nonatomic) id accessibilityDelegate;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } accessibilityFrame;
+@property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } accessibilityFrameInContainerSpace;
 @property (nonatomic, retain) NSString *accessibilityHint;
 @property (nonatomic, copy) NSString *accessibilityIdentifier;
 @property (nonatomic, retain) NSString *accessibilityLabel;
@@ -25,19 +34,17 @@
 
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
-- (id)accessibilityContainer;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })accessibilityFrame;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })accessibilityFrameInContainerSpace;
 - (id)accessibilityHint;
-- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)setAccessibilityContainer:(id)arg1;
 - (void)setAccessibilityFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
+- (void)setAccessibilityFrameInContainerSpace:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setAccessibilityHint:(id)arg1;
-- (void)setAccessibilityIdentifier:(id)arg1;
 - (void)setAccessibilityLabel:(id)arg1;
 - (void)setAccessibilityTraits:(unsigned long long)arg1;
 - (void)setAccessibilityValue:(id)arg1;

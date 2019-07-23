@@ -2,19 +2,25 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKBasicMapView : UIView {
-    BOOL _changingViewSize;
-    UIView *_hostView;
-    double _mapModeStartTime;
-    VKMapView *_mapView;
-    double _trafficStartTime;
+@interface MKBasicMapView : UIView <GEOResourceManifestTileGroupObserver> {
+    BOOL  _changingViewSize;
+    UIView * _hostView;
+    BOOL  _inactive;
+    double  _mapModeStartTime;
+    VKMapView * _mapView;
+    double  _trafficStartTime;
 }
 
 @property (getter=isChangingViewSize, nonatomic, readonly) BOOL changingViewSize;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } edgeInsets;
+@property (readonly) unsigned int hash;
+@property (nonatomic) BOOL inactive;
 @property (nonatomic) double mapModeStartTime;
 @property (nonatomic, readonly) VKMapView *mapView;
 @property (nonatomic) BOOL rendersInBackground;
+@property (readonly) Class superclass;
 @property (nonatomic) double trafficStartTime;
 
 - (void).cxx_destruct;
@@ -29,21 +35,24 @@
 - (void)addCalloutSubview:(id)arg1;
 - (float)calloutContainerCanvasScale;
 - (struct CGSize { float x1; float x2; })calloutContainerCanvasSize;
-- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct { double x1; double x2; })arg1 toCameraModelPointToView:(id)arg2;
-- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct { double x1; double x2; })arg1 toPointToView:(id)arg2;
-- (struct { double x1; double x2; })convertPoint:(struct CGPoint { float x1; float x2; })arg1 toCoordinateFromView:(id)arg2;
+- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 toCameraModelPointToView:(id)arg2;
+- (struct CGPoint { float x1; float x2; })convertCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 toPointToView:(id)arg2;
+- (struct CLLocationCoordinate2D { double x1; double x2; })convertPoint:(struct CGPoint { float x1; float x2; })arg1 toCoordinateFromView:(id)arg2;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })edgeInsets;
+- (BOOL)inactive;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 andGlobe:(BOOL)arg2 shouldRasterize:(BOOL)arg3;
 - (BOOL)isChangingViewSize;
 - (BOOL)isPointValidForGesturing:(struct CGPoint { float x1; float x2; })arg1;
 - (double)mapModeStartTime;
 - (id)mapView;
 - (BOOL)rendersInBackground;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setHidden:(BOOL)arg1;
+- (void)setInactive:(BOOL)arg1;
 - (void)setMapModeStartTime:(double)arg1;
 - (void)setRendersInBackground:(BOOL)arg1;
 - (void)setTrafficStartTime:(double)arg1;

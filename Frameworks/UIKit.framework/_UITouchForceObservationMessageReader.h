@@ -6,10 +6,10 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _centroid;
-    BOOL _shouldFilterDueToSystemGestures;
-    double _timestamp;
-    float _touchForce;
+    }  _centroid;
+    BOOL  _shouldFilterDueToSystemGestures;
+    double  _timestamp;
+    float  _touchForce;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } centroid;

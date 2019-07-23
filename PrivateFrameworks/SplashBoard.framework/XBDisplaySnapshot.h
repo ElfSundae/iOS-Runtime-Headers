@@ -3,17 +3,17 @@
  */
 
 @interface XBDisplaySnapshot : NSObject {
-    FBSDisplay *_display;
-    UIImage *_image;
-    struct CGImage { } *_imageRef;
-    NSOrderedSet *_layers;
-    BOOL _opaque;
-    float _scale;
+    FBSDisplay * _display;
+    UIImage * _image;
+    struct CGImage { } * _imageRef;
+    NSOrderedSet * _layers;
+    BOOL  _opaque;
+    float  _scale;
     struct CGSize { 
         float width; 
         float height; 
-    } _snapshotSize;
-    struct __IOSurface { } *_surfaceRef;
+    }  _snapshotSize;
+    struct __IOSurface { } * _surfaceRef;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*CGImage;
@@ -32,7 +32,7 @@
 - (float)_scale;
 - (struct CGSize { float x1; float x2; })_scaledSnapshotSize;
 - (void)_synchronizedCaptureWithCompletion:(id /* block */)arg1;
-- (void)capture;
+- (BOOL)capture;
 - (void)dealloc;
 - (id)display;
 - (id)initWithDisplay:(id)arg1 layer:(id)arg2;

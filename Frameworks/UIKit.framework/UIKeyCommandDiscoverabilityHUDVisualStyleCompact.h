@@ -3,7 +3,7 @@
  */
 
 @interface UIKeyCommandDiscoverabilityHUDVisualStyleCompact : UIKeyCommandDiscoverabilityHUDVisualStyleRegular {
-    UIFont *_summaryFont;
+    UIFont * _summaryFont;
 }
 
 - (void).cxx_destruct;

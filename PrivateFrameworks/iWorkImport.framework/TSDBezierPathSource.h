@@ -3,12 +3,12 @@
  */
 
 @interface TSDBezierPathSource : TSDPathSource <TSDMixing> {
-    BOOL mIsRectangular;
+    BOOL  mIsRectangular;
     struct CGSize { 
         float width; 
         float height; 
-    } mNaturalSize;
-    TSUBezierPath *mPath;
+    }  mNaturalSize;
+    TSUBezierPath * mPath;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } naturalSize;
@@ -26,6 +26,7 @@
 - (id)initWithBezierPath:(id)arg1;
 - (id)initWithNaturalSize:(struct CGSize { float x1; float x2; })arg1;
 - (BOOL)isCircular;
+- (BOOL)isClosed;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isRectangular;
 - (BOOL)isRectangularForever;

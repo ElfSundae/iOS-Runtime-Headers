@@ -3,8 +3,8 @@
  */
 
 @interface PUCameraPreviewPresentationController : PUPhotosPreviewPresentationController {
-    UIImageView *__customDotImageView;
-    UIView *__customSourceView;
+    UIImageView * __customDotImageView;
+    UIView * __customSourceView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } __previewSourceRect;
+    }  __previewSourceRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -24,12 +24,12 @@
             float width; 
             float height; 
         } size; 
-    } __revealFinalRect;
-    UIImage *__revealImage;
-    BOOL __shouldHideScrubber;
-    UIView *_customBackgroundView;
-    PUScrubberView *_presentationScrubberView;
-    UIView *_scrubberContainerView;
+    }  __revealFinalRect;
+    UIImage * __revealImage;
+    BOOL  __shouldHideScrubber;
+    UIView * _customBackgroundView;
+    PUScrubberView * _presentationScrubberView;
+    UIView * _scrubberContainerView;
 }
 
 @property (setter=_setCustomDotImageView:, nonatomic, retain) UIImageView *_customDotImageView;

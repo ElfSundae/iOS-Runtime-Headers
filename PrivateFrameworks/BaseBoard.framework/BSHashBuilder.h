@@ -3,8 +3,10 @@
  */
 
 @interface BSHashBuilder : NSObject {
-    unsigned int _hash;
+    unsigned int  _hash;
 }
+
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
 + (id)builder;
 
@@ -24,5 +26,9 @@
 - (id)appendUnsignedInteger:(unsigned int)arg1;
 - (unsigned int)hash;
 - (id)init;
+
+// Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
+
+- (id)uns_appendCMTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 
 @end

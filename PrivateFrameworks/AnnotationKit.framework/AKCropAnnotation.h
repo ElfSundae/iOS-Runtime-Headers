@@ -12,8 +12,8 @@
             float width; 
             float height; 
         } size; 
-    } _rectangle;
-    BOOL _showHandles;
+    }  _rectangle;
+    BOOL  _showHandles;
 }
 
 @property (readonly, copy) NSString *debugDescription;

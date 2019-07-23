@@ -3,27 +3,27 @@
  */
 
 @interface HKGraphSeries : NSObject <HKGraphSeriesDataSourceDelegate> {
-    NSUUID *_UUID;
-    BOOL _allowsSelection;
-    float _alpha;
-    HKPropertyAnimationApplier *_animationApplier;
-    <HKGraphSeriesAxisScalingRule> *_axisScalingRule;
-    NSMutableDictionary *_cachedCoordinateListsByBlockPath;
-    NSMutableDictionary *_cachedDataBlocksByBlockPath;
-    NSNumber *_closestSelectedXCoordinate;
-    HKGraphSeriesDataSource *_dataSource;
-    <HKSeriesDelegate> *_delegate;
-    BOOL _dirty;
-    UIColor *_offScreenIndicatorColor;
-    float _offscreenIndicatorAlpha;
+    NSUUID * _UUID;
+    BOOL  _allowsSelection;
+    float  _alpha;
+    HKPropertyAnimationApplier * _animationApplier;
+    <HKGraphSeriesAxisScalingRule> * _axisScalingRule;
+    NSMutableDictionary * _cachedCoordinateListsByBlockPath;
+    NSMutableDictionary * _cachedDataBlocksByBlockPath;
+    NSNumber * _closestSelectedXCoordinate;
+    HKGraphSeriesDataSource * _dataSource;
+    <HKSeriesDelegate> * _delegate;
+    BOOL  _dirty;
+    UIColor * _offScreenIndicatorColor;
+    float  _offscreenIndicatorAlpha;
     struct { 
         struct { 
             int index; 
             int zoom; 
         } blockPath; 
         int index; 
-    } _selectedPointPath;
-    HKAxis *_yAxis;
+    }  _selectedPointPath;
+    HKAxis * _yAxis;
 }
 
 @property (nonatomic, readonly) NSUUID *UUID;
@@ -88,6 +88,7 @@
 - (void)setOffScreenIndicatorColor:(id)arg1;
 - (void)setOffscreenIndicatorAlpha:(float)arg1;
 - (void)setYAxis:(id)arg1;
+- (BOOL)shouldInvertAxis;
 - (float)xAxisDistanceFromPoint:(struct CGPoint { float x1; float x2; })arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3;
 - (float)xAxisSelectedCoordinate:(float)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3;
 - (id)yAxis;

@@ -3,7 +3,7 @@
  */
 
 @interface AKFormFeature : NSObject <NSCopying> {
-    AKPageController *_page;
+    AKPageController * _page;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,7 +13,7 @@
             float width; 
             float height; 
         } size; 
-    } _rect;
+    }  _rect;
 }
 
 @property (nonatomic) AKPageController *page;

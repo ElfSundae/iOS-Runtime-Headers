@@ -3,9 +3,9 @@
  */
 
 @interface CMKEffectsFullsizeView : CMKGLView {
-    unsigned int _filterIndex;
-    CIFilter *_selectedFilter;
-    unsigned int _selectedFilterIndex;
+    unsigned int  _filterIndex;
+    CIFilter * _selectedFilter;
+    unsigned int  _selectedFilterIndex;
 }
 
 @property unsigned int filterIndex;

@@ -6,9 +6,9 @@
     struct CGSize { 
         float width; 
         float height; 
-    } __expandedSize;
-    BOOL __isExpanded;
-    PUFilmstripWrapperView *__wrapperView;
+    }  __expandedSize;
+    BOOL  __isExpanded;
+    PUFilmstripWrapperView * __wrapperView;
 }
 
 @property (setter=_setExpandedSize:, nonatomic) struct CGSize { float x1; float x2; } _expandedSize;

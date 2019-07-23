@@ -3,12 +3,12 @@
  */
 
 @interface UIKeyboardSplitControlMenu : UIKeyboardMenuView {
-    id /* block */ _finishSplitTransitionBlock;
-    NSMutableArray *m_menuOptions;
+    id /* block */  _finishSplitTransitionBlock;
+    NSArray * _items;
     struct CGSize { 
         float width; 
         float height; 
-    } m_preferredSize;
+    }  m_preferredSize;
 }
 
 @property (nonatomic, copy) id /* block */ finishSplitTransitionBlock;
@@ -16,6 +16,7 @@
 + (id)activeInstance;
 + (id)sharedInstance;
 
+- (void)actionForItem:(id)arg1;
 - (void)dealloc;
 - (unsigned int)defaultSelectedIndex;
 - (void)didFinishSplitTransition;
@@ -27,5 +28,6 @@
 - (void)setFinishSplitTransitionBlock:(id /* block */)arg1;
 - (void)setSplitAndUndocked:(BOOL)arg1;
 - (id)titleForItemAtIndex:(unsigned int)arg1;
+- (int)visibleItemForIndex:(unsigned int)arg1;
 
 @end

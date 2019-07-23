@@ -6,27 +6,27 @@
     struct UIOffset { 
         float horizontal; 
         float vertical; 
-    } _draggingOffset;
-    _UIActivityGroupActivityCell *_draggingView;
-    UILongPressGestureRecognizer *_editingGestureRecognizer;
+    }  _draggingOffset;
+    _UIActivityGroupActivityCell * _draggingView;
+    UILongPressGestureRecognizer * _editingGestureRecognizer;
     struct CGSize { 
         float width; 
         float height; 
-    } _evaluatedContentSize;
-    float _evaluatedHorizontalItemOffset;
+    }  _evaluatedContentSize;
+    float  _evaluatedHorizontalItemOffset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _evaluatedInset;
+    }  _evaluatedInset;
     struct CGSize { 
         float width; 
         float height; 
-    } _evaluatedItemSize;
-    NSIndexPath *_indexPathForDraggedItem;
-    NSArray *_preparedLayoutAttributes;
-    NSArray *_preparedUpdateItems;
+    }  _evaluatedItemSize;
+    NSIndexPath * _indexPathForDraggedItem;
+    NSArray * _preparedLayoutAttributes;
+    NSArray * _preparedUpdateItems;
 }
 
 @property (nonatomic) struct UIOffset { float x1; float x2; } draggingOffset;

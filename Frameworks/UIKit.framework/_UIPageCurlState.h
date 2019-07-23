@@ -2,38 +2,42 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIPageCurlState : _UITransitionState {
-    UIView *_backPageView;
-    UIView *_backView;
-    int _completionCount;
-    int _curlState;
-    int _curlType;
-    id /* block */ _finally;
-    BOOL _finished;
-    UIView *_frontPageView;
-    UIView *_frontView;
+@interface _UIPageCurlState : _UITransitionState <CAAnimationDelegate> {
+    UIView * _backPageView;
+    UIView * _backView;
+    int  _completionCount;
+    int  _curlState;
+    int  _curlType;
+    id /* block */  _finally;
+    BOOL  _finished;
+    UIView * _frontPageView;
+    UIView * _frontView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialLocation;
-    _UIPageCurl *_pageCurl;
+    }  _initialLocation;
+    _UIPageCurl * _pageCurl;
     struct CGPoint { 
         float x; 
         float y; 
-    } _referenceLocation;
-    BOOL _willComplete;
+    }  _referenceLocation;
+    BOOL  _willComplete;
 }
 
 @property (nonatomic, readonly) UIView *backPageView;
 @property (nonatomic, readonly) UIView *backView;
 @property (nonatomic, readonly) int curlState;
 @property (nonatomic, readonly) int curlType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UIView *frontPageView;
 @property (nonatomic, readonly) UIView *frontView;
+@property (readonly) unsigned int hash;
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } initialLocation;
 @property (nonatomic, readonly) _UIPageCurl *pageCurl;
 @property (getter=hasPendingAnimations, nonatomic, readonly) BOOL pendingAnimations;
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } referenceLocation;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (int)_effectiveTransitionDirection;

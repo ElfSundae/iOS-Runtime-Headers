@@ -3,14 +3,14 @@
  */
 
 @interface _UIOLAConfigurationHistory : _UILAConfigurationHistory <_UIOLAPropertySource> {
-    BOOL _baselineRelativeArrangement;
-    int _distribution;
-    BOOL _hasEstablishedOrderingValues;
-    BOOL _inOrderedArrangementUpdateSection;
-    BOOL _itemFittingSizeChanged;
-    BOOL _itemOrderingChanged;
-    float _proportionalFillDenominator;
-    float _spacing;
+    BOOL  _baselineRelativeArrangement;
+    int  _distribution;
+    BOOL  _hasEstablishedOrderingValues;
+    BOOL  _inOrderedArrangementUpdateSection;
+    BOOL  _itemFittingSizeChanged;
+    BOOL  _itemOrderingChanged;
+    float  _proportionalFillDenominator;
+    float  _spacing;
 }
 
 @property (setter=_setItemFittingSizeChanged:, nonatomic) BOOL _itemFittingSizeChanged;

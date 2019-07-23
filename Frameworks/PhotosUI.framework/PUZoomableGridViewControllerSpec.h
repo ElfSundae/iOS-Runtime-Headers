@@ -3,65 +3,65 @@
  */
 
 @interface PUZoomableGridViewControllerSpec : NSObject {
-    BOOL _canDisplayMultipleRightBarButtonItems;
+    BOOL  _canDisplayMultipleRightBarButtonItems;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _collectionsLevelSectionHeaderContentInset;
+    }  _collectionsLevelSectionHeaderContentInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _collectionsLevelSectionHeaderHighlightInset;
-    float _collectionsSectionHeaderHeight;
-    int _collectionsSectionHeaderStyle;
+    }  _collectionsLevelSectionHeaderHighlightInset;
+    float  _collectionsSectionHeaderHeight;
+    int  _collectionsSectionHeaderStyle;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _fullMomentsLevelSectionHeaderContentInset;
+    }  _fullMomentsLevelSectionHeaderContentInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _fullMomentsLevelSectionHeaderHighlightInset;
+    }  _fullMomentsLevelSectionHeaderHighlightInset;
     struct CGSize { 
         float width; 
         float height; 
-    } _fullMomentsLevelThumbnailSize;
-    float _fullMomentsSectionHeaderHeight;
-    int _fullMomentsSectionHeaderStyle;
-    PUPhotosGridViewControllerSpec *_gridSpec;
+    }  _fullMomentsLevelThumbnailSize;
+    float  _fullMomentsSectionHeaderHeight;
+    int  _fullMomentsSectionHeaderStyle;
+    PUPhotosGridViewControllerSpec * _gridSpec;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _magnifiedDragEdgeInsets;
+    }  _magnifiedDragEdgeInsets;
     struct CGSize { 
         float width; 
         float height; 
-    } _magnifiedImageSize;
-    float _magnifiedYOffset;
+    }  _magnifiedImageSize;
+    float  _magnifiedYOffset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _yearsLevelSectionHeaderContentInset;
+    }  _yearsLevelSectionHeaderContentInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _yearsLevelSectionHeaderHighlightInset;
-    float _yearsSectionHeaderHeight;
-    int _yearsSectionHeaderStyle;
+    }  _yearsLevelSectionHeaderHighlightInset;
+    float  _yearsSectionHeaderHeight;
+    int  _yearsSectionHeaderStyle;
 }
 
 @property (nonatomic, readonly) BOOL canDisplayMultipleRightBarButtonItems;
@@ -79,7 +79,7 @@
 @property (nonatomic, readonly) unsigned int fullMomentsSectionHeaderBackgroundStyle;
 @property (nonatomic, readonly) float fullMomentsSectionHeaderHeight;
 @property (nonatomic, readonly) int fullMomentsSectionHeaderStyle;
-@property (nonatomic, retain) PUPhotosGridViewControllerSpec *gridSpec;
+@property (setter=_setGridSpec:, nonatomic, retain) PUPhotosGridViewControllerSpec *gridSpec;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } magnifiedDragEdgeInsets;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } magnifiedImageSize;
 @property (nonatomic) float magnifiedYOffset;
@@ -112,6 +112,9 @@
 - (float)fullMomentsSectionHeaderHeight;
 - (int)fullMomentsSectionHeaderStyle;
 - (id)gridSpec;
+- (id)init;
+- (id)initWithUserTraitCollection:(id)arg1 referenceSize:(struct CGSize { float x1; float x2; })arg2;
+- (BOOL)isEqual:(id)arg1;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })magnifiedDragEdgeInsets;
 - (struct CGSize { float x1; float x2; })magnifiedImageSize;
 - (float)magnifiedYOffset;

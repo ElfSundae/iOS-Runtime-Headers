@@ -3,40 +3,47 @@
  */
 
 @interface StockChartDisplayMode : NSObject <NSCopying> {
-    BOOL _HUDEnabled;
-    UIColor *_axisLabelsColor;
-    struct CGGradient { } *_backgroundGradient;
-    UIColor *_backgroundLinesColor;
-    struct CGSize { 
-        float width; 
-        float height; 
-    } _chartSize;
-    BOOL _graphOverlapsYAxisLabels;
-    NSString *_hash;
-    unsigned int _horizontalGridlineCount;
-    float _intervalRowHeight;
-    UIColor *_lineColor;
+    BOOL  _HUDEnabled;
+    UIColor * _axisLabelsColor;
+    struct CGGradient { } * _backgroundGradient;
+    UIColor * _backgroundLinesColor;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _lineGraphInsets;
-    float _lineWidth;
-    int _maxInterval;
-    BOOL _showsPriceLabelForPreviousClose;
-    float _showsTitle;
-    BOOL _showsVolume;
-    BOOL _usesDetailedAxisLabels;
-    float _volumeHeight;
-    UIColor *_xAxisKeylineColor;
-    unsigned int _yAxisLabelCount;
+    }  _chartRenderingInsets;
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  _chartSize;
+    BOOL  _graphOverlapsYAxisLabels;
+    NSString * _hash;
+    unsigned int  _horizontalGridlineCount;
+    float  _intervalRowHeight;
+    UIColor * _lineColor;
+    struct UIEdgeInsets { 
+        float top; 
+        float left; 
+        float bottom; 
+        float right; 
+    }  _lineGraphInsets;
+    float  _lineWidth;
+    int  _maxInterval;
+    BOOL  _showsPriceLabelForPreviousClose;
+    float  _showsTitle;
+    BOOL  _showsVolume;
+    BOOL  _usesDetailedAxisLabels;
+    float  _volumeHeight;
+    UIColor * _xAxisKeylineColor;
+    unsigned int  _yAxisLabelCount;
 }
 
 @property (nonatomic) BOOL HUDEnabled;
 @property (nonatomic, retain) UIColor *axisLabelsColor;
 @property (nonatomic) struct CGGradient { }*backgroundGradient;
 @property (nonatomic, retain) UIColor *backgroundLinesColor;
+@property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } chartRenderingInsets;
 @property (nonatomic) struct CGSize { float x1; float x2; } chartSize;
 @property (nonatomic) BOOL graphOverlapsYAxisLabels;
 @property (nonatomic, readonly) float gutterHeight;
@@ -62,6 +69,7 @@
 - (id)axisLabelsColor;
 - (struct CGGradient { }*)backgroundGradient;
 - (id)backgroundLinesColor;
+- (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })chartRenderingInsets;
 - (struct CGSize { float x1; float x2; })chartSize;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -81,6 +89,7 @@
 - (void)setAxisLabelsColor:(id)arg1;
 - (void)setBackgroundGradient:(struct CGGradient { }*)arg1;
 - (void)setBackgroundLinesColor:(id)arg1;
+- (void)setChartRenderingInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setChartSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setGraphOverlapsYAxisLabels:(BOOL)arg1;
 - (void)setHUDEnabled:(BOOL)arg1;

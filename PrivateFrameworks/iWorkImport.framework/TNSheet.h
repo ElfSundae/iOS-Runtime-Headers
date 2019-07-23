@@ -3,27 +3,28 @@
  */
 
 @interface TNSheet : TSPObject <TSCEResolverContainer, TSDDrawableContainerInfo, TSKDocumentObject, TSKModel, TSKSearchTarget, TSWPHeaderFooterProvider> {
-    float _pageFooterInset;
-    float _pageHeaderInset;
+    float  _pageFooterInset;
+    float  _pageHeaderInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _printMargins;
-    int _startPageNumber;
-    BOOL _usingStartPageNumber;
-    NSMutableArray *mChildInfos;
-    float mContentScale;
-    TSWPStorage *mHeaderFooters;
-    BOOL mInDocument;
-    BOOL mInPortraitPageOrientation;
-    BOOL mIsAutofitOn;
-    NSString *mName;
-    int mPageOrder;
-    BOOL mShowPageNumbers;
-    unsigned int mTableNameCounter;
-    BOOL mUsesSingleHeaderFooter;
+    }  _printMargins;
+    int  _startPageNumber;
+    BOOL  _usingStartPageNumber;
+    NSMutableArray * mChildInfos;
+    float  mContentScale;
+    TSWPStorage * mHeaderFooters;
+    BOOL  mInDocument;
+    BOOL  mInPortraitPageOrientation;
+    BOOL  mIsAutofitOn;
+    NSString * mName;
+    int  mPageOrder;
+    NSMutableSet * mRemappedTableNames;
+    BOOL  mShowPageNumbers;
+    unsigned int  mTableNameCounter;
+    BOOL  mUsesSingleHeaderFooter;
 }
 
 @property (getter=isAnchoredToText, nonatomic, readonly) BOOL anchoredToText;
@@ -59,6 +60,7 @@
 + (id)sheetForSelectionModel:(id)arg1 outIsPaginated:(BOOL*)arg2;
 
 - (void)addChildInfo:(id)arg1;
+- (void)addRemappedTableName:(id)arg1;
 - (float)bodyWidth;
 - (BOOL)canMoveDrawables:(id)arg1 toIndexes:(id)arg2;
 - (id)chartAndTableInfos;
@@ -66,6 +68,7 @@
 - (id)childInfos;
 - (id)childSearchTargets;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
+- (void)clearRemappedTableNames;
 - (float)contentScale;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -103,6 +106,7 @@
 - (BOOL)isHeaderFooterEmpty:(int)arg1;
 - (BOOL)isHeaderFooterEmpty:(int)arg1 fragmentAtIndex:(int)arg2;
 - (BOOL)isInlineWithText;
+- (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (BOOL)isUsingStartPageNumber;
 - (Class)layoutClass;
@@ -122,6 +126,7 @@
 - (int)pageOrder;
 - (id)parentInfo;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })printMargins;
+- (id)remappedTableNames;
 - (void)removeChildInfo:(id)arg1;
 - (void)removeDrawableInfo:(id)arg1;
 - (void)removeDrawableInfos:(id)arg1;
@@ -151,6 +156,7 @@
 - (void)setStartPageNumber:(int)arg1;
 - (void)setUsesSingleHeaderFooter:(BOOL)arg1;
 - (void)setUsingStartPageNumber:(BOOL)arg1;
+- (BOOL)shouldBeDisplayed;
 - (BOOL)showPageNumbers;
 - (int)startPageNumber;
 - (id)tableInfoForName:(id)arg1 caseSensitive:(BOOL)arg2;

@@ -3,10 +3,10 @@
  */
 
 @interface MFSparseMutable64IndexSet : NSObject <NSCopying, NSMutableCopying> {
-    unsigned int _count;
-    unsigned int _cursor;
-    unsigned long long *_storage;
-    unsigned int _storageSize;
+    unsigned int  _count;
+    unsigned int  _cursor;
+    unsigned long long * _storage;
+    unsigned int  _storageSize;
 }
 
 + (id)indexSet;

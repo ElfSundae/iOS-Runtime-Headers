@@ -3,12 +3,12 @@
  */
 
 @interface MSCLAudioAttachmentPreviewView : UIView {
-    UILabel *_artistLabel;
-    UIView *_categoryBackgroundView;
-    UILabel *_categoryLabel;
-    UIImageView *_coverImageView;
-    UILabel *_dateLabel;
-    UILabel *_titleLabel;
+    UILabel * _artistLabel;
+    UIView * _categoryBackgroundView;
+    UILabel * _categoryLabel;
+    UIImageView * _coverImageView;
+    UILabel * _dateLabel;
+    UILabel * _titleLabel;
 }
 
 - (void).cxx_destruct;

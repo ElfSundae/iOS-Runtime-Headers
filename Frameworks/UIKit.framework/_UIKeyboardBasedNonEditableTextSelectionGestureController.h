@@ -3,7 +3,7 @@
  */
 
 @interface _UIKeyboardBasedNonEditableTextSelectionGestureController : _UIKeyboardBasedTextSelectionGestureController {
-    BOOL _useEditableGesture;
+    BOOL  _useEditableGesture;
 }
 
 - (void)_synchronousGranularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;

@@ -14,6 +14,7 @@
 @property (nonatomic, copy) TSDStroke *stroke;
 @property (nonatomic, retain) TSSStyle *style;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) BOOL supportsStyleInspecting;
 
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)boxedValueForProperty:(int)arg1;
@@ -21,6 +22,7 @@
 - (id)commandForPasteStyleWithContext:(id)arg1 pasteboardStyles:(id)arg2 tailLineEndInfo:(int)arg3;
 - (void)i_setValue:(id)arg1 forProperty:(int)arg2;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
+- (BOOL)isSelectable;
 - (id)objectForProperty:(int)arg1;
 - (float)opacity;
 - (BOOL)pathIsOpen;
@@ -42,5 +44,6 @@
 - (id)styleIdentifierTemplateForNewPreset;
 - (id)stylePropertyName;
 - (id)stylesForCopyStyle;
+- (BOOL)supportsStyleInspecting;
 
 @end

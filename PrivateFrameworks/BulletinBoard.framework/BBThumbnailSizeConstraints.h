@@ -3,13 +3,13 @@
  */
 
 @interface BBThumbnailSizeConstraints : NSObject <NSSecureCoding> {
-    int _constraintType;
-    float _fixedDimension;
-    float _fixedHeight;
-    float _fixedWidth;
-    float _maxAspectRatio;
-    float _minAspectRatio;
-    float _thumbnailScale;
+    int  _constraintType;
+    float  _fixedDimension;
+    float  _fixedHeight;
+    float  _fixedWidth;
+    float  _maxAspectRatio;
+    float  _minAspectRatio;
+    float  _thumbnailScale;
 }
 
 @property (nonatomic) int constraintType;
@@ -39,6 +39,7 @@
 - (void)setMaxAspectRatio:(float)arg1;
 - (void)setMinAspectRatio:(float)arg1;
 - (void)setThumbnailScale:(float)arg1;
+- (struct CGSize { float x1; float x2; })sizeFromAspectRatio:(float)arg1;
 - (float)thumbnailScale;
 
 @end

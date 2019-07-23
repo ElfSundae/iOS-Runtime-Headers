@@ -3,9 +3,9 @@
  */
 
 @interface PUTileReattachmentContext : NSObject {
-    NSMapTable *__tileControllerVelocities;
-    BOOL _isTransitioningOverOneUp;
-    BOOL _isZoomingIn;
+    NSMapTable * __tileControllerVelocities;
+    BOOL  _isTransitioningOverOneUp;
+    BOOL  _isZoomingIn;
 }
 
 @property (nonatomic, readonly) NSMapTable *_tileControllerVelocities;

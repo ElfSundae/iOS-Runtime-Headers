@@ -3,11 +3,11 @@
  */
 
 @interface AVRateBubbleView : UIView {
-    UIView *_backdropView;
-    UIImageView *_lightView;
-    float _rate;
-    NSNumberFormatter *_rateFormatter;
-    UILabel *_rateLabel;
+    UIView * _backdropView;
+    UIImageView * _lightView;
+    float  _rate;
+    NSNumberFormatter * _rateFormatter;
+    UILabel * _rateLabel;
 }
 
 @property (nonatomic) float rate;

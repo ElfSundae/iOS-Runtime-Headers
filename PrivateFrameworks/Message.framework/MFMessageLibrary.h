@@ -3,8 +3,8 @@
  */
 
 @interface MFMessageLibrary : NSObject {
-    MFAttachmentLibraryDataProvider *_attachmentDataProvider;
-    NSString *_path;
+    MFAttachmentLibraryDataProvider * _attachmentDataProvider;
+    NSString * _path;
 }
 
 - (id)UIDsToDeleteInMailbox:(id)arg1;
@@ -15,6 +15,7 @@
 - (id)allUIDsInMailbox:(id)arg1;
 - (void)appendOfflineCacheOperation:(id)arg1 forAccount:(int)arg2 lastTemporaryID:(unsigned int)arg3;
 - (void)appendOfflineCacheReplayData:(id)arg1 forAccountID:(int)arg2;
+- (unsigned int)attachmentCountForMailboxes:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id*)arg2;
 - (id)bodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id*)arg2 isComplete:(BOOL*)arg3;
@@ -130,7 +131,6 @@
 - (void)updateAdditionalThreadingInfoForSentMessageWithHeaders:(id)arg1 externalConversationID:(long long)arg2;
 - (void)updateFlagsForMessagesInPlace:(id)arg1 success:(BOOL*)arg2;
 - (oneway void)updateMessage:(id)arg1 withMetadata:(id /* block */)arg2;
-- (void)updateRecipientsForMessage:(id)arg1 fromHeaders:(id)arg2;
 - (void)updateThreadingInfoForMessage:(id)arg1 fromHeaders:(id)arg2;
 - (id)urlForMailboxID:(unsigned int)arg1;
 

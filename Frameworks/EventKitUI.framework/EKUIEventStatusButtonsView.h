@@ -3,20 +3,20 @@
  */
 
 @interface EKUIEventStatusButtonsView : UIView {
-    NSArray *_actions;
-    float _baselineFromBoundsTop;
-    NSArray *_buttons;
-    float _buttonsCharge;
-    NSArray *_currentConstraints;
-    <EKUIEventStatusButtonsViewDelegate> *_delegate;
-    BOOL _disableButtonHighlights;
-    UIFont *_font;
-    BOOL _forcesSingleButtonToCenter;
-    NSLayoutConstraint *_leadingMarginConstraint;
-    float _outsideMargin;
-    int _selectedAction;
-    int _textSizeMode;
-    NSLayoutConstraint *_trailingMarginConstraint;
+    NSArray * _actions;
+    float  _baselineFromBoundsTop;
+    NSArray * _buttons;
+    float  _buttonsCharge;
+    NSArray * _currentConstraints;
+    <EKUIEventStatusButtonsViewDelegate> * _delegate;
+    BOOL  _disableButtonHighlights;
+    UIFont * _font;
+    BOOL  _forcesSingleButtonToCenter;
+    NSLayoutConstraint * _leadingMarginConstraint;
+    float  _outsideMargin;
+    int  _selectedAction;
+    int  _textSizeMode;
+    NSLayoutConstraint * _trailingMarginConstraint;
 }
 
 @property (nonatomic, retain) NSArray *actions;

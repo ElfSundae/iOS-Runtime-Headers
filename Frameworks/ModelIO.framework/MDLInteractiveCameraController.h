@@ -3,25 +3,25 @@
  */
 
 @interface MDLInteractiveCameraController : NSObject {
-    MDLStereoscopicCamera *_camera;
-    void_clickPoint;
-    void_dragPoint;
-    void_dragVector;
+    MDLStereoscopicCamera * _camera;
+    void _clickPoint;
+    void _dragPoint;
+    void _dragVector;
     struct MDLAABB { 
         /* Warning: Unrecognized filer type: '"' using 'void*' */ void*maxBounds; 
-    } _framingBounds;
-    void_lookAt;
-    unsigned int _mode;
-    float _pitch;
-    float _targetDistance;
-    float _targetElevation;
-    float _trackSpeed;
-    void_trackVector;
-    float _tumbleSpeed;
-    void_viewSize;
-    float _yaw;
-    float _zoom;
-    float _zoomSpeed;
+    }  _framingBounds;
+    void _lookAt;
+    unsigned int  _mode;
+    float  _pitch;
+    float  _targetDistance;
+    float  _targetElevation;
+    float  _trackSpeed;
+    void _trackVector;
+    float  _tumbleSpeed;
+    void _viewSize;
+    float  _yaw;
+    float  _zoom;
+    float  _zoomSpeed;
 }
 
 @property (nonatomic, copy) MDLStereoscopicCamera *camera;

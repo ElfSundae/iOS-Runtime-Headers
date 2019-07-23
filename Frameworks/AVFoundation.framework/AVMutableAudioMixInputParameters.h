@@ -3,7 +3,7 @@
  */
 
 @interface AVMutableAudioMixInputParameters : AVAudioMixInputParameters {
-    AVMutableAudioMixInputParametersInternal *_mutableInputParameters;
+    AVMutableAudioMixInputParametersInternal * _mutableInputParameters;
 }
 
 @property (nonatomic, retain) const struct opaqueMTAudioProcessingTap { }*audioTapProcessor;

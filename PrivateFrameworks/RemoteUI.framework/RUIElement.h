@@ -3,14 +3,16 @@
  */
 
 @interface RUIElement : NSObject {
-    NSDictionary *_attributes;
-    BOOL _enabled;
-    NSString *_identifier;
-    RUIElement *_parent;
-    RUIStyle *_style;
+    NSMutableDictionary * _attributes;
+    NSString * _body;
+    BOOL  _enabled;
+    NSString * _identifier;
+    RUIElement * _parent;
+    RUIStyle * _style;
 }
 
 @property (nonatomic, copy) NSDictionary *attributes;
+@property (nonatomic, copy) NSString *body;
 @property (nonatomic) BOOL enabled;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *name;
@@ -21,18 +23,22 @@
 - (id)URLAttributeForImageName:(id)arg1 getScale:(float*)arg2;
 - (int)_horizontalAlignmentForString:(id)arg1;
 - (id)attributes;
+- (id)body;
 - (void)configureView:(id)arg1;
 - (void)dealloc;
 - (BOOL)enabled;
+- (BOOL)hasImage;
 - (id)identifier;
 - (void)imageLoaded:(id)arg1;
 - (id)init;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 - (BOOL)loadImage;
+- (id)mutableAttributes;
 - (id)name;
 - (id)parent;
 - (void)populatePostbackDictionary:(id)arg1;
 - (void)setAttributes:(id)arg1;
+- (void)setBody:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setImage:(id)arg1;

@@ -10,9 +10,11 @@
 - (float)_accessibilityActivationDelay;
 - (id)_accessibilityAutomaticIdentifier;
 - (BOOL)_accessibilityProvidesOwnFrame;
+- (BOOL)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetValue:(id)arg1;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_accessibilitySupportsHandwriting;
+- (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint { float x1; float x2; })accessibilityActivationPoint;
 - (void)accessibilityDecrement;
@@ -33,6 +35,5 @@
 - (id)init;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (BOOL)isAccessibilityElement;
-- (void)setAccessibilityContainer:(id)arg1;
 
 @end

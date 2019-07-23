@@ -3,9 +3,9 @@
  */
 
 @interface NSURLSessionAVAssetDownloadTask : NSURLSessionTask {
-    unsigned long long _AVAssetDownloadToken;
-    NSURL *_URL;
-    NSURL *_destinationURL;
+    unsigned long long  _AVAssetDownloadToken;
+    NSURL * _URL;
+    NSURL * _destinationURL;
 }
 
 @property (readonly) unsigned long long AVAssetDownloadToken;
@@ -14,6 +14,7 @@
 
 - (unsigned long long)AVAssetDownloadToken;
 - (id)URL;
+- (void)dealloc;
 - (id)destinationURL;
 
 @end

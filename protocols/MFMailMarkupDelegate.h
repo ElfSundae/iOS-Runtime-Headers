@@ -11,7 +11,6 @@
 - (void)handleMarkupError:(NSError *)arg1 attachment:(MFAttachment *)arg2;
 - (void)handleMarkupURL:(void *)arg1 attachment:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: NSURL *, MFAttachment *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, MFAttachment *, void*
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })markupAttachmentBoundsForAttachment:(MFAttachment *)arg1;
-- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })markupAttachmentMaskForAttachment:(MFAttachment *)arg1;
 - (MFAttachment *)markupReplacementAttachment;
 - (void)presentMarkupViewController:(UIViewController *)arg1;
 

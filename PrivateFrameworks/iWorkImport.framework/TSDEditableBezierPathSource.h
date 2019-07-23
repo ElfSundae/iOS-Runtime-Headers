@@ -3,8 +3,8 @@
  */
 
 @interface TSDEditableBezierPathSource : TSDPathSource <TSDMixing, TSDRealignablePathSource> {
-    unsigned int mActiveSubpath;
-    BOOL mHasLockedFlipTransform;
+    unsigned int  mActiveSubpath;
+    BOOL  mHasLockedFlipTransform;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -12,8 +12,8 @@
         float d; 
         float tx; 
         float ty; 
-    } mLockedFlipTransform;
-    NSMutableArray *mSubpaths;
+    }  mLockedFlipTransform;
+    NSArray * mSubpaths;
 }
 
 @property (nonatomic, readonly) BOOL allNodesSelected;
@@ -28,9 +28,9 @@
 @property (nonatomic, readonly) TSDBezierNode *lastNode;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } nodeBounds;
 @property (nonatomic, retain) NSArray *nodeTypes;
-@property (nonatomic, retain) NSMutableArray *nodes;
+@property (nonatomic, copy) NSArray *nodes;
 @property (nonatomic, readonly) struct CGPath { }*subpathForSelection;
-@property (nonatomic, retain) NSMutableArray *subpaths;
+@property (nonatomic, copy) NSArray *subpaths;
 
 + (id)editableBezierPathSource;
 + (id)editableBezierPathSourceWithBezierPath:(id)arg1;
@@ -65,12 +65,14 @@
 - (float)distanceToPoint:(struct CGPoint { float x1; float x2; })arg1 subpathIndex:(unsigned int*)arg2 elementIndex:(unsigned int*)arg3 tValue:(float*)arg4 threshold:(float)arg5;
 - (id)firstNode;
 - (BOOL)hasSelectedNode;
+- (unsigned int)hash;
 - (id)init;
 - (id)initWithArchive:(const struct PathSourceArchive { int (**x1)(); struct UnknownFieldSet { struct vector<google::protobuf::UnknownField, std::__1::allocator<google::protobuf::UnknownField> > {} *x_2_1_1; } x2; unsigned int x3[1]; int x4; struct PointPathSourceArchive {} *x5; struct ScalarPathSourceArchive {} *x6; struct BezierPathSourceArchive {} *x7; struct CalloutPathSourceArchive {} *x8; struct ConnectionLinePathSourceArchive {} *x9; struct EditableBezierPathSourceArchive {} *x10; bool x11; bool x12; }*)arg1;
 - (BOOL)isCircular;
 - (BOOL)isClosed;
 - (BOOL)isCompound;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualWithStrictComparison:(id)arg1;
 - (BOOL)isOpen;
 - (BOOL)isRectangular;
 - (id)lastNode;

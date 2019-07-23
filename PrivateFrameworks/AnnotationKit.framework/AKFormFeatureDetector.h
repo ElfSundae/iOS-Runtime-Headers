@@ -3,7 +3,7 @@
  */
 
 @interface AKFormFeatureDetector : NSObject {
-    NSObject<AKFormFeatureDetectorDelegate> *_delegate;
+    NSObject<AKFormFeatureDetectorDelegate> * _delegate;
 }
 
 @property (nonatomic) NSObject<AKFormFeatureDetectorDelegate> *delegate;

@@ -3,9 +3,9 @@
  */
 
 @interface UIKeyCommandDiscoverabilityHUDVisualStyleRegular : UIKeyCommandDiscoverabilityHUDVisualStyle {
-    UIColor *_dividerColor;
-    UIColor *_inputColor;
-    UIColor *_titleColor;
+    UIColor * _dividerColor;
+    UIColor * _inputColor;
+    UIColor * _titleColor;
 }
 
 @property (nonatomic, retain) UIColor *dividerColor;

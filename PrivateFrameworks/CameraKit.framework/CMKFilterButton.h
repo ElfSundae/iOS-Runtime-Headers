@@ -3,13 +3,13 @@
  */
 
 @interface CMKFilterButton : UIButton {
-    UIImageView *__circlesImageView;
+    UIImageView * __circlesImageView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _tappableEdgeInsets;
+    }  _tappableEdgeInsets;
 }
 
 @property (nonatomic, readonly) UIImageView *_circlesImageView;

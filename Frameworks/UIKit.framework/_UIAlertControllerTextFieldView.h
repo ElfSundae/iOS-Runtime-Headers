@@ -3,9 +3,9 @@
  */
 
 @interface _UIAlertControllerTextFieldView : UIView {
-    UIView *_containerView;
-    NSArray *_containerViewConstraints;
-    _UIAlertControllerTextField *_textField;
+    UIView * _containerView;
+    NSArray * _containerViewConstraints;
+    _UIAlertControllerTextField * _textField;
 }
 
 @property (nonatomic, retain) UIView *containerView;

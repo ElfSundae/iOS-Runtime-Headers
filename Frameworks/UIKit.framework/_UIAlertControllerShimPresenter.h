@@ -3,12 +3,12 @@
  */
 
 @interface _UIAlertControllerShimPresenter : NSObject <UIPopoverControllerDelegate> {
-    UIAlertController *_alertController;
-    UIViewController *_inPopoverViewController;
-    UIAlertView *_legacyAlert;
-    UIPopoverController *_popoverController;
-    <UIPopoverControllerDelegate> *_popoverDelegate;
-    _UIAlertControllerShimPresenterWindow *_window;
+    UIAlertController * _alertController;
+    UIViewController * _inPopoverViewController;
+    UIAlertView * _legacyAlert;
+    UIPopoverController * _popoverController;
+    <UIPopoverControllerDelegate> * _popoverDelegate;
+    _UIAlertControllerShimPresenterWindow * _window;
 }
 
 @property (nonatomic) UIAlertController *alertController;

@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureMetadataOutput : AVCaptureOutput {
-    AVCaptureMetadataOutputInternal *_internal;
+    AVCaptureMetadataOutputInternal * _internal;
 }
 
 @property (nonatomic, readonly) NSArray *availableMetadataObjectTypes;

@@ -3,8 +3,8 @@
  */
 
 @interface UIPrinterSearchingView : UIView {
-    BOOL _constraintsSet;
-    _UIPrintMessageAndSpinnerView *_messageAndSpinner;
+    BOOL  _constraintsSet;
+    _UIPrintMessageAndSpinnerView * _messageAndSpinner;
 }
 
 @property (nonatomic) _UIPrintMessageAndSpinnerView *messageAndSpinner;

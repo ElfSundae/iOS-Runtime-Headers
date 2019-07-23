@@ -3,7 +3,7 @@
  */
 
 @interface ICSearchIndexTransactionInfo : NSObject <ICPropertyListSerializable, NSCopying, NSMutableCopying> {
-    NSDictionary *_transactionInfoDictionary;
+    NSDictionary * _transactionInfoDictionary;
 }
 
 @property (nonatomic, readonly) unsigned int count;

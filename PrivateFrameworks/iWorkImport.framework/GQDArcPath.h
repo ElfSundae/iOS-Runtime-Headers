@@ -3,14 +3,14 @@
  */
 
 @interface GQDArcPath : GQDPath {
-    double mArcWidth;
-    double mArrowLength;
-    double mArrowWidth;
-    double mHeadAngle;
+    double  mArcWidth;
+    double  mArrowLength;
+    double  mArrowWidth;
+    double  mHeadAngle;
     struct CGSize { 
         float width; 
         float height; 
-    } mSize;
+    }  mSize;
 }
 
 - (double)arcWidth;

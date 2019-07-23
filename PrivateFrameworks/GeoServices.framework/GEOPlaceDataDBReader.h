@@ -3,14 +3,15 @@
  */
 
 @interface GEOPlaceDataDBReader : GEODBReader {
-    struct sqlite3_stmt { } *_sqlAllComponents;
-    struct sqlite3_stmt { } *_sqlAllComponentsForPlaceData;
-    struct sqlite3_stmt { } *_sqlAllComponentsPerPlaceData;
-    struct sqlite3_stmt { } *_sqlAllPhoneNumbers;
-    struct sqlite3_stmt { } *_sqlMUIDForPhoneNumber;
+    struct sqlite3_stmt { } * _sqlAllComponents;
+    struct sqlite3_stmt { } * _sqlAllComponentsForPlaceData;
+    struct sqlite3_stmt { } * _sqlAllComponentsPerPlaceData;
+    struct sqlite3_stmt { } * _sqlAllPhoneNumbers;
+    struct sqlite3_stmt { } * _sqlMUIDForPhoneNumber;
 }
 
 - (void)_openDB;
+- (void)_openDBIfNotAlreadyOpen;
 - (id)_placeDataForIdentifier:(unsigned long long)arg1;
 - (id)allCacheEntries;
 - (id)componentForKey:(union _GEOPlaceDataComponentKey { struct { unsigned long long x_1_1_1; unsigned short x_1_1_2; unsigned short x_1_1_3; unsigned int x_1_1_4; } x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; unsigned int x_2_1_3; unsigned int x_2_1_4; } x2; })arg1;

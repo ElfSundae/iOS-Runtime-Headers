@@ -3,15 +3,15 @@
  */
 
 @interface SSVPlaybackLeaseRequest : NSObject <NSCopying> {
-    int _actionType;
-    NSData *_certificateData;
-    NSURL *_certificateURL;
-    unsigned long long _kdChannelIdentifier;
-    unsigned long long _kdMovieIdentifier;
-    int _leaseType;
-    NSMutableDictionary *_parameters;
-    BOOL _startsLeaseSession;
-    NSURL *_url;
+    int  _actionType;
+    NSData * _certificateData;
+    NSURL * _certificateURL;
+    unsigned long long  _kdChannelIdentifier;
+    unsigned long long  _kdMovieIdentifier;
+    int  _leaseType;
+    NSMutableDictionary * _parameters;
+    BOOL  _startsLeaseSession;
+    NSURL * _url;
 }
 
 @property (nonatomic) unsigned long long KDChannelIdentifier;

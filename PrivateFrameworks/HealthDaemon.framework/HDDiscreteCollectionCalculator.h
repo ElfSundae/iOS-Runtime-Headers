@@ -15,13 +15,13 @@
                 unsigned long __first_; 
             } __pair3_; 
         } __tree_; 
-    } _bySource;
+    }  _bySource;
     struct { 
         double avg; 
         double max; 
         double min; 
         unsigned int count; 
-    } _currentStats;
+    }  _currentStats;
 }
 
 - (id).cxx_construct;
@@ -33,6 +33,7 @@
 - (void)getCurrentBucketStats:(struct { double x1; double x2; double x3; unsigned int x4; }*)arg1;
 - (BOOL)hasData;
 - (id)initWithBucketBoundaries:(id)arg1;
+- (id)sourceIDsForCurrentBucket;
 - (id)statsBySource;
 
 @end

@@ -3,16 +3,17 @@
  */
 
 @interface CKImageAttachmentItem : CKAttachmentItem {
-    BOOL _backgroundEnqueued;
+    BOOL  _backgroundEnqueued;
     struct CGSize { 
         float width; 
         float height; 
-    } _imageSize;
-    BOOL _useDefaultSize;
+    }  _imageSize;
+    BOOL  _useDefaultSize;
 }
 
 @property (nonatomic) BOOL backgroundEnqueued;
 @property struct CGSize { float x1; float x2; } imageSize;
+@property (nonatomic, retain) NSString *transferGUID;
 @property (nonatomic) BOOL useDefaultSize;
 
 + (id)UTITypes;

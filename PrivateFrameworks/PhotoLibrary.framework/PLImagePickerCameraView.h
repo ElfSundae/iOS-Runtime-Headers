@@ -3,22 +3,22 @@
  */
 
 @interface PLImagePickerCameraView : CMKCameraView <PLVideoViewDelegate> {
-    PLCropOverlay *__cropOverlay;
-    int __enabledGestures;
-    BOOL __manipulatingCrop;
-    CMKStillImageCaptureResponse *__mostRecentCaptureResponse;
-    BOOL __retakingPhoto;
-    BOOL __shouldSkipPostcaptureReview;
-    PLVideoView *__videoView;
-    int __windowEdgeClip;
-    BOOL _allowsEditing;
-    BOOL _cropOverlayUsesTelephonyUI;
-    BOOL _displayedInPopover;
-    NSDictionary *_imagePickerOptions;
-    int _photoSavingOptions;
-    BOOL _showsCropRegion;
-    PLPhotoTileViewController *_tileViewController;
-    BOOL _wantsImageData;
+    PLCropOverlay * __cropOverlay;
+    int  __enabledGestures;
+    BOOL  __manipulatingCrop;
+    CMKStillImageCaptureResponse * __mostRecentCaptureResponse;
+    BOOL  __retakingPhoto;
+    BOOL  __shouldSkipPostcaptureReview;
+    PLVideoView * __videoView;
+    int  __windowEdgeClip;
+    BOOL  _allowsEditing;
+    BOOL  _cropOverlayUsesTelephonyUI;
+    BOOL  _displayedInPopover;
+    NSDictionary * _imagePickerOptions;
+    int  _photoSavingOptions;
+    BOOL  _showsCropRegion;
+    PLPhotoTileViewController * _tileViewController;
+    BOOL  _wantsImageData;
 }
 
 @property (nonatomic, readonly) PLCropOverlay *_cropOverlay;

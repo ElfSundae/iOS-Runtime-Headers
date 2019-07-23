@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureVideoDataOutput : AVCaptureOutput {
-    AVCaptureVideoDataOutputInternal *_internal;
+    AVCaptureVideoDataOutputInternal * _internal;
 }
 
 @property (nonatomic) BOOL alwaysDiscardsLateVideoFrames;
@@ -41,7 +41,7 @@
 - (struct CGSize { float x1; float x2; })outputSizeForSourceFormat:(id)arg1;
 - (id)recommendedVideoSettingsForAssetWriterWithOutputFileType:(id)arg1;
 - (void)removeConnection:(id)arg1;
-- (int)requiredOutputFormatForConnection:(id)arg1;
+- (unsigned long)requiredOutputFormatForConnection:(id)arg1;
 - (id)sampleBufferCallbackQueue;
 - (id)sampleBufferDelegate;
 - (void)setAlwaysDiscardsLateVideoFrames:(BOOL)arg1;

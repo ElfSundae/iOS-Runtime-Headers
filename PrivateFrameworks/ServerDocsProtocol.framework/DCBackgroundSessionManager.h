@@ -3,13 +3,13 @@
  */
 
 @interface DCBackgroundSessionManager : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionDownloadDelegate> {
-    id /* block */ _backgroundEventsCompletionHandler;
-    NSURLSession *_backgroundSession;
-    NSString *_bundleIdentifier;
-    NSMutableDictionary *_currentTasks;
-    id /* block */ _serverRequestResponseHandler;
-    DCService *_service;
-    NSOperationQueue *_sessionQueue;
+    id /* block */  _backgroundEventsCompletionHandler;
+    NSURLSession * _backgroundSession;
+    NSString * _bundleIdentifier;
+    NSMutableDictionary * _currentTasks;
+    id /* block */  _serverRequestResponseHandler;
+    DCService * _service;
+    NSOperationQueue * _sessionQueue;
 }
 
 @property (nonatomic, readonly) HTTPSASLClientSessionManager *HTTPSASLClientSessionManager;

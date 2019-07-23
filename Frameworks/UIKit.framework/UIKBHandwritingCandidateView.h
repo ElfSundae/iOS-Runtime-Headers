@@ -3,21 +3,21 @@
  */
 
 @interface UIKBHandwritingCandidateView : UIKBKeyView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIKeyboardCandidateList> {
-    TIKeyboardCandidateResultSet *_candidateResultSet;
-    UIKBCandidateCollectionView *_candidatesCollectionView;
-    <UIKeyboardCandidateListDelegate> *_delegate;
-    unsigned int _dummyCellCount;
-    float _dummyCellWidth;
-    UIKeyboardCandidatePocketShadow *_leftBorder;
-    UIKeyboardCandidateLogButton *_logButton;
-    UIKeyboardCandidatePocketShadow *_pocketShadow;
+    TIKeyboardCandidateResultSet * _candidateResultSet;
+    UIKBCandidateCollectionView * _candidatesCollectionView;
+    <UIKeyboardCandidateListDelegate> * _delegate;
+    unsigned int  _dummyCellCount;
+    float  _dummyCellWidth;
+    UIKeyboardCandidatePocketShadow * _leftBorder;
+    UIKeyboardCandidateLogButton * _logButton;
+    UIKeyboardCandidatePocketShadow * _pocketShadow;
     struct { 
         unsigned int idiom : 6; 
         unsigned int landscape : 1; 
         unsigned int split : 1; 
         unsigned int appearance : 8; 
         unsigned int rendering : 16; 
-    } _visualStyling;
+    }  _visualStyling;
 }
 
 @property (nonatomic, readonly) <UIKeyboardCandidateList> *candidateList;
@@ -38,6 +38,7 @@
 
 + (Class)cellClass;
 
+- (void).cxx_destruct;
 - (id)_inheritedRenderConfig;
 - (void)_setRenderConfig:(id)arg1;
 - (void)calculateDummyCellAttributes;
@@ -63,14 +64,15 @@
 - (id)hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 keyplane:(id)arg2 key:(id)arg3;
 - (BOOL)isExtendedList;
-- (BOOL)isHiddenCandidatesList;
 - (void)jumpToCompositions;
 - (id)keyboardBehaviors;
 - (id)leftBorder;
 - (id)logButton;
+- (unsigned int)maxNumberOfProactiveCells;
 - (id)pocketShadow;
 - (BOOL)pointInside:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (void)reloadDataByAppendingAtEnd:(BOOL)arg1;
+- (id)secureCandidateRenderTraits;
 - (void)selectAndScrollToCandidateAtIndexPath:(id)arg1 animated:(BOOL)arg2;
 - (unsigned int)selectedSortIndex;
 - (void)setCandidateResultSet:(id)arg1;
@@ -93,6 +95,7 @@
 - (void)showPreviousCandidate;
 - (void)showPreviousPage;
 - (void)showPreviousRow;
+- (float)singleCellWidthForProactiveCellCount:(unsigned int)arg1;
 - (id)statisticsIdentifier;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)updateLeftBorderForKeyplane:(id)arg1;

@@ -3,12 +3,12 @@
  */
 
 @interface PDOfficeArtClient : NSObject <OADClient, OADImageRecolorInfoClient> {
-    PDAnimationInfo *mAnimationInfo;
-    BOOL mHasOleChart;
-    OADImageRecolorInfo *mImageRecolorInfo;
-    int mInheritedTextStylePlaceholderType;
-    BOOL mIsComment;
-    PDPlaceholder *mPlaceholder;
+    PDAnimationInfo * mAnimationInfo;
+    BOOL  mHasOleChart;
+    OADImageRecolorInfo * mImageRecolorInfo;
+    int  mInheritedTextStylePlaceholderType;
+    BOOL  mIsComment;
+    PDPlaceholder * mPlaceholder;
 }
 
 @property (readonly, copy) NSString *debugDescription;

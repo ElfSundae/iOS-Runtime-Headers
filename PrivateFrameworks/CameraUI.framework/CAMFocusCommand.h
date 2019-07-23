@@ -3,12 +3,12 @@
  */
 
 @interface CAMFocusCommand : CAMCaptureCommand {
-    int __focusMode;
+    int  __focusMode;
     struct CGPoint { 
         float x; 
         float y; 
-    } __focusPointOfInterest;
-    BOOL __shouldUseSmoothFocus;
+    }  __focusPointOfInterest;
+    BOOL  __shouldUseSmoothFocus;
 }
 
 @property (nonatomic, readonly) int _focusMode;

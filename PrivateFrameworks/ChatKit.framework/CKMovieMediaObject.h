@@ -3,14 +3,14 @@
  */
 
 @interface CKMovieMediaObject : CKAVMediaObject {
-    AVURLAsset *_asset;
-    BOOL _checkedVideoInfo;
-    BOOL _hasVideoTrack;
+    AVURLAsset * _asset;
+    BOOL  _checkedVideoInfo;
+    BOOL  _hasVideoTrack;
     struct CGSize { 
         float width; 
         float height; 
-    } _pxSize;
-    UIImage *_thumbnail;
+    }  _pxSize;
+    UIImage * _thumbnail;
 }
 
 @property (nonatomic, retain) AVURLAsset *asset;
@@ -25,11 +25,11 @@
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 
+- (void).cxx_destruct;
 - (id)asset;
 - (struct CGSize { float x1; float x2; })bbSize;
 - (BOOL)canExport;
 - (BOOL)checkedVideoInfo;
-- (void)dealloc;
 - (void)export:(id)arg1;
 - (id)generateThumbnailFillToSize:(struct CGSize { float x1; float x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2;
 - (id)generateThumbnailForWidth:(float)arg1 orientation:(BOOL)arg2;
@@ -47,7 +47,6 @@
 - (void)setHasVideoTrack:(BOOL)arg1;
 - (void)setPxSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setThumbnail:(id)arg1;
-- (BOOL)shouldBeQuickLookedFromEntryView;
 - (id)thumbnail;
 - (void)updateVideoInfo;
 

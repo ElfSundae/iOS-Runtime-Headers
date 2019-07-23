@@ -3,17 +3,19 @@
  */
 
 @interface SSVSecureKeyDeliveryRequestOperation : NSOperation {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSURL *_certificateURL;
-    BOOL _iTunesStoreRequest;
-    NSURL *_keyServerURL;
-    AVAssetResourceLoadingRequest *_resourceLoadingRequest;
-    id /* block */ _responseBlock;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    NSURL * _certificateURL;
+    BOOL  _iTunesStoreRequest;
+    NSURL * _keyServerURL;
+    NSNumber * _rentalId;
+    AVAssetResourceLoadingRequest * _resourceLoadingRequest;
+    id /* block */  _responseBlock;
 }
 
 @property (getter=isITunesStoreRequest) BOOL ITunesStoreRequest;
 @property (retain) NSURL *certificateURL;
 @property (retain) NSURL *keyServerURL;
+@property (copy) NSNumber *rentalId;
 @property (retain) AVAssetResourceLoadingRequest *resourceLoadingRequest;
 @property (copy) id /* block */ responseBlock;
 
@@ -27,11 +29,13 @@
 - (BOOL)isITunesStoreRequest;
 - (id)keyServerURL;
 - (void)main;
+- (id)rentalId;
 - (id)resourceLoadingRequest;
 - (id /* block */)responseBlock;
 - (void)setCertificateURL:(id)arg1;
 - (void)setITunesStoreRequest:(BOOL)arg1;
 - (void)setKeyServerURL:(id)arg1;
+- (void)setRentalId:(id)arg1;
 - (void)setResourceLoadingRequest:(id)arg1;
 - (void)setResponseBlock:(id /* block */)arg1;
 - (void)start;

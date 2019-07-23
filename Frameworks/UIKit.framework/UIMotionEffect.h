@@ -3,8 +3,8 @@
  */
 
 @interface UIMotionEffect : NSObject <NSCoding, NSCopying> {
-    NSString *_animationIdentifier;
-    _UIMotionAnalyzerSettings *_preferredMotionAnalyzerSettings;
+    NSString * _animationIdentifier;
+    _UIMotionAnalyzerSettings * _preferredMotionAnalyzerSettings;
 }
 
 - (void).cxx_destruct;

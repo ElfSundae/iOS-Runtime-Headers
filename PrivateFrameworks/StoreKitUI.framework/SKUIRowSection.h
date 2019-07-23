@@ -3,19 +3,19 @@
  */
 
 @interface SKUIRowSection : SKUIStorePageSection <SKUIArtworkRequestDelegate, SKUIEmbeddedMediaViewDelegate, SKUIItemStateCenterObserver, SKUIMissingItemDelegate, SKUIProductPageOverlayDelegate> {
-    SKUIClientContext *_clientContext;
-    NSMapTable *_columnViews;
-    NSMapTable *_componentArtworkRequestIDs;
-    NSMapTable *_countdownViewControllers;
-    NSMapTable *_editorialLayouts;
-    NSMutableIndexSet *_expandedEditorialIndexes;
-    NSMapTable *_galleryViewControllers;
-    BOOL _isPad;
-    float _landscapeCellContentHeight;
-    SKUIMissingItemLoader *_missingItemLoader;
-    SKUIProductPageOverlayController *_overlayController;
-    SKUILockupComponent *_overlaySourceComponent;
-    float _portraitCellContentHeight;
+    SKUIClientContext * _clientContext;
+    NSMapTable * _columnViews;
+    NSMapTable * _componentArtworkRequestIDs;
+    NSMapTable * _countdownViewControllers;
+    NSMapTable * _editorialLayouts;
+    NSMutableIndexSet * _expandedEditorialIndexes;
+    NSMapTable * _galleryViewControllers;
+    BOOL  _isPad;
+    float  _landscapeCellContentHeight;
+    SKUIMissingItemLoader * _missingItemLoader;
+    SKUIProductPageOverlayController * _overlayController;
+    SKUILockupComponent * _overlaySourceComponent;
+    float  _portraitCellContentHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +44,7 @@
 - (float)_interColumnSpacing;
 - (void)_loadImagesForGalleryComponent:(id)arg1 columnIndex:(int)arg2;
 - (id)_lockupImageForComponent:(id)arg1;
+- (id)_lockupPlaceholderForComponent:(id)arg1;
 - (struct SKUILockupStyle { int x1; int x2; unsigned int x3; })_lockupStyleForComponent:(id)arg1 columnIndex:(int)arg2;
 - (id)_missingItemLoader;
 - (id)_newSizeToFitArtworkRequestWithArtwork:(id)arg1 columnIndex:(int)arg2;

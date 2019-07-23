@@ -3,9 +3,9 @@
  */
 
 @interface CNFRegNavigationBarTitleView : UIView {
-    UIActivityIndicatorView *_activityIndicator;
-    UINavigationItem *_item;
-    UILabel *_titleLabel;
+    UIActivityIndicatorView * _activityIndicator;
+    UINavigationItem * _item;
+    UILabel * _titleLabel;
 }
 
 @property (nonatomic) UINavigationItem *item;

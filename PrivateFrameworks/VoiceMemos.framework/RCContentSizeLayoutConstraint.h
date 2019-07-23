@@ -3,15 +3,15 @@
  */
 
 @interface RCContentSizeLayoutConstraint : NSLayoutConstraint {
-    float _additionalConstant;
-    BOOL _autoUpdatingConstantShrinks;
-    id _autoitem;
-    id /* block */ _constantLoadingBlock;
-    float _defaultConstant;
-    BOOL _isConstantUpdatingConstraint;
-    id _preferredContentSizeDidChangeObserver;
-    NSString *_textStyle;
-    float _textStyleDefaultBodyLeading;
+    float  _additionalConstant;
+    BOOL  _autoUpdatingConstantShrinks;
+    id  _autoitem;
+    id /* block */  _constantLoadingBlock;
+    float  _defaultConstant;
+    BOOL  _isConstantUpdatingConstraint;
+    id  _preferredContentSizeDidChangeObserver;
+    NSString * _textStyle;
+    float  _textStyleDefaultBodyLeading;
 }
 
 @property (nonatomic) float additionalConstant;

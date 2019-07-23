@@ -3,7 +3,7 @@
  */
 
 @interface MPGeniusPlaybackQueue : MPRemotePlaybackQueue {
-    NSURL *_seedTrack;
+    NSURL * _seedTrack;
 }
 
 @property (nonatomic, readonly) NSURL *seedTrack;

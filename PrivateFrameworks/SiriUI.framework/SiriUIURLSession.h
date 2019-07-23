@@ -3,9 +3,9 @@
  */
 
 @interface SiriUIURLSession : NSObject <NSURLSessionDataDelegate> {
-    NSURLSession *_URLSession;
-    NSMapTable *_imageDownloadForTask;
-    NSMapTable *_tasksForClient;
+    NSURLSession * _URLSession;
+    NSMapTable * _imageDownloadForTask;
+    NSMapTable * _tasksForClient;
 }
 
 @property (readonly, copy) NSString *debugDescription;

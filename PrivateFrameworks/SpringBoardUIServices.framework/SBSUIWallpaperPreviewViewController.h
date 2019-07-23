@@ -3,19 +3,19 @@
  */
 
 @interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProvider, SBFLegibilitySettingsProviderDelegate> {
-    BOOL _allowScrolling;
-    BOOL _colorSamplingEnabled;
-    NSTimer *_dateTimer;
-    <SBFLegibilitySettingsProviderDelegate> *_delegate;
-    BOOL _motionEnabled;
-    NSString *_name;
-    NSDictionary *_proceduralWallpaper;
-    NSDictionary *_proceduralWallpaperOptions;
-    double _stillTimeInVideo;
-    int _variant;
-    AVURLAsset *_video;
-    SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
-    UIImage *_wallpaperImage;
+    BOOL  _allowScrolling;
+    BOOL  _colorSamplingEnabled;
+    NSTimer * _dateTimer;
+    <SBFLegibilitySettingsProviderDelegate> * _delegate;
+    BOOL  _motionEnabled;
+    NSString * _name;
+    NSDictionary * _proceduralWallpaper;
+    NSDictionary * _proceduralWallpaperOptions;
+    double  _stillTimeInVideo;
+    int  _variant;
+    AVURLAsset * _video;
+    SBFWallpaperConfigurationManager * _wallpaperConfigurationManager;
+    UIImage * _wallpaperImage;
 }
 
 @property (readonly, copy) NSString *debugDescription;

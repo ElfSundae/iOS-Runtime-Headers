@@ -13,32 +13,32 @@
             unsigned int length; 
         } dst; 
         BOOL isEqual; 
-    } _alignment;
-    float _alignmentDelays;
-    unsigned int _alignmentSize;
-    UIView *_colorView;
-    UIMorphingLabelGlyphSet *_dstGlyphSet;
-    BOOL _enableAnimation;
-    UIFont *_font;
-    NSMutableArray *_hiddenGlyphViews;
-    BOOL _isDoingFastAnimation;
-    float _lastUpdateTime;
+    }  _alignment;
+    float  _alignmentDelays;
+    unsigned int  _alignmentSize;
+    UIView * _colorView;
+    UIMorphingLabelGlyphSet * _dstGlyphSet;
+    BOOL  _enableAnimation;
+    UIFont * _font;
+    NSMutableArray * _hiddenGlyphViews;
+    BOOL  _isDoingFastAnimation;
+    float  _lastUpdateTime;
     struct { 
         unsigned int len; 
         unsigned int dir; 
-    } _memo;
-    float _rippleFactor;
-    float _scaleFactor;
-    float _slowdown;
-    UIMorphingLabelGlyphSet *_srcGlyphSet;
-    BOOL _suppressLayoutSubviews;
-    NSString *_text;
-    int _textAlignment;
-    _UIViewAnimationAttributes *_textAnimationAttributes;
-    UIColor *_textColor;
-    _UIViewAnimationAttributes *_textColorAnimationAttributes;
-    BOOL _textColorDidChange;
-    BOOL _textDidChange;
+    }  _memo;
+    float  _rippleFactor;
+    float  _scaleFactor;
+    float  _slowdown;
+    UIMorphingLabelGlyphSet * _srcGlyphSet;
+    BOOL  _suppressLayoutSubviews;
+    NSString * _text;
+    int  _textAlignment;
+    _UIViewAnimationAttributes * _textAnimationAttributes;
+    UIColor * _textColor;
+    _UIViewAnimationAttributes * _textColorAnimationAttributes;
+    BOOL  _textColorDidChange;
+    BOOL  _textDidChange;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -48,7 +48,7 @@
             float width; 
             float height; 
         } size; 
-    } _visibleRect;
+    }  _visibleRect;
 }
 
 @property (nonatomic) BOOL enableAnimation;

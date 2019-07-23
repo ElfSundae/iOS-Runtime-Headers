@@ -3,21 +3,21 @@
  */
 
 @interface RCAudioTrimmingModalItemViewController : UIViewController <RCAVWaveformViewControllerDelegate> {
-    NSURL *_audioURL;
-    RCUIConfiguration *_defaultUIConfiguration;
-    RCUIConfiguration *_disabledUIConfiguration;
-    BOOL _enabled;
-    double _maximumDuration;
-    UIView *_nonWaveformContentView;
-    UIButton *_playPauseButton;
-    AVPlayerItem *_playerItem;
-    RCPreviewController *_previewController;
-    float _progress;
-    RCUIConfiguration *_progressUIConfiguration;
-    BOOL _showsProgress;
-    UILabel *_timeDisplayLabel;
-    RCFileInputWaveformDataSource *_waveformDataSource;
-    RCAVWaveformViewController *_waveformViewController;
+    NSURL * _audioURL;
+    RCUIConfiguration * _defaultUIConfiguration;
+    RCUIConfiguration * _disabledUIConfiguration;
+    BOOL  _enabled;
+    double  _maximumDuration;
+    UIView * _nonWaveformContentView;
+    UIButton * _playPauseButton;
+    AVPlayerItem * _playerItem;
+    RCPreviewController * _previewController;
+    float  _progress;
+    RCUIConfiguration * _progressUIConfiguration;
+    BOOL  _showsProgress;
+    UILabel * _timeDisplayLabel;
+    RCFileInputWaveformDataSource * _waveformDataSource;
+    RCAVWaveformViewController * _waveformViewController;
 }
 
 @property (nonatomic, readonly, copy) NSURL *audioURL;

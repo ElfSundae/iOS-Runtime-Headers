@@ -3,9 +3,9 @@
  */
 
 @interface NSParagraphStyle : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
-    float _defaultTabInterval;
-    id _extraData;
-    float _firstLineHeadIndent;
+    float  _defaultTabInterval;
+    id  _extraData;
+    float  _firstLineHeadIndent;
     struct { 
         unsigned int alignment : 4; 
         unsigned int lineBreakMode : 4; 
@@ -15,14 +15,14 @@
         unsigned int fixedMultiple : 2; 
         unsigned int tightensForTruncation : 1; 
         unsigned int refCount : 18; 
-    } _flags;
-    float _headIndent;
-    float _lineSpacing;
-    float _maximumLineHeight;
-    float _minimumLineHeight;
-    float _paragraphSpacing;
-    NSArray *_tabStops;
-    float _tailIndent;
+    }  _flags;
+    float  _headIndent;
+    float  _lineSpacing;
+    float  _maximumLineHeight;
+    float  _minimumLineHeight;
+    float  _paragraphSpacing;
+    NSArray * _tabStops;
+    float  _tailIndent;
 }
 
 @property (nonatomic, readonly) int alignment;
@@ -53,7 +53,7 @@
 - (void)_allocExtraData;
 - (void)_deallocExtraData;
 - (id)_initWithParagraphStyle:(id)arg1;
-- (BOOL)_isSuitableForFastStringDrawingWithAlignment:(int*)arg1 lineBreakMode:(int*)arg2 tighteningFactorForTruncation:(float*)arg3;
+- (BOOL)_isSuitableForFastStringDrawingWithAlignment:(int*)arg1 mirrorsTextAlignment:(BOOL)arg2 lineBreakMode:(int*)arg3 tighteningFactorForTruncation:(float*)arg4;
 - (unsigned long)_lineBoundsOptions;
 - (int)alignment;
 - (BOOL)allowsDefaultTighteningForTruncation;

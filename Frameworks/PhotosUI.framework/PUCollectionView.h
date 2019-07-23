@@ -3,18 +3,20 @@
  */
 
 @interface PUCollectionView : UICollectionView <UIGestureRecognizerDelegate> {
-    PUAutoScroller *_autoScroller;
-    UILongPressGestureRecognizer *_dragGestureRecognizer;
-    NSIndexPath *_dragSourceIndexPath;
-    NSIndexPath *_dragTargetIndexPath;
-    UIView *_draggedView;
+    _UIFeedbackDragSnappingBehavior * __feedbackDragBehavior;
+    PUAutoScroller * _autoScroller;
+    UILongPressGestureRecognizer * _dragGestureRecognizer;
+    NSIndexPath * _dragSourceIndexPath;
+    NSIndexPath * _dragTargetIndexPath;
+    UIView * _draggedView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _draggedViewCenterOffset;
-    <PUCollectionViewReorderDelegate> *_reorderDelegate;
+    }  _draggedViewCenterOffset;
+    <PUCollectionViewReorderDelegate> * _reorderDelegate;
 }
 
+@property (nonatomic, readonly) _UIFeedbackDragSnappingBehavior *_feedbackDragBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
@@ -24,6 +26,7 @@
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
 
 - (void).cxx_destruct;
+- (id)_feedbackDragBehavior;
 - (void)_handleDrag:(id)arg1;
 - (id)_reorderableLayout;
 - (void)_updateDragUsingIndexPathUpdateBlock:(id /* block */)arg1;

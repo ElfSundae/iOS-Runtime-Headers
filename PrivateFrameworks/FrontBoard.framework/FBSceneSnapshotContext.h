@@ -3,7 +3,7 @@
  */
 
 @interface FBSceneSnapshotContext : NSObject <BSDescriptionProviding> {
-    NSDate *_expirationDate;
+    NSDate * _expirationDate;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -13,13 +13,13 @@
             float width; 
             float height; 
         } size; 
-    } _frame;
-    NSSet *_layersToExclude;
-    BOOL _opaque;
-    int _orientation;
-    float _scale;
-    NSString *_sceneID;
-    FBSSceneSettings *_settings;
+    }  _frame;
+    NSSet * _layersToExclude;
+    BOOL  _opaque;
+    int  _orientation;
+    float  _scale;
+    NSString * _sceneID;
+    FBSSceneSettings * _settings;
 }
 
 @property (readonly, copy) NSString *debugDescription;

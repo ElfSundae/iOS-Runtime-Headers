@@ -3,9 +3,9 @@
  */
 
 @interface CMKTimelapseSettings : NSObject {
-    double _initialCaptureTimeInterval;
-    double _maxOutputFPS;
-    double _maxOutputLength;
+    double  _initialCaptureTimeInterval;
+    double  _maxOutputFPS;
+    double  _maxOutputLength;
 }
 
 @property (nonatomic, readonly) double initialCaptureTimeInterval;

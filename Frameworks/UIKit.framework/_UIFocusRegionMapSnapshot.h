@@ -3,15 +3,15 @@
  */
 
 @interface _UIFocusRegionMapSnapshot : NSObject <NSCopying> {
-    BOOL _clipToSnapshotRect;
-    BOOL _committed;
-    NSMutableArray *_detectedFocusContainerGuideMapEntries;
-    NSMutableArray *_detectedFocusableGuideMapEntries;
-    NSMutableArray *_detectedFocusableViewMapEntries;
-    BOOL _didSetRegionClipFrame;
-    NSArray *_finalFocusableRegionMapEntries;
-    unsigned int _focusHeading;
-    UIView *_focusableRegionAncestorView;
+    BOOL  _clipToSnapshotRect;
+    BOOL  _committed;
+    NSMutableArray * _detectedFocusContainerGuideMapEntries;
+    NSMutableArray * _detectedFocusableGuideMapEntries;
+    NSMutableArray * _detectedFocusableViewMapEntries;
+    BOOL  _didSetRegionClipFrame;
+    NSArray * _finalFocusableRegionMapEntries;
+    unsigned int  _focusHeading;
+    UIView * _focusableRegionAncestorView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -21,8 +21,8 @@
             float width; 
             float height; 
         } size; 
-    } _focusedRect;
-    BOOL _isFocusedRectEmpty;
+    }  _focusedRect;
+    BOOL  _isFocusedRectEmpty;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -32,8 +32,8 @@
             float width; 
             float height; 
         } size; 
-    } _mapEntriesFrame;
-    BOOL _privateSnaphot;
+    }  _mapEntriesFrame;
+    BOOL  _privateSnaphot;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -43,10 +43,10 @@
             float width; 
             float height; 
         } size; 
-    } _regionClipFrame;
-    _UIFocusRegionMapSnapshotRequest *_request;
-    NSMutableArray *_retainedPromiseRegions;
-    UIView *_rootView;
+    }  _regionClipFrame;
+    _UIFocusRegionMapSnapshotRequest * _request;
+    NSMutableArray * _retainedPromiseRegions;
+    UIView * _rootView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -56,9 +56,9 @@
             float width; 
             float height; 
         } size; 
-    } _snapshottedRect;
-    NSArray *_sortedFocusContainerGuideMapEntries;
-    UIImage *_visualRepresentation;
+    }  _snapshottedRect;
+    NSArray * _sortedFocusContainerGuideMapEntries;
+    UIImage * _visualRepresentation;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -68,11 +68,11 @@
             float width; 
             float height; 
         } size; 
-    } _visualRepresentationMinimumArea;
+    }  _visualRepresentationMinimumArea;
     struct CGPoint { 
         float x; 
         float y; 
-    } _visualRepresentationScreenCenter;
+    }  _visualRepresentationScreenCenter;
 }
 
 @property (nonatomic, readonly, copy) NSArray *allFocusableRegionMapEntries;

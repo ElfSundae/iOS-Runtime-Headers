@@ -3,18 +3,18 @@
  */
 
 @interface HDCodableSource : PBCodable <NSCopying> {
-    NSString *_bundleIdentifier;
-    BOOL _deleted;
+    NSString * _bundleIdentifier;
+    BOOL  _deleted;
     struct { 
         unsigned int modificationDate : 1; 
         unsigned int options : 1; 
         unsigned int deleted : 1; 
-    } _has;
-    double _modificationDate;
-    NSString *_name;
-    long long _options;
-    NSString *_productType;
-    NSData *_uuid;
+    }  _has;
+    double  _modificationDate;
+    NSString * _name;
+    long long  _options;
+    NSString * _productType;
+    NSData * _uuid;
 }
 
 @property (nonatomic, retain) NSString *bundleIdentifier;

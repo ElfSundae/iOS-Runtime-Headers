@@ -3,7 +3,7 @@
  */
 
 @interface FMBlurView : UIView {
-    BOOL _autosizesToFitSuperview;
+    BOOL  _autosizesToFitSuperview;
 }
 
 @property (nonatomic) BOOL autosizesToFitSuperview;

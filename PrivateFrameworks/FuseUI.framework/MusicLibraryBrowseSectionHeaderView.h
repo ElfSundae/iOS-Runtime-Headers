@@ -3,16 +3,16 @@
  */
 
 @interface MusicLibraryBrowseSectionHeaderView : UITableViewHeaderFooterView <MusicActionableHeaderViewDelegate> {
-    MusicActionableHeaderView *_actionableHeaderView;
-    NSString *_backdropGroupName;
-    UIColor *_backgroundColorForNonFloatingState;
-    <MusicLibraryBrowseSectionHeaderViewDelegate> *_delegate;
-    _UIBackdropView *_floatingBackdropView;
-    int _hairlineStyleForNonFloatingState;
-    UIView *_hairlineView;
-    UIColor *_headerTextColorForNonFloatingState;
-    BOOL _shouldSkipLayout;
-    float _topContentInset;
+    MusicActionableHeaderView * _actionableHeaderView;
+    NSString * _backdropGroupName;
+    UIColor * _backgroundColorForNonFloatingState;
+    <MusicLibraryBrowseSectionHeaderViewDelegate> * _delegate;
+    _UIBackdropView * _floatingBackdropView;
+    int  _hairlineStyleForNonFloatingState;
+    UIView * _hairlineView;
+    UIColor * _headerTextColorForNonFloatingState;
+    BOOL  _shouldSkipLayout;
+    float  _topContentInset;
 }
 
 @property (getter=isActionable, nonatomic) BOOL actionable;
@@ -36,7 +36,6 @@
 - (void)actionableHeaderViewDidSelectButton:(id)arg1;
 - (id)backdropGroupName;
 - (id)backgroundColorForNonFloatingState;
-- (void)dealloc;
 - (id)delegate;
 - (int)hairlineStyleForNonFloatingState;
 - (id)headerText;

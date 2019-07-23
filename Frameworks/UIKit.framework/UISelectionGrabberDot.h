@@ -3,7 +3,7 @@
  */
 
 @interface UISelectionGrabberDot : UIView {
-    UISelectionGrabber *m_grabber;
+    UISelectionGrabber * m_grabber;
 }
 
 @property (nonatomic) UISelectionGrabber *grabber;

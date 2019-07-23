@@ -3,8 +3,8 @@
  */
 
 @interface CAMTorchCommand : CAMCaptureCommand {
-    float __level;
-    int __torchMode;
+    float  __level;
+    int  __torchMode;
 }
 
 @property (nonatomic, readonly) float _level;

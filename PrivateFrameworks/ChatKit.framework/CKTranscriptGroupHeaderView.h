@@ -3,11 +3,11 @@
  */
 
 @interface CKTranscriptGroupHeaderView : UIView {
-    UIButton *_actionButton;
-    _UIBackdropView *_backdropView;
-    CKConversation *_conversation;
-    UIView *_separator;
-    MFComposeRecipientTextView *_textView;
+    UIButton * _actionButton;
+    _UIBackdropView * _backdropView;
+    CKConversation * _conversation;
+    UIView * _separator;
+    MFComposeRecipientTextView * _textView;
 }
 
 @property (nonatomic, retain) UIButton *actionButton;
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) UIView *separator;
 @property (nonatomic, retain) MFComposeRecipientTextView *textView;
 
+- (void).cxx_destruct;
 - (id)actionButton;
 - (id)backdropView;
 - (id)conversation;

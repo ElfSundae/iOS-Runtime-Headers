@@ -3,27 +3,27 @@
  */
 
 @interface NSATSTypesetter : NSTypesetter {
-    void *_atsReserved;
-    id _private;
-    NSAttributedString *attributedString;
-    NSParagraphStyle *currentParagraphStyle;
-    NSTextContainer *currentTextContainer;
-    unsigned int currentTextContainerIndex;
+    void * _atsReserved;
+    id  _private;
+    NSAttributedString * attributedString;
+    NSParagraphStyle * currentParagraphStyle;
+    NSTextContainer * currentTextContainer;
+    unsigned int  currentTextContainerIndex;
     struct CGSize { 
         float width; 
         float height; 
-    } currentTextContainerSize;
-    NSLayoutManager *layoutManager;
-    float lineFragmentPadding;
+    }  currentTextContainerSize;
+    NSLayoutManager * layoutManager;
+    float  lineFragmentPadding;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } paragraphGlyphRange;
+    }  paragraphGlyphRange;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } paragraphSeparatorGlyphRange;
-    NSArray *textContainers;
+    }  paragraphSeparatorGlyphRange;
+    NSArray * textContainers;
 }
 
 + (BOOL)_allowsScreenFontKerning;
@@ -43,6 +43,7 @@
 - (BOOL)_isBusy;
 - (BOOL)_layoutLineFragmentStartingWithGlyphAtIndex:(unsigned int*)arg1 characterIndex:(unsigned int*)arg2 atPoint:(struct CGPoint { float x1; float x2; }*)arg3 renderingContext:(id*)arg4;
 - (union { struct { float x_1_1_1; float x_1_1_2; float x_1_1_3; int x_1_1_4; } x1; struct { struct CGRect { struct CGPoint { float x_1_3_1; float x_1_3_2; } x_1_2_1; struct CGSize { float x_2_3_1; float x_2_3_2; } x_1_2_2; } x_2_1_1; } x2; }*)_lineFragmentRectForProposedRectArgs;
+- (BOOL)_mirrorsTextAlignment;
 - (void)_setBaselineRenderingMode:(BOOL)arg1;
 - (void)_setBusy:(BOOL)arg1;
 - (void)_setForceWordWrapping:(BOOL)arg1;
@@ -69,5 +70,6 @@
 - (void)setLineBreakStrategy:(unsigned int)arg1;
 - (BOOL)shouldBreakLineByHyphenatingBeforeCharacterAtIndex:(unsigned int)arg1;
 - (BOOL)shouldBreakLineByWordBeforeCharacterAtIndex:(unsigned int)arg1;
+- (BOOL)synchronizesAlignmentToDirection;
 
 @end

@@ -3,10 +3,10 @@
  */
 
 @interface GEONavdCacheDBWriter : GEODBWriter {
-    struct sqlite3_stmt { } *_sqlDeleteAllRows;
-    struct sqlite3_stmt { } *_sqlDeleteRowForRowID;
-    struct sqlite3_stmt { } *_sqlInsertCache;
-    struct sqlite3_stmt { } *_sqlUpdateCache;
+    struct sqlite3_stmt { } * _sqlDeleteAllRows;
+    struct sqlite3_stmt { } * _sqlDeleteRowForRowID;
+    struct sqlite3_stmt { } * _sqlInsertCache;
+    struct sqlite3_stmt { } * _sqlUpdateCache;
 }
 
 - (void)_createCacheTable;

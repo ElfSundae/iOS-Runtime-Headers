@@ -3,9 +3,9 @@
  */
 
 @interface EKUIDividedGridViewTableViewCell : UITableViewCell {
-    UIView *_bottomDivider;
-    EKUIDividedGridViewController *_gridViewController;
-    UIView *_topDivider;
+    UIView * _bottomDivider;
+    EKUIDividedGridViewController * _gridViewController;
+    UIView * _topDivider;
 }
 
 @property (nonatomic, retain) UIView *bottomDivider;

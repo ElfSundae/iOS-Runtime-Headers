@@ -3,8 +3,8 @@
  */
 
 @interface MCDRepeatButton : MCDPlayModeButton {
-    UIImage *_repeatImage;
-    UIImage *_repeatOneImage;
+    UIImage * _repeatImage;
+    UIImage * _repeatOneImage;
 }
 
 @property (nonatomic, retain) UIImage *repeatImage;
@@ -16,6 +16,6 @@
 - (id)repeatOneImage;
 - (void)setRepeatImage:(id)arg1;
 - (void)setRepeatOneImage:(id)arg1;
-- (void)setRepeatType:(unsigned int)arg1;
+- (void)setRepeatType:(int)arg1;
 
 @end

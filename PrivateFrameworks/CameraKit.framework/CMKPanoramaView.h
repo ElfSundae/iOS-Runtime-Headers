@@ -3,13 +3,13 @@
  */
 
 @interface CMKPanoramaView : UIView <UIAccelerometerDelegate> {
-    NSOperationQueue *_accelerometerQueue;
-    CMKPanoramaArrowView *_arrowView;
+    NSOperationQueue * _accelerometerQueue;
+    CMKPanoramaArrowView * _arrowView;
     struct CGPoint { 
         float x; 
         float y; 
-    } _arrowViewBeginCenter;
-    float _currentAcceleration;
+    }  _arrowViewBeginCenter;
+    float  _currentAcceleration;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _currentArrowFrame;
+    }  _currentArrowFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,16 +29,16 @@
             float width; 
             float height; 
         } size; 
-    } _currentMaskFrame;
-    float _currentSpeed;
-    int _deferredDeviceOrientation;
-    <PLCameraPanoramaViewDelegate> *_delegate;
-    int _deviceOrientation;
-    int _direction;
-    CADisplayLink *_displayLink;
-    int _frameCounter;
-    BOOL _ignorePreviewUpdates;
-    float _initialAcceleration;
+    }  _currentMaskFrame;
+    float  _currentSpeed;
+    int  _deferredDeviceOrientation;
+    <PLCameraPanoramaViewDelegate> * _delegate;
+    int  _deviceOrientation;
+    int  _direction;
+    CADisplayLink * _displayLink;
+    int  _frameCounter;
+    BOOL  _ignorePreviewUpdates;
+    float  _initialAcceleration;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -48,7 +48,7 @@
             float width; 
             float height; 
         } size; 
-    } _initialArrowFrame;
+    }  _initialArrowFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -58,24 +58,24 @@
             float width; 
             float height; 
         } size; 
-    } _initialMaskFrame;
-    CMKPanoramaLabel *_instructionalText;
-    UIView *_instructionalTextBackground;
-    BOOL _isAnimatingDirection;
-    BOOL _isAnimatingTextIn;
-    BOOL _isAnimatingTextOut;
-    BOOL _isCapturing;
-    BOOL _isProcessing;
-    CMKPanoramaLevelView *_levelView;
-    CMMotionManager *_motionManager;
-    UIImageView *_previewBackgroundImageView;
-    UIView *_previewContainer;
-    UIImageView *_previewGhostImageView;
-    CALayer *_previewLayer;
-    UIView *_previewMaskingContainer;
-    float _previewScale;
-    BOOL _showingFastText;
-    BOOL _showingMoveText;
+    }  _initialMaskFrame;
+    CMKPanoramaLabel * _instructionalText;
+    UIView * _instructionalTextBackground;
+    BOOL  _isAnimatingDirection;
+    BOOL  _isAnimatingTextIn;
+    BOOL  _isAnimatingTextOut;
+    BOOL  _isCapturing;
+    BOOL  _isProcessing;
+    CMKPanoramaLevelView * _levelView;
+    CMMotionManager * _motionManager;
+    UIImageView * _previewBackgroundImageView;
+    UIView * _previewContainer;
+    UIImageView * _previewGhostImageView;
+    CALayer * _previewLayer;
+    UIView * _previewMaskingContainer;
+    float  _previewScale;
+    BOOL  _showingFastText;
+    BOOL  _showingMoveText;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -85,7 +85,7 @@
             float width; 
             float height; 
         } size; 
-    } _visiblePreviewRect;
+    }  _visiblePreviewRect;
 }
 
 @property (readonly, copy) NSString *debugDescription;

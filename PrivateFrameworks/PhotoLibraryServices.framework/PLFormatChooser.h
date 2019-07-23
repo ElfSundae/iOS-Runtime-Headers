@@ -3,15 +3,15 @@
  */
 
 @interface PLFormatChooser : NSObject {
-    PLDeviceConfiguration *_deviceConfiguration;
-    PLImageFormat *_fullScreenFormatForCurrentDevice;
-    PLImageFormat *_indexSheetUnbakedFormat;
-    PLImageFormat *_landscapeScrubberThumbnailFormat;
-    PLImageFormat *_largestUncroppedNonJPEGThumbnailFormat;
-    PLImageFormat *_masterThumbnailFormat;
-    PLImageFormat *_portraitScrubberThumbnailFormat;
-    PLImageFormat *_posterThumbnailFormat;
-    NSArray *_supportedDerivativeFormats;
+    PLDeviceConfiguration * _deviceConfiguration;
+    PLImageFormat * _fullScreenFormatForCurrentDevice;
+    PLImageFormat * _indexSheetUnbakedFormat;
+    PLImageFormat * _landscapeScrubberThumbnailFormat;
+    PLImageFormat * _largestUncroppedNonJPEGThumbnailFormat;
+    PLImageFormat * _masterThumbnailFormat;
+    PLImageFormat * _portraitScrubberThumbnailFormat;
+    PLImageFormat * _posterThumbnailFormat;
+    NSArray * _supportedDerivativeFormats;
 }
 
 @property (nonatomic, readonly) PLImageFormat *fullScreenFormatForCurrentDevice;

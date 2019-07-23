@@ -6,10 +6,10 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _bestSize;
-    BOOL _precomposed;
-    BOOL _siteWide;
-    NSURL *_url;
+    }  _bestSize;
+    BOOL  _precomposed;
+    BOOL  _siteWide;
+    NSURL * _url;
 }
 
 @property (nonatomic) struct CGSize { float x1; float x2; } bestSize;

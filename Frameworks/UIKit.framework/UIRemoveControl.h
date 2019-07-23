@@ -3,10 +3,10 @@
  */
 
 @interface UIRemoveControl : UIView {
-    id _delegate;
-    NSString *_label;
-    UIRemoveControlMinusButton *_minusButton;
-    UIView *_removeConfirmationButton;
+    id  _delegate;
+    NSString * _label;
+    UIRemoveControlMinusButton * _minusButton;
+    UIView * _removeConfirmationButton;
     struct { 
         unsigned int removeButtonVisible : 1; 
         unsigned int removeConfirmationVisible : 1; 
@@ -15,8 +15,8 @@
         unsigned int alwaysHideRemoveButton : 1; 
         unsigned int editingStyle : 3; 
         unsigned int reserved : 23; 
-    } _removeControlFlags;
-    UIView *_target;
+    }  _removeControlFlags;
+    UIView * _target;
 }
 
 + (void)hideAllRemoveConfirmationsInView:(id)arg1;
@@ -34,7 +34,6 @@
 - (void)_minusButtonFadeAnimationStopped;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_removeConfirmationEndingFrame;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_removeConfirmationStartingFrame;
-- (id)_scriptingInfo;
 - (void)_setInsertControl:(BOOL)arg1;
 - (void)_setInterceptMouseEvent:(BOOL)arg1;
 - (void)_setRemoveConfirmationShowing:(BOOL)arg1 animated:(BOOL)arg2;

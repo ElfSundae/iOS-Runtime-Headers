@@ -3,26 +3,26 @@
  */
 
 @interface _UIGraphicsLetterpressStyle : NSObject <NSCopying> {
-    UIColor *bottomGradientColor;
-    UIColor *embossHighlightColor;
-    UIColor *embossShadowColor;
-    float embossSize;
-    float innerOpacity;
-    int innerShadowBlendMode;
-    float innerShadowBlur;
-    UIColor *innerShadowColor;
+    UIColor * bottomGradientColor;
+    UIColor * embossHighlightColor;
+    UIColor * embossShadowColor;
+    float  embossSize;
+    float  innerOpacity;
+    int  innerShadowBlendMode;
+    float  innerShadowBlur;
+    UIColor * innerShadowColor;
     struct CGPoint { 
         float x; 
         float y; 
-    } innerShadowOffset;
-    int outerShadowBlendMode;
-    float outerShadowBlur;
-    UIColor *outerShadowColor;
+    }  innerShadowOffset;
+    int  outerShadowBlendMode;
+    float  outerShadowBlur;
+    UIColor * outerShadowColor;
     struct CGPoint { 
         float x; 
         float y; 
-    } outerShadowOffset;
-    UIColor *topGradientColor;
+    }  outerShadowOffset;
+    UIColor * topGradientColor;
 }
 
 @property (nonatomic, retain) UIColor *bottomGradientColor;

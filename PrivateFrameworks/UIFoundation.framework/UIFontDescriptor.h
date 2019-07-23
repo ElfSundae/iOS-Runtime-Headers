@@ -3,14 +3,15 @@
  */
 
 @interface UIFontDescriptor : NSObject <NSCopying, NSSecureCoding> {
-    NSMutableDictionary *_attributes;
-    id _reserved1;
-    id _reserved2;
-    id _reserved3;
-    id _reserved4;
-    id _reserved5;
+    NSMutableDictionary * _attributes;
+    id  _reserved1;
+    id  _reserved2;
+    id  _reserved3;
+    id  _reserved4;
+    id  _reserved5;
 }
 
+@property (nonatomic, readonly) NSDictionary *fontAttributes;
 @property (nonatomic, readonly) struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } matrix;
 @property (nonatomic, readonly) float pointSize;
 @property (nonatomic, readonly) NSString *postscriptName;
@@ -26,6 +27,7 @@
 + (id)fontDescriptorWithName:(id)arg1 size:(float)arg2;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 options:(unsigned int)arg3;
++ (id)preferredFontDescriptorWithTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (BOOL)supportsSecureCoding;
 
 - (id)_attributes;
@@ -65,5 +67,10 @@
 - (id)_mapkit_fontDescriptorByAddingFeaturesForTabularFigures;
 - (id)_mapkit_fontDescriptorByAddingFeaturesForTimeDisplay;
 - (id)_mapkit_fontDescriptorByAddingFeaturesForTimeDisplayUseMonospace:(BOOL)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
+
++ (id)telephonyUIBodyShortFontDescriptor;
++ (id)telephonyUISubheadlineShortFontDescriptor;
 
 @end

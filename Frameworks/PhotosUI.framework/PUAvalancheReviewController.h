@@ -3,25 +3,25 @@
  */
 
 @interface PUAvalancheReviewController : UIViewController <PHAssetCollectionDataSource, PUAvalancheReviewCollectionViewLayoutDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotosSharingTransitionViewController, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PUTransitionViewAnimatorDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
-    PUOneUpAssetTransitionInfo *__assetTransitionInfo;
-    NSMutableDictionary *__assetsToSizeDictionary;
-    PLAvalanche *__avalancheBeingReviewed;
-    PHCachingImageManager *__cachingImageManager;
-    UIBarButtonItem *__cancelBarButtonItem;
-    UICollectionView *__collectionView;
-    PUAvalancheReviewCollectionViewLayout *__collectionViewLayout;
-    BOOL __completingReviewMode;
-    <PLAssetContainer> *__currentAssetContainer;
-    UIBarButtonItem *__doneBarButtonItem;
-    NSIndexPath *__inFlightReferenceIndexPath;
-    PLManagedAsset *__initialAsset;
-    NSOrderedSet *__initialFavorites;
-    PUReviewInstructionalView *__instructionalView;
-    PUTransitionViewAnimator *__photoZoomAnimator;
-    PUPhotosZoomingSharingGridCell *__photoZoomCell;
-    PUPhotoPinchGestureRecognizer *__photoZoomPinchGestureRecognizer;
-    PUPhotosSharingTransitionContext *__photosSharingTransitionContext;
-    NSMutableSet *__preheatedAssets;
+    PUOneUpAssetTransitionInfo * __assetTransitionInfo;
+    NSMutableDictionary * __assetsToSizeDictionary;
+    PLAvalanche * __avalancheBeingReviewed;
+    PHCachingImageManager * __cachingImageManager;
+    UIBarButtonItem * __cancelBarButtonItem;
+    UICollectionView * __collectionView;
+    PUAvalancheReviewCollectionViewLayout * __collectionViewLayout;
+    BOOL  __completingReviewMode;
+    <PLAssetContainer> * __currentAssetContainer;
+    UIBarButtonItem * __doneBarButtonItem;
+    NSIndexPath * __inFlightReferenceIndexPath;
+    PLManagedAsset * __initialAsset;
+    NSOrderedSet * __initialFavorites;
+    PUReviewInstructionalView * __instructionalView;
+    PUTransitionViewAnimator * __photoZoomAnimator;
+    PUPhotosZoomingSharingGridCell * __photoZoomCell;
+    PUPhotoPinchGestureRecognizer * __photoZoomPinchGestureRecognizer;
+    PUPhotosSharingTransitionContext * __photosSharingTransitionContext;
+    NSMutableSet * __preheatedAssets;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -31,16 +31,15 @@
             float width; 
             float height; 
         } size; 
-    } __previousPreheatRect;
-    PUAvalancheReviewControllerSpec *__spec;
-    UITapGestureRecognizer *__tapGestureRecognizer;
-    UICollectionViewLayout *__transitionLayout;
-    BOOL __updatingContentOffsetFromScrubbing;
-    PHFetchResult *_assetCollectionsFetchResult;
-    <PLAssetContainerList> *_avalancheContainerList;
-    <PUAvalancheReviewControllerDelegate> *_delegate;
-    <PUPresentingPhotoBrowserController> *_presentingPhotoBrowserController;
-    NSMutableDictionary *_resultsForAssetCollection;
+    }  __previousPreheatRect;
+    PUAvalancheReviewControllerSpec * __spec;
+    UITapGestureRecognizer * __tapGestureRecognizer;
+    UICollectionViewLayout * __transitionLayout;
+    BOOL  __updatingContentOffsetFromScrubbing;
+    PHFetchResult * _assetCollectionsFetchResult;
+    <PLAssetContainerList> * _avalancheContainerList;
+    <PUAvalancheReviewControllerDelegate> * _delegate;
+    NSMutableDictionary * _resultsForAssetCollection;
 }
 
 @property (nonatomic, retain) PUOneUpAssetTransitionInfo *_assetTransitionInfo;
@@ -74,7 +73,6 @@
 @property (nonatomic) <PUAvalancheReviewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned int hash;
-@property (nonatomic, retain) <PUPresentingPhotoBrowserController> *presentingPhotoBrowserController;
 @property (readonly) Class superclass;
 
 + (id)filteringContext;
@@ -166,17 +164,17 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })embeddedActivityViewFrameWhenShowing:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (id)initWithSpec:(id)arg1 startingAtAsset:(id)arg2 inAvalanche:(id)arg3 currentAssetContainer:(id)arg4 fromPhotoBrowserController:(id)arg5;
+- (id)initWithSpec:(id)arg1 startingAtAsset:(id)arg2 inAvalanche:(id)arg3 currentAssetContainer:(id)arg4;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })layout:(id)arg1 collectionView:(id)arg2 selectionBadgeFrameForItemFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 atIndexPath:(id)arg4;
 - (struct CGSize { float x1; float x2; })layout:(id)arg1 collectionView:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (unsigned int)numberOfPhotosInReviewScrubber:(id)arg1;
 - (int)numberOfSectionsInCollectionView:(id)arg1;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(id /* block */)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })oneUpAssetTransitionAssetFinalFrame:(id)arg1;
-- (id)presentingPhotoBrowserController;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;
+- (BOOL)reviewScrubber:(id)arg1 shouldProvideFeedbackForCellAtIndexPath:(id)arg2;
 - (void)reviewScrubber:(id)arg1 willDisplayCell:(id)arg2 atIndexPath:(id)arg3;
 - (void)reviewScrubberDidScrub:(id)arg1;
 - (void)reviewScrubberDidSelectItemAtIndexPath:(id)arg1;
@@ -192,7 +190,6 @@
 - (void)setOneUpPhotosSharingTransitionInfo:(id)arg1;
 - (void)setPhotosSharingTransitionContext:(id)arg1;
 - (void)setPhotosSharingTransitionLayout:(id)arg1 animated:(BOOL)arg2;
-- (void)setPresentingPhotoBrowserController:(id)arg1;
 - (void)set_assetTransitionInfo:(id)arg1;
 - (void)set_completingReviewMode:(BOOL)arg1;
 - (void)set_photosSharingTransitionContext:(id)arg1;

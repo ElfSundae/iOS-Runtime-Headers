@@ -3,13 +3,13 @@
  */
 
 @interface UIKBInputBackdropView : UIView {
-    BOOL _hasEndRect;
-    BOOL _hasStartRect;
-    unsigned int _innerCorners;
-    UIKBBackdropView *_inputBackdropFullView;
-    UIKBBackdropView *_inputBackdropLeftView;
-    UIKBBackdropView *_inputBackdropRightView;
-    BOOL _isTransitioning;
+    BOOL  _hasEndRect;
+    BOOL  _hasStartRect;
+    unsigned int  _innerCorners;
+    UIKBBackdropView * _inputBackdropFullView;
+    UIKBBackdropView * _inputBackdropLeftView;
+    UIKBBackdropView * _inputBackdropRightView;
+    BOOL  _isTransitioning;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,7 +19,7 @@
             float width; 
             float height; 
         } size; 
-    } _savedEndRect;
+    }  _savedEndRect;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -29,15 +29,16 @@
             float width; 
             float height; 
         } size; 
-    } _savedStartRect;
-    int _style;
-    float _transitionGap;
-    float _transitionLeftOffset;
+    }  _savedStartRect;
+    int  _style;
+    float  _transitionGap;
+    float  _transitionLeftOffset;
 }
 
 @property (nonatomic, retain) UIKBBackdropView *inputBackdropFullView;
 @property (nonatomic, retain) UIKBBackdropView *inputBackdropLeftView;
 @property (nonatomic, retain) UIKBBackdropView *inputBackdropRightView;
+@property (readonly) int style;
 
 + (BOOL)_retroactivelyRequiresConstraintBasedLayout;
 
@@ -60,6 +61,7 @@
 - (void)setInputBackdropLeftView:(id)arg1;
 - (void)setInputBackdropRightView:(id)arg1;
 - (void)setTintOpacity:(float)arg1;
+- (int)style;
 - (int)textEffectsVisibilityLevel;
 - (void)transitionToStyle:(int)arg1 isSplit:(BOOL)arg2;
 

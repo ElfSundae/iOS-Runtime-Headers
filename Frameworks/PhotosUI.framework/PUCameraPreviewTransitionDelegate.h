@@ -3,8 +3,8 @@
  */
 
 @interface PUCameraPreviewTransitionDelegate : PUPhotosPreviewTransitionDelegate {
-    PUScrubberView *_previewScrubber;
-    UIImage *_previewSourceImage;
+    PUScrubberView * _previewScrubber;
+    UIImage * _previewSourceImage;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,8 +14,8 @@
             float width; 
             float height; 
         } size; 
-    } _previewSourceRect;
-    BOOL _shouldHideScrubber;
+    }  _previewSourceRect;
+    BOOL  _shouldHideScrubber;
 }
 
 @property (nonatomic, retain) PUScrubberView *previewScrubber;

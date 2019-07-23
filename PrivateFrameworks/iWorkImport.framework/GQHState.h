@@ -3,34 +3,34 @@
  */
 
 @interface GQHState : NSObject {
-    int mCachedCellStyleIndex;
-    struct __CFDictionary { } *mCachedTableStyles;
-    int mCachedTextStyleIndex;
-    struct __CFDictionary { } *mCachedTextStyles;
-    struct __CFDictionary { } *mColorStrings;
-    int mColoredBackgroundLayerCount;
-    struct __CFArray { } *mGraphicPropertiesStack;
-    GQHXML *mHtmlDoc;
-    struct __CFArray { } *mImplicitStyles;
-    int mInlineStyleIndex;
-    struct __CFDictionary { } *mInlineStyles;
-    int mMultiColumnedDepth;
-    int mOutlineLevel;
-    int mOutlineStyleType;
-    int mParagraphCount;
-    int mParagraphIndex;
-    GQSDocument *mProcessorState;
+    int  mCachedCellStyleIndex;
+    struct __CFDictionary { } * mCachedTableStyles;
+    int  mCachedTextStyleIndex;
+    struct __CFDictionary { } * mCachedTextStyles;
+    struct __CFDictionary { } * mColorStrings;
+    int  mColoredBackgroundLayerCount;
+    struct __CFArray { } * mGraphicPropertiesStack;
+    GQHXML * mHtmlDoc;
+    struct __CFArray { } * mImplicitStyles;
+    int  mInlineStyleIndex;
+    struct __CFDictionary { } * mInlineStyles;
+    int  mMultiColumnedDepth;
+    int  mOutlineLevel;
+    int  mOutlineStyleType;
+    int  mParagraphCount;
+    int  mParagraphIndex;
+    GQSDocument * mProcessorState;
     struct CGSize { 
         float width; 
         float height; 
-    } mScale;
-    <GQHContext> *mShapeContext;
-    int mShapeIDCounter;
-    struct __CFString { } *mStyleData;
-    struct __CFDictionary { } *mStyleIndexes;
-    struct __CFDictionary { } *mStyleNameMap;
-    GQHTableState *mTableState;
-    unsigned int mTextScale;
+    }  mScale;
+    <GQHContext> * mShapeContext;
+    int  mShapeIDCounter;
+    struct __CFString { } * mStyleData;
+    struct __CFDictionary { } * mStyleIndexes;
+    struct __CFDictionary { } * mStyleNameMap;
+    GQHTableState * mTableState;
+    unsigned int  mTextScale;
 }
 
 - (struct __CFString { }*)addCacheForCellStyle:(id)arg1 fillStyle:(id)arg2 cellClass:(Class)arg3 vectorStyles:(id*)arg4 groupLevel:(unsigned short)arg5 hasFormula:(BOOL)arg6 baseClassString:(struct __CFString { }*)arg7 cssCachedStyle:(id)arg8;

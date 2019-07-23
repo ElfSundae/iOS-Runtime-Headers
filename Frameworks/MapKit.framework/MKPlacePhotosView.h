@@ -3,27 +3,27 @@
  */
 
 @interface MKPlacePhotosView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate> {
-    UIActivityIndicatorView *_activityIndicator;
-    int _actualPage;
-    UILabel *_authorLabel;
-    UIVisualEffectView *_bottomEffectView;
-    UIView *_bottomView;
-    <MKPlacePhotosViewDelegate> *_delegate;
-    UILabel *_descriptionLabel;
-    NSArray *_fontConstraints;
-    UIImageView *_gradientView;
-    UILabel *_licenseLabel;
-    UINavigationBar *_navBar;
-    NSLayoutConstraint *_navBarHeightConstraint;
-    UINavigationItem *_navItem;
-    UILabel *_pageInfoLabel;
-    NSMutableArray *_photoViews;
-    NSArray *_photos;
-    UIScrollView *_scrollView;
-    NSMutableArray *_singlePhotoArray;
-    NSLayoutConstraint *_statusBarHeightConstraint;
-    unsigned int _textDisplayedForPage;
-    UIVisualEffectView *_topView;
+    UIActivityIndicatorView * _activityIndicator;
+    int  _actualPage;
+    UILabel * _authorLabel;
+    UIVisualEffectView * _bottomEffectView;
+    UIView * _bottomView;
+    <MKPlacePhotosViewDelegate> * _delegate;
+    UILabel * _descriptionLabel;
+    NSArray * _fontConstraints;
+    UIImageView * _gradientView;
+    UILabel * _licenseLabel;
+    UINavigationBar * _navBar;
+    NSLayoutConstraint * _navBarHeightConstraint;
+    UINavigationItem * _navItem;
+    UILabel * _pageInfoLabel;
+    NSMutableArray * _photoViews;
+    NSArray * _photos;
+    UIScrollView * _scrollView;
+    NSMutableArray * _singlePhotoArray;
+    NSLayoutConstraint * _statusBarHeightConstraint;
+    unsigned int  _textDisplayedForPage;
+    UIVisualEffectView * _topView;
 }
 
 @property (nonatomic) unsigned int currentPage;
@@ -34,7 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)backTapped;
+- (void)_backTapped;
 - (void)contentSizeDidChange;
 - (unsigned int)currentPage;
 - (void)dealloc;

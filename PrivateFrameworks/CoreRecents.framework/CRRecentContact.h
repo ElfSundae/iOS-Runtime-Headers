@@ -3,22 +3,22 @@
  */
 
 @interface CRRecentContact : NSObject <NSSecureCoding> {
-    NSString *_address;
-    long long _contactID;
-    NSNumber *_decayedWeight;
-    NSString *_displayName;
-    unsigned int _groupKind;
-    NSString *_groupName;
-    NSString *_kind;
-    NSString *_lastSendingAddress;
-    NSArray *_members;
-    NSDictionary *_metadata;
-    NSString *_originalSource;
-    NSString *_rawAddress;
-    NSMutableArray *_recentDates;
-    long long _recentID;
-    NSString *_recentsDomain;
-    NSNumber *_weight;
+    NSString * _address;
+    long long  _contactID;
+    NSNumber * _decayedWeight;
+    NSString * _displayName;
+    unsigned int  _groupKind;
+    NSString * _groupName;
+    NSString * _kind;
+    NSString * _lastSendingAddress;
+    NSArray * _members;
+    NSDictionary * _metadata;
+    NSString * _originalSource;
+    NSString * _rawAddress;
+    NSMutableArray * _recentDates;
+    long long  _recentID;
+    NSString * _recentsDomain;
+    NSNumber * _weight;
 }
 
 @property (nonatomic, copy) NSString *address;

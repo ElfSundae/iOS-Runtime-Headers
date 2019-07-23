@@ -3,19 +3,18 @@
  */
 
 @interface IMAccountController : NSObject {
-    NSMutableDictionary *_accountMap;
-    NSMutableArray *_accounts;
-    BOOL _cachesEnabled;
-    BOOL _isReadOnly;
-    NSArray *_operationalAccountsCache;
-    NSMutableDictionary *_serviceToAccountsMap;
-    NSMutableDictionary *_serviceToActiveAccountsMap;
-    NSMutableDictionary *_serviceToConnectedAccountsMap;
-    NSMutableDictionary *_serviceToOperationalAccountsMap;
+    NSMutableDictionary * _accountMap;
+    NSArray * _accounts;
+    BOOL  _cachesEnabled;
+    BOOL  _isReadOnly;
+    NSArray * _operationalAccountsCache;
+    NSMutableDictionary * _serviceToAccountsMap;
+    NSMutableDictionary * _serviceToActiveAccountsMap;
+    NSMutableDictionary * _serviceToConnectedAccountsMap;
+    NSMutableDictionary * _serviceToOperationalAccountsMap;
 }
 
-@property (nonatomic, readonly) NSMutableArray *_accounts;
-@property (nonatomic, readonly) NSArray *accounts;
+@property (copy) NSArray *accounts;
 @property (nonatomic, readonly) NSArray *activeAccounts;
 @property (nonatomic, readonly) id bestAccountForStatus;
 @property (nonatomic, readonly) NSArray *connectedAccounts;
@@ -27,9 +26,9 @@
 + (id)bestAccountFromAccounts:(id)arg1;
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (void)_accountRegistrationStatusChanged:(id)arg1;
-- (id)_accounts;
 - (void)_activeAccountChanged:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
 - (id)_bestOperationalAccountForSendingForService:(id)arg1;
@@ -95,6 +94,7 @@
 - (id)operationalAccountsForService:(id)arg1;
 - (id)operationalAccountsWithCapability:(unsigned long long)arg1;
 - (BOOL)readOnly;
+- (void)setAccounts:(id)arg1;
 - (void)setReadOnly:(BOOL)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit

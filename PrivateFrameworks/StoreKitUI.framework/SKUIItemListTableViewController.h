@@ -3,29 +3,29 @@
  */
 
 @interface SKUIItemListTableViewController : UITableViewController <SKUIItemCollectionDelegate> {
-    SKUIItemArtworkContext *_artworkContext;
-    SKUIClientContext *_clientContext;
-    <SKUIItemListTableDelegate> *_delegate;
-    BOOL _delegateWantsCanRemove;
-    BOOL _delegateWantsDidRemove;
-    BOOL _delegateWantsWillDisplay;
-    BOOL _didLoadMore;
-    NSMutableIndexSet *_hiddenIconIndexSet;
+    SKUIItemArtworkContext * _artworkContext;
+    SKUIClientContext * _clientContext;
+    <SKUIItemListTableDelegate> * _delegate;
+    BOOL  _delegateWantsCanRemove;
+    BOOL  _delegateWantsDidRemove;
+    BOOL  _delegateWantsWillDisplay;
+    BOOL  _didLoadMore;
+    NSMutableIndexSet * _hiddenIconIndexSet;
     struct CGSize { 
         float width; 
         float height; 
-    } _imageBoundingSize;
-    SKUIItemCollectionController *_itemCollectionController;
-    SKUIItemList *_itemList;
-    SSVLoadURLOperation *_loadMoreOperation;
-    BOOL _loadsMoreItems;
-    NSOperationQueue *_operationQueue;
-    BOOL _requestedLoadMore;
-    float _rowHeight;
-    int _selectionStyle;
-    int _separatorStyle;
-    BOOL _suspended;
-    SKUIUber *_uber;
+    }  _imageBoundingSize;
+    SKUIItemCollectionController * _itemCollectionController;
+    SKUIItemList * _itemList;
+    SSVLoadURLOperation * _loadMoreOperation;
+    BOOL  _loadsMoreItems;
+    NSOperationQueue * _operationQueue;
+    BOOL  _requestedLoadMore;
+    float  _rowHeight;
+    int  _selectionStyle;
+    int  _separatorStyle;
+    BOOL  _suspended;
+    SKUIUber * _uber;
 }
 
 @property (nonatomic, retain) SKUIItemArtworkContext *artworkContext;
@@ -51,8 +51,6 @@
 - (void).cxx_destruct;
 - (void)_finishLoadMoreOperationWithItems:(id)arg1 error:(id)arg2;
 - (id)_itemCollectionController;
-- (id)_itemListCellForTableView:(id)arg1 indexPath:(id)arg2;
-- (id)_loadMoreCellForTableView:(id)arg1 indexPath:(id)arg2;
 - (void)_loadRemainingItemsWithPriority:(int)arg1;
 - (void)addItems:(id)arg1;
 - (id)artworkContext;
@@ -99,7 +97,6 @@
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSuspended:(BOOL)arg1;
 - (void)setUber:(id)arg1;
-- (BOOL)shouldCacheAheadWhenIdleForItemCollectionController:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(int)arg2 forRowAtIndexPath:(id)arg3;
@@ -112,6 +109,7 @@
 - (id)uber;
 - (void)unhideIcons;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })visibleItemRangeForItemCollectionController:(id)arg1;
 - (id)visibleMetricsImpressions;
 

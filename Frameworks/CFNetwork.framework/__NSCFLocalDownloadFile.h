@@ -3,12 +3,12 @@
  */
 
 @interface __NSCFLocalDownloadFile : NSObject {
-    int _error;
-    <__NSCFLocalDownloadFileOpener> *_fileProvider;
-    id /* block */ _finishCompletion;
-    BOOL _finished;
-    NSString *_path;
-    BOOL _skipUnlink;
+    int  _error;
+    <__NSCFLocalDownloadFileOpener> * _fileProvider;
+    id /* block */  _finishCompletion;
+    BOOL  _finished;
+    NSString * _path;
+    BOOL  _skipUnlink;
     struct stat { 
         int st_dev; 
         unsigned short st_mode; 
@@ -40,10 +40,10 @@
         unsigned int st_gen; 
         int st_lspare; 
         long long st_qspare[2]; 
-    } _stat;
-    BOOL _truncateFile;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_io> *_writeIO;
+    }  _stat;
+    BOOL  _truncateFile;
+    NSObject<OS_dispatch_queue> * _workQueue;
+    NSObject<OS_dispatch_io> * _writeIO;
 }
 
 @property int error;
@@ -64,6 +64,7 @@
 - (id)initTempFileWithDirectory:(id)arg1;
 - (id)initWithExistingFile:(id)arg1 expectedSize:(long long)arg2;
 - (id)initWithExistingUnopenableFile:(id)arg1 fileProvider:(id)arg2;
+- (id)initWithFullPath:(id)arg1;
 - (id)ioChannel;
 - (id)path;
 - (void)setError:(int)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface _UIStackedImageSingleNamedStack : NSObject <UINamedLayerStack> {
-    _UIStackedImageSingleNamedLayerImage *_layerImage;
+    _UIStackedImageSingleNamedLayerImage * _layerImage;
 }
 
 @property (readonly, copy) NSString *debugDescription;

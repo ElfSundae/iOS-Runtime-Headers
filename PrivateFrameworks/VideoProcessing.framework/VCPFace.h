@@ -12,12 +12,12 @@
             float width; 
             float height; 
         } size; 
-    } _bounds;
-    BOOL _leftEyeClosed;
-    BOOL _rightEyeClosed;
-    BOOL _smile;
-    int _trackID;
-    int _yaw;
+    }  _bounds;
+    BOOL  _leftEyeClosed;
+    BOOL  _rightEyeClosed;
+    BOOL  _smile;
+    int  _trackID;
+    int  _yaw;
 }
 
 @property struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } bounds;
@@ -32,7 +32,6 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })faceBoundsWithTransform:(unsigned long)arg1 height:(unsigned long)arg2 transform:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg3;
 - (unsigned int)flagsForOrientation:(BOOL)arg1 width:(unsigned long)arg2 height:(unsigned long)arg3;
 - (id)init;
-- (id)initWithFCRFace:(id)arg1;
 - (BOOL)leftEyeClosed;
 - (BOOL)rightEyeClosed;
 - (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

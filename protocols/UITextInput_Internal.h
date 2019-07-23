@@ -8,6 +8,7 @@
 - (unsigned long)_characterAfterCaretSelection;
 - (unsigned long)_characterBeforeCaretSelection;
 - (unsigned long)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned long)_characterInRelationToPosition:(UITextPosition *)arg1 amount:(int)arg2;
 - (unsigned long)_characterInRelationToRangedSelection:(int)arg1;
 - (UITextPosition *)_clampedpositionFromPosition:(UITextPosition *)arg1 offset:(int)arg2;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
@@ -59,6 +60,7 @@
 - (void)_scrollRectToVisible:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedNSRange;
+- (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedRangeWithinMarkedText;
 - (int)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;

@@ -3,10 +3,11 @@
  */
 
 @interface TSPPackageConverter : NSObject {
-    NSURL *_URL;
-    <TSPFileCoordinatorDelegate> *_fileCoordinatorDelegate;
-    BOOL _isCancelled;
-    TSPPackage *_package;
+    NSURL * _URL;
+    TSUExtendedAttributeCollection * _extendedAttributeCollection;
+    <TSPFileCoordinatorDelegate> * _fileCoordinatorDelegate;
+    BOOL  _isCancelled;
+    TSPPackage * _package;
 }
 
 @property (nonatomic, readonly) NSURL *URL;
@@ -17,14 +18,15 @@
 @property (nonatomic, readonly) int packageType;
 
 + (BOOL)convertDocumentAtURL:(id)arg1 toPackageType:(int)arg2 error:(id*)arg3;
-+ (id)newPackageConverterWithURL:(id)arg1;
++ (id)newPackageConverterWithURL:(id)arg1 error:(id*)arg2;
++ (id)newPackageConverterWithURL:(id)arg1 preserveExtendedAttributes:(BOOL)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (id)URL;
 - (BOOL)checkPassword:(id)arg1;
 - (BOOL)enumeratePackageEntriesWithZipArchive:(id)arg1 accessor:(id /* block */)arg2;
 - (id)init;
-- (id)initWithURL:(id)arg1 package:(id)arg2 fileCoordinatorDelegate:(id)arg3;
+- (id)initWithURL:(id)arg1 package:(id)arg2 fileCoordinatorDelegate:(id)arg3 preserveExtendedAttributes:(BOOL)arg4 error:(id*)arg5;
 - (BOOL)isCancelled;
 - (BOOL)isDocumentPropertiesPath:(id)arg1;
 - (BOOL)isObjectArchivePath:(id)arg1;

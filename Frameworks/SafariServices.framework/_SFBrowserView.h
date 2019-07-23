@@ -3,18 +3,19 @@
  */
 
 @interface _SFBrowserView : UIView {
-    float _bottomBarOffset;
-    UIView *_contentContainerView;
-    _SFCrashBanner *_crashBanner;
-    float _crashBannerOffset;
-    WKWebView *_currentWebView;
-    _SFNavigationBar *_navigationBar;
-    unsigned int _navigationBarBehavior;
-    _SFLinkPreviewHeader *_previewHeader;
-    UIView *_scrollToTopView;
-    BOOL _shouldUseScrollToTopView;
-    _SFBrowserToolbar *_toolbar;
-    float _topBarHeight;
+    float  _bottomBarOffset;
+    UIView * _contentContainerView;
+    _SFCrashBanner * _crashBanner;
+    float  _crashBannerOffset;
+    WKWebView * _currentWebView;
+    BOOL  _hasReceivedTouchEvents;
+    _SFNavigationBar * _navigationBar;
+    unsigned int  _navigationBarBehavior;
+    _SFLinkPreviewHeader * _previewHeader;
+    UIView * _scrollToTopView;
+    BOOL  _shouldUseScrollToTopView;
+    _SFBrowserToolbar * _toolbar;
+    float  _topBarHeight;
 }
 
 @property (nonatomic) float bottomBarOffset;
@@ -22,8 +23,10 @@
 @property (nonatomic, retain) _SFCrashBanner *crashBanner;
 @property (nonatomic) float crashBannerOffset;
 @property (nonatomic, readonly) WKWebView *currentWebView;
+@property (nonatomic, readonly) BOOL hasReceivedTouchEvents;
 @property (nonatomic, retain) _SFNavigationBar *navigationBar;
 @property (nonatomic) unsigned int navigationBarBehavior;
+@property (nonatomic, readonly) float navigationBarOffset;
 @property (nonatomic, retain) _SFLinkPreviewHeader *previewHeader;
 @property (nonatomic, readonly) UIView *scrollToTopView;
 @property (nonatomic) BOOL shouldUseScrollToTopView;
@@ -37,10 +40,13 @@
 - (id)crashBanner;
 - (float)crashBannerOffset;
 - (id)currentWebView;
+- (BOOL)hasReceivedTouchEvents;
+- (id)hitTest:(struct CGPoint { float x1; float x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)navigationBar;
 - (unsigned int)navigationBarBehavior;
+- (float)navigationBarOffset;
 - (id)previewHeader;
 - (id)scrollToTopView;
 - (void)setBottomBarOffset:(float)arg1;
@@ -55,6 +61,8 @@
 - (BOOL)shouldUseScrollToTopView;
 - (id)toolbar;
 - (float)topBarHeight;
+- (void)updateNavigationBarTintColor:(id)arg1;
 - (void)updatePreviewHeader;
+- (void)updateToolbarTintColor:(id)arg1;
 
 @end

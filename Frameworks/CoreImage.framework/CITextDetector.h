@@ -3,11 +3,11 @@
  */
 
 @interface CITextDetector : CIDetector {
-    float _height;
-    float _width;
-    CIContext *context;
-    NSMutableDictionary *featureOptions;
-    FKTextDetector *textDetector;
+    float  _height;
+    float  _width;
+    CIContext * context;
+    NSMutableDictionary * featureOptions;
+    FKTextDetector * textDetector;
 }
 
 @property (nonatomic, retain) CIContext *context;

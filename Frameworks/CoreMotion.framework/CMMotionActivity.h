@@ -15,7 +15,7 @@
         int exitState; 
         double estExitTime; 
         double startTime; 
-    } fState;
+    }  fState;
 }
 
 @property (nonatomic, readonly) BOOL automotive;

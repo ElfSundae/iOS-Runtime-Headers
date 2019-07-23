@@ -3,9 +3,9 @@
  */
 
 @interface PGChevronView : UIView {
-    UIView *_bottomView;
-    int _state;
-    UIView *_topView;
+    UIView * _bottomView;
+    int  _state;
+    UIView * _topView;
 }
 
 @property (nonatomic) int state;

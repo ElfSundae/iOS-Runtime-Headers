@@ -3,18 +3,16 @@
  */
 
 @interface _UIVisualEffectBackdropView : _UIVisualEffectSubview {
-    CAFilter *_blurFilter;
-    unsigned int _blurHardEdges;
-    float _blurRadius;
-    CAFilter *_colorOffsetFilter;
-    NSMutableArray *_pendingScaleTransitionBlocks;
-    CAFilter *_saturateFilter;
-    id _statisticsDelegate;
+    CAFilter * _blurFilter;
+    unsigned int  _blurHardEdges;
+    float  _blurRadius;
+    CAFilter * _colorOffsetFilter;
+    NSMutableArray * _pendingScaleTransitionBlocks;
+    CAFilter * _saturateFilter;
 }
 
 @property (nonatomic) unsigned int blurHardEdges;
 @property (nonatomic) float blurRadius;
-@property (nonatomic) id statisticsDelegate;
 
 + (id)_additionAnimationsKeys;
 + (Class)layerClass;
@@ -28,13 +26,10 @@
 - (void)_updateBackdropScaleWithSettingsDeferredIfNecessary:(id)arg1;
 - (void)applySettings:(id)arg1;
 - (id)backdropLayer;
-- (void)backdropLayerStatisticsDidChange:(id)arg1;
 - (unsigned int)blurHardEdges;
 - (float)blurRadius;
 - (void)setBlurHardEdges:(unsigned int)arg1;
 - (void)setBlurRadius:(float)arg1;
-- (void)setStatisticsDelegate:(id)arg1;
-- (id)statisticsDelegate;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

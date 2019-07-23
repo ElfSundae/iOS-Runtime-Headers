@@ -3,10 +3,10 @@
  */
 
 @interface GEOPlaceDataComponentCache : NSObject {
-    NSObject<OS_dispatch_queue> *_queue;
-    GEOPlaceDataDBReader *_reader;
-    int _resultProviderID;
-    GEOPlaceDataDBWriter *_writer;
+    NSObject<OS_dispatch_queue> * _queue;
+    GEOPlaceDataDBReader * _reader;
+    int  _resultProviderID;
+    GEOPlaceDataDBWriter * _writer;
 }
 
 @property (nonatomic, readonly) int resultProviderID;

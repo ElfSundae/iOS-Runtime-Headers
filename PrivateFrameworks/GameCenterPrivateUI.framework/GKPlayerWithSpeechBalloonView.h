@@ -3,10 +3,10 @@
  */
 
 @interface GKPlayerWithSpeechBalloonView : UIView {
-    GKSpeechBalloonBackgroundView *_balloonView;
-    UIView<GKPlayerPhotoContainer> *_photoView;
-    NSArray *_replaceableConstraints;
-    UITextView *_speechTextView;
+    GKSpeechBalloonBackgroundView * _balloonView;
+    UIView<GKPlayerPhotoContainer> * _photoView;
+    NSArray * _replaceableConstraints;
+    UITextView * _speechTextView;
 }
 
 @property (nonatomic, retain) GKSpeechBalloonBackgroundView *balloonView;

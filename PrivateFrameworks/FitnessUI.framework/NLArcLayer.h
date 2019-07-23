@@ -2,18 +2,22 @@
    Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
  */
 
-@interface NLArcLayer : CAShapeLayer {
-    float _arcStart;
+@interface NLArcLayer : CAShapeLayer <CALayerDelegate> {
+    float  _arcStart;
     struct CGPoint { 
         float x; 
         float y; 
-    } _center;
-    BOOL _needsRegeneration;
-    float _radius;
+    }  _center;
+    BOOL  _needsRegeneration;
+    float  _radius;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } center;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned int hash;
 @property (nonatomic) float radius;
+@property (readonly) Class superclass;
 
 - (void)_regeneratePath;
 - (id)actionForKey:(id)arg1;

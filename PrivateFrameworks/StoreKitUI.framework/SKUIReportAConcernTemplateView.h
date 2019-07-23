@@ -3,22 +3,22 @@
  */
 
 @interface SKUIReportAConcernTemplateView : SKUIViewReuseView <SKUIViewElementView, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate> {
-    UITextView *_commentView;
-    BOOL _commentViewElementPresent;
-    NSString *_commentViewPlaceholder;
-    UIColor *_commentViewTextColor;
-    NSArray *_concerns;
-    UITableView *_concernsTable;
-    UIScrollView *_containerView;
-    <SKUIReportAConcernTemplateViewDelegate> *_delegate;
-    UIView *_dividerCommentBottom;
-    UIView *_dividerCommentTop;
-    UIView *_dividerConcernsBottom;
-    UIView *_dividerConcernsTop;
-    UIFont *_elementFont;
-    UITextView *_headerView;
-    int _selectedIndex;
-    UITextView *_titleView;
+    UITextView * _commentView;
+    BOOL  _commentViewElementPresent;
+    NSString * _commentViewPlaceholder;
+    UIColor * _commentViewTextColor;
+    NSArray * _concerns;
+    UITableView * _concernsTable;
+    UIScrollView * _containerView;
+    <SKUIReportAConcernTemplateViewDelegate> * _delegate;
+    UIView * _dividerCommentBottom;
+    UIView * _dividerCommentTop;
+    UIView * _dividerConcernsBottom;
+    UIView * _dividerConcernsTop;
+    UIFont * _elementFont;
+    UITextView * _headerView;
+    int  _selectedIndex;
+    UITextView * _titleView;
 }
 
 @property (nonatomic, readonly) NSString *comment;

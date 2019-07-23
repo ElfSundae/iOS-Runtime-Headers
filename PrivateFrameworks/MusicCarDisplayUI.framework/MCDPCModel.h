@@ -3,22 +3,22 @@
  */
 
 @interface MCDPCModel : NSObject {
-    NSString *_bundleID;
-    NSMapTable *_identifiersToItems;
-    NSObject<OS_dispatch_queue> *_imageProcessingQueue;
+    NSString * _bundleID;
+    NSMapTable * _identifiersToItems;
+    NSObject<OS_dispatch_queue> * _imageProcessingQueue;
     struct CGSize { 
         float width; 
         float height; 
-    } _imageSize;
-    NSObject<OS_dispatch_group> *_mediaRemoteGroup;
-    NSObject<OS_dispatch_queue> *_mediaRemoteNotificationQueue;
-    BOOL _needsInvalidation;
-    unsigned long long _nextAllowedInvalidate;
-    unsigned long long _nextAllowedUpdate;
-    NSCache *_resizedImages;
-    MCDPCItem *_rootItem;
-    NSObject<OS_dispatch_queue> *_serialAccessQueue;
-    NSMutableSet *_updatedItems;
+    }  _imageSize;
+    NSObject<OS_dispatch_group> * _mediaRemoteGroup;
+    NSObject<OS_dispatch_queue> * _mediaRemoteNotificationQueue;
+    BOOL  _needsInvalidation;
+    unsigned long long  _nextAllowedInvalidate;
+    unsigned long long  _nextAllowedUpdate;
+    NSCache * _resizedImages;
+    MCDPCItem * _rootItem;
+    NSObject<OS_dispatch_queue> * _serialAccessQueue;
+    NSMutableSet * _updatedItems;
 }
 
 @property (nonatomic, readonly) NSString *appTitle;
@@ -42,10 +42,11 @@
 - (id)bundleID;
 - (id)containerForRoot;
 - (void)dealloc;
-- (id)errorWithDescription:(id)arg1 indexPath:(id)arg2;
 - (void)getChildrenAtIndexPath:(id)arg1 inRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 completion:(id /* block */)arg3;
+- (void)getChildrenSupportsPlaybackProgressForIndexPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)getCountOfChildrenAtIndexPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)getItemAtIndexPath:(id)arg1 completion:(id /* block */)arg2;
+- (void)getNowPlayingIdentifiersWithCompletion:(id /* block */)arg1;
 - (void)getRemoteAppIsPlaying:(id /* block */)arg1;
 - (id)imageForIdentifier:(id)arg1;
 - (struct CGSize { float x1; float x2; })imageSize;

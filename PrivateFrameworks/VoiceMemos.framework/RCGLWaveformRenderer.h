@@ -2,28 +2,28 @@
    Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
  */
 
-@interface RCGLWaveformRenderer : UIViewController <GLKViewDelegate, RCWaveformDataSourceObserver> {
-    RCUIConfiguration *_UIConfiguration;
-    BOOL _activeDisplayLinkRequired;
-    BOOL _buffersInitialized;
-    float _cachedContentWidth;
-    BOOL _centerKeylineRendered;
-    BOOL _contentWidthDirty;
-    float _dataPointWidth;
-    RCWaveformDataSource *_dataSource;
-    CADisplayLink *_displayLink;
-    NSTimer *_displayLinkTerminationTimer;
-    EAGLContext *_eaglContext;
-    int _foregroundColorUniform;
-    BOOL _frequentUpdatesSegmentUpdatesExpectedHint;
-    BOOL _hasDisplayedPreGLContentCenterline;
-    int _highlightColorTimelineRange;
-    int _highlightColorUniform;
+@interface RCGLWaveformRenderer : UIViewController <CAAnimationDelegate, GLKViewDelegate, RCWaveformDataSourceObserver> {
+    RCUIConfiguration * _UIConfiguration;
+    BOOL  _activeDisplayLinkRequired;
+    BOOL  _buffersInitialized;
+    float  _cachedContentWidth;
+    BOOL  _centerKeylineRendered;
+    BOOL  _contentWidthDirty;
+    float  _dataPointWidth;
+    RCWaveformDataSource * _dataSource;
+    CADisplayLink * _displayLink;
+    NSTimer * _displayLinkTerminationTimer;
+    EAGLContext * _eaglContext;
+    int  _foregroundColorUniform;
+    BOOL  _frequentUpdatesSegmentUpdatesExpectedHint;
+    BOOL  _hasDisplayedPreGLContentCenterline;
+    int  _highlightColorTimelineRange;
+    int  _highlightColorUniform;
     struct { 
         double beginTime; 
         double endTime; 
-    } _highlightTimeRange;
-    BOOL _isAnimatingModelview;
+    }  _highlightTimeRange;
+    BOOL  _isAnimatingModelview;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,36 +33,36 @@
             float width; 
             float height; 
         } size; 
-    } _lastViewportRect;
-    CALayer *_modelviewLayer;
-    int _modelviewUniform;
-    BOOL _needsVisibleRangeRendering;
-    BOOL _paused;
-    UIView *_preGLContentCenterline;
-    BOOL _preparedForRendering;
-    int _projectionUniform;
+    }  _lastViewportRect;
+    CALayer * _modelviewLayer;
+    int  _modelviewUniform;
+    BOOL  _needsVisibleRangeRendering;
+    BOOL  _paused;
+    UIView * _preGLContentCenterline;
+    BOOL  _preparedForRendering;
+    int  _projectionUniform;
     struct { 
         double beginTime; 
         double endTime; 
-    } _renderedTimeRange;
-    BOOL _renderedTimeRangeIsApproximatedWaveform;
-    unsigned int _renderedWaveformVertices;
-    <RCGLWaveformRendererDelegate> *_rendererDelegate;
-    unsigned int _shaderProgram;
-    BOOL _shadersInitialized;
-    float _spacingWidth;
-    unsigned int _vertexBuffers;
+    }  _renderedTimeRange;
+    BOOL  _renderedTimeRangeIsApproximatedWaveform;
+    unsigned int  _renderedWaveformVertices;
+    <RCGLWaveformRendererDelegate> * _rendererDelegate;
+    unsigned int  _shaderProgram;
+    BOOL  _shadersInitialized;
+    float  _spacingWidth;
+    unsigned int  _vertexBuffers;
     struct { 
         double beginTime; 
         double endTime; 
-    } _visibleTimeRange;
+    }  _visibleTimeRange;
     struct vector<float, std::__1::allocator<float> > { 
         float *__begin_; 
         float *__end_; 
         struct __compressed_pair<float *, std::__1::allocator<float> > { 
             float *__first_; 
         } __end_cap_; 
-    } _waveformVertexData;
+    }  _waveformVertexData;
 }
 
 @property (nonatomic, copy) RCUIConfiguration *UIConfiguration;

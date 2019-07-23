@@ -3,7 +3,7 @@
  */
 
 @interface NSURLResponse : NSObject <NSCopying, NSSecureCoding> {
-    NSURLResponseInternal *_internal;
+    NSURLResponseInternal * _internal;
 }
 
 @property (readonly, copy) NSString *MIMEType;
@@ -42,9 +42,17 @@
 - (id)suggestedFilename;
 - (id)textEncodingName;
 
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (BOOL)sf_hasXMLAttachment;
+
 // Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
 
 - (id)_cacheTime;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
+- (BOOL)safari_hasAttachment;
 
 // Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
 
@@ -54,7 +62,7 @@
 
 // Image: /System/Library/PrivateFrameworks/WebUI.framework/WebUI
 
-- (id)webui_certificateChain;
+- (struct __SecTrust { }*)webui_serverTrust;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStore.framework/iTunesStore
 

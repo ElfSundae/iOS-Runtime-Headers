@@ -3,7 +3,7 @@
  */
 
 @interface CAMPanoramaLevelView : UIView {
-    UIView *_lineView;
+    UIView * _lineView;
 }
 
 @property (nonatomic, readonly) UIView *lineView;

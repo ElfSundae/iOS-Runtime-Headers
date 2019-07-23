@@ -3,13 +3,13 @@
  */
 
 @interface MKStarRatingAndLabelView : UIView {
-    BOOL _displaysSourceOfReviews;
-    NSString *_fontStyleOverride;
-    unsigned int _numberOfReviews;
-    UILabel *_reviewsLabel;
-    NSArray *_reviewsLabelConstraints;
-    NSString *_sourceName;
-    MKStarRatingView *_starRatingView;
+    BOOL  _displaysSourceOfReviews;
+    NSString * _fontStyleOverride;
+    unsigned int  _numberOfReviews;
+    _MKUILabel * _reviewsLabel;
+    NSArray * _reviewsLabelConstraints;
+    NSString * _sourceName;
+    MKStarRatingView * _starRatingView;
 }
 
 @property (nonatomic, retain) NSString *fontStyleOverride;
@@ -17,6 +17,12 @@
 @property (nonatomic, readonly) UILabel *reviewsLabel;
 @property (nonatomic, retain) NSString *sourceName;
 @property (nonatomic, readonly) MKStarRatingView *starRatingView;
+
++ (id)ratingAndReviewsAsAttributedString:(float)arg1 style:(int)arg2 font:(id)arg3 numberOfReviews:(unsigned int)arg4 textColor:(id)arg5;
++ (id)ratingAndReviewsAsAttributedString:(float)arg1 style:(int)arg2 font:(id)arg3 numberOfReviews:(unsigned int)arg4 textColor:(id)arg5 theme:(id)arg6;
++ (id)reviewsString:(unsigned int)arg1 providerName:(id)arg2;
++ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(BOOL)arg4;
++ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(BOOL)arg4 theme:(id)arg5;
 
 - (void).cxx_destruct;
 - (void)_mapkit_setCalloutTextColor:(id)arg1;

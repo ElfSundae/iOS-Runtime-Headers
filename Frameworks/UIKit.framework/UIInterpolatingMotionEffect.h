@@ -3,12 +3,12 @@
  */
 
 @interface UIInterpolatingMotionEffect : UIMotionEffect {
-    float _horizontalAccelerationBoostFactor;
-    NSString *_keyPath;
-    id _maximumRelativeValue;
-    id _minimumRelativeValue;
-    int _type;
-    float _verticalAccelerationBoostFactor;
+    float  _horizontalAccelerationBoostFactor;
+    NSString * _keyPath;
+    id  _maximumRelativeValue;
+    id  _minimumRelativeValue;
+    int  _type;
+    float  _verticalAccelerationBoostFactor;
 }
 
 @property (nonatomic, readonly) NSString *keyPath;

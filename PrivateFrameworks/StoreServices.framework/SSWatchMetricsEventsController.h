@@ -3,8 +3,8 @@
  */
 
 @interface SSWatchMetricsEventsController : NSObject {
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    SSWatchMetricsEventTable *_table;
+    NSObject<OS_dispatch_queue> * _serialQueue;
+    SSWatchMetricsEventTable * _table;
 }
 
 @property (readonly) NSObject<OS_dispatch_queue> *serialQueue;

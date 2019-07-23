@@ -3,22 +3,22 @@
  */
 
 @interface UIPrintInteractionController : NSObject {
-    unsigned int _backgroundTaskIdentifier;
-    id /* block */ _completionHandler;
-    <UIPrintInteractionControllerDelegate> *_delegate;
-    BOOL _hidesNumberOfCopies;
-    NSObject<OS_dispatch_queue> *_previewQueue;
-    <UIPrintInteractionControllerDelegate> *_printActivityDelegate;
-    UIPrintFormatter *_printFormatter;
-    UIPrintInfo *_printInfo;
-    UIPrintPageRenderer *_printPageRenderer;
-    UIPrintPaper *_printPaper;
-    id _printState;
-    id _printingItem;
-    NSArray *_printingItems;
-    BOOL _showsPageRange;
-    BOOL _showsPaperSelectionForLoadedPapers;
-    id _temporaryRetainCycle;
+    unsigned int  _backgroundTaskIdentifier;
+    id /* block */  _completionHandler;
+    <UIPrintInteractionControllerDelegate> * _delegate;
+    BOOL  _hidesNumberOfCopies;
+    NSObject<OS_dispatch_queue> * _previewQueue;
+    <UIPrintInteractionControllerDelegate> * _printActivityDelegate;
+    UIPrintFormatter * _printFormatter;
+    UIPrintInfo * _printInfo;
+    UIPrintPageRenderer * _printPageRenderer;
+    UIPrintPaper * _printPaper;
+    id  _printState;
+    id  _printingItem;
+    NSArray * _printingItems;
+    BOOL  _showsPageRange;
+    BOOL  _showsPaperSelectionForLoadedPapers;
+    id  _temporaryRetainCycle;
 }
 
 @property (nonatomic) <UIPrintInteractionControllerDelegate> *delegate;
@@ -46,6 +46,7 @@
 - (void).cxx_destruct;
 - (BOOL)_canPrintPDFData:(id)arg1;
 - (BOOL)_canPrintPDFURL:(id)arg1;
+- (BOOL)_canShowAnnotations;
 - (BOOL)_canShowColor;
 - (BOOL)_canShowCopies;
 - (BOOL)_canShowDuplex;

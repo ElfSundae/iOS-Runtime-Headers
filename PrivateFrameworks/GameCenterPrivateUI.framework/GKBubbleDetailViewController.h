@@ -3,32 +3,32 @@
  */
 
 @interface GKBubbleDetailViewController : GKCenteredContentViewController {
-    NSArray *_activeConstraints;
-    UIActivityViewController *_activityViewController;
-    GKHorizontalBubbleControlsView *_bubblesView;
-    NSLayoutConstraint *_bubblesViewTopPortraitConstraint;
-    NSLayoutConstraint *_containerViewBottomPortraitConstraint;
-    GKLabel *_descriptionLabel;
-    BOOL _didFloatInBubbles;
-    BOOL _didTransition;
-    GKLabel *_disabledFunctionalityLabel;
-    UIImageView *_iconView;
-    NSLayoutConstraint *_iconViewTopConstraint;
-    NSArray *_landscapeConstraints;
-    GKPlayerWithSpeechBalloonView *_playerWithSpeechView;
-    NSLayoutConstraint *_playerWithSpeechViewTopShowsPlayerConstraint;
-    NSArray *_portraitConstraints;
-    BOOL _showDescriptionView;
-    BOOL _showPlayerWithSpeechView;
+    NSArray * _activeConstraints;
+    UIActivityViewController * _activityViewController;
+    GKHorizontalBubbleControlsView * _bubblesView;
+    NSLayoutConstraint * _bubblesViewTopPortraitConstraint;
+    NSLayoutConstraint * _containerViewBottomPortraitConstraint;
+    GKLabel * _descriptionLabel;
+    BOOL  _didFloatInBubbles;
+    BOOL  _didTransition;
+    GKLabel * _disabledFunctionalityLabel;
+    UIImageView * _iconView;
+    NSLayoutConstraint * _iconViewTopConstraint;
+    NSArray * _landscapeConstraints;
+    GKPlayerWithSpeechBalloonView * _playerWithSpeechView;
+    NSLayoutConstraint * _playerWithSpeechViewTopShowsPlayerConstraint;
+    NSArray * _portraitConstraints;
+    BOOL  _showDescriptionView;
+    BOOL  _showPlayerWithSpeechView;
     struct CGSize { 
         float width; 
         float height; 
-    } _sizeUsedForBubbleAdjustment;
-    GKLabel *_subtitleLabel;
-    NSLayoutConstraint *_subtitleLabelFirstBaselineBaseConstraint;
-    GKLabel *_titleLabel;
-    NSLayoutConstraint *_titleLabelFirstBaselineBaseConstraint;
-    UIView *_viewAboveBubbles;
+    }  _sizeUsedForBubbleAdjustment;
+    GKLabel * _subtitleLabel;
+    NSLayoutConstraint * _subtitleLabelFirstBaselineBaseConstraint;
+    GKLabel * _titleLabel;
+    NSLayoutConstraint * _titleLabelFirstBaselineBaseConstraint;
+    UIView * _viewAboveBubbles;
 }
 
 @property (nonatomic, retain) NSArray *activeConstraints;

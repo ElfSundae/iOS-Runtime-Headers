@@ -3,26 +3,27 @@
  */
 
 @interface UIKBTextStyle : NSObject <NSCopying> {
-    int _anchorCorner;
-    NSString *_etchColor;
+    int  _anchorCorner;
+    NSString * _etchColor;
     struct CGPoint { 
         float x; 
         float y; 
-    } _etchOffset;
-    NSString *_fontName;
-    float _fontSize;
-    float _fontWeight;
-    BOOL _ignoreTextMarginOnKey;
-    float _kerning;
-    float _minFontSize;
-    float _pathWeight;
-    int _selector;
-    NSString *_textColor;
+    }  _etchOffset;
+    NSString * _fontName;
+    float  _fontSize;
+    float  _fontWeight;
+    BOOL  _ignoreTextMarginOnKey;
+    float  _imageScale;
+    float  _kerning;
+    float  _minFontSize;
+    float  _pathWeight;
+    int  _selector;
+    NSString * _textColor;
     struct CGPoint { 
         float x; 
         float y; 
-    } _textOffset;
-    float _textOpacity;
+    }  _textOffset;
+    float  _textOpacity;
 }
 
 @property (nonatomic) int anchorCorner;
@@ -32,6 +33,7 @@
 @property (nonatomic) float fontSize;
 @property (nonatomic) float fontWeight;
 @property (nonatomic) BOOL ignoreTextMarginOnKey;
+@property (nonatomic) float imageScale;
 @property (nonatomic) float kerning;
 @property (nonatomic) float minFontSize;
 @property (nonatomic) float pathWeight;
@@ -53,6 +55,7 @@
 - (float)fontSize;
 - (float)fontWeight;
 - (BOOL)ignoreTextMarginOnKey;
+- (float)imageScale;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (float)kerning;
@@ -67,6 +70,7 @@
 - (void)setFontSize:(float)arg1;
 - (void)setFontWeight:(float)arg1;
 - (void)setIgnoreTextMarginOnKey:(BOOL)arg1;
+- (void)setImageScale:(float)arg1;
 - (void)setKerning:(float)arg1;
 - (void)setMinFontSize:(float)arg1;
 - (void)setPathWeight:(float)arg1;

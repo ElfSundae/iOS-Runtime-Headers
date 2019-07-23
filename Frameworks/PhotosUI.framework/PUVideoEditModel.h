@@ -16,16 +16,16 @@
             unsigned int flags; 
             long long epoch; 
         } duration; 
-    } _initialSlomoRegion;
-    BOOL _isSlomo;
-    PFVideoAVObjectBuilder *_videoBuilder;
-    double _videoDuration;
-    double _videoEndTime;
+    }  _initialSlomoRegion;
+    BOOL  _isSlomo;
+    PFVideoAVObjectBuilder * _videoBuilder;
+    double  _videoDuration;
+    double  _videoEndTime;
     struct CGSize { 
         float width; 
         float height; 
-    } _videoSize;
-    double _videoStartTime;
+    }  _videoSize;
+    double  _videoStartTime;
 }
 
 @property (nonatomic, readonly) BOOL hasDefaultSlomoRegions;
@@ -45,6 +45,7 @@
 @property (nonatomic) double videoStartTime;
 
 - (void).cxx_destruct;
+- (BOOL)_isTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 equivalentToTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2 epsilon:(double)arg3;
 - (BOOL)hasDefaultSlomoRegions;
 - (BOOL)hasEdits;
 - (BOOL)hasSlomoRegionEdits;

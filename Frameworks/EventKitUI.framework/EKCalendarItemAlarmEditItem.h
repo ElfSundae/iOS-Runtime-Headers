@@ -3,19 +3,17 @@
  */
 
 @interface EKCalendarItemAlarmEditItem : EKCalendarItemEditItem {
-    CalendarEventAlarmTable *_alarmTable;
-    NSArray *_alarms;
-    EKAlarmsViewModel *_alarmsViewModel;
-    BOOL _canHaveLeaveNowAlarm;
-    unsigned int _disclosedSubitem;
-    BOOL _hasLeaveNowAlarm;
-    int _lastSeenAllDayState;
-    BOOL _userChangedAlarm;
+    CalendarEventAlarmTable * _alarmTable;
+    NSArray * _alarms;
+    EKAlarmsViewModel * _alarmsViewModel;
+    BOOL  _canHaveLeaveNowAlarm;
+    unsigned int  _disclosedSubitem;
+    BOOL  _hasLeaveNowAlarm;
+    int  _lastSeenAllDayState;
+    BOOL  _userChangedAlarm;
 }
 
 @property (nonatomic, retain) EKAlarmsViewModel *alarmsViewModel;
-
-+ (id)_labelTextForIndex:(unsigned int)arg1;
 
 - (void).cxx_destruct;
 - (BOOL)_alarmsMatchCalendarItem;

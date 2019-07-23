@@ -3,9 +3,9 @@
  */
 
 @interface WebAppViewController : UIViewController {
-    BOOL _setupRootViewColor;
-    unsigned int _statusBarStyle;
-    WebAppController *_webAppController;
+    BOOL  _setupRootViewColor;
+    unsigned int  _statusBarStyle;
+    WebAppController * _webAppController;
 }
 
 @property (nonatomic) unsigned int statusBarStyle;

@@ -3,34 +3,34 @@
  */
 
 @interface SKUIScrollingSegmentedController : SKUIViewController <SKUIProxyScrollViewDelegate, SKUIScrollingSegmentedControllerCollectionViewDelegate, SKUIScrollingSegmentedControllerItemContextDelegate, SKUIScrollingTabAppearanceStatusObserver, SKUIScrollingTabNestedPagedScrolling, SKUIViewControllerWithFocusedViewController, UICollectionViewDataSource, UICollectionViewDelegate> {
-    SKUIScrollingSegmentedControllerCollectionView *_contentCollectionView;
+    SKUIScrollingSegmentedControllerCollectionView * _contentCollectionView;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentCollectionViewItemSize;
-    <SKUIScrollingSegmentedControllerDelegate> *_delegate;
-    unsigned int _focusedViewControllerIndex;
-    float _maximumContentWidth;
-    SKUIScrollingSegmentedControllerNavigationBarTitleView *_navigationBarTitleView;
-    SKUIProxyScrollView *_proxyScrollView;
+    }  _contentCollectionViewItemSize;
+    <SKUIScrollingSegmentedControllerDelegate> * _delegate;
+    unsigned int  _focusedViewControllerIndex;
+    float  _maximumContentWidth;
+    SKUIScrollingSegmentedControllerNavigationBarTitleView * _navigationBarTitleView;
+    SKUIProxyScrollView * _proxyScrollView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _proxyScrollViewContentInsetAdjustment;
-    BOOL _scrollEnabled;
+    }  _proxyScrollViewContentInsetAdjustment;
+    BOOL  _scrollEnabled;
     struct { 
         float progress; 
         BOOL isBouncingOffTheEdge; 
-    } _scrollingTabAppearanceStatus;
-    NSMutableArray *_titleObservingViewControllers;
-    SKUIInteractiveSegmentedControl *_titlesSegmentedControl;
-    BOOL _viewBackgroundIsWhite;
-    NSMapTable *_viewControllerToItemContext;
-    NSArray *_viewControllers;
-    BOOL _wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
-    BOOL _wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
+    }  _scrollingTabAppearanceStatus;
+    NSMutableArray * _titleObservingViewControllers;
+    SKUIInteractiveSegmentedControl * _titlesSegmentedControl;
+    BOOL  _viewBackgroundIsWhite;
+    NSMapTable * _viewControllerToItemContext;
+    NSArray * _viewControllers;
+    BOOL  _wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
+    BOOL  _wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
 }
 
 @property (readonly, copy) NSString *debugDescription;

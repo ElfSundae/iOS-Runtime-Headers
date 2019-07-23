@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UIControl : UIView {
+@interface UIControl : UIView <SKUIAdvertisingPrivacyControlProtocol> {
     struct { 
         unsigned int disabled : 1; 
         unsigned int tracking : 1; 
@@ -19,21 +19,28 @@
         unsigned int horizontalAlignment : 2; 
         unsigned int wasLastHighlightSuccessful : 1; 
         unsigned int touchHasHighlighted : 1; 
-    } _controlFlags;
-    double _downTime;
+    }  _controlFlags;
+    double  _downTime;
     struct CGPoint { 
         float x; 
         float y; 
-    } _previousPoint;
-    NSMutableArray *_targetActions;
+    }  _previousPoint;
+    NSMutableArray * _targetActions;
 }
 
+@property (nonatomic, retain) NSString *adPrivacyData;
+@property (nonatomic, readonly) unsigned int allControlEvents;
+@property (nonatomic, readonly) NSSet *allTargets;
 @property (nonatomic) int contentHorizontalAlignment;
 @property (nonatomic) int contentVerticalAlignment;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic) BOOL enabled;
+@property (readonly) unsigned int hash;
 @property (getter=isHighlighted, nonatomic) BOOL highlighted;
 @property (getter=isSelected, nonatomic) BOOL selected;
 @property (nonatomic, readonly) unsigned int state;
+@property (readonly) Class superclass;
 @property (getter=isTouchInside, nonatomic, readonly) BOOL touchInside;
 @property (getter=isTracking, nonatomic, readonly) BOOL tracking;
 
@@ -123,8 +130,17 @@
 
 - (void)_cnui_super_touchesCancelled:(id)arg1 withEvent:(id)arg2;
 
+// Image: /System/Library/Frameworks/MapKit.framework/MapKit
+
+- (void)_mapkit_setTarget:(id)arg1 action:(SEL)arg2;
+
 // Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
 
 - (void)music_configureControlWithTextDescriptor:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
+- (id)adPrivacyData;
+- (void)setAdPrivacyData:(id)arg1;
 
 @end

@@ -3,28 +3,28 @@
  */
 
 @interface CNContactGridCell : UICollectionViewCell {
-    NSArray *_actionCategories;
-    CNContactGridClippingView *_actionsClippingView;
-    UIView *_actionsContainerView;
-    CNQuickActionsManager *_actionsManager;
-    CNQuickActionsView *_actionsView;
+    NSArray * _actionCategories;
+    CNContactGridClippingView * _actionsClippingView;
+    UIView * _actionsContainerView;
+    CNQuickActionsManager * _actionsManager;
+    CNQuickActionsView * _actionsView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _avatarMargins;
+    }  _avatarMargins;
     struct CGSize { 
         float width; 
         float height; 
-    } _avatarSize;
-    CNAvatarView *_avatarView;
-    CNContactFormatter *_contactFormatter;
-    <CNAvatarViewDelegate><CNQuickActionsViewDelegate> *_delegate;
-    int _monogrammerStyle;
-    UILabel *_nameLabel;
-    NSDictionary *_nameTextAttributes;
-    BOOL _showsContactOnTap;
+    }  _avatarSize;
+    CNAvatarView * _avatarView;
+    CNContactFormatter * _contactFormatter;
+    <CNAvatarViewDelegate><CNQuickActionsViewDelegate> * _delegate;
+    int  _monogrammerStyle;
+    UILabel * _nameLabel;
+    NSDictionary * _nameTextAttributes;
+    BOOL  _showsContactOnTap;
 }
 
 @property (nonatomic, copy) NSArray *actionCategories;

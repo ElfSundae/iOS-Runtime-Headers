@@ -5,13 +5,17 @@
 
 @required
 
-- (BRCLocalContainer *)container;
-- (BOOL)isAlias;
+- (BRCClientZone *)clientZone;
+- (BOOL)isBRAlias;
 - (BOOL)isDead;
 - (BOOL)isDirectory;
 - (BOOL)isDocument;
+- (BOOL)isFSRoot;
+- (BOOL)isFinderBookmark;
 - (BOOL)isLive;
 - (BOOL)isPackage;
+- (BOOL)isSymLink;
+- (BOOL)isZoneRoot;
 - (BRCItemID *)itemID;
 - (NSNumber *)ownerKey;
 - (BRCServerZone *)serverZone;

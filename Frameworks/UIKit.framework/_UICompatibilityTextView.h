@@ -2,10 +2,10 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UICompatibilityTextView : UIScrollView <UIPreviewItemDelegate, UITextInput, UITextLinkInteraction, WebPolicyDelegate> {
-    id _private;
-    BOOL m_editing;
-    UIView *m_inputView;
+@interface _UICompatibilityTextView : UIScrollView <UIPreviewItemDelegate, UITextInput, UITextLinkInteraction, WebEditingDelegate, WebPolicyDelegate> {
+    id  _private;
+    BOOL  m_editing;
+    UIView * m_inputView;
 }
 
 @property (nonatomic) BOOL allowsEditingTextAttributes;
@@ -23,10 +23,12 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
 @property (nonatomic, retain) UIFont *font;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
 @property (retain) UIView *inputAccessoryView;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
 @property (retain) UIView *inputView;
+@property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic) int keyboardAppearance;
 @property (nonatomic) int keyboardType;
 @property (nonatomic, readonly) UITextRange *markedTextRange;
@@ -41,6 +43,7 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic) int textAlignment;
 @property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, copy) NSString *textContentType;
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 @property (nonatomic, copy) NSDictionary *typingAttributes;
@@ -54,15 +57,14 @@
 - (void)_addShortcut:(id)arg1;
 - (unsigned int)_allowedLinkTypes;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
-- (id)_automationValue;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint { float x1; float x2; })arg2 type:(int*)arg3;
 - (void)_dealloc;
 - (void)_define:(id)arg1;
+- (BOOL)_freezeTextContainerSize;
 - (BOOL)_interactionShouldBeginFromPreviewItemController:(id)arg1 forPosition:(struct CGPoint { float x1; float x2; })arg2;
 - (void)_interactionStartedFromPreviewItemController:(id)arg1;
 - (void)_interactionStoppedFromPreviewItemController:(id)arg1;
 - (id)_keyboardResponder;
-- (void)_lookup:(struct CGPoint { float x1; float x2; })arg1;
 - (BOOL)_ownsInputAccessoryView;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_presentationRectsForPreviewItemController:(id)arg1;
@@ -73,6 +75,7 @@
 - (BOOL)_requiresKeyboardWhenFirstResponder;
 - (BOOL)_restoreFirstResponder;
 - (void)_setDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
+- (void)_setFreezeTextContainerSize:(BOOL)arg1;
 - (void)_share:(id)arg1;
 - (void)_showTextStyleOptions:(id)arg1;
 - (void)_transferAttribute:(id)arg1 fromString:(id)arg2 andSetPropertyWith:(SEL)arg3 usingValueClass:(Class)arg4;

@@ -3,21 +3,21 @@
  */
 
 @interface _UIDigitizerGestureRecognizerImp : NSObject {
-    <_UIDigitizerGestureRecognizerImpDelegate> *_delegate;
+    <_UIDigitizerGestureRecognizerImpDelegate> * _delegate;
     struct CGPoint { 
         float x; 
         float y; 
-    } _digitizerLocation;
-    double _lastRecognitionTime;
-    float _maximumPressDuration;
-    float _minimumPressDuration;
-    int _numberOfActiveTouches;
-    double _pressBeginTime;
-    double _pressEndTime;
-    double _pressEndToTouchBeginDuration;
-    NSTimer *_shortTimer;
-    double _touchEndTime;
-    double _touchEndToPressEndDuration;
+    }  _digitizerLocation;
+    double  _lastRecognitionTime;
+    float  _maximumPressDuration;
+    float  _minimumPressDuration;
+    int  _numberOfActiveTouches;
+    double  _pressBeginTime;
+    double  _pressEndTime;
+    double  _pressEndToTouchBeginDuration;
+    NSTimer * _shortTimer;
+    double  _touchEndTime;
+    double  _touchEndToPressEndDuration;
 }
 
 @property (nonatomic) <_UIDigitizerGestureRecognizerImpDelegate> *delegate;

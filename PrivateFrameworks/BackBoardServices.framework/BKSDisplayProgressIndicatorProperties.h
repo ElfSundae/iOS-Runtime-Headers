@@ -6,8 +6,8 @@
     struct CGPoint { 
         float x; 
         float y; 
-    } _position;
-    int _style;
+    }  _position;
+    int  _style;
 }
 
 @property (readonly, copy) NSString *debugDescription;

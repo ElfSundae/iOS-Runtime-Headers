@@ -3,26 +3,26 @@
  */
 
 @interface AVAssetWriterConfigurationState : NSObject {
-    NSURL *_URL;
-    NSURL *_directoryForTemporaryFiles;
-    NSArray *_inputGroups;
-    NSArray *_inputs;
-    AVMediaFileType *_mediaFileType;
-    NSArray *_metadataItems;
+    NSURL * _URL;
+    NSURL * _directoryForTemporaryFiles;
+    NSArray * _inputGroups;
+    NSArray * _inputs;
+    AVMediaFileType * _mediaFileType;
+    NSArray * _metadataItems;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _movieFragmentInterval;
-    int _movieTimeScale;
+    }  _movieFragmentInterval;
+    int  _movieTimeScale;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    } _overallDurationHint;
-    float _preferredRate;
+    }  _overallDurationHint;
+    float  _preferredRate;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -30,9 +30,9 @@
         float d; 
         float tx; 
         float ty; 
-    } _preferredTransform;
-    float _preferredVolume;
-    BOOL _shouldOptimizeForNetworkUse;
+    }  _preferredTransform;
+    float  _preferredVolume;
+    BOOL  _shouldOptimizeForNetworkUse;
 }
 
 @property (nonatomic, copy) NSURL *URL;

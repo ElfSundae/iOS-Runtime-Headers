@@ -3,7 +3,7 @@
  */
 
 @interface MRSendVoiceInputMessage : MRProtocolMessage {
-    MRAudioDataBlock *_dataBlock;
+    MRAudioDataBlock * _dataBlock;
 }
 
 @property (nonatomic, readonly) MRAudioBuffer *buffer;

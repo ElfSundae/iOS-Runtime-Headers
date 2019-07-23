@@ -3,7 +3,7 @@
  */
 
 @interface CKTranscriptReportSpamCell : CKTranscriptLabelCell {
-    UIButton *_reportSpamButton;
+    UIButton * _reportSpamButton;
 }
 
 @property (nonatomic, copy) NSAttributedString *attributedButtonText;
@@ -11,9 +11,11 @@
 
 + (id)reportSpamButton;
 
+- (void).cxx_destruct;
+- (void)addFilter:(id)arg1;
 - (id)attributedButtonText;
+- (void)clearFilters;
 - (void)configureForChatItem:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)layoutSubviewsForAlignmentContents;
 - (id)reportSpamButton;

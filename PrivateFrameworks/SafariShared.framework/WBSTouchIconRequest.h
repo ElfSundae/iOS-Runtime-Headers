@@ -2,7 +2,17 @@
    Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
  */
 
-@interface WBSTouchIconRequest : WBSSiteMetadataRequest
+@interface WBSTouchIconRequest : WBSSiteMetadataRequest {
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  _maximumIconSize;
+    struct CGSize { 
+        float width; 
+        float height; 
+    }  _minimumIconSize;
+    NSString * _monogramTitle;
+}
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } maximumIconSize;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } minimumIconSize;
@@ -10,7 +20,10 @@
 
 + (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize { float x1; float x2; })arg3 maximumIconSize:(struct CGSize { float x1; float x2; })arg4;
 
+- (void).cxx_destruct;
+- (unsigned int)hash;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize { float x1; float x2; })arg3 maximumIconSize:(struct CGSize { float x1; float x2; })arg4;
+- (BOOL)isEqual:(id)arg1;
 - (struct CGSize { float x1; float x2; })maximumIconSize;
 - (struct CGSize { float x1; float x2; })minimumIconSize;
 - (id)monogramTitle;

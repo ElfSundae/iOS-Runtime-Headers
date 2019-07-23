@@ -3,8 +3,8 @@
  */
 
 @interface GEOMapTransitGeometryFinder : GEOMapRequest {
-    GEOMapTileFinder *_tileFinder;
-    unsigned long long _transitID;
+    GEOMapTileFinder * _tileFinder;
+    unsigned long long  _transitID;
 }
 
 - (void)cancel;

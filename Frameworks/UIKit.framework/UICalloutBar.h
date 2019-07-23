@@ -3,9 +3,9 @@
  */
 
 @interface UICalloutBar : UIView {
-    int m_arrowDirection;
-    float m_availableSpaceOnLeft;
-    float m_availableSpaceOnRight;
+    int  m_arrowDirection;
+    float  m_availableSpaceOnLeft;
+    float  m_availableSpaceOnRight;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,45 +15,45 @@
             float width; 
             float height; 
         } size; 
-    } m_controlFrame;
-    NSDictionary *m_currentAppearOrFadeContext;
-    int m_currentPage;
-    NSMutableArray *m_currentSystemButtons;
-    id m_delegate;
-    BOOL m_didPromptForReplace;
-    NSMutableArray *m_extraButtons;
-    NSArray *m_extraItems;
-    BOOL m_fadeAfterCommand;
-    double m_fadedTime;
-    BOOL m_ignoreFade;
-    UICalloutBarButton *m_nextButton;
-    UICalloutBarBackground *m_overlay;
-    int m_pageCount;
+    }  m_controlFrame;
+    NSDictionary * m_currentAppearOrFadeContext;
+    int  m_currentPage;
+    NSMutableArray * m_currentSystemButtons;
+    id  m_delegate;
+    BOOL  m_didPromptForReplace;
+    NSMutableArray * m_extraButtons;
+    NSArray * m_extraItems;
+    BOOL  m_fadeAfterCommand;
+    double  m_fadedTime;
+    BOOL  m_ignoreFade;
+    UICalloutBarButton * m_nextButton;
+    UICalloutBarBackground * m_overlay;
+    int  m_pageCount;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_pointAboveControls;
+    }  m_pointAboveControls;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_pointBelowControls;
+    }  m_pointBelowControls;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_pointLeftOfControls;
+    }  m_pointLeftOfControls;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_pointRightOfControls;
-    UICalloutBarButton *m_previousButton;
-    BOOL m_recalcVisibleItems;
-    NSMutableArray *m_rectsToEvade;
-    NSArray *m_replacements;
-    id m_responderTarget;
-    BOOL m_showAllReplacements;
-    BOOL m_suppressesAppearance;
-    float m_supressedHorizontalMovementX;
-    BOOL m_supressesHorizontalMovement;
+    }  m_pointRightOfControls;
+    UICalloutBarButton * m_previousButton;
+    BOOL  m_recalcVisibleItems;
+    NSMutableArray * m_rectsToEvade;
+    NSArray * m_replacements;
+    id  m_responderTarget;
+    BOOL  m_showAllReplacements;
+    BOOL  m_suppressesAppearance;
+    float  m_supressedHorizontalMovementX;
+    BOOL  m_supressesHorizontalMovement;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -63,14 +63,14 @@
             float width; 
             float height; 
         } size; 
-    } m_supressesHorizontalMovementFrame;
-    NSArray *m_systemButtonDescriptions;
-    int m_targetDirection;
-    BOOL m_targetHorizontal;
+    }  m_supressesHorizontalMovementFrame;
+    NSArray * m_systemButtonDescriptions;
+    int  m_targetDirection;
+    BOOL  m_targetHorizontal;
     struct CGPoint { 
         float x; 
         float y; 
-    } m_targetPoint;
+    }  m_targetPoint;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -80,8 +80,8 @@
             float width; 
             float height; 
         } size; 
-    } m_targetRect;
-    NSString *m_untruncatedString;
+    }  m_targetRect;
+    NSString * m_untruncatedString;
 }
 
 @property (nonatomic) int arrowDirection;
@@ -112,6 +112,7 @@
 + (id)activeCalloutBar;
 + (void)fadeSharedCalloutBar;
 + (void)hideSharedCalloutBar;
++ (void)performWithoutAffectingSharedCalloutBar:(id /* block */)arg1;
 + (id)sharedCalloutBar;
 + (BOOL)sharedCalloutBarIsVisible;
 
@@ -182,6 +183,7 @@
 - (void)setUntruncatedString:(id)arg1;
 - (void)show;
 - (BOOL)showAllReplacements;
+- (void)shrinkButtonTextSize:(id)arg1;
 - (BOOL)suppressesAppearance;
 - (float)supressHorizontalXMovementIfNeededForPoint:(struct CGPoint { float x1; float x2; })arg1 proposedX:(float)arg2;
 - (BOOL)supressesHorizontalMovement;
@@ -202,6 +204,7 @@
 
 + (Class)safeCategoryBaseClass;
 
+- (void)_accessibilityAddSpeakItemToExtras:(id)arg1 selector:(SEL)arg2;
 - (void)buttonPressed:(id)arg1;
 - (void)fade;
 - (void)hide;

@@ -3,8 +3,8 @@
  */
 
 @interface AKFormFeatureSegmented : AKFormFeature {
-    AKFormFeatureLine *_baseline;
-    NSArray *_characterSegmentRects;
+    AKFormFeatureLine * _baseline;
+    NSArray * _characterSegmentRects;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } _enclosingRegionRect;
+    }  _enclosingRegionRect;
 }
 
 @property (nonatomic, retain) AKFormFeatureLine *baseline;

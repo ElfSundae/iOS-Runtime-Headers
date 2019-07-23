@@ -3,15 +3,15 @@
  */
 
 @interface UICollectionViewTransitionLayout : UICollectionViewLayout {
-    float _accuracy;
-    NSMutableArray *_appearingLayoutAttributes;
+    float  _accuracy;
+    NSMutableArray * _appearingLayoutAttributes;
     struct CGSize { 
         float width; 
         float height; 
-    } _contentSize;
-    NSMutableDictionary *_currentLayoutInfos;
-    NSMutableArray *_disappearingLayoutAttributes;
-    UICollectionViewLayout *_fromLayout;
+    }  _contentSize;
+    NSMutableDictionary * _currentLayoutInfos;
+    NSMutableArray * _disappearingLayoutAttributes;
+    UICollectionViewLayout * _fromLayout;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -21,10 +21,10 @@
             float width; 
             float height; 
         } size; 
-    } _fromVisibleBounds;
-    BOOL _haveValidInfos;
-    BOOL _layoutIsValid;
-    UICollectionViewLayout *_toLayout;
+    }  _fromVisibleBounds;
+    BOOL  _haveValidInfos;
+    BOOL  _layoutIsValid;
+    UICollectionViewLayout * _toLayout;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -34,9 +34,9 @@
             float width; 
             float height; 
         } size; 
-    } _toVisibleBounds;
-    NSMutableDictionary *_transitionInformationsDict;
-    float _transitionProgress;
+    }  _toVisibleBounds;
+    NSMutableDictionary * _transitionInformationsDict;
+    float  _transitionProgress;
 }
 
 @property (nonatomic, readonly) UICollectionViewLayout *currentLayout;

@@ -3,11 +3,11 @@
  */
 
 @interface __PGButton : UIButton {
-    _UIBackdropView *_backdropView;
-    UIImage *_backgroundImage;
-    int _buttonStyle;
-    UIImageView *_foregroundImageView;
-    UIImageView *_highlightImageView;
+    PGBackdropView * _backdropView;
+    UIImage * _backgroundImage;
+    int  _buttonStyle;
+    UIImageView * _foregroundImageView;
+    UIImageView * _highlightImageView;
 }
 
 @property (nonatomic, readonly) int buttonStyle;

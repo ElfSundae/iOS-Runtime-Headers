@@ -3,10 +3,10 @@
  */
 
 @interface AKColorPaletteView : UIControl <UICollectionViewDataSource, UICollectionViewDelegate> {
-    UICollectionView *_collectionView;
-    UIColor *_color;
-    NSArray *_colors;
-    int _scrollDirection;
+    UICollectionView * _collectionView;
+    UIColor * _color;
+    NSArray * _colors;
+    int  _scrollDirection;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;

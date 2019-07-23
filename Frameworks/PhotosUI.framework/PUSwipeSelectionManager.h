@@ -3,18 +3,18 @@
  */
 
 @interface PUSwipeSelectionManager : NSObject {
-    id __pausingChangesToken;
-    PUPhotoSelectionManager *__restorePhotoSelectionManager;
-    int __selectionMode;
-    NSIndexPath *__startingIndexPath;
-    <PUSwipeSelectionManagerDataSource> *_datasource;
-    <PUSwipeSelectionManagerDelegate> *_delegate;
-    struct NSMutableDictionary { Class x1; } *_oldIndexesPaths;
+    id  __pausingChangesToken;
+    PUPhotoSelectionManager * __restorePhotoSelectionManager;
+    int  __selectionMode;
+    NSIndexPath * __startingIndexPath;
+    <PUSwipeSelectionManagerDataSource> * _datasource;
+    <PUSwipeSelectionManagerDelegate> * _delegate;
+    struct NSMutableDictionary { Class x1; } * _oldIndexesPaths;
     struct CGPoint { 
         float x; 
         float y; 
-    } _screenTouchLocation;
-    PUAutoScroller *_selectionAutoScroller;
+    }  _screenTouchLocation;
+    PUAutoScroller * _selectionAutoScroller;
 }
 
 @property (setter=_setPausingChangesToken:, nonatomic, retain) id _pausingChangesToken;

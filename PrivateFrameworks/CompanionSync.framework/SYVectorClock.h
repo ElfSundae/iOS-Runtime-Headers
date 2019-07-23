@@ -3,11 +3,12 @@
  */
 
 @interface SYVectorClock : PBCodable <NSCopying> {
-    NSMutableArray *_clocks;
+    NSMutableArray * _clocks;
 }
 
 @property (nonatomic, retain) NSMutableArray *clocks;
 
++ (Class)clocksType;
 + (void)initialize;
 
 - (void).cxx_destruct;

@@ -3,9 +3,9 @@
  */
 
 @interface FBSSystemServiceFacilityClient : NSObject <FBSSystemServiceClient, FBSSystemServiceClientDelegate> {
-    FBSSystemServiceClient *_client;
-    NSString *_identifier;
-    NSObject<OS_dispatch_queue> *_queue;
+    FBSSystemServiceClient * _client;
+    NSString * _identifier;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly, retain) NSObject<OS_dispatch_queue> *calloutQueue;

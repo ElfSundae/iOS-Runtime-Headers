@@ -3,8 +3,8 @@
  */
 
 @interface FBSUIApplicationSystemService : NSObject {
-    <FBSUIApplicationSystemServiceDelegate> *_delegate;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
+    <FBSUIApplicationSystemServiceDelegate> * _delegate;
+    NSObject<OS_dispatch_queue> * _delegateQueue;
 }
 
 @property (nonatomic, readonly) double backgroundTimeRemaining;

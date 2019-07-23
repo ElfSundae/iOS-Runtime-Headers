@@ -3,14 +3,14 @@
  */
 
 @interface AAUIProfilePictureStore : NSObject {
-    ACAccount *_account;
-    ACAccountStore *_accountStore;
-    BOOL _didBeginUsingAddressBookSingleton;
-    AAGrandSlamSigner *_grandSlamSigner;
-    ABMonogrammer *_monogrammer;
-    NSOperationQueue *_networkingQueue;
-    float _pictureDiameter;
-    int _pictureStyle;
+    ACAccount * _account;
+    ACAccountStore * _accountStore;
+    BOOL  _didBeginUsingAddressBookSingleton;
+    AAGrandSlamSigner * _grandSlamSigner;
+    ABMonogrammer * _monogrammer;
+    NSOperationQueue * _networkingQueue;
+    float  _pictureDiameter;
+    int  _pictureStyle;
 }
 
 @property (nonatomic) float pictureDiameter;
@@ -19,12 +19,16 @@
 - (void).cxx_destruct;
 - (id)_correctlySizedImageFromImage:(id)arg1;
 - (id)_fallbackProfilePictureForPersonWithFirstName:(id)arg1 lastName:(id)arg2;
+- (void)_familyMember:(id)arg1 rawImageAndCropRect:(id /* block */)arg2;
 - (id)_familyMemberPersonPicture:(id)arg1;
+- (void)_fetchAndCacheRawImageAndCropRectWithRequest:(id)arg1 personID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_fetchProfilePictureForAccountOwnerFromServer:(id)arg1 serverCacheTag:(id)arg2 completion:(id /* block */)arg3;
 - (void)_fetchProfilePictureForFamilyMemberFromServer:(id)arg1 serverCacheTag:(id)arg2 completion:(id /* block */)arg3;
+- (void)_fetchProfilePictureSupersetWithRequest:(id)arg1 personID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_fetchProfilePictureWithRequest:(id)arg1 personID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_invalidateMonogrammer;
 - (id)_meCardPicture;
+- (void)_meCardRawImageAndCropRect:(id /* block */)arg1;
 - (id)_monogramPersonImage:(void*)arg1;
 - (id)_monogrammer;
 - (void*)_onAddressBookQueue_copyPersonWithImageDataMatchingFamilyMember:(id)arg1;
@@ -40,6 +44,8 @@
 - (void)dealloc;
 - (void)fetchProfilePictureForAccountOwner:(id /* block */)arg1;
 - (void)fetchProfilePictureForFamilyMember:(id)arg1 completion:(id /* block */)arg2;
+- (void)fetchRawImageAndCropRectForAccountOwner:(id /* block */)arg1;
+- (void)fetchRawImageAndCropRectForFamilyMember:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)initWithAppleAccount:(id)arg1 grandSlamAccount:(id)arg2 accountStore:(id)arg3;
 - (id)initWithAppleAccount:(id)arg1 store:(id)arg2;

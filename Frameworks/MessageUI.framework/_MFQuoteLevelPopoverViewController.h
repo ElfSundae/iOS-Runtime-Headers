@@ -3,7 +3,7 @@
  */
 
 @interface _MFQuoteLevelPopoverViewController : UITableViewController <UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
-    id /* block */ _decisionBlock;
+    id /* block */  _decisionBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

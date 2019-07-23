@@ -3,12 +3,12 @@
  */
 
 @interface UIPickerTableViewWrapperCell : UIPickerTableViewCell {
-    UIView *_wrappedView;
-    UIView *_wrappedViewContainer;
+    UIView * _wrappedView;
+    UIView * _wrappedViewContainer;
     struct CGSize { 
         float width; 
         float height; 
-    } _wrappedViewSize;
+    }  _wrappedViewSize;
 }
 
 @property (nonatomic, retain) UIView *wrappedView;

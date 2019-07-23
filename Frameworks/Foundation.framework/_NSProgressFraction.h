@@ -3,9 +3,9 @@
  */
 
 @interface _NSProgressFraction : NSObject <NSCopying, NSSecureCoding> {
-    long long _completed;
-    BOOL _overflowed;
-    long long _total;
+    long long  _completed;
+    BOOL  _overflowed;
+    long long  _total;
 }
 
 @property long long completed;

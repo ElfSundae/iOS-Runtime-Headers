@@ -3,17 +3,17 @@
  */
 
 @interface HKAxisStyle : NSObject <NSCopying> {
-    unsigned int _axisLabelPosition;
-    HKStrokeStyle *_axisLineStyle;
-    float _fillInnerPadding;
-    float _fillOuterPadding;
-    HKFillStyle *_fillStyle;
-    HKStrokeStyle *_gridLineStyle;
-    HKAxisLabelStyle *_labelStyle;
-    int _location;
-    BOOL _showGridLines;
-    unsigned int _tickPositions;
-    HKTickStyle *_tickStyle;
+    unsigned int  _axisLabelPosition;
+    HKStrokeStyle * _axisLineStyle;
+    float  _fillInnerPadding;
+    float  _fillOuterPadding;
+    HKFillStyle * _fillStyle;
+    HKStrokeStyle * _gridLineStyle;
+    HKAxisLabelStyle * _labelStyle;
+    int  _location;
+    BOOL  _showGridLines;
+    unsigned int  _tickPositions;
+    HKTickStyle * _tickStyle;
 }
 
 @property (nonatomic) unsigned int axisLabelPosition;

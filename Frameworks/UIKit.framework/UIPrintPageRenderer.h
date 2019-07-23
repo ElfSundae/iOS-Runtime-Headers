@@ -3,9 +3,9 @@
  */
 
 @interface UIPrintPageRenderer : NSObject {
-    int _cachedPageCount;
-    float _footerHeight;
-    float _headerHeight;
+    int  _cachedPageCount;
+    float  _footerHeight;
+    float  _headerHeight;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -15,9 +15,9 @@
             float width; 
             float height; 
         } size; 
-    } _paperRect;
-    struct CGContext { } *_printContext;
-    NSMutableArray *_printFormatters;
+    }  _paperRect;
+    struct CGContext { } * _printContext;
+    NSMutableArray * _printFormatters;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -27,11 +27,12 @@
             float width; 
             float height; 
         } size; 
-    } _printableRect;
+    }  _printableRect;
 }
 
 @property (nonatomic) float footerHeight;
 @property (nonatomic) float headerHeight;
+@property (nonatomic, readonly) int numberOfPages;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } paperRect;
 @property (nonatomic, copy) NSArray *printFormatters;
 @property (nonatomic) struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; } printableRect;

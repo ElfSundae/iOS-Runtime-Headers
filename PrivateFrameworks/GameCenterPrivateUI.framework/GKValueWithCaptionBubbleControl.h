@@ -3,15 +3,15 @@
  */
 
 @interface GKValueWithCaptionBubbleControl : GKBaseBubbleWithTextControl {
-    GKLabel *_captionLabel;
-    NSString *_captionText;
-    GKTextStyle *_normalCaptionStyle;
-    GKTextStyle *_normalValueStyle;
-    GKTextStyle *_overrideCaptionStyle;
-    GKTextStyle *_overrideValueStyle;
-    GKTextStyle *_smallValueStyle;
-    GKLabel *_valueLabel;
-    NSString *_valueText;
+    GKLabel * _captionLabel;
+    NSString * _captionText;
+    GKTextStyle * _normalCaptionStyle;
+    GKTextStyle * _normalValueStyle;
+    GKTextStyle * _overrideCaptionStyle;
+    GKTextStyle * _overrideValueStyle;
+    GKTextStyle * _smallValueStyle;
+    GKLabel * _valueLabel;
+    NSString * _valueText;
 }
 
 @property (nonatomic, retain) GKLabel *captionLabel;

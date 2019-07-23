@@ -3,13 +3,13 @@
  */
 
 @interface _HDKeyValueJournalEntry : HDJournalEntry {
-    int _category;
-    NSString *_domain;
-    NSString *_key;
-    NSDate *_modificationDate;
-    long long _provenance;
-    int _updatePolicy;
-    <NSSecureCoding> *_value;
+    int  _category;
+    NSString * _domain;
+    NSString * _key;
+    NSDate * _modificationDate;
+    long long  _provenance;
+    int  _updatePolicy;
+    <NSSecureCoding> * _value;
 }
 
 @property (nonatomic, readonly) int category;
@@ -20,8 +20,7 @@
 @property (nonatomic, readonly) int updatePolicy;
 @property (nonatomic, readonly) <NSSecureCoding> *value;
 
-+ (void)applyEntries:(id)arg1 withDaemon:(id)arg2;
-+ (int)behavior;
++ (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 
 - (void).cxx_destruct;

@@ -3,13 +3,14 @@
  */
 
 @interface CKPhotoPickerCollectionViewLayout : UICollectionViewFlowLayout {
-    BOOL _hideSelectionBadges;
-    <CKPhotoPickerCollectionViewLayoutDelegate> *_layoutDelegate;
+    BOOL  _hideSelectionBadges;
+    <CKPhotoPickerCollectionViewLayoutDelegate> * _layoutDelegate;
 }
 
 @property (nonatomic) BOOL hideSelectionBadges;
 @property (nonatomic) <CKPhotoPickerCollectionViewLayoutDelegate> *layoutDelegate;
 
+- (void).cxx_destruct;
 - (id)_badgeLayoutAttributesForItemLayoutAttributes:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_floatingSelectionBadgeFrameForItemFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 visibleItemFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2 atIndexPath:(id)arg3;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;

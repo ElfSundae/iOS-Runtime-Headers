@@ -3,9 +3,9 @@
  */
 
 @interface _CDPPredictionResult : NSObject {
-    NSArray *_rankedMembers;
-    NSMutableDictionary *_scoresForMembers;
-    float _weight;
+    NSArray * _rankedMembers;
+    NSMutableDictionary * _scoresForMembers;
+    float  _weight;
 }
 
 @property (retain) NSMutableDictionary *scoresForMembers;

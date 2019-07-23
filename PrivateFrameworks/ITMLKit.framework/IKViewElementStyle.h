@@ -3,11 +3,11 @@
  */
 
 @interface IKViewElementStyle : NSObject {
-    NSString *_classDescriptorString;
-    IKCSSRule *_cssRule;
-    BOOL _filterBlockedStyles;
-    NSArray *_mediaQueryList;
-    NSMutableDictionary *_styleDict;
+    NSString * _classDescriptorString;
+    IKCSSRule * _cssRule;
+    BOOL  _filterBlockedStyles;
+    NSArray * _mediaQueryList;
+    NSMutableDictionary * _styleDict;
 }
 
 @property (nonatomic, readonly) UIColor *backgroundColor;
@@ -101,6 +101,7 @@
 - (id)columnItemType;
 - (id)columnType;
 - (id)cssRule;
+- (id)debugDescription;
 - (id)description;
 - (id)dividerType;
 - (unsigned int)elementAlignment;
@@ -149,7 +150,7 @@
 - (id)valueForStyle:(id)arg1;
 - (id)visibility;
 
-// Image: /System/Library/PrivateFrameworks/MediaPlayerUI.framework/MediaPlayerUI
+// Image: /System/Library/PrivateFrameworks/VideosExtras.framework/VideosExtras
 
 + (id)positionConstraintsForView:(id)arg1 insets:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg2 position:(unsigned int)arg3;
 

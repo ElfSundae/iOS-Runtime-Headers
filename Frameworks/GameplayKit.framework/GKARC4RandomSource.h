@@ -3,8 +3,8 @@
  */
 
 @interface GKARC4RandomSource : GKRandomSource {
-    NSData *_seed;
-    struct Arc4State { unsigned int x1; unsigned int x2; char *x3; } *_state;
+    NSData * _seed;
+    struct Arc4State { unsigned int x1; unsigned int x2; char *x3; } * _state;
 }
 
 @property (nonatomic, copy) NSData *seed;

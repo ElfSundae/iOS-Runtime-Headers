@@ -3,8 +3,8 @@
  */
 
 @interface SL_OOPASpinnerTitle : UIView {
-    UIActivityIndicatorView *_spinner;
-    UILabel *_titleView;
+    UIActivityIndicatorView * _spinner;
+    UILabel * _titleView;
 }
 
 @property (nonatomic, copy) NSString *title;

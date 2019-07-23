@@ -3,29 +3,35 @@
  */
 
 @interface VK3DObjectSubTile : NSObject {
-    float _contentScale;
+    float  _contentScale;
     struct vector<VKBuildingHeightMap, std::__1::allocator<VKBuildingHeightMap> > { 
         struct { /* ? */ } *__begin_; 
         struct { /* ? */ } *__end_; 
         struct __compressed_pair<VKBuildingHeightMap *, std::__1::allocator<VKBuildingHeightMap> > { 
             struct { /* ? */ } *__first_; 
         } __end_cap_; 
-    } _heights;
-    GEOVectorTile *_modelTile;
-    NSMutableArray *_objectGroups;
-    VKSharedResources *_sharedResources;
-    struct shared_ptr<gss::StyleManager> { 
-        struct StyleManager {} *__ptr_; 
+    }  _heights;
+    GEOVectorTile * _modelTile;
+    struct vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup> > > { 
+        struct shared_ptr<md::ObjectGroup> {} *__begin_; 
+        struct shared_ptr<md::ObjectGroup> {} *__end_; 
+        struct __compressed_pair<std::__1::shared_ptr<md::ObjectGroup> *, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup> > > { 
+            struct shared_ptr<md::ObjectGroup> {} *__first_; 
+        } __end_cap_; 
+    }  _objectGroups;
+    VKSharedResources * _sharedResources;
+    struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { 
+        struct StylesheetManager<gss::PropertyID> {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
-    } _styleManager;
-    int _vectorType;
+    }  _styleManager;
+    int  _vectorType;
 }
 
 @property (nonatomic) float contentScale;
 @property (nonatomic, retain) GEOVectorTile *modelTile;
-@property (nonatomic, copy) NSArray *objectGroups;
+@property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{vector<std::__1::shared_ptr<md::ObjectGroup>' */ struct *objectGroups; /* unknown property attribute:  std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup> > >=^{shared_ptr<md::ObjectGroup>}}} */
 @property (nonatomic, retain) VKSharedResources *sharedResources;
-@property (nonatomic) struct shared_ptr<gss::StyleManager> { struct StyleManager {} *x1; struct __shared_weak_count {} *x2; } styleManager;
+@property (nonatomic) struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; } styleManager;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -36,16 +42,15 @@
 - (void)dealloc;
 - (void)fillShadowAreasInContext:(struct CGContext { }*)arg1;
 - (BOOL)heightAtPoint:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 outZ:(float*)arg2;
-- (id)initWithKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1 modelTile:(id)arg2 styleManager:(struct shared_ptr<gss::StyleManager> { struct StyleManager {} *x1; struct __shared_weak_count {} *x2; })arg3 sharedResources:(id)arg4 contentScale:(float)arg5;
+- (id)initWithKey:(const struct VKTileKey { unsigned int x1; int x2; int x3; unsigned int x4; }*)arg1 modelTile:(id)arg2 styleManager:(struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })arg3 sharedResources:(id)arg4 contentScale:(float)arg5;
 - (id)modelTile;
-- (id)objectGroups;
+- (struct vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup> > > { struct shared_ptr<md::ObjectGroup> {} *x1; struct shared_ptr<md::ObjectGroup> {} *x2; struct __compressed_pair<std::__1::shared_ptr<md::ObjectGroup> *, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup> > > { struct shared_ptr<md::ObjectGroup> {} *x_3_1_1; } x3; }*)objectGroups;
 - (void)setContentScale:(float)arg1;
 - (void)setModelTile:(id)arg1;
-- (void)setObjectGroups:(id)arg1;
 - (void)setSharedResources:(id)arg1;
-- (void)setStyleManager:(struct shared_ptr<gss::StyleManager> { struct StyleManager {} *x1; struct __shared_weak_count {} *x2; })arg1;
+- (void)setStyleManager:(struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (struct Box<float, 2> { struct Matrix<float, 2, 1> { float x_1_1_1[2]; } x1; struct Matrix<float, 2, 1> { float x_2_1_1[2]; } x2; })shadowBounds;
 - (id)sharedResources;
-- (struct shared_ptr<gss::StyleManager> { struct StyleManager {} *x1; struct __shared_weak_count {} *x2; })styleManager;
+- (struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })styleManager;
 
 @end

@@ -3,9 +3,9 @@
  */
 
 @interface PUPhotosSharingOptionView : UICollectionReusableView {
-    SEL _action;
-    id _target;
-    PLPhotoTileBadgeView *_toggleGlyphButton;
+    SEL  _action;
+    id  _target;
+    PLPhotoTileBadgeView * _toggleGlyphButton;
 }
 
 @property (getter=isEnabled, nonatomic) BOOL enabled;

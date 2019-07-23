@@ -3,7 +3,7 @@
  */
 
 @interface _PGPictureInPictureConnectionExportedObject : NSObject <PGPictureInPictureExportedInterface> {
-    PGPictureInPictureProxy *_pictureInPictureProxy;
+    PGPictureInPictureProxy * _pictureInPictureProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,7 +13,6 @@
 
 - (void).cxx_destruct;
 - (oneway void)actionButtonTapped;
-- (oneway void)controlsVisibilityChanged:(BOOL)arg1 animated:(BOOL)arg2 synchronizationFence:(id)arg3;
 - (void)dealloc;
 - (oneway void)hostedWindowSizeChangeBegan;
 - (oneway void)hostedWindowSizeChangeEnded;

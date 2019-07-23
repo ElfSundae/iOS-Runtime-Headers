@@ -3,9 +3,9 @@
  */
 
 @interface PHImageManager : NSObject <PHPhotoLibraryChangeObserver> {
-    id _cachedDomain;
-    unsigned int _managerID;
-    NSObject<OS_dispatch_source> *_memoryEventSource;
+    id  _cachedDomain;
+    unsigned int  _managerID;
+    NSObject<OS_dispatch_source> * _memoryEventSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;

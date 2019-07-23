@@ -3,18 +3,18 @@
  */
 
 @interface _UITextSelectionSettings : _UISettings {
-    NSNumber *_allowExtendingSelections;
-    float _allowableForceMovement;
-    float _allowableSeparation;
-    NSNumber *_enableDeepPress;
-    float _gain;
-    float _linear;
-    float _maxPinkWidth;
-    float _minPinkWidth;
-    float _parabolic;
-    float _pinkWidthFactor;
-    NSNumber *_shouldPreferEndOfWord;
-    NSNumber *_shouldUseAcceleration;
+    NSNumber * _allowExtendingSelections;
+    float  _allowableForceMovement;
+    float  _allowableSeparation;
+    NSNumber * _enableDeepPress;
+    float  _gain;
+    float  _linear;
+    float  _maxPinkWidth;
+    float  _minPinkWidth;
+    float  _parabolic;
+    float  _pinkWidthFactor;
+    NSNumber * _shouldPreferEndOfWord;
+    NSNumber * _shouldUseAcceleration;
 }
 
 @property (nonatomic, retain) NSNumber *allowExtendingSelections;
@@ -35,6 +35,7 @@
 - (id)allowExtendingSelections;
 - (float)allowableForceMovement;
 - (float)allowableSeparation;
+- (void)dealloc;
 - (id)enableDeepPress;
 - (float)gain;
 - (float)linear;

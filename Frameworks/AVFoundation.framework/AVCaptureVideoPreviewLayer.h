@@ -3,7 +3,7 @@
  */
 
 @interface AVCaptureVideoPreviewLayer : CALayer {
-    AVCaptureVideoPreviewLayerInternal *_internal;
+    AVCaptureVideoPreviewLayerInternal * _internal;
 }
 
 @property (nonatomic) BOOL automaticallyAdjustsMirroring;

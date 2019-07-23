@@ -3,15 +3,15 @@
  */
 
 @interface UIDocumentPickerViewController : UIViewController <_UIDocumentPickerRemoteViewControllerContaining> {
-    _UIResilientRemoteViewContainerViewController *_childViewController;
-    <UIDocumentPickerDelegate> *_delegate;
-    unsigned int _documentPickerMode;
-    BOOL _ignoreApplicationEntitlementForImport;
-    _UIRemoteViewService *_remoteViewService;
-    BOOL _sourceIsManaged;
-    NSMutableArray *_stitchingTokens;
-    NSURL *_uploadURL;
-    <UIDocumentPickerDelegate> *_weak_delegate;
+    _UIResilientRemoteViewContainerViewController * _childViewController;
+    <UIDocumentPickerDelegate> * _delegate;
+    unsigned int  _documentPickerMode;
+    BOOL  _ignoreApplicationEntitlementForImport;
+    _UIRemoteViewService * _remoteViewService;
+    BOOL  _sourceIsManaged;
+    NSMutableArray * _stitchingTokens;
+    NSURL * _uploadURL;
+    <UIDocumentPickerDelegate> * _weak_delegate;
 }
 
 @property (getter=_ignoreApplicationEntitlementForImport, setter=_setIgnoreApplicationEntitlementForImport:, nonatomic) BOOL _ignoreApplicationEntitlementForImport;

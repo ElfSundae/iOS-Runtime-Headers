@@ -3,11 +3,11 @@
  */
 
 @interface NSStringDrawingTextStorage : NSTextStorage <NSLayoutManagerDelegate> {
-    float _baselineDelta;
-    CUICatalog *_catalog;
-    NSConcreteNotifyingMutableAttributedString *_contents;
-    float _defaultTighteningFactor;
-    NSLayoutManager *_layoutManager;
+    float  _baselineDelta;
+    CUICatalog * _catalog;
+    NSConcreteNotifyingMutableAttributedString * _contents;
+    float  _defaultTighteningFactor;
+    NSLayoutManager * _layoutManager;
     struct { 
         unsigned int _typesetterBehavior : 4; 
         unsigned int _needToFlushCache : 1; 
@@ -15,9 +15,9 @@
         unsigned int _forceWordWrapping : 1; 
         unsigned int _usesSimpleTextEffects : 1; 
         unsigned int _reserved : 24; 
-    } _sdflags;
-    CUIStyleEffectConfiguration *_styleEffects;
-    NSTextContainer *_textContainer;
+    }  _sdflags;
+    CUIStyleEffectConfiguration * _styleEffects;
+    NSTextContainer * _textContainer;
 }
 
 @property (nonatomic, retain) CUICatalog *cuiCatalog;
@@ -53,6 +53,7 @@
 - (id)attributesAtIndex:(unsigned int)arg1 effectiveRange:(struct _NSRange { unsigned int x1; unsigned int x2; }*)arg2;
 - (id)cuiCatalog;
 - (id)cuiStyleEffects;
+- (void)dealloc;
 - (struct CGPoint { float x1; float x2; })defaultTextContainerOriginForRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (float)defaultTighteningFactor;
 - (void)drawTextContainer:(id)arg1 range:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2 withRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg3 graphicsContext:(struct CGContext { }*)arg4 baselineMode:(BOOL)arg5 scrollable:(BOOL)arg6 padding:(float)arg7;

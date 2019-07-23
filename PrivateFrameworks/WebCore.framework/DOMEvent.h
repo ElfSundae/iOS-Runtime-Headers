@@ -18,13 +18,14 @@
 - (BOOL)bubbles;
 - (BOOL)cancelBubble;
 - (BOOL)cancelable;
+- (BOOL)composed;
 - (id)currentTarget;
 - (void)dealloc;
 - (BOOL)defaultPrevented;
 - (unsigned short)eventPhase;
-- (void)finalize;
 - (void)initEvent:(id)arg1 :(BOOL)arg2 :(BOOL)arg3;
 - (void)initEvent:(id)arg1 canBubbleArg:(BOOL)arg2 cancelableArg:(BOOL)arg3;
+- (BOOL)isTrusted;
 - (void)preventDefault;
 - (BOOL)returnValue;
 - (void)setCancelBubble:(BOOL)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface SGCuratedEventKey : NSObject <SGEntityKey> {
-    NSString *_externalId;
+    NSString * _externalId;
 }
 
 @property (readonly, copy) NSString *debugDescription;

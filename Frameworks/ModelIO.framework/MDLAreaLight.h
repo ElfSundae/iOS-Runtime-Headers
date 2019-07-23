@@ -3,10 +3,9 @@
  */
 
 @interface MDLAreaLight : MDLPhysicallyPlausibleLight {
-    struct RTAreaLight { int (**x1)(); struct RTColor { int x_2_1_1; } x2; id x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; } *_areaLight;
-    float _areaRadius;
-    float _aspect;
-    void_superEllipticPower;
+    float  _areaRadius;
+    float  _aspect;
+    void _superEllipticPower;
 }
 
 @property (nonatomic) float areaRadius;

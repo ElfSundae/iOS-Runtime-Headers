@@ -6,7 +6,7 @@
     struct InodeDevPair { 
         int dev; 
         unsigned long long inode; 
-    } inodeDevPair;
+    }  inodeDevPair;
 }
 
 - (void)close;

@@ -3,14 +3,14 @@
  */
 
 @interface MPUSkipLimitView : UIView {
-    NSTimer *_hideTimer;
-    UILabel *_informationLabel;
+    NSTimer * _hideTimer;
+    UILabel * _informationLabel;
     struct { 
         int numberOfAvailableSkips; 
         int skipFrequency; 
         double skipInterval; 
-    } _skipLimit;
-    NSDictionary *_textAttributes;
+    }  _skipLimit;
+    NSDictionary * _textAttributes;
 }
 
 @property (nonatomic, readonly) UILabel *label;

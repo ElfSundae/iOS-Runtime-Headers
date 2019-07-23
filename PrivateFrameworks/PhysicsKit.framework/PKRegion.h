@@ -5,22 +5,22 @@
 @interface PKRegion : NSObject <NSCoding, NSCopying> {
     struct vec4 { 
         /* Warning: Unrecognized filer type: '}' using 'void*' */ void*v; 
-    } _halfExtent;
+    }  _halfExtent;
     struct vec4 { 
         /* Warning: Unrecognized filer type: '}' using 'void*' */ void*v; 
-    } _halfExtent2;
-    bool _isExclusive;
+    }  _halfExtent2;
+    bool  _isExclusive;
     struct shared_ptr<PKCPathHolder> { 
         struct PKCPathHolder {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
-    } _path;
+    }  _path;
     struct shared_ptr<PKCPathHolder> { 
         struct PKCPathHolder {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
-    } _path2;
-    int _regionOp;
-    int _shape;
-    int _shape2;
+    }  _path2;
+    int  _regionOp;
+    int  _shape;
+    int  _shape2;
 }
 
 @property (nonatomic, readonly) struct CGPath { }*path;

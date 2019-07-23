@@ -7,7 +7,7 @@
         float x; 
         float y; 
         float z; 
-    } fMagneticField;
+    }  fMagneticField;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

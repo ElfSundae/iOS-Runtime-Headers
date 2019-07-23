@@ -3,15 +3,15 @@
  */
 
 @interface SiriUIMapDetailsContainerView : UIView {
-    BOOL _autoCenteringDisabled;
+    BOOL  _autoCenteringDisabled;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _backgroundInsets;
-    UIView *_detailsView;
-    UIView *_mapView;
+    }  _backgroundInsets;
+    UIView * _detailsView;
+    UIView * _mapView;
 }
 
 @property (nonatomic) BOOL autoCenteringDisabled;

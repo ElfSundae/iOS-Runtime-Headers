@@ -3,12 +3,12 @@
  */
 
 @interface SBFMagnifyMode : NSObject <BSDescriptionProviding, NSCopying> {
-    NSString *_name;
+    NSString * _name;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    float _zoomFactor;
+    }  _size;
+    float  _zoomFactor;
 }
 
 @property (readonly, copy) NSString *debugDescription;

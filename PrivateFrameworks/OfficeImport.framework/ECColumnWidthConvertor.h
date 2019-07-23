@@ -3,7 +3,7 @@
  */
 
 @interface ECColumnWidthConvertor : NSObject {
-    int mMultiplier;
+    int  mMultiplier;
 }
 
 - (float)fontWidthAdjustmentFor:(id)arg1;

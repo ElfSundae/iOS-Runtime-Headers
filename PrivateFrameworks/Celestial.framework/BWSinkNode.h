@@ -3,14 +3,14 @@
  */
 
 @interface BWSinkNode : BWNode {
-    struct OpaqueFigSimpleMutex { } *_configurationHandlerLock;
-    NSMutableArray *_configurationLiveHandlers;
-    NSMutableArray *_configurationLiveIDs;
-    NSMutableArray *_handlersToCallWhenActive;
-    NSMutableArray *_handlersToCallWhenIdle;
-    long long _liveConfigurationID;
-    int _stateLock;
-    FigStateMachine *_stateMachine;
+    struct OpaqueFigSimpleMutex { } * _configurationHandlerLock;
+    NSMutableArray * _configurationLiveHandlers;
+    NSMutableArray * _configurationLiveIDs;
+    NSMutableArray * _handlersToCallWhenActive;
+    NSMutableArray * _handlersToCallWhenIdle;
+    long long  _liveConfigurationID;
+    int  _stateLock;
+    FigStateMachine * _stateMachine;
 }
 
 @property (readonly) NSString *currentStateDebugString;

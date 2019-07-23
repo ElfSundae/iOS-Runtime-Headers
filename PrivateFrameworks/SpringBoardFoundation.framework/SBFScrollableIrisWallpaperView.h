@@ -3,10 +3,10 @@
  */
 
 @interface SBFScrollableIrisWallpaperView : SBFScrollableStaticWallpaperView <ISPlayerViewDelegate, SBFIrisWallpaperView, UIGestureRecognizerDelegate> {
-    <SBFIrisWallpaperViewDelegate> *_irisDelegate;
-    int _playbackState;
-    ISPlayerView *_playerView;
-    AVAsset *_video;
+    <SBFIrisWallpaperViewDelegate> * _irisDelegate;
+    int  _playbackState;
+    ISPlayerView * _playerView;
+    AVAsset * _video;
 }
 
 @property (readonly, copy) NSString *debugDescription;

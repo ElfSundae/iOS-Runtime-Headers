@@ -3,8 +3,8 @@
  */
 
 @interface _HKCompoundBlockCoordinateList : HKGraphSeriesBlockCoordinateList {
-    HKValueRange *_chartableDateRange;
-    NSArray *_subCoordinates;
+    HKValueRange * _chartableDateRange;
+    NSArray * _subCoordinates;
 }
 
 - (void).cxx_destruct;

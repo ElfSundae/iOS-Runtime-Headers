@@ -3,9 +3,9 @@
  */
 
 @interface SUWebDocumentView : UIWebDocumentView <WebPolicyDelegate> {
-    unsigned int _adjustHeightToFit;
-    id _loadDelegate;
-    NSString *_stylesheet;
+    unsigned int  _adjustHeightToFit;
+    id  _loadDelegate;
+    NSString * _stylesheet;
 }
 
 @property (readonly, copy) NSString *debugDescription;

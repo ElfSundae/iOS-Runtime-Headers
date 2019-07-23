@@ -3,17 +3,17 @@
  */
 
 @interface SearchUIRowFormatter : NSObject {
-    BOOL _centerText;
-    UIFont *_descriptionFont;
-    UIFont *_footnoteFont;
-    float _interResultSpacing;
-    BOOL _requiresTwoLineTitles;
-    float _spacingBetweenDescriptionAndFootnote;
-    float _spacingBetweenDescriptions;
-    float _spacingBetweenTitleAndDescription;
-    float _spacingBetweenTitleAndTopView;
-    BOOL _thumbnailFillsWidth;
-    UIFont *_titleFont;
+    BOOL  _centerText;
+    UIFont * _descriptionFont;
+    UIFont * _footnoteFont;
+    float  _interResultSpacing;
+    BOOL  _requiresTwoLineTitles;
+    float  _spacingBetweenDescriptionAndFootnote;
+    float  _spacingBetweenDescriptions;
+    float  _spacingBetweenTitleAndDescription;
+    float  _spacingBetweenTitleAndTopView;
+    BOOL  _thumbnailFillsWidth;
+    UIFont * _titleFont;
 }
 
 @property BOOL centerText;

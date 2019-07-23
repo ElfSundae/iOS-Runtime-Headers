@@ -3,15 +3,16 @@
  */
 
 @interface WBSTemplateIconMonogramConfiguration : NSObject {
-    UIColor *_backgroundColor;
-    float _baselineOffset;
-    float _cornerRadius;
-    float _fontSize;
-    int _fontWeight;
+    UIColor * _backgroundColor;
+    float  _baselineOffset;
+    float  _cornerRadius;
+    float  _fontSize;
+    int  _fontWeight;
     struct CGSize { 
         float width; 
         float height; 
-    } _iconSize;
+    }  _iconSize;
+    BOOL  _skipMonogramGeneration;
 }
 
 @property (nonatomic, retain) UIColor *backgroundColor;
@@ -20,6 +21,7 @@
 @property (nonatomic) float fontSize;
 @property (nonatomic) int fontWeight;
 @property (nonatomic) struct CGSize { float x1; float x2; } iconSize;
+@property (nonatomic) BOOL skipMonogramGeneration;
 
 + (id)configurationWithBackgroundColor:(id)arg1;
 + (id)configurationWithIconSize:(struct CGSize { float x1; float x2; })arg1 fontSize:(float)arg2 fontWeight:(int)arg3 baselineOffset:(float)arg4 backgroundColor:(id)arg5 cornerRadius:(float)arg6;
@@ -37,5 +39,7 @@
 - (void)setFontSize:(float)arg1;
 - (void)setFontWeight:(int)arg1;
 - (void)setIconSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)setSkipMonogramGeneration:(BOOL)arg1;
+- (BOOL)skipMonogramGeneration;
 
 @end

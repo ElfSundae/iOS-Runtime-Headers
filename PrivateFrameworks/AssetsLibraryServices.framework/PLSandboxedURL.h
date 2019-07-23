@@ -3,7 +3,7 @@
  */
 
 @interface PLSandboxedURL : NSURL {
-    long long _sandboxExtensionHandle;
+    long long  _sandboxExtensionHandle;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

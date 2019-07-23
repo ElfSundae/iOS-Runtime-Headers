@@ -3,7 +3,7 @@
  */
 
 @interface CISampler : NSObject <NSCopying> {
-    void *_priv;
+    void * _priv;
 }
 
 @property (readonly) CIFilterShape *definition;
@@ -22,7 +22,6 @@
 - (id)definition;
 - (id)description;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })extent;
-- (void)finalize;
 - (id)init;
 - (id)initWithImage:(id)arg1;
 - (id)initWithImage:(id)arg1 keysAndValues:(id)arg2;

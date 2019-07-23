@@ -3,8 +3,8 @@
  */
 
 @interface UIPrinterSetupDisplayPINView : UIView {
-    UIButton *_nextButton;
-    UILabel *_titleLabel;
+    UIButton * _nextButton;
+    UILabel * _titleLabel;
 }
 
 @property (nonatomic, retain) UIButton *nextButton;

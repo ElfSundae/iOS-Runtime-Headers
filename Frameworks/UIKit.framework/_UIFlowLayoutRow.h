@@ -3,13 +3,13 @@
  */
 
 @interface _UIFlowLayoutRow : NSObject {
-    float _availableSpace;
-    BOOL _complete;
-    BOOL _fixedItemSize;
-    int _horizontalAlignement;
-    int _index;
-    BOOL _isValid;
-    NSMutableArray *_items;
+    float  _availableSpace;
+    BOOL  _complete;
+    BOOL  _fixedItemSize;
+    int  _horizontalAlignement;
+    int  _index;
+    BOOL  _isValid;
+    NSMutableArray * _items;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,13 +19,13 @@
             float width; 
             float height; 
         } size; 
-    } _rowFrame;
+    }  _rowFrame;
     struct CGSize { 
         float width; 
         float height; 
-    } _rowSize;
-    _UIFlowLayoutSection *_section;
-    int _verticalAlignement;
+    }  _rowSize;
+    _UIFlowLayoutSection * _section;
+    int  _verticalAlignement;
 }
 
 @property (nonatomic) float availableSpace;

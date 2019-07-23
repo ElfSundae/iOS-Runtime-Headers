@@ -3,33 +3,32 @@
  */
 
 @interface MusicEntityProductHeaderLockupView : MusicEntityAbstractLockupView <UITextViewDelegate> {
-    MPUTextButton *_addSongsButton;
-    UIView *_artworkEditingOverlayView;
-    _UIBackdropView *_backdropView;
-    UIView *_bottomHairlineView;
-    float _cachedTallestButtonHeight;
-    MusicNowPlayingFloatingButton *_cameraButton;
-    UIButton *_contextualActionsButton;
-    <MusicEntityProductHeaderLockupViewDelegate> *_delegate;
-    float _downloadProgress;
-    MusicDownloadProgressButton *_downloadProgressButton;
-    int _downloadProgressType;
-    MPUTextButton *_editButton;
-    NSString *_editableText;
-    UIView *_editableTextBottomHairlineView;
-    UILabel *_editableTextHeaderLabel;
-    UITextView *_editableTextPlaceholderView;
-    UITextView *_editableTextView;
-    BOOL _editableTitleShouldBecomeFirstResponder;
-    BOOL _editing;
-    UIButton *_likeDislikeButton;
-    int _likeDislikeButtonState;
-    MusicEntityViewProductHeaderLockupContentDescriptor *_productHeaderLockupContentDescriptor;
-    UIActivityIndicatorView *_refreshActivityIndicatorView;
-    UIButton *_refreshButton;
-    UIButton *_shareButton;
-    BOOL _shouldIgnoreArtworkImageChanges;
-    BOOL _shouldUpdateTallestButtonHeightCache;
+    MPUTextButton * _addSongsButton;
+    UIView * _artworkEditingOverlayView;
+    _UIBackdropView * _backdropView;
+    UIView * _bottomHairlineView;
+    float  _cachedTallestButtonHeight;
+    UIButton * _contextualActionsButton;
+    <MusicEntityProductHeaderLockupViewDelegate> * _delegate;
+    float  _downloadProgress;
+    MusicDownloadProgressButton * _downloadProgressButton;
+    int  _downloadProgressType;
+    MPUTextButton * _editButton;
+    NSString * _editableText;
+    UIView * _editableTextBottomHairlineView;
+    UILabel * _editableTextHeaderLabel;
+    UITextView * _editableTextPlaceholderView;
+    UITextView * _editableTextView;
+    BOOL  _editableTitleShouldBecomeFirstResponder;
+    BOOL  _editing;
+    UIButton * _likeDislikeButton;
+    int  _likeDislikeButtonState;
+    MusicEntityViewProductHeaderLockupContentDescriptor * _productHeaderLockupContentDescriptor;
+    UIActivityIndicatorView * _refreshActivityIndicatorView;
+    UIButton * _refreshButton;
+    UIButton * _shareButton;
+    BOOL  _shouldIgnoreArtworkImageChanges;
+    BOOL  _shouldUpdateTallestButtonHeightCache;
 }
 
 @property (nonatomic, readonly) UIButton *contextualActionsButton;
@@ -56,7 +55,6 @@
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_adjustAvailableContentBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forActionControl:(id)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_adjustAvailableContentBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 forActionView:(id)arg2;
 - (void)_artworkViewImageDidChange;
-- (void)_cameraButtonTapped:(id)arg1;
 - (void)_contentDescriptorDidChange:(id)arg1;
 - (void)_contextualActionsButtonTapped:(id)arg1;
 - (void)_downloadProgressButtonTapped:(id)arg1;
@@ -64,7 +62,6 @@
 - (id)_genericActionButtonWithImage:(id)arg1;
 - (id)_genericActionButtonWithImageName:(id)arg1;
 - (id)_genericActionButtonWithText:(id)arg1;
-- (void)_handlePlayButtonTappedWithAction:(unsigned int)arg1;
 - (void)_layoutButtonsWithAvailableContentBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 insetContentBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg2;
 - (void)_layoutEditingSubviews;
 - (void)_layoutEditingSubviewsForEditing:(BOOL)arg1 editingViewsAlpha:(float)arg2;

@@ -3,13 +3,13 @@
  */
 
 @interface _FBSqliteFrozenResultRow : FBSqliteResultRow {
-    unsigned int _count;
-    NSArray *_frozenColumnNames;
-    NSArray *_frozenDatas;
-    NSArray *_frozenDoubles;
-    NSArray *_frozenIntegers;
-    NSArray *_frozenObjects;
-    NSArray *_frozenStrings;
+    unsigned int  _count;
+    NSArray * _frozenColumnNames;
+    NSArray * _frozenDatas;
+    NSArray * _frozenDoubles;
+    NSArray * _frozenIntegers;
+    NSArray * _frozenObjects;
+    NSArray * _frozenStrings;
 }
 
 - (unsigned int)_indexForKey:(id)arg1;

@@ -2,70 +2,74 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UIStackedImageContainerLayer : CALayer {
-    BOOL _animatingToNormalState;
-    double _animationDelay;
-    UIView *_animationView;
-    _UIStackedImageConfiguration *_configuration;
-    unsigned int _controlState;
-    CALayer *_cursorLayer;
-    CALayer *_cursorLayerContainer;
-    CATransformLayer *_cursorRotationTransformLayer;
-    id _flatImage;
-    CALayer *_flatLayer;
-    CALayer *_flatShadowLayer;
+@interface _UIStackedImageContainerLayer : CALayer <CALayerDelegate> {
+    BOOL  _animatingStateChange;
+    BOOL  _animatingToNormalState;
+    double  _animationDelay;
+    UIView * _animationView;
+    _UIStackedImageConfiguration * _configuration;
+    unsigned int  _controlState;
+    CALayer * _cursorLayer;
+    CALayer * _cursorLayerContainer;
+    CATransformLayer * _cursorRotationTransformLayer;
+    id  _flatImage;
+    CALayer * _flatLayer;
     struct CGPoint { 
         float x; 
         float y; 
-    } _focusDirection;
-    CALayer *_focusKeylineStrokeLayer;
-    CALayer *_frontmostPerspectiveTransformLayer;
-    CATransformLayer *_frontmostRotationTransformLayer;
-    float _idleModeFocusSizeOffset;
-    NSArray *_imageLayers;
-    CALayer *_imageLayersContainer;
-    CATransformLayer *_imagePerspectiveTransformLayer;
-    CATransformLayer *_imageRotationTransformLayer;
-    NSString *_imageStackContentsGravity;
-    <UINamedLayerStack> *_layerStack;
-    _UIStackedImageLayerDelegate *_layoutDelegate;
-    CALayer *_maskLayer;
-    CATransformLayer *_maskPerspectiveTransformLayer;
-    CATransformLayer *_maskRotationTransformLayer;
-    float _maximumParallaxDepth;
-    CALayer *_overlayContainerLayer;
-    CALayer *_overlayLayer;
-    NSArray *_parallaxImages;
-    NSArray *_parallaxLayerDepths;
+    }  _focusDirection;
+    CALayer * _focusKeylineStrokeLayer;
+    CALayer * _frontmostPerspectiveTransformLayer;
+    CATransformLayer * _frontmostRotationTransformLayer;
+    float  _idleModeFocusSizeOffset;
+    NSArray * _imageLayers;
+    CALayer * _imageLayersContainer;
+    CATransformLayer * _imagePerspectiveTransformLayer;
+    CATransformLayer * _imageRotationTransformLayer;
+    NSString * _imageStackContentsGravity;
+    <UINamedLayerStack> * _layerStack;
+    _UIStackedImageLayerDelegate * _layoutDelegate;
+    CALayer * _maskLayer;
+    CATransformLayer * _maskPerspectiveTransformLayer;
+    CATransformLayer * _maskRotationTransformLayer;
+    float  _maximumParallaxDepth;
+    CALayer * _overlayContainerLayer;
+    CALayer * _overlayLayer;
+    NSArray * _parallaxImages;
+    NSArray * _parallaxLayerDepths;
     struct CGSize { 
         float width; 
         float height; 
-    } _radiosityImageScale;
-    CALayer *_radiosityLayer;
-    BOOL _radiosityNeedsLayout;
-    double _radiosityRequestTime;
-    float _rotationAmount;
-    float _scale;
-    CALayer *_selectedPlaceholderLayer;
-    double _selectionDuration;
-    double _selectionStartTime;
-    int _selectionStyle;
-    CALayer *_shadowLayer;
-    CALayer *_specularLayer;
+    }  _radiosityImageScale;
+    CALayer * _radiosityLayer;
+    BOOL  _radiosityNeedsLayout;
+    double  _radiosityRequestTime;
+    float  _rotationAmount;
+    float  _scale;
+    CALayer * _selectedPlaceholderLayer;
+    double  _selectionDuration;
+    double  _selectionStartTime;
+    int  _selectionStyle;
+    CALayer * _shadowLayer;
+    CALayer * _specularLayer;
     struct CGPoint { 
         float x; 
         float y; 
-    } _translationOffset;
-    CALayer *_unmaskedOverlayContainerLayer;
-    CALayer *_unmaskedOverlayLayer;
+    }  _translationOffset;
+    CALayer * _unmaskedOverlayContainerLayer;
+    CALayer * _unmaskedOverlayLayer;
 }
 
 @property (nonatomic, retain) _UIStackedImageConfiguration *configuration;
 @property (nonatomic) unsigned int controlState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGPoint { float x1; float x2; } focusDirection;
+@property (readonly) unsigned int hash;
 @property (nonatomic, retain) <UINamedLayerStack> *layerStack;
 @property (getter=isPressed, nonatomic) BOOL pressed;
 @property (getter=isSelected, nonatomic) BOOL selected;
+@property (readonly) Class superclass;
 
 + (id)_layerStackObservingKeys;
 + (struct CGSize { float x1; float x2; })_scaledSizeForSize:(struct CGSize { float x1; float x2; })arg1 focusSizeIncrease:(float)arg2 selectionStyle:(int)arg3;
@@ -73,8 +77,6 @@
 - (void).cxx_destruct;
 - (id)_TVTraitCollection;
 - (void)_applyFocusDirectionTransform;
-- (void)_applyFocusDirectionTransformHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
-- (void)_applyFocusDirectionTransformLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_applyFocusDirectionTransformWithAnimationCoordinator:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_cursorBounds;
 - (void)_deselect;
@@ -85,6 +87,7 @@
 - (float)_focusedShadowRadius;
 - (float)_getShadowOpacity;
 - (float)_idleModeFocusSizeOffset;
+- (id)_imageLayersContainer;
 - (id)_imageStackContentsGravity;
 - (BOOL)_isFocused;
 - (BOOL)_isFocusedIdle;
@@ -104,6 +107,7 @@
 - (id)_randomImage;
 - (void)_resetAnimatingToNormalState;
 - (struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })_rotationTransformForCurrentFocusDirection;
+- (struct CGSize { float x1; float x2; })_roundedBoundsSize;
 - (struct CATransform3D { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })_scaleTransformForCurrentState;
 - (struct CGSize { float x1; float x2; })_scaledSizeForCurrentState;
 - (int)_selectionStyle;
@@ -123,20 +127,19 @@
 - (void)_showImageLayers;
 - (float)_unfocusedShadowRadius;
 - (void)_updateCornerRadiusFromConfig;
-- (void)_updateFocusKeylineStroke:(struct CGPoint { float x1; float x2; })arg1;
+- (void)_updateFocusKeylineStrokeScale;
+- (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint { float x1; float x2; })arg1;
 - (void)_updateFullBleedImageLayers;
 - (void)_updateImageLayerFilterChains;
 - (void)_updateLayerForSelection;
-- (void)_updateLayerForSelectionHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
-- (void)_updateLayerForSelectionLowQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateLayerForSelectionWithAnimationCoordinator:(id)arg1;
 - (void)_updateNormalImageLayers;
 - (void)_updatePerspective;
 - (void)_updateRadiosityFromLayerStack;
 - (void)_updateRotationAndTranslation:(id)arg1;
 - (void)_updateShadowBounds;
-- (void)_updateShadowHighQualityGraphicsWithAnimationCoordinator:(id)arg1;
 - (void)_updateShadowPositionWithOffset:(struct CGPoint { float x1; float x2; })arg1;
+- (void)_updateShadowWithAnimationCoordinator:(id)arg1;
 - (void)_updateSpecularLayerContentsRect;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (id)configuration;
@@ -149,6 +152,7 @@
 - (id)layerStack;
 - (void)layoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (void)removeAllAnimations;
 - (void)setBounds:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setControlState:(unsigned int)arg1;

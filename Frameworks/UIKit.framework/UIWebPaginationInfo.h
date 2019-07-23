@@ -3,14 +3,14 @@
  */
 
 @interface UIWebPaginationInfo : NSObject {
-    NSObject<WebDocumentView> *_documentView;
+    NSObject<WebDocumentView> * _documentView;
     struct CGSize { 
         float width; 
         float height; 
-    } _layoutSize;
-    NSArray *_pageRects;
-    float _scaleFactor;
-    UIWebDocumentView *_webDocumentView;
+    }  _layoutSize;
+    NSArray * _pageRects;
+    float  _scaleFactor;
+    UIWebDocumentView * _webDocumentView;
 }
 
 @property (nonatomic, readonly) float lastPageHeight;

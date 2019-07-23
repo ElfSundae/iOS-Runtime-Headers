@@ -3,22 +3,22 @@
  */
 
 @interface TimerDialView : UIView {
-    double _currentDuration;
-    double _currentTime;
-    double _fireTime;
-    struct __CFNumberFormatter { } *_formatter;
-    unsigned int _graduatedSectionCount;
-    NSMutableArray *_graduatedSectionLabels;
-    NSMutableArray *_graduatedSectionValues;
-    float _graduatedSectionWidth;
-    NSMutableArray *_graduatedSections;
-    UIFont *_labelFont;
-    float _majorTickHeight;
-    float _minorTickHeight;
-    unsigned int _minorTicksPerSection;
-    double _remainingTime;
-    BOOL _running;
-    float _tickHorizontalSpacing;
+    double  _currentDuration;
+    double  _currentTime;
+    double  _fireTime;
+    struct __CFNumberFormatter { } * _formatter;
+    unsigned int  _graduatedSectionCount;
+    NSMutableArray * _graduatedSectionLabels;
+    NSMutableArray * _graduatedSectionValues;
+    float  _graduatedSectionWidth;
+    NSMutableArray * _graduatedSections;
+    UIFont * _labelFont;
+    float  _majorTickHeight;
+    float  _minorTickHeight;
+    unsigned int  _minorTicksPerSection;
+    double  _remainingTime;
+    BOOL  _running;
+    float  _tickHorizontalSpacing;
 }
 
 @property (nonatomic, retain) UIFont *labelFont;

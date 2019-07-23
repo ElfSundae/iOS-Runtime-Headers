@@ -3,28 +3,28 @@
  */
 
 @interface CKDPAsset : PBCodable <NSCopying> {
-    NSString *_contentBaseURL;
-    NSData *_data;
-    NSString *_derivedContentType;
-    NSString *_downloadBaseURL;
-    NSData *_downloadRequest;
-    NSString *_downloadToken;
-    long long _downloadTokenExpiration;
-    long long _downloadURLExpiration;
+    NSString * _contentBaseURL;
+    NSData * _data;
+    NSString * _derivedContentType;
+    NSString * _downloadBaseURL;
+    NSData * _downloadRequest;
+    NSString * _downloadToken;
+    long long  _downloadTokenExpiration;
+    long long  _downloadURLExpiration;
     struct { 
         unsigned int downloadTokenExpiration : 1; 
         unsigned int downloadURLExpiration : 1; 
         unsigned int size : 1; 
-    } _has;
-    NSData *_header;
-    NSString *_owner;
-    CKDPProtectionInfo *_protectionInfo;
-    CKDPRecordIdentifier *_recordId;
-    NSData *_referenceSignature;
-    NSString *_requestor;
-    NSData *_signature;
-    long long _size;
-    NSString *_uploadReceipt;
+    }  _has;
+    NSData * _header;
+    NSString * _owner;
+    CKDPProtectionInfo * _protectionInfo;
+    CKDPRecordIdentifier * _recordId;
+    NSData * _referenceSignature;
+    NSString * _requestor;
+    NSData * _signature;
+    long long  _size;
+    NSString * _uploadReceipt;
 }
 
 @property (nonatomic, retain) NSString *contentBaseURL;

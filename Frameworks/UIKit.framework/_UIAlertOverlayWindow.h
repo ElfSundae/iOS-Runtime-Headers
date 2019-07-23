@@ -12,7 +12,6 @@
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)handleStatusBarChangeFromHeight:(float)arg1 toHeight:(float)arg2;
 - (BOOL)isInternalWindow;
-- (id)representation;
 - (int)textEffectsVisibilityLevel;
 
 @end

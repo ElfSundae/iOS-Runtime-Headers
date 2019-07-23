@@ -3,12 +3,12 @@
  */
 
 @interface TSCH2DChartLayout : TSCHChartLayout {
-    NSValue *mCachedOriginRelativeToChartAreaFrame;
+    NSValue * mCachedOriginRelativeToChartAreaFrame;
     struct CGSize { 
         float width; 
         float height; 
-    } mLastChartBodySize;
-    TSCHChartRootLayoutItem *mLayoutTreeRoot;
+    }  mLastChartBodySize;
+    TSCHChartRootLayoutItem * mLayoutTreeRoot;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -18,7 +18,7 @@
             float width; 
             float height; 
         } size; 
-    } mStartingChartInnerFrame;
+    }  mStartingChartInnerFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -28,11 +28,11 @@
             float width; 
             float height; 
         } size; 
-    } mStartingLegendInnerFrame;
+    }  mStartingLegendInnerFrame;
     struct CGSize { 
         float width; 
         float height; 
-    } mStartingSize;
+    }  mStartingSize;
 }
 
 @property (readonly) TSCHChartRootLayoutItem *p_layoutTree;
@@ -72,7 +72,7 @@
 - (id)renderersWithRep:(id)arg1;
 - (id)seriesIndexedPieWedgeExplosions;
 - (void)setDataSetIndex:(unsigned int)arg1;
-- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; BOOL x6; unsigned int x7; })arg1;
+- (void)setLayoutSettings:(struct { BOOL x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; int x6; unsigned int x7; })arg1;
 - (void)setLegendGeometryFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setLegendModelGeometryFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)setLegendSize:(struct CGSize { float x1; float x2; })arg1;

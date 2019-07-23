@@ -2,28 +2,28 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUMapViewController : UIViewController <MKMapViewDelegate, PLDismissableViewController, PUMapAnnotationManagerDataSource, PUOneUpPresentationHelperDelegate, PUPhotoBrowserZoomTransitionDelegate, PUPhotoLibraryUIChangeObserver, PUStackedAlbumTransitionDelegate> {
-    PUOneUpPresentationHelper *__oneUpPresentationHelper;
-    PUDisplayLink *__oneUpPresentationHelperDisplayLink;
-    PUPhotoBrowserOneUpPresentationAdaptor *__photoBrowserOneUpPresentationAdaptor;
-    PUMapAnnotationManager *_annotationManager;
+@interface PUMapViewController : UIViewController <MKMapViewDelegate, PLDismissableViewController, PUMapAnnotationManagerDataSource, PUOneUpPresentationHelperDelegate, PUPhotoBrowserZoomTransitionDelegate, PUStackedAlbumTransitionDelegate, PXPhotoLibraryUIChangeObserver> {
+    PUOneUpPresentationHelper * __oneUpPresentationHelper;
+    PUDisplayLink * __oneUpPresentationHelperDisplayLink;
+    PUPhotoBrowserOneUpPresentationAdaptor * __photoBrowserOneUpPresentationAdaptor;
+    PUMapAnnotationManager * _annotationManager;
     struct CGSize { 
         float width; 
         float height; 
-    } _annotationSize;
-    float _annotationWidth;
-    PHFetchResult *_assetsFetchResult;
-    float _borderAnnotationPadding;
-    NSObject<PLDiagnosticsProvider> *_diagnosticsProvider;
-    NSMutableArray *_mapAnnotations;
-    NSArray *_mapItems;
-    MKMapView *_mapView;
-    unsigned int _maxItemsInitialZoom;
-    BOOL _shouldShowTabBar;
-    BOOL _shouldShowToolbar;
-    PUMapViewControllerSpec *_spec;
-    BOOL _updatedInitialAnnotations;
-    BOOL _useCurrentUserLocation;
+    }  _annotationSize;
+    float  _annotationWidth;
+    PHFetchResult * _assetsFetchResult;
+    float  _borderAnnotationPadding;
+    NSObject<PLDiagnosticsProvider> * _diagnosticsProvider;
+    NSMutableArray * _mapAnnotations;
+    NSArray * _mapItems;
+    MKMapView * _mapView;
+    unsigned int  _maxItemsInitialZoom;
+    BOOL  _shouldShowTabBar;
+    BOOL  _shouldShowToolbar;
+    PUMapViewControllerSpec * _spec;
+    BOOL  _updatedInitialAnnotations;
+    BOOL  _useCurrentUserLocation;
 }
 
 @property (setter=_setOneUpPresentationHelper:, nonatomic, retain) PUOneUpPresentationHelper *_oneUpPresentationHelper;
@@ -45,7 +45,7 @@
 - (void)_displayDetailsForAlbum:(struct NSObject { Class x1; }*)arg1;
 - (void)_ensureOneUpPresentationHelperWithFetchResult:(id)arg1;
 - (void)_handleReportButton:(id)arg1;
-- (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_mapRectWithDefaultZoomCenteredAtCoordinate:(struct { double x1; double x2; })arg1;
+- (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_mapRectWithDefaultZoomCenteredAtCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 - (id)_oneUpPresentationHelper;
 - (id)_oneUpPresentationHelperDisplayLink;
 - (id)_photoBrowserOneUpPresentationAdaptor;
@@ -63,14 +63,14 @@
 - (void)didReceiveMemoryWarning;
 - (id)init;
 - (id)initWithSpec:(id)arg1 assetsFetchResult:(id)arg2;
-- (id)mapAnnotationManager:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(struct { double x1; double x2; })arg3;
+- (id)mapAnnotationManager:(id)arg1 aggregateAnnotationForAnnotations:(id)arg2 averageCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg3;
 - (void)mapView:(id)arg1 didAddAnnotationViews:(id)arg2;
 - (void)mapView:(id)arg1 didFailToLocateUserWithError:(id)arg2;
 - (void)mapView:(id)arg1 didSelectAnnotationView:(id)arg2;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (void)mapView:(id)arg1 regionWillChangeAnimated:(BOOL)arg2;
+- (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
-- (id)mapView:(id)arg1 viewForOverlay:(id)arg2;
 - (unsigned int)maxItemsInitialZoom;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (BOOL)oneUpPresentationHelperDisableFinalFadeoutAnimation:(id)arg1;
@@ -78,7 +78,7 @@
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (void)prepareForPhotoLibraryChange:(id)arg1;
+- (id)prepareForPhotoLibraryChange:(id)arg1;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;
 - (void)setDiagnosticsProvider:(id)arg1;

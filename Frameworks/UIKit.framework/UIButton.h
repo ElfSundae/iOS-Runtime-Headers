@@ -3,7 +3,7 @@
  */
 
 @interface UIButton : UIControl <ABText, NSCoding, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate> {
-    UIImageView *_backgroundView;
+    UIImageView * _backgroundView;
     struct { 
         unsigned int reversesTitleShadowWhenHighlighted : 1; 
         unsigned int adjustsImageWhenHighlighted : 1; 
@@ -20,45 +20,45 @@
         unsigned int visualEffectViewEnabled : 1; 
         unsigned int suppressAccessibilityUnderline : 1; 
         unsigned int requiresLayoutForPropertyChange : 1; 
-    } _buttonFlags;
-    UIVisualEffectView *_contentBackdropView;
-    NSArray *_contentConstraints;
+    }  _buttonFlags;
+    UIVisualEffectView * _contentBackdropView;
+    NSArray * _contentConstraints;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentEdgeInsets;
-    struct __CFDictionary { } *_contentLookup;
-    UIView *_effectiveContentView;
-    unsigned int _externalFlatEdge;
-    _UIFloatingContentView *_floatingContentView;
+    }  _contentEdgeInsets;
+    struct __CFDictionary { } * _contentLookup;
+    UIView * _effectiveContentView;
+    unsigned int  _externalFlatEdge;
+    _UIFloatingContentView * _floatingContentView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _imageEdgeInsets;
-    UIImageView *_imageView;
-    BOOL _initialized;
+    }  _imageEdgeInsets;
+    UIImageView * _imageView;
+    BOOL  _initialized;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _internalTitlePaddingInsets;
-    unsigned int _lastDrawingControlState;
-    UIFont *_lazyTitleViewFont;
-    _UIButtonMaskAnimationView *_maskAnimationView;
-    UITapGestureRecognizer *_selectGestureRecognizer;
-    UIView *_selectionView;
+    }  _internalTitlePaddingInsets;
+    unsigned int  _lastDrawingControlState;
+    UIFont * _lazyTitleViewFont;
+    _UIButtonMaskAnimationView * _maskAnimationView;
+    UITapGestureRecognizer * _selectGestureRecognizer;
+    UIView * _selectionView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _titleEdgeInsets;
-    UILabel *_titleView;
+    }  _titleEdgeInsets;
+    UILabel * _titleView;
 }
 
 @property (setter=_setContentConstraints:, nonatomic, copy) NSArray *_contentConstraints;
@@ -97,6 +97,7 @@
 + (id)_defaultBackgroundImageForType:(int)arg1 andState:(unsigned int)arg2;
 + (id)_defaultImageColorForState:(unsigned int)arg1 button:(id)arg2;
 + (id)_defaultImageForType:(int)arg1 andState:(unsigned int)arg2;
++ (float)_defaultNeighborSpacingForAxis:(int)arg1;
 + (id)_defaultNormalTitleColor;
 + (id)_defaultNormalTitleShadowColor;
 + (id)_defaultTitleColorForState:(unsigned int)arg1 button:(id)arg2;
@@ -116,7 +117,8 @@
 - (void).cxx_destruct;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
-- (void)_applyAppropriateChargeForButtonType;
+- (void)_applyAppropriateChargeForButton;
+- (void)_applyCarPlaySystemButtonCustomizations;
 - (id)_archivableContent:(id*)arg1;
 - (id)_attributedTitleForState:(unsigned int)arg1;
 - (float)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
@@ -175,9 +177,10 @@
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (struct CGSize { float x1; float x2; })_intrinsicSizeWithinSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)_invalidateContentConstraints;
-- (BOOL)_isEffectivelyDisabledExternalRoundedRectButton;
-- (BOOL)_isExternalRoundedRectButton;
+- (BOOL)_isCarPlaySystemTypeButton;
+- (BOOL)_isEffectivelyDisabledExternalButton;
 - (BOOL)_isExternalRoundedRectButtonWithPressednessState;
+- (BOOL)_isInCarPlay;
 - (BOOL)_isModernButton;
 - (BOOL)_isTitleFrozen;
 - (void)_layoutBackgroundImageView;
@@ -197,7 +200,6 @@
 - (id)_preferredConfigurationForFocusAnimation:(int)arg1 inContext:(id)arg2;
 - (void)_prepareMaskAnimationViewIfNecessary;
 - (BOOL)_requiresLayoutForPropertyChange;
-- (id)_scriptingInfo;
 - (void)_selectGestureChanged:(id)arg1;
 - (float)_selectedIndicatorAlpha;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_selectedIndicatorBounds;
@@ -244,6 +246,7 @@
 - (void)_takeContentFromArchivableContent:(id)arg1;
 - (BOOL)_textNeedsCompositingModeWhenSelected;
 - (void)_titleAttributesChanged;
+- (void)_titleAttributesThatDoNotAffectSizeOrLayoutChanged;
 - (id)_titleColorForState:(unsigned int)arg1;
 - (id)_titleForState:(unsigned int)arg1;
 - (id)_titleOrImageViewForBaselineLayout;
@@ -295,7 +298,6 @@
 - (id)imageView;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (void)interactionTintColorDidChange;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
@@ -367,11 +369,9 @@
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (id)_mapkit_accessoryControlToExtendWithCallout;
-
-// Image: /System/Library/Frameworks/PassKit.framework/PassKit
-
-- (void)pk_applyAppearance:(struct _PKAppearanceSpecifier { BOOL x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; id x11; id x12; id x13; /* Warning: Unrecognized filer type: '' using 'void*' */ void*x14; void*x15; void*x16; void*x17; void*x18; void*x19; void x20; void*x21; void*x22; void*x23; void*x24; void*x25; void*x26; void*x27; void*x28; unsigned int x29; oneway int x30; void*x31; void*x32; unsigned short x33; void*x34; const void x35; int x36; BOOL x37; void*x38; void*x39; void*x40; in BOOL x41; int x42; in void*x43; unsigned char x44; out in void*x45; const out long x46; void*x47; const out void*x48; void*x49; void*x50; void*x51; void*x52; void*x53; void*x54; void*x55; void*x56; void*x57; struct x58; void*x59; void*x60; void*x61; void*x62; void*x63; void*x64; void*x65; void*x66; void*x67; void*x68; void*x69; void*x70; void*x71; void*x72; void*x73; void*x74; void*x75; void*x76; void*x77; void*x78; void*x79; void*x80; void*x81; void*x82; void x83; void*x84; void*x85; void*x86; void*x87; void*x88; void*x89; void*x90; void*x91; void*x92; void*x93; void*x94; void*x95; void*x96; void*x97; void*x98; void*x99; void*x100; void*x101; void*x102; void*x103; void*x104; void*x105; void*x106; void*x107; void*x108; void*x109; void*x110; void*x111; void*x112; void*x113; void*x114; void*x115; void*x116; id x117; void*x118; }*)arg1;
-- (id)pk_childrenForAppearance;
+- (void)_mapkit_setAttributedTitle:(id)arg1;
+- (void)_mapkit_setImage:(id)arg1;
+- (id)_mapkit_title;
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
@@ -381,6 +381,12 @@
 // Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
 
 - (void)cam_updateContentInsetsToCenterImageWithinMinimumSize:(struct CGSize { float x1; float x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (id)hk_buttonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)hk_multiLineRoundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)hk_roundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
@@ -392,6 +398,24 @@
 
 - (void)_mediaControlsBuyButtonTouchDown:(id)arg1;
 - (void)_mediaControlsBuyButtonTouchUp:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
+
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (void)px_setTitle:(id)arg1 orAttributedTitle:(id)arg2 forState:(unsigned int)arg3;
+- (void)px_updateTitleUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
+
++ (id)SKUITrending_defaultButtonFont;
++ (id)SKUITrending_searchButtonWithElement:(id)arg1;
++ (id)SKUITrending_searchButtonWithTitle:(id)arg1;
+
+- (void)SKUITrending_applyConfigurationFromElement:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

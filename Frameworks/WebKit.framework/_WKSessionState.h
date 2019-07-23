@@ -37,7 +37,7 @@
             int m_queryEnd; 
             int m_fragmentEnd; 
         } provisionalURL; 
-    } _sessionState;
+    }  _sessionState;
 }
 
 @property (nonatomic, readonly, copy) NSData *data;

@@ -3,9 +3,9 @@
  */
 
 @interface FBSceneSnapshot : NSObject {
-    FBSceneSnapshotContext *_context;
-    FBScene *_scene;
-    XBDisplaySnapshot *_snapshot;
+    FBSceneSnapshotContext * _context;
+    FBScene * _scene;
+    XBDisplaySnapshot * _snapshot;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*CGImage;
@@ -19,7 +19,7 @@
 - (id)UIImage;
 - (struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;
 - (id)_collectLayersToSnapshotFromScene:(id)arg1 withSnapshotContext:(id)arg2 rootContext:(id)arg3;
-- (void)capture;
+- (BOOL)capture;
 - (id)context;
 - (void)dealloc;
 - (id)initWithScene:(id)arg1 snapshotContext:(id)arg2;

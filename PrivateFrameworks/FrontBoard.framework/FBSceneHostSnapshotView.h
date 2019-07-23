@@ -3,7 +3,7 @@
  */
 
 @interface FBSceneHostSnapshotView : UIView <FBSceneHostSnapshotView> {
-    FBSceneSnapshot *_snapshot;
+    FBSceneSnapshot * _snapshot;
 }
 
 @property (nonatomic, readonly, retain) id IOSurface;

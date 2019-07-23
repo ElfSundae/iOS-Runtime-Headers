@@ -3,12 +3,12 @@
  */
 
 @interface SKPhysicsWorld : NSObject <NSCoding> {
-    <SKPhysicsContactDelegate> *_contactDelegate;
+    <SKPhysicsContactDelegate> * _contactDelegate;
     struct CGVector { 
         float dx; 
         float dy; 
-    } _gravity;
-    float speed;
+    }  _gravity;
+    float  speed;
 }
 
 @property (nonatomic) <SKPhysicsContactDelegate> *contactDelegate;

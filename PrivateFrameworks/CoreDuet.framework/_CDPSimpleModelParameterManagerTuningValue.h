@@ -3,10 +3,10 @@
  */
 
 @interface _CDPSimpleModelParameterManagerTuningValue : NSObject <NSSecureCoding> {
-    float _lambda;
-    float _score;
-    float _threshold;
-    float _w0;
+    float  _lambda;
+    float  _score;
+    float  _threshold;
+    float  _w0;
 }
 
 @property (nonatomic, readonly) float lambda;

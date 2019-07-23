@@ -2,56 +2,59 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface UITextInteractionAssistant : NSObject <UIGestureRecognizerDelegate, _UIKeyboardTextSelectionGestureControllerDelegate> {
+@interface UITextInteractionAssistant : NSObject <UIGestureRecognizerDelegate, UIResponderStandardEditActions, _UIKeyboardTextSelectionGestureControllerDelegate> {
     struct CGPoint { 
         float x; 
         float y; 
-    } _autoscrollBasePoint;
-    float _autoscrollFactor;
-    int _autoscrollRamp;
+    }  _autoscrollBasePoint;
+    float  _autoscrollFactor;
+    int  _autoscrollRamp;
     struct CGPoint { 
         float x; 
         float y; 
-    } _autoscrollUntransformedExtentPoint;
-    BOOL _autoscrolled;
-    UIGestureRecognizer *_doubleTapGesture;
-    BOOL _externalTextInput;
-    NSHashTable *_gestureRecognizerViews;
-    UILongPressGestureRecognizer *_highlightGesture;
-    BOOL _inGesture;
-    BOOL _isTryingToHighlightLink;
-    double _lastTapTimestamp;
-    NSMutableSet *_linkGestures;
-    UILongPressGestureRecognizer *_loupeGesture;
+    }  _autoscrollUntransformedExtentPoint;
+    BOOL  _autoscrolled;
+    UIGestureRecognizer * _doubleTapGesture;
+    BOOL  _externalTextInput;
+    NSHashTable * _gestureRecognizerViews;
+    UILongPressGestureRecognizer * _highlightGesture;
+    BOOL  _inGesture;
+    BOOL  _isTryingToHighlightLink;
+    double  _lastTapTimestamp;
+    NSMutableSet * _linkGestures;
+    UITapGestureRecognizer * _linkTapGesture;
+    UILongPressGestureRecognizer * _loupeGesture;
     struct CGPoint { 
         float x; 
         float y; 
-    } _loupeGestureEndPoint;
-    BOOL _needsGestureUpdate;
-    UIGestureRecognizer *_previewGesture;
-    UIPreviewItemController *_previewItemController;
-    int _previousRepeatedGranularity;
-    NSMutableArray *_recognizers;
-    UIGestureRecognizer *_revealGesture;
-    UITextSelectionView *_selectionView;
-    UITapGestureRecognizer *_singleTapGesture;
-    UILongPressGestureRecognizer *_tapAndHoldGesture;
-    UITextChecker *_textChecker;
-    _UIKeyboardTextSelectionController *_textSelectionController;
-    _UIKeyboardBasedNonEditableTextSelectionGestureController *_textSelectionGestureController;
-    UIResponder<UITextInput> *_view;
-    BOOL _willHandoffLoupeMagnifier;
+    }  _loupeGestureEndPoint;
+    BOOL  _needsGestureUpdate;
+    UIGestureRecognizer * _previewGesture;
+    UIPreviewItemController * _previewItemController;
+    int  _previousRepeatedGranularity;
+    NSMutableArray * _recognizers;
+    UIGestureRecognizer * _revealGesture;
+    UITextSelectionView * _selectionView;
+    UITapGestureRecognizer * _singleTapGesture;
+    UILongPressGestureRecognizer * _tapAndHoldGesture;
+    UITextChecker * _textChecker;
+    _UIKeyboardTextSelectionController * _textSelectionController;
+    _UIKeyboardBasedNonEditableTextSelectionGestureController * _textSelectionGestureController;
+    UIResponder<UITextInput> * _view;
+    BOOL  _willHandoffLoupeMagnifier;
 }
 
 @property (nonatomic) struct CGPoint { float x1; float x2; } autoscrollUntransformedExtentPoint;
 @property (nonatomic) BOOL autoscrolled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly, retain) UIGestureRecognizer *doubleTapGesture;
 @property (nonatomic, retain) UIGestureRecognizer *doubleTapGesture;
 @property (nonatomic, readonly) BOOL externalTextInput;
 @property (nonatomic, readonly) UIFieldEditor *fieldEditor;
 @property (readonly) unsigned int hash;
 @property (nonatomic) BOOL inGesture;
+@property (nonatomic, readonly, retain) UILongPressGestureRecognizer *loupeGesture;
 @property (nonatomic, retain) UILongPressGestureRecognizer *loupeGesture;
 @property (nonatomic) struct CGPoint { float x1; float x2; } loupeGestureEndPoint;
 @property (nonatomic, readonly) UIScrollView *scrollView;
@@ -74,11 +77,13 @@
 - (void)_performPreemtiveLayoutToEnsureNoMoreLayoutWhileSelecting;
 - (id)_scrollable;
 - (id)_selectionView;
+- (BOOL)_shouldObscureTextInput;
 - (void)activateSelection;
 - (id)addDragRecognizer;
 - (void)addGestureRecognizersToView:(id)arg1;
-- (id)addHighlightLinkRecognizerToView:(id)arg1 withHighlightDelay:(BOOL)arg2;
+- (id)addHighlightLinkRecognizerToView:(id)arg1;
 - (void)addKeyboardTextSelectionGestureRecognizersToView:(id)arg1;
+- (id)addLinkTapGestureToView:(id)arg1;
 - (id)addLoupeGestureRecognizer:(BOOL)arg1 toView:(id)arg2;
 - (void)addNonEditableForceTextSelectionGestureRecognizersToView:(id)arg1;
 - (id)addOneFingerDoubleTapRecognizer:(SEL)arg1 toView:(id)arg2;
@@ -121,6 +126,7 @@
 - (void)detach:(BOOL)arg1;
 - (void)didEndGesture;
 - (void)didEndScrollingOverflow;
+- (void)didEndSelectionInteraction;
 - (void)disableClearsOnInsertion;
 - (float)distanceBetweenPoint:(struct CGPoint { float x1; float x2; })arg1 andRange:(id)arg2;
 - (id)doubleTapGesture;
@@ -128,9 +134,11 @@
 - (void)endFloatingCursor;
 - (BOOL)externalTextInput;
 - (id)fieldEditor;
+- (id)generatorForRange:(id)arg1 withOptions:(unsigned int)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (BOOL)hasReplacements;
 - (BOOL)inGesture;
 - (id)initWithResponder:(id)arg1;
 - (id)initWithView:(id)arg1;
@@ -138,6 +146,7 @@
 - (void)layoutChangedByScrolling:(BOOL)arg1;
 - (void)legacyTwoFingerSingleTap:(id)arg1;
 - (id)linkInteractionView;
+- (void)linkTapRecognizer:(id)arg1;
 - (void)longDelayRecognizer:(id)arg1;
 - (id)loupeGesture;
 - (void)loupeGesture:(id)arg1;
@@ -199,6 +208,7 @@
 - (BOOL)shouldHandleFormGestureAtLocation:(struct CGPoint { float x1; float x2; })arg1;
 - (BOOL)shouldHandleOneFingerTapInUneditable:(id)arg1;
 - (BOOL)shouldIgnoreLinkGestures;
+- (BOOL)shouldSuppressSelectionCommands;
 - (id)singleTapGesture;
 - (void)smallDelayRecognizer:(id)arg1;
 - (void)startAutoscroll:(struct CGPoint { float x1; float x2; })arg1;
@@ -223,6 +233,7 @@
 - (id)view;
 - (BOOL)viewCouldBecomeEditable:(id)arg1;
 - (void)willBeginGesture;
+- (void)willBeginSelectionInteraction;
 - (BOOL)willHandoffLoupeMagnifier;
 - (void)willStartScrollingOverflow;
 

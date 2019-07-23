@@ -3,17 +3,18 @@
  */
 
 @interface NSProcessInfo : NSObject {
-    NSArray *arguments;
-    int automaticTerminationOptOutCounter;
-    NSDictionary *environment;
-    NSString *hostName;
-    NSString *name;
+    NSArray * arguments;
+    int  automaticTerminationOptOutCounter;
+    NSDictionary * environment;
+    NSString * hostName;
+    NSString * name;
 }
 
 @property (readonly) unsigned int activeProcessorCount;
 @property (readonly, copy) NSArray *arguments;
 @property BOOL automaticTerminationSupportEnabled;
 @property (readonly, copy) NSDictionary *environment;
+@property (readonly, copy) NSString *fullUserName;
 @property (readonly, copy) NSString *globallyUniqueString;
 @property (readonly, copy) NSString *hostName;
 @property (readonly) struct { int x1; int x2; int x3; } operatingSystemVersion;
@@ -23,6 +24,7 @@
 @property (copy) NSString *processName;
 @property (readonly) unsigned int processorCount;
 @property (readonly) double systemUptime;
+@property (readonly, copy) NSString *userName;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 

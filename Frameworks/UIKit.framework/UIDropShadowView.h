@@ -3,10 +3,10 @@
  */
 
 @interface UIDropShadowView : UIView {
-    UIView *_backgroundImage;
-    UIView *_contentView;
-    float _cornerRadius;
-    NSDictionary *_preservedLayerValues;
+    UIView * _backgroundImage;
+    UIView * _contentView;
+    float  _cornerRadius;
+    NSDictionary * _preservedLayerValues;
 }
 
 @property (nonatomic) UIView *contentView;

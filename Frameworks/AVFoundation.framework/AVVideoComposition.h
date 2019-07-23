@@ -3,15 +3,19 @@
  */
 
 @interface AVVideoComposition : NSObject <NSCopying, NSMutableCopying> {
-    AVVideoCompositionInternal *_videoComposition;
+    AVVideoCompositionInternal * _videoComposition;
 }
 
 @property (nonatomic, readonly, retain) AVVideoCompositionCoreAnimationTool *animationTool;
+@property (nonatomic, readonly) NSString *colorPrimaries;
+@property (nonatomic, readonly) NSString *colorTransferFunction;
+@property (nonatomic, readonly) NSString *colorYCbCrMatrix;
 @property (nonatomic, readonly) Class customVideoCompositorClass;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } frameDuration;
 @property (nonatomic, readonly, copy) NSArray *instructions;
 @property (nonatomic, readonly) float renderScale;
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } renderSize;
+@property (nonatomic, readonly) int sourceTrackIDForFrameTiming;
 
 + (id)_mutableVideoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(id /* block */)arg2;
 + (void)initialize;
@@ -34,6 +38,9 @@
 - (void)_setFrameDurationForFrameRate:(float)arg1;
 - (id)animationTool;
 - (id)builtInCompositorName;
+- (id)colorPrimaries;
+- (id)colorTransferFunction;
+- (id)colorYCbCrMatrix;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (Class)customVideoCompositorClass;
 - (void)dealloc;
@@ -48,10 +55,16 @@
 - (struct CGSize { float x1; float x2; })renderSize;
 - (void)setAnimationTool:(id)arg1;
 - (void)setBuiltInCompositorName:(id)arg1;
+- (void)setColorPrimaries:(id)arg1;
+- (void)setColorTransferFunction:(id)arg1;
+- (void)setColorYCbCrMatrix:(id)arg1;
 - (void)setCustomVideoCompositorClass:(Class)arg1;
 - (void)setFrameDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setInstructions:(id)arg1;
 - (void)setRenderScale:(float)arg1;
 - (void)setRenderSize:(struct CGSize { float x1; float x2; })arg1;
+- (void)setSourceTrackIDForFrameTiming:(int)arg1;
+- (int)sourceTrackIDForFrameTiming;
+- (void)videoCompositionOutputColorPropertiesWithCustomCompositor:(id)arg1 formatDescriptions:(id)arg2 colorPrimaries:(id*)arg3 transferFunction:(id*)arg4 yCbCrMatrix:(id*)arg5;
 
 @end

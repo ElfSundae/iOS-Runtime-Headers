@@ -3,14 +3,13 @@
  */
 
 @interface CKDURLSessionPool : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegatePrivate> {
-    int _backgroundSessionConnectionPoolLimit;
-    NSMutableDictionary *_delegateByTaskDescription;
-    NSMutableDictionary *_ephemeralSessionByName;
-    int _networkdNotifyToken;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_sessionByIdentifier;
-    NSMutableDictionary *_sessionConfigurationReferenceByIdentifier;
-    NSMutableDictionary *_sessionConfigurationReferenceByName;
+    int  _backgroundSessionConnectionPoolLimit;
+    NSMutableDictionary * _delegateByTaskDescription;
+    NSMutableDictionary * _ephemeralSessionByName;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSMutableDictionary * _sessionByIdentifier;
+    NSMutableDictionary * _sessionConfigurationReferenceByIdentifier;
+    NSMutableDictionary * _sessionConfigurationReferenceByName;
 }
 
 @property (nonatomic, readonly) int backgroundSessionConnectionPoolLimit;
@@ -41,7 +40,6 @@
 - (void)checkinSessionConfiguration:(id)arg1 withName:(id)arg2;
 - (id)checkoutSessionConfigurationWithName:(id)arg1;
 - (id)dataTaskWithTaskDescription:(id)arg1 configuration:(id)arg2 configurationName:(id)arg3 request:(id)arg4 delegate:(id)arg5;
-- (void)dealloc;
 - (id)init;
 - (void)invalidateDataTask:(id)arg1;
 - (void)setSessionConfiguration:(id)arg1 forName:(id)arg2;

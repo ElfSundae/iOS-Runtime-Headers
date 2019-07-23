@@ -3,7 +3,7 @@
  */
 
 @interface PUBadgeTileLayoutInfo : PUTileLayoutInfo {
-    BOOL _isOverContent;
+    BOOL  _isOverContent;
 }
 
 @property (nonatomic, readonly) BOOL isOverContent;

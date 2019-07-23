@@ -3,17 +3,17 @@
  */
 
 @interface PSIGroup : PSIReusableObject {
-    struct __CFArray { } *_assetIds;
-    short _category;
-    unsigned long long _compressedRanges;
-    NSMutableString *_contentString;
-    unsigned long long _groupId;
-    unsigned long long _owningGroupId;
+    struct __CFArray { } * _assetIds;
+    short  _category;
+    unsigned long long  _compressedRanges;
+    NSMutableString * _contentString;
+    unsigned long long  _groupId;
+    unsigned long long  _owningGroupId;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } _tokenRanges;
-    unsigned int _tokenRangesCount;
+    }  _tokenRanges;
+    unsigned int  _tokenRangesCount;
 }
 
 @property (nonatomic, retain) struct __CFArray { }*assetIds;
@@ -25,6 +25,7 @@
 + (void)_getTokenRanges:(struct _NSRange { unsigned int x1; unsigned int x2; })arg1 fromCompressedRanges:(unsigned long long)arg2;
 + (void)getCompressedRanges:(unsigned long long)arg1 fromTokenRanges:(struct { int x1; int x2; }*)arg2 count:(long)arg3;
 
+- (id)_tokenRangesDescription;
 - (struct __CFArray { }*)assetIds;
 - (short)category;
 - (int)compareToGroup:(id)arg1;
@@ -32,6 +33,7 @@
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)groupId;
+- (unsigned long long)groupIdForAssetLookup;
 - (unsigned int)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

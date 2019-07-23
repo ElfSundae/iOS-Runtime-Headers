@@ -3,15 +3,15 @@
  */
 
 @interface SKMutableTexture : SKTexture {
-    struct __IOSurface { } *_ioSurface;
-    BOOL _ioSurfaceBacked;
-    void *_pixelData;
-    unsigned long _pixelDataLength;
-    int _pixelFormat;
+    struct __IOSurface { } * _ioSurface;
+    BOOL  _ioSurfaceBacked;
+    void * _pixelData;
+    unsigned long  _pixelDataLength;
+    int  _pixelFormat;
     struct CGSize { 
         float width; 
         float height; 
-    } _textureSize;
+    }  _textureSize;
 }
 
 + (id)mutableTextureWithSize:(struct CGSize { float x1; float x2; })arg1;

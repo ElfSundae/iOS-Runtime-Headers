@@ -3,11 +3,11 @@
  */
 
 @interface PUMedusaSettings : PUSettings {
-    float __desiredWidth;
-    float __testIncrement;
-    double __testInterval;
-    double __testStartDelay;
-    double __widthDelay;
+    float  __desiredWidth;
+    float  __testIncrement;
+    double  __testInterval;
+    double  __testStartDelay;
+    double  __widthDelay;
 }
 
 @property (nonatomic) float _desiredWidth;

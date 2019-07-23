@@ -3,27 +3,27 @@
  */
 
 @interface _UITableViewUpdateSupport : NSObject {
-    id _context;
-    id *animatedCells;
-    id *animatedFooters;
-    id *animatedHeaders;
-    NSMutableArray *deletedSections;
-    NSMutableArray *gaps;
-    int globalReorderingRow;
-    NSMutableArray *insertedSections;
-    NSMutableIndexSet *movedRows;
-    NSMutableIndexSet *movedSections;
-    int newGlobalRow;
-    int newGlobalRowCount;
-    int *newGlobalRowMap;
-    UITableViewRowData *newRowData;
+    id  _context;
+    id * animatedCells;
+    id * animatedFooters;
+    id * animatedHeaders;
+    NSMutableArray * deletedSections;
+    NSMutableArray * gaps;
+    int  globalReorderingRow;
+    NSMutableArray * insertedSections;
+    NSMutableIndexSet * movedRows;
+    NSMutableIndexSet * movedSections;
+    int  newGlobalRow;
+    int  newGlobalRowCount;
+    int * newGlobalRowMap;
+    UITableViewRowData * newRowData;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } newRowRange;
-    int newSection;
-    int newSectionCount;
-    int *newSectionMap;
+    }  newRowRange;
+    int  newSection;
+    int  newSectionCount;
+    int * newSectionMap;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -33,18 +33,18 @@
             float width; 
             float height; 
         } size; 
-    } newTableViewVisibleBounds;
-    int oldGlobalRow;
-    int oldGlobalRowCount;
-    int *oldGlobalRowMap;
-    UITableViewRowData *oldRowData;
+    }  newTableViewVisibleBounds;
+    int  oldGlobalRow;
+    int  oldGlobalRowCount;
+    int * oldGlobalRowMap;
+    UITableViewRowData * oldRowData;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } oldRowRange;
-    int oldSection;
-    int oldSectionCount;
-    int *oldSectionMap;
+    }  oldRowRange;
+    int  oldSection;
+    int  oldSectionCount;
+    int * oldSectionMap;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -54,10 +54,10 @@
             float width; 
             float height; 
         } size; 
-    } oldTableViewVisibleBounds;
-    NSMutableIndexSet *rows;
-    UITableView *tableView;
-    float tableViewVisibleBoundsOffset;
+    }  oldTableViewVisibleBounds;
+    NSMutableIndexSet * rows;
+    UITableView * tableView;
+    float  tableViewVisibleBoundsOffset;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -67,13 +67,13 @@
             float width; 
             float height; 
         } size; 
-    } tableViewVisibleBoundsUnion;
-    NSArray *updateItems;
-    NSMutableArray *viewAnimations;
+    }  tableViewVisibleBoundsUnion;
+    NSArray * updateItems;
+    NSMutableArray * viewAnimations;
     struct _NSRange { 
         unsigned int location; 
         unsigned int length; 
-    } visibleRows;
+    }  visibleRows;
 }
 
 - (void).cxx_destruct;

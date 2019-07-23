@@ -3,13 +3,13 @@
  */
 
 @interface PUBadgeTileViewController : PUTileViewController <PUAssetViewModelChangeObserver> {
-    PUBadgeInfo *__badgeInfo;
-    PLPhotoTileBadgeView *__badgeView;
-    BOOL __isOverContent;
-    BOOL __needsUpdateBadgeInfo;
-    BOOL __needsUpdateBadgeView;
-    BOOL __needsUpdateIrisBadge;
-    PUAssetViewModel *_assetViewModel;
+    PUBadgeInfo * __badgeInfo;
+    PLPhotoTileBadgeView * __badgeView;
+    BOOL  __isOverContent;
+    BOOL  __needsUpdateBadgeInfo;
+    BOOL  __needsUpdateBadgeView;
+    BOOL  __needsUpdateIrisBadge;
+    PUAssetViewModel * _assetViewModel;
 }
 
 @property (setter=_setBadgeInfo:, nonatomic, copy) PUBadgeInfo *_badgeInfo;

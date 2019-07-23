@@ -3,13 +3,13 @@
  */
 
 @interface CUIThemeSchemaRendition : CUIThemeRendition {
-    int _columnSlices;
+    int  _columnSlices;
     struct { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _contentInsets;
+    }  _contentInsets;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -19,13 +19,13 @@
             float width; 
             float height; 
         } size; 
-    } _elementRect;
-    CUIPSDGradient *_gradient;
-    struct CGImage {} *_image;
+    }  _elementRect;
+    CUIPSDGradient * _gradient;
+    struct CGImage {} * _image;
     struct CGSize { 
         float width; 
         float height; 
-    } _intrinsicSize;
+    }  _intrinsicSize;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -35,10 +35,10 @@
             float width; 
             float height; 
         } size; 
-    } _layoutRects;
-    unsigned long _nimages;
-    int _rowSlices;
-    NSDictionary *cuiInfo;
+    }  _layoutRects;
+    unsigned long  _nimages;
+    int  _rowSlices;
+    NSDictionary * cuiInfo;
 }
 
 @property (nonatomic, readonly) CUIPSDGradient *gradient;

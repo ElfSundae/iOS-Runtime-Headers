@@ -3,8 +3,8 @@
  */
 
 @interface _UISearchFormSheetPresentationController : UIPresentationController <_UISearchControllerPresenting> {
-    _UISearchPresentationAssistant *_assistant;
-    UIView *_wrapperView;
+    _UISearchPresentationAssistant * _assistant;
+    UIView * _wrapperView;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -14,7 +14,7 @@
             float width; 
             float height; 
         } size; 
-    } finalFrameForContainerView;
+    }  finalFrameForContainerView;
 }
 
 @property (nonatomic, readonly) UIPresentationController<_UISearchControllerPresenting> *adaptivePresentationController;

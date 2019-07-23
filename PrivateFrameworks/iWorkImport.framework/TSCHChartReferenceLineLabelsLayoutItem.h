@@ -3,7 +3,7 @@
  */
 
 @interface TSCHChartReferenceLineLabelsLayoutItem : TSCHChartLayoutItem {
-    TSCHChartAxisID *mAxisID;
+    TSCHChartAxisID * mAxisID;
 }
 
 @property (nonatomic, readonly, retain) TSCHChartAxisID *axisID;

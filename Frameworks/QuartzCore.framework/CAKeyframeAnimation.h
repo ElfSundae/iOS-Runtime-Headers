@@ -39,6 +39,10 @@
 - (id)timingFunctions;
 - (id)values;
 
+// Image: /System/Library/Frameworks/SceneKit.framework/SceneKit
+
+- (BOOL)SCN_evaluateAtTime:(double)arg1 reverse:(BOOL)arg2 to:(void*)arg3;
+
 // Image: /System/Library/Frameworks/UIKit.framework/UIKit
 
 + (id)normalizedKeyframeAnimationWithKeyPath:(id)arg1;

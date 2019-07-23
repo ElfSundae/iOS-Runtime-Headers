@@ -6,11 +6,11 @@
     struct { 
         unsigned int muid : 1; 
         unsigned int resultProviderId : 1; 
-    } _has;
-    unsigned long long _muid;
-    GEOPDPlace *_place;
-    int _resultProviderId;
-    PBUnknownFields *_unknownFields;
+    }  _has;
+    unsigned long long  _muid;
+    GEOPDPlace * _place;
+    int  _resultProviderId;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) BOOL hasMuid;

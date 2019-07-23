@@ -3,16 +3,17 @@
  */
 
 @interface EKAlarmEditItemViewController : EKEditItemViewController <CalendarEventAlarmTableDelegate> {
-    EKUIAlarm *_alarm;
-    unsigned int _alarmIndex;
-    BOOL _allDay;
-    EKCalendar *_calendar;
-    BOOL _eventHasTravelTime;
-    BOOL _immediateAlarmCreation;
-    EKUIAlarm *_previousAlarm;
-    BOOL _shouldAllowAlarmsTriggeringAfterStartDate;
-    BOOL _shouldShowLeaveNowOption;
-    CalendarEventAlarmTable *_table;
+    EKUIAlarm * _alarm;
+    unsigned int  _alarmIndex;
+    BOOL  _allDay;
+    EKCalendar * _calendar;
+    BOOL  _eventHasTravelTime;
+    BOOL  _immediateAlarmCreation;
+    EKUIAlarm * _previousAlarm;
+    EKUIRecurrenceAlertController * _recurrenceAlertController;
+    BOOL  _shouldAllowAlarmsTriggeringAfterStartDate;
+    BOOL  _shouldShowLeaveNowOption;
+    CalendarEventAlarmTable * _table;
 }
 
 @property (nonatomic, retain) EKUIAlarm *alarm;

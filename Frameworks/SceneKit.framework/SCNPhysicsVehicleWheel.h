@@ -7,29 +7,29 @@
         float x; 
         float y; 
         float z; 
-    } _axle;
+    }  _axle;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _connectionPosition;
-    float _frictionSlip;
-    BOOL _isFront;
-    float _maximumSuspensionForce;
-    float _maximumSuspensionTravel;
-    SCNNode *_node;
-    float _radius;
+    }  _connectionPosition;
+    float  _frictionSlip;
+    BOOL  _isFront;
+    float  _maximumSuspensionForce;
+    float  _maximumSuspensionTravel;
+    SCNNode * _node;
+    float  _radius;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _steeringAxis;
-    float _suspensionCompression;
-    float _suspensionDamping;
-    float _suspensionRestLength;
-    float _suspensionStiffness;
-    SCNPhysicsVehicle *_vehicle;
-    int _wheelIndex;
+    }  _steeringAxis;
+    float  _suspensionCompression;
+    float  _suspensionDamping;
+    float  _suspensionRestLength;
+    float  _suspensionStiffness;
+    SCNPhysicsVehicle * _vehicle;
+    int  _wheelIndex;
 }
 
 @property struct SCNVector3 { float x1; float x2; float x3; } axle;

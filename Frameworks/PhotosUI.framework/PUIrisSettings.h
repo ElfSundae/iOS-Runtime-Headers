@@ -3,27 +3,25 @@
  */
 
 @interface PUIrisSettings : PUSettings {
-    PUIrisAnalysisSettings *_analysisSettings;
-    BOOL _audioEnabled;
-    float _playbackPostDuration;
-    float _playbackPreDuration;
-    double _playbackTransitionCrossfadeDelay;
-    double _settleTransitionDuration;
-    BOOL _shouldAlwaysBadge;
-    BOOL _showCrossfadeBorder;
-    BOOL _showDebugInfo;
-    BOOL _showStatusBorder;
-    BOOL _showVideoBorder;
-    float _transitionBlurRadius;
-    double _transitionDuration;
-    float _transitionScale;
-    BOOL _useForceTouchInitiatedPlayback;
-    BOOL _useTransition;
-    BOOL _useVitalityBuffer;
-    BOOL _vitalityAllowed;
+    BOOL  _audioEnabled;
+    float  _playbackPostDuration;
+    float  _playbackPreDuration;
+    double  _playbackTransitionCrossfadeDelay;
+    double  _settleTransitionDuration;
+    BOOL  _shouldAlwaysBadge;
+    BOOL  _showCrossfadeBorder;
+    BOOL  _showDebugInfo;
+    BOOL  _showStatusBorder;
+    BOOL  _showVideoBorder;
+    float  _transitionBlurRadius;
+    double  _transitionDuration;
+    float  _transitionScale;
+    BOOL  _useForceTouchInitiatedPlayback;
+    BOOL  _useTransition;
+    BOOL  _useVitalityBuffer;
+    BOOL  _vitalityAllowed;
 }
 
-@property (nonatomic, retain) PUIrisAnalysisSettings *analysisSettings;
 @property (getter=isAudioEnabled, nonatomic) BOOL audioEnabled;
 @property (nonatomic) float playbackPostDuration;
 @property (nonatomic) float playbackPreDuration;
@@ -46,8 +44,6 @@
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (id)analysisSettings;
 - (BOOL)isAudioEnabled;
 - (BOOL)isVitalityAllowed;
 - (void)performPostSaveActions;
@@ -55,7 +51,6 @@
 - (float)playbackPreDuration;
 - (double)playbackTransitionCrossfadeDelay;
 - (void)restoreDefaultValues;
-- (void)setAnalysisSettings:(id)arg1;
 - (void)setAudioEnabled:(BOOL)arg1;
 - (void)setDefaultValues;
 - (void)setPlaybackPostDuration:(float)arg1;

@@ -5,12 +5,12 @@
 @interface UIDatePickerContentView : UIView {
     struct { 
         unsigned int isAmPm : 1; 
-    } _datePickerContentViewFlags;
-    BOOL _isModern;
-    _UIDatePickerMode *_mode;
-    int _titleAlignment;
-    UILabel *_titleLabel;
-    float _titleLabelMaxX;
+    }  _datePickerContentViewFlags;
+    BOOL  _isModern;
+    _UIDatePickerMode * _mode;
+    int  _titleAlignment;
+    UILabel * _titleLabel;
+    float  _titleLabelMaxX;
 }
 
 @property (nonatomic) BOOL isAmPm;

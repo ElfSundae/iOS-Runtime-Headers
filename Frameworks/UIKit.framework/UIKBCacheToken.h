@@ -3,11 +3,11 @@
  */
 
 @interface UIKBCacheToken : NSObject <NSCopying> {
-    NSMutableArray *_components;
-    int _emptyFields;
-    NSString *_name;
-    int _renderFlags;
-    float _scale;
+    NSMutableArray * _components;
+    int  _emptyFields;
+    NSString * _name;
+    int  _renderFlags;
+    float  _scale;
 }
 
 @property (nonatomic) int displayHint;
@@ -36,6 +36,7 @@
 - (void)annotateWithInt:(int)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (id)description;
 - (int)displayHint;
 - (int)emptyFields;
 - (BOOL)hasKey;
@@ -44,6 +45,7 @@
 - (BOOL)isUsableForCacheToken:(id)arg1 withRenderFlags:(int)arg2;
 - (id)name;
 - (int)renderFlags;
+- (void)resetAnnotations;
 - (int)rowHint;
 - (void)setDisplayHint:(int)arg1;
 - (void)setEmptyFields:(int)arg1;

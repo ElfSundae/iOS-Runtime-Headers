@@ -3,29 +3,29 @@
  */
 
 @interface PUFeedPlayerCell : PUFeedCell {
-    UIButton *__commentButton;
-    BOOL __isPerformingIrisPlayerChanges;
-    BOOL __needsUpdatePlayerItem;
-    BOOL __needsUpdateVitality;
-    ISPlayer *__player;
-    ISPlayerView *__playerView;
-    BOOL __shouldHideCommentButton;
-    int _commentCount;
-    UICollectionView *_containingCollectionView;
-    int _currentImageRequestID;
-    BOOL _isPhotoImageDegraded;
-    UIImage *_photoImage;
-    double _photoTime;
-    BOOL _playerHidden;
-    AVAsset *_videoAsset;
+    UIButton * __commentButton;
+    BOOL  __isPerformingIrisPlayerChanges;
+    BOOL  __needsUpdatePlayerItem;
+    BOOL  __needsUpdateVitality;
+    ISLivePhotoPlayer * __player;
+    ISLivePhotoUIView * __playerView;
+    BOOL  __shouldHideCommentButton;
+    int  _commentCount;
+    UICollectionView * _containingCollectionView;
+    int  _currentImageRequestID;
+    BOOL  _isPhotoImageDegraded;
+    UIImage * _photoImage;
+    double  _photoTime;
+    BOOL  _playerHidden;
+    AVAsset * _videoAsset;
 }
 
 @property (setter=_setCommentButton:, nonatomic, retain) UIButton *_commentButton;
 @property (setter=_setPerformingIrisPlayerChanges:, nonatomic) BOOL _isPerformingIrisPlayerChanges;
 @property (setter=_setNeedsUpdatePlayerItem:, nonatomic) BOOL _needsUpdatePlayerItem;
 @property (setter=_setNeedsUpdateVitality:, nonatomic) BOOL _needsUpdateVitality;
-@property (nonatomic, readonly) ISPlayer *_player;
-@property (nonatomic, readonly) ISPlayerView *_playerView;
+@property (nonatomic, readonly) ISLivePhotoPlayer *_player;
+@property (nonatomic, readonly) ISLivePhotoUIView *_playerView;
 @property (setter=_setShouldHideCommentButton:, nonatomic) BOOL _shouldHideCommentButton;
 @property (nonatomic) int commentCount;
 @property (nonatomic) UICollectionView *containingCollectionView;

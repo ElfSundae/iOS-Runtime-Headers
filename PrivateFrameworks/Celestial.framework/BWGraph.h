@@ -3,30 +3,32 @@
  */
 
 @interface BWGraph : NSObject {
-    BOOL _beingConfigured;
-    BOOL _classicRetainedBufferCount;
-    NSObject<OS_dispatch_group> *_commitGroup;
-    NSMutableArray *_connections;
-    long _errorStatus;
-    long long _inflightConfigurationID;
-    NSMutableArray *_nodes;
-    NSMutableArray *_outputsWithSharedPools;
-    BOOL _running;
-    NSMutableArray *_sinkNodes;
-    NSMutableArray *_sourceNodes;
-    NSObject<OS_dispatch_group> *_startGroup;
-    <BWGraphStatusDelegate> *_statusDelegate;
-    BOOL _supportsLiveReconfiguration;
+    BOOL  _beingConfigured;
+    BOOL  _classicRetainedBufferCount;
+    NSObject<OS_dispatch_group> * _commitGroup;
+    NSMutableArray * _connections;
+    long  _errorStatus;
+    long long  _inflightConfigurationID;
+    NSMutableArray * _nodes;
+    NSMutableArray * _outputsWithSharedPools;
+    BOOL  _prefetchesPixelBufferPools;
+    BOOL  _running;
+    NSMutableArray * _sinkNodes;
+    NSMutableArray * _sourceNodes;
+    NSObject<OS_dispatch_group> * _startGroup;
+    <BWGraphStatusDelegate> * _statusDelegate;
+    BOOL  _supportsLiveReconfiguration;
 }
 
 @property long errorStatus;
+@property (nonatomic) BOOL prefetchesPixelBufferPools;
 @property (nonatomic) <BWGraphStatusDelegate> *statusDelegate;
 @property (nonatomic, readonly) BOOL supportsLiveReconfiguration;
 
 + (void)initialize;
 
 - (id)_breadthFirstEnumerator;
-- (id)_depthFirstEnumerator;
+- (id)_depthFirstEnumeratorWithVertexOrdering:(int)arg1;
 - (void)_makeParentConfigurationChangesLive;
 - (id)_newDispatchGroupForSinksToBecomeLiveWithConfigurationID:(long long)arg1;
 - (id)_newDispatchGroupForSinksToTransitionToState:(int)arg1;
@@ -34,6 +36,7 @@
 - (BOOL)_resolveFormats:(id*)arg1;
 - (BOOL)_resolveRetainedBufferCounts:(id*)arg1;
 - (id)_reverseBreadthFirstEnumerator;
+- (id)_reverseDepthFirstEnumeratorWithVertexOrdering:(int)arg1;
 - (id)_sinkNodes;
 - (id)_sourceNodes;
 - (void)_waitForOutstandingStartOrCommitOperationToComplete;
@@ -45,7 +48,9 @@
 - (id)dotString;
 - (long)errorStatus;
 - (id)init;
+- (BOOL)prefetchesPixelBufferPools;
 - (void)setErrorStatus:(long)arg1;
+- (void)setPrefetchesPixelBufferPools:(BOOL)arg1;
 - (void)setStatusDelegate:(id)arg1;
 - (BOOL)start:(id*)arg1;
 - (id)statusDelegate;

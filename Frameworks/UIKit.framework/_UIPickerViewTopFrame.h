@@ -3,11 +3,11 @@
  */
 
 @interface _UIPickerViewTopFrame : UIView {
-    float _inset;
-    UIImage *_leftImage;
-    UIImage *_middleImage;
-    UIImage *_rightImage;
-    float _shift;
+    float  _inset;
+    UIImage * _leftImage;
+    UIImage * _middleImage;
+    UIImage * _rightImage;
+    float  _shift;
 }
 
 - (void).cxx_destruct;

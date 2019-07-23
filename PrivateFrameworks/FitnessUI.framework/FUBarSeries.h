@@ -3,21 +3,22 @@
  */
 
 @interface FUBarSeries : FUChartSeries {
-    UIColor *_backgroundStrokeColor;
-    float _backgroundStrokeWidth;
-    UIColor *_barColor;
-    NSArray *_barColors;
-    struct CGGradient { } *_barGradient;
-    NSArray *_barLabels;
-    float _barSpacing;
-    float _barWidth;
-    BOOL _fadeZeroBars;
-    UIColor *_fadedBarColor;
-    NSArray *_labelAttributes;
-    NSArray *_plotPoints;
-    float _roundedCornerRadius;
-    UIColor *_strokeColor;
-    float _strokeWidth;
+    UIColor * _backgroundStrokeColor;
+    float  _backgroundStrokeWidth;
+    UIColor * _barColor;
+    NSArray * _barColors;
+    struct CGGradient { } * _barGradient;
+    NSArray * _barLabels;
+    float  _barSpacing;
+    float  _barWidth;
+    float  _fadeInPercentage;
+    BOOL  _fadeZeroBars;
+    UIColor * _fadedBarColor;
+    NSArray * _labelAttributes;
+    NSArray * _plotPoints;
+    float  _roundedCornerRadius;
+    UIColor * _strokeColor;
+    float  _strokeWidth;
 }
 
 @property (nonatomic, retain) UIColor *backgroundStrokeColor;
@@ -28,6 +29,7 @@
 @property (nonatomic, retain) NSArray *barLabels;
 @property (nonatomic) float barSpacing;
 @property (nonatomic) float barWidth;
+@property (nonatomic) float fadeInPercentage;
 @property (nonatomic) BOOL fadeZeroBars;
 @property (nonatomic, retain) UIColor *fadedBarColor;
 @property (nonatomic, retain) NSArray *labelAttributes;
@@ -50,6 +52,7 @@
 - (float)barWidth;
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext { }*)arg2;
+- (float)fadeInPercentage;
 - (BOOL)fadeZeroBars;
 - (id)fadedBarColor;
 - (id)init;
@@ -65,6 +68,7 @@
 - (void)setBarLabels:(id)arg1;
 - (void)setBarSpacing:(float)arg1;
 - (void)setBarWidth:(float)arg1;
+- (void)setFadeInPercentage:(float)arg1;
 - (void)setFadeZeroBars:(BOOL)arg1;
 - (void)setFadedBarColor:(id)arg1;
 - (void)setLabelAttributes:(id)arg1;

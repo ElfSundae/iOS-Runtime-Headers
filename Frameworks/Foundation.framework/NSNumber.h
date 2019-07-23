@@ -2,14 +2,10 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSNumber : NSValue <CKDParsedObject, CKRecordValue, PQLValuable, TSCHChartGridValue, TSDMixing>
+@interface NSNumber : NSValue <CKDParsedObject, CKRecordValue, LPCSSText, NSFetchRequestResult, PQLValuable, TSCHChartGridValue, TSDMixing>
 
+@property (nonatomic, readonly) unsigned int PXDataSourceIdentifierValue;
 @property (readonly) BOOL boolValue;
-@property (nonatomic, readonly) NSNumber *brc_documentID;
-@property (nonatomic, readonly) NSNumber *brc_folderID;
-@property (nonatomic, readonly) BOOL brc_isDocumentID;
-@property (nonatomic, readonly) BOOL brc_isFolderOrAliasID;
-@property (nonatomic, readonly) unsigned long long brc_rawID;
 @property (readonly) BOOL charValue;
 @property (nonatomic, readonly) int chartGridValueType;
 @property (readonly, copy) NSString *debugDescription;
@@ -142,18 +138,6 @@
 
 - (id)__ck_localizedString;
 
-// Image: /System/Library/PrivateFrameworks/CloudDocs.framework/CloudDocs
-
-+ (id)brc_fileObjectIDForURL:(id)arg1 allocateDocID:(BOOL)arg2;
-+ (id)brc_fileObjectIDWithDocumentID:(unsigned int)arg1;
-+ (id)brc_fileObjectIDWithFolderOrAliasID:(unsigned long long)arg1;
-
-- (id)brc_documentID;
-- (id)brc_folderID;
-- (BOOL)brc_isDocumentID;
-- (BOOL)brc_isFolderOrAliasID;
-- (unsigned long long)brc_rawID;
-
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
@@ -168,6 +152,11 @@
 + (id)_cnac_numberWithAutocompleteAddressType:(int)arg1;
 
 - (int)_cnac_autocompleteAddressTypeValue;
+
+// Image: /System/Library/PrivateFrameworks/CoreParsec.framework/CoreParsec
+
+- (int)sf_asRowAlignment;
+- (unsigned int)sf_asTopHit;
 
 // Image: /System/Library/PrivateFrameworks/CoreRecents.framework/CoreRecents
 
@@ -200,11 +189,27 @@
 
 - (id)localizedString;
 
+// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_CSSText;
+
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
 - (void)ml_bindToSQLiteStatement:(struct sqlite3_stmt { }*)arg1 atPosition:(int)arg2;
 - (BOOL)ml_matchesValue:(id)arg1 usingComparison:(int)arg2;
 - (id)ml_stringValueForSQL;
+
+// Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
+
+- (float)cgFloatValue;
+
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
+- (BOOL)fc_isGreaterThan:(id)arg1;
+- (BOOL)fc_isLessThan:(id)arg1;
+- (BOOL)fc_isLessThanOrEqualTo:(id)arg1;
+- (id)fc_largerNumber:(id)arg1;
+- (id)fc_smallerNumber:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
@@ -213,6 +218,10 @@
 - (float)CGFloatValue;
 - (BOOL)isFloatingPointType;
 - (void)sfu_appendJsonStringToString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (unsigned int)PXDataSourceIdentifierValue;
 
 // Image: /System/Library/PrivateFrameworks/ServerDocsProtocol.framework/ServerDocsProtocol
 
@@ -224,6 +233,12 @@
 
 - (id)initWithItemIdentifier:(unsigned long long)arg1;
 - (unsigned long long)itemIdentifierValue;
+
+// Image: /System/Library/PrivateFrameworks/Swift/libswiftFoundation.dylib
+
+- (id)initWithBooleanLiteral:(BOOL)arg1;
+- (id)initWithFloatLiteral:(double)arg1;
+- (id)initWithIntegerLiteral:(long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 
@@ -262,6 +277,7 @@
 - (int)tsch_styleIntValue;
 - (int)tsch_stylePropertyValue;
 - (int)tss_propertyValue;
+- (BOOL)tsu_isAlmostEqual:(id)arg1;
 
 // Image: /usr/lib/libprequelite.dylib
 

@@ -3,8 +3,8 @@
  */
 
 @interface VMUSimpleSerializer : VMUAbstractSerializer {
-    unsigned int _internCursor;
-    void *_map;
+    unsigned int  _internCursor;
+    void * _map;
 }
 
 - (void)_serializeValues:(unsigned int*)arg1 count:(unsigned int)arg2;

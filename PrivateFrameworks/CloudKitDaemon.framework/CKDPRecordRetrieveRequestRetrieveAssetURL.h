@@ -3,13 +3,13 @@
  */
 
 @interface CKDPRecordRetrieveRequestRetrieveAssetURL : PBCodable <NSCopying> {
-    CKDPRequestedFields *_assetFields;
+    CKDPRequestedFields * _assetFields;
     struct { 
         unsigned int requestedTTL : 1; 
         unsigned int type : 1; 
-    } _has;
-    long long _requestedTTL;
-    int _type;
+    }  _has;
+    long long  _requestedTTL;
+    int  _type;
 }
 
 @property (nonatomic, retain) CKDPRequestedFields *assetFields;
@@ -20,6 +20,7 @@
 @property (nonatomic) int type;
 
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)assetFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -39,6 +40,7 @@
 - (void)setRequestedTTL:(long long)arg1;
 - (void)setType:(int)arg1;
 - (int)type;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

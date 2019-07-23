@@ -3,8 +3,8 @@
  */
 
 @interface CAMFocusLockWithLensPositionCommand : CAMCaptureCommand {
-    id /* block */ __completionBlock;
-    float __lensPosition;
+    id /* block */  __completionBlock;
+    float  __lensPosition;
 }
 
 @property (setter=_setCompletionBlock:, nonatomic, copy) id /* block */ _completionBlock;

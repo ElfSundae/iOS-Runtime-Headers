@@ -3,12 +3,12 @@
  */
 
 @interface WBSHistoryTombstone : NSObject {
-    double _endTime;
-    long long _generation;
-    double _startTime;
-    NSData *_urlHash;
-    NSData *_urlSalt;
-    NSString *_urlString;
+    double  _endTime;
+    long long  _generation;
+    double  _startTime;
+    NSData * _urlHash;
+    NSData * _urlSalt;
+    NSString * _urlString;
 }
 
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;

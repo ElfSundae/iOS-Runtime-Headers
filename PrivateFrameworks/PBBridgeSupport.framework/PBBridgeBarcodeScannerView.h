@@ -3,12 +3,12 @@
  */
 
 @interface PBBridgeBarcodeScannerView : UIView <AVCaptureMetadataOutputObjectsDelegate> {
-    BOOL _canUseCamera;
-    AVCaptureSession *_captureSession;
-    <PBBridgeCaptureDelegate> *_delegate;
-    AVCaptureDeviceInput *_deviceInput;
-    NSObject<OS_dispatch_queue> *_metadataQueue;
-    AVCaptureVideoPreviewLayer *_previewLayer;
+    BOOL  _canUseCamera;
+    AVCaptureSession * _captureSession;
+    <PBBridgeCaptureDelegate> * _delegate;
+    AVCaptureDeviceInput * _deviceInput;
+    NSObject<OS_dispatch_queue> * _metadataQueue;
+    AVCaptureVideoPreviewLayer * _previewLayer;
 }
 
 @property (nonatomic, readonly) BOOL canUseCamera;

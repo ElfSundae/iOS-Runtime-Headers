@@ -3,8 +3,8 @@
  */
 
 @interface _UIPopoverViewArtworkLoader : NSObject {
-    NSString *_backgroundSelector;
-    int _backgroundStyle;
+    NSString * _backgroundSelector;
+    int  _backgroundStyle;
 }
 
 + (id)backgroundSelectorForBackgroundStyle:(int)arg1;

@@ -3,13 +3,13 @@
  */
 
 @interface _MKCalloutBackgroundMaskView : UIView {
-    UIMotionEffect *_arrowMotionEffect;
-    UIView *_baseView;
-    UIImageView *_bottomArrow;
-    UIView *_currentArrowContainer;
-    UIImageView *_leftArrow;
-    UIImageView *_rightArrow;
-    UIImageView *_topArrow;
+    UIMotionEffect * _arrowMotionEffect;
+    UIView * _baseView;
+    UIImageView * _bottomArrow;
+    UIView * _currentArrowContainer;
+    UIImageView * _leftArrow;
+    UIImageView * _rightArrow;
+    UIImageView * _topArrow;
 }
 
 @property (nonatomic, copy) UIMotionEffect *arrowMotionEffect;

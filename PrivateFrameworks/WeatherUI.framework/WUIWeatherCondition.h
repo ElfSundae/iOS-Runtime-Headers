@@ -3,24 +3,24 @@
  */
 
 @interface WUIWeatherCondition : NSObject {
-    unsigned int _CAMLState;
-    float _alpha;
-    City *_city;
-    int _condition;
-    BOOL _forcesCondition;
-    int _forcesNight;
-    NSMutableArray *_gyroLayers;
-    BOOL _hidden;
-    BOOL _isRotating;
-    CALayer *_layer;
-    NSString *_loadedFileName;
-    BOOL _multiCityMode;
-    BOOL _playing;
-    CALayer *_rootLayer;
-    BOOL _shouldRasterize;
-    float _speed;
-    CAStateController *_stateController;
-    double _timeOffset;
+    unsigned int  _CAMLState;
+    float  _alpha;
+    City * _city;
+    int  _condition;
+    BOOL  _forcesCondition;
+    int  _forcesNight;
+    NSMutableArray * _gyroLayers;
+    BOOL  _hidden;
+    BOOL  _isRotating;
+    CALayer * _layer;
+    NSString * _loadedFileName;
+    BOOL  _multiCityMode;
+    BOOL  _playing;
+    CALayer * _rootLayer;
+    BOOL  _shouldRasterize;
+    float  _speed;
+    CAStateController * _stateController;
+    double  _timeOffset;
 }
 
 @property (nonatomic) unsigned int CAMLState;

@@ -10,7 +10,7 @@
         float d; 
         float tx; 
         float ty; 
-    } _transform;
+    }  _transform;
 }
 
 @property struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; } transform;

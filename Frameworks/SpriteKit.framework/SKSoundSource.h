@@ -3,8 +3,8 @@
  */
 
 @interface SKSoundSource : NSObject {
-    NSMutableArray *_buffers;
-    unsigned int _sourceId;
+    NSMutableArray * _buffers;
+    unsigned int  _sourceId;
 }
 
 @property (nonatomic, readonly) int completedBufferCount;
@@ -25,7 +25,7 @@
 - (id)init;
 - (BOOL)isPlaying;
 - (void)pause;
-- (void)play;
+- (bool)play;
 - (struct CGPoint { float x1; float x2; })position;
 - (void)purgeCompletedBuffers;
 - (void)queueBuffer:(id)arg1;

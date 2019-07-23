@@ -6,6 +6,7 @@
 @required
 
 - (NSUUID *)baseObjectUUID;
+- (BOOL)canRetainObjectReferencedByWeakLazyReference;
 - (TSPObjectContext *)contextForReader:(TSPReader *)arg1;
 - (unsigned long long)fileFormatVersion;
 - (BOOL)hasDocumentVersionUUID;
@@ -18,12 +19,12 @@
 - (void)reader:(TSPReader *)arg1 didReadLazyReference:(TSPLazyReference *)arg2;
 - (TSPData *)reader:(TSPReader *)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(TSPReader *)arg1 wantsObjectIdentifierForUUID:(NSUUID *)arg2;
+- (int)sourceType;
 
 @optional
 
 - (BOOL)isCrossAppPaste;
 - (BOOL)isCrossDocumentPaste;
-- (BOOL)isFromCopy;
 - (void)reader:(TSPReader *)arg1 didResetObjectIdentifierForObject:(TSPObject *)arg2 originalObjectIdentifier:(long long)arg3;
 - (void)reader:(TSPReader *)arg1 didResetObjectUUID:(NSUUID *)arg2 forObjectIdentifier:(long long)arg3 originalObjectUUID:(NSUUID *)arg4;
 - (void)reader:(TSPReader *)arg1 didUnarchiveObject:(TSPObject *)arg2;

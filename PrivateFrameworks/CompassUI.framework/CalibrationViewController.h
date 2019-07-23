@@ -3,31 +3,31 @@
  */
 
 @interface CalibrationViewController : UIViewController {
-    double _angleOfAwesome;
-    double _angleToRim;
-    CalibrationBallView *_ballView;
-    NSMutableArray *_calibrationConstraints;
-    UIButton *_cancelButton;
-    CompassBackgroundView *_compassBackgroundView;
-    CAShapeLayer *_compassBackgroundViewMask;
+    double  _angleOfAwesome;
+    double  _angleToRim;
+    CalibrationBallView * _ballView;
+    NSMutableArray * _calibrationConstraints;
+    UIButton * _cancelButton;
+    CompassBackgroundView * _compassBackgroundView;
+    CAShapeLayer * _compassBackgroundViewMask;
     struct CGPoint { 
         float x; 
         float y; 
-    } _compassOriginPoint;
-    float _compassRadius;
-    BOOL _ignoreMotionUpdates;
-    UILabel *_instructionLabel;
-    unsigned int _numCompleteTics;
+    }  _compassOriginPoint;
+    float  _compassRadius;
+    BOOL  _ignoreMotionUpdates;
+    UILabel * _instructionLabel;
+    unsigned int  _numCompleteTics;
     struct Matrix<double, 3, 1> { 
         double _e[3]; 
-    } _previousGravity;
-    double _previousHorizontalAngle;
-    double _previousTimestamp;
-    int _quantizationType;
-    BOOL _shouldCompleteTics;
-    double _startTicAngle;
-    float *_ticsShowingArray;
-    UILabel *_titleLabel;
+    }  _previousGravity;
+    double  _previousHorizontalAngle;
+    double  _previousTimestamp;
+    int  _quantizationType;
+    BOOL  _shouldCompleteTics;
+    double  _startTicAngle;
+    float * _ticsShowingArray;
+    UILabel * _titleLabel;
 }
 
 - (id).cxx_construct;

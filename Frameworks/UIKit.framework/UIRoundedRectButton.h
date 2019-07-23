@@ -3,10 +3,10 @@
  */
 
 @interface UIRoundedRectButton : UIButton {
-    UIColor *_fillColor;
-    UIBezierPath *_fillPath;
-    UIView *_shadowView;
-    UIGroupTableViewCellBackground *_tableViewStyleBackground;
+    UIColor * _fillColor;
+    UIBezierPath * _fillPath;
+    UIView * _shadowView;
+    UIGroupTableViewCellBackground * _tableViewStyleBackground;
 }
 
 - (void).cxx_destruct;

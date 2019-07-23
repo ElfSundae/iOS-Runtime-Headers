@@ -3,20 +3,21 @@
  */
 
 @interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar <UIKBAlertControllerDelegate> {
-    BOOL _cachedCanMultitap;
-    UIKBTree *_cachedMultitapKeyplane;
-    BOOL _disableTouchInput;
-    BOOL _ignoreEventsUntilPressEnds;
-    UIKBTree *_indirectKeyboard;
-    NSString *_keyplaneBeforeDictation;
-    NSArray *_keyplaneKeys;
-    UILexicon *_recentInputs;
-    UIAlertController *_recentInputsAlert;
-    int _savedSelectedKeyIndex;
-    int _selectedKeyBeforeDictation;
-    int _selectedKeyIndex;
-    UIView *_selectionView;
-    BOOL _suppressOperations;
+    BOOL  _cachedCanMultitap;
+    UIKBTree * _cachedMultitapKeyplane;
+    UILabel * _dictationHelpLabel;
+    BOOL  _didVariantDelete;
+    BOOL  _disableTouchInput;
+    BOOL  _ignoreEventsUntilPressEnds;
+    UIKBTree * _indirectKeyboard;
+    NSString * _keyplaneBeforeDictation;
+    NSArray * _keyplaneKeys;
+    UILexicon * _recentInputs;
+    UIAlertController * _recentInputsAlert;
+    int  _selectedKeyBeforeDictation;
+    int  _selectedKeyIndex;
+    UIView * _selectionView;
+    BOOL  _suppressOperations;
 }
 
 @property (nonatomic, readonly) UIKBTree *currentKey;
@@ -61,6 +62,7 @@
 - (int)enabledStateForKey:(id)arg1;
 - (void)endMultitapForKey:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
+- (unsigned char)getHandRestRecognizerState;
 - (BOOL)handleLinearDirectionalInput:(int)arg1;
 - (void)handleVariantDeleteIfNecessaryForKey:(id)arg1;
 - (BOOL)handleVisualDirectionalInput:(int)arg1;
@@ -79,6 +81,7 @@
 - (id)recentInputsAlert;
 - (BOOL)refreshSelectedCellIfNecessaryForKey:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
+- (void)returnToKeyplaneAfterDictation;
 - (void)runWithSuppressedActions:(id /* block */)arg1;
 - (void)selectInitialKeyIfNecessary;
 - (int)selectedKeyBeforeDictation;
@@ -92,9 +95,9 @@
 - (void)setKeyplaneName:(id)arg1;
 - (void)setRecentInputs:(id)arg1;
 - (void)setRecentInputsAlert:(id)arg1;
+- (void)setRenderConfig:(id)arg1;
 - (void)setSelectedKeyBeforeDictation:(int)arg1;
 - (void)setSelectedKeyIndex:(int)arg1;
-- (BOOL)shouldAddHandRestRecognizer;
 - (BOOL)shouldAllowCurrentKeyplaneReload;
 - (BOOL)shouldDeactivateWithoutWindow;
 - (BOOL)shouldMatchCaseForDomainKeys;
@@ -109,10 +112,11 @@
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
 - (BOOL)supportsEmoji;
-- (void)switchToDictationKeyplane;
+- (void)switchToDictationKeyplaneWithActivationIdentifier:(id)arg1;
 - (void)takeKeyAction:(id)arg1;
 - (unsigned int)targetEdgesForScreenGestureRecognition;
 - (int)targetKeyIndexAtOffset:(struct CGPoint { float x1; float x2; })arg1 fromKey:(id)arg2;
+- (void)updateDictationHelpString;
 - (void)updateKeyplaneSwitchEdgeBiases;
 - (void)updateRecentInputsKeyIfNecessary;
 - (void)updateStatesForGridSelection;

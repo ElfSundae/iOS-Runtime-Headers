@@ -3,10 +3,10 @@
  */
 
 @interface AVAssetWriterWritingHelper : AVAssetWriterHelper <AVAssetWriterFigAssetWriterNotificationHandlerDelegate> {
-    struct OpaqueFigAssetWriter { } *_figAssetWriter;
-    NSObject<OS_dispatch_queue> *_figAssetWriterAccessQueue;
-    AVAssetWriterFigAssetWriterNotificationHandler *_notificationHandler;
-    BOOL _startSessionCalled;
+    struct OpaqueFigAssetWriter { } * _figAssetWriter;
+    NSObject<OS_dispatch_queue> * _figAssetWriterAccessQueue;
+    AVAssetWriterFigAssetWriterNotificationHandler * _notificationHandler;
+    BOOL  _startSessionCalled;
 }
 
 @property (readonly, copy) NSString *debugDescription;

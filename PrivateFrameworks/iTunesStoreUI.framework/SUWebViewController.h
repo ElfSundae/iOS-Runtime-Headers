@@ -3,22 +3,22 @@
  */
 
 @interface SUWebViewController : SUViewController <SUWebViewDelegate, SUWebViewManagerDelegate> {
-    SSMutableAuthenticationContext *_authenticationContext;
-    SUDelayedNavigationItem *_delayedNavigationItem;
-    NSURL *_displayedURL;
-    BOOL _hasEverAppeared;
-    int _lastKnownOrientation;
-    id /* block */ _loadBlock;
-    SUMescalSession *_mescalSession;
-    SUObjectPool *_objectPool;
-    ISURLRequestPerformance *_performanceMetrics;
-    int _scheduledOrientation;
-    SUStorePageProtocol *_storePageProtocol;
-    int _style;
-    NSURL *_url;
-    BOOL _viewIsReady;
-    SUWebView *_webView;
-    SUWebViewManager *_webViewManager;
+    SSMutableAuthenticationContext * _authenticationContext;
+    SUDelayedNavigationItem * _delayedNavigationItem;
+    NSURL * _displayedURL;
+    BOOL  _hasEverAppeared;
+    int  _lastKnownOrientation;
+    id /* block */  _loadBlock;
+    SUMescalSession * _mescalSession;
+    SUObjectPool * _objectPool;
+    ISURLRequestPerformance * _performanceMetrics;
+    int  _scheduledOrientation;
+    SUStorePageProtocol * _storePageProtocol;
+    int  _style;
+    NSURL * _url;
+    BOOL  _viewIsReady;
+    SUWebView * _webView;
+    SUWebViewManager * _webViewManager;
 }
 
 @property (getter=_mescalSession, setter=_setMescalSession:, nonatomic, retain) SUMescalSession *_mescalSession;
@@ -49,6 +49,7 @@
 - (void)_reloadPlaceholderBackgroundView;
 - (void)_reloadUI;
 - (void)_removePlaceholderBackgroundView;
+- (void)_requestWebScriptReloadWithContext:(id)arg1;
 - (void)_sendOrientationWillChangeToInterfaceOrientation:(int)arg1;
 - (void)_setExistingNavigationItem:(id)arg1;
 - (void)_setLastKnownOrientation:(int)arg1;

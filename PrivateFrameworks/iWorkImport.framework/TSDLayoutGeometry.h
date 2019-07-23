@@ -6,7 +6,7 @@
     struct CGSize { 
         float width; 
         float height; 
-    } mSize;
+    }  mSize;
     struct CGAffineTransform { 
         float a; 
         float b; 
@@ -14,7 +14,7 @@
         float d; 
         float tx; 
         float ty; 
-    } mTransform;
+    }  mTransform;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } size;
@@ -31,6 +31,7 @@
 - (id)geometryByOutsettingBy:(struct CGSize { float x1; float x2; })arg1;
 - (id)geometryByTransformingBy:(struct CGAffineTransform { float x1; float x2; float x3; float x4; float x5; float x6; })arg1;
 - (id)geometryByTranslatingBy:(struct CGPoint { float x1; float x2; })arg1;
+- (unsigned int)hash;
 - (id)infoGeometry;
 - (id)init;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

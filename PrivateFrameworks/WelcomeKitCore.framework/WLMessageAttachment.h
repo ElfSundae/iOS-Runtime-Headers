@@ -3,12 +3,12 @@
  */
 
 @interface WLMessageAttachment : NSObject {
-    NSData *_data;
-    NSString *_fileName;
-    NSString *_guid;
-    NSString *_mimeType;
-    long long *_rowID;
-    NSString *_uti;
+    NSData * _data;
+    NSString * _fileName;
+    NSString * _guid;
+    NSString * _mimeType;
+    long long * _rowID;
+    NSString * _uti;
 }
 
 @property (nonatomic, readonly) NSData *data;

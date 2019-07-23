@@ -3,17 +3,17 @@
  */
 
 @interface PLPhotoTileBadgeView : UIView {
-    UIView *__backgroundView;
-    UIImageView *__badgeImageView;
-    UIButton *__button;
-    UIImageView *__photoIrisBadgeImageView;
-    UILabel *__textLabel;
-    BOOL _enabled;
-    BOOL _isIrisBadgeHidden;
-    BOOL _isOverContent;
-    int _numberOfPhotos;
-    BOOL _selected;
-    int _style;
+    UIView * __backgroundView;
+    UIImageView * __badgeImageView;
+    UIButton * __button;
+    UIImageView * __photoIrisBadgeImageView;
+    UILabel * __textLabel;
+    BOOL  _enabled;
+    BOOL  _isIrisBadgeHidden;
+    BOOL  _isOverContent;
+    int  _numberOfPhotos;
+    BOOL  _selected;
+    int  _style;
 }
 
 @property (nonatomic, readonly) UIView *_backgroundView;
@@ -28,19 +28,17 @@
 @property (getter=isSelected, nonatomic) BOOL selected;
 @property (nonatomic) int style;
 
-- (void)_addButton;
 - (id)_backgroundView;
 - (id)_badgeImageView;
 - (id)_button;
 - (void)_commonPLPhotoTileBadgeViewInitialization:(int)arg1;
-- (void)_createPhotoIrisBadgeViewIfNeeded;
 - (id)_photoIrisBadgeImageView;
 - (void)_setButton:(id)arg1;
 - (id)_textLabel;
-- (void)_toggleOption:(id)arg1;
 - (void)_updateBadgeImage;
 - (void)_updateBadgeText;
 - (void)_updatePhotoIrisBadgeAppearanceAnimated:(BOOL)arg1;
+- (void)_updateSubviewsForStyle;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;

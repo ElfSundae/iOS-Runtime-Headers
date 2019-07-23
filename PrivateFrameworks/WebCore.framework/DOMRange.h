@@ -41,7 +41,6 @@
 - (void)expand:(id)arg1;
 - (void)extend:(unsigned long)arg1 inDirection:(int)arg2;
 - (id)extractContents;
-- (void)finalize;
 - (id)firstNode;
 - (void)insertNode:(id)arg1;
 - (BOOL)intersectsNode:(id)arg1;

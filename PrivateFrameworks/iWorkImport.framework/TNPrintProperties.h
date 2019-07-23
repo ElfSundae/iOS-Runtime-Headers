@@ -3,18 +3,18 @@
  */
 
 @interface TNPrintProperties : NSObject {
-    float _footerInset;
-    float _headerInset;
+    float  _footerInset;
+    float  _headerInset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _printMargins;
+    }  _printMargins;
     struct CGSize { 
         float width; 
         float height; 
-    } _unscaledPageSize;
+    }  _unscaledPageSize;
 }
 
 @property (nonatomic) float footerInset;
@@ -49,7 +49,7 @@
 - (void)setHeaderInset:(float)arg1;
 - (void)setPrintMargins:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setUnscaledPageSize:(struct CGSize { float x1; float x2; })arg1;
-- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })unscaledPageRectForDisplayForPortraitOrientation:(BOOL)arg1 userViewScale:(float)arg2 atPageCoordinate:(struct { unsigned short x1; unsigned char x2; unsigned char x3; })arg3;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })unscaledPageRectForDisplayForPortraitOrientation:(BOOL)arg1 userViewScale:(float)arg2 atPageCoordinate:(struct TSUCellCoord { unsigned short x1; unsigned char x2; unsigned char x3; })arg3;
 - (struct CGSize { float x1; float x2; })unscaledPageSize;
 
 @end

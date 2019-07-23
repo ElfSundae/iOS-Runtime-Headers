@@ -3,15 +3,15 @@
  */
 
 @interface _SBFVibrantSettings : NSObject {
-    UIColor *_chevronShimmerColor;
-    UIColor *_highlightColor;
-    UIColor *_highlightLimitingColor;
-    _UILegibilitySettings *_legibilitySettings;
-    UIColor *_referenceColor;
-    float _referenceContrast;
-    UIColor *_shimmerColor;
-    int _style;
-    UIColor *_tintColor;
+    UIColor * _chevronShimmerColor;
+    UIColor * _highlightColor;
+    UIColor * _highlightLimitingColor;
+    _UILegibilitySettings * _legibilitySettings;
+    UIColor * _referenceColor;
+    float  _referenceContrast;
+    UIColor * _shimmerColor;
+    int  _style;
+    UIColor * _tintColor;
 }
 
 @property (nonatomic, retain) UIColor *chevronShimmerColor;

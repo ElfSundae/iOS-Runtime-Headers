@@ -3,10 +3,10 @@
  */
 
 @interface TSTTextEngineDelegate : NSObject <TSWPTextDelegate> {
-    TSULocale *mLocale;
-    float mMaxWidthForChildren;
-    TSWPPadding *mPadding;
-    int mVerticalAlignment;
+    TSULocale * mLocale;
+    float  mMaxWidthForChildren;
+    TSWPPadding * mPadding;
+    int  mVerticalAlignment;
 }
 
 @property (nonatomic, readonly) TSULocale *locale;

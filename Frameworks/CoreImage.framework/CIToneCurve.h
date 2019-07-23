@@ -3,13 +3,13 @@
  */
 
 @interface CIToneCurve : CIFilter <_CIFilterProperties> {
-    CIImage *_curveImage;
-    CIImage *inputImage;
-    CIVector *inputPoint0;
-    CIVector *inputPoint1;
-    CIVector *inputPoint2;
-    CIVector *inputPoint3;
-    CIVector *inputPoint4;
+    CIImage * _curveImage;
+    CIImage * inputImage;
+    CIVector * inputPoint0;
+    CIVector * inputPoint1;
+    CIVector * inputPoint2;
+    CIVector * inputPoint3;
+    CIVector * inputPoint4;
 }
 
 @property (nonatomic, retain) CIImage *inputImage;

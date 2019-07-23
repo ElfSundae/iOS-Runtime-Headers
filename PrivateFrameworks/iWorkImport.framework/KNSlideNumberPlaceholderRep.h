@@ -7,6 +7,7 @@
 + (id)mixableObjectClasses;
 
 - (BOOL)canBeginEditingChildRepOnDoubleTap:(id)arg1;
+- (BOOL)canMakePathEditable;
 - (BOOL)handleSingleTapAtPoint:(struct CGPoint { float x1; float x2; })arg1 withRecognizer:(id)arg2;
 - (BOOL)shouldBeginEditingOnSingleClick;
 

@@ -3,9 +3,9 @@
  */
 
 @interface VTUIEnrollmentSetupIntroView : VTUIEnrollmentStateView <UITextViewDelegate> {
-    UIView *_footerView;
-    UIButton *_laterButton;
-    <VTUIEnrollmentSetupIntroViewDelegate> *_stateViewDelegate;
+    UIView * _footerView;
+    UIButton * _laterButton;
+    <VTUIEnrollmentSetupIntroViewDelegate> * _stateViewDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;

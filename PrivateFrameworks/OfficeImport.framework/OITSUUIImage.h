@@ -3,8 +3,8 @@
  */
 
 @interface OITSUUIImage : OITSUImage {
-    TSUUIImageAutoreleasePoolGuard *mGuard;
-    UIImage *mUIImage;
+    OITSUUIImageAutoreleasePoolGuard * mGuard;
+    UIImage * mUIImage;
 }
 
 + (void)i_performBlockWithUIImageLock:(id /* block */)arg1;

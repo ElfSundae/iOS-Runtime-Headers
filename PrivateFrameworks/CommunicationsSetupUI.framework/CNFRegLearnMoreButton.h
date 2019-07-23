@@ -3,10 +3,10 @@
  */
 
 @interface CNFRegLearnMoreButton : UIButton {
-    BOOL _alwaysUnderline;
-    NSString *_buttonText;
-    int _style;
-    BOOL _usesImage;
+    BOOL  _alwaysUnderline;
+    NSString * _buttonText;
+    int  _style;
+    BOOL  _usesImage;
 }
 
 @property (nonatomic) BOOL alwaysUnderline;

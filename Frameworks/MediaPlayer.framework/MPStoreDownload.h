@@ -3,14 +3,15 @@
  */
 
 @interface MPStoreDownload : NSObject {
-    SSDownload *_SSDownload;
-    SSPurchase *_SSPurchase;
-    SSPurchaseResponse *_SSPurchaseResponse;
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSDictionary *_attributes;
-    BOOL _canceled;
-    NSMutableArray *_overridePhaseIdentifiers;
-    int _type;
+    SSDownload * _SSDownload;
+    SSPurchase * _SSPurchase;
+    SSPurchaseResponse * _SSPurchaseResponse;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    NSDictionary * _attributes;
+    BOOL  _canceled;
+    NSString * _downloadFilePath;
+    NSMutableArray * _overridePhaseIdentifiers;
+    int  _type;
 }
 
 @property (nonatomic, readonly) NSDictionary *attributes;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) NSString *phaseIdentifier;
 @property (nonatomic, readonly) NSError *purchaseError;
 @property (getter=isPurchasing, nonatomic, readonly) BOOL purchasing;
+@property (nonatomic, readonly) int reason;
 @property (nonatomic, readonly) NSDictionary *rentalInformation;
 @property (getter=isRestore, nonatomic, readonly) BOOL restore;
 @property (nonatomic, readonly) long long storeItemIdentifier;
@@ -47,9 +49,11 @@
 - (id)_SSPurchaseResponse;
 - (void)_addOverridePhaseIdentifier:(id)arg1;
 - (id)_currentOverridePhaseIdentifier;
+- (id)_getDownloadFilePath;
 - (BOOL)_isCanceled;
 - (void)_removeOverridePhaseIdentifier:(id)arg1;
 - (void)_setCanceled:(BOOL)arg1;
+- (void)_setDownloadFilePath:(id)arg1;
 - (void)_setSSDownload:(id)arg1;
 - (void)_setSSPurchase:(id)arg1 SSPurchaseResponse:(id)arg2;
 - (id)_valueForDownloadProperty:(id)arg1;
@@ -71,6 +75,7 @@
 - (double)percentComplete;
 - (id)phaseIdentifier;
 - (id)purchaseError;
+- (int)reason;
 - (id)rentalInformation;
 - (void)resetCachedRentalInformation;
 - (long long)storeItemIdentifier;

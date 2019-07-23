@@ -3,7 +3,7 @@
  */
 
 @interface CAMediaTimingFunction : NSObject <NSCoding> {
-    struct CAMediaTimingFunctionPrivate { float x1[2]; float x2[2]; } *_priv;
+    struct CAMediaTimingFunctionPrivate { float x1[2]; float x2[2]; } * _priv;
 }
 
 // Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
@@ -31,6 +31,10 @@
 
 + (id)_kbTimingFunction;
 + (id)uiFunctionWithControlPoints:(const struct CGPoint { float x1; float x2; }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
++ (id)hu_functionWithAnimationCurve:(int)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
 

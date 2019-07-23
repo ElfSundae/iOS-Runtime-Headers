@@ -3,20 +3,19 @@
  */
 
 @interface UIPrinterBrowserViewController : UITableViewController <PKPrinterBrowserDelegate> {
-    BOOL _clearCurrentPrinter;
-    NSMutableArray *_filteredOutPrinters;
-    NSArray *_lastUsedPrinters;
-    BOOL _loaded;
-    PKPrinter *_lockedPrinter;
-    float _maximumPopoverHeight;
-    NSMutableArray *_otherPrinters;
-    <UIPrinterBrowserOwner> *_ownerPanelViewController;
-    NSMutableArray *_preferredPrinters;
-    PKPrinterBrowser *_printerBrowser;
-    float _rowHeight;
-    UIPrinterSearchingView *_searchingView;
-    BOOL _searchingViewConstraintsSet;
-    BOOL _shouldFilterPrinters;
+    NSMutableArray * _filteredOutPrinters;
+    NSArray * _lastUsedPrinters;
+    BOOL  _loaded;
+    PKPrinter * _lockedPrinter;
+    float  _maximumPopoverHeight;
+    NSMutableArray * _otherPrinters;
+    <UIPrinterBrowserOwner> * _ownerPanelViewController;
+    NSMutableArray * _preferredPrinters;
+    PKPrinterBrowser * _printerBrowser;
+    float  _rowHeight;
+    UIPrinterSearchingView * _searchingView;
+    BOOL  _searchingViewConstraintsSet;
+    BOOL  _shouldFilterPrinters;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -3,16 +3,16 @@
  */
 
 @interface PKPaper : NSObject {
-    NSString *_baseName;
-    BOOL _isTransverse;
-    int bottomMargin;
-    int height;
-    int leftMargin;
-    NSDictionary *mediaInfo;
-    NSString *name;
-    int rightMargin;
-    int topMargin;
-    int width;
+    NSString * _baseName;
+    BOOL  _isTransverse;
+    int  bottomMargin;
+    int  height;
+    int  leftMargin;
+    NSDictionary * mediaInfo;
+    NSString * name;
+    int  rightMargin;
+    int  topMargin;
+    int  width;
 }
 
 @property (nonatomic, readonly) NSString *baseName;
@@ -40,6 +40,7 @@
 @property (nonatomic, readonly) unsigned int topMarginInPoints;
 @property (nonatomic) int width;
 
++ (id)defaultGenericPaperForLocale:(id)arg1;
 + (id)documentPapers;
 + (id)generic3_5x5Paper;
 + (id)generic4x6Paper;

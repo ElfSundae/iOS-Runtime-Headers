@@ -3,8 +3,8 @@
  */
 
 @interface AVAssetWriterHelper : NSObject {
-    AVAssetWriterConfigurationState *_configurationState;
-    AVWeakReference *_weakReferenceToAssetWriter;
+    AVAssetWriterConfigurationState * _configurationState;
+    AVWeakReference * _weakReferenceToAssetWriter;
 }
 
 @property (nonatomic, readonly) NSArray *availableMediaTypes;

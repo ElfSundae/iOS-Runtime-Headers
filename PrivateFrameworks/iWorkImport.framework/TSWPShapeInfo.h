@@ -3,7 +3,7 @@
  */
 
 @interface TSWPShapeInfo : TSDShapeInfo <TSDContainerInfo, TSDMixing, TSDSelectionStatisticsContributor, TSWPStorageParent> {
-    TSWPStorage *_containedStorage;
+    TSWPStorage * _containedStorage;
 }
 
 @property (getter=isAnchoredToText, nonatomic, readonly) BOOL anchoredToText;
@@ -67,6 +67,7 @@
 - (void)fixPositionOfImportedAutosizedShape;
 - (id)initFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
+- (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4 wpStorage:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 wpStorage:(id)arg4;
@@ -103,7 +104,6 @@
 - (BOOL)shouldHideEmptyBullets;
 - (BOOL)shrinkTextToFit;
 - (Class)styleClass;
-- (id)styleIdentifierTemplateForNewPreset;
 - (id)stylesForCopyStyle;
 - (BOOL)supportsShrinkTextToFit;
 - (BOOL)supportsTextInset;

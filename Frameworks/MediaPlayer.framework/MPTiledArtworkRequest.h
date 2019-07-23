@@ -3,16 +3,20 @@
  */
 
 @interface MPTiledArtworkRequest : NSObject <NSCopying> {
-    id /* block */ _artworkCatalogsBlock;
-    NSArray *_artworkCatalogsCache;
-    <NSCopying> *_entityIdentifier;
-    <NSCopying> *_namespaceIdentifier;
-    unsigned int _numberOfColumns;
-    unsigned int _numberOfRows;
-    <NSCopying> *_revisionIdentifier;
-    float _tileSpacing;
+    NSObject<OS_dispatch_queue> * _accessQueue;
+    BOOL  _allowsSynchronousArtworkCatalogsBlockExecution;
+    id /* block */  _artworkCatalogsBlock;
+    NSArray * _artworkCatalogsCache;
+    int  _artworkCatalogsCacheCount;
+    <NSCopying> * _entityIdentifier;
+    <NSCopying> * _namespaceIdentifier;
+    unsigned int  _numberOfColumns;
+    unsigned int  _numberOfRows;
+    <NSCopying> * _revisionIdentifier;
+    float  _tileSpacing;
 }
 
+@property (nonatomic) BOOL allowsSynchronousArtworkCatalogsBlockExecution;
 @property (nonatomic, copy) id /* block */ artworkCatalogsBlock;
 @property (nonatomic, copy) <NSCopying> *entityIdentifier;
 @property (nonatomic, copy) <NSCopying> *namespaceIdentifier;
@@ -22,14 +26,19 @@
 @property (nonatomic) float tileSpacing;
 
 - (void).cxx_destruct;
+- (BOOL)allowsSynchronousArtworkCatalogsBlockExecution;
 - (id /* block */)artworkCatalogsBlock;
 - (id)artworkCatalogsWithCount:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)entityIdentifier;
+- (id)existingArtworkCatalogsWithCount:(int)arg1;
+- (BOOL)hasExistingArtworkCatalogsWithCount:(int)arg1;
+- (id)init;
 - (id)namespaceIdentifier;
 - (unsigned int)numberOfColumns;
 - (unsigned int)numberOfRows;
 - (id)revisionIdentifier;
+- (void)setAllowsSynchronousArtworkCatalogsBlockExecution:(BOOL)arg1;
 - (void)setArtworkCatalogsBlock:(id /* block */)arg1;
 - (void)setEntityIdentifier:(id)arg1;
 - (void)setNamespaceIdentifier:(id)arg1;

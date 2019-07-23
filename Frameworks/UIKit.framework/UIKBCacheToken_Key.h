@@ -3,22 +3,23 @@
  */
 
 @interface UIKBCacheToken_Key : UIKBCacheToken {
-    NSString *_cacheDisplayString;
-    NSString *_cacheSecondaryDisplayString;
-    int _clipCorners;
+    NSString * _annotationString;
+    NSString * _cacheDisplayString;
+    NSString * _cacheSecondaryDisplayString;
+    int  _clipCorners;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _displayInsets;
-    int _displayRowHint;
-    int _displayTypeHint;
+    }  _displayInsets;
+    int  _displayRowHint;
+    int  _displayTypeHint;
     struct CGSize { 
         float width; 
         float height; 
-    } _size;
-    int _state;
+    }  _size;
+    int  _state;
     union { 
         struct { 
             unsigned int idiom : 6; 
@@ -28,8 +29,8 @@
             unsigned int rendering : 16; 
         } styling; 
         int intValue; 
-    } _style;
-    BOOL _usesInsets;
+    }  _style;
+    BOOL  _usesInsets;
 }
 
 + (id)tokenForKey:(id)arg1 style:(struct { unsigned int x1 : 6; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 8; unsigned int x5 : 16; })arg2;
@@ -39,9 +40,11 @@
 - (id)_stringWithAdditionalValues:(id /* block */)arg1;
 - (void)annotateWithBool:(BOOL)arg1;
 - (void)annotateWithInt:(int)arg1;
+- (void)annotateWithString:(id)arg1;
 - (void)dealloc;
 - (int)displayHint;
 - (BOOL)hasKey;
+- (void)resetAnnotations;
 - (int)rowHint;
 - (void)setDisplayHint:(int)arg1;
 - (void)setRowHint:(int)arg1;

@@ -6,7 +6,9 @@
 
 @property (nonatomic, copy) NSIndexSet *PINEntrySeparatorIndexes;
 @property (getter=_proxyTextInput, nonatomic, readonly) UIResponder<UITextInput> *__content;
+@property (nonatomic) int _textInputSource;
 @property (nonatomic, readonly) UIView<UITextInputPrivate> *_textSelectingContainer;
+@property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
@@ -21,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferBecomingResponder;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableInputBars;
 @property (nonatomic) BOOL disablePrediction;
 @property (nonatomic) BOOL displaySecureEditsUsingPlainText;
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
@@ -29,9 +32,16 @@
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
 @property (readonly) DOMNode *firstChild;
+@property (nonatomic) BOOL forceDefaultDictationInfo;
+@property (nonatomic) int forceDictationKeyboardType;
+@property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL hasDefaultContents;
+@property (nonatomic, readonly) BOOL hasText;
 @property (readonly) unsigned int hash;
+@property (nonatomic, retain) UIInputContextHistory *inputContextHistory;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
+@property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic, retain) UIColor *insertionPointColor;
 @property (nonatomic) unsigned int insertionPointWidth;
 @property (nonatomic, readonly) UITextInteractionAssistant *interactionAssistant;
@@ -73,8 +83,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (copy) NSString *textContent;
+@property (nonatomic, copy) NSString *textContentType;
+@property (nonatomic, readonly) <UITextInputSuggestionDelegate> *textInputSuggestionDelegate;
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic) int textLoupeVisibility;
+@property (nonatomic) int textScriptType;
 @property (nonatomic) int textSelectionBehavior;
 @property (nonatomic) id textSuggestionDelegate;
 @property (nonatomic) struct __CFCharacterSet { }*textTrimmingSet;
@@ -87,7 +100,7 @@
 
 + (id)_nodeFromJSWrapper:(struct OpaqueJSValue { }*)arg1;
 
-- (struct Element { int (**x1)(); struct Weak<WebCore::JSDOMWrapper> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl> { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData> { struct ElementData {} *x_13_1_1; } x13; }*)_linkElement;
+- (struct Element { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl> { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData> { struct ElementData {} *x_13_1_1; } x13; }*)_linkElement;
 - (struct RootObject { }*)_rootObject;
 - (struct _WKQuad { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; })absoluteQuad;
 - (struct _WKQuad { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGPoint { float x_2_1_1; float x_2_1_2; } x2; struct CGPoint { float x_3_1_1; float x_3_1_2; } x3; struct CGPoint { float x_4_1_1; float x_4_1_2; } x4; })absoluteQuadAndInsideFixedPosition:(BOOL*)arg1;
@@ -111,7 +124,6 @@
 - (void)dealloc;
 - (id)description;
 - (BOOL)dispatchEvent:(id)arg1;
-- (void)finalize;
 - (id)findExplodedTextNodeAtPoint:(struct CGPoint { float x1; float x2; })arg1;
 - (id)firstChild;
 - (void)getPreviewSnapshotImage:(struct CGImage {}**)arg1 andRects:(id*)arg2;
@@ -126,6 +138,7 @@
 - (id)insertBefore:(id)arg1 :(id)arg2;
 - (id)insertBefore:(id)arg1 refChild:(id)arg2;
 - (void)inspect;
+- (BOOL)isConnected;
 - (BOOL)isContentEditable;
 - (BOOL)isDefaultNamespace:(id)arg1;
 - (BOOL)isEqualNode:(id)arg1;
@@ -201,6 +214,7 @@
 - (unsigned long)_characterAfterCaretSelection;
 - (unsigned long)_characterBeforeCaretSelection;
 - (unsigned long)_characterInRelationToCaretSelection:(int)arg1;
+- (unsigned long)_characterInRelationToPosition:(id)arg1 amount:(int)arg2;
 - (unsigned long)_characterInRelationToRangedSelection:(int)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
@@ -261,6 +275,7 @@
 - (void)_selectAll;
 - (id)_selectableText;
 - (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedNSRange;
+- (struct _NSRange { unsigned int x1; unsigned int x2; })_selectedRangeWithinMarkedText;
 - (int)_selectionAffinity;
 - (BOOL)_selectionAtDocumentEnd;
 - (BOOL)_selectionAtDocumentStart;
@@ -430,6 +445,7 @@
 - (id)textColorForCaretSelection;
 - (id)textDocument;
 - (id)textInRange:(id)arg1;
+- (id)textInputSuggestionDelegate;
 - (id)textInputTraits;
 - (id)textInputView;
 - (int)textLoupeVisibility;

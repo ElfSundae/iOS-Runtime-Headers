@@ -3,21 +3,22 @@
  */
 
 @interface UITextEffectsWindow : UIAutoRotatingWindow <_UIScreenBasedObject> {
-    unsigned int _activeEffectsCount;
-    unsigned int _activeRemoteViewCount;
-    float _defaultWindowLevel;
+    unsigned int  _activeEffectsCount;
+    unsigned int  _activeRemoteViewCount;
+    float  _defaultWindowLevel;
     struct CGSize { 
         float width; 
         float height; 
-    } _hostedSceneSize;
+    }  _hostedSceneSize;
     struct CGPoint { 
         float x; 
         float y; 
-    } _hostedWindowOffset;
-    BOOL _inDealloc;
-    NSDictionary *_perScreenOptions;
-    unsigned int _windowLevelCount;
-    float _windowLevelStack;
+    }  _hostedWindowOffset;
+    BOOL  _inDealloc;
+    BOOL  _manualHostingOverride;
+    NSDictionary * _perScreenOptions;
+    unsigned int  _windowLevelCount;
+    float  _windowLevelStack;
 }
 
 @property (readonly) UIScreen *_intendedScreen;
@@ -67,7 +68,9 @@
 - (void)_setWindowLevel:(float)arg1;
 - (BOOL)_shouldParticipateInVirtualResizing;
 - (BOOL)_shouldResizeWithScene;
+- (BOOL)_shouldTextEffectsWindowBeHostedForView:(id)arg1;
 - (BOOL)_shouldTintStatusBar;
+- (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (void)_updateTransformLayer;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)_willSnapshot;
@@ -88,6 +91,7 @@
 - (float)defaultWindowLevel;
 - (void)delayHideWindow;
 - (void)didAddSubview:(id)arg1;
+- (BOOL)enableRemoteHosting;
 - (void)handleStatusBarChangeFromHeight:(float)arg1 toHeight:(float)arg2;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })hostedFrame;
 - (struct CGSize { float x1; float x2; })hostedSceneSize;
@@ -95,10 +99,10 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (int)interfaceOrientation;
 - (BOOL)isInternalWindow;
-- (struct CGPoint { float x1; float x2; })magnifierConvertPoint:(struct CGPoint { float x1; float x2; })arg1 forWindow:(id)arg2;
 - (void)resetTransform;
 - (void)sendSubviewToBack:(id)arg1;
 - (void)setDefaultWindowLevel:(float)arg1;
+- (void)setEnableRemoteHosting:(BOOL)arg1;
 - (void)setHostedSceneSize:(struct CGSize { float x1; float x2; })arg1;
 - (void)setHostedWindowOffset:(struct CGPoint { float x1; float x2; })arg1;
 - (void)sortSubviews;

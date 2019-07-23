@@ -3,7 +3,7 @@
  */
 
 @interface XBApplicationSnapshotPredicate : NSObject <BSDescriptionProviding> {
-    BSMutableSettings *_clientSettings;
+    BSMutableSettings * _clientSettings;
 }
 
 @property (nonatomic) unsigned int contentTypeMask;

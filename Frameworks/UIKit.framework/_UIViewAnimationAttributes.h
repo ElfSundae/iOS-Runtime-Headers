@@ -3,15 +3,15 @@
  */
 
 @interface _UIViewAnimationAttributes : NSObject <NSSecureCoding> {
-    int _curve;
-    double _delay;
-    double _duration;
-    BOOL _hasSpringAttributes;
-    unsigned int _options;
-    float _springDamping;
-    float _springMass;
-    float _springStiffness;
-    float _springVelocity;
+    int  _curve;
+    double  _delay;
+    double  _duration;
+    BOOL  _hasSpringAttributes;
+    unsigned int  _options;
+    float  _springDamping;
+    float  _springMass;
+    float  _springStiffness;
+    float  _springVelocity;
 }
 
 @property (getter=_curve, nonatomic, readonly) int curve;

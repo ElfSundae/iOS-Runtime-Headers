@@ -3,8 +3,8 @@
  */
 
 @interface _UIAlertViewShimAccessoryViewController : UIViewController {
-    UIViewController *_accessoryViewController;
-    float _preferredHeight;
+    UIViewController * _accessoryViewController;
+    float  _preferredHeight;
 }
 
 - (void).cxx_destruct;

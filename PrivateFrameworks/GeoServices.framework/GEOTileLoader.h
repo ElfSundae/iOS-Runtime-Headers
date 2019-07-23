@@ -36,6 +36,7 @@
 - (void)clearAllCaches;
 - (void)closeDatabase;
 - (void)closeForClient:(id)arg1;
+- (id)descriptionDictionaryRepresentation;
 - (int)diskHits;
 - (void)endPreloadSession;
 - (void)endPreloadSessionForClient:(id)arg1;

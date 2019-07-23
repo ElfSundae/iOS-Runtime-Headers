@@ -32,6 +32,7 @@
 - (BOOL)iPadFudgeLayout;
 - (struct CGPoint { float x1; float x2; })internationalKeyOffset;
 - (id)lightKeycapsFontName;
+- (id)messagesWriteboardKeyImageName;
 - (float)moreKeyFontSize;
 - (struct CGPoint { float x1; float x2; })moreKeyOffset;
 - (id)returnKeyImageName;

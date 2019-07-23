@@ -3,7 +3,7 @@
  */
 
 @interface _UITableViewCellDeleteConfirmationControl_Legacy : UIControl {
-    NSString *_title;
+    NSString * _title;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } size;

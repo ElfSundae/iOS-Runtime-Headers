@@ -3,45 +3,45 @@
  */
 
 @interface FMFMapViewController : UIViewController <FMF3HiddenMapTrackingHandlerDelegate, FMFMapOptionsViewControllerDelegate, FMFMapViewDelegateInternalDelegate, FMFNoLocationViewDelegate, FMFSessionDelegateInternal> {
-    BOOL __blockDidReceiveAnimation;
-    NSSet *__internalHandlesShowingLocations;
-    BOOL __isRenderingInitialMap;
-    NSSet *__preloadedHandles;
-    BOOL __refreshingIsPaused;
-    void *_addressBook;
-    BOOL _alwaysShowAccuracy;
-    UIColor *_annotationTintColor;
-    UIImageView *_cachedMapView;
-    BOOL _canShowNoLocation;
-    unsigned int _defaultMapType;
-    <FMFMapViewControllerDelegate> *_delegate;
-    UIBarButtonItem *_directionsBarButtonItem;
+    BOOL  __blockDidReceiveAnimation;
+    NSSet * __internalHandlesShowingLocations;
+    BOOL  __isRenderingInitialMap;
+    NSSet * __preloadedHandles;
+    BOOL  __refreshingIsPaused;
+    void * _addressBook;
+    BOOL  _alwaysShowAccuracy;
+    UIColor * _annotationTintColor;
+    UIImageView * _cachedMapView;
+    BOOL  _canShowNoLocation;
+    unsigned int  _defaultMapType;
+    <FMFMapViewControllerDelegate> * _delegate;
+    UIBarButtonItem * _directionsBarButtonItem;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _edgeInsets;
-    UIToolbar *_floatingLocationToolbar;
-    UIView *_floatingToolbarView;
-    FMFSession *_fmfSession;
-    FMF3HiddenMapTrackingHandler *_hiddenMap;
-    UIBarButtonItem *_infoBarButtonItem;
-    BOOL _isMapCenteringDisabled;
-    BOOL _isSimpleMap;
-    FMFMapOptionsViewController *_mapOptionsVC;
-    BOOL _mapTypeLoaded;
-    MKMapView *_mapView;
-    FMFMapViewDelegateInternal *_mapViewDelegate;
-    FMFNoLocationView *_noLocationView;
-    FMFRefreshBarButtonItem *_refreshButton;
-    BOOL _shouldZoomToFitMeAndLocations;
-    BOOL _shouldZoomToFitNewLocations;
-    BOOL _showFloatingMapLocationButton;
-    FMFTitleView *_titleView;
-    UIToolbar *_toolbar;
-    MKUserTrackingBarButtonItem *_userLocationButton;
-    BOOL _viewWillAppearCalled;
+    }  _edgeInsets;
+    UIToolbar * _floatingLocationToolbar;
+    UIView * _floatingToolbarView;
+    FMFSession * _fmfSession;
+    FMF3HiddenMapTrackingHandler * _hiddenMap;
+    UIBarButtonItem * _infoBarButtonItem;
+    BOOL  _isMapCenteringDisabled;
+    BOOL  _isSimpleMap;
+    FMFMapOptionsViewController * _mapOptionsVC;
+    BOOL  _mapTypeLoaded;
+    MKMapView * _mapView;
+    FMFMapViewDelegateInternal * _mapViewDelegate;
+    FMFNoLocationView * _noLocationView;
+    FMFRefreshBarButtonItem * _refreshButton;
+    BOOL  _shouldZoomToFitMeAndLocations;
+    BOOL  _shouldZoomToFitNewLocations;
+    BOOL  _showFloatingMapLocationButton;
+    FMFTitleView * _titleView;
+    UIToolbar * _toolbar;
+    MKUserTrackingBarButtonItem * _userLocationButton;
+    BOOL  _viewWillAppearCalled;
 }
 
 @property (nonatomic) BOOL _blockDidReceiveAnimation;
@@ -141,6 +141,7 @@
 - (id)initWithDelegate:(id)arg1 handles:(id)arg2;
 - (void)initializeDefaults;
 - (BOOL)isCompact;
+- (BOOL)isLocationAlreadyOnMap:(id)arg1;
 - (BOOL)isMapCenteringDisabled;
 - (BOOL)isSimpleMap;
 - (void)loadCachedLocationsForHandles;

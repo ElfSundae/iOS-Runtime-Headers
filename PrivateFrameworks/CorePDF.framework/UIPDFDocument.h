@@ -3,21 +3,21 @@
  */
 
 @interface UIPDFDocument : NSObject {
-    float _cachedHeight;
-    float _cachedWidth;
-    struct CGPDFDocument { } *_cgDocument;
-    <NSObject><UIPDFDocumentDelegate> *_delegate;
-    NSString *_documentID;
-    NSString *_documentName;
-    unsigned int _imageCacheCount;
-    int _imageCacheLock;
-    unsigned int _imageCacheLookAhead;
-    float _imageCacheResolution;
-    int _lock;
-    unsigned int _numberOfPages;
-    UIPDFPageImageCache *_pageImageCache;
-    UIPDFPageImageCache *_thumbnailCache;
-    int _thumbnailLock;
+    float  _cachedHeight;
+    float  _cachedWidth;
+    struct CGPDFDocument { } * _cgDocument;
+    <NSObject><UIPDFDocumentDelegate> * _delegate;
+    NSString * _documentID;
+    NSString * _documentName;
+    unsigned int  _imageCacheCount;
+    int  _imageCacheLock;
+    unsigned int  _imageCacheLookAhead;
+    float  _imageCacheResolution;
+    int  _lock;
+    unsigned int  _numberOfPages;
+    UIPDFPageImageCache * _pageImageCache;
+    UIPDFPageImageCache * _thumbnailCache;
+    int  _thumbnailLock;
 }
 
 @property (readonly) struct CGPDFDocument { }*CGDocument;

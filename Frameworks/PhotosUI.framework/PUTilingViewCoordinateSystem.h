@@ -3,7 +3,7 @@
  */
 
 @interface PUTilingViewCoordinateSystem : NSObject <PUTilingCoordinateSystem> {
-    PUTilingView *_tilingView;
+    PUTilingView * _tilingView;
 }
 
 @property (nonatomic, readonly) struct CGPoint { float x1; float x2; } coordinateSystemOrigin;

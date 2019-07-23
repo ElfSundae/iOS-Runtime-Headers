@@ -2,9 +2,9 @@
    Image: /System/Library/Frameworks/UIKit.framework/UIKit
  */
 
-@interface _UITableViewCellPromiseRegion : NSObject <_UIFocusRegion> {
-    NSIndexPath *_indexPath;
-    UITableView *_tableView;
+@interface _UITableViewCellPromiseRegion : NSObject <_UIFocusPromiseRegionDelegate, _UIFocusRegionContainer, _UILegacyFocusRegion> {
+    NSIndexPath * _indexPath;
+    UITableView * _tableView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,9 +24,12 @@
 - (BOOL)_focusRegionIsEligibleForFocus;
 - (id)_focusRegionItem;
 - (id)_focusRegionView;
+- (id)_fulfillFocusPromiseRegion:(id)arg1;
 - (id)_fulfillPromisedFocusRegion;
 - (BOOL)_isPromiseFocusRegion;
 - (BOOL)_isTransparentFocusRegion;
+- (void)_searchForFocusRegionsInContext:(id)arg1;
+- (BOOL)_shouldSearchForFocusRegionsInContext:(id)arg1;
 - (id)description;
 - (id)indexPath;
 - (void)setIndexPath:(id)arg1;

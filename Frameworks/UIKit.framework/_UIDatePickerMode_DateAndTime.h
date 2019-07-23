@@ -3,18 +3,18 @@
  */
 
 @interface _UIDatePickerMode_DateAndTime : _UIDatePickerMode {
-    NSString *_hourFormat;
-    NSString *_minuteFormat;
-    NSString *_monthDayFormat;
-    NSDateFormatter *_relativeFormatter;
-    NSString *_weekdayFormat;
-    NSDateFormatter *_weekdayFormatter;
-    BOOL _weekdayLast;
-    float _wmdAMPMWidth;
-    float _wmdHourWidth;
-    float _wmdMinuteWidth;
-    float _wmdWeekMonthDayWidth;
-    float _wmdWeekdayWidth;
+    NSString * _hourFormat;
+    NSString * _minuteFormat;
+    NSString * _monthDayFormat;
+    NSDateFormatter * _relativeFormatter;
+    NSString * _weekdayFormat;
+    NSDateFormatter * _weekdayFormatter;
+    BOOL  _weekdayLast;
+    float  _wmdAMPMWidth;
+    float  _wmdHourWidth;
+    float  _wmdMinuteWidth;
+    float  _wmdWeekMonthDayWidth;
+    float  _wmdWeekdayWidth;
 }
 
 + (int)datePickerMode;

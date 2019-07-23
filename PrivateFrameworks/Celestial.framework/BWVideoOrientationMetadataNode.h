@@ -3,18 +3,18 @@
  */
 
 @interface BWVideoOrientationMetadataNode : BWNode {
-    struct OpaqueCMBlockBuffer {} *_bbufCache;
-    struct opaqueCMFormatDescription { } *_boxedMetadataFormatDescription;
-    struct OpaqueCMClock { } *_clock;
-    NSObject<OS_dispatch_queue> *_emitSamplesDispatchQueue;
-    int _exifOrientation;
-    unsigned long _localIDOfOrientationMetadata;
-    struct OpaqueCMClock { } *_masterClock;
-    BOOL _recordVideoOrientationAndMirroringChanges;
-    BOOL _recording;
-    int _sourcePosition;
-    BOOL _videoMirrored;
-    int _videoOrientation;
+    struct OpaqueCMBlockBuffer {} * _bbufCache;
+    struct opaqueCMFormatDescription { } * _boxedMetadataFormatDescription;
+    struct OpaqueCMClock { } * _clock;
+    NSObject<OS_dispatch_queue> * _emitSamplesDispatchQueue;
+    int  _exifOrientation;
+    unsigned long  _localIDOfOrientationMetadata;
+    struct OpaqueCMClock { } * _masterClock;
+    BOOL  _recordVideoOrientationAndMirroringChanges;
+    BOOL  _recording;
+    int  _sourcePosition;
+    BOOL  _videoMirrored;
+    int  _videoOrientation;
 }
 
 + (void)initialize;

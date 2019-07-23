@@ -3,7 +3,7 @@
  */
 
 @interface PUMediaProvider : NSObject {
-    PULoadingStatusManager *_loadingStatusManager;
+    PULoadingStatusManager * _loadingStatusManager;
 }
 
 @property (nonatomic, retain) PULoadingStatusManager *loadingStatusManager;

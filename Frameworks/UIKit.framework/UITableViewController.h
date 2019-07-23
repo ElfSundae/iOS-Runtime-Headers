@@ -3,16 +3,16 @@
  */
 
 @interface UITableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewFocusDelegateLegacy, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Deprecated, _UIKeyboardAutoRespondingScrollViewController> {
-    _UIFilteredDataSource *_filteredDataSource;
-    int _filteredDataType;
-    UIAutoRespondingScrollViewControllerKeyboardSupport *_keyboardSupport;
-    UITableViewDataSource *_staticDataSource;
+    _UIFilteredDataSource * _filteredDataSource;
+    int  _filteredDataType;
+    UIAutoRespondingScrollViewControllerKeyboardSupport * _keyboardSupport;
+    UITableViewDataSource * _staticDataSource;
     struct { 
         unsigned int clearsSelectionOnViewWillAppear : 1; 
         unsigned int insetsApplied : 1; 
         unsigned int adjustingInsets : 1; 
-    } _tableViewControllerFlags;
-    int _tableViewStyle;
+    }  _tableViewControllerFlags;
+    int  _tableViewStyle;
 }
 
 @property (nonatomic) BOOL clearsSelectionOnViewWillAppear;

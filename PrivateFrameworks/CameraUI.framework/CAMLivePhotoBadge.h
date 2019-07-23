@@ -3,7 +3,7 @@
  */
 
 @interface CAMLivePhotoBadge : CAMBadgeTextView {
-    int _irisMode;
+    int  _irisMode;
 }
 
 @property (nonatomic) int irisMode;

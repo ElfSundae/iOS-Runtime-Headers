@@ -3,7 +3,7 @@
  */
 
 @interface UIWebView : UIView <NSCoding, UIScrollViewDelegate, WebPolicyDelegate> {
-    UIWebViewInternal *_internal;
+    UIWebViewInternal * _internal;
 }
 
 @property (nonatomic) BOOL allowsInlineMediaPlayback;
@@ -56,7 +56,6 @@
 - (float)_gapBetweenPages;
 - (id)_initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 enableReachability:(BOOL)arg2;
 - (id)_initWithWebView:(id)arg1;
-- (void)_lookup:(struct CGPoint { float x1; float x2; })arg1;
 - (id)_makeAlertView;
 - (id)_networkInterfaceName;
 - (unsigned int)_pageCount;
@@ -76,6 +75,7 @@
 - (void)_setDrawInWebThread:(BOOL)arg1;
 - (void)_setDrawsCheckeredPattern:(BOOL)arg1;
 - (void)_setGapBetweenPages:(float)arg1;
+- (void)_setIsBlankBeforeFirstNonEmptyLayout:(BOOL)arg1;
 - (void)_setNetworkInterfaceName:(id)arg1;
 - (void)_setOverridesOrientationChangeEventHandling:(BOOL)arg1;
 - (void)_setPageLength:(float)arg1;
@@ -106,7 +106,6 @@
 - (BOOL)canGoBack;
 - (BOOL)canGoForward;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (void)configureWithSettings:(id)arg1;
 - (void)copy:(id)arg1;
 - (struct CGImage { }*)createSnapshotWithRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (unsigned int)dataDetectorTypes;
@@ -219,5 +218,10 @@
 - (void)_accessibilityPauseSpeaking:(id)arg1;
 - (void)_accessibilitySpeak:(id)arg1;
 - (id)_accessibilitySpeakSelectionTextInputResponder;
+
+// Image: /System/Library/PrivateFrameworks/HelpKit.framework/HelpKit
+
+- (int)highlightAllOccurencesOfTokens:(id)arg1;
+- (void)removeAllHighlights;
 
 @end

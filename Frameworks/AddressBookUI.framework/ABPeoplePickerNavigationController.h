@@ -3,13 +3,13 @@
  */
 
 @interface ABPeoplePickerNavigationController : UINavigationController <ABContactViewControllerDelegate> {
-    void *_addressBook;
-    BOOL _allowsContactBlocking;
-    int _behavior;
-    CNContactPickerViewController *_contactPicker;
-    UISplitViewController<ABContactViewControllerDelegate> *_contactsSplitViewPresentationDelegate;
-    NSArray *_defaultToolbarItems;
-    struct __CFArray { } *_displayedProperties;
+    void * _addressBook;
+    BOOL  _allowsContactBlocking;
+    int  _behavior;
+    CNContactPickerViewController * _contactPicker;
+    UISplitViewController<ABContactViewControllerDelegate> * _contactsSplitViewPresentationDelegate;
+    NSArray * _defaultToolbarItems;
+    struct __CFArray { } * _displayedProperties;
     struct { 
         unsigned int allowsEditing : 1; 
         unsigned int allowsCancel : 1; 
@@ -21,20 +21,20 @@
         unsigned int hidesPromptInLandscape : 1; 
         unsigned int forceInProcess : 1; 
         unsigned int forceOutOfProcess : 1; 
-    } _flags;
-    BOOL _ignoreViewWillBePresented;
-    int _insertionProperty;
-    id _insertionValue;
-    ABModel *_model;
-    BOOL _navigationBarIsAnimating;
-    id _peoplePickerDelegate;
-    NSPredicate *_predicateForEnablingPerson;
-    NSPredicate *_predicateForSelectionOfPerson;
-    NSPredicate *_predicateForSelectionOfProperty;
-    id _reserved1;
-    id _reserved2;
-    id _reserved3;
-    id _reserved4;
+    }  _flags;
+    BOOL  _ignoreViewWillBePresented;
+    int  _insertionProperty;
+    id  _insertionValue;
+    ABModel * _model;
+    BOOL  _navigationBarIsAnimating;
+    id  _peoplePickerDelegate;
+    NSPredicate * _predicateForEnablingPerson;
+    NSPredicate * _predicateForSelectionOfPerson;
+    NSPredicate * _predicateForSelectionOfProperty;
+    id  _reserved1;
+    id  _reserved2;
+    id  _reserved3;
+    id  _reserved4;
 }
 
 @property (setter=ab_setDefaultToolbarItems:, nonatomic, retain) NSArray *ab_defaultToolbarItems;
@@ -53,8 +53,6 @@
 @property (nonatomic, copy) NSPredicate *predicateForSelectionOfProperty;
 @property (nonatomic, retain) <ABStyleProvider> *styleProvider;
 @property (readonly) Class superclass;
-
-// Image: /System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
 
 + (void)notifyPreferencesChanged;
 
@@ -195,9 +193,5 @@
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { float x1; float x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (void)willShowViewController:(id)arg1 animated:(BOOL)arg2;
-
-// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
-
-- (BOOL)ckCanDismissWhenSuspending;
 
 @end

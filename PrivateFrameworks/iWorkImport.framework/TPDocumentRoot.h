@@ -3,55 +3,58 @@
  */
 
 @interface TPDocumentRoot : TSADocumentRoot <TSCEResolverContainer, TSDInfoUUIDPathPrefixComponentsProvider, TSDThumbnailProducer, TSTResolverContainerNameProvider, TSWPChangeSessionManager, TSWPChangeVisibility, TSWPDrawableOLC, TSWPStorageParent> {
-    TSWPChangeSession *_activeChangeSession;
-    TSWPStorage *_bodyStorage;
-    float _bottomMargin;
-    NSMutableArray *_changeSessionHistory;
-    BOOL _changeTrackingEnabled;
-    BOOL _changeTrackingPaused;
-    NSMutableDictionary *_chartsUIState;
-    NSArray *_citationRecords;
-    float _currentThumbnailContainerWidth;
-    TPDrawablesZOrder *_drawablesZOrder;
-    TPFloatingDrawables *_floatingDrawables;
-    float _footerMargin;
-    float _headerMargin;
-    struct __CFLocale { } *_hyphenationLocale;
-    TPInteractiveCanvasController *_interactiveCanvasController;
-    BOOL _layoutBodyVertically;
-    float _leftMargin;
-    TSWPChangeSession *_mostRecentChangeSession;
-    BOOL _needsInitialization;
-    BOOL _newDocument;
-    NSArray *_obsoleteTOCStyles;
-    unsigned int _orientation;
-    TPPageLayoutNotifier *_pageLayoutNotifier;
-    float _pageScale;
+    TSWPChangeSession * _activeChangeSession;
+    TSWPStorage * _bodyStorage;
+    float  _bottomMargin;
+    NSMutableArray * _changeSessionHistory;
+    BOOL  _changeTrackingEnabled;
+    BOOL  _changeTrackingPaused;
+    NSMutableDictionary * _chartsUIState;
+    NSArray * _citationRecords;
+    float  _currentThumbnailContainerWidth;
+    TPDrawablesZOrder * _drawablesZOrder;
+    TPFloatingDrawables * _floatingDrawables;
+    float  _footerMargin;
+    float  _headerMargin;
+    struct __CFLocale { } * _hyphenationLocale;
+    TPInteractiveCanvasController * _interactiveCanvasController;
+    BOOL  _layoutBodyVertically;
+    float  _leftMargin;
+    TSWPChangeSession * _mostRecentChangeSession;
+    BOOL  _needsAdditionalViewStateValidation;
+    BOOL  _needsInitialization;
+    BOOL  _newDocument;
+    NSArray * _obsoleteTOCStyles;
+    unsigned int  _orientation;
+    TPPageLayoutNotifier * _pageLayoutNotifier;
+    float  _pageScale;
     struct CGSize { 
         float width; 
         float height; 
-    } _pageSize;
-    TPPaginatedPageController *_paginatedPageController;
-    NSString *_paperID;
-    NSString *_printerID;
-    float _rightMargin;
-    TPDocumentSettings *_settings;
-    BOOL _shouldUniquifyTableNames;
-    TSSStylesheet *_stylesheet;
-    NSMutableDictionary *_tableInfosWithUniqueNames;
-    unsigned int _tableNameCounter;
-    TPTheme *_theme;
-    TSDThumbnailController *_thumbnailController;
-    TPTOCController *_tocController;
-    float _topMargin;
-    BOOL _usesSingleHeaderFooter;
-    BOOL initiallyShowRuler;
+    }  _pageSize;
+    TPPaginatedPageController * _paginatedPageController;
+    NSString * _paperID;
+    NSString * _printerID;
+    NSMutableSet * _remappedTableNames;
+    float  _rightMargin;
+    TPDocumentSettings * _settings;
+    BOOL  _shouldUniquifyTableNames;
+    TSSStylesheet * _stylesheet;
+    NSMutableDictionary * _tableInfosWithUniqueNames;
+    unsigned int  _tableNameCounter;
+    TPTheme * _theme;
+    TSDThumbnailController * _thumbnailController;
+    TPTOCController * _tocController;
+    float  _topMargin;
+    BOOL  _usesSingleHeaderFooter;
+    BOOL  _wasCreatedFromTemplate;
+    BOOL  initiallyShowRuler;
 }
 
 @property (nonatomic, retain) TSWPChangeSession *activeChangeSession;
 @property (nonatomic, readonly, retain) TSWPStorage *bodyStorage;
 @property (nonatomic) float bottomMargin;
-@property (nonatomic, retain) NSArray *changeSessionHistory;
+@property (nonatomic, retain) NSMutableArray *changeSessionHistory;
 @property (getter=isChangeTrackingEnabled, nonatomic) BOOL changeTrackingEnabled;
 @property (getter=isChangeTrackingPaused, nonatomic) BOOL changeTrackingPaused;
 @property (nonatomic, retain) NSMutableDictionary *chartsUIState;
@@ -72,6 +75,7 @@
 @property (nonatomic) BOOL layoutBodyVertically;
 @property (nonatomic) float leftMargin;
 @property (nonatomic, retain) TSWPChangeSession *mostRecentChangeSession;
+@property (nonatomic) BOOL needsAdditionalViewStateValidation;
 @property (nonatomic, readonly, retain) NSArray *nonHiddenSections;
 @property (nonatomic) unsigned int orientation;
 @property (nonatomic) float pageScale;
@@ -91,6 +95,7 @@
 @property (nonatomic) float topMargin;
 @property (getter=isTrackingChanges, nonatomic, readonly) BOOL trackingChanges;
 @property (nonatomic) BOOL usesSingleHeaderFooter;
+@property (nonatomic, readonly) BOOL wasCreatedFromTemplate;
 
 + (void)localizeTextStorage:(id)arg1 withTemplateBundle:(id)arg2;
 + (struct CGSize { float x1; float x2; })pageSizeFromPaperSize:(struct CGSize { float x1; float x2; })arg1 pageScale:(float)arg2 orientation:(unsigned int)arg3;
@@ -98,18 +103,21 @@
 
 - (id)UIStateForChart:(id)arg1;
 - (id)activeChangeSession;
+- (void)addRemappedTableName:(id)arg1;
 - (unsigned int)applicationType;
 - (BOOL)autoListRecognition;
 - (BOOL)autoListTermination;
 - (id)bodyStorage;
 - (float)bodyWidth;
 - (float)bottomMargin;
+- (BOOL)cellCommentsAllowedOnInfo:(id)arg1;
 - (id)changeSessionHistory;
 - (id)changeSessionManagerForModel:(id)arg1;
 - (id)changeVisibility;
 - (id)chartsUIState;
 - (id)childEnumerator;
 - (id)citationRecords;
+- (void)clearRemappedTableNames;
 - (int)contentWritingDirection;
 - (void)dealloc;
 - (void)didAddDrawable:(id)arg1;
@@ -134,6 +142,7 @@
 - (BOOL)initiallyShowRuler;
 - (id)interactiveCanvasController;
 - (void)invalidateThumbnailForPageIndex:(unsigned int)arg1;
+- (BOOL)isArchivedViewStateValid:(id)arg1;
 - (BOOL)isChangeTrackingEnabled;
 - (BOOL)isChangeTrackingPaused;
 - (BOOL)isMultiPageForQuickLook;
@@ -151,6 +160,7 @@
 - (id)mostRecentChangeSession;
 - (id)nameForResolverContainer:(id)arg1;
 - (int)naturalAlignmentAtCharIndex:(unsigned int)arg1 inTextStorage:(id)arg2;
+- (BOOL)needsAdditionalViewStateValidation;
 - (BOOL)needsToExplainEnablingChangeTracking;
 - (unsigned int)nextUntitledResolverIndex;
 - (id)nonHiddenSections;
@@ -182,6 +192,8 @@
 - (void)prepareNewDocumentWithTemplateBundle:(id)arg1;
 - (id)previewImageForSize:(struct CGSize { float x1; float x2; })arg1;
 - (id)printerID;
+- (void)readViewState;
+- (id)remappedTableNames;
 - (id)resolverContainerForName:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)resolverContainerNameForResolver:(id)arg1;
 - (id)resolverContainerNamesMatchingPrefix:(id)arg1;
@@ -215,6 +227,7 @@
 - (void)setLayoutBodyVertically:(BOOL)arg1;
 - (void)setLeftMargin:(float)arg1;
 - (void)setMostRecentChangeSession:(id)arg1;
+- (void)setNeedsAdditionalViewStateValidation:(BOOL)arg1;
 - (void)setOrientation:(unsigned int)arg1;
 - (void)setPageScale:(float)arg1;
 - (void)setPageSize:(struct CGSize { float x1; float x2; })arg1;
@@ -259,6 +272,7 @@
 - (int)verticalAlignmentForTextStorage:(id)arg1;
 - (void)viewDidAppear;
 - (void)viewWillAppear;
+- (BOOL)wasCreatedFromTemplate;
 - (void)willClose;
 - (void)willEnterForeground;
 - (void)willHide;

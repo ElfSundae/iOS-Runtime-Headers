@@ -3,10 +3,10 @@
  */
 
 @interface UIStoryboardPreviewingRegistrant : NSObject <NSCoding, UIViewControllerPreviewingDelegate> {
-    <UIViewControllerPreviewing> *_previewingContext;
-    UIStoryboardPreviewingSegueTemplateStorage *_segueTemplateStorage;
-    UIView *_sourceView;
-    UIViewController *_viewController;
+    <UIViewControllerPreviewing> * _previewingContext;
+    UIStoryboardPreviewingSegueTemplateStorage * _segueTemplateStorage;
+    UIView * _sourceView;
+    UIViewController * _viewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;

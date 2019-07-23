@@ -3,8 +3,8 @@
  */
 
 @interface VKTransitPolylinePath : VKPolylinePath {
-    unsigned long long _lineID;
-    VKGGLTransitTile *_tile;
+    unsigned long long  _lineID;
+    VKGGLTransitTile * _tile;
 }
 
 @property (nonatomic, readonly) unsigned long long lineID;

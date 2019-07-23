@@ -3,9 +3,9 @@
  */
 
 @interface UIMarkupTextPrintFormatter : UIPrintFormatter {
-    NSString *_markupText;
-    UIWebPaginationInfo *_paginationInfo;
-    UIWebDocumentView *_webDocumentView;
+    NSString * _markupText;
+    UIWebPaginationInfo * _paginationInfo;
+    UIWebDocumentView * _webDocumentView;
 }
 
 @property (nonatomic, copy) NSString *markupText;

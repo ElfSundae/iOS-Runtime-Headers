@@ -3,48 +3,54 @@
  */
 
 @interface MTLDebugFragmentRenderCommandEncoder : MTLToolsFragmentRenderCommandEncoder {
-    unsigned int _backStencilRef;
-    float _blendColorAlpha;
-    float _blendColorBlue;
-    float _blendColorGreen;
-    float _blendColorRed;
-    <MTLDevice> *_cachedDevice;
-    MTLDepthStencilDescriptor *_defaultDepthStencilDescriptor;
-    float _depthBias;
-    float _depthBiasClamp;
-    float _depthBiasSlopeScale;
-    <MTLDepthStencilState> *_depthStencilState;
-    MTLRenderPassDescriptor *_descriptor;
-    unsigned int _encoderState;
+    unsigned int  _backStencilRef;
+    float  _blendColorAlpha;
+    float  _blendColorBlue;
+    float  _blendColorGreen;
+    float  _blendColorRed;
+    <MTLDevice> * _cachedDevice;
+    MTLDepthStencilDescriptor * _defaultDepthStencilDescriptor;
+    struct ResourceTrackingDeferredAttachments { 
+        NSMutableArray *colorAttachments; 
+        MTLRenderPassDepthAttachmentDescriptorInternal *depthAttachment; 
+        MTLRenderPassStencilAttachmentDescriptorInternal *stencilAttachment; 
+    }  _deferredAttachments;
+    float  _depthBias;
+    float  _depthBiasClamp;
+    float  _depthBiasSlopeScale;
+    <MTLDepthStencilState> * _depthStencilState;
+    MTLRenderPassDescriptor * _descriptor;
+    unsigned int  _encoderState;
     /* Warning: unhandled struct encoding: '{?="isValid"c"hasBeenUsed"c"type"I"object"@"baseLevel"I"bufferLength"I"bufferOffset"I"threadgroupMemoryLength"I"hasLodClamp"c"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
         BOOL isValid; 
         BOOL hasBeenUsed; 
         unsigned int type; 
         id object; 
-    } _fragmentBuffers;
+    }  _fragmentBuffers;
     /* Warning: unhandled struct encoding: '{?="isValid"c"hasBeenUsed"c"type"I"object"@"baseLevel"I"bufferLength"I"bufferOffset"I"threadgroupMemoryLength"I"hasLodClamp"c"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
         BOOL isValid; 
         BOOL hasBeenUsed; 
         unsigned int type; 
         id object; 
-    } _fragmentSamplers;
+    }  _fragmentSamplers;
     /* Warning: unhandled struct encoding: '{?="isValid"c"hasBeenUsed"c"type"I"object"@"baseLevel"I"bufferLength"I"bufferOffset"I"threadgroupMemoryLength"I"hasLodClamp"c"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
         BOOL isValid; 
         BOOL hasBeenUsed; 
         unsigned int type; 
         id object; 
-    } _fragmentTextures;
-    unsigned int _frontStencilRef;
-    unsigned int _height;
-    const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; } *_limits;
-    <MTLRenderPipelineState> *_renderPipelineState;
+    }  _fragmentTextures;
+    unsigned int  _frontStencilRef;
+    unsigned int  _height;
+    const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; float x19; float x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; unsigned int x37; unsigned int x38; unsigned int x39; unsigned int x40; unsigned int x41; } * _limits;
+    <MTLRenderPipelineState> * _renderPipelineState;
     struct { 
         unsigned int x; 
         unsigned int y; 
         unsigned int width; 
         unsigned int height; 
-    } _scissorRect;
-    unsigned int _width;
+    }  _scissorRect;
+    unsigned int  _unknownStoreActions;
+    unsigned int  _width;
 }
 
 @property (nonatomic, readonly) unsigned int backStencilRef;
@@ -67,6 +73,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_resourceTrackingRecordBoundResourceAccesses;
+- (void)_resourceTrackingRecordDrawAccesses;
 - (void)_setDefaults;
 - (void)_validateAllFunctionArguments;
 - (unsigned int)backStencilRef;
@@ -96,8 +104,10 @@
 - (id)renderPipelineState;
 - (struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; })scissorRect;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
+- (void)setColorStoreAction:(unsigned int)arg1 atIndex:(unsigned int)arg2;
 - (void)setDepthBias:(float)arg1 slopeScale:(float)arg2 clamp:(float)arg3;
 - (void)setDepthStencilState:(id)arg1;
+- (void)setDepthStoreAction:(unsigned int)arg1;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned int)arg2 atIndex:(unsigned int)arg3;
 - (void)setFragmentBufferOffset:(unsigned int)arg1 atIndex:(unsigned int)arg2;
 - (void)setFragmentBuffers:(const id*)arg1 offsets:(const unsigned int*)arg2 withRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg3;
@@ -108,12 +118,12 @@
 - (void)setFragmentSamplerStates:(const id*)arg1 withRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;
 - (void)setFragmentTexture:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)setFragmentTexture:(id)arg1 atTextureIndex:(unsigned int)arg2 samplerState:(id)arg3 atSamplerIndex:(unsigned int)arg4;
-- (void)setFragmentTexture:(id)arg1 baseLevel:(unsigned int)arg2 atIndex:(unsigned int)arg3;
 - (void)setFragmentTextures:(const id*)arg1 withRange:(struct _NSRange { unsigned int x1; unsigned int x2; })arg2;
 - (void)setRenderPipelineState:(id)arg1;
 - (void)setScissorRect:(struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; })arg1;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
+- (void)setStencilStoreAction:(unsigned int)arg1;
 - (void)validateFramebufferWithRenderPipelineState:(id)arg1;
 - (unsigned int)width;
 

@@ -3,11 +3,11 @@
  */
 
 @interface _MRSendVirtualTouchEventMessageProtobuf : PBCodable <NSCopying> {
-    _MRVirtualTouchEventProtobuf *_event;
+    _MRVirtualTouchEventProtobuf * _event;
     struct { 
         unsigned int virtualDeviceID : 1; 
-    } _has;
-    unsigned long long _virtualDeviceID;
+    }  _has;
+    unsigned long long  _virtualDeviceID;
 }
 
 @property (nonatomic, retain) _MRVirtualTouchEventProtobuf *event;

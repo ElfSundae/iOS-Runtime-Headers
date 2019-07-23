@@ -3,7 +3,7 @@
  */
 
 @interface HKSolidFillStyle : HKFillStyle {
-    UIColor *_color;
+    UIColor * _color;
 }
 
 @property (nonatomic, copy) UIColor *color;

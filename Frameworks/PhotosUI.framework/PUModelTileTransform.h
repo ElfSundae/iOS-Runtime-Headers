@@ -3,17 +3,17 @@
  */
 
 @interface PUModelTileTransform : NSObject <NSCopying> {
-    BOOL _hasUserInput;
+    BOOL  _hasUserInput;
     struct CGPoint { 
         float x; 
         float y; 
-    } _normalizedTranslation;
+    }  _normalizedTranslation;
     struct CGPoint { 
         float x; 
         float y; 
-    } _overscroll;
-    float _scale;
-    NSString *_userInputOriginIdentifier;
+    }  _overscroll;
+    float  _scale;
+    NSString * _userInputOriginIdentifier;
 }
 
 @property (nonatomic, readonly) BOOL hasUserInput;

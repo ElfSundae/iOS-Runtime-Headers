@@ -3,54 +3,55 @@
  */
 
 @interface EKDayOccurrenceView : UIVisualEffectView <EKDayOccurrenceTravelTimeViewMetricsDelegate, NSCopying> {
-    BOOL _allDay;
-    BOOL _allDayDrawingStyle;
-    float _bottomPinningProximity;
-    unsigned int _bottomPinningState;
-    float _cappedColorBarHeight;
-    UIColor *_color;
-    EKDayOccurrenceContentView *_content;
-    BOOL _declined;
-    id _delegate;
-    BOOL _dimmed;
-    BOOL _drawsResizeHandles;
-    UIView *_endResizeHandle;
-    UIImageView *_eventBackgroundView;
-    BOOL _hideBackgroundImage;
-    BOOL _hideText;
-    BOOL _isSelectedCopyView;
+    BOOL  _allDay;
+    BOOL  _allDayDrawingStyle;
+    float  _bottomPinningProximity;
+    unsigned int  _bottomPinningState;
+    float  _cappedColorBarHeight;
+    UIColor * _color;
+    EKDayOccurrenceContentView * _content;
+    BOOL  _declined;
+    NSObject<EKDayOccurrenceViewDelegate> * _delegate;
+    BOOL  _dimmed;
+    BOOL  _drawsResizeHandles;
+    UIView * _endResizeHandle;
+    UIImageView * _eventBackgroundView;
+    BOOL  _hideBackgroundImage;
+    BOOL  _hideText;
+    BOOL  _isProposedTime;
+    BOOL  _isSelectedCopyView;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _margin;
-    BOOL _needsBackgroundImageUpdate;
-    BOOL _needsContentCalc;
-    BOOL _needsReply;
-    EKEvent *_occurrence;
-    int _occurrenceBackgroundStyle;
-    unsigned int _offsetContentForLandscape;
-    float _originalXBeforeOffset;
+    }  _margin;
+    BOOL  _needsBackgroundImageUpdate;
+    BOOL  _needsContentCalc;
+    BOOL  _needsReply;
+    EKEvent * _occurrence;
+    int  _occurrenceBackgroundStyle;
+    unsigned int  _offsetContentForLandscape;
+    float  _originalXBeforeOffset;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _padding;
-    UIView *_pinFadeView;
-    BOOL _reduceLayoutProcessingForAnimation;
-    BOOL _selected;
-    EKDayOccurrenceView *_selectedCopy;
-    BOOL _showsTravelTime;
-    UIView *_startResizeHandle;
-    BOOL _tentative;
-    unsigned int _touchKeptInsideOccurrence;
-    BOOL _touchesAreBeingTracked;
-    UIImageView *_travelBackgroundView;
-    double _travelTime;
-    EKDayOccurrenceTravelTimeView *_travelTimeContentView;
-    float _travelTimeSubviewHeightInPoints;
+    }  _padding;
+    UIView * _pinFadeView;
+    BOOL  _reduceLayoutProcessingForAnimation;
+    BOOL  _selected;
+    EKDayOccurrenceView * _selectedCopy;
+    BOOL  _showsTravelTime;
+    UIView * _startResizeHandle;
+    BOOL  _tentative;
+    unsigned int  _touchKeptInsideOccurrence;
+    BOOL  _touchesAreBeingTracked;
+    UIImageView * _travelBackgroundView;
+    double  _travelTime;
+    EKDayOccurrenceTravelTimeView * _travelTimeContentView;
+    float  _travelTimeSubviewHeightInPoints;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -60,7 +61,7 @@
             float width; 
             float height; 
         } size; 
-    } _unpinnedEventBackgroundFrame;
+    }  _unpinnedEventBackgroundFrame;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -70,9 +71,9 @@
             float width; 
             float height; 
         } size; 
-    } _unpinnedTravelBackgroundFrame;
-    float _visibleHeight;
-    BOOL _visibleHeightLocked;
+    }  _unpinnedTravelBackgroundFrame;
+    float  _visibleHeight;
+    BOOL  _visibleHeightLocked;
 }
 
 @property (getter=isAllDay, nonatomic) BOOL allDay;
@@ -84,7 +85,7 @@
 @property (nonatomic, copy) UIColor *color;
 @property (readonly, copy) NSString *debugDescription;
 @property (getter=isDeclined, nonatomic) BOOL declined;
-@property (nonatomic) id delegate;
+@property (nonatomic) NSObject<EKDayOccurrenceViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dimmed;
 @property (nonatomic) BOOL drawsResizeHandles;
@@ -93,6 +94,7 @@
 @property (nonatomic) BOOL hideBackgroundImage;
 @property (nonatomic) BOOL hideText;
 @property (nonatomic, readonly) BOOL isPinned;
+@property (nonatomic) BOOL isProposedTime;
 @property (nonatomic) BOOL isSelectedCopyView;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic) struct UIEdgeInsets { float x1; float x2; float x3; float x4; } margin;
@@ -141,10 +143,18 @@
 - (void).cxx_destruct;
 - (void)_addTravelTimeSubviews;
 - (id)_backgroundColor;
+- (int)_compareOccurrenceViewForSelectedCopyOrdering:(id)arg1;
+- (int)_compareOccurrenceViewLeftToRight:(id)arg1;
+- (int)_compareOccurrenceViewTopToBottom:(id)arg1;
+- (int)_compareOccurrenceViewTopToBottomLeftToRight:(id)arg1;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_computeContentRect;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_computeTravelTimeContentRect;
 - (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })_frameMutatedForProximityToHourLine:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
 - (void)_invalidateContentBounds;
+- (BOOL)_isAboveAllDayOccurrenceView:(id)arg1;
+- (BOOL)_isAboveOccurrenceView:(id)arg1 overlapToIgnore:(double)arg2;
+- (BOOL)_isBelowAllDayOccurrenceView:(id)arg1;
+- (BOOL)_isBelowOccurrenceView:(id)arg1 overlapToIgnore:(double)arg2;
 - (BOOL)_isTimedOccurrenceDrawingStyle;
 - (id)_newResizeHandleView;
 - (void)_removeTravelTimeSubviews;
@@ -160,6 +170,8 @@
 - (void)bringResizeHandlesToFront;
 - (float)cappedColorBarHeight;
 - (id)color;
+- (int)compareOccurrenceViewForTabOrdering:(id)arg1;
+- (struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })contentRectForPreview;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)delegate;
@@ -174,13 +186,13 @@
 - (BOOL)hideBackgroundImage;
 - (BOOL)hideText;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1;
-- (void)invalidateTravelTimeHeight;
 - (BOOL)isAllDay;
 - (BOOL)isBirthday;
 - (BOOL)isCancelled;
 - (BOOL)isDeclined;
 - (BOOL)isFacebook;
 - (BOOL)isPinned;
+- (BOOL)isProposedTime;
 - (BOOL)isSelectedCopyView;
 - (BOOL)isTentative;
 - (void)layoutSubviews;
@@ -195,6 +207,7 @@
 - (BOOL)reduceLayoutProcessingForAnimation;
 - (void)removeFromSuperview;
 - (BOOL)resetContentViewToOriginalState:(BOOL)arg1;
+- (void)resetVisibleHeight;
 - (int)routingMode;
 - (id)secondaryTextColor;
 - (BOOL)selected;
@@ -217,6 +230,7 @@
 - (void)setHideBackgroundImage:(BOOL)arg1;
 - (void)setHideText:(BOOL)arg1;
 - (void)setHideText:(BOOL)arg1 animate:(BOOL)arg2;
+- (void)setIsProposedTime:(BOOL)arg1;
 - (void)setIsSelectedCopyView:(BOOL)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setMargin:(struct UIEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
@@ -239,6 +253,7 @@
 - (void)setTouchesAreBeingTracked:(BOOL)arg1;
 - (void)setTravelTime:(double)arg1;
 - (void)setTravelTimeSubviewHeightInPoints:(float)arg1;
+- (void)setUserInteractionEnabled:(BOOL)arg1;
 - (void)setUsesSmallText:(BOOL)arg1;
 - (void)setVisibleHeight:(float)arg1;
 - (BOOL)showsTravelTime;

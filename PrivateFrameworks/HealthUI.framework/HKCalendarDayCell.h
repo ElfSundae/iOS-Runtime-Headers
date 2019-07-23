@@ -3,17 +3,17 @@
  */
 
 @interface HKCalendarDayCell : CALayer {
-    UIFont *_boldFont;
-    CALayer *_circle;
-    NSDate *_date;
-    HKDateCache *_dateCache;
-    float _dayDiameter;
-    CALayer *_dayLabel;
-    int _dayOfMonth;
-    UIFont *_font;
-    BOOL _representsToday;
-    BOOL _selected;
-    UIColor *_textColor;
+    UIFont * _boldFont;
+    CALayer * _circle;
+    NSDate * _date;
+    HKDateCache * _dateCache;
+    float  _dayDiameter;
+    CALayer * _dayLabel;
+    int  _dayOfMonth;
+    UIFont * _font;
+    BOOL  _representsToday;
+    BOOL  _selected;
+    UIColor * _textColor;
 }
 
 @property (nonatomic, retain) UIFont *boldFont;

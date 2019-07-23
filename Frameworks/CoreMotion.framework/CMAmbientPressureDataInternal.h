@@ -6,7 +6,7 @@
     struct { 
         float pressure; 
         float temperature; 
-    } fPressure;
+    }  fPressure;
 }
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -6,15 +6,15 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _buttonSize;
-    BOOL _buttonSizeLoaded;
+    }  _buttonSize;
+    BOOL  _buttonSizeLoaded;
     struct UIEdgeInsets { 
         float top; 
         float left; 
         float bottom; 
         float right; 
-    } _buttonTextAlignmentInsets;
-    NSAttributedString *_transcriptButtonText;
+    }  _buttonTextAlignmentInsets;
+    NSAttributedString * _transcriptButtonText;
 }
 
 @property (nonatomic, readonly) struct CGSize { float x1; float x2; } buttonSize;
@@ -27,13 +27,13 @@
 + (id)thisWeekRelativeDateFormatter;
 + (id)todayDateFormatter;
 
+- (void).cxx_destruct;
 - (struct CGSize { float x1; float x2; })buttonSize;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })buttonTextAlignmentInsets;
 - (int)buttonType;
 - (Class)cellClass;
 - (struct UIEdgeInsets { float x1; float x2; float x3; float x4; })contentInsets;
 - (unsigned int)count;
-- (void)dealloc;
 - (int)expireStatusType;
 - (BOOL)isButtonSizeLoaded;
 - (BOOL)isFromMe;

@@ -3,22 +3,22 @@
  */
 
 @interface _UIPanOrFlickGestureRecognizer : UIPanGestureRecognizer {
-    float _allowableMovement;
-    unsigned int _allowedFlickDirections;
-    BOOL _didLongPress;
-    UIDelayedAction *_elapsedAction;
+    float  _allowableMovement;
+    unsigned int  _allowedFlickDirections;
+    BOOL  _didLongPress;
+    UIDelayedAction * _elapsedAction;
     struct CGPoint { 
         float x; 
         float y; 
-    } _initialCentroidLocation;
-    double _maximumFlickDuration;
-    float _minimumFlickDistance;
-    double _minimumPressDuration;
-    UIDelayedAction *_responsivenessAction;
-    double _responsivenessDelay;
-    double _timestampBeforeGestureBegan;
-    double _timestampOfLastEvent;
-    unsigned int _touchCount;
+    }  _initialCentroidLocation;
+    double  _maximumFlickDuration;
+    float  _minimumFlickDistance;
+    double  _minimumPressDuration;
+    UIDelayedAction * _responsivenessAction;
+    double  _responsivenessDelay;
+    double  _timestampBeforeGestureBegan;
+    double  _timestampOfLastEvent;
+    unsigned int  _touchCount;
 }
 
 @property (nonatomic) float allowableMovement;

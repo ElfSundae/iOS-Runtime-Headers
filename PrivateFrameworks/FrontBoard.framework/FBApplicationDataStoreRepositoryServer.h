@@ -3,8 +3,7 @@
  */
 
 @interface FBApplicationDataStoreRepositoryServer : FBSystemServiceFacility <FBApplicationDataStoreRepositoryServerClientDelegate> {
-    <FBApplicationDataStoreRepository> *_dataStore;
-    FBApplicationDataStoreRepositoryManager *_dataStoreManager;
+    <FBApplicationDataStoreRepository> * _dataStore;
 }
 
 @property (nonatomic, retain) <FBApplicationDataStoreRepository> *dataStore;
@@ -15,6 +14,7 @@
 - (void)_handleGetObjectForKey:(id)arg1;
 - (void)_handleRemoveAllObjects:(id)arg1;
 - (void)_handleRemoveObjectForKey:(id)arg1 client:(id)arg2;
+- (void)_handleSetChangesInterest:(id)arg1 client:(id)arg2;
 - (void)_handleSetObjectForKey:(id)arg1 client:(id)arg2;
 - (void)_handleSetPrefetchedKeys:(id)arg1 client:(id)arg2;
 - (void)_handleSynchronize:(id)arg1;
@@ -22,6 +22,7 @@
 - (void)applicationDataStoreRespositoryClient:(id)arg1 repositoryInvalidatedForBundleID:(id)arg2;
 - (Class)classForClient:(id)arg1;
 - (id)dataStore;
+- (void)dealloc;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 queue:(id)arg2 clientAuthenticator:(id)arg3;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;

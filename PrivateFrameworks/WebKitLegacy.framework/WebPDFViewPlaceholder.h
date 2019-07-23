@@ -6,15 +6,15 @@
     struct CGSize { 
         float width; 
         float height; 
-    } _containerSize;
-    WebDataSource *_dataSource;
-    NSObject<WebPDFViewPlaceholderDelegate> *_delegate;
-    BOOL _didCompleteLayout;
-    BOOL _didFinishLoad;
-    struct CGPDFDocument { } *_document;
-    NSArray *_pageRects;
-    NSArray *_pageYOrigins;
-    NSString *_title;
+    }  _containerSize;
+    WebDataSource * _dataSource;
+    NSObject<WebPDFViewPlaceholderDelegate> * _delegate;
+    BOOL  _didCompleteLayout;
+    BOOL  _didFinishLoad;
+    struct CGPDFDocument { } * _document;
+    NSArray * _pageRects;
+    NSArray * _pageYOrigins;
+    NSString * _title;
 }
 
 @property struct CGSize { float x1; float x2; } containerSize;

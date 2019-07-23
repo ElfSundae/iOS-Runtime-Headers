@@ -3,8 +3,8 @@
  */
 
 @interface TSTTableStylePreset : TSPObject <TSKModel, TSSPreset, TSSStyleClient> {
-    TSTTableStyleNetwork *_styleNetwork;
-    unsigned int _tempUpgradePresetID;
+    TSTTableStyleNetwork * _styleNetwork;
+    unsigned int  _tempUpgradePresetID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,6 +17,7 @@
 
 + (BOOL)needsObjectUUID;
 
+- (BOOL)allowsImplicitComponentOwnership;
 - (void)dealloc;
 - (void)drawSwatchInRect:(struct CGRect { struct CGPoint { float x_1_1_1; float x_1_1_2; } x1; struct CGSize { float x_2_1_1; float x_2_1_2; } x2; })arg1 inContext:(struct CGContext { }*)arg2;
 - (unsigned int)hash;

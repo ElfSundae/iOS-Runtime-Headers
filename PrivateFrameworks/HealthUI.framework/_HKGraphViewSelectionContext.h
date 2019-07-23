@@ -3,10 +3,10 @@
  */
 
 @interface _HKGraphViewSelectionContext : NSObject {
-    NSNumber *_selectedPointXValue;
-    HKGraphSeries *_selectedSeries;
-    NSArray *_selectionAreaMapping;
-    int _selectionState;
+    NSNumber * _selectedPointXValue;
+    HKGraphSeries * _selectedSeries;
+    NSArray * _selectionAreaMapping;
+    int  _selectionState;
     struct CGRect { 
         struct CGPoint { 
             float x; 
@@ -16,11 +16,11 @@
             float width; 
             float height; 
         } size; 
-    } _seriesSelectionRect;
+    }  _seriesSelectionRect;
     struct CGPoint { 
         float x; 
         float y; 
-    } _touchPoint;
+    }  _touchPoint;
 }
 
 @property (nonatomic, retain) NSNumber *selectedPointXValue;

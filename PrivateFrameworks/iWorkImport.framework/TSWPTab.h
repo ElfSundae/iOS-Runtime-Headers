@@ -3,9 +3,9 @@
  */
 
 @interface TSWPTab : NSObject <NSCopying> {
-    int _alignment;
-    NSString *_leader;
-    float _position;
+    int  _alignment;
+    NSString * _leader;
+    float  _position;
 }
 
 @property (nonatomic) int alignment;

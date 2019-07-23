@@ -3,9 +3,9 @@
  */
 
 @interface UISearchResultsTableView : UITableView {
-    UISearchDisplayController *_controller;
-    float _offsetForNoResultsMessage;
-    UIView *_topShadowView;
+    UISearchDisplayController * _controller;
+    float  _offsetForNoResultsMessage;
+    UIView * _topShadowView;
 }
 
 @property (getter=_topShadowView, setter=_setTopShadowView:, nonatomic, retain) UIView *_topShadowView;

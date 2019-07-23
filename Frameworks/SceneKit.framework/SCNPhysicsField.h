@@ -3,32 +3,32 @@
  */
 
 @interface SCNPhysicsField : NSObject <NSCopying, NSSecureCoding> {
-    BOOL _active;
-    unsigned int _categoryBitMask;
+    BOOL  _active;
+    unsigned int  _categoryBitMask;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _direction;
-    BOOL _exclusive;
-    float _falloffExponent;
-    struct c3dPhysicsField { int (**x1)(); struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_2_1_1[4]; } x2; float x3; float x4; float x5; unsigned int x6; bool x7; bool x8; bool x9; bool x10; float x11; } *_field;
+    }  _direction;
+    BOOL  _exclusive;
+    float  _falloffExponent;
+    struct c3dPhysicsField { int (**x1)(); struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_2_1_1[4]; } x2; float x3; float x4; float x5; unsigned int x6; bool x7; bool x8; bool x9; bool x10; float x11; } * _field;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _halfExtent;
-    float _minimumDistance;
-    SCNNode *_node;
+    }  _halfExtent;
+    float  _minimumDistance;
+    SCNNode * _node;
     struct SCNVector3 { 
         float x; 
         float y; 
         float z; 
-    } _offset;
-    int _scope;
-    float _strength;
-    BOOL _usesEllipsoidalExtent;
-    SCNPhysicsWorld *_world;
+    }  _offset;
+    int  _scope;
+    float  _strength;
+    BOOL  _usesEllipsoidalExtent;
+    SCNPhysicsWorld * _world;
 }
 
 @property (getter=isActive, nonatomic) BOOL active;
@@ -66,6 +66,7 @@
 - (void)_setOwner:(id)arg1;
 - (void)_setWorld:(id)arg1;
 - (void)_setupCommonProperties;
+- (void)_willRemoveFromPhysicsWorld;
 - (unsigned int)categoryBitMask;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

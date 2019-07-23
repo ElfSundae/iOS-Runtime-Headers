@@ -3,9 +3,9 @@
  */
 
 @interface PTSButton : UIButton <PTSHUDControl, _UISettingsKeyPathObserver> {
-    int _alignment;
-    _UISettings *_settings;
-    NSString *_valueKeyPath;
+    int  _alignment;
+    _UISettings * _settings;
+    NSString * _valueKeyPath;
 }
 
 @property (nonatomic) int alignment;
